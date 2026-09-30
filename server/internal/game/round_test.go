@@ -148,22 +148,71 @@ func TestTurnSeatIsClosedOnceTheRoundEnds(t *testing.T) {
 func TestHints(t *testing.T) {
 	r := NewRound("r1", ModeShared, 0, "salve")
 
-	for tier := 0; tier < 3; tier++ {
+	// Each hint reveals the next position the player does not yet know, left
+	// to right, and never repeats one.
+	wantLetters := []string{"s", "a", "l"}
+	for tier, wantLetter := range wantLetters {
 		got, err := r.UseHint(0, 3)
 		if err != nil {
 			t.Fatalf("hint %d: %v", tier, err)
 		}
-		if got != tier {
-			t.Errorf("hint returned tier %d, want %d", got, tier)
+		if got.Tier != tier {
+			t.Errorf("hint returned tier %d, want %d", got.Tier, tier)
+		}
+		if got.Position != tier {
+			t.Errorf("hint revealed position %d, want %d", got.Position, tier)
+		}
+		if got.Letter != wantLetter {
+			t.Errorf("hint revealed %q, want %q", got.Letter, wantLetter)
 		}
 	}
+
 	if _, err := r.UseHint(0, 3); err != ErrNoHintsLeft {
 		t.Errorf("fourth hint = %v, want ErrNoHintsLeft", err)
 	}
 
-	// Hints are per seat, so the other player still has their full ladder.
-	if _, err := r.UseHint(1, 3); err != nil {
-		t.Errorf("other seat's first hint: %v", err)
+	// Hints are per seat, so the other player still has their full ladder —
+	// and picks up where the revealed positions left off.
+	got, err := r.UseHint(1, 3)
+	if err != nil {
+		t.Fatalf("other seat's first hint: %v", err)
+	}
+	if got.Position != 3 {
+		t.Errorf("other seat's hint revealed position %d, want 3", got.Position)
+	}
+}
+
+// A hint must not sell back a position the player already worked out.
+func TestHintSkipsPositionsAlreadyGuessed(t *testing.T) {
+	r := NewRound("r1", ModeSolo, 0, "salve")
+
+	// "slate" shares S at position 0 with the answer, so that is a hit.
+	if err := r.Guess(0, "slate", alwaysWord); err != nil {
+		t.Fatal(err)
+	}
+
+	got, err := r.UseHint(0, 3)
+	if err != nil {
+		t.Fatalf("hint: %v", err)
+	}
+	if got.Position == 0 {
+		t.Error("hint revealed position 0, which the player had already guessed")
+	}
+	if got.Position != 1 || got.Letter != "a" {
+		t.Errorf("hint revealed position %d (%q), want position 1 (\"a\")", got.Position, got.Letter)
+	}
+}
+
+// Nothing left to reveal means nothing left to charge for.
+func TestHintRefusedWhenEveryPositionIsKnown(t *testing.T) {
+	r := NewRound("r1", ModeSolo, 0, "salve")
+	for i := 0; i < WordLength; i++ {
+		if _, err := r.UseHint(0, WordLength); err != nil {
+			t.Fatalf("hint %d: %v", i, err)
+		}
+	}
+	if _, err := r.UseHint(0, WordLength); err != ErrNoHintsLeft {
+		t.Errorf("hint with nothing left = %v, want ErrNoHintsLeft", err)
 	}
 }
 

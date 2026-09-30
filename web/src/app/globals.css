@@ -26,13 +26,15 @@
   --text-muted: #b79fac;
   --text-faint: #806a77;
 
-  /* Rose carries the palette and the win state. Present sits in peach beside
-     it — near enough in family to belong, but separated by lightness as well
-     as hue, so the two never blur into each other on a glanced-at board. */
+  /* Rose is the win state and the colour the palette is built from. Present
+     is teal — very nearly the opposite hue, because keeping both marks in the
+     pink family made them ambiguous at a glance, and reading the board
+     instantly matters more than a tidy palette. Pink and teal also happen to
+     look good together. */
   --mark-hit: #e0568f;
   --mark-hit-text: #1a0a12;
-  --mark-present: #e79b6d;
-  --mark-present-text: #23120a;
+  --mark-present: #35bda2;
+  --mark-present-text: #052019;
   --mark-absent: #3a2b34;
   --mark-absent-text: #9b8794;
 
@@ -69,8 +71,8 @@
 
   --mark-hit: #c2356f;
   --mark-hit-text: #fff5f9;
-  --mark-present: #e0956a;
-  --mark-present-text: #3a1c0c;
+  --mark-present: #12907a;
+  --mark-present-text: #f1fbf8;
   /* Absent has to recede — it is the state that means "stop thinking about
      this letter". A saturated mid-tone fights the two marks that actually
      carry information, so this is a pale mauve with muted type on it rather
@@ -353,8 +355,6 @@ button {
   color: var(--mark-absent-text);
 }
 
-/* The reveal. Colour lands at the midpoint of the flip, while the tile is
-   edge-on, so the letter appears to turn over onto its result. */
 .tile[data-revealing="true"] {
   animation: reveal 0.54s cubic-bezier(0.5, 0, 0.3, 1) forwards;
   animation-delay: calc(var(--reveal-index) * 0.2s);
@@ -363,6 +363,9 @@ button {
   color: var(--text);
 }
 
+/* The colour lands at the midpoint of the flip, while the tile is edge-on, so
+   the letter appears to turn over onto its result. Border width rides along
+   with it so the hollow state resolves at the same instant as the fill. */
 @keyframes reveal {
   0% {
     transform: rotateX(0deg);
@@ -461,22 +464,21 @@ button {
   letter-spacing: 0.14em;
 }
 
-.key[data-mark] {
-  border-color: transparent;
-}
-
 .key[data-mark="hit"] {
   background: var(--mark-hit);
+  border-color: var(--mark-hit);
   color: var(--mark-hit-text);
 }
 
 .key[data-mark="present"] {
   background: var(--mark-present);
+  border-color: var(--mark-present);
   color: var(--mark-present-text);
 }
 
 .key[data-mark="absent"] {
   background: var(--mark-absent);
+  border-color: var(--mark-absent);
   color: var(--mark-absent-text);
 }
 
@@ -632,4 +634,424 @@ button {
   place-items: center;
   height: 100dvh;
   color: var(--text-faint);
+}
+
+/* ---------------------------------------------------------------------------
+   Toast
+--------------------------------------------------------------------------- */
+
+.toast {
+  position: fixed;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 40;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: var(--text);
+  color: var(--bg);
+  font-size: 0.66rem;
+  font-weight: 650;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* ---------------------------------------------------------------------------
+   The entry — end of round
+
+   Styled as a dictionary entry, because that is what the round produced. The
+   definition and etymology arrive with the word pipeline in Phase 3; until
+   then the frame says so rather than filling itself with filler.
+--------------------------------------------------------------------------- */
+
+.scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: end center;
+  padding: 16px;
+  background: rgb(14 7 11 / 0.64);
+  backdrop-filter: blur(4px);
+}
+
+:root[data-theme="light"] .scrim {
+  background: rgb(80 35 55 / 0.3);
+}
+
+.entry {
+  width: 100%;
+  max-width: 28rem;
+  padding: 24px 22px max(20px, env(safe-area-inset-bottom));
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  background: var(--bg-raised);
+  box-shadow: 0 30px 70px -28px rgb(0 0 0 / 0.75);
+}
+
+.entry-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.entry-word {
+  margin: 10px 0 0;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(2.7rem, 15vw, 3.6rem);
+  font-weight: 600;
+  line-height: 0.95;
+  letter-spacing: -0.015em;
+  text-transform: lowercase;
+}
+
+/* The grid of marks from the round just played. Real content, and the thing
+   people screenshot. */
+.entry-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-top: 16px;
+}
+
+.entry-grid-row {
+  display: flex;
+  gap: 3px;
+}
+
+.pip {
+  width: 11px;
+  height: 11px;
+  border-radius: 2px;
+  background: var(--mark-absent);
+}
+
+.pip[data-mark="hit"] { background: var(--mark-hit); }
+.pip[data-mark="present"] { background: var(--mark-present); }
+
+.entry-rule {
+  height: 1px;
+  margin: 18px 0;
+  background: var(--rule);
+}
+
+.entry-pending {
+  color: var(--text-faint);
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.entry-pending em {
+  font-family: var(--font-serif), Georgia, serif;
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+.entry-actions {
+  margin-top: 20px;
+}
+
+.button {
+  width: 100%;
+  height: 50px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: var(--text);
+  color: var(--bg);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.07s ease;
+}
+
+.button:active {
+  transform: translateY(1px);
+}
+
+/* ---------------------------------------------------------------------------
+   Loading
+--------------------------------------------------------------------------- */
+
+.loading {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  height: 100dvh;
+  color: var(--text-faint);
+}
+
+/* ---------------------------------------------------------------------------
+   Stakes strip
+
+   What the row you are about to play is worth. Murdle scores solving early
+   rather than solving at all, so the number falling as the board fills is the
+   pressure the game runs on — it deserves to be visible rather than buried in
+   a rules screen.
+--------------------------------------------------------------------------- */
+
+.stakes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 11px 0 2px;
+}
+
+.stakes-points {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 1rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--mark-hit);
+}
+
+.stakes-dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--text-faint);
+}
+
+/* ---------------------------------------------------------------------------
+   Toast
+--------------------------------------------------------------------------- */
+
+.toast {
+  position: fixed;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 40;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: var(--text);
+  color: var(--bg);
+  font-size: 0.66rem;
+  font-weight: 650;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* ---------------------------------------------------------------------------
+   The entry — end of round
+
+   Styled as a dictionary entry, because that is what the round produced. The
+   definition and etymology arrive with the word pipeline in Phase 3; until
+   then the frame says so rather than filling itself with filler.
+--------------------------------------------------------------------------- */
+
+.scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: end center;
+  padding: 16px;
+  background: rgb(14 7 11 / 0.64);
+  backdrop-filter: blur(4px);
+}
+
+:root[data-theme="light"] .scrim {
+  background: rgb(80 35 55 / 0.3);
+}
+
+.entry {
+  width: 100%;
+  max-width: 28rem;
+  padding: 24px 22px max(20px, env(safe-area-inset-bottom));
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  background: var(--bg-raised);
+  box-shadow: 0 30px 70px -28px rgb(0 0 0 / 0.75);
+}
+
+.entry-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.entry-word {
+  margin: 10px 0 0;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(2.7rem, 15vw, 3.6rem);
+  font-weight: 600;
+  line-height: 0.95;
+  letter-spacing: -0.015em;
+  text-transform: lowercase;
+}
+
+/* The grid of marks from the round just played. Real content, and the thing
+   people screenshot. */
+.entry-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-top: 16px;
+}
+
+.entry-grid-row {
+  display: flex;
+  gap: 3px;
+}
+
+.pip {
+  width: 11px;
+  height: 11px;
+  border-radius: 2px;
+  background: var(--mark-absent);
+}
+
+.pip[data-mark="hit"] { background: var(--mark-hit); }
+.pip[data-mark="present"] { background: var(--mark-present); }
+
+.entry-rule {
+  height: 1px;
+  margin: 18px 0;
+  background: var(--rule);
+}
+
+.entry-pending {
+  color: var(--text-faint);
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.entry-pending em {
+  font-family: var(--font-serif), Georgia, serif;
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+.entry-actions {
+  margin-top: 20px;
+}
+
+.button {
+  width: 100%;
+  height: 50px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: var(--text);
+  color: var(--bg);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.07s ease;
+}
+
+.button:active {
+  transform: translateY(1px);
+}
+
+/* ---------------------------------------------------------------------------
+   Loading
+--------------------------------------------------------------------------- */
+
+.loading {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  height: 100dvh;
+  color: var(--text-faint);
+}
+
+/* ---------------------------------------------------------------------------
+   Stakes strip
+
+   What the row you are about to play is worth. Murdle scores solving early
+   rather than solving at all, so the number falling as the board fills is the
+   pressure the game runs on — it deserves to be visible rather than buried in
+   a rules screen.
+--------------------------------------------------------------------------- */
+
+.stakes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 11px 0 2px;
+}
+
+.stakes-points {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 1rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--mark-hit);
+}
+
+.stakes-dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--text-faint);
+}
+
+/* ---------------------------------------------------------------------------
+   Legend
+
+   The board's three states, named. Cheap to include and it removes the one
+   question every new player asks — which colour means what — without either
+   of you having to explain it.
+--------------------------------------------------------------------------- */
+
+.legend {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  padding: 12px 0 3px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Miniature tiles rather than abstract swatches, so the mapping to the board
+   above is unmistakable. */
+.legend-swatch {
+  width: 13px;
+  height: 13px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  flex: none;
+}
+
+.legend-swatch[data-mark="hit"] {
+  background: var(--mark-hit);
+  border-color: var(--mark-hit);
+}
+
+.legend-swatch[data-mark="present"] {
+  background: var(--mark-present-tint);
+  border-color: var(--mark-present);
+  border-width: 2px;
+}
+
+.legend-swatch[data-mark="absent"] {
+  background: var(--mark-absent);
+  border-color: var(--mark-absent);
+}
+
+.legend-text {
+  font-size: 0.57rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  white-space: nowrap;
 }

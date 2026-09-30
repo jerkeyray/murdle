@@ -11,8 +11,25 @@ interface TileProps {
 }
 
 /** Glyphs shown only in colour-blind mode, so the marks survive with no hue. */
-const GLYPH: Record<Mark, string> = { hit: "●", present: "◗", absent: "" };
+const GLYPH: Record<Mark, string> = { hit: "\u25CF", present: "\u25D6", absent: "" };
 
+/**
+ * Spoken labels. "present" and "absent" are jargon; a screen reader user gets
+ * the same plain phrasing the on-screen legend uses.
+ */
+export const MARK_LABEL: Record<Mark, string> = {
+  hit: "right spot",
+  present: "in the word",
+  absent: "not in the word",
+};
+
+/**
+ * The resting appearance of each mark, handed to the reveal animation as
+ * custom properties so the flip can land on it at the midpoint.
+ *
+ * `present` is the hollow state: a tint rather than a fill, and a heavier
+ * border, so it reads as unsettled next to a solid `hit`.
+ */
 const MARK_VARS: Record<Mark, { bg: string; text: string }> = {
   hit: { bg: "var(--mark-hit)", text: "var(--mark-hit-text)" },
   present: { bg: "var(--mark-present)", text: "var(--mark-present-text)" },
@@ -23,7 +40,7 @@ function Tile({ letter, mark, index, revealing }: TileProps) {
   const state = mark ? "revealed" : letter ? "filled" : "empty";
 
   // While a row is revealing, the mark is passed to the animation as custom
-  // properties rather than as data-mark, so the colour only lands at the
+  // properties rather than as data-mark, so the appearance only lands at the
   // midpoint of the flip instead of appearing instantly.
   const vars = mark ? MARK_VARS[mark] : undefined;
 
@@ -40,7 +57,7 @@ function Tile({ letter, mark, index, revealing }: TileProps) {
           "--tile-text": vars?.text,
         } as React.CSSProperties
       }
-      aria-label={mark ? `${letter}, ${mark}` : letter || "empty"}
+      aria-label={mark ? `${letter}, ${MARK_LABEL[mark]}` : letter || "empty"}
     >
       {letter}
       {mark ? <span className="tile-glyph" aria-hidden>{GLYPH[mark]}</span> : null}

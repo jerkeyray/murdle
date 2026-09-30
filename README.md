@@ -74,12 +74,14 @@ specimen page from a well-made dictionary rather than a game app.
 - **Rose, in both themes.** Light is blush paper; dark is plum ink, a
   near-black with a red cast so even the dark theme reads pink rather than
   neutral. A blue-cast dark theme reads as software; this one does not.
-- **Rose and peach carry the marks.** Rose is the win state and the colour the
-  whole palette is built from. Present sits in peach — near enough in family to
-  belong, but separated by lightness as well as hue, because two pinks on one
-  board are indistinguishable at a glance. Absent deliberately recedes: it is
-  the state that means stop thinking about this letter, so it never competes
-  with the two marks that carry information.
+- **Rose and teal carry the marks.** Rose is the win state and the colour the
+  palette is built from; present is teal, very nearly the opposite hue. An
+  earlier pass kept both marks in the pink family and they were ambiguous at a
+  glance — reading the board instantly matters more than a tidy palette.
+  Absent deliberately recedes: it means stop thinking about this letter, so it
+  never competes with the two marks that carry information.
+- **No legend, no status strip.** The board explains itself. Chrome around it
+  only gets in the way.
 - **A serif doing real work.** Fraunces sets the wordmark, the board letters
   and the entry at the end of a round. Serif letterforms on the tiles are what
   make the board read as type, and they tie the game to the dictionary entry it

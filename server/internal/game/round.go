@@ -32,6 +32,18 @@ type Row struct {
 	Marks []Mark `json:"marks"`
 }
 
+// HintReveal is what spending a hint tells the player.
+//
+// Phase 3 adds the written tiers from the word pipeline — a semantic nudge,
+// then a category. This structural reveal is the last rung of that ladder and
+// the one computable without any generated content, so it ships first.
+type HintReveal struct {
+	Tier int
+	// Position is the 0-indexed slot in the word being revealed.
+	Position int
+	Letter   string
+}
+
 // Round is a single word being played. The answer is unexported and never
 // serialized — the client learns it only through Reveal, after the round ends.
 type Round struct {
@@ -46,6 +58,9 @@ type Round struct {
 	UpdatedAt time.Time
 
 	answer string
+	// hinted are positions already given away, so a second hint reveals
+	// something new rather than repeating itself.
+	hinted map[int]bool
 }
 
 // NewRound starts a round on the given answer.
@@ -61,6 +76,7 @@ func NewRound(id string, mode Mode, firstSeat int, answer string) *Round {
 		CreatedAt: now,
 		UpdatedAt: now,
 		answer:    strings.ToLower(answer),
+		hinted:    make(map[int]bool),
 	}
 }
 
@@ -120,23 +136,59 @@ func (r *Round) Guess(seat int, guess string, isWord func(string) bool) error {
 	return nil
 }
 
-// UseHint records that seat revealed another hint tier and returns which tier
-// it is (0-indexed). Each seat gets at most maxTiers across the round.
-func (r *Round) UseHint(seat, maxTiers int) (int, error) {
+// UseHint spends one of seat's hints and reveals a letter position.
+//
+// Each seat gets at most maxTiers across the round, and each costs them a
+// point. A hint never repeats a position the player already knows, either from
+// a correct guess or from an earlier hint.
+func (r *Round) UseHint(seat, maxTiers int) (HintReveal, error) {
 	if r.State != StatePlaying {
-		return 0, ErrRoundOver
+		return HintReveal{}, ErrRoundOver
 	}
 	if seat < 0 || seat >= len(r.HintsUsed) {
-		return 0, ErrWrongSeat
+		return HintReveal{}, ErrWrongSeat
 	}
 	if r.HintsUsed[seat] >= maxTiers {
-		return 0, ErrNoHintsLeft
+		return HintReveal{}, ErrNoHintsLeft
+	}
+
+	pos, letter, ok := r.unrevealedPosition()
+	if !ok {
+		// Every position is already known, so there is nothing left to sell
+		// them. Charging a point for that would be robbery.
+		return HintReveal{}, ErrNoHintsLeft
 	}
 
 	tier := r.HintsUsed[seat]
 	r.HintsUsed[seat]++
+	r.hinted[pos] = true
 	r.UpdatedAt = time.Now().UTC()
-	return tier, nil
+
+	return HintReveal{Tier: tier, Position: pos, Letter: letter}, nil
+}
+
+// unrevealedPosition returns the leftmost position the player has not yet
+// pinned down — not guessed correctly, and not already handed over by a hint.
+func (r *Round) unrevealedPosition() (int, string, bool) {
+	known := make(map[int]bool, len(r.hinted))
+	for pos := range r.hinted {
+		known[pos] = true
+	}
+	for _, row := range r.Rows {
+		for i, mark := range row.Marks {
+			if mark == MarkHit {
+				known[i] = true
+			}
+		}
+	}
+
+	letters := []rune(r.answer)
+	for i := range letters {
+		if !known[i] {
+			return i, string(letters[i]), true
+		}
+	}
+	return 0, "", false
 }
 
 // Scores is what each seat has earned. Only the seat that actually landed the

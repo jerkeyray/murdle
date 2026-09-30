@@ -157,11 +157,14 @@ type hintRequest struct {
 }
 
 type hintResponse struct {
-	// Tier is which rung of the ladder was revealed. Phase 3 attaches the text
-	// written by the word pipeline; for now the client only needs to know the
-	// hint was spent so it can show the score penalty.
-	Tier  int       `json:"tier"`
-	Round roundView `json:"round"`
+	// Tier is which rung of the ladder was spent. Phase 3 attaches the written
+	// tiers from the word pipeline; this structural reveal is the rung that
+	// needs no generated content.
+	Tier int `json:"tier"`
+	// Position is the 0-indexed slot in the word that Letter belongs to.
+	Position int       `json:"position"`
+	Letter   string    `json:"letter"`
+	Round    roundView `json:"round"`
 }
 
 func (s *Server) handleHint(w http.ResponseWriter, r *http.Request) {
@@ -171,10 +174,10 @@ func (s *Server) handleHint(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	var tier int
+	var reveal game.HintReveal
 	round, err := s.rounds.Update(r.Context(), chi.URLParam(r, "id"), func(round *game.Round) error {
 		var err error
-		tier, err = round.UseHint(req.Seat, hintTiers)
+		reveal, err = round.UseHint(req.Seat, hintTiers)
 		return err
 	})
 	if err != nil {
@@ -182,7 +185,12 @@ func (s *Server) handleHint(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	writeJSON(w, http.StatusOK, hintResponse{Tier: tier, Round: newRoundView(round)})
+	writeJSON(w, http.StatusOK, hintResponse{
+		Tier:     reveal.Tier,
+		Position: reveal.Position,
+		Letter:   reveal.Letter,
+		Round:    newRoundView(round),
+	})
 }
 
 // writeGameError maps a rules error to a status the client can branch on.
