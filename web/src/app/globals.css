@@ -26,15 +26,17 @@
   --text-muted: #b79fac;
   --text-faint: #806a77;
 
-  /* Rose is the win state and the colour the palette is built from. Present
-     is teal — very nearly the opposite hue, because keeping both marks in the
-     pink family made them ambiguous at a glance, and reading the board
-     instantly matters more than a tidy palette. Pink and teal also happen to
-     look good together. */
-  --mark-hit: #e0568f;
-  --mark-hit-text: #1a0a12;
-  --mark-present: #35bda2;
-  --mark-present-text: #052019;
+  /* Green is the right spot and rose is in-the-word.
+     
+     Not the other way round, however much the palette would prefer it. Green
+     means "correct" to anyone who has played a word game, and an earlier pass
+     had it on the wrong-spot mark — the board read backwards at a glance. The
+     app still reads pink because the paper, the chrome and the second mark
+     all are; only the success colour follows the convention. */
+  --mark-hit: #2fb894;
+  --mark-hit-text: #04201a;
+  --mark-present: #e0568f;
+  --mark-present-text: #1a0a12;
   --mark-absent: #3a2b34;
   --mark-absent-text: #9b8794;
 
@@ -69,10 +71,10 @@
   --text-muted: #8b6575;
   --text-faint: #b08e9c;
 
-  --mark-hit: #c2356f;
-  --mark-hit-text: #fff5f9;
-  --mark-present: #12907a;
-  --mark-present-text: #f1fbf8;
+  --mark-hit: #12907a;
+  --mark-hit-text: #f1fbf8;
+  --mark-present: #c2356f;
+  --mark-present-text: #fff5f9;
   /* Absent has to recede — it is the state that means "stop thinking about
      this letter". A saturated mid-tone fights the two marks that actually
      carry information, so this is a pale mauve with muted type on it rather

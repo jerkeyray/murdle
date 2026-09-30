@@ -74,12 +74,14 @@ specimen page from a well-made dictionary rather than a game app.
 - **Rose, in both themes.** Light is blush paper; dark is plum ink, a
   near-black with a red cast so even the dark theme reads pink rather than
   neutral. A blue-cast dark theme reads as software; this one does not.
-- **Rose and teal carry the marks.** Rose is the win state and the colour the
-  palette is built from; present is teal, very nearly the opposite hue. An
-  earlier pass kept both marks in the pink family and they were ambiguous at a
-  glance — reading the board instantly matters more than a tidy palette.
-  Absent deliberately recedes: it means stop thinking about this letter, so it
-  never competes with the two marks that carry information.
+- **Green is the right spot, rose is in-the-word.** Not the other way round,
+  however much the palette would prefer it. Green means "correct" to anyone who
+  has played a word game; an earlier pass had green on the wrong-spot mark and
+  the board read backwards at a glance. The app still reads pink because the
+  paper, the chrome and the second mark all are — only the success colour
+  follows the convention. Absent deliberately recedes: it means stop thinking
+  about this letter, so it never competes with the two marks that carry
+  information.
 - **No legend, no status strip.** The board explains itself. Chrome around it
   only gets in the way.
 - **A serif doing real work.** Fraunces sets the wordmark, the board letters
@@ -100,10 +102,22 @@ specimen page from a well-made dictionary rather than a game app.
 
 ## Word lists
 
-`server/internal/words/dictionary.txt` — 8,506 five-letter words, derived from
-the system dictionary. This decides whether a *guess* is a real word, and is
-deliberately permissive.
+`server/internal/words/dictionary.txt` — 12,578 five-letter words, generated
+from SCOWL (via the `word-list` package), the corpus behind aspell and
+hunspell. Regenerate with `pnpm dictionary` from `web/`; the output is checked
+in and embedded into the Go binary, so builds need no network.
+
+This decides whether a *guess* is a real word and is deliberately permissive.
+The rule that matters is never rejecting a word a player knows — obscure real
+words being accepted costs nothing, since they can never be answers.
+
+It previously came from macOS's `/usr/share/dict/words`, which is Webster's
+Second International (1934). That turned out to be a *headword* list: it had
+"call" but not "calls", "woman" but not "women", and rejected 3.7% of ordinary
+words — `proud`, `women`, `cards`, `lives`, `teams` — while happily accepting
+1934 curiosities. Being told a word you know isn't a word is the worst failure
+this game has, so it had to go.
 
 `server/internal/words/answers.txt` — 260 curated answers. Every one is also in
-the dictionary. This list is the seed; Phase 3 replaces it with an LLM-generated
+the dictionary, checked by a test. This list is the seed; Phase 3 replaces it with an LLM-generated
 and human-reviewed pool in Postgres.
