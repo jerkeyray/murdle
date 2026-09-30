@@ -47,7 +47,9 @@ type HintReveal struct {
 // Round is a single word being played. The answer is unexported and never
 // serialized — the client learns it only through Reveal, after the round ends.
 type Round struct {
-	ID        string
+	ID string
+	// RunID is the themed run this round belongs to, or "" for a one-off.
+	RunID     string
 	Mode      Mode
 	FirstSeat int
 	Rows      []Row

@@ -23,9 +23,9 @@ export default function Page() {
     <main className="app">
       <header className="topbar">
         <span className="specimen">
-          {/* Padded to three digits so the header does not reflow as the
-              collection grows past nine or ninety-nine. */}
-          &#8470;&nbsp;{String(game.wordNumber).padStart(3, "0")}
+          {/* Which word of the run this is. Padded so the header does not
+              reflow between single and double digits. */}
+          &#8470;&nbsp;{String(game.run?.started ?? 1).padStart(2, "0")}
         </span>
         <h1 className="wordmark">Murdle</h1>
         <Settings />
@@ -73,8 +73,9 @@ export default function Page() {
         {game.finished ? (
           <Entry
             round={round}
-            wordNumber={game.wordNumber}
-            onNewRound={game.newRound}
+            run={game.run}
+            onNextWord={game.nextWord}
+            onNewRun={game.newRun}
           />
         ) : null}
       </AnimatePresence>

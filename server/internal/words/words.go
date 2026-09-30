@@ -23,15 +23,28 @@ var dictionaryRaw string
 //go:embed answers.txt
 var answersRaw string
 
-// Pool answers "is this a word?" and "give me a word to play".
+// Pool answers "is this a word?" and "give me something to play".
 type Pool struct {
 	dictionary map[string]struct{}
 	answers    []string
+
+	packs    []Pack
+	packByID map[string]Pack
+	wordInfo map[string]PackWord
 }
 
 // NewPool builds the pool from the embedded lists. It is safe to call once at
 // startup and share; nothing here mutates after construction.
+//
+// It panics on malformed packs.json: the file is embedded at build time, so a
+// failure here is a broken binary rather than a runtime condition worth
+// handling.
 func NewPool() *Pool {
+	packs, err := loadPacks()
+	if err != nil {
+		panic("words: " + err.Error())
+	}
+
 	answers := strings.Fields(answersRaw)
 
 	dictWords := strings.Fields(dictionaryRaw)
@@ -45,7 +58,26 @@ func NewPool() *Pool {
 		dictionary[w] = struct{}{}
 	}
 
-	return &Pool{dictionary: dictionary, answers: answers}
+	packByID := make(map[string]Pack, len(packs))
+	wordInfo := make(map[string]PackWord)
+	for _, pack := range packs {
+		packByID[pack.ID] = pack
+		for _, w := range pack.Words {
+			wordInfo[w.Word] = w
+			// Slang often predates the dictionaries, so pack words are added
+			// to the guess list too. Otherwise the game could serve a word it
+			// would then refuse to accept.
+			dictionary[w.Word] = struct{}{}
+		}
+	}
+
+	return &Pool{
+		dictionary: dictionary,
+		answers:    answers,
+		packs:      packs,
+		packByID:   packByID,
+		wordInfo:   wordInfo,
+	}
 }
 
 // IsWord reports whether guess is in the dictionary. Case-insensitive.

@@ -14,7 +14,7 @@ import (
 	"github.com/jerkeyray/murdle/server/internal/game"
 )
 
-// Store is the persistence boundary for rounds.
+// Store is the persistence boundary for rounds and runs.
 type Store interface {
 	Create(ctx context.Context, r *game.Round) error
 	Get(ctx context.Context, id string) (*game.Round, error)
@@ -22,6 +22,12 @@ type Store interface {
 	// implementation needs, then persists the result. Read-modify-write on a
 	// round has to be atomic or two fast taps can both claim the same row.
 	Update(ctx context.Context, id string, fn func(*game.Round) error) (*game.Round, error)
+
+	CreateRun(ctx context.Context, r *game.Run) error
+	GetRun(ctx context.Context, id string) (*game.Run, error)
+	// UpdateRun is atomic for the same reason Update is: claiming the next word
+	// of a run is a read-modify-write, and two taps must not claim the same one.
+	UpdateRun(ctx context.Context, id string, fn func(*game.Run) error) (*game.Run, error)
 }
 
 // NewID returns a short, URL-safe, unguessable round id.
@@ -38,17 +44,22 @@ func NewID() string {
 	return strings.ToLower(base32.StdEncoding.WithPadding(base32.NoPadding).EncodeToString(b[:]))
 }
 
-// Memory keeps rounds in a map and forgets them after a TTL.
+// Memory keeps rounds and runs in maps and forgets them after a TTL.
 type Memory struct {
 	mu     sync.RWMutex
 	rounds map[string]*game.Round
+	runs   map[string]*game.Run
 	ttl    time.Duration
 }
 
-// NewMemory returns a store that drops rounds untouched for ttl. Call Reap in a
-// goroutine, or rely on the lazy expiry in Get.
+// NewMemory returns a store that drops records untouched for ttl. Call Reap in
+// a goroutine, or rely on the lazy expiry in the getters.
 func NewMemory(ttl time.Duration) *Memory {
-	return &Memory{rounds: make(map[string]*game.Round), ttl: ttl}
+	return &Memory{
+		rounds: make(map[string]*game.Round),
+		runs:   make(map[string]*game.Run),
+		ttl:    ttl,
+	}
 }
 
 func (m *Memory) Create(_ context.Context, r *game.Round) error {
@@ -86,8 +97,44 @@ func (m *Memory) Update(_ context.Context, id string, fn func(*game.Round) error
 	return r, nil
 }
 
+func (m *Memory) CreateRun(_ context.Context, r *game.Run) error {
+	m.mu.Lock()
+	defer m.mu.Unlock()
+	m.runs[r.ID] = r
+	return nil
+}
+
+func (m *Memory) GetRun(_ context.Context, id string) (*game.Run, error) {
+	m.mu.RLock()
+	r, ok := m.runs[id]
+	m.mu.RUnlock()
+
+	if !ok || m.expiredAt(r.UpdatedAt) {
+		return nil, game.ErrRunNotFound
+	}
+	return r, nil
+}
+
+func (m *Memory) UpdateRun(_ context.Context, id string, fn func(*game.Run) error) (*game.Run, error) {
+	m.mu.Lock()
+	defer m.mu.Unlock()
+
+	r, ok := m.runs[id]
+	if !ok || m.expiredAt(r.UpdatedAt) {
+		return nil, game.ErrRunNotFound
+	}
+	if err := fn(r); err != nil {
+		return nil, err
+	}
+	return r, nil
+}
+
 func (m *Memory) expired(r *game.Round) bool {
-	return m.ttl > 0 && time.Since(r.UpdatedAt) > m.ttl
+	return m.expiredAt(r.UpdatedAt)
+}
+
+func (m *Memory) expiredAt(updated time.Time) bool {
+	return m.ttl > 0 && time.Since(updated) > m.ttl
 }
 
 // Reap deletes expired rounds until ctx is cancelled. Without it, abandoned
@@ -105,6 +152,11 @@ func (m *Memory) Reap(ctx context.Context, every time.Duration) {
 			for id, r := range m.rounds {
 				if m.expired(r) {
 					delete(m.rounds, id)
+				}
+			}
+			for id, r := range m.runs {
+				if m.expiredAt(r.UpdatedAt) {
+					delete(m.runs, id)
 				}
 			}
 			m.mu.Unlock()

@@ -3,11 +3,13 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
   ApiError,
-  createRound,
+  createRun,
   letterStates,
+  startRunRound,
   submitGuess,
   type Mode,
   type Round,
+  type Run,
 } from "@/lib/api";
 
 /**
@@ -17,33 +19,34 @@ import {
  */
 const REVEAL_MS = 5 * 200 + 520;
 
-const SEEN_KEY = "murdle.seen";
+const PACKS_KEY = "murdle.packs";
 
-/** Words already played on this device, so rounds don't repeat one. */
-function loadSeen(): string[] {
+/** Themes already played on this device, so a new run picks a fresh one. */
+function loadPlayedPacks(): string[] {
   if (typeof window === "undefined") return [];
   try {
-    const raw = window.localStorage.getItem(SEEN_KEY);
+    const raw = window.localStorage.getItem(PACKS_KEY);
     return raw ? (JSON.parse(raw) as string[]) : [];
   } catch {
     // Private mode, blocked storage, corrupt value — none of which should stop
-    // someone playing. Repeating a word is a far smaller problem.
+    // anyone playing. Repeating a theme is a far smaller problem.
     return [];
   }
 }
 
-function rememberSeen(word: string) {
+function rememberPack(title: string) {
   try {
-    const seen = loadSeen();
-    if (!seen.includes(word)) {
-      window.localStorage.setItem(SEEN_KEY, JSON.stringify([...seen, word]));
+    const played = loadPlayedPacks();
+    if (!played.includes(title)) {
+      window.localStorage.setItem(PACKS_KEY, JSON.stringify([...played, title]));
     }
   } catch {
-    /* ignore — see loadSeen */
+    /* ignore — see loadPlayedPacks */
   }
 }
 
 export function useGame(mode: Mode = "solo") {
+  const [run, setRun] = useState<Run | null>(null);
   const [round, setRound] = useState<Round | null>(null);
   const [draft, setDraft] = useState("");
   const [busy, setBusy] = useState(false);
@@ -52,18 +55,11 @@ export function useGame(mode: Mode = "solo") {
 
   /**
    * How many rows have finished their reveal animation. Everything that would
-   * spoil the flip — keyboard colours, the end-of-round card — reads this
-   * rather than round.rows.length.
+   * spoil the flip — keyboard colours, the entry card — reads this rather than
+   * round.rows.length.
    */
   const [revealedRows, setRevealedRows] = useState(0);
   const [revealingRow, setRevealingRow] = useState<number | null>(null);
-
-  /**
-   * Which word this is for this device, counting from one. Shown as the
-   * specimen number in the header — a real count of words played, not a
-   * decorative id.
-   */
-  const [wordNumber, setWordNumber] = useState(1);
 
   const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
 
@@ -85,29 +81,90 @@ export function useGame(mode: Mode = "solo") {
     [later],
   );
 
+  const clearBoard = useCallback(() => {
+    setDraft("");
+    setRevealedRows(0);
+    setRevealingRow(null);
+  }, []);
+
   /**
-   * Starts the round the player is dropped into on arrival.
+   * Starts a themed run and deals its first word.
    *
-   * This is deliberately separate from newRound: an effect must not set state
-   * synchronously in its body, and newRound does exactly that to clear the
-   * board before it awaits. Here the only state changes happen once the
-   * request resolves.
+   * An effect must not set state synchronously in its body, so the mount path
+   * lives in its own effect below and this is only ever called from a tap.
    */
+  const newRun = useCallback(async () => {
+    setBusy(true);
+    clearBoard();
+    try {
+      const fresh = await createRun({ mode, excludePacks: loadPlayedPacks() });
+      const dealt = await startRunRound(fresh.id);
+      setRun(dealt.run);
+      setRound(dealt.round);
+    } catch (err) {
+      flash(err instanceof ApiError ? err.message : "Could not start a run");
+    } finally {
+      setBusy(false);
+    }
+  }, [mode, clearBoard, flash]);
+
+  /** Deals the next word of the current run. */
+  const nextWord = useCallback(async () => {
+    if (!run || run.complete) return;
+
+    setBusy(true);
+    clearBoard();
+    try {
+      const dealt = await startRunRound(run.id);
+      setRun(dealt.run);
+      setRound(dealt.round);
+    } catch (err) {
+      flash(err instanceof ApiError ? err.message : "Could not deal the next word");
+    } finally {
+      setBusy(false);
+    }
+  }, [run, clearBoard, flash]);
+
+  /**
+   * Caches the opening request against React's development double-invoke.
+   *
+   * Starting a run is a side effect on the server, not an idempotent read:
+   * firing twice creates two runs and two rounds and abandons one of each.
+   *
+   * The dedupe has to cache the *promise* rather than skip the second effect
+   * run. Skipping it strands the game on the loading screen — the first
+   * invocation's cleanup has already marked its result as cancelled, so if the
+   * second invocation never subscribes, nothing is ever applied.
+   */
+  const opening = useRef<{
+    mode: Mode;
+    promise: Promise<{ round: Round; run: Run }>;
+  } | null>(null);
+
   useEffect(() => {
     let cancelled = false;
 
-    const seen = loadSeen();
+    if (opening.current?.mode !== mode) {
+      opening.current = {
+        mode,
+        promise: createRun({ mode, excludePacks: loadPlayedPacks() }).then(
+          (fresh) => startRunRound(fresh.id),
+        ),
+      };
+    }
 
-    createRound({ mode, exclude: seen })
-      .then((next) => {
+    opening.current.promise
+      .then((dealt) => {
         if (cancelled) return;
-        setRound(next);
-        setWordNumber(seen.length + 1);
+        setRun(dealt.run);
+        setRound(dealt.round);
       })
       .catch((err: unknown) => {
         if (cancelled) return;
+        // Let a failed opening be retried rather than cached forever.
+        opening.current = null;
         setMessage(
-          err instanceof ApiError ? err.message : "Could not start a round",
+          err instanceof ApiError ? err.message : "Could not start a run",
         );
       });
 
@@ -115,24 +172,6 @@ export function useGame(mode: Mode = "solo") {
       cancelled = true;
     };
   }, [mode]);
-
-  /** Starts a fresh round in response to a tap, clearing the board first. */
-  const newRound = useCallback(async () => {
-    setBusy(true);
-    setDraft("");
-    setRevealedRows(0);
-    setRevealingRow(null);
-    try {
-      const seen = loadSeen();
-      const next = await createRound({ mode, exclude: seen });
-      setRound(next);
-      setWordNumber(seen.length + 1);
-    } catch (err) {
-      flash(err instanceof ApiError ? err.message : "Could not start a round");
-    } finally {
-      setBusy(false);
-    }
-  }, [mode, flash]);
 
   const playable =
     round !== null && round.state === "playing" && !busy && revealingRow === null;
@@ -172,24 +211,26 @@ export function useGame(mode: Mode = "solo") {
 
     setBusy(true);
     try {
-      const next = await submitGuess(round.id, round.turnSeat, draft);
-      const newRowIndex = next.rows.length - 1;
+      const result = await submitGuess(round.id, round.turnSeat, draft);
+      const newRowIndex = result.round.rows.length - 1;
 
-      setRound(next);
+      setRound(result.round);
       setDraft("");
       setRevealingRow(newRowIndex);
 
       later(() => {
         setRevealingRow(null);
-        setRevealedRows(next.rows.length);
-        if (next.answer) rememberSeen(next.answer);
+        setRevealedRows(result.round.rows.length);
+        // The run only updates on the guess that ends a round, and holding it
+        // back until the flip finishes keeps the theme reveal from landing
+        // before the last tile has turned over.
+        if (result.run) {
+          setRun(result.run);
+          if (result.run.pack) rememberPack(result.run.pack.title);
+        }
       }, REVEAL_MS);
     } catch (err) {
-      if (err instanceof ApiError) {
-        reject(err.message);
-      } else {
-        reject("Something went wrong");
-      }
+      reject(err instanceof ApiError ? err.message : "Something went wrong");
     } finally {
       setBusy(false);
     }
@@ -218,8 +259,8 @@ export function useGame(mode: Mode = "solo") {
   const settledRows = round ? round.rows.slice(0, revealedRows) : [];
 
   return {
+    run,
     round,
-    wordNumber,
     draft,
     message,
     shake,
@@ -234,6 +275,7 @@ export function useGame(mode: Mode = "solo") {
     typeLetter,
     backspace,
     submit,
-    newRound,
+    nextWord,
+    newRun,
   };
 }

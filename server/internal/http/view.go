@@ -4,6 +4,7 @@ package http
 
 import (
 	"github.com/jerkeyray/murdle/server/internal/game"
+	"github.com/jerkeyray/murdle/server/internal/words"
 )
 
 // rowView is one played row as the client sees it.
@@ -32,6 +33,9 @@ type roundView struct {
 	SolvedRow  int       `json:"solvedRow"`
 	Scores     []int     `json:"scores"`
 	Answer     string    `json:"answer,omitempty"`
+	// Entry is the definition and note for the answer, present only once the
+	// round is over. It rides along with Answer for the same reason.
+	Entry *entryView `json:"entry,omitempty"`
 }
 
 func newRoundView(r *game.Round) roundView {
@@ -62,5 +66,68 @@ func newRoundView(r *game.Round) roundView {
 		SolvedRow:  r.SolvedRow,
 		Scores:     r.Scores(),
 		Answer:     r.Reveal(),
+	}
+}
+
+// entryView is what the round taught you. Populated only once the round is
+// over, from the pack the answer belongs to.
+type entryView struct {
+	Word       string `json:"word"`
+	Register   string `json:"register"`
+	Definition string `json:"definition"`
+	Note       string `json:"note"`
+}
+
+// packView is the theme reveal. It exists only on a completed run — the whole
+// point of a themed run is that you work the connection out first.
+type packView struct {
+	Title string `json:"title"`
+	Blurb string `json:"blurb"`
+}
+
+// runView is the client-visible state of a run.
+//
+// There is deliberately no field for the pack id or title while the run is in
+// progress. Pack is populated from a single guarded branch in newRunView, so
+// the theme cannot leak by someone forgetting a check at a call site.
+type runView struct {
+	ID       string    `json:"id"`
+	Mode     string    `json:"mode"`
+	Length   int       `json:"length"`
+	Started  int       `json:"started"`
+	Finished int       `json:"finished"`
+	Complete bool      `json:"complete"`
+	Totals   []int     `json:"totals"`
+	Winner   int       `json:"winner"`
+	Pack     *packView `json:"pack,omitempty"`
+}
+
+func newRunView(r *game.Run, pool *words.Pool) runView {
+	v := runView{
+		ID:       r.ID,
+		Mode:     string(r.Mode),
+		Length:   r.Length(),
+		Started:  r.Started(),
+		Finished: r.Finished,
+		Complete: r.Complete(),
+		Totals:   r.Totals,
+		Winner:   r.Winner(),
+	}
+
+	if r.Complete() {
+		if pack, ok := pool.Pack(r.PackID); ok {
+			v.Pack = &packView{Title: pack.Title, Blurb: pack.Blurb}
+		}
+	}
+
+	return v
+}
+
+func newEntryView(w words.PackWord) entryView {
+	return entryView{
+		Word:       w.Word,
+		Register:   string(w.Register),
+		Definition: w.Definition,
+		Note:       w.Note,
 	}
 }

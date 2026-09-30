@@ -212,3 +212,139 @@ func TestUnknownRound(t *testing.T) {
 		t.Errorf("code = %v, want round_not_found", body["code"])
 	}
 }
+
+// A run's whole point is that you work out the connection yourselves. The
+// theme must not appear anywhere in any response until the final round ends.
+func TestThemeDoesNotLeakUntilTheRunIsComplete(t *testing.T) {
+	h := newTestServer(t)
+
+	rec, run := do(t, h, http.MethodPost, "/api/runs", map[string]any{"mode": "solo"})
+	if rec.Code != http.StatusCreated {
+		t.Fatalf("create run: %d %v", rec.Code, run)
+	}
+	assertNoPack(t, rec, "create run response")
+
+	runID := run["id"].(string)
+	length := int(run["length"].(float64))
+	if length == 0 {
+		t.Fatal("run has no words")
+	}
+
+	for i := 0; i < length; i++ {
+		rec, body := do(t, h, http.MethodPost, "/api/runs/"+runID+"/rounds", nil)
+		if rec.Code != http.StatusCreated {
+			t.Fatalf("round %d: %d %v", i, rec.Code, body)
+		}
+		assertNoPack(t, rec, "start round response")
+
+		roundID := body["round"].(map[string]any)["id"].(string)
+
+		// Burn the round out. Six wrong guesses ends it unless one happens to
+		// be right, which ends it sooner.
+		var last *httptest.ResponseRecorder
+		for g := 0; g < 6; g++ {
+			var round map[string]any
+			last, round = do(t, h, http.MethodPost, "/api/rounds/"+roundID+"/guesses",
+				map[string]any{"seat": 0, "guess": "crane"})
+			if r, ok := round["round"].(map[string]any); ok {
+				if r["state"] != "playing" {
+					break
+				}
+			} else if round["state"] != "playing" {
+				break
+			}
+		}
+
+		// Every response before the last round ends must stay silent about it.
+		if i < length-1 {
+			assertNoPack(t, last, "mid-run guess response")
+
+			rec, _ := do(t, h, http.MethodGet, "/api/runs/"+runID, nil)
+			assertNoPack(t, rec, "mid-run run state")
+		}
+	}
+
+	rec, final := do(t, h, http.MethodGet, "/api/runs/"+runID, nil)
+	if rec.Code != http.StatusOK {
+		t.Fatalf("final run state: %d", rec.Code)
+	}
+	if final["complete"] != true {
+		t.Fatalf("run not complete after %d rounds: %v", length, final)
+	}
+	pack, ok := final["pack"].(map[string]any)
+	if !ok {
+		t.Fatalf("completed run did not reveal its pack: %v", final)
+	}
+	if pack["title"] == "" || pack["blurb"] == "" {
+		t.Errorf("revealed pack is empty: %v", pack)
+	}
+}
+
+func assertNoPack(t *testing.T, rec *httptest.ResponseRecorder, what string) {
+	t.Helper()
+	if rec == nil {
+		return
+	}
+	if strings.Contains(rec.Body.String(), `"pack"`) {
+		t.Fatalf("%s revealed the theme early: %s", what, rec.Body.String())
+	}
+}
+
+// The entry rides along with the answer: both absent while playing, both
+// present once the round is over.
+func TestEntryAppearsOnlyWithTheAnswer(t *testing.T) {
+	h := newTestServer(t)
+
+	_, run := do(t, h, http.MethodPost, "/api/runs", map[string]any{"mode": "solo"})
+	runID := run["id"].(string)
+
+	_, started := do(t, h, http.MethodPost, "/api/runs/"+runID+"/rounds", nil)
+	roundID := started["round"].(map[string]any)["id"].(string)
+
+	rec, _ := do(t, h, http.MethodGet, "/api/rounds/"+roundID, nil)
+	if strings.Contains(rec.Body.String(), `"entry"`) {
+		t.Fatal("entry exposed while the round was still in play")
+	}
+
+	var round map[string]any
+	for g := 0; g < 6; g++ {
+		_, body := do(t, h, http.MethodPost, "/api/rounds/"+roundID+"/guesses",
+			map[string]any{"seat": 0, "guess": "crane"})
+		if r, ok := body["round"].(map[string]any); ok {
+			round = r
+		} else {
+			round = body
+		}
+		if round["state"] != "playing" {
+			break
+		}
+	}
+
+	entry, ok := round["entry"].(map[string]any)
+	if !ok {
+		t.Fatalf("finished round carried no entry: %v", round)
+	}
+	for _, field := range []string{"word", "definition", "note"} {
+		if s, _ := entry[field].(string); s == "" {
+			t.Errorf("entry.%s is empty: %v", field, entry)
+		}
+	}
+}
+
+// Starting two rounds without finishing the first would burn a word from the
+// run and orphan a round.
+func TestRunRefusesOverlappingRounds(t *testing.T) {
+	h := newTestServer(t)
+
+	_, run := do(t, h, http.MethodPost, "/api/runs", nil)
+	runID := run["id"].(string)
+
+	if rec, body := do(t, h, http.MethodPost, "/api/runs/"+runID+"/rounds", nil); rec.Code != http.StatusCreated {
+		t.Fatalf("first round: %d %v", rec.Code, body)
+	}
+
+	rec, body := do(t, h, http.MethodPost, "/api/runs/"+runID+"/rounds", nil)
+	if rec.Code != http.StatusConflict || body["code"] != "round_in_play" {
+		t.Errorf("overlapping round: %d %v, want 409 round_in_play", rec.Code, body["code"])
+	}
+}

@@ -47,6 +47,11 @@ func NewServer(pool *words.Pool, rounds store.Store, log *slog.Logger, allowedOr
 	}))
 
 	r.Get("/api/health", s.handleHealth)
+	r.Route("/api/runs", func(r chi.Router) {
+		r.Post("/", s.handleCreateRun)
+		r.Get("/{id}", s.handleGetRun)
+		r.Post("/{id}/rounds", s.handleStartRunRound)
+	})
 	r.Route("/api/rounds", func(r chi.Router) {
 		r.Post("/", s.handleCreateRound)
 		r.Get("/{id}", s.handleGetRound)
@@ -81,11 +86,8 @@ func (s *Server) handleCreateRound(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	mode := game.Mode(req.Mode)
-	if mode == "" {
-		mode = game.ModeSolo
-	}
-	if mode != game.ModeSolo && mode != game.ModeShared {
+	mode, ok := parseMode(req.Mode)
+	if !ok {
 		writeError(w, http.StatusBadRequest, "invalid_mode", "mode must be solo or shared")
 		return
 	}
@@ -117,7 +119,111 @@ func (s *Server) handleCreateRound(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	writeJSON(w, http.StatusCreated, newRoundView(round))
+	writeJSON(w, http.StatusCreated, s.roundView(round))
+}
+
+// roundView builds the wire view and attaches the entry once the round is
+// over. Routing every response through here means the entry can only ever
+// appear alongside a revealed answer.
+func (s *Server) roundView(round *game.Round) roundView {
+	v := newRoundView(round)
+	if answer := round.Reveal(); answer != "" {
+		if info, ok := s.pool.WordInfo(answer); ok {
+			entry := newEntryView(info)
+			v.Entry = &entry
+		}
+	}
+	return v
+}
+
+type createRunRequest struct {
+	Mode string `json:"mode"`
+	// ExcludePacks are themes this pair has already played, so a new run picks
+	// a fresh one. The client holds this list until Phase 4 gives us history.
+	ExcludePacks []string `json:"excludePacks"`
+}
+
+func (s *Server) handleCreateRun(w http.ResponseWriter, r *http.Request) {
+	var req createRunRequest
+	if err := decodeJSON(w, r, &req); err != nil {
+		writeError(w, http.StatusBadRequest, "invalid_body", err.Error())
+		return
+	}
+
+	mode, ok := parseMode(req.Mode)
+	if !ok {
+		writeError(w, http.StatusBadRequest, "invalid_mode", "mode must be solo or shared")
+		return
+	}
+
+	exclude := make(map[string]struct{}, len(req.ExcludePacks))
+	for _, id := range req.ExcludePacks {
+		exclude[id] = struct{}{}
+	}
+
+	pack, ok := s.pool.RandomPack(exclude)
+	if !ok {
+		writeError(w, http.StatusInternalServerError, "no_packs", "no themed packs are loaded")
+		return
+	}
+
+	run, err := game.NewRun(store.NewID(), pack.ID, mode, pack.WordList())
+	if err != nil {
+		s.log.Error("creating run", "err", err)
+		writeError(w, http.StatusInternalServerError, "create_failed", "could not start the run")
+		return
+	}
+	if err := s.rounds.CreateRun(r.Context(), run); err != nil {
+		s.log.Error("storing run", "err", err)
+		writeError(w, http.StatusInternalServerError, "create_failed", "could not start the run")
+		return
+	}
+
+	writeJSON(w, http.StatusCreated, newRunView(run, s.pool))
+}
+
+func (s *Server) handleGetRun(w http.ResponseWriter, r *http.Request) {
+	run, err := s.rounds.GetRun(r.Context(), chi.URLParam(r, "id"))
+	if err != nil {
+		s.writeGameError(w, err)
+		return
+	}
+	writeJSON(w, http.StatusOK, newRunView(run, s.pool))
+}
+
+type runRoundResponse struct {
+	Round roundView `json:"round"`
+	Run   runView   `json:"run"`
+}
+
+func (s *Server) handleStartRunRound(w http.ResponseWriter, r *http.Request) {
+	runID := chi.URLParam(r, "id")
+	roundID := store.NewID()
+
+	var answer string
+	var firstSeat int
+	run, err := s.rounds.UpdateRun(r.Context(), runID, func(run *game.Run) error {
+		var err error
+		answer, firstSeat, err = run.StartRound(roundID)
+		return err
+	})
+	if err != nil {
+		s.writeGameError(w, err)
+		return
+	}
+
+	round := game.NewRound(roundID, run.Mode, firstSeat, answer)
+	round.RunID = runID
+	if err := s.rounds.Create(r.Context(), round); err != nil {
+		s.log.Error("creating round", "err", err)
+		writeError(w, http.StatusInternalServerError, "create_failed", "could not start the round")
+		return
+	}
+
+	writeJSON(w, http.StatusCreated, runRoundResponse{
+		Round: s.roundView(round),
+		Run:   newRunView(run, s.pool),
+	})
 }
 
 func (s *Server) handleGetRound(w http.ResponseWriter, r *http.Request) {
@@ -126,7 +232,7 @@ func (s *Server) handleGetRound(w http.ResponseWriter, r *http.Request) {
 		s.writeGameError(w, err)
 		return
 	}
-	writeJSON(w, http.StatusOK, newRoundView(round))
+	writeJSON(w, http.StatusOK, s.roundView(round))
 }
 
 type guessRequest struct {
@@ -141,15 +247,42 @@ func (s *Server) handleGuess(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	var justFinished bool
 	round, err := s.rounds.Update(r.Context(), chi.URLParam(r, "id"), func(round *game.Round) error {
-		return round.Guess(req.Seat, req.Guess, s.pool.IsWord)
+		before := round.State
+		if err := round.Guess(req.Seat, req.Guess, s.pool.IsWord); err != nil {
+			return err
+		}
+		justFinished = before == game.StatePlaying && round.State != game.StatePlaying
+		return nil
 	})
 	if err != nil {
 		s.writeGameError(w, err)
 		return
 	}
 
-	writeJSON(w, http.StatusOK, newRoundView(round))
+	view := s.roundView(round)
+
+	// A round that just ended inside a run folds its scores into the run
+	// totals. Doing it here rather than in Round.Guess keeps the rules package
+	// free of any notion of storage.
+	if justFinished && round.RunID != "" {
+		run, err := s.rounds.UpdateRun(r.Context(), round.RunID, func(run *game.Run) error {
+			run.RecordResult(round.Scores())
+			return nil
+		})
+		if err != nil {
+			// The round itself is sound; losing the run total is worth a log
+			// rather than failing the guess the player just made.
+			s.log.Error("recording run result", "run", round.RunID, "err", err)
+		} else {
+			runView := newRunView(run, s.pool)
+			writeJSON(w, http.StatusOK, runRoundResponse{Round: view, Run: runView})
+			return
+		}
+	}
+
+	writeJSON(w, http.StatusOK, view)
 }
 
 type hintRequest struct {
@@ -189,7 +322,7 @@ func (s *Server) handleHint(w http.ResponseWriter, r *http.Request) {
 		Tier:     reveal.Tier,
 		Position: reveal.Position,
 		Letter:   reveal.Letter,
-		Round:    newRoundView(round),
+		Round:    s.roundView(round),
 	})
 }
 
@@ -199,6 +332,12 @@ func (s *Server) writeGameError(w http.ResponseWriter, err error) {
 	switch {
 	case errors.Is(err, game.ErrRoundNotFound):
 		writeError(w, http.StatusNotFound, "round_not_found", "no such round")
+	case errors.Is(err, game.ErrRunNotFound):
+		writeError(w, http.StatusNotFound, "run_not_found", "no such run")
+	case errors.Is(err, game.ErrRunComplete):
+		writeError(w, http.StatusConflict, "run_complete", "this run is finished")
+	case errors.Is(err, game.ErrRoundInPlay):
+		writeError(w, http.StatusConflict, "round_in_play", "finish the current word first")
 	case errors.Is(err, game.ErrRoundOver):
 		writeError(w, http.StatusConflict, "round_over", "this round has already finished")
 	case errors.Is(err, game.ErrWrongSeat):
@@ -218,6 +357,18 @@ func (s *Server) writeGameError(w http.ResponseWriter, err error) {
 // decodeJSON reads a small JSON body into dst. An empty body is not an error:
 // several of these endpoints have sensible defaults for every field, and a
 // client posting nothing should get those rather than a 400.
+// parseMode defaults an empty mode to solo and rejects anything unrecognised.
+func parseMode(raw string) (game.Mode, bool) {
+	switch mode := game.Mode(raw); mode {
+	case "":
+		return game.ModeSolo, true
+	case game.ModeSolo, game.ModeShared:
+		return mode, true
+	default:
+		return "", false
+	}
+}
+
 func decodeJSON(w http.ResponseWriter, r *http.Request, dst any) error {
 	// Bodies here are a handful of fields; cap them so a bad client cannot make
 	// us read an unbounded request.

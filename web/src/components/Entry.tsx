@@ -1,26 +1,28 @@
 "use client";
 
 import { motion } from "motion/react";
-import type { Round } from "@/lib/api";
+import type { Round, Run } from "@/lib/api";
 
 interface EntryProps {
   round: Round;
-  wordNumber: number;
-  onNewRound: () => void;
+  run: Run | null;
+  onNextWord: () => void;
+  onNewRun: () => void;
 }
 
 /**
  * The end of a round, presented as a dictionary entry — because an entry is
  * what the round produced.
  *
- * The definition, etymology and example sentence arrive with the word pipeline
- * in Phase 3. Until they exist the frame says so plainly; filling the space
- * with placeholder prose would only have to be thrown away, and would teach
- * the player nothing in the meantime.
+ * When the round was the last of a themed run, the theme is revealed here too.
+ * That reveal is the payoff for the whole run: the two of you have been
+ * guessing at the connection as well as the words.
  */
-export function Entry({ round, wordNumber, onNewRound }: EntryProps) {
+export function Entry({ round, run, onNextWord, onNewRun }: EntryProps) {
   const won = round.state === "won";
   const points = round.scores[0] ?? 0;
+  const entry = round.entry;
+  const runComplete = run?.complete ?? false;
 
   return (
     <motion.div
@@ -44,14 +46,28 @@ export function Entry({ round, wordNumber, onNewRound }: EntryProps) {
             {won ? `Solved in ${round.solvedRow + 1}` : "Out of guesses"}
           </span>
           <span className="label">
-            &#8470;&nbsp;{String(wordNumber).padStart(3, "0")}
+            {won
+              ? `${points} ${points === 1 ? "point" : "points"}`
+              : "No points"}
           </span>
         </div>
 
-        <h2 className="entry-word">{round.answer}</h2>
+        <div className="entry-word-row">
+          <h2 className="entry-word">{round.answer}</h2>
+          {entry?.register === "slang" ? (
+            <span className="entry-tag">Slang</span>
+          ) : null}
+        </div>
 
-        {/* The round replayed as marks. Real content, and the thing worth
-            screenshotting. */}
+        {entry ? (
+          <>
+            <p className="entry-definition">{entry.definition}</p>
+            <div className="entry-rule" />
+            <p className="entry-note">{entry.note}</p>
+          </>
+        ) : null}
+
+        {/* The round replayed as marks — the part worth screenshotting. */}
         <div className="entry-grid" aria-hidden>
           {round.rows.map((row, i) => (
             <div className="entry-grid-row" key={i}>
@@ -62,24 +78,26 @@ export function Entry({ round, wordNumber, onNewRound }: EntryProps) {
           ))}
         </div>
 
-        <div className="entry-rule" />
-
-        <p className="entry-pending">
-          <em>Definition, origin and a sentence worth stealing</em> land here
-          once the word pipeline is built.
-        </p>
-
-        <div className="entry-rule" />
-
-        <span className="label">
-          {won
-            ? `${points} ${points === 1 ? "point" : "points"}`
-            : "No points"}
-        </span>
+        {runComplete && run?.pack ? (
+          <motion.div
+            className="reveal"
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.25, duration: 0.35 }}
+          >
+            <span className="label">The thread</span>
+            <h3 className="reveal-title">{run.pack.title}</h3>
+            <p className="reveal-blurb">{run.pack.blurb}</p>
+          </motion.div>
+        ) : null}
 
         <div className="entry-actions">
-          <button className="button" onClick={onNewRound} autoFocus>
-            Next word
+          <button
+            className="button"
+            onClick={runComplete ? onNewRun : onNextWord}
+            autoFocus
+          >
+            {runComplete ? "New run" : "Next word"}
           </button>
         </div>
       </motion.div>

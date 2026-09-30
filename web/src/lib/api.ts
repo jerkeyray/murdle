@@ -19,6 +19,34 @@ export interface Row {
   marks: Mark[];
 }
 
+/** What the round taught you. Present only once the round is over. */
+export interface Entry {
+  word: string;
+  register: "standard" | "slang";
+  definition: string;
+  note: string;
+}
+
+/** The theme reveal. Present only on a completed run. */
+export interface Pack {
+  title: string;
+  blurb: string;
+}
+
+export interface Run {
+  id: string;
+  mode: Mode;
+  length: number;
+  started: number;
+  finished: number;
+  complete: boolean;
+  totals: number[];
+  /** Leading seat on a finished run, or -1 for a draw or one still running. */
+  winner: number;
+  /** Only ever present once the run is complete. */
+  pack?: Pack;
+}
+
 export interface Round {
   id: string;
   mode: Mode;
@@ -36,6 +64,8 @@ export interface Round {
   scores: number[];
   /** Only ever present once the round has finished. */
   answer?: string;
+  /** Rides along with `answer`, for the same reason. */
+  entry?: Entry;
 }
 
 /**
@@ -79,6 +109,26 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
   return res.json() as Promise<T>;
 }
 
+export function createRun(opts: {
+  mode: Mode;
+  excludePacks?: string[];
+}): Promise<Run> {
+  return request<Run>("/api/runs", {
+    method: "POST",
+    body: JSON.stringify({
+      mode: opts.mode,
+      excludePacks: opts.excludePacks ?? [],
+    }),
+  });
+}
+
+/** Deals the next word of a run. */
+export function startRunRound(
+  runId: string,
+): Promise<{ round: Round; run: Run }> {
+  return request(`/api/runs/${runId}/rounds`, { method: "POST" });
+}
+
 export function createRound(opts: {
   mode: Mode;
   firstSeat?: number;
@@ -98,15 +148,24 @@ export function getRound(id: string): Promise<Round> {
   return request<Round>(`/api/rounds/${id}`);
 }
 
-export function submitGuess(
+/**
+ * Submits a guess.
+ *
+ * The server answers with a bare round normally, and with `{ round, run }` on
+ * the guess that ends a round inside a run — that is when the run totals
+ * change, and when a final round makes the theme available.
+ */
+export async function submitGuess(
   id: string,
   seat: number,
   guess: string,
-): Promise<Round> {
-  return request<Round>(`/api/rounds/${id}/guesses`, {
-    method: "POST",
-    body: JSON.stringify({ seat, guess }),
-  });
+): Promise<{ round: Round; run?: Run }> {
+  const body = await request<Round | { round: Round; run: Run }>(
+    `/api/rounds/${id}/guesses`,
+    { method: "POST", body: JSON.stringify({ seat, guess }) },
+  );
+
+  return "round" in body ? body : { round: body };
 }
 
 export function useHint(
