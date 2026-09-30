@@ -14,37 +14,39 @@
 =========================================================================== */
 
 :root {
-  /* Ink — warm near-black, never blue-black. A blue-cast dark theme reads as
-     "software"; a warm one reads as printed matter. */
-  --bg: #13110f;
-  --bg-raised: #1b1815;
-  --bg-deck: #17141200;
-  --border: #38312a;
-  --border-strong: #5b5248;
-  --rule: #2a2520;
+  /* Plum ink — a near-black with a red cast, so even the dark theme reads
+     pink rather than neutral. */
+  --bg: #1a1016;
+  --bg-raised: #241820;
+  --border: #3e2c37;
+  --border-strong: #634a59;
+  --rule: #33232d;
 
-  --text: #f3eee4;
-  --text-muted: #a2988a;
-  --text-faint: #6d655b;
+  --text: #f8edf2;
+  --text-muted: #b79fac;
+  --text-faint: #806a77;
 
-  /* Marks. Verdigris and ochre — pigments, not UI colours. */
-  --mark-hit: #4d8f6f;
-  --mark-hit-text: #0d1310;
-  --mark-present: #c08a3e;
-  --mark-present-text: #171008;
-  --mark-absent: #302b26;
-  --mark-absent-text: #837a6e;
+  /* Rose carries the palette and the win state. Present sits in peach beside
+     it — near enough in family to belong, but separated by lightness as well
+     as hue, so the two never blur into each other on a glanced-at board. */
+  --mark-hit: #e0568f;
+  --mark-hit-text: #1a0a12;
+  --mark-present: #e79b6d;
+  --mark-present-text: #23120a;
+  --mark-absent: #3a2b34;
+  --mark-absent-text: #9b8794;
 
-  --key-bg: #262220;
-  --key-border: #35302a;
-  --key-text: #ece5da;
+  --key-bg: #2c1f27;
+  --key-border: #3d2c36;
+  --key-text: #f0e2e9;
 
-  /* Player identity for the shared board in Phase 2. */
-  --seat-0: #8fa8e8;
-  --seat-1: #e0918f;
+  /* Player identity for the shared board in Phase 2. Rose and violet, so the
+     two of you are told apart by hue as well as by name. */
+  --seat-0: #f08cb0;
+  --seat-1: #ab9ae8;
 
-  --grain-opacity: 0.045;
-  --glow: rgb(210 175 120 / 0.07);
+  --grain-opacity: 0.038;
+  --glow: rgb(255 120 175 / 0.1);
 
   --radius-tile: 7px;
   --radius-key: 7px;
@@ -54,40 +56,41 @@
 }
 
 :root[data-theme="light"] {
-  /* Paper — a warm off-white, the colour of a decent book page. */
-  --bg: #f7f3ea;
-  --bg-raised: #fffdf8;
-  --border: #d8cfbd;
-  --border-strong: #b3a893;
-  --rule: #e3dbcb;
+  /* Blush paper. */
+  --bg: #fcf0f4;
+  --bg-raised: #fffafc;
+  --border: #eed7df;
+  --border-strong: #d4afbe;
+  --rule: #f1dce3;
 
-  --text: #1a1713;
-  --text-muted: #746b5d;
-  --text-faint: #9c9284;
+  --text: #2a1620;
+  --text-muted: #8b6575;
+  --text-faint: #b08e9c;
 
-  --mark-hit: #3d7f5f;
-  --mark-hit-text: #fbfaf6;
-  --mark-present: #a9762b;
-  --mark-present-text: #fbfaf6;
-  --mark-absent: #cfc6b4;
-  --mark-absent-text: #fbfaf6;
+  --mark-hit: #c2356f;
+  --mark-hit-text: #fff5f9;
+  --mark-present: #e0956a;
+  --mark-present-text: #3a1c0c;
+  /* Absent has to recede — it is the state that means "stop thinking about
+     this letter". A saturated mid-tone fights the two marks that actually
+     carry information, so this is a pale mauve with muted type on it rather
+     than the usual dark tile with white letters. */
+  --mark-absent: #dcccd2;
+  --mark-absent-text: #6f5b65;
 
-  --key-bg: #ebe4d6;
-  --key-border: #ddd4c2;
-  --key-text: #1a1713;
+  --key-bg: #f4e2e8;
+  --key-border: #e7d1da;
+  --key-text: #2a1620;
 
-  --seat-0: #3f57b8;
-  --seat-1: #b8503f;
+  --seat-0: #c43f78;
+  --seat-1: #6b5ac0;
 
-  --grain-opacity: 0.05;
-  --glow: rgb(120 90 40 / 0.05);
+  --grain-opacity: 0.045;
+  --glow: rgb(220 90 150 / 0.07);
 
   color-scheme: light;
 }
 
-/* Blue/orange is the standard substitute for green/amber, which is the worst
-   possible pair for the most common forms of colour blindness. The tile
-   glyphs further down mean the marks are legible with no colour at all. */
 :root[data-contrast="cb"] {
   --mark-hit: #3d82c4;
   --mark-present: #d1762c;
@@ -518,12 +521,12 @@ button {
   display: grid;
   place-items: end center;
   padding: 16px;
-  background: rgb(8 6 5 / 0.62);
+  background: rgb(14 7 11 / 0.64);
   backdrop-filter: blur(4px);
 }
 
 :root[data-theme="light"] .scrim {
-  background: rgb(60 50 35 / 0.34);
+  background: rgb(80 35 55 / 0.3);
 }
 
 .entry {
