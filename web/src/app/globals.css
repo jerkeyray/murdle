@@ -1,0 +1,538 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   Design tokens
+
+   Dark is the default because this gets played on a phone, often in the
+   evening, usually in bed. Light is a deliberate opt-in rather than an
+   afterthought, and every token below has a light counterpart.
+
+   The mark colours are intentionally not Wordle's. That green/yellow pair is
+   the single most-complained-about thing in the original, and copying it would
+   undercut the whole premise.
+--------------------------------------------------------------------------- */
+
+:root {
+  --bg: #0b0d10;
+  --bg-raised: #14181d;
+  --bg-sunken: #070809;
+  --border: #232a34;
+  --border-strong: #333c49;
+
+  --text: #e9edf2;
+  --text-muted: #8a94a3;
+  --text-faint: #5b6673;
+
+  /* Tile states */
+  --mark-hit: #2fa37a;
+  --mark-hit-text: #ffffff;
+  --mark-present: #c99036;
+  --mark-present-text: #ffffff;
+  --mark-absent: #2b323c;
+  --mark-absent-text: #7e8896;
+
+  /* Key states start from the tile colours but sit a little brighter, since
+     keys are small and get glanced at rather than read. */
+  --key-bg: #2a313b;
+  --key-text: #e9edf2;
+  --key-bg-active: #3a4350;
+
+  /* Player identity. Seats are distinguishable by hue *and* by name label —
+     colour alone is never the only signal for whose turn it is. */
+  --seat-0: #7c93ff;
+  --seat-1: #ff7fa4;
+
+  --danger: #e2575c;
+
+  --radius-tile: 10px;
+  --radius-key: 8px;
+  --radius-card: 18px;
+
+  --shadow-card: 0 20px 60px -20px rgb(0 0 0 / 0.7);
+
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --bg: #fbfbfa;
+  --bg-raised: #ffffff;
+  --bg-sunken: #f1f1ef;
+  --border: #e2e2de;
+  --border-strong: #cdcdc7;
+
+  --text: #16181c;
+  --text-muted: #6b7280;
+  --text-faint: #9ca3af;
+
+  --mark-hit: #2b8f6c;
+  --mark-present: #b57f26;
+  --mark-absent: #b6bac1;
+  --mark-absent-text: #ffffff;
+
+  --key-bg: #dcdcd8;
+  --key-text: #16181c;
+
+  --seat-0: #4358d6;
+  --seat-1: #cf3f6b;
+
+  --shadow-card: 0 20px 60px -24px rgb(0 0 0 / 0.25);
+
+  color-scheme: light;
+}
+
+/* Colour-blind mode. Green/amber is the worst possible pair for deuteranopia
+   and protanopia, which is most of the affected population. Blue/orange is the
+   standard safe substitute, and the glyphs below mean the tiles are still
+   readable with no colour perception at all. */
+:root[data-contrast="cb"] {
+  --mark-hit: #2b7fd4;
+  --mark-present: #d9722a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+
+  /* The board must never scroll during play. 100dvh tracks Safari's
+     collapsing toolbar so the bottom keyboard row is not clipped on iOS. */
+  min-height: 100dvh;
+  overscroll-behavior: none;
+}
+
+/* Stop iOS from zooming when a key is double-tapped quickly, which happens a
+   lot when two people are passing a phone back and forth. */
+button {
+  touch-action: manipulation;
+  font-family: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Layout
+--------------------------------------------------------------------------- */
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  max-width: 34rem;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+  min-height: 52px;
+}
+
+.wordmark {
+  font-size: 1.05rem;
+  font-weight: 650;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin: 0;
+}
+
+.topbar-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.icon-button {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 9px;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.icon-button:hover {
+  background: var(--bg-raised);
+  color: var(--text);
+}
+
+.icon-button[aria-pressed="true"] {
+  background: var(--bg-raised);
+  color: var(--text);
+}
+
+/* The board area takes whatever vertical space is left after the header and
+   keyboard, and centres within it. Nothing here scrolls. */
+.board-area {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  min-height: 0;
+  padding: 4px 0;
+}
+
+/* ---------------------------------------------------------------------------
+   Board
+--------------------------------------------------------------------------- */
+
+.board {
+  display: grid;
+  grid-template-rows: repeat(var(--rows), 1fr);
+  gap: 6px;
+  /* Width drives the size and the aspect ratio derives the height. Sizing from
+     the height instead is circular here — the board is the only thing in its
+     grid area, so a percentage height and a percentage max-width resolve
+     against each other and the clamp never applies.
+
+     max-height keeps a short phone honest: the board squares up a little
+     rather than pushing the keyboard off the bottom. */
+  width: min(100%, 20rem);
+  max-height: 100%;
+  aspect-ratio: 5 / 6;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(var(--cols), 1fr);
+  gap: 6px;
+}
+
+.row[data-shake="true"] {
+  animation: shake 0.45s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
+
+@keyframes shake {
+  10%, 90% { transform: translateX(-2px); }
+  20%, 80% { transform: translateX(4px); }
+  30%, 50%, 70% { transform: translateX(-7px); }
+  40%, 60% { transform: translateX(7px); }
+}
+
+/* ---------------------------------------------------------------------------
+   Tiles
+--------------------------------------------------------------------------- */
+
+.tile {
+  position: relative;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-tile);
+  background: transparent;
+  font-size: clamp(1.4rem, 7vw, 2rem);
+  font-weight: 650;
+  line-height: 1;
+  text-transform: uppercase;
+  user-select: none;
+  transform-style: preserve-3d;
+}
+
+/* A letter has been typed but not submitted. The pop is small on purpose —
+   it confirms the tap landed without drawing the eye away from the board. */
+.tile[data-state="filled"] {
+  border-color: var(--border-strong);
+  animation: pop 0.1s ease-out;
+}
+
+@keyframes pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+
+/* Settled tiles, and the resting state the reveal animation lands on. */
+.tile[data-mark="hit"] {
+  background: var(--mark-hit);
+  border-color: var(--mark-hit);
+  color: var(--mark-hit-text);
+}
+
+.tile[data-mark="present"] {
+  background: var(--mark-present);
+  border-color: var(--mark-present);
+  color: var(--mark-present-text);
+}
+
+.tile[data-mark="absent"] {
+  background: var(--mark-absent);
+  border-color: var(--mark-absent);
+  color: var(--mark-absent-text);
+}
+
+/* The reveal. Colour changes at the midpoint of the flip, while the tile is
+   edge-on, so the letter appears to turn over and land on its result. */
+.tile[data-revealing="true"] {
+  animation: reveal 0.52s ease-in-out forwards;
+  animation-delay: calc(var(--reveal-index) * 0.2s);
+  background: transparent;
+  border-color: var(--border-strong);
+  color: var(--text);
+}
+
+@keyframes reveal {
+  0% {
+    transform: rotateX(0deg);
+    background: transparent;
+    border-color: var(--border-strong);
+    color: var(--text);
+  }
+  49% {
+    transform: rotateX(90deg);
+    background: transparent;
+    border-color: var(--border-strong);
+    color: var(--text);
+  }
+  50% {
+    transform: rotateX(90deg);
+    background: var(--tile-bg);
+    border-color: var(--tile-bg);
+    color: var(--tile-text);
+  }
+  100% {
+    transform: rotateX(0deg);
+    background: var(--tile-bg);
+    border-color: var(--tile-bg);
+    color: var(--tile-text);
+  }
+}
+
+/* Colour-blind mode adds a glyph so the three states are distinguishable with
+   no colour perception at all: a filled dot for a hit, a half dot for present,
+   nothing for absent. */
+.tile-glyph {
+  display: none;
+  position: absolute;
+  top: 3px;
+  right: 4px;
+  font-size: 0.6rem;
+  line-height: 1;
+  opacity: 0.85;
+}
+
+:root[data-contrast="cb"] .tile[data-mark="hit"] .tile-glyph,
+:root[data-contrast="cb"] .tile[data-mark="present"] .tile-glyph {
+  display: block;
+}
+
+/* ---------------------------------------------------------------------------
+   Keyboard
+--------------------------------------------------------------------------- */
+
+.keyboard {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px 0 max(10px, env(safe-area-inset-bottom));
+}
+
+.keyboard-row {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+}
+
+.key {
+  flex: 1;
+  min-width: 0;
+  height: 52px;
+  border: none;
+  border-radius: var(--radius-key);
+  background: var(--key-bg);
+  color: var(--key-text);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.06s ease, opacity 0.15s ease;
+}
+
+.key:active {
+  transform: translateY(1px) scale(0.97);
+}
+
+.key:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.key--wide {
+  flex: 1.6;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+}
+
+.key[data-mark="hit"] {
+  background: var(--mark-hit);
+  color: var(--mark-hit-text);
+}
+
+.key[data-mark="present"] {
+  background: var(--mark-present);
+  color: var(--mark-present-text);
+}
+
+.key[data-mark="absent"] {
+  background: var(--mark-absent);
+  color: var(--mark-absent-text);
+}
+
+/* The spacer keeps the middle row's keys aligned under the row above rather
+   than stretching to the full width. */
+.key-spacer {
+  flex: 0.5;
+}
+
+/* ---------------------------------------------------------------------------
+   Toast
+--------------------------------------------------------------------------- */
+
+.toast {
+  position: fixed;
+  top: 64px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  padding: 9px 16px;
+  border-radius: 999px;
+  background: var(--text);
+  color: var(--bg);
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: var(--shadow-card);
+}
+
+/* ---------------------------------------------------------------------------
+   End of round
+--------------------------------------------------------------------------- */
+
+.scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: grid;
+  place-items: end center;
+  background: rgb(0 0 0 / 0.55);
+  backdrop-filter: blur(3px);
+  padding: 16px;
+}
+
+.result {
+  width: 100%;
+  max-width: 30rem;
+  padding: 26px 22px max(22px, env(safe-area-inset-bottom));
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  background: var(--bg-raised);
+  box-shadow: var(--shadow-card);
+}
+
+.result-eyebrow {
+  margin: 0 0 6px;
+  font-size: 0.72rem;
+  font-weight: 650;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.result-word {
+  margin: 0;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(2.4rem, 13vw, 3.4rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  text-transform: lowercase;
+}
+
+.result-meta {
+  margin: 14px 0 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* Where the learn card lands in Phase 3: definition, origin, a real sentence.
+   Until the pipeline writes that content, saying so is better than filling the
+   space with something hollow. */
+.result-pending {
+  margin: 16px 0 0;
+  padding: 12px 14px;
+  border: 1px dashed var(--border-strong);
+  border-radius: 12px;
+  color: var(--text-faint);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.result-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.button {
+  flex: 1;
+  height: 50px;
+  border: 1px solid var(--border-strong);
+  border-radius: 12px;
+  background: transparent;
+  color: var(--text);
+  font-size: 0.95rem;
+  font-weight: 620;
+  cursor: pointer;
+  transition: transform 0.06s ease, background 0.15s ease;
+}
+
+.button:active {
+  transform: translateY(1px);
+}
+
+.button--primary {
+  border-color: transparent;
+  background: var(--text);
+  color: var(--bg);
+}
+
+/* ---------------------------------------------------------------------------
+   Loading
+--------------------------------------------------------------------------- */
+
+.loading {
+  display: grid;
+  place-items: center;
+  height: 100dvh;
+  color: var(--text-faint);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
