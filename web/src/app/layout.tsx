@@ -1,17 +1,18 @@
 import type { Metadata, Viewport } from "next";
-import { Outfit, Fraunces } from "next/font/google";
+import { Instrument_Sans, Fraunces } from "next/font/google";
 import "./globals.css";
 
-// Tight geometric sans for the board and UI: the letters need to read
-// instantly at a glance from across a shared phone.
-const sans = Outfit({
+// The sans carries the chrome only: keyboard, labels, buttons. It stays
+// quiet so it never competes with the words themselves.
+const sans = Instrument_Sans({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
 });
 
-// A serif with some character for the learn card, so the teaching moment at
-// the end of a round reads like something worth reading rather than more UI.
+// The serif does the real work — wordmark, board letters, and the entry at the
+// end of a round. Putting it on the tiles is what makes the board read as type
+// rather than as UI, and it ties the game to the dictionary entry it produces.
 const serif = Fraunces({
   subsets: ["latin"],
   variable: "--font-serif",
@@ -31,8 +32,8 @@ export const viewport: Viewport = {
   maximumScale: 1,
   viewportFit: "cover",
   themeColor: [
-    { media: "(prefers-color-scheme: dark)", color: "#0b0d10" },
-    { media: "(prefers-color-scheme: light)", color: "#fbfbfa" },
+    { media: "(prefers-color-scheme: dark)", color: "#13110f" },
+    { media: "(prefers-color-scheme: light)", color: "#f7f3ea" },
   ],
 };
 

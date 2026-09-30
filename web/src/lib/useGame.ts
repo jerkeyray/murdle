@@ -58,6 +58,13 @@ export function useGame(mode: Mode = "solo") {
   const [revealedRows, setRevealedRows] = useState(0);
   const [revealingRow, setRevealingRow] = useState<number | null>(null);
 
+  /**
+   * Which word this is for this device, counting from one. Shown as the
+   * specimen number in the header — a real count of words played, not a
+   * decorative id.
+   */
+  const [wordNumber, setWordNumber] = useState(1);
+
   const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
 
   const later = useCallback((fn: () => void, ms: number) => {
@@ -89,9 +96,13 @@ export function useGame(mode: Mode = "solo") {
   useEffect(() => {
     let cancelled = false;
 
-    createRound({ mode, exclude: loadSeen() })
+    const seen = loadSeen();
+
+    createRound({ mode, exclude: seen })
       .then((next) => {
-        if (!cancelled) setRound(next);
+        if (cancelled) return;
+        setRound(next);
+        setWordNumber(seen.length + 1);
       })
       .catch((err: unknown) => {
         if (cancelled) return;
@@ -112,8 +123,10 @@ export function useGame(mode: Mode = "solo") {
     setRevealedRows(0);
     setRevealingRow(null);
     try {
-      const next = await createRound({ mode, exclude: loadSeen() });
+      const seen = loadSeen();
+      const next = await createRound({ mode, exclude: seen });
       setRound(next);
+      setWordNumber(seen.length + 1);
     } catch (err) {
       flash(err instanceof ApiError ? err.message : "Could not start a round");
     } finally {
@@ -206,6 +219,7 @@ export function useGame(mode: Mode = "solo") {
 
   return {
     round,
+    wordNumber,
     draft,
     message,
     shake,

@@ -66,9 +66,24 @@ Covers the parts that are easy to get quietly wrong: duplicate-letter marking,
 turn alternation, the scoring maths, and an assertion that the answer never
 appears in a response while a round is live.
 
-## Design notes
+## Design
 
-- **Dark by default**, light fully supported.
+The game is about words worth knowing, so the interface is built to feel like a
+specimen page from a well-made dictionary rather than a game app.
+
+- **Ink and paper, not slate.** Both themes are warm — a blue-cast dark theme
+  reads as software, a warm one reads as printed matter. The marks are
+  verdigris and ochre: pigments rather than UI colours.
+- **A serif doing real work.** Fraunces sets the wordmark, the board letters
+  and the entry at the end of a round. Serif letterforms on the tiles are what
+  make the board read as type, and they tie the game to the dictionary entry it
+  produces. The sans carries chrome only — keyboard, labels, buttons — so it
+  never competes with the words.
+- **Editorial furniture.** Hairline rules bracket the board, labels are small
+  caps, and the header carries a specimen number that is a real count of the
+  words this device has played.
+- **Paper grain and a warm pool of light** behind the board, both subtle enough
+  that you would only notice them by their absence.
 - **Colour-blind mode** swaps green/amber for blue/orange *and* adds glyphs, so
   the marks are readable with no colour perception at all.
 - **One-handed layout** — keyboard in the thumb arc, `100dvh` so iOS Safari's
