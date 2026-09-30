@@ -12,7 +12,9 @@ import (
 	"github.com/go-chi/chi/v5/middleware"
 	"github.com/go-chi/cors"
 
+	"github.com/jerkeyray/murdle/server/internal/auth"
 	"github.com/jerkeyray/murdle/server/internal/game"
+	"github.com/jerkeyray/murdle/server/internal/players"
 	"github.com/jerkeyray/murdle/server/internal/store"
 	"github.com/jerkeyray/murdle/server/internal/words"
 )
@@ -23,15 +25,37 @@ const hintTiers = 3
 
 // Server wires the router to its dependencies.
 type Server struct {
-	pool   *words.Pool
-	rounds store.Store
-	log    *slog.Logger
+	pool     *words.Pool
+	rounds   store.Store
+	players  *players.Store
+	verifier *auth.Verifier
+	log      *slog.Logger
 }
 
-// NewServer builds the HTTP handler. allowedOrigins is the exact list of web
-// origins permitted to call the API.
-func NewServer(pool *words.Pool, rounds store.Store, log *slog.Logger, allowedOrigins []string) http.Handler {
-	s := &Server{pool: pool, rounds: rounds, log: log}
+// Options are the server's dependencies.
+//
+// Players and Verifier are optional and travel together: without a database
+// there are no accounts, and without accounts there is nothing to verify. The
+// game itself works either way — playing has never required signing in.
+type Options struct {
+	Pool           *words.Pool
+	Rounds         store.Store
+	Log            *slog.Logger
+	AllowedOrigins []string
+	Players        *players.Store
+	Verifier       *auth.Verifier
+}
+
+// NewServer builds the HTTP handler.
+func NewServer(opts Options) http.Handler {
+	s := &Server{
+		pool:     opts.Pool,
+		rounds:   opts.Rounds,
+		players:  opts.Players,
+		verifier: opts.Verifier,
+		log:      opts.Log,
+	}
+	allowedOrigins := opts.AllowedOrigins
 
 	r := chi.NewRouter()
 	r.Use(middleware.RequestID)
@@ -40,13 +64,34 @@ func NewServer(pool *words.Pool, rounds store.Store, log *slog.Logger, allowedOr
 	r.Use(middleware.Timeout(15 * time.Second))
 	r.Use(cors.Handler(cors.Options{
 		AllowedOrigins:   allowedOrigins,
-		AllowedMethods:   []string{"GET", "POST", "OPTIONS"},
-		AllowedHeaders:   []string{"Accept", "Authorization", "Content-Type"},
+		AllowedMethods:   []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
+		AllowedHeaders:   []string{"Accept", "Authorization", "Content-Type", localDateHeader},
 		AllowCredentials: true,
 		MaxAge:           300,
 	}))
 
+	// Attaching identity is opt-in per request: a token makes the round count
+	// towards your history, and no token still plays a perfectly good game.
+	if s.verifier != nil {
+		r.Use(s.verifier.Optional)
+	}
+
 	r.Get("/api/health", s.handleHealth)
+
+	if s.players != nil {
+		r.Route("/api/me", func(r chi.Router) {
+			r.Use(auth.Require)
+			r.Get("/", s.handleMe)
+			r.Get("/solves", s.handleMySolves)
+			r.Get("/saved", s.handleSavedWords)
+			r.Put("/saved/{word}", s.handleSaveWord)
+			r.Delete("/saved/{word}", s.handleSaveWord)
+			r.Get("/friends", s.handleFriends)
+			r.Post("/friends", s.handleAddFriend)
+			r.Post("/friends/{id}/respond", s.handleRespondFriend)
+		})
+	}
+
 	r.Route("/api/runs", func(r chi.Router) {
 		r.Post("/", s.handleCreateRun)
 		r.Get("/{id}", s.handleGetRun)
@@ -263,6 +308,10 @@ func (s *Server) handleGuess(w http.ResponseWriter, r *http.Request) {
 
 	view := s.roundView(round)
 
+	if justFinished {
+		s.recordSolve(r, round)
+	}
+
 	// A round that just ended inside a run folds its scores into the run
 	// totals. Doing it here rather than in Round.Guess keeps the rules package
 	// free of any notion of storage.
@@ -324,6 +373,50 @@ func (s *Server) handleHint(w http.ResponseWriter, r *http.Request) {
 		Letter:   reveal.Letter,
 		Round:    s.roundView(round),
 	})
+}
+
+// recordSolve files a finished round in the player's history.
+//
+// Best effort on purpose: the round is already over and correct, and failing
+// the response because the history write failed would punish the player for an
+// infrastructure problem they cannot see or fix.
+func (s *Server) recordSolve(r *http.Request, round *game.Round) {
+	if s.players == nil {
+		return
+	}
+	p, ok := s.player(r)
+	if !ok {
+		return
+	}
+
+	answer := round.Reveal()
+	packID, _ := s.pool.PackIDFor(answer)
+
+	var solvedRow *int
+	if round.State == game.StateWon {
+		row := round.SolvedRow
+		solvedRow = &row
+	}
+
+	scores := round.Scores()
+	points := 0
+	if len(scores) > 0 {
+		points = scores[0]
+	}
+
+	err := s.players.RecordSolve(r.Context(), p.ID, players.Solve{
+		Word:      answer,
+		PackID:    packID,
+		Solved:    round.State == game.StateWon,
+		SolvedRow: solvedRow,
+		Guesses:   len(round.Rows),
+		HintsUsed: round.HintsUsed[0],
+		Points:    points,
+		PlayedOn:  localDate(r),
+	})
+	if err != nil {
+		s.log.Error("recording solve", "player", p.ID, "word", answer, "err", err)
+	}
 }
 
 // writeGameError maps a rules error to a status the client can branch on.

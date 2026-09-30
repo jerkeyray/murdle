@@ -74,6 +74,12 @@ func (p *Pool) WordInfo(word string) (PackWord, bool) {
 	return w, ok
 }
 
+// PackIDFor returns the pack an answer belongs to.
+func (p *Pool) PackIDFor(word string) (string, bool) {
+	id, ok := p.wordPack[word]
+	return id, ok
+}
+
 // RandomPack picks a pack, avoiding any id in exclude.
 //
 // Falls back to an unfiltered pick once every pack has been played, rather

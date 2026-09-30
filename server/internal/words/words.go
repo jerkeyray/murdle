@@ -31,6 +31,7 @@ type Pool struct {
 	packs    []Pack
 	packByID map[string]Pack
 	wordInfo map[string]PackWord
+	wordPack map[string]string
 }
 
 // NewPool builds the pool from the embedded lists. It is safe to call once at
@@ -60,10 +61,12 @@ func NewPool() *Pool {
 
 	packByID := make(map[string]Pack, len(packs))
 	wordInfo := make(map[string]PackWord)
+	wordPack := make(map[string]string)
 	for _, pack := range packs {
 		packByID[pack.ID] = pack
 		for _, w := range pack.Words {
 			wordInfo[w.Word] = w
+			wordPack[w.Word] = pack.ID
 			// Slang often predates the dictionaries, so pack words are added
 			// to the guess list too. Otherwise the game could serve a word it
 			// would then refuse to accept.
@@ -77,6 +80,7 @@ func NewPool() *Pool {
 		packs:      packs,
 		packByID:   packByID,
 		wordInfo:   wordInfo,
+		wordPack:   wordPack,
 	}
 }
 

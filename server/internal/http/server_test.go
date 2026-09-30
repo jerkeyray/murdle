@@ -18,7 +18,12 @@ import (
 func newTestServer(t *testing.T) http.Handler {
 	t.Helper()
 	log := slog.New(slog.NewTextHandler(io.Discard, nil))
-	return NewServer(words.NewPool(), store.NewMemory(time.Hour), log, []string{"*"})
+	return NewServer(Options{
+		Pool:           words.NewPool(),
+		Rounds:         store.NewMemory(time.Hour),
+		Log:            log,
+		AllowedOrigins: []string{"*"},
+	})
 }
 
 // do sends a request and returns the recorder plus the decoded body.

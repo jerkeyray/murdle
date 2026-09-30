@@ -7,3 +7,8 @@
 # Editors
 .idea/
 .vscode/
+
+# Secrets — never commit connection strings or keys
+.env
+.env.*
+!.env.example
