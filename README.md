@@ -16,8 +16,8 @@ ends the app teaches you the one you just played.
 | 0 | Game engine, word pool, API | Done |
 | 1 | Solo play + design system | Done |
 | 2 | Shared board pass-and-play | Next |
-| 3 | Word pipeline, learn cards, hints | Planned |
-| 4 | Accounts, head-to-head history | Planned |
+| 3 | Themed runs, entries, word pipeline | Done |
+| 4 | Accounts, profile, streaks, friends | Done |
 | 5 | Two-device realtime (optional) | Planned |
 
 The shared-board rules, scoring and turn order are already implemented and
@@ -26,9 +26,18 @@ tested in the Go engine — Phase 2 is the UI for them.
 ## Layout
 
 ```
-server/   Go API: game rules, word pool, round state
-web/      Next.js app: UI, and from Phase 3 the AI word pipeline
+server/   Go API: game rules, word pool, rounds, profiles and history
+web/      Next.js app: UI, Better Auth, and the pack pipeline
 ```
+
+Auth splits across both. Better Auth (Next) is the only thing that can create a
+session; it signs an EdDSA JWT and publishes its public keys, and Go verifies
+against that JWKS and issues nothing. Both halves share one Neon database, and
+Go's migrations never touch Better Auth's tables — `players.user_id` is the
+single crossing point.
+
+Playing never requires an account. Signing in is what gives a round a streak,
+a collection and someone to play against.
 
 The server holds the answer and scores every guess. The client never knows the
 word until the round is over — on a shared phone, both players are looking at
@@ -52,9 +61,11 @@ Open http://localhost:3000. The web app talks to `http://localhost:8080` by
 default; override with `NEXT_PUBLIC_API_URL`. The API allows
 `http://localhost:3000` by default; override with `ALLOWED_ORIGINS`.
 
-No database is needed yet — rounds live in memory and the word pool is embedded
-in the binary. Postgres arrives in Phase 3, when the word pipeline needs
-somewhere to write.
+Copy `.env.example` to `web/.env.local` and `server/.env` and fill in a Neon
+connection string. Without one the game still runs — rounds live in memory and
+the word pool is embedded — you just get no accounts or history. Go applies its
+migrations at startup; Better Auth's tables come from
+`pnpm dlx @better-auth/cli migrate`.
 
 ## Tests
 

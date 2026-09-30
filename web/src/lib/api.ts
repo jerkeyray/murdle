@@ -7,7 +7,22 @@
  * the browser, which is exactly what we are avoiding.
  */
 
+import { getToken } from "@/lib/token";
+
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8080";
+
+/**
+ * The player's own calendar date.
+ *
+ * A streak is a question about their day, not the server's — just after
+ * midnight in Delhi it is still yesterday in UTC — so the client, which is the
+ * only thing that knows what day it is where the phone is, says so.
+ */
+function localDate(): string {
+  const now = new Date();
+  const pad = (n: number) => String(n).padStart(2, "0");
+  return `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
+}
 
 export type Mark = "absent" | "present" | "hit";
 export type Mode = "solo" | "shared";
@@ -85,11 +100,20 @@ export class ApiError extends Error {
 }
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
+  // Signing in is optional. A token makes the round count towards your
+  // history; without one you still get a perfectly good game.
+  const token = await getToken();
+
   let res: Response;
   try {
     res = await fetch(`${API_URL}${path}`, {
       ...init,
-      headers: { "Content-Type": "application/json", ...init?.headers },
+      headers: {
+        "Content-Type": "application/json",
+        "X-Murdle-Date": localDate(),
+        ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        ...init?.headers,
+      },
     });
   } catch {
     // A dead server and a flaky connection look identical from here, and the
@@ -104,6 +128,12 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
       body?.message ?? `Request failed (${res.status})`,
       res.status,
     );
+  }
+
+  // Saving a word and answering a friend request both reply 204 with no body,
+  // and res.json() throws on an empty one.
+  if (res.status === 204 || res.headers.get("content-length") === "0") {
+    return undefined as T;
   }
 
   return res.json() as Promise<T>;
@@ -201,4 +231,60 @@ export function letterStates(rows: Row[]): Record<string, Mark> {
   }
 
   return states;
+}
+
+/* --------------------------------------------------------------------------
+   Profile, collection and friends. All require a signed-in player.
+   -------------------------------------------------------------------------- */
+
+export interface Profile {
+  displayName: string;
+  seatColor: string;
+  /** Short code a friend types to find you. */
+  inviteCode: string;
+  streak: { current: number; longest: number; playedToday: boolean };
+  wordsLearned: number;
+}
+
+export interface SolveRecord {
+  word: string;
+  packId: string;
+  solved: boolean;
+  solvedRow: number | null;
+  guesses: number;
+  points: number;
+  playedOn: string;
+  entry?: Entry;
+}
+
+export interface FriendRecord {
+  id: string;
+  displayName: string;
+  status: "pending" | "accepted" | "blocked";
+  /** True when they asked you, which is what decides accept versus waiting. */
+  incoming: boolean;
+}
+
+export const getProfile = () => request<Profile>("/api/me");
+export const getSolves = () => request<SolveRecord[]>("/api/me/solves");
+export const getSavedWords = () => request<SolveRecord[]>("/api/me/saved");
+export const getFriends = () => request<FriendRecord[]>("/api/me/friends");
+
+export async function setWordSaved(word: string, saved: boolean): Promise<void> {
+  await request<void>(`/api/me/saved/${word}`, {
+    method: saved ? "PUT" : "DELETE",
+  });
+}
+
+export const addFriend = (inviteCode: string) =>
+  request<FriendRecord>("/api/me/friends", {
+    method: "POST",
+    body: JSON.stringify({ inviteCode }),
+  });
+
+export async function respondToFriend(id: string, accept: boolean): Promise<void> {
+  await request<void>(`/api/me/friends/${id}/respond`, {
+    method: "POST",
+    body: JSON.stringify({ accept }),
+  });
 }

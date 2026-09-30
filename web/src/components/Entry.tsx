@@ -1,7 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "motion/react";
-import type { Round, Run } from "@/lib/api";
+import { setWordSaved, type Round, type Run } from "@/lib/api";
 
 interface EntryProps {
   round: Round;
@@ -23,6 +24,26 @@ export function Entry({ round, run, onNextWord, onNewRun }: EntryProps) {
   const points = round.scores[0] ?? 0;
   const entry = round.entry;
   const runComplete = run?.complete ?? false;
+
+  // Optimistic, and reverted if the call fails. Keeping a word is a small
+  // gesture made at the end of a round; waiting on a round trip to acknowledge
+  // it would feel broken.
+  const [kept, setKept] = useState(false);
+  const [keepError, setKeepError] = useState(false);
+
+  async function toggleKeep() {
+    if (!round.answer) return;
+    const next = !kept;
+    setKept(next);
+    setKeepError(false);
+    try {
+      await setWordSaved(round.answer, next);
+    } catch {
+      setKept(!next);
+      // Almost always "not signed in", which is the only reason worth saying.
+      setKeepError(true);
+    }
+  }
 
   return (
     <motion.div
@@ -77,6 +98,24 @@ export function Entry({ round, run, onNextWord, onNewRun }: EntryProps) {
             </div>
           ))}
         </div>
+
+        <button
+          className="keep"
+          onClick={toggleKeep}
+          aria-pressed={kept}
+          aria-label={kept ? "Kept" : "Keep this word"}
+        >
+          <svg width="13" height="13" viewBox="0 0 24 24" aria-hidden
+               fill={kept ? "currentColor" : "none"}
+               stroke="currentColor" strokeWidth="2" strokeLinejoin="round">
+            <path d="M12 3.6l2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85z" />
+          </svg>
+          {kept ? "Kept" : "Keep"}
+        </button>
+
+        {keepError ? (
+          <p className="form-error">Sign in to keep words.</p>
+        ) : null}
 
         {runComplete && run?.pack ? (
           <motion.div
