@@ -118,6 +118,29 @@ words — `proud`, `women`, `cards`, `lives`, `teams` — while happily acceptin
 1934 curiosities. Being told a word you know isn't a word is the worst failure
 this game has, so it had to go.
 
-`server/internal/words/answers.txt` — 260 curated answers. Every one is also in
-the dictionary, checked by a test. This list is the seed; Phase 3 replaces it with an LLM-generated
+`server/internal/words/answers.txt` — 260 curated answers, kept as guessable
+words. Answers themselves now come from packs.
+
+`server/internal/words/packs.json` — themed runs. Each pack is five words that
+secretly share a theme, revealed only once the last word falls, plus a
+definition and a note for each word. Registers are mixed on purpose: CLOUT and
+SALVE belong in the same game and the entry plays both equally straight.
+
+### Growing the pool
+
+```bash
+cd web
+pnpm packs:generate          # writes to packs.pending.json
+pnpm packs:review            # read them
+pnpm packs:review -- --approve <id>
+```
+
+Generation needs `AI_GATEWAY_API_KEY`. The script hard-gates everything a
+script can check — length, charset, duplicates against every existing pack, and
+whether a word claiming to be standard is actually in the dictionary, which is
+the usual tell for an invented one.
+
+**Review is not ceremony.** The notes are the whole product, and a confidently
+invented etymology is worse than no note at all. A script cannot check whether
+an etymology is true, so a person reads them before they ship. This list is the seed; Phase 3 replaces it with an LLM-generated
 and human-reviewed pool in Postgres.
