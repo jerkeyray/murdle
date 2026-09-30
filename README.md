@@ -121,10 +121,11 @@ this game has, so it had to go.
 `server/internal/words/answers.txt` — 260 curated answers, kept as guessable
 words. Answers themselves now come from packs.
 
-`server/internal/words/packs.json` — themed runs. Each pack is five words that
-secretly share a theme, revealed only once the last word falls, plus a
-definition and a note for each word. Registers are mixed on purpose: CLOUT and
-SALVE belong in the same game and the entry plays both equally straight.
+`server/internal/words/packs.json` — 30 themed runs, 150 words. Each pack is
+five words that secretly share a theme, revealed only once the last word falls,
+plus a definition and a note for each word. Registers are mixed on purpose:
+CLOUT and SALVE belong in the same game and the entry plays both equally
+straight.
 
 ### Growing the pool
 

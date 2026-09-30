@@ -4,11 +4,36 @@
     "title": "Terminally Online",
     "blurb": "Five words that only mean what they mean because of the internet.",
     "words": [
-      { "word": "clout", "register": "slang", "definition": "Influence, especially the borrowed kind.", "note": "Originally a heavy blow — a clout round the ear. It meant force long before it meant followers, which is either a downgrade or exactly the same thing." },
-      { "word": "viral", "register": "standard", "definition": "Spreading fast and without permission.", "note": "We borrowed the word from epidemiology and kept the metaphor intact: something small, self-replicating, and not obviously good for you." },
-      { "word": "troll", "register": "slang", "definition": "Someone provoking a reaction for sport.", "note": "Not the bridge-dwelling monster. It comes from trolling, the fishing technique — dragging bait slowly behind a boat to see what bites." },
-      { "word": "based", "register": "slang", "definition": "Admirably indifferent to what anyone thinks.", "note": "Coined by rapper Lil B, who took it back from an insult and made it a compliment. One of the few slang terms with a documented author." },
-      { "word": "ratio", "register": "slang", "definition": "More replies than likes. A public verdict.", "note": "A cold mathematical term repurposed as one of the internet's cruellest judgements. Nobody announces their own ratio." }
+      {
+        "word": "clout",
+        "register": "slang",
+        "definition": "Influence, especially the borrowed kind.",
+        "note": "Originally a heavy blow — a clout round the ear. It meant force long before it meant followers, which is either a downgrade or exactly the same thing."
+      },
+      {
+        "word": "viral",
+        "register": "standard",
+        "definition": "Spreading fast and without permission.",
+        "note": "We borrowed the word from epidemiology and kept the metaphor intact: something small, self-replicating, and not obviously good for you."
+      },
+      {
+        "word": "troll",
+        "register": "slang",
+        "definition": "Someone provoking a reaction for sport.",
+        "note": "Not the bridge-dwelling monster. It comes from trolling, the fishing technique — dragging bait slowly behind a boat to see what bites."
+      },
+      {
+        "word": "based",
+        "register": "slang",
+        "definition": "Admirably indifferent to what anyone thinks.",
+        "note": "Coined by rapper Lil B, who took it back from an insult and made it a compliment. One of the few slang terms with a documented author."
+      },
+      {
+        "word": "ratio",
+        "register": "slang",
+        "definition": "More replies than likes. A public verdict.",
+        "note": "A cold mathematical term repurposed as one of the internet's cruellest judgements. Nobody announces their own ratio."
+      }
     ]
   },
   {
@@ -16,11 +41,36 @@
     "title": "Red Flags",
     "blurb": "Things your friends noticed before you did.",
     "words": [
-      { "word": "toxic", "register": "standard", "definition": "Poisonous, now mostly about people.", "note": "From the Greek toxikon, the poison Greek archers smeared on arrows. The word has always been about something aimed at you." },
-      { "word": "ghost", "register": "slang", "definition": "To vanish rather than have the conversation.", "note": "The verb only dates to the 2010s, but it is a very old idea with a new name: the person is still there, just no longer visible to you." },
-      { "word": "petty", "register": "standard", "definition": "Small-minded, and enjoying it.", "note": "From the French petit, small. It meant literally minor before it meant deliberately so — the modern sense is almost a boast." },
-      { "word": "salty", "register": "slang", "definition": "Bitter about losing and showing it.", "note": "Likely from sailors, whose language and temperament were both described as salty long before anyone was salty in a group chat." },
-      { "word": "shady", "register": "slang", "definition": "Not quite honest, and not quite deniable.", "note": "Shade as an insult comes from Black and Latino ballroom culture, where throwing shade was an art form: the insult you could not quite prove." }
+      {
+        "word": "toxic",
+        "register": "standard",
+        "definition": "Poisonous, now mostly about people.",
+        "note": "From the Greek toxikon, the poison Greek archers smeared on arrows. The word has always been about something aimed at you."
+      },
+      {
+        "word": "ghost",
+        "register": "slang",
+        "definition": "To vanish rather than have the conversation.",
+        "note": "The verb only dates to the 2010s, but it is a very old idea with a new name: the person is still there, just no longer visible to you."
+      },
+      {
+        "word": "petty",
+        "register": "standard",
+        "definition": "Small-minded, and enjoying it.",
+        "note": "From the French petit, small. It meant literally minor before it meant deliberately so — the modern sense is almost a boast."
+      },
+      {
+        "word": "salty",
+        "register": "slang",
+        "definition": "Bitter about losing and showing it.",
+        "note": "Likely from sailors, whose language and temperament were both described as salty long before anyone was salty in a group chat."
+      },
+      {
+        "word": "shady",
+        "register": "slang",
+        "definition": "Not quite honest, and not quite deniable.",
+        "note": "Shade as an insult comes from Black and Latino ballroom culture, where throwing shade was an art form: the insult you could not quite prove."
+      }
     ]
   },
   {
@@ -28,11 +78,36 @@
     "title": "Big Feelings",
     "blurb": "Precise names for things you have felt but not labelled.",
     "words": [
-      { "word": "mirth", "register": "standard", "definition": "Warm, laughing happiness.", "note": "Shares a root with merry. It is specifically the sociable kind of joy — you can be happy alone, but mirth wants company." },
-      { "word": "dread", "register": "standard", "definition": "Fear of something not here yet.", "note": "The useful distinction: fear points at something present, dread points at the future. Dread is the more exhausting of the two." },
-      { "word": "qualm", "register": "standard", "definition": "A small doubt that arrives uninvited.", "note": "Originally meant a sudden wave of sickness or faintness. The modern sense kept the physical suddenness and moved it into the conscience." },
-      { "word": "ardor", "register": "standard", "definition": "Burning enthusiasm, usually for a person.", "note": "From the Latin ardere, to burn — the same root as arson. English kept the heat and dropped the damage." },
-      { "word": "angst", "register": "standard", "definition": "Dread with no particular object.", "note": "Taken whole from German, via Freud and Kierkegaard. English had no word for anxiety-about-nothing-specific, which is a strange gap for English to have had." }
+      {
+        "word": "mirth",
+        "register": "standard",
+        "definition": "Warm, laughing happiness.",
+        "note": "Shares a root with merry. It is specifically the sociable kind of joy — you can be happy alone, but mirth wants company."
+      },
+      {
+        "word": "dread",
+        "register": "standard",
+        "definition": "Fear of something not here yet.",
+        "note": "The useful distinction: fear points at something present, dread points at the future. Dread is the more exhausting of the two."
+      },
+      {
+        "word": "qualm",
+        "register": "standard",
+        "definition": "A small doubt that arrives uninvited.",
+        "note": "Originally meant a sudden wave of sickness or faintness. The modern sense kept the physical suddenness and moved it into the conscience."
+      },
+      {
+        "word": "ardor",
+        "register": "standard",
+        "definition": "Burning enthusiasm, usually for a person.",
+        "note": "From the Latin ardere, to burn — the same root as arson. English kept the heat and dropped the damage."
+      },
+      {
+        "word": "angst",
+        "register": "standard",
+        "definition": "Dread with no particular object.",
+        "note": "Taken whole from German, via Freud and Kierkegaard. English had no word for anxiety-about-nothing-specific, which is a strange gap for English to have had."
+      }
     ]
   },
   {
@@ -40,11 +115,36 @@
     "title": "Money Moves",
     "blurb": "Five ways value changes hands, not all of them legal.",
     "words": [
-      { "word": "grift", "register": "slang", "definition": "A long con dressed as a business.", "note": "American carnival slang from around 1900. It implies patience — a grift is worked, not pulled." },
-      { "word": "hoard", "register": "standard", "definition": "To accumulate well past the point of use.", "note": "Not the same as a horde, which is a crowd. One is treasure, the other is people, and they are unrelated words that sound identical." },
-      { "word": "asset", "register": "standard", "definition": "Anything you own that counts for something.", "note": "From the Anglo-French aver assetz, to have enough. The singular asset was reverse-engineered from assets, which came first." },
-      { "word": "bribe", "register": "standard", "definition": "Payment for a decision.", "note": "Originally a piece of bread given to a beggar. It drifted from charity to theft to corruption in about three hundred years." },
-      { "word": "tithe", "register": "standard", "definition": "A tenth, given whether you want to or not.", "note": "Literally the old English word for tenth. The number is baked into the word, which is why a nine percent tithe is a contradiction." }
+      {
+        "word": "grift",
+        "register": "slang",
+        "definition": "A long con dressed as a business.",
+        "note": "American carnival slang from around 1900. It implies patience — a grift is worked, not pulled."
+      },
+      {
+        "word": "hoard",
+        "register": "standard",
+        "definition": "To accumulate well past the point of use.",
+        "note": "Not the same as a horde, which is a crowd. One is treasure, the other is people, and they are unrelated words that sound identical."
+      },
+      {
+        "word": "asset",
+        "register": "standard",
+        "definition": "Anything you own that counts for something.",
+        "note": "From the Anglo-French aver assetz, to have enough. The singular asset was reverse-engineered from assets, which came first."
+      },
+      {
+        "word": "bribe",
+        "register": "standard",
+        "definition": "Payment for a decision.",
+        "note": "Originally a piece of bread given to a beggar. It drifted from charity to theft to corruption in about three hundred years."
+      },
+      {
+        "word": "tithe",
+        "register": "standard",
+        "definition": "A tenth, given whether you want to or not.",
+        "note": "Literally the old English word for tenth. The number is baked into the word, which is why a nine percent tithe is a contradiction."
+      }
     ]
   },
   {
@@ -52,11 +152,36 @@
     "title": "Doomscroll",
     "blurb": "It is 1am and you are still going.",
     "words": [
-      { "word": "binge", "register": "standard", "definition": "Consuming far more than intended, in one sitting.", "note": "A Lincolnshire dialect word meaning to soak a wooden vessel until it stopped leaking. The drinking sense came first; the television sense is very recent." },
-      { "word": "lurks", "register": "slang", "definition": "Reads everything, posts nothing.", "note": "Lurker is one of the oldest pieces of internet slang, in use on Usenet by the early 1980s and essentially unchanged since." },
-      { "word": "reels", "register": "slang", "definition": "Short videos; also what your head does after.", "note": "A genuine double meaning: reel is film wound on a spool, and to reel is to stagger. Both apply." },
-      { "word": "swipe", "register": "standard", "definition": "To flick aside. To steal.", "note": "The theft sense is nineteenth-century slang. That we now use the same gesture-word to dismiss people is a coincidence worth sitting with." },
-      { "word": "blurb", "register": "standard", "definition": "A short puff of praise on a cover.", "note": "Invented in 1907 by humorist Gelett Burgess, who put a fictional Miss Belinda Blurb on a book jacket as a joke. The joke became the industry standard." }
+      {
+        "word": "binge",
+        "register": "standard",
+        "definition": "Consuming far more than intended, in one sitting.",
+        "note": "A Lincolnshire dialect word meaning to soak a wooden vessel until it stopped leaking. The drinking sense came first; the television sense is very recent."
+      },
+      {
+        "word": "lurks",
+        "register": "slang",
+        "definition": "Reads everything, posts nothing.",
+        "note": "Lurker is one of the oldest pieces of internet slang, in use on Usenet by the early 1980s and essentially unchanged since."
+      },
+      {
+        "word": "reels",
+        "register": "slang",
+        "definition": "Short videos; also what your head does after.",
+        "note": "A genuine double meaning: reel is film wound on a spool, and to reel is to stagger. Both apply."
+      },
+      {
+        "word": "swipe",
+        "register": "standard",
+        "definition": "To flick aside. To steal.",
+        "note": "The theft sense is nineteenth-century slang. That we now use the same gesture-word to dismiss people is a coincidence worth sitting with."
+      },
+      {
+        "word": "blurb",
+        "register": "standard",
+        "definition": "A short puff of praise on a cover.",
+        "note": "Invented in 1907 by humorist Gelett Burgess, who put a fictional Miss Belinda Blurb on a book jacket as a joke. The joke became the industry standard."
+      }
     ]
   },
   {
@@ -64,11 +189,36 @@
     "title": "Worth Knowing",
     "blurb": "The quiet ones. You will use at least two of these.",
     "words": [
-      { "word": "salve", "register": "standard", "definition": "Something that soothes a wound.", "note": "Also a verb for easing a conscience — you salve your guilt. The physical and moral senses have run in parallel for a thousand years." },
-      { "word": "nadir", "register": "standard", "definition": "The lowest possible point.", "note": "From the Arabic nazir, opposite — it is the astronomical point directly beneath you, exactly opposite the zenith. Arabic gave English most of its star vocabulary." },
-      { "word": "ethos", "register": "standard", "definition": "The character of a group, as lived rather than stated.", "note": "One of Aristotle's three means of persuasion, alongside pathos and logos. Ethos is the argument that you are worth listening to." },
-      { "word": "cadre", "register": "standard", "definition": "A small trained core inside a larger body.", "note": "From the French for frame — the cadre is the frame a larger organisation is built onto. Same root as cadre in painting: the thing around the picture." },
-      { "word": "tacit", "register": "standard", "definition": "Understood without being said.", "note": "From the Latin tacere, to be silent — the same root as taciturn. A tacit agreement is binding precisely because nobody wrote it down." }
+      {
+        "word": "salve",
+        "register": "standard",
+        "definition": "Something that soothes a wound.",
+        "note": "Also a verb for easing a conscience — you salve your guilt. The physical and moral senses have run in parallel for a thousand years."
+      },
+      {
+        "word": "nadir",
+        "register": "standard",
+        "definition": "The lowest possible point.",
+        "note": "From the Arabic nazir, opposite — it is the astronomical point directly beneath you, exactly opposite the zenith. Arabic gave English most of its star vocabulary."
+      },
+      {
+        "word": "ethos",
+        "register": "standard",
+        "definition": "The character of a group, as lived rather than stated.",
+        "note": "One of Aristotle's three means of persuasion, alongside pathos and logos. Ethos is the argument that you are worth listening to."
+      },
+      {
+        "word": "cadre",
+        "register": "standard",
+        "definition": "A small trained core inside a larger body.",
+        "note": "From the French for frame — the cadre is the frame a larger organisation is built onto. Same root as cadre in painting: the thing around the picture."
+      },
+      {
+        "word": "tacit",
+        "register": "standard",
+        "definition": "Understood without being said.",
+        "note": "From the Latin tacere, to be silent — the same root as taciturn. A tacit agreement is binding precisely because nobody wrote it down."
+      }
     ]
   },
   {
@@ -76,11 +226,36 @@
     "title": "Heartbreak",
     "blurb": "Five words for one bad week.",
     "words": [
-      { "word": "spurn", "register": "standard", "definition": "To reject with contempt.", "note": "Originally meant to kick. The physical sense survives in the word's tone — to be spurned is worse than to be refused." },
-      { "word": "tryst", "register": "standard", "definition": "A meeting arranged in secret.", "note": "Originally a hunting term: the appointed place where you waited for the game to be driven towards you. Make of that what you will." },
-      { "word": "ember", "register": "standard", "definition": "What is still warm after the fire.", "note": "An unusually old word, barely changed from Old English aemerge. It has always meant the part that outlasts the thing itself." },
-      { "word": "mourn", "register": "standard", "definition": "To feel a loss openly.", "note": "Related to memory through an old root meaning to be anxious or remember. Mourning is etymologically an act of remembering, not of sadness." },
-      { "word": "yearn", "register": "standard", "definition": "To want something distant, continuously.", "note": "Shares a root with the German gern, gladly. The ache and the gladness are the same word underneath, which feels about right." }
+      {
+        "word": "spurn",
+        "register": "standard",
+        "definition": "To reject with contempt.",
+        "note": "Originally meant to kick. The physical sense survives in the word's tone — to be spurned is worse than to be refused."
+      },
+      {
+        "word": "tryst",
+        "register": "standard",
+        "definition": "A meeting arranged in secret.",
+        "note": "Originally a hunting term: the appointed place where you waited for the game to be driven towards you. Make of that what you will."
+      },
+      {
+        "word": "ember",
+        "register": "standard",
+        "definition": "What is still warm after the fire.",
+        "note": "An unusually old word, barely changed from Old English aemerge. It has always meant the part that outlasts the thing itself."
+      },
+      {
+        "word": "mourn",
+        "register": "standard",
+        "definition": "To feel a loss openly.",
+        "note": "Related to memory through an old root meaning to be anxious or remember. Mourning is etymologically an act of remembering, not of sadness."
+      },
+      {
+        "word": "yearn",
+        "register": "standard",
+        "definition": "To want something distant, continuously.",
+        "note": "Shares a root with the German gern, gladly. The ache and the gladness are the same word underneath, which feels about right."
+      }
     ]
   },
   {
@@ -88,11 +263,36 @@
     "title": "Gym Rat",
     "blurb": "Posted at 5:40am so you would know.",
     "words": [
-      { "word": "swole", "register": "slang", "definition": "Visibly, deliberately muscular.", "note": "A deliberate misspelling of swollen, which is what it actually describes. Gym slang is unusually honest about mechanisms." },
-      { "word": "gains", "register": "slang", "definition": "Muscle, spoken of as property.", "note": "The countable plural is the giveaway — gains are treated as a possession you can lose, hence the fear of losing them." },
-      { "word": "detox", "register": "slang", "definition": "A cleanse with no medical meaning.", "note": "A real clinical term borrowed by the wellness industry. Your liver was already doing this, for free, the entire time." },
-      { "word": "vigor", "register": "standard", "definition": "Physical force and liveliness.", "note": "From the Latin vigere, to be lively — the same root as vigil and vigilant. Staying awake and being strong were once the same idea." },
-      { "word": "sweat", "register": "standard", "definition": "The point of the exercise.", "note": "One of the oldest words in English, cognate with the Sanskrit svedas. Humans have needed this word for as long as there have been words." }
+      {
+        "word": "swole",
+        "register": "slang",
+        "definition": "Visibly, deliberately muscular.",
+        "note": "A deliberate misspelling of swollen, which is what it actually describes. Gym slang is unusually honest about mechanisms."
+      },
+      {
+        "word": "gains",
+        "register": "slang",
+        "definition": "Muscle, spoken of as property.",
+        "note": "The countable plural is the giveaway — gains are treated as a possession you can lose, hence the fear of losing them."
+      },
+      {
+        "word": "detox",
+        "register": "slang",
+        "definition": "A cleanse with no medical meaning.",
+        "note": "A real clinical term borrowed by the wellness industry. Your liver was already doing this, for free, the entire time."
+      },
+      {
+        "word": "vigor",
+        "register": "standard",
+        "definition": "Physical force and liveliness.",
+        "note": "From the Latin vigere, to be lively — the same root as vigil and vigilant. Staying awake and being strong were once the same idea."
+      },
+      {
+        "word": "sweat",
+        "register": "standard",
+        "definition": "The point of the exercise.",
+        "note": "One of the oldest words in English, cognate with the Sanskrit svedas. Humans have needed this word for as long as there have been words."
+      }
     ]
   },
   {
@@ -100,11 +300,36 @@
     "title": "Old Words, New Energy",
     "blurb": "Medieval insults that deserve a comeback.",
     "words": [
-      { "word": "smite", "register": "standard", "definition": "To strike down, usually from above.", "note": "Also, bafflingly, to be smitten — struck by love. English decided being hit hard and falling in love warranted the same verb." },
-      { "word": "knave", "register": "standard", "definition": "A dishonest man of low standing.", "note": "Originally just meant boy, with no insult intended. It spent five hundred years sliding downhill, which is the usual fate of words for young men." },
-      { "word": "churl", "register": "standard", "definition": "Someone rude by disposition.", "note": "Meant a free peasant — a social rank, not a judgement. Churlish is what the upper classes decided that rank implied." },
-      { "word": "vixen", "register": "standard", "definition": "A female fox. A woman with a temper.", "note": "One of the few English words preserving an old southern dialect habit of voicing an initial f into a v. Fixen became vixen and stuck." },
-      { "word": "rogue", "register": "standard", "definition": "A likeable scoundrel; or something gone off-script.", "note": "Appeared suddenly in the 1560s with no clear ancestor. A word for people who go off on their own that itself came from nowhere." }
+      {
+        "word": "smite",
+        "register": "standard",
+        "definition": "To strike down, usually from above.",
+        "note": "Also, bafflingly, to be smitten — struck by love. English decided being hit hard and falling in love warranted the same verb."
+      },
+      {
+        "word": "knave",
+        "register": "standard",
+        "definition": "A dishonest man of low standing.",
+        "note": "Originally just meant boy, with no insult intended. It spent five hundred years sliding downhill, which is the usual fate of words for young men."
+      },
+      {
+        "word": "churl",
+        "register": "standard",
+        "definition": "Someone rude by disposition.",
+        "note": "Meant a free peasant — a social rank, not a judgement. Churlish is what the upper classes decided that rank implied."
+      },
+      {
+        "word": "vixen",
+        "register": "standard",
+        "definition": "A female fox. A woman with a temper.",
+        "note": "One of the few English words preserving an old southern dialect habit of voicing an initial f into a v. Fixen became vixen and stuck."
+      },
+      {
+        "word": "rogue",
+        "register": "standard",
+        "definition": "A likeable scoundrel; or something gone off-script.",
+        "note": "Appeared suddenly in the 1560s with no clear ancestor. A word for people who go off on their own that itself came from nowhere."
+      }
     ]
   },
   {
@@ -112,11 +337,776 @@
     "title": "Running on Empty",
     "blurb": "You are fine. You are definitely fine.",
     "words": [
-      { "word": "spent", "register": "standard", "definition": "Used up, with nothing held back.", "note": "The same word for money and for energy, which is not a metaphor English chose so much as one it never questioned." },
-      { "word": "burnt", "register": "standard", "definition": "Damaged by too much heat, for too long.", "note": "Burnt and burned are both correct; British English tends to burnt for the adjective. Burnout borrowed the image wholesale in the 1970s." },
-      { "word": "woozy", "register": "slang", "definition": "Unsteady and slightly unreal.", "note": "Origin genuinely unknown — it simply appears in American English in the 1890s. Possibly a blend of woozle and boozy, possibly nothing." },
-      { "word": "crash", "register": "slang", "definition": "To sleep suddenly and without ceremony.", "note": "The sleep sense comes from 1960s counterculture — crash pad predates crashing out. It has always implied you did not plan it." },
-      { "word": "dregs", "register": "standard", "definition": "What is left at the bottom.", "note": "From Old Norse dregg. One of the many words Vikings left in English, alongside sky, knife, and — fittingly — ransack." }
+      {
+        "word": "spent",
+        "register": "standard",
+        "definition": "Used up, with nothing held back.",
+        "note": "The same word for money and for energy, which is not a metaphor English chose so much as one it never questioned."
+      },
+      {
+        "word": "burnt",
+        "register": "standard",
+        "definition": "Damaged by too much heat, for too long.",
+        "note": "Burnt and burned are both correct; British English tends to burnt for the adjective. Burnout borrowed the image wholesale in the 1970s."
+      },
+      {
+        "word": "woozy",
+        "register": "slang",
+        "definition": "Unsteady and slightly unreal.",
+        "note": "Origin genuinely unknown — it simply appears in American English in the 1890s. Possibly a blend of woozle and boozy, possibly nothing."
+      },
+      {
+        "word": "crash",
+        "register": "slang",
+        "definition": "To sleep suddenly and without ceremony.",
+        "note": "The sleep sense comes from 1960s counterculture — crash pad predates crashing out. It has always implied you did not plan it."
+      },
+      {
+        "word": "dregs",
+        "register": "standard",
+        "definition": "What is left at the bottom.",
+        "note": "From Old Norse dregg. One of the many words Vikings left in English, alongside sky, knife, and — fittingly — ransack."
+      }
+    ]
+  },
+  {
+    "id": "mise-en-place",
+    "title": "Mise En Place",
+    "blurb": "Everything in its place, before the shouting starts.",
+    "words": [
+      {
+        "word": "whisk",
+        "register": "standard",
+        "definition": "To beat air into something.",
+        "note": "The tool is named after the action, not the other way round. The verb comes from an Old Norse word for a rapid sweeping movement, which is also why a train can whisk you somewhere."
+      },
+      {
+        "word": "knead",
+        "register": "standard",
+        "definition": "To work dough with your hands.",
+        "note": "An Old English word, and a close relative of the German kneten. Unrelated to need, which is a much older and gloomier word that merely sounds the same."
+      },
+      {
+        "word": "yeast",
+        "register": "standard",
+        "definition": "The fungus doing all the work.",
+        "note": "The root means to boil or foam, which is what people could actually observe. Nobody knew yeast was alive until Pasteur, but the word had described its behaviour for a thousand years."
+      },
+      {
+        "word": "baste",
+        "register": "standard",
+        "definition": "To spoon the fat back over.",
+        "note": "Confusingly, there is an unrelated baste meaning to sew loosely, and a third meaning to beat soundly. English kept all three and let context sort it out."
+      },
+      {
+        "word": "chard",
+        "register": "standard",
+        "definition": "A leaf you were told to like.",
+        "note": "Short for Swiss chard, which is not Swiss. A Swiss botanist named it, and the label stuck to a Mediterranean plant that had never been near the Alps."
+      }
+    ]
+  },
+  {
+    "id": "dark-by-four",
+    "title": "Dark By Four",
+    "blurb": "Five words for the same grey month.",
+    "words": [
+      {
+        "word": "frost",
+        "register": "standard",
+        "definition": "Ice formed straight out of the air.",
+        "note": "Shares a root with freeze, obviously, but also with the word for a hard crust. Frost is etymologically the skin the cold puts on things."
+      },
+      {
+        "word": "sleet",
+        "register": "standard",
+        "definition": "The worst of both.",
+        "note": "A Germanic word with cousins across northern Europe, which is roughly the distribution of people who have needed a specific word for this."
+      },
+      {
+        "word": "murky",
+        "register": "standard",
+        "definition": "Dim and hard to see through.",
+        "note": "From an Old Norse word for darkness. It only picked up the sense of morally dubious in the nineteenth century, when murky dealings started appearing in print."
+      },
+      {
+        "word": "brisk",
+        "register": "standard",
+        "definition": "Cold in a way you are supposed to enjoy.",
+        "note": "Probably a reshaping of the French brusque. The same word gave English both brisk and brusque, which now describe a pleasant walk and an unpleasant person."
+      },
+      {
+        "word": "balmy",
+        "register": "standard",
+        "definition": "Mild and soft. Also, mad.",
+        "note": "From balm, the soothing ointment. The mad sense is separate and probably from barmy, meaning frothy like beer barm, which English then confused with balmy and never untangled."
+      }
+    ]
+  },
+  {
+    "id": "the-heist",
+    "title": "The Heist",
+    "blurb": "It was going so well until the fourth word.",
+    "words": [
+      {
+        "word": "heist",
+        "register": "slang",
+        "definition": "A robbery with a plan.",
+        "note": "American underworld slang from the 1920s, almost certainly a pronunciation of hoist. To hoist goods was to steal them long before anyone pulled a heist."
+      },
+      {
+        "word": "alibi",
+        "register": "standard",
+        "definition": "Proof you were somewhere else.",
+        "note": "Latin for elsewhere, and originally used in English exactly that literally. It only came to mean the excuse itself, rather than the fact, in the twentieth century."
+      },
+      {
+        "word": "felon",
+        "register": "standard",
+        "definition": "Someone convicted of a serious crime.",
+        "note": "Also, still, a medical term for an infection at the fingertip. The two senses have coexisted for centuries with no one much bothered by it."
+      },
+      {
+        "word": "forge",
+        "register": "standard",
+        "definition": "To make. To fake.",
+        "note": "The same word for honest smithing and dishonest documents, both from the Latin fabricare, to fashion. The forger and the blacksmith are doing etymologically identical work."
+      },
+      {
+        "word": "caper",
+        "register": "slang",
+        "definition": "A crime with a sense of humour.",
+        "note": "From the Italian capriola, a goat's leap — the same root as Capricorn. A caper is named for skipping about, which is why the word refuses to sound serious."
+      }
+    ]
+  },
+  {
+    "id": "four-am",
+    "title": "Four AM",
+    "blurb": "You have checked the time twice now.",
+    "words": [
+      {
+        "word": "dream",
+        "register": "standard",
+        "definition": "What you would rather be doing.",
+        "note": "The Old English dream meant joy, music, or revelry — not sleep at all. The modern sense probably arrived from Old Norse and quietly replaced it."
+      },
+      {
+        "word": "snore",
+        "register": "standard",
+        "definition": "The reason you are awake.",
+        "note": "One of a family of words English built straight from the sound: snore, snort, sneeze, snarl, sniff. The initial sn- doing the work of a nose."
+      },
+      {
+        "word": "rouse",
+        "register": "standard",
+        "definition": "To bring someone round.",
+        "note": "Began as a falconry term for a hawk shaking its feathers. It moved from birds to people to crowds, gathering force at every step."
+      },
+      {
+        "word": "vigil",
+        "register": "standard",
+        "definition": "Deliberate wakefulness.",
+        "note": "From the Latin vigilia, a watch kept at night — the same root as vigour and vigilant. Staying awake, being strong and paying attention were once one idea."
+      },
+      {
+        "word": "sloth",
+        "register": "standard",
+        "definition": "Reluctance to move at all.",
+        "note": "Built from slow plus the -th that turns an adjective into a noun, exactly as warm becomes warmth. The animal was named after the sin, not the reverse."
+      }
+    ]
+  },
+  {
+    "id": "in-a-minor-key",
+    "title": "In A Minor Key",
+    "blurb": "Put it on and stare out of the window.",
+    "words": [
+      {
+        "word": "tempo",
+        "register": "standard",
+        "definition": "How fast the thing goes.",
+        "note": "Italian for time, straight from the Latin tempus. Most of the vocabulary of Western music is Italian because Italy was where the notation was standardised."
+      },
+      {
+        "word": "chord",
+        "register": "standard",
+        "definition": "Notes agreeing to be heard together.",
+        "note": "Shortened from accord, meaning agreement. The spelling with an h was borrowed later from cord, the string — so the word has two unrelated ancestors fused together."
+      },
+      {
+        "word": "verse",
+        "register": "standard",
+        "definition": "The bit before the chorus.",
+        "note": "From the Latin versus, a turning — specifically the turn of a plough at the end of a furrow. A line of poetry is named after where the writing turns back."
+      },
+      {
+        "word": "croon",
+        "register": "standard",
+        "definition": "To sing low and close to the microphone.",
+        "note": "A Scots and northern English word for a low murmur, which was sitting unused until amplification made quiet singing possible in the 1920s."
+      },
+      {
+        "word": "dirge",
+        "register": "standard",
+        "definition": "A song for a funeral.",
+        "note": "From dirige, the first word of a Latin antiphon sung in the office for the dead. An entire genre named after the opening word of one hymn."
+      }
+    ]
+  },
+  {
+    "id": "down-to-the-wire",
+    "title": "Down To The Wire",
+    "blurb": "Payday is Friday. It is Tuesday.",
+    "words": [
+      {
+        "word": "skint",
+        "register": "slang",
+        "definition": "Completely out of money.",
+        "note": "British slang, a clipped form of skinned — as in skinned alive, or fleeced. The image is of having had everything taken off you."
+      },
+      {
+        "word": "broke",
+        "register": "slang",
+        "definition": "The same thing, said sadly.",
+        "note": "Originally the past participle of break, used of a merchant whose business had broken. Bankrupt is the same idea in Italian: banca rotta, a broken bench."
+      },
+      {
+        "word": "pinch",
+        "register": "standard",
+        "definition": "To squeeze. To economise. To steal.",
+        "note": "All three senses are the same word narrowing and widening over six hundred years. Feeling the pinch and pinching something are cousins."
+      },
+      {
+        "word": "scant",
+        "register": "standard",
+        "definition": "Barely enough.",
+        "note": "From Old Norse skamt, short. It is one of the few English adjectives that still sounds slightly wrong as a verb, though scanting was once perfectly ordinary."
+      },
+      {
+        "word": "gaunt",
+        "register": "standard",
+        "definition": "Thin in a way that worries people.",
+        "note": "Origin genuinely uncertain — possibly from a Scandinavian word for a lean horse. One of those words that arrived in the 1400s without papers."
+      }
+    ]
+  },
+  {
+    "id": "unresolved-tension",
+    "title": "Unresolved Tension",
+    "blurb": "Nobody has said anything yet.",
+    "words": [
+      {
+        "word": "crush",
+        "register": "slang",
+        "definition": "A feeling with no plan attached.",
+        "note": "The romantic sense is American, from the 1880s, and the metaphor is physical: being crushed. English chose the most violent available verb for the least dangerous feeling."
+      },
+      {
+        "word": "flirt",
+        "register": "standard",
+        "definition": "To signal interest deniably.",
+        "note": "First meant to flick or dart something away — you could flirt a fan open. The human sense came from the quick, glancing movement."
+      },
+      {
+        "word": "swoon",
+        "register": "standard",
+        "definition": "To go weak in a satisfying way.",
+        "note": "An Old English word meaning to faint, related to a root for suffocating. It survived mostly because Victorian novelists found it so useful."
+      },
+      {
+        "word": "spark",
+        "register": "standard",
+        "definition": "The bit you cannot manufacture.",
+        "note": "Also an old English verb meaning to court someone — to go sparking. The romantic sense is a good deal older than anyone assumes."
+      },
+      {
+        "word": "court",
+        "register": "standard",
+        "definition": "To pursue, patiently and visibly.",
+        "note": "The same word as a royal court, and that is the point: courting meant behaving as one did at court, with all its formality and audience."
+      }
+    ]
+  },
+  {
+    "id": "circle-back",
+    "title": "Circle Back",
+    "blurb": "Five words that mean nothing and never stop.",
+    "words": [
+      {
+        "word": "quota",
+        "register": "standard",
+        "definition": "A number someone else chose.",
+        "note": "From the Latin quota pars, how great a part. It entered English as accounting vocabulary and has been used to apply pressure ever since."
+      },
+      {
+        "word": "brand",
+        "register": "standard",
+        "definition": "What a company believes it is.",
+        "note": "Originally a burning piece of wood, then the mark burned into livestock to show ownership. Every brand is etymologically a scar proving who owns the animal."
+      },
+      {
+        "word": "pivot",
+        "register": "slang",
+        "definition": "Admitting the plan was wrong, expensively.",
+        "note": "A pivot is the fixed pin a thing turns on — so a company that pivots is claiming, flatteringly, that it has not moved at all."
+      },
+      {
+        "word": "churn",
+        "register": "standard",
+        "definition": "Customers leaving as fast as they arrive.",
+        "note": "From the butter churn: violent repetitive motion that produces a result. Business borrowed the agitation and quietly dropped the part where you get butter."
+      },
+      {
+        "word": "grind",
+        "register": "slang",
+        "definition": "Work, reframed as a virtue.",
+        "note": "Student slang for a hard worker by the 1800s, long before hustle culture. The sense of wearing something down by friction was always there."
+      }
+    ]
+  },
+  {
+    "id": "look-up",
+    "title": "Look Up",
+    "blurb": "All five are further away than you think.",
+    "words": [
+      {
+        "word": "orbit",
+        "register": "standard",
+        "definition": "A path that keeps falling and missing.",
+        "note": "From the Latin orbita, a wheel track or rut. It also still means the bony socket of your eye, which is the older English sense."
+      },
+      {
+        "word": "comet",
+        "register": "standard",
+        "definition": "Ice on a very long loop.",
+        "note": "From the Greek for long-haired — komētēs. The Greeks named it for the tail, describing it as a star wearing its hair loose."
+      },
+      {
+        "word": "lunar",
+        "register": "standard",
+        "definition": "Of the moon.",
+        "note": "The same root gives lunatic, from a genuine old belief that the moon's phases affected the mind. The medical term outlived the theory by centuries."
+      },
+      {
+        "word": "solar",
+        "register": "standard",
+        "definition": "Of the sun.",
+        "note": "The solar plexus is named by the same logic as a comet's hair: the nerves radiate outward from the centre like drawn sunbeams."
+      },
+      {
+        "word": "flare",
+        "register": "standard",
+        "definition": "A sudden violent brightening.",
+        "note": "Origin unknown, appearing in the 1500s meaning to spread outward. The light sense and the trouser sense are the same word doing the same job."
+      }
+    ]
+  },
+  {
+    "id": "seeing-red",
+    "title": "Seeing Red",
+    "blurb": "You are not angry. You are just disappointed.",
+    "words": [
+      {
+        "word": "irate",
+        "register": "standard",
+        "definition": "Angry, and slightly formal about it.",
+        "note": "From the Latin ira, anger — the same root as ire and irascible. It is the word newspapers use when they mean furious but want to sound neutral."
+      },
+      {
+        "word": "wrath",
+        "register": "standard",
+        "definition": "Anger with the volume of a sermon.",
+        "note": "Built from an Old English word meaning twisted or bent — the same root as writhe and wreath. Rage as something that contorts you."
+      },
+      {
+        "word": "spite",
+        "register": "standard",
+        "definition": "Wanting worse for someone, at your own cost.",
+        "note": "A shortening of despite, which meant contempt. In spite of still carries the original sense: doing something in contempt of an obstacle."
+      },
+      {
+        "word": "riled",
+        "register": "slang",
+        "definition": "Wound up, usually on purpose.",
+        "note": "An American variant of roiled, meaning to stir up sediment in water. To rile someone is to make them cloudy."
+      },
+      {
+        "word": "venom",
+        "register": "standard",
+        "definition": "Poison, or the tone of voice.",
+        "note": "From the Latin venenum, which originally meant a potion or drug of any kind — including love potions, and shares a root with Venus."
+      }
+    ]
+  },
+  {
+    "id": "not-quite-a-lie",
+    "title": "Not Quite A Lie",
+    "blurb": "Technically everything said here was true.",
+    "words": [
+      {
+        "word": "bluff",
+        "register": "standard",
+        "definition": "Confidence standing in for cards.",
+        "note": "Also a steep headland, and the two are unrelated. The poker sense came from a Dutch word meaning to brag; the cliff is a separate nautical borrowing."
+      },
+      {
+        "word": "feign",
+        "register": "standard",
+        "definition": "To perform a feeling you do not have.",
+        "note": "From the Latin fingere, to shape or mould — the same root as fiction and figment. Pretending and sculpting were once the same verb."
+      },
+      {
+        "word": "cloak",
+        "register": "standard",
+        "definition": "To cover something deliberately.",
+        "note": "The garment is named after its shape: the Medieval Latin clocca meant a bell, and a hanging cloak looks like one. Clock comes from the same word."
+      },
+      {
+        "word": "guise",
+        "register": "standard",
+        "definition": "The version you are presenting.",
+        "note": "From the same Germanic root as wise, as in likewise and in no wise — meaning manner or way. A guise is literally a way of appearing."
+      },
+      {
+        "word": "snide",
+        "register": "slang",
+        "definition": "Nasty, with deniability.",
+        "note": "Nineteenth-century slang for counterfeit money, and that sense came first. A snide remark is etymologically a forged one."
+      }
+    ]
+  },
+  {
+    "id": "still-in-the-drawer",
+    "title": "Still In The Drawer",
+    "blurb": "You are keeping these in case they come back.",
+    "words": [
+      {
+        "word": "modem",
+        "register": "standard",
+        "definition": "The sound of the internet arriving.",
+        "note": "A portmanteau of modulator-demodulator, which is exactly what it does: turns data into noise a phone line can carry, then back again."
+      },
+      {
+        "word": "pager",
+        "register": "standard",
+        "definition": "It told you to find a phone.",
+        "note": "From page, meaning to summon — as a hotel page boy once did by walking through the lobby calling a name. The device automated the boy."
+      },
+      {
+        "word": "vinyl",
+        "register": "standard",
+        "definition": "The format that refused to die.",
+        "note": "Coined by chemists from the Latin vinum, wine, because the compound was first derived from ethanol. The word for records is named after wine."
+      },
+      {
+        "word": "retro",
+        "register": "slang",
+        "definition": "Old, but on purpose.",
+        "note": "Latin for backwards, and only used on its own as an adjective from the 1960s — which means the word retro is itself younger than most things called retro."
+      },
+      {
+        "word": "tapes",
+        "register": "standard",
+        "definition": "Recorded over at least once.",
+        "note": "Tape is an Old English word for a narrow strip of cloth. It survived every change of technology because the shape never changed."
+      }
+    ]
+  },
+  {
+    "id": "out-of-signal",
+    "title": "Out Of Signal",
+    "blurb": "Nobody can reach either of you.",
+    "words": [
+      {
+        "word": "grove",
+        "register": "standard",
+        "definition": "A small deliberate wood.",
+        "note": "An Old English word with no known relatives in other languages — unusual for such a common word. It has meant the same thing for as long as English has existed."
+      },
+      {
+        "word": "brook",
+        "register": "standard",
+        "definition": "A stream. Also, to tolerate.",
+        "note": "Two unrelated words. To brook no argument comes from an Old English verb meaning to use or enjoy, which has nothing to do with water."
+      },
+      {
+        "word": "birch",
+        "register": "standard",
+        "definition": "The white one.",
+        "note": "Among the oldest tree names in the language, traceable to a Proto-Indo-European root meaning bright — named for the bark, thousands of years ago."
+      },
+      {
+        "word": "heath",
+        "register": "standard",
+        "definition": "Open scrubby ground.",
+        "note": "Heathen comes from it: a heath-dweller, someone living out past the settlements where the new religion had not reached. An insult built out of a landscape."
+      },
+      {
+        "word": "glade",
+        "register": "standard",
+        "definition": "A clearing with light in it.",
+        "note": "Probably related to glad, which originally meant bright or shining rather than happy. A glade is the bright patch in a dark wood."
+      }
+    ]
+  },
+  {
+    "id": "one-more-round",
+    "title": "One More Round",
+    "blurb": "It is a school night and everyone knows it.",
+    "words": [
+      {
+        "word": "lager",
+        "register": "standard",
+        "definition": "Cold, and not asking much of you.",
+        "note": "From the German Lagerbier, storehouse beer — it was brewed to be kept. The name describes the warehouse, not the drink."
+      },
+      {
+        "word": "cider",
+        "register": "standard",
+        "definition": "Deceptively strong.",
+        "note": "Traces back through Latin and Greek to a Hebrew word, shekar, meaning strong drink. It arrived in English via the Bible before it meant apples specifically."
+      },
+      {
+        "word": "stout",
+        "register": "standard",
+        "definition": "Dark, and a meal in itself.",
+        "note": "The beer is named after the adjective meaning strong or thickset. Stout ale simply meant strong ale, and the noun outlived the phrase."
+      },
+      {
+        "word": "toast",
+        "register": "standard",
+        "definition": "Raising a glass to someone.",
+        "note": "Genuinely from toasted bread: spiced toast was dropped into wine to flavour it, and the person honoured was said to be the toast of the drink."
+      },
+      {
+        "word": "sober",
+        "register": "standard",
+        "definition": "Tomorrow's problem, solved early.",
+        "note": "From the Latin sobrius, which appears to be se- (without) plus ebrius (drunk) — the same ebrius behind inebriated. Sober is literally un-drunk."
+      }
+    ]
+  },
+  {
+    "id": "something-moved",
+    "title": "Something Moved",
+    "blurb": "It was the house settling. Obviously.",
+    "words": [
+      {
+        "word": "panic",
+        "register": "standard",
+        "definition": "Fear that arrives all at once.",
+        "note": "Named for the god Pan, who was believed to cause sudden groundless terror in lonely places. One of the few emotions named after a specific deity."
+      },
+      {
+        "word": "quake",
+        "register": "standard",
+        "definition": "To shake without deciding to.",
+        "note": "An Old English verb, and a Quaker was originally a mocking nickname — for people said to tremble at the word of the Lord. The group kept the insult."
+      },
+      {
+        "word": "cower",
+        "register": "standard",
+        "definition": "To make yourself smaller.",
+        "note": "From a Middle Low German word meaning to squat or crouch. Unrelated to coward, which comes from the Latin for tail, as in an animal turning tail."
+      },
+      {
+        "word": "creep",
+        "register": "standard",
+        "definition": "To move slowly and wrongly.",
+        "note": "The noun for an unpleasant person is American, from the 1880s. The plural the creeps — that crawling sensation — is older than the insult."
+      },
+      {
+        "word": "eerie",
+        "register": "standard",
+        "definition": "Wrong in a way you cannot name.",
+        "note": "Originally Scots and northern English, and it first meant fearful rather than frightening — you were eerie, the ghost was not. The word swapped ends."
+      }
+    ]
+  },
+  {
+    "id": "house-always-wins",
+    "title": "House Always Wins",
+    "blurb": "You are up. You should leave. You will not.",
+    "words": [
+      {
+        "word": "wager",
+        "register": "standard",
+        "definition": "Money placed on an opinion.",
+        "note": "From an Old North French word related to gage, a pledge — the same root as engage and mortgage. A wager was originally the security, not the bet."
+      },
+      {
+        "word": "stake",
+        "register": "standard",
+        "definition": "What you stand to lose.",
+        "note": "Probably from the literal stake — a post driven into the ground, on which the prize was placed for all to see. The money sat on a stick in the middle."
+      },
+      {
+        "word": "chips",
+        "register": "slang",
+        "definition": "Money, made easier to lose.",
+        "note": "Casinos use tokens precisely because chips do not feel like money. The word is just the ordinary chip, a small fragment, doing psychological work."
+      },
+      {
+        "word": "lucky",
+        "register": "standard",
+        "definition": "Nothing to do with skill.",
+        "note": "Luck came into English from Dutch or Low German, and it arrived through gambling — the earliest English uses are all about games of chance."
+      },
+      {
+        "word": "fluke",
+        "register": "slang",
+        "definition": "A win you cannot repeat.",
+        "note": "From nineteenth-century billiards, for an accidentally successful shot. There are also fluke the flatfish and fluke the parasite, all three unrelated."
+      }
+    ]
+  },
+  {
+    "id": "last-word",
+    "title": "Last Word",
+    "blurb": "Five ways to keep talking.",
+    "words": [
+      {
+        "word": "quote",
+        "register": "standard",
+        "definition": "Someone else's words, borrowed.",
+        "note": "From the Latin quotare, to number — medieval scribes quoted a text by marking it with numbers to reference it. The sense of repeating came later."
+      },
+      {
+        "word": "drawl",
+        "register": "standard",
+        "definition": "Speech taking its time.",
+        "note": "Probably a frequentative of draw, as in drawing the words out. English builds a lot of verbs this way: sparkle from spark, crackle from crack."
+      },
+      {
+        "word": "boast",
+        "register": "standard",
+        "definition": "Advertising yourself.",
+        "note": "Origin uncertain, in English since the 1200s. It once meant a threat as much as a brag, which tells you something about how boasting was received."
+      },
+      {
+        "word": "taunt",
+        "register": "standard",
+        "definition": "Provocation dressed as a joke.",
+        "note": "Possibly from the French tant pour tant, tit for tat — a taunt as a reply given in kind. Fittingly, the word for a comeback may itself be a comeback."
+      },
+      {
+        "word": "rebut",
+        "register": "standard",
+        "definition": "To answer an argument properly.",
+        "note": "From an Old French word meaning to thrust back, built on but, an end or blow — the same root as butt. A rebuttal is a headbutt with sources."
+      }
+    ]
+  },
+  {
+    "id": "worn-in",
+    "title": "Worn In",
+    "blurb": "You have had all of these too long.",
+    "words": [
+      {
+        "word": "denim",
+        "register": "standard",
+        "definition": "The most successful fabric ever made.",
+        "note": "From serge de Nîmes, the French town. Jeans are named after Genoa by the same logic, so a pair of denim jeans is named after two cities at once."
+      },
+      {
+        "word": "shawl",
+        "register": "standard",
+        "definition": "A blanket with better manners.",
+        "note": "Arrived in English from Persian via Urdu, along with the garment itself, in the eighteenth century. One of many textile words English imported wholesale."
+      },
+      {
+        "word": "tweed",
+        "register": "standard",
+        "definition": "Cloth for pretending to like walking.",
+        "note": "Almost certainly a misreading. A clerk wrote tweel — Scots for twill — and someone read it as tweed, thinking of the river. The error became the name."
+      },
+      {
+        "word": "laces",
+        "register": "standard",
+        "definition": "Undone again.",
+        "note": "From the Latin laqueus, a noose or snare, via French. Delicate lace and the lace in your shoe are the same word, both named after a loop that catches."
+      },
+      {
+        "word": "frock",
+        "register": "standard",
+        "definition": "A dress, said fondly.",
+        "note": "Originally a monk's habit, which is why a disgraced priest is defrocked. The word travelled from monastery to wardrobe and kept only one foot in each."
+      }
+    ]
+  },
+  {
+    "id": "under-the-skin",
+    "title": "Under The Skin",
+    "blurb": "All present and doing their jobs.",
+    "words": [
+      {
+        "word": "pulse",
+        "register": "standard",
+        "definition": "Proof of the obvious.",
+        "note": "From the Latin pulsus, a beating — the same root as impulse and repel. There is also pulse the lentil, entirely unrelated, from a word for porridge."
+      },
+      {
+        "word": "spine",
+        "register": "standard",
+        "definition": "The structural argument.",
+        "note": "The Latin spina meant a thorn. The backbone is named after its spiky projections, which is also why a hedgehog's spines and your spine are one word."
+      },
+      {
+        "word": "nerve",
+        "register": "standard",
+        "definition": "Wiring. Also, audacity.",
+        "note": "The Latin nervus meant sinew or bowstring — the Greeks and Romans did not distinguish nerves from tendons. The confusion is preserved in the word."
+      },
+      {
+        "word": "molar",
+        "register": "standard",
+        "definition": "The one doing the grinding.",
+        "note": "From the Latin mola, a millstone. Named for the job rather than the shape, by people who ground their own flour and saw the resemblance daily."
+      },
+      {
+        "word": "lymph",
+        "register": "standard",
+        "definition": "The other circulatory system.",
+        "note": "From the Latin lympha, clear spring water — which was itself probably an alteration of nympha, the water spirit. A body fluid named after a nymph."
+      }
+    ]
+  },
+  {
+    "id": "running-late",
+    "title": "Running Late",
+    "blurb": "You said you had left twenty minutes ago.",
+    "words": [
+      {
+        "word": "epoch",
+        "register": "standard",
+        "definition": "A stretch of time with a character.",
+        "note": "From a Greek word meaning a stopping point — the fixed moment from which time is measured, not the span itself. The modern sense inverts the original."
+      },
+      {
+        "word": "clock",
+        "register": "standard",
+        "definition": "The thing you are losing to.",
+        "note": "From the Medieval Latin clocca, a bell, because early public clocks marked hours by ringing rather than by a face. Cloak comes from the same word."
+      },
+      {
+        "word": "hasty",
+        "register": "standard",
+        "definition": "Fast, and paying for it.",
+        "note": "Haste arrived from Old French but goes back to a Germanic root meaning violence or force. Hurrying was originally an act of aggression."
+      },
+      {
+        "word": "tardy",
+        "register": "standard",
+        "definition": "Late, officially.",
+        "note": "From the Latin tardus, slow — the same root as retard in its original neutral sense of delay. It is the word institutions use when they mean late."
+      },
+      {
+        "word": "delay",
+        "register": "standard",
+        "definition": "Time going missing.",
+        "note": "From Old French delaier, built on the Latin dilatare, to spread out or widen. A delay is etymologically time being stretched rather than lost."
+      }
     ]
   }
 ]
