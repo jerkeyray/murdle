@@ -234,7 +234,9 @@ button {
   border: none;
   border-radius: 8px;
   background: transparent;
-  color: var(--text-faint);
+  /* Muted rather than faint: on the home screen this is the only control, and
+     the faint tone read as decoration. */
+  color: var(--text-muted);
   cursor: pointer;
   transition: color 0.18s ease, background 0.18s ease;
 }
@@ -1625,4 +1627,60 @@ button {
   line-height: 26px;
   text-align: center;
   font-variant-numeric: tabular-nums;
+}
+
+/* ---------------------------------------------------------------------------
+   Corrections to spacing and the empty states
+--------------------------------------------------------------------------- */
+
+/* Preferences follow a list or a button, and had nothing between them: the
+   sign-in button sat flush against the "how it looks" rule. */
+.prefs {
+  margin-top: 30px;
+}
+
+/* An unfilled bookplate rather than a sentence announcing that nobody is
+   here. The blank line is the invitation. */
+.plate--empty {
+  opacity: 1;
+  border-style: dashed;
+}
+
+.plate-blank {
+  height: 1px;
+  margin: 26px 0 6px;
+  background: repeating-linear-gradient(
+    to right,
+    var(--border-strong) 0 6px,
+    transparent 6px 11px
+  );
+}
+
+/* The badge counts a streak that today has not fed yet. */
+.profile-button {
+  position: relative;
+  overflow: visible;
+}
+
+.profile-badge {
+  position: absolute;
+  top: -1px;
+  right: -2px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: 999px;
+  border: 2px solid var(--bg);
+  background: var(--mark-present);
+  color: var(--mark-present-text);
+  font-size: 0.55rem;
+  font-weight: 700;
+  line-height: 13px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+/* The home screen's choices sat high with the footer gone. */
+.home-middle {
+  padding-bottom: 14vh;
 }

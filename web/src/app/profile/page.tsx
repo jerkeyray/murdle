@@ -97,17 +97,21 @@ export default function ProfilePage() {
     return (
       <main className="sheet">
         {head}
+        {/* An unfilled bookplate: the blank is the invitation. */}
         <div className="plate plate--empty">
           <span className="plate-ex">Ex libris</span>
-          <h1 className="plate-name">No one yet</h1>
+          <div className="plate-blank" aria-hidden />
         </div>
+
         <p className="empty">
           Sign in and every word you meet joins a lexicon of your own — with a
           streak, the words you kept, and someone to play against.
         </p>
+
         <Link href="/sign-in" className="button button--link">
           Sign in
         </Link>
+
         <Preferences />
       </main>
     );
