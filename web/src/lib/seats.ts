@@ -71,5 +71,5 @@ export function getServerSeats(): Seats {
 
 /** Narrows a route segment to a mode, so a bad URL cannot reach the API. */
 export function parseMode(raw: string | undefined): Mode | null {
-  return raw === "solo" || raw === "shared" ? raw : null;
+  return raw === "solo" || raw === "duel" ? raw : null;
 }

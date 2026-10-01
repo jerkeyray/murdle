@@ -1,6 +1,7 @@
 package http
 
 import (
+	"context"
 	"encoding/json"
 	"errors"
 	"io"
@@ -134,7 +135,7 @@ func (s *Server) handleCreateRound(w http.ResponseWriter, r *http.Request) {
 
 	mode, ok := parseMode(req.Mode)
 	if !ok {
-		writeError(w, http.StatusBadRequest, "invalid_mode", "mode must be solo or shared")
+		writeError(w, http.StatusBadRequest, "invalid_mode", "mode must be solo or duel")
 		return
 	}
 
@@ -165,21 +166,52 @@ func (s *Server) handleCreateRound(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	writeJSON(w, http.StatusCreated, s.roundView(round))
+	writeJSON(w, http.StatusCreated, s.roundView(r.Context(), round))
 }
 
-// roundView builds the wire view and attaches the entry once the round is
-// over. Routing every response through here means the entry can only ever
-// appear alongside a revealed answer.
-func (s *Server) roundView(round *game.Round) roundView {
-	v := newRoundView(round)
-	if answer := round.Reveal(); answer != "" {
-		if info, ok := s.pool.WordInfo(answer); ok {
+// roundView builds the wire view, revealing the answer and its entry only when
+// the run says the word may be shown.
+//
+// In a duel that is not simply "this board is finished": the first player must
+// not see the word while the second still has to guess it blind. Every
+// response goes through here, so a single check governs the whole API rather
+// than each handler remembering.
+func (s *Server) roundView(ctx context.Context, round *game.Round) roundView {
+	reveal := round.State != game.StatePlaying
+
+	if reveal && round.RunID != "" {
+		run, err := s.rounds.GetRun(ctx, round.RunID)
+		if err != nil {
+			// Without the run we cannot prove the partner has played, so say
+			// nothing. Withholding an answer is a far smaller failure than
+			// handing it to someone who is about to guess it.
+			s.log.Error("reading run for reveal", "run", round.RunID, "err", err)
+			reveal = false
+		} else {
+			reveal = run.WordRevealed(indexOfRound(run, round.ID))
+		}
+	}
+
+	v := newRoundView(round, reveal)
+	if v.Answer != "" {
+		if info, ok := s.pool.WordInfo(v.Answer); ok {
 			entry := newEntryView(info)
 			v.Entry = &entry
 		}
 	}
 	return v
+}
+
+// indexOfRound finds which word a board was playing.
+func indexOfRound(run *game.Run, roundID string) int {
+	for dealt, id := range run.RoundIDs {
+		if id == roundID {
+			return run.WordIndex(dealt)
+		}
+	}
+	// Not found: treat it as the last word, which is the conservative answer —
+	// it is the one least likely to be revealed.
+	return run.WordCount()
 }
 
 type createRunRequest struct {
@@ -198,7 +230,7 @@ func (s *Server) handleCreateRun(w http.ResponseWriter, r *http.Request) {
 
 	mode, ok := parseMode(req.Mode)
 	if !ok {
-		writeError(w, http.StatusBadRequest, "invalid_mode", "mode must be solo or shared")
+		writeError(w, http.StatusBadRequest, "invalid_mode", "mode must be solo or duel")
 		return
 	}
 
@@ -247,10 +279,10 @@ func (s *Server) handleStartRunRound(w http.ResponseWriter, r *http.Request) {
 	roundID := store.NewID()
 
 	var answer string
-	var firstSeat int
+	var seat int
 	run, err := s.rounds.UpdateRun(r.Context(), runID, func(run *game.Run) error {
 		var err error
-		answer, firstSeat, err = run.StartRound(roundID)
+		answer, seat, err = run.StartRound(roundID)
 		return err
 	})
 	if err != nil {
@@ -258,7 +290,7 @@ func (s *Server) handleStartRunRound(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	round := game.NewRound(roundID, run.Mode, firstSeat, answer)
+	round := game.NewRound(roundID, run.Mode, seat, answer)
 	round.RunID = runID
 	if err := s.rounds.Create(r.Context(), round); err != nil {
 		s.log.Error("creating round", "err", err)
@@ -267,7 +299,7 @@ func (s *Server) handleStartRunRound(w http.ResponseWriter, r *http.Request) {
 	}
 
 	writeJSON(w, http.StatusCreated, runRoundResponse{
-		Round: s.roundView(round),
+		Round: s.roundView(r.Context(), round),
 		Run:   newRunView(run, s.pool),
 	})
 }
@@ -278,7 +310,7 @@ func (s *Server) handleGetRound(w http.ResponseWriter, r *http.Request) {
 		s.writeGameError(w, err)
 		return
 	}
-	writeJSON(w, http.StatusOK, s.roundView(round))
+	writeJSON(w, http.StatusOK, s.roundView(r.Context(), round))
 }
 
 type guessRequest struct {
@@ -307,8 +339,6 @@ func (s *Server) handleGuess(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	view := s.roundView(round)
-
 	if justFinished {
 		s.recordSolve(r, round)
 	}
@@ -318,7 +348,7 @@ func (s *Server) handleGuess(w http.ResponseWriter, r *http.Request) {
 	// free of any notion of storage.
 	if justFinished && round.RunID != "" {
 		run, err := s.rounds.UpdateRun(r.Context(), round.RunID, func(run *game.Run) error {
-			run.RecordResult(round.Scores())
+			run.RecordResult(round.Seat, round.Points())
 			return nil
 		})
 		if err != nil {
@@ -326,13 +356,17 @@ func (s *Server) handleGuess(w http.ResponseWriter, r *http.Request) {
 			// rather than failing the guess the player just made.
 			s.log.Error("recording run result", "run", round.RunID, "err", err)
 		} else {
-			runView := newRunView(run, s.pool)
-			writeJSON(w, http.StatusOK, runRoundResponse{Round: view, Run: runView})
+			// Built after RecordResult, so the reveal check sees the partner's
+			// board as finished rather than still in play.
+			writeJSON(w, http.StatusOK, runRoundResponse{
+				Round: s.roundView(r.Context(), round),
+				Run:   newRunView(run, s.pool),
+			})
 			return
 		}
 	}
 
-	writeJSON(w, http.StatusOK, view)
+	writeJSON(w, http.StatusOK, s.roundView(r.Context(), round))
 }
 
 type hintRequest struct {
@@ -372,7 +406,7 @@ func (s *Server) handleHint(w http.ResponseWriter, r *http.Request) {
 		Tier:     reveal.Tier,
 		Position: reveal.Position,
 		Letter:   reveal.Letter,
-		Round:    s.roundView(round),
+		Round:    s.roundView(r.Context(), round),
 	})
 }
 
@@ -399,20 +433,14 @@ func (s *Server) recordSolve(r *http.Request, round *game.Round) {
 		solvedRow = &row
 	}
 
-	scores := round.Scores()
-	points := 0
-	if len(scores) > 0 {
-		points = scores[0]
-	}
-
 	err := s.players.RecordSolve(r.Context(), p.ID, players.Solve{
 		Word:      answer,
 		PackID:    packID,
 		Solved:    round.State == game.StateWon,
 		SolvedRow: solvedRow,
 		Guesses:   len(round.Rows),
-		HintsUsed: round.HintsUsed[0],
-		Points:    points,
+		HintsUsed: round.HintsUsed,
+		Points:    round.Points(),
 		PlayedOn:  localDate(r),
 	})
 	if err != nil {
@@ -456,7 +484,7 @@ func parseMode(raw string) (game.Mode, bool) {
 	switch mode := game.Mode(raw); mode {
 	case "":
 		return game.ModeSolo, true
-	case game.ModeSolo, game.ModeShared:
+	case game.ModeSolo, game.ModeDuel:
 		return mode, true
 	default:
 		return "", false

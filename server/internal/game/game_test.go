@@ -97,40 +97,12 @@ func TestSolved(t *testing.T) {
 	}
 }
 
-func TestSeatForRow(t *testing.T) {
-	for row := 0; row < MaxRows; row++ {
-		if got := SeatForRow(ModeSolo, 0, row); got != 0 {
-			t.Errorf("solo row %d = seat %d, want 0", row, got)
-		}
+func TestSeatsFor(t *testing.T) {
+	if got := SeatsFor(ModeSolo); got != 1 {
+		t.Errorf("SeatsFor(solo) = %d, want 1", got)
 	}
-
-	// Seat 0 opens: it takes the even rows.
-	wantFirstZero := []int{0, 1, 0, 1, 0, 1}
-	for row, want := range wantFirstZero {
-		if got := SeatForRow(ModeShared, 0, row); got != want {
-			t.Errorf("shared firstSeat=0 row %d = seat %d, want %d", row, got, want)
-		}
-	}
-
-	// Seat 1 opens: the whole sequence flips, which is what makes alternating
-	// the opener each round actually balance the match.
-	wantFirstOne := []int{1, 0, 1, 0, 1, 0}
-	for row, want := range wantFirstOne {
-		if got := SeatForRow(ModeShared, 1, row); got != want {
-			t.Errorf("shared firstSeat=1 row %d = seat %d, want %d", row, got, want)
-		}
-	}
-}
-
-func TestSeatsGetEqualTurns(t *testing.T) {
-	for _, first := range []int{0, 1} {
-		counts := map[int]int{}
-		for row := 0; row < MaxRows; row++ {
-			counts[SeatForRow(ModeShared, first, row)]++
-		}
-		if counts[0] != 3 || counts[1] != 3 {
-			t.Errorf("firstSeat=%d gave seats %v turns, want 3 each", first, counts)
-		}
+	if got := SeatsFor(ModeDuel); got != 2 {
+		t.Errorf("SeatsFor(duel) = %d, want 2", got)
 	}
 }
 

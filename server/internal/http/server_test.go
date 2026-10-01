@@ -167,26 +167,92 @@ func TestGuessValidation(t *testing.T) {
 	}
 }
 
-func TestSharedRoundRejectsOutOfTurnGuesses(t *testing.T) {
+func TestDuelBoardRejectsTheOtherSeat(t *testing.T) {
 	h := newTestServer(t)
-	_, created := do(t, h, http.MethodPost, "/api/rounds",
-		map[string]any{"mode": "shared", "firstSeat": 1})
-	id := created["id"].(string)
 
-	if created["turnSeat"].(float64) != 1 {
-		t.Fatalf("turnSeat = %v, want 1", created["turnSeat"])
+	_, run := do(t, h, http.MethodPost, "/api/runs", map[string]any{"mode": "duel"})
+	runID := run["id"].(string)
+
+	_, dealt := do(t, h, http.MethodPost, "/api/runs/"+runID+"/rounds", nil)
+	round := dealt["round"].(map[string]any)
+	roundID := round["id"].(string)
+
+	if round["seat"].(float64) != 0 {
+		t.Fatalf("first board went to seat %v, want 0", round["seat"])
 	}
 
-	rec, body := do(t, h, http.MethodPost, "/api/rounds/"+id+"/guesses",
-		map[string]any{"seat": 0, "guess": "crane"})
-	if rec.Code != http.StatusConflict {
-		t.Errorf("status = %d, want 409", rec.Code)
-	}
-	if body["code"] != "wrong_seat" {
-		t.Errorf("code = %v, want wrong_seat", body["code"])
+	rec, body := do(t, h, http.MethodPost, "/api/rounds/"+roundID+"/guesses",
+		map[string]any{"seat": 1, "guess": "crane"})
+	if rec.Code != http.StatusConflict || body["code"] != "wrong_seat" {
+		t.Errorf("guess from the other seat: %d %v, want 409 wrong_seat",
+			rec.Code, body["code"])
 	}
 }
 
+// The property a duel depends on: finishing your board must not show you the
+// word while your opponent still has to guess it.
+func TestDuelHidesTheWordFromTheSecondPlayer(t *testing.T) {
+	h := newTestServer(t)
+
+	_, run := do(t, h, http.MethodPost, "/api/runs", map[string]any{"mode": "duel"})
+	runID := run["id"].(string)
+
+	// Seat 0 burns their board out.
+	_, dealt := do(t, h, http.MethodPost, "/api/runs/"+runID+"/rounds", nil)
+	firstID := dealt["round"].(map[string]any)["id"].(string)
+
+	var last *httptest.ResponseRecorder
+	for i := 0; i < 6; i++ {
+		rec, body := do(t, h, http.MethodPost, "/api/rounds/"+firstID+"/guesses",
+			map[string]any{"seat": 0, "guess": "crane"})
+		last = rec
+		r := body
+		if nested, ok := body["round"].(map[string]any); ok {
+			r = nested
+		}
+		if r["state"] != "playing" {
+			break
+		}
+	}
+
+	if strings.Contains(last.Body.String(), `"answer"`) {
+		t.Fatalf("the first player was shown the word their opponent has yet to "+
+			"guess: %s", last.Body.String())
+	}
+
+	// Re-reading the finished board must stay silent too.
+	rec, _ := do(t, h, http.MethodGet, "/api/rounds/"+firstID, nil)
+	if strings.Contains(rec.Body.String(), `"answer"`) {
+		t.Fatalf("re-reading the finished board revealed the word: %s", rec.Body.String())
+	}
+
+	// Seat 1 plays the same word; now it may be shown.
+	_, dealt = do(t, h, http.MethodPost, "/api/runs/"+runID+"/rounds", nil)
+	second := dealt["round"].(map[string]any)
+	if second["seat"].(float64) != 1 {
+		t.Fatalf("second board went to seat %v, want 1", second["seat"])
+	}
+	secondID := second["id"].(string)
+
+	var final map[string]any
+	for i := 0; i < 6; i++ {
+		_, body := do(t, h, http.MethodPost, "/api/rounds/"+secondID+"/guesses",
+			map[string]any{"seat": 1, "guess": "crane"})
+		final = body
+		if nested, ok := body["round"].(map[string]any); ok {
+			final = nested
+		}
+		if final["state"] != "playing" {
+			break
+		}
+	}
+
+	answer, _ := final["answer"].(string)
+	if len(answer) != 5 {
+		t.Errorf("after both players finished, the word should be revealed; got %v",
+			final["answer"])
+	}
+}
 func TestHintsAreSpentAndCapped(t *testing.T) {
 	h := newTestServer(t)
 	_, created := do(t, h, http.MethodPost, "/api/rounds", nil)

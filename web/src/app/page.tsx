@@ -53,7 +53,7 @@ export default function Home() {
         names[1].trim() || seats.names[1],
       ],
     });
-    router.push("/play/shared");
+    router.push("/play/duel");
   }
 
   return (
@@ -102,8 +102,9 @@ export default function Home() {
             </div>
 
             <p className="seats-note">
-              You take turns on the same board — one row each. Whoever lands the
-              word takes the round.
+              You each get the same word and your own board. Whoever needs
+              fewer guesses takes it — and nobody sees the word until you have
+              both played it.
             </p>
 
             <button className="button" type="submit">
@@ -126,7 +127,7 @@ export default function Home() {
 
             <button className="choice choice--accent" onClick={openShared}>
               <span className="choice-title">Two of us</span>
-              <span className="choice-sub">One phone, alternating turns</span>
+              <span className="choice-sub">Same word, separate boards</span>
             </button>
           </div>
         )}

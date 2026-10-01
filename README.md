@@ -29,11 +29,24 @@ tells you that you turned up; this tells you what you met.
 Open on a home screen rather than a board: the mode choice is the point, and a
 game that drops you straight onto a grid never offers it.
 
-Shared mode is two people and one phone. You alternate rows on the same board,
-each seat has a colour and a name, and the row being typed into carries it —
-so a glance tells you whether the phone is waiting on you. Names live on the
-device, not in an account: needing to sign in before you can pass a phone back
-and forth would ruin the thing it is for.
+Two-player is a **duel**: the same word, a board each, and neither of you can
+see the other's. Fewer guesses takes it.
+
+A shared board came first and was wrong. With both players looking at the same
+clues there is no hidden information, so the only thing a score could measure
+was whose turn it happened to be when the board gave the word away — and
+crediting whoever lands it rewards staying quiet when you spot it on your
+partner's turn, which is a poor thing to ask of two people sitting next to each
+other. Separate boards restore the hidden information that makes a result worth
+comparing.
+
+The word is withheld until **both** of you have played it. Finishing first
+tells you nothing — not the word, not a letter of it — and the handoff screen
+covers the board outright rather than dimming it, because a blurred grid still
+shows which positions came back green.
+
+Names live on the device, not in an account: needing to sign in before you can
+pass a phone back and forth would ruin the thing it is for.
 
 ## Layout
 

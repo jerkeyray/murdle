@@ -25,7 +25,7 @@ function localDate(): string {
 }
 
 export type Mark = "absent" | "present" | "hit";
-export type Mode = "solo" | "shared";
+export type Mode = "solo" | "duel";
 export type RoundState = "playing" | "won" | "lost";
 
 export interface Row {
@@ -51,7 +51,11 @@ export interface Pack {
 export interface Run {
   id: string;
   mode: Mode;
+  /** Boards dealt in total — two per word in a duel. */
   length: number;
+  /** Words in the run, regardless of how many boards each produces. */
+  wordCount: number;
+  seats: number;
   started: number;
   finished: number;
   complete: boolean;
@@ -68,15 +72,15 @@ export interface Round {
   state: RoundState;
   wordLength: number;
   maxRows: number;
-  seats: number;
-  firstSeat: number;
-  /** Whose turn it is, or -1 once the round is over. */
+  /** Whose board this is. In a duel each player gets their own. */
+  seat: number;
+  /** The owning seat while the board is live, or -1 once it is over. */
   turnSeat: number;
   rows: Row[];
-  hintsUsed: number[];
-  /** Row index the round was solved on, or -1. */
+  hintsUsed: number;
+  /** Row index the board was solved on, or -1. */
   solvedRow: number;
-  scores: number[];
+  points: number;
   /** Only ever present once the round has finished. */
   answer?: string;
   /** Rides along with `answer`, for the same reason. */

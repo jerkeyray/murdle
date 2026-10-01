@@ -46,7 +46,7 @@ func TestRoundHappyPath(t *testing.T) {
 	if r.Reveal() != "salve" {
 		t.Errorf("Reveal() = %q, want salve once the round is over", r.Reveal())
 	}
-	if got := r.Scores()[0]; got != 5 {
+	if got := r.Points(); got != 5 {
 		t.Errorf("score for solving on row 1 = %d, want 5", got)
 	}
 }
@@ -64,79 +64,12 @@ func TestRoundRunsOutOfRows(t *testing.T) {
 	if err := r.Guess(0, "crane", alwaysWord); err != ErrRoundOver {
 		t.Errorf("guessing past the end = %v, want ErrRoundOver", err)
 	}
-	if got := r.Scores()[0]; got != 0 {
+	if got := r.Points(); got != 0 {
 		t.Errorf("score for an unsolved round = %d, want 0", got)
 	}
 }
-
-func TestRoundValidatesGuesses(t *testing.T) {
-	r := NewRound("r1", ModeSolo, 0, "salve")
-	isWord := onlyWords("crane")
-
-	if err := r.Guess(0, "four", isWord); err != ErrWrongLength {
-		t.Errorf("short guess = %v, want ErrWrongLength", err)
-	}
-	if err := r.Guess(0, "zzzzz", isWord); err != ErrNotAWord {
-		t.Errorf("non-word = %v, want ErrNotAWord", err)
-	}
-	if len(r.Rows) != 0 {
-		t.Errorf("rejected guesses consumed %d rows, want 0", len(r.Rows))
-	}
-}
-
-func TestSharedRoundAlternatesSeats(t *testing.T) {
-	r := NewRound("r1", ModeShared, 0, "salve")
-
-	if got := r.TurnSeat(); got != 0 {
-		t.Fatalf("opening turn = seat %d, want 0", got)
-	}
-	if err := r.Guess(1, "crane", alwaysWord); err != ErrWrongSeat {
-		t.Fatalf("out-of-turn guess = %v, want ErrWrongSeat", err)
-	}
-
-	if err := r.Guess(0, "crane", alwaysWord); err != nil {
-		t.Fatalf("seat 0 guess: %v", err)
-	}
-	if got := r.TurnSeat(); got != 1 {
-		t.Fatalf("turn after seat 0 = seat %d, want 1", got)
-	}
-	if err := r.Guess(1, "moist", alwaysWord); err != nil {
-		t.Fatalf("seat 1 guess: %v", err)
-	}
-	if got := r.TurnSeat(); got != 0 {
-		t.Errorf("turn after seat 1 = seat %d, want 0", got)
-	}
-}
-
-func TestSharedRoundHonoursFirstSeat(t *testing.T) {
-	r := NewRound("r1", ModeShared, 1, "salve")
-	if got := r.TurnSeat(); got != 1 {
-		t.Errorf("opening turn with firstSeat=1 = seat %d, want 1", got)
-	}
-}
-
-// Only the seat that lands the winning guess scores for the solve — the other
-// seat gets nothing for that round even though they helped narrow it down.
-func TestSharedRoundScoresOnlyTheSolver(t *testing.T) {
-	r := NewRound("r1", ModeShared, 0, "salve")
-	if err := r.Guess(0, "crane", alwaysWord); err != nil {
-		t.Fatal(err)
-	}
-	if err := r.Guess(1, "salve", alwaysWord); err != nil {
-		t.Fatal(err)
-	}
-
-	scores := r.Scores()
-	if scores[1] != 5 {
-		t.Errorf("solver (seat 1, row 1) scored %d, want 5", scores[1])
-	}
-	if scores[0] != 0 {
-		t.Errorf("non-solver scored %d, want 0", scores[0])
-	}
-}
-
 func TestTurnSeatIsClosedOnceTheRoundEnds(t *testing.T) {
-	r := NewRound("r1", ModeShared, 0, "salve")
+	r := NewRound("r1", ModeDuel, 0, "salve")
 	if err := r.Guess(0, "salve", alwaysWord); err != nil {
 		t.Fatal(err)
 	}
@@ -146,7 +79,7 @@ func TestTurnSeatIsClosedOnceTheRoundEnds(t *testing.T) {
 }
 
 func TestHints(t *testing.T) {
-	r := NewRound("r1", ModeShared, 0, "salve")
+	r := NewRound("r1", ModeSolo, 0, "salve")
 
 	// Each hint reveals the next position the player does not yet know, left
 	// to right, and never repeats one.
@@ -171,15 +104,6 @@ func TestHints(t *testing.T) {
 		t.Errorf("fourth hint = %v, want ErrNoHintsLeft", err)
 	}
 
-	// Hints are per seat, so the other player still has their full ladder —
-	// and picks up where the revealed positions left off.
-	got, err := r.UseHint(1, 3)
-	if err != nil {
-		t.Fatalf("other seat's first hint: %v", err)
-	}
-	if got.Position != 3 {
-		t.Errorf("other seat's hint revealed position %d, want 3", got.Position)
-	}
 }
 
 // A hint must not sell back a position the player already worked out.
@@ -216,20 +140,31 @@ func TestHintRefusedWhenEveryPositionIsKnown(t *testing.T) {
 	}
 }
 
-func TestHintsCostTheSeatThatUsedThem(t *testing.T) {
-	r := NewRound("r1", ModeShared, 0, "salve")
-	if _, err := r.UseHint(0, 3); err != nil {
+func TestHintsCostTheBoardThatUsedThem(t *testing.T) {
+	r := NewRound("r1", ModeDuel, 1, "salve")
+	if _, err := r.UseHint(1, 3); err != nil {
 		t.Fatal(err)
 	}
-	if err := r.Guess(0, "salve", alwaysWord); err != nil {
+	if err := r.Guess(1, "salve", alwaysWord); err != nil {
 		t.Fatal(err)
 	}
 
-	scores := r.Scores()
-	if scores[0] != 5 {
-		t.Errorf("solved row 0 (6 pts) minus one hint = %d, want 5", scores[0])
+	if got := r.Points(); got != 5 {
+		t.Errorf("solved row 0 (6 pts) minus one hint = %d, want 5", got)
 	}
-	if scores[1] != 0 {
-		t.Errorf("seat that used no hints scored %d, want 0", scores[1])
+}
+
+// A board has one owner, so the other player cannot touch it.
+func TestRoundRejectsTheOtherSeat(t *testing.T) {
+	r := NewRound("r1", ModeDuel, 1, "salve")
+
+	if got := r.TurnSeat(); got != 1 {
+		t.Fatalf("TurnSeat() = %d, want 1", got)
+	}
+	if err := r.Guess(0, "crane", alwaysWord); err != ErrWrongSeat {
+		t.Errorf("guess from the other seat = %v, want ErrWrongSeat", err)
+	}
+	if _, err := r.UseHint(0, 3); err != ErrWrongSeat {
+		t.Errorf("hint from the other seat = %v, want ErrWrongSeat", err)
 	}
 }

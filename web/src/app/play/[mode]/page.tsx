@@ -30,7 +30,7 @@ export default function PlayPage() {
   }, [mode, router]);
 
   const game = useGame(mode ?? "solo");
-  const { round } = game;
+  const { round, run } = game;
 
   if (!mode || !round) {
     return (
@@ -40,14 +40,22 @@ export default function PlayPage() {
     );
   }
 
-  const shared = round.mode === "shared";
-  const turnSeat = round.turnSeat;
+  const duel = round.mode === "duel";
+
+  // Which word of the run this is. In a duel two boards share a word, so this
+  // counts words rather than boards — the specimen number and the turn band
+  // must not disagree about where you are.
+  const seats = run?.seats ?? 1;
+  const wordNumber = run ? Math.floor((Math.max(run.started, 1) - 1) / seats) + 1 : 1;
+  // A board belongs to one player for its whole life, so this is who is
+  // holding the phone right now.
+  const seat = round.seat;
 
   return (
     <main className="app">
       <header className="topbar">
         <Link href="/" className="specimen specimen--link">
-          &#8470;&nbsp;{String(game.run?.started ?? 1).padStart(2, "0")}
+          &#8470;&nbsp;{String(wordNumber).padStart(2, "0")}
         </Link>
         <h1 className="wordmark">Murdle</h1>
         <Settings />
@@ -63,15 +71,20 @@ export default function PlayPage() {
           maxRows={round.maxRows}
           revealingRow={game.revealingRow}
           shake={game.shake}
-          // Only tint the active row when there is someone to tell apart.
-          activeSeat={shared ? turnSeat : null}
+          // Only tint when there is someone to tell apart.
+          activeSeat={duel ? seat : null}
         />
       </div>
 
       <div className="rule" />
 
-      {shared && turnSeat >= 0 ? (
-        <TurnBand seat={turnSeat} name={names[turnSeat] ?? `Player ${turnSeat + 1}`} />
+      {duel ? (
+        <TurnBand
+          seat={seat}
+          name={names[seat] ?? `Player ${seat + 1}`}
+          word={wordNumber}
+          of={run?.wordCount ?? 5}
+        />
       ) : null}
 
       <Keyboard
@@ -103,7 +116,7 @@ export default function PlayPage() {
             round={round}
             run={game.run}
             names={names}
-            onNextWord={game.nextWord}
+            onNextBoard={game.nextWord}
             onNewRun={game.newRun}
           />
         ) : null}

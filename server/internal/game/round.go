@@ -49,11 +49,14 @@ type HintReveal struct {
 type Round struct {
 	ID string
 	// RunID is the themed run this round belongs to, or "" for a one-off.
-	RunID     string
-	Mode      Mode
-	FirstSeat int
-	Rows      []Row
-	HintsUsed [2]int
+	RunID string
+	Mode  Mode
+	// Seat is whose board this is. In a duel each player gets their own round
+	// on the same word, so a round always belongs to exactly one person.
+	Seat int
+	Rows []Row
+	// HintsUsed counts the tiers this player has spent on their own board.
+	HintsUsed int
 	SolvedRow int
 	State     State
 	CreatedAt time.Time
@@ -65,13 +68,13 @@ type Round struct {
 	hinted map[int]bool
 }
 
-// NewRound starts a round on the given answer.
-func NewRound(id string, mode Mode, firstSeat int, answer string) *Round {
+// NewRound starts a round on the given answer, owned by seat.
+func NewRound(id string, mode Mode, seat int, answer string) *Round {
 	now := time.Now().UTC()
 	return &Round{
 		ID:        id,
 		Mode:      mode,
-		FirstSeat: firstSeat,
+		Seat:      seat,
 		Rows:      make([]Row, 0, MaxRows),
 		SolvedRow: -1,
 		State:     StatePlaying,
@@ -86,20 +89,13 @@ func NewRound(id string, mode Mode, firstSeat int, answer string) *Round {
 // once the round is over; Reveal does that check for them.
 func (r *Round) Answer() string { return r.answer }
 
-// TurnSeat is whose turn it is now, or -1 once the round is over.
+// TurnSeat is whose turn it is, or -1 once the round is over. A board has one
+// owner, so this is their seat for as long as the round is live.
 func (r *Round) TurnSeat() int {
 	if r.State != StatePlaying {
 		return -1
 	}
-	return SeatForRow(r.Mode, r.FirstSeat, len(r.Rows))
-}
-
-// Seats is how many players this round has.
-func (r *Round) Seats() int {
-	if r.Mode == ModeSolo {
-		return 1
-	}
-	return 2
+	return r.Seat
 }
 
 // Guess validates and applies a guess from seat, advancing the round.
@@ -147,10 +143,10 @@ func (r *Round) UseHint(seat, maxTiers int) (HintReveal, error) {
 	if r.State != StatePlaying {
 		return HintReveal{}, ErrRoundOver
 	}
-	if seat < 0 || seat >= len(r.HintsUsed) {
+	if seat != r.Seat {
 		return HintReveal{}, ErrWrongSeat
 	}
-	if r.HintsUsed[seat] >= maxTiers {
+	if r.HintsUsed >= maxTiers {
 		return HintReveal{}, ErrNoHintsLeft
 	}
 
@@ -161,8 +157,8 @@ func (r *Round) UseHint(seat, maxTiers int) (HintReveal, error) {
 		return HintReveal{}, ErrNoHintsLeft
 	}
 
-	tier := r.HintsUsed[seat]
-	r.HintsUsed[seat]++
+	tier := r.HintsUsed
+	r.HintsUsed++
 	r.hinted[pos] = true
 	r.UpdatedAt = time.Now().UTC()
 
@@ -193,25 +189,13 @@ func (r *Round) unrevealedPosition() (int, string, bool) {
 	return 0, "", false
 }
 
-// Scores is what each seat has earned. Only the seat that actually landed the
-// winning guess scores for solving; both pay for their own hints.
-func (r *Round) Scores() []int {
-	scores := make([]int, r.Seats())
-
-	solverSeat := -1
-	if r.State == StateWon && r.SolvedRow >= 0 && r.SolvedRow < len(r.Rows) {
-		solverSeat = r.Rows[r.SolvedRow].Seat
+// Points is what this board earned: the early-solve curve, less any hints.
+func (r *Round) Points() int {
+	solvedRow := -1
+	if r.State == StateWon {
+		solvedRow = r.SolvedRow
 	}
-
-	for seat := range scores {
-		solvedRow := -1
-		if seat == solverSeat {
-			solvedRow = r.SolvedRow
-		}
-		scores[seat] = Score(solvedRow, r.HintsUsed[seat])
-	}
-
-	return scores
+	return Score(solvedRow, r.HintsUsed)
 }
 
 // Reveal returns the answer once the round is over, and "" while it is still in

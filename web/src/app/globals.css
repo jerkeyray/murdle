@@ -2150,3 +2150,46 @@ button {
 .plate .name-form {
   margin-top: 4px;
 }
+
+/* ---------------------------------------------------------------------------
+   Handing the phone over
+
+   Shown when the first player finishes a duel board. It says nothing about the
+   word — not whether it fell quickly, not a letter of it — because the next
+   person is about to guess it blind.
+--------------------------------------------------------------------------- */
+
+.handoff {
+  text-align: center;
+  padding: 6px 0 2px;
+}
+
+.handoff-title {
+  margin: 10px 0 0;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(2rem, 11vw, 2.6rem);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+}
+
+.handoff-line {
+  margin: 10px auto 0;
+  max-width: 22rem;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+/* A handoff covers the board outright.
+   Dimming it is not enough: the next player is about to guess this word, and
+   a blurred grid still shows which positions came back green. */
+.scrim--blind {
+  background: var(--bg);
+  backdrop-filter: none;
+  place-items: center;
+}
+
+.scrim--blind .entry {
+  box-shadow: none;
+}

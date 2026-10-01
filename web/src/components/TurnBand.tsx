@@ -5,18 +5,20 @@ import { motion } from "motion/react";
 interface TurnBandProps {
   seat: number;
   name: string;
+  /** Which word of the run this is, and how many there are. */
+  word: number;
+  of: number;
 }
 
 /**
- * Whose turn it is.
+ * Whose board this is.
  *
- * The single most important thing on a shared board. Someone glancing down
- * mid-conversation has to know in under a second whether the phone is waiting
- * on them, so this is named as well as coloured — colour alone is never the
- * only signal — and it moves when the turn changes, because a thing that moves
- * catches an eye that was somewhere else.
+ * In a duel the phone changes hands between every board, so the first thing
+ * anyone needs on picking it up is confirmation that this one is theirs. Named
+ * as well as coloured — colour alone is never the only signal — and keyed on
+ * the seat so it replays its animation on every handover.
  */
-export function TurnBand({ seat, name }: TurnBandProps) {
+export function TurnBand({ seat, name, word, of }: TurnBandProps) {
   return (
     <div className="turn" data-seat={seat}>
       <motion.div
@@ -30,7 +32,9 @@ export function TurnBand({ seat, name }: TurnBandProps) {
       >
         <span className="turn-dot" aria-hidden />
         <span className="turn-name">{name}</span>
-        <span className="turn-verb">to play</span>
+        <span className="turn-verb">
+          word {word} of {of}
+        </span>
       </motion.div>
     </div>
   );

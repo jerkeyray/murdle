@@ -11,23 +11,27 @@ const MaxRows = 6
 type Mode string
 
 const (
-	// ModeSolo is one player taking every row.
+	// ModeSolo is one player, one board.
 	ModeSolo Mode = "solo"
-	// ModeShared is two players on one board alternating rows: the first player
-	// takes rows 0, 2, 4 and the second takes rows 1, 3, 5.
-	ModeShared Mode = "shared"
+	// ModeDuel is two players on the same word, each with their own board and
+	// neither able to see the other's.
+	//
+	// A shared board came first and was wrong: with both players looking at the
+	// same clues there is no hidden information, so the only thing a score
+	// could measure was whose turn it happened to be when the board gave the
+	// word away — and crediting the player who lands it rewards staying quiet
+	// when you spot it on your partner's turn, which is a poor thing to ask of
+	// two people sitting next to each other. Separate boards restore the hidden
+	// information that makes a result worth comparing.
+	ModeDuel Mode = "duel"
 )
 
-// SeatForRow returns which seat (0 or 1) plays the given row index.
-//
-// In solo mode there is only ever seat 0. In shared mode seats alternate, and
-// firstSeat decides who opens — matches flip it every round so that the
-// information disadvantage of going first evens out over a match.
-func SeatForRow(mode Mode, firstSeat, row int) int {
-	if mode == ModeSolo {
-		return 0
+// SeatsFor is how many players a mode involves.
+func SeatsFor(mode Mode) int {
+	if mode == ModeDuel {
+		return 2
 	}
-	return (firstSeat + row) % 2
+	return 1
 }
 
 // Points is what solving on the given row index is worth.

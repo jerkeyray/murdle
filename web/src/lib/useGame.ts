@@ -108,7 +108,7 @@ export function useGame(mode: Mode = "solo") {
     }
   }, [mode, clearBoard, flash]);
 
-  /** Deals the next word of the current run. */
+  /** Deals the next board — the next word, or your opponent's turn at this one. */
   const nextWord = useCallback(async () => {
     if (!run || run.complete) return;
 
@@ -119,7 +119,7 @@ export function useGame(mode: Mode = "solo") {
       setRun(dealt.run);
       setRound(dealt.round);
     } catch (err) {
-      flash(err instanceof ApiError ? err.message : "Could not deal the next word");
+      flash(err instanceof ApiError ? err.message : "Could not deal the next board");
     } finally {
       setBusy(false);
     }
