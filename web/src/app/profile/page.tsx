@@ -18,6 +18,7 @@ import { clearToken } from "@/lib/token";
 import { Alphabet } from "@/components/Alphabet";
 import { Preferences } from "@/components/Preferences";
 import { StreakCalendar } from "@/components/StreakCalendar";
+import { BackButton } from "@/components/BackButton";
 
 type Tab = "collection" | "kept" | "friends";
 
@@ -85,9 +86,8 @@ export default function ProfilePage() {
 
   const head = (
     <header className="sheet-head">
-      <Link href="/" className="label sheet-back">
-        Back
-      </Link>
+      <BackButton href="/" />
+      <h1 className="sheet-title">Your lexicon</h1>
     </header>
   );
 

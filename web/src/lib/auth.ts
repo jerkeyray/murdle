@@ -1,4 +1,5 @@
 import { betterAuth } from "better-auth";
+import type { BetterAuthOptions } from "better-auth";
 import { jwt } from "better-auth/plugins";
 import { Pool } from "pg";
 
@@ -14,6 +15,25 @@ import { Pool } from "pg";
  * and Go's migrations stay out of them; Go's `players` table references
  * `"user".id` and that is the only crossing point.
  */
+/**
+ * Google is only offered when it is actually configured.
+ *
+ * Better Auth will happily register a provider with undefined credentials and
+ * then fail at the redirect, which looks like a broken app rather than an
+ * unfinished setup. Leaving it out means the button simply is not there.
+ */
+const google = process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET
+  ? {
+      google: {
+        clientId: process.env.GOOGLE_CLIENT_ID,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      },
+    }
+  : undefined;
+
+/** Whether the sign-in screen should offer Google. */
+export const googleEnabled = google !== undefined;
+
 export const auth = betterAuth({
   // The pooled connection: this runs per request, which is exactly what
   // Neon's pooler is for. Migrations use the direct URL instead.
@@ -37,5 +57,7 @@ export const auth = betterAuth({
     updateAge: 60 * 60 * 24,
   },
 
+  socialProviders: google,
+
   plugins: [jwt()],
-});
+} satisfies BetterAuthOptions);

@@ -76,6 +76,17 @@ make web   # Next.js app :3000
 default; override with `NEXT_PUBLIC_API_URL`. The API allows
 `http://localhost:3000` by default; override with `ALLOWED_ORIGINS`.
 
+### Google sign-in
+
+Optional, and the button stays hidden until it is configured — a Google button
+that fails at the redirect is worse than no Google button.
+
+In Google Cloud Console, create an OAuth client ID of type *Web application*
+and set the authorised redirect URI to exactly
+`http://localhost:3000/api/auth/callback/google`. Put the client id and secret
+in `web/.env.local` as `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET`, and
+restart the web app.
+
 Copy `.env.example` to `web/.env.local` and `server/.env` and fill in a Neon
 connection string. Without one the game still runs — rounds live in memory and
 the word pool is embedded — you just get no accounts or history. Go applies its
