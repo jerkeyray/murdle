@@ -1,0 +1,48 @@
+# The Go API. Deploy from this directory with `fly deploy`.
+#
+# Secrets are NOT set here — `fly secrets set` keeps them out of the repo:
+#   fly secrets set DATABASE_URL='<neon pooled url>'
+#
+# DATABASE_URL should be the pooled Neon string. Migrations run at startup and
+# the pooler handles them fine at this size; the direct string is only needed
+# if a future migration takes a session-level lock.
+
+app = "wordle-api"
+
+# Mumbai, because the phone talks to this API on every guess while the database
+# is only touched when a round ends or a profile loads. Neon sits in us-east-2,
+# so those few queries pay ~220ms from here — the right side of the trade when
+# the alternative is paying it on every guess instead. If history ever feels
+# slow, the fix is a Neon project nearer to here, not an API nearer to Neon.
+primary_region = "bom"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  PORT = "8080"
+  # Where Go fetches the JWKS to verify Better Auth's tokens, and the only
+  # origin allowed to call this API.
+  AUTH_BASE_URL = "https://wordle.jerkeyray.com"
+  ALLOWED_ORIGINS = "https://wordle.jerkeyray.com"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  # The API holds no in-memory state that matters across requests beyond live
+  # rounds, so it can scale to zero between sessions. A cold start costs a
+  # second on the first word of a run.
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0
+
+  [[http_service.checks]]
+    interval = "30s"
+    timeout = "5s"
+    grace_period = "10s"
+    method = "GET"
+    path = "/api/health"
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "256mb"
