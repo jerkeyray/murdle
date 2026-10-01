@@ -9,69 +9,8 @@ import (
 
 // rowView is one played row as the client sees it.
 type rowView struct {
-	Seat  int      `json:"seat"`
 	Guess string   `json:"guess"`
 	Marks []string `json:"marks"`
-}
-
-// roundView is the whole client-visible state of a round.
-//
-// There is deliberately no field for the answer while a round is in play.
-// Answer is populated only from Round.Reveal, which returns "" until the round
-// is over, so the hidden word cannot leak by someone forgetting a check here.
-type roundView struct {
-	ID         string `json:"id"`
-	Mode       string `json:"mode"`
-	State      string `json:"state"`
-	WordLength int    `json:"wordLength"`
-	MaxRows    int    `json:"maxRows"`
-	// Seat owns this board. In a duel each player gets their own.
-	Seat      int       `json:"seat"`
-	TurnSeat  int       `json:"turnSeat"`
-	Rows      []rowView `json:"rows"`
-	HintsUsed int       `json:"hintsUsed"`
-	SolvedRow int       `json:"solvedRow"`
-	Points    int       `json:"points"`
-	Answer    string    `json:"answer,omitempty"`
-	// Entry is the definition and note for the answer, present only once the
-	// round is over. It rides along with Answer for the same reason.
-	Entry *entryView `json:"entry,omitempty"`
-}
-
-// newRoundView renders a board.
-//
-// revealAnswer is decided by the caller, not here, because in a duel it is a
-// question about the run rather than about this board: the first player must
-// not be shown the word while the second still has to guess it blind.
-func newRoundView(r *game.Round, revealAnswer bool) roundView {
-	rows := make([]rowView, len(r.Rows))
-	for i, row := range r.Rows {
-		marks := make([]string, len(row.Marks))
-		for j, m := range row.Marks {
-			marks[j] = m.String()
-		}
-		rows[i] = rowView{Seat: row.Seat, Guess: row.Guess, Marks: marks}
-	}
-
-	v := roundView{
-		ID:         r.ID,
-		Mode:       string(r.Mode),
-		State:      string(r.State),
-		WordLength: game.WordLength,
-		MaxRows:    game.MaxRows,
-		Seat:       r.Seat,
-		TurnSeat:   r.TurnSeat(),
-		Rows:       rows,
-		HintsUsed:  r.HintsUsed,
-		SolvedRow:  r.SolvedRow,
-		Points:     r.Points(),
-	}
-
-	if revealAnswer {
-		v.Answer = r.Reveal()
-	}
-
-	return v
 }
 
 // entryView is what the round taught you. Populated only once the round is
@@ -90,39 +29,72 @@ type packView struct {
 	Blurb string `json:"blurb"`
 }
 
+// roundView is the whole client-visible state of a round.
+//
+// There is deliberately no field for the answer while a round is in play.
+// Answer is populated from Round.Reveal, which returns "" until the round is
+// over, so the hidden word cannot leak by someone forgetting a check here.
+type roundView struct {
+	ID         string    `json:"id"`
+	State      string    `json:"state"`
+	WordLength int       `json:"wordLength"`
+	MaxRows    int       `json:"maxRows"`
+	Rows       []rowView `json:"rows"`
+	HintsUsed  int       `json:"hintsUsed"`
+	SolvedRow  int       `json:"solvedRow"`
+	Points     int       `json:"points"`
+	Answer     string    `json:"answer,omitempty"`
+	// Entry rides along with Answer, for the same reason.
+	Entry *entryView `json:"entry,omitempty"`
+}
+
+// newRoundView renders a round. The answer appears only once it is over.
+func newRoundView(r *game.Round) roundView {
+	rows := make([]rowView, len(r.Rows))
+	for i, row := range r.Rows {
+		marks := make([]string, len(row.Marks))
+		for j, m := range row.Marks {
+			marks[j] = m.String()
+		}
+		rows[i] = rowView{Guess: row.Guess, Marks: marks}
+	}
+
+	return roundView{
+		ID:         r.ID,
+		State:      string(r.State),
+		WordLength: game.WordLength,
+		MaxRows:    game.MaxRows,
+		Rows:       rows,
+		HintsUsed:  r.HintsUsed,
+		SolvedRow:  r.SolvedRow,
+		Points:     r.Points(),
+		Answer:     r.Reveal(),
+	}
+}
+
 // runView is the client-visible state of a run.
 //
 // There is deliberately no field for the pack id or title while the run is in
-// progress. Pack is populated from a single guarded branch in newRunView, so
-// the theme cannot leak by someone forgetting a check at a call site.
+// progress. Pack is populated from a single guarded branch below, so the theme
+// cannot leak by someone forgetting a check at a call site.
 type runView struct {
-	ID   string `json:"id"`
-	Mode string `json:"mode"`
-	// Length counts boards; WordCount counts words. They differ in a duel,
-	// where every word is played twice.
-	Length    int       `json:"length"`
-	WordCount int       `json:"wordCount"`
-	Seats     int       `json:"seats"`
-	Started   int       `json:"started"`
-	Finished  int       `json:"finished"`
-	Complete  bool      `json:"complete"`
-	Totals    []int     `json:"totals"`
-	Winner    int       `json:"winner"`
-	Pack      *packView `json:"pack,omitempty"`
+	ID       string    `json:"id"`
+	Length   int       `json:"length"`
+	Started  int       `json:"started"`
+	Finished int       `json:"finished"`
+	Complete bool      `json:"complete"`
+	Points   int       `json:"points"`
+	Pack     *packView `json:"pack,omitempty"`
 }
 
 func newRunView(r *game.Run, pool *words.Pool) runView {
 	v := runView{
-		ID:        r.ID,
-		Mode:      string(r.Mode),
-		Length:    r.Length(),
-		WordCount: r.WordCount(),
-		Seats:     r.Seats(),
-		Started:   r.Started(),
-		Finished:  r.Finished,
-		Complete:  r.Complete(),
-		Totals:    r.Totals,
-		Winner:    r.Winner(),
+		ID:       r.ID,
+		Length:   r.Length(),
+		Started:  r.Started(),
+		Finished: r.Finished,
+		Complete: r.Complete(),
+		Points:   r.Points,
 	}
 
 	if r.Complete() {

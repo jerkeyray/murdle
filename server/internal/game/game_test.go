@@ -97,15 +97,6 @@ func TestSolved(t *testing.T) {
 	}
 }
 
-func TestSeatsFor(t *testing.T) {
-	if got := SeatsFor(ModeSolo); got != 1 {
-		t.Errorf("SeatsFor(solo) = %d, want 1", got)
-	}
-	if got := SeatsFor(ModeDuel); got != 2 {
-		t.Errorf("SeatsFor(duel) = %d, want 2", got)
-	}
-}
-
 func TestPoints(t *testing.T) {
 	want := []int{6, 5, 4, 3, 2, 1}
 	for row, w := range want {

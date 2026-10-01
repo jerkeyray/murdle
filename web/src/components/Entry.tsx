@@ -7,9 +7,7 @@ import { setWordSaved, type Round, type Run } from "@/lib/api";
 interface EntryProps {
   round: Round;
   run: Run | null;
-  /** Seat names, for a duel. */
-  names: [string, string];
-  onNextBoard: () => void;
+  onNextWord: () => void;
   onNewRun: () => void;
 }
 
@@ -21,11 +19,9 @@ interface EntryProps {
  * one it shows is decided by whether the server sent an answer, not by any
  * reasoning repeated here: the server owns that rule and this follows it.
  */
-export function Entry({ round, run, names, onNextBoard, onNewRun }: EntryProps) {
+export function Entry({ round, run, onNextWord, onNewRun }: EntryProps) {
   const won = round.state === "won";
-  const duel = round.mode === "duel";
   const entry = round.entry;
-  const revealed = Boolean(round.answer);
   const runComplete = run?.complete ?? false;
 
   const [kept, setKept] = useState(false);
@@ -44,14 +40,12 @@ export function Entry({ round, run, names, onNextBoard, onNewRun }: EntryProps) 
     }
   }
 
-  const nextName = names[round.seat === 0 ? 1 : 0];
-
   return (
     <motion.div
       // A handoff hides the board completely rather than dimming it. The
       // person picking the phone up is about to guess this word, and a blurred
       // grid still shows which positions came back green.
-      className={revealed ? "scrim" : "scrim scrim--blind"}
+      className="scrim"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -60,32 +54,13 @@ export function Entry({ round, run, names, onNextBoard, onNewRun }: EntryProps) 
       <motion.div
         className="entry"
         role="dialog"
-        aria-label={revealed ? "Word revealed" : "Board finished"}
+        aria-label="Round over"
         initial={{ y: 28, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: 28, opacity: 0 }}
         transition={{ type: "spring", stiffness: 380, damping: 32 }}
       >
-        {!revealed ? (
-          /* Handoff. Deliberately says nothing about the word — not whether it
-             was solved quickly, not a letter of it. */
-          <div className="handoff">
-            <span className="label">
-              {won ? `Solved in ${round.solvedRow + 1}` : "Out of guesses"}
-            </span>
-            <h2 className="handoff-title">{nextName}&rsquo;s go</h2>
-            <p className="handoff-line">
-              Same word, your own board. Hand the phone over before you look
-              too pleased with yourself.
-            </p>
-            <div className="entry-actions">
-              <button className="button" onClick={onNextBoard} autoFocus>
-                I&rsquo;m {nextName}
-              </button>
-            </div>
-          </div>
-        ) : (
-          <>
+        <>
             <div className="entry-head">
               <span className="label">
                 {won ? `Solved in ${round.solvedRow + 1}` : "Out of guesses"}
@@ -120,17 +95,6 @@ export function Entry({ round, run, names, onNextBoard, onNewRun }: EntryProps) 
               ))}
             </div>
 
-            {duel && run ? (
-              <div className="score">
-                {[0, 1].map((seat) => (
-                  <div className="score-seat" data-seat={seat} key={seat}>
-                    <span className="score-name">{names[seat]}</span>
-                    <span className="score-points">{run.totals[seat] ?? 0}</span>
-                  </div>
-                ))}
-              </div>
-            ) : null}
-
             <button
               className="keep"
               onClick={toggleKeep}
@@ -159,32 +123,19 @@ export function Entry({ round, run, names, onNextBoard, onNewRun }: EntryProps) 
                 <span className="label">The thread</span>
                 <h3 className="reveal-title">{run.pack.title}</h3>
                 <p className="reveal-blurb">{run.pack.blurb}</p>
-                {duel && run.winner >= 0 ? (
-                  <p className="reveal-winner">
-                    {names[run.winner]} takes it, {run.totals[run.winner]} to{" "}
-                    {run.totals[run.winner === 0 ? 1 : 0]}.
-                  </p>
-                ) : duel ? (
-                  <p className="reveal-winner">A draw. Again.</p>
-                ) : null}
               </motion.div>
             ) : null}
 
             <div className="entry-actions">
               <button
                 className="button"
-                onClick={runComplete ? onNewRun : onNextBoard}
+                onClick={runComplete ? onNewRun : onNextWord}
                 autoFocus
               >
-                {runComplete
-                  ? "New run"
-                  : duel
-                    ? `${nextName} starts`
-                    : "Next word"}
+                {runComplete ? "New run" : "Next word"}
               </button>
             </div>
-          </>
-        )}
+        </>
       </motion.div>
     </motion.div>
   );

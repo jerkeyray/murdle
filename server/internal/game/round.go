@@ -20,14 +20,12 @@ var (
 	ErrRoundOver     = errors.New("round is already over")
 	ErrWrongLength   = errors.New("guess is the wrong length")
 	ErrNotAWord      = errors.New("guess is not a word")
-	ErrWrongSeat     = errors.New("not this seat's turn")
 	ErrNoHintsLeft   = errors.New("no hints left")
 	ErrRoundNotFound = errors.New("round not found")
 )
 
 // Row is one submitted guess and how it scored.
 type Row struct {
-	Seat  int    `json:"seat"`
 	Guess string `json:"guess"`
 	Marks []Mark `json:"marks"`
 }
@@ -50,11 +48,7 @@ type Round struct {
 	ID string
 	// RunID is the themed run this round belongs to, or "" for a one-off.
 	RunID string
-	Mode  Mode
-	// Seat is whose board this is. In a duel each player gets their own round
-	// on the same word, so a round always belongs to exactly one person.
-	Seat int
-	Rows []Row
+	Rows  []Row
 	// HintsUsed counts the tiers this player has spent on their own board.
 	HintsUsed int
 	SolvedRow int
@@ -68,13 +62,11 @@ type Round struct {
 	hinted map[int]bool
 }
 
-// NewRound starts a round on the given answer, owned by seat.
-func NewRound(id string, mode Mode, seat int, answer string) *Round {
+// NewRound starts a round on the given answer.
+func NewRound(id, answer string) *Round {
 	now := time.Now().UTC()
 	return &Round{
 		ID:        id,
-		Mode:      mode,
-		Seat:      seat,
 		Rows:      make([]Row, 0, MaxRows),
 		SolvedRow: -1,
 		State:     StatePlaying,
@@ -89,25 +81,13 @@ func NewRound(id string, mode Mode, seat int, answer string) *Round {
 // once the round is over; Reveal does that check for them.
 func (r *Round) Answer() string { return r.answer }
 
-// TurnSeat is whose turn it is, or -1 once the round is over. A board has one
-// owner, so this is their seat for as long as the round is live.
-func (r *Round) TurnSeat() int {
-	if r.State != StatePlaying {
-		return -1
-	}
-	return r.Seat
-}
-
-// Guess validates and applies a guess from seat, advancing the round.
+// Guess validates and applies a guess, advancing the round.
 //
 // isWord is injected rather than imported so this package stays free of the
 // word list and remains trivially testable.
-func (r *Round) Guess(seat int, guess string, isWord func(string) bool) error {
+func (r *Round) Guess(guess string, isWord func(string) bool) error {
 	if r.State != StatePlaying {
 		return ErrRoundOver
-	}
-	if seat != r.TurnSeat() {
-		return ErrWrongSeat
 	}
 
 	guess = strings.ToLower(strings.TrimSpace(guess))
@@ -120,7 +100,7 @@ func (r *Round) Guess(seat int, guess string, isWord func(string) bool) error {
 
 	marks := MarkGuess(guess, r.answer)
 	row := len(r.Rows)
-	r.Rows = append(r.Rows, Row{Seat: seat, Guess: guess, Marks: marks})
+	r.Rows = append(r.Rows, Row{Guess: guess, Marks: marks})
 	r.UpdatedAt = time.Now().UTC()
 
 	switch {
@@ -134,17 +114,14 @@ func (r *Round) Guess(seat int, guess string, isWord func(string) bool) error {
 	return nil
 }
 
-// UseHint spends one of seat's hints and reveals a letter position.
+// UseHint spends a hint and reveals a letter position.
 //
-// Each seat gets at most maxTiers across the round, and each costs them a
-// point. A hint never repeats a position the player already knows, either from
-// a correct guess or from an earlier hint.
-func (r *Round) UseHint(seat, maxTiers int) (HintReveal, error) {
+// A round allows at most maxTiers, each costing a point. A hint never repeats
+// a position the player already knows, either from a correct guess or from an
+// earlier hint.
+func (r *Round) UseHint(maxTiers int) (HintReveal, error) {
 	if r.State != StatePlaying {
 		return HintReveal{}, ErrRoundOver
-	}
-	if seat != r.Seat {
-		return HintReveal{}, ErrWrongSeat
 	}
 	if r.HintsUsed >= maxTiers {
 		return HintReveal{}, ErrNoHintsLeft

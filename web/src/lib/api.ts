@@ -25,11 +25,9 @@ function localDate(): string {
 }
 
 export type Mark = "absent" | "present" | "hit";
-export type Mode = "solo" | "duel";
 export type RoundState = "playing" | "won" | "lost";
 
 export interface Row {
-  seat: number;
   guess: string;
   marks: Mark[];
 }
@@ -50,32 +48,21 @@ export interface Pack {
 
 export interface Run {
   id: string;
-  mode: Mode;
-  /** Boards dealt in total — two per word in a duel. */
+  /** Words in the run. */
   length: number;
-  /** Words in the run, regardless of how many boards each produces. */
-  wordCount: number;
-  seats: number;
   started: number;
   finished: number;
   complete: boolean;
-  totals: number[];
-  /** Leading seat on a finished run, or -1 for a draw or one still running. */
-  winner: number;
+  points: number;
   /** Only ever present once the run is complete. */
   pack?: Pack;
 }
 
 export interface Round {
   id: string;
-  mode: Mode;
   state: RoundState;
   wordLength: number;
   maxRows: number;
-  /** Whose board this is. In a duel each player gets their own. */
-  seat: number;
-  /** The owning seat while the board is live, or -1 once it is over. */
-  turnSeat: number;
   rows: Row[];
   hintsUsed: number;
   /** Row index the board was solved on, or -1. */
@@ -143,16 +130,10 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
   return res.json() as Promise<T>;
 }
 
-export function createRun(opts: {
-  mode: Mode;
-  excludePacks?: string[];
-}): Promise<Run> {
+export function createRun(opts: { excludePacks?: string[] } = {}): Promise<Run> {
   return request<Run>("/api/runs", {
     method: "POST",
-    body: JSON.stringify({
-      mode: opts.mode,
-      excludePacks: opts.excludePacks ?? [],
-    }),
+    body: JSON.stringify({ excludePacks: opts.excludePacks ?? [] }),
   });
 }
 
@@ -161,21 +142,6 @@ export function startRunRound(
   runId: string,
 ): Promise<{ round: Round; run: Run }> {
   return request(`/api/runs/${runId}/rounds`, { method: "POST" });
-}
-
-export function createRound(opts: {
-  mode: Mode;
-  firstSeat?: number;
-  exclude?: string[];
-}): Promise<Round> {
-  return request<Round>("/api/rounds", {
-    method: "POST",
-    body: JSON.stringify({
-      mode: opts.mode,
-      firstSeat: opts.firstSeat ?? 0,
-      exclude: opts.exclude ?? [],
-    }),
-  });
 }
 
 export function getRound(id: string): Promise<Round> {
@@ -191,25 +157,21 @@ export function getRound(id: string): Promise<Round> {
  */
 export async function submitGuess(
   id: string,
-  seat: number,
   guess: string,
 ): Promise<{ round: Round; run?: Run }> {
   const body = await request<Round | { round: Round; run: Run }>(
     `/api/rounds/${id}/guesses`,
-    { method: "POST", body: JSON.stringify({ seat, guess }) },
+    { method: "POST", body: JSON.stringify({ guess }) },
   );
 
   return "round" in body ? body : { round: body };
 }
 
+/** Spends a hint. Reveals a letter position, and costs a point. */
 export function useHint(
   id: string,
-  seat: number,
-): Promise<{ tier: number; round: Round }> {
-  return request(`/api/rounds/${id}/hints`, {
-    method: "POST",
-    body: JSON.stringify({ seat }),
-  });
+): Promise<{ tier: number; position: number; letter: string; round: Round }> {
+  return request(`/api/rounds/${id}/hints`, { method: "POST" });
 }
 
 /**

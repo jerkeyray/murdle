@@ -7,7 +7,6 @@ import {
   letterStates,
   startRunRound,
   submitGuess,
-  type Mode,
   type Round,
   type Run,
 } from "@/lib/api";
@@ -45,7 +44,7 @@ function rememberPack(title: string) {
   }
 }
 
-export function useGame(mode: Mode = "solo") {
+export function useGame() {
   const [run, setRun] = useState<Run | null>(null);
   const [round, setRound] = useState<Round | null>(null);
   const [draft, setDraft] = useState("");
@@ -97,7 +96,7 @@ export function useGame(mode: Mode = "solo") {
     setBusy(true);
     clearBoard();
     try {
-      const fresh = await createRun({ mode, excludePacks: loadPlayedPacks() });
+      const fresh = await createRun({ excludePacks: loadPlayedPacks() });
       const dealt = await startRunRound(fresh.id);
       setRun(dealt.run);
       setRound(dealt.round);
@@ -106,7 +105,7 @@ export function useGame(mode: Mode = "solo") {
     } finally {
       setBusy(false);
     }
-  }, [mode, clearBoard, flash]);
+  }, [clearBoard, flash]);
 
   /** Deals the next board — the next word, or your opponent's turn at this one. */
   const nextWord = useCallback(async () => {
@@ -136,24 +135,16 @@ export function useGame(mode: Mode = "solo") {
    * invocation's cleanup has already marked its result as cancelled, so if the
    * second invocation never subscribes, nothing is ever applied.
    */
-  const opening = useRef<{
-    mode: Mode;
-    promise: Promise<{ round: Round; run: Run }>;
-  } | null>(null);
+  const opening = useRef<Promise<{ round: Round; run: Run }> | null>(null);
 
   useEffect(() => {
     let cancelled = false;
 
-    if (opening.current?.mode !== mode) {
-      opening.current = {
-        mode,
-        promise: createRun({ mode, excludePacks: loadPlayedPacks() }).then(
-          (fresh) => startRunRound(fresh.id),
-        ),
-      };
-    }
+    opening.current ??= createRun({ excludePacks: loadPlayedPacks() }).then(
+      (fresh) => startRunRound(fresh.id),
+    );
 
-    opening.current.promise
+    opening.current
       .then((dealt) => {
         if (cancelled) return;
         setRun(dealt.run);
@@ -171,7 +162,7 @@ export function useGame(mode: Mode = "solo") {
     return () => {
       cancelled = true;
     };
-  }, [mode]);
+  }, []);
 
   const playable =
     round !== null && round.state === "playing" && !busy && revealingRow === null;
@@ -211,7 +202,7 @@ export function useGame(mode: Mode = "solo") {
 
     setBusy(true);
     try {
-      const result = await submitGuess(round.id, round.turnSeat, draft);
+      const result = await submitGuess(round.id, draft);
       const newRowIndex = result.round.rows.length - 1;
 
       setRound(result.round);

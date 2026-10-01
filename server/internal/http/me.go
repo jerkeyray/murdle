@@ -19,7 +19,6 @@ type profileView struct {
 	// us a legal name, which is not what anyone wants on a game they play with
 	// their girlfriend, so we ask instead of assuming.
 	NeedsName  bool   `json:"needsName"`
-	SeatColor  string `json:"seatColor"`
 	InviteCode string `json:"inviteCode"`
 	Streak     struct {
 		Current     int  `json:"current"`
@@ -86,7 +85,6 @@ func (s *Server) handleMe(w http.ResponseWriter, r *http.Request) {
 	var v profileView
 	v.DisplayName = p.DisplayName
 	v.NeedsName = p.DisplayName == ""
-	v.SeatColor = p.SeatColor
 	v.InviteCode = p.InviteCode
 	v.Streak.Current = streak.Current
 	v.Streak.Longest = streak.Longest

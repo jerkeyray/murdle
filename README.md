@@ -15,7 +15,7 @@ ends the app teaches you the one you just played.
 |---|---|---|
 | 0 | Game engine, word pool, API | Done |
 | 1 | Solo play + design system | Done |
-| 2 | Shared board pass-and-play | Done |
+| 2 | Two-player | Removed |
 | 3 | Themed runs, entries, word pipeline | Done |
 | 4 | Accounts, profile, streaks, friends | Done |
 | 5 | Two-device realtime (optional) | Planned |
@@ -29,24 +29,10 @@ tells you that you turned up; this tells you what you met.
 Open on a home screen rather than a board: the mode choice is the point, and a
 game that drops you straight onto a grid never offers it.
 
-Two-player is a **duel**: the same word, a board each, and neither of you can
-see the other's. Fewer guesses takes it.
-
-A shared board came first and was wrong. With both players looking at the same
-clues there is no hidden information, so the only thing a score could measure
-was whose turn it happened to be when the board gave the word away — and
-crediting whoever lands it rewards staying quiet when you spot it on your
-partner's turn, which is a poor thing to ask of two people sitting next to each
-other. Separate boards restore the hidden information that makes a result worth
-comparing.
-
-The word is withheld until **both** of you have played it. Finishing first
-tells you nothing — not the word, not a letter of it — and the handoff screen
-covers the board outright rather than dimming it, because a blurred grid still
-shows which positions came back green.
-
-Names live on the device, not in an account: needing to sign in before you can
-pass a phone back and forth would ruin the thing it is for.
+Solo only. A shared board and then a duel were both built and both removed —
+the shared board because scoring it rewarded staying quiet when you spotted the
+word on your partner's turn, and the duel because two people on one phone did
+not need a mode. Both are in the history if they are ever wanted back.
 
 ## Layout
 

@@ -18,7 +18,7 @@ func onlyWords(ws ...string) func(string) bool {
 }
 
 func TestRoundHappyPath(t *testing.T) {
-	r := NewRound("r1", ModeSolo, 0, "salve")
+	r := NewRound("r1", "salve")
 
 	if r.State != StatePlaying {
 		t.Fatalf("new round state = %q, want playing", r.State)
@@ -27,14 +27,14 @@ func TestRoundHappyPath(t *testing.T) {
 		t.Fatal("answer leaked while the round was still in play")
 	}
 
-	if err := r.Guess(0, "crane", alwaysWord); err != nil {
+	if err := r.Guess("crane", alwaysWord); err != nil {
 		t.Fatalf("first guess: %v", err)
 	}
 	if r.State != StatePlaying {
 		t.Fatalf("state after a wrong guess = %q, want playing", r.State)
 	}
 
-	if err := r.Guess(0, "salve", alwaysWord); err != nil {
+	if err := r.Guess("salve", alwaysWord); err != nil {
 		t.Fatalf("winning guess: %v", err)
 	}
 	if r.State != StateWon {
@@ -52,40 +52,40 @@ func TestRoundHappyPath(t *testing.T) {
 }
 
 func TestRoundRunsOutOfRows(t *testing.T) {
-	r := NewRound("r1", ModeSolo, 0, "salve")
+	r := NewRound("r1", "salve")
 	for i := 0; i < MaxRows; i++ {
-		if err := r.Guess(0, "crane", alwaysWord); err != nil {
+		if err := r.Guess("crane", alwaysWord); err != nil {
 			t.Fatalf("guess %d: %v", i, err)
 		}
 	}
 	if r.State != StateLost {
 		t.Fatalf("state after %d wrong guesses = %q, want lost", MaxRows, r.State)
 	}
-	if err := r.Guess(0, "crane", alwaysWord); err != ErrRoundOver {
+	if err := r.Guess("crane", alwaysWord); err != ErrRoundOver {
 		t.Errorf("guessing past the end = %v, want ErrRoundOver", err)
 	}
 	if got := r.Points(); got != 0 {
 		t.Errorf("score for an unsolved round = %d, want 0", got)
 	}
 }
-func TestTurnSeatIsClosedOnceTheRoundEnds(t *testing.T) {
-	r := NewRound("r1", ModeDuel, 0, "salve")
-	if err := r.Guess(0, "salve", alwaysWord); err != nil {
+func TestRoundClosesOnceSolved(t *testing.T) {
+	r := NewRound("r1", "salve")
+	if err := r.Guess("salve", alwaysWord); err != nil {
 		t.Fatal(err)
 	}
-	if got := r.TurnSeat(); got != -1 {
-		t.Errorf("TurnSeat() after the round ended = %d, want -1", got)
+	if r.State != StateWon {
+		t.Errorf("state after the answer = %q, want won", r.State)
 	}
 }
 
 func TestHints(t *testing.T) {
-	r := NewRound("r1", ModeSolo, 0, "salve")
+	r := NewRound("r1", "salve")
 
 	// Each hint reveals the next position the player does not yet know, left
 	// to right, and never repeats one.
 	wantLetters := []string{"s", "a", "l"}
 	for tier, wantLetter := range wantLetters {
-		got, err := r.UseHint(0, 3)
+		got, err := r.UseHint(3)
 		if err != nil {
 			t.Fatalf("hint %d: %v", tier, err)
 		}
@@ -100,7 +100,7 @@ func TestHints(t *testing.T) {
 		}
 	}
 
-	if _, err := r.UseHint(0, 3); err != ErrNoHintsLeft {
+	if _, err := r.UseHint(3); err != ErrNoHintsLeft {
 		t.Errorf("fourth hint = %v, want ErrNoHintsLeft", err)
 	}
 
@@ -108,14 +108,14 @@ func TestHints(t *testing.T) {
 
 // A hint must not sell back a position the player already worked out.
 func TestHintSkipsPositionsAlreadyGuessed(t *testing.T) {
-	r := NewRound("r1", ModeSolo, 0, "salve")
+	r := NewRound("r1", "salve")
 
 	// "slate" shares S at position 0 with the answer, so that is a hit.
-	if err := r.Guess(0, "slate", alwaysWord); err != nil {
+	if err := r.Guess("slate", alwaysWord); err != nil {
 		t.Fatal(err)
 	}
 
-	got, err := r.UseHint(0, 3)
+	got, err := r.UseHint(3)
 	if err != nil {
 		t.Fatalf("hint: %v", err)
 	}
@@ -129,42 +129,27 @@ func TestHintSkipsPositionsAlreadyGuessed(t *testing.T) {
 
 // Nothing left to reveal means nothing left to charge for.
 func TestHintRefusedWhenEveryPositionIsKnown(t *testing.T) {
-	r := NewRound("r1", ModeSolo, 0, "salve")
+	r := NewRound("r1", "salve")
 	for i := 0; i < WordLength; i++ {
-		if _, err := r.UseHint(0, WordLength); err != nil {
+		if _, err := r.UseHint(WordLength); err != nil {
 			t.Fatalf("hint %d: %v", i, err)
 		}
 	}
-	if _, err := r.UseHint(0, WordLength); err != ErrNoHintsLeft {
+	if _, err := r.UseHint(WordLength); err != ErrNoHintsLeft {
 		t.Errorf("hint with nothing left = %v, want ErrNoHintsLeft", err)
 	}
 }
 
 func TestHintsCostTheBoardThatUsedThem(t *testing.T) {
-	r := NewRound("r1", ModeDuel, 1, "salve")
-	if _, err := r.UseHint(1, 3); err != nil {
+	r := NewRound("r1", "salve")
+	if _, err := r.UseHint(3); err != nil {
 		t.Fatal(err)
 	}
-	if err := r.Guess(1, "salve", alwaysWord); err != nil {
+	if err := r.Guess("salve", alwaysWord); err != nil {
 		t.Fatal(err)
 	}
 
 	if got := r.Points(); got != 5 {
 		t.Errorf("solved row 0 (6 pts) minus one hint = %d, want 5", got)
-	}
-}
-
-// A board has one owner, so the other player cannot touch it.
-func TestRoundRejectsTheOtherSeat(t *testing.T) {
-	r := NewRound("r1", ModeDuel, 1, "salve")
-
-	if got := r.TurnSeat(); got != 1 {
-		t.Fatalf("TurnSeat() = %d, want 1", got)
-	}
-	if err := r.Guess(0, "crane", alwaysWord); err != ErrWrongSeat {
-		t.Errorf("guess from the other seat = %v, want ErrWrongSeat", err)
-	}
-	if _, err := r.UseHint(0, 3); err != ErrWrongSeat {
-		t.Errorf("hint from the other seat = %v, want ErrWrongSeat", err)
 	}
 }
