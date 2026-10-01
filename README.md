@@ -81,11 +81,35 @@ default; override with `NEXT_PUBLIC_API_URL`. The API allows
 Optional, and the button stays hidden until it is configured — a Google button
 that fails at the redirect is worse than no Google button.
 
-In Google Cloud Console, create an OAuth client ID of type *Web application*
-and set the authorised redirect URI to exactly
-`http://localhost:3000/api/auth/callback/google`. Put the client id and secret
-in `web/.env.local` as `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET`, and
-restart the web app.
+In Google Cloud Console, create an OAuth client ID of type *Web application*.
+One client covers both environments:
+
+| Field | Values |
+|---|---|
+| Authorised JavaScript origins | `http://localhost:3000`<br>`https://wordle.jerkeyray.com` |
+| Authorised redirect URIs | `http://localhost:3000/api/auth/callback/google`<br>`https://wordle.jerkeyray.com/api/auth/callback/google` |
+
+Put the client id and secret in `web/.env.local` as `GOOGLE_CLIENT_ID` and
+`GOOGLE_CLIENT_SECRET`, and restart the web app.
+
+The redirect URI is derived from `BETTER_AUTH_URL`, not hardcoded — so that
+variable has to be the real origin in production, or the callback Google
+receives will not match what you registered and sign-in fails with
+`redirect_uri_mismatch`.
+
+### Deploying
+
+The two services need to agree about origins:
+
+| Variable | Where | Production value |
+|---|---|---|
+| `BETTER_AUTH_URL` | web | `https://wordle.jerkeyray.com` |
+| `NEXT_PUBLIC_API_URL` | web | `https://api.wordle.jerkeyray.com` |
+| `AUTH_BASE_URL` | server | `https://wordle.jerkeyray.com` (where Go fetches the JWKS) |
+| `ALLOWED_ORIGINS` | server | `https://wordle.jerkeyray.com` |
+
+Keeping the API on a subdomain of the same parent domain keeps the session
+cookie same-site, which is much cheaper than retrofitting it later.
 
 Copy `.env.example` to `web/.env.local` and `server/.env` and fill in a Neon
 connection string. Without one the game still runs — rounds live in memory and
