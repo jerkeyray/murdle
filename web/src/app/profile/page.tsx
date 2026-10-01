@@ -133,35 +133,37 @@ export default function ProfilePage() {
     <main className="sheet">
       {head}
 
-      {/* A bookplate: whose collection this is, and the shelf mark someone
-          else types to find it. */}
-      <div className="plate">
-        <span className="plate-ex">Ex libris</span>
-        <h1 className="plate-name">{profile.displayName}</h1>
-        <div className="plate-rule" />
-        <div className="plate-foot">
-          <span className="label">Shelf mark</span>
-          <span className="plate-code">{profile.inviteCode}</span>
+      <div className="lexicon-top">
+        {/* A bookplate: whose collection this is, and the shelf mark someone
+            else types to find it. */}
+        <div className="plate">
+          <span className="plate-ex">Ex libris</span>
+          <h1 className="plate-name">{profile.displayName}</h1>
+          <div className="plate-rule" />
+          <div className="plate-foot">
+            <span className="label">Shelf mark</span>
+            <span className="plate-code">{profile.inviteCode}</span>
+          </div>
         </div>
-      </div>
 
-      <div className="stats">
-        <div className="stat">
-          <span className="stat-number">{profile.streak.current}</span>
-          <span className="label">
-            Day streak
-            {profile.streak.current > 0 && !profile.streak.playedToday
-              ? " · play today"
-              : ""}
-          </span>
-        </div>
-        <div className="stat">
-          <span className="stat-number">{profile.wordsLearned}</span>
-          <span className="label">Words met</span>
-        </div>
-        <div className="stat">
-          <span className="stat-number">{profile.streak.longest}</span>
-          <span className="label">Best run</span>
+        <div className="stats">
+          <div className="stat">
+            <span className="stat-number">{profile.streak.current}</span>
+            <span className="label">
+              Day streak
+              {profile.streak.current > 0 && !profile.streak.playedToday
+                ? " · play today"
+                : ""}
+            </span>
+          </div>
+          <div className="stat">
+            <span className="stat-number">{profile.wordsLearned}</span>
+            <span className="label">Words met</span>
+          </div>
+          <div className="stat">
+            <span className="stat-number">{profile.streak.longest}</span>
+            <span className="label">Best run</span>
+          </div>
         </div>
       </div>
 
@@ -254,7 +256,7 @@ export default function ProfilePage() {
             : "Star a word at the end of a round to keep it."}
         </p>
       ) : (
-        <ul className="rows">
+        <ul className="rows rows--split">
           {list.map((s, i) => (
             <li className="entry-row" key={s.word}>
               <div className="entry-row-head">

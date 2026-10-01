@@ -42,12 +42,9 @@ export const auth = betterAuth({
   secret: process.env.BETTER_AUTH_SECRET,
   baseURL: process.env.BETTER_AUTH_URL ?? "http://localhost:3000",
 
-  emailAndPassword: {
-    enabled: true,
-    // There is no mail sender wired up yet, and blocking sign-in on an email
-    // nobody can send would lock the two of you out of your own game.
-    requireEmailVerification: false,
-  },
+  // Google only. Inventing a password for a word game is friction nobody
+  // wants, and an email flow with no mail sender behind it is worse than none.
+  emailAndPassword: { enabled: false },
 
   session: {
     // Long sessions on purpose. This lives on a phone that gets picked up a

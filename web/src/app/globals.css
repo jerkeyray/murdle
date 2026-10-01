@@ -1751,24 +1751,6 @@ button {
   cursor: default;
 }
 
-.sign-in-line {
-  margin: 0 0 18px;
-}
-
-.sign-in-alt {
-  display: block;
-  margin: 14px auto 0;
-}
-
-.sign-in-form {
-  margin-top: 22px;
-}
-
-.sign-in-foot {
-  margin-top: 26px;
-  text-align: center;
-}
-
 .hint {
   font-size: 0.8rem;
   line-height: 1.5;
@@ -1778,4 +1760,181 @@ button {
 .hint a {
   color: var(--text-muted);
   text-underline-offset: 3px;
+}
+
+/* ---------------------------------------------------------------------------
+   The gate
+
+   A short screen, so it is composed around its middle rather than stacked
+   against the top of an empty page.
+--------------------------------------------------------------------------- */
+
+.gate {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  max-width: 30rem;
+  margin: 0 auto;
+  padding: 0 20px max(20px, env(safe-area-inset-bottom));
+}
+
+.gate-nav {
+  padding: 12px 0;
+  margin-left: -9px;
+}
+
+.gate-middle {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 10vh;
+}
+
+.gate-card {
+  padding: 28px 24px 26px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--bg-raised);
+  box-shadow: 0 24px 60px -34px rgb(0 0 0 / 0.5);
+}
+
+.gate-ex {
+  font-family: var(--font-serif), Georgia, serif;
+  font-style: italic;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  color: var(--text-faint);
+}
+
+.gate-title {
+  margin: 6px 0 0;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(1.9rem, 8vw, 2.3rem);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+}
+
+.gate-line {
+  margin: 12px 0 22px;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+.gate-hint,
+.gate-error {
+  margin: 0;
+}
+
+.gate-foot {
+  margin: 18px 0 0;
+  text-align: center;
+}
+
+/* ---------------------------------------------------------------------------
+   Wider than a phone
+
+   Everything above is laid out for a phone held in one hand. On a laptop that
+   same column stranded at the top of the viewport reads as unfinished, so the
+   wide layouts give the content somewhere to sit.
+--------------------------------------------------------------------------- */
+
+@media (min-width: 760px) {
+  /* The two modes sit side by side instead of stacking, which fills the width
+     and makes the choice read as a pair rather than a list. */
+  .choices {
+    flex-direction: row;
+    gap: 14px;
+  }
+
+  .choice {
+    flex: 1;
+    padding: 22px 24px;
+  }
+
+  .home,
+  .gate {
+    max-width: 38rem;
+  }
+
+  .home-middle {
+    padding-bottom: 10vh;
+  }
+
+  .home-mark {
+    font-size: 4.4rem;
+  }
+
+  /* The lexicon is a reading page: wider, and the summary blocks pair up
+     across the top rather than running down a single narrow column. */
+  .sheet {
+    max-width: 46rem;
+    padding-inline: 28px;
+  }
+
+  .lexicon-top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    align-items: start;
+  }
+
+  .lexicon-top .plate,
+  .lexicon-top .stats {
+    margin-bottom: 0;
+  }
+
+  .stats {
+    height: 100%;
+  }
+
+  /* The calendar grows with the page rather than sitting as a small block in
+     the corner of it — and bigger cells mean the letters are properly
+     readable, which is the whole reason they are letters. */
+  .calendar {
+    gap: 4px;
+  }
+
+  .calendar-week {
+    gap: 4px;
+  }
+
+  .calendar-day {
+    width: 26px;
+    height: 26px;
+    border-radius: 4px;
+    font-size: 0.86rem;
+  }
+
+  .alphabet {
+    gap: 6px;
+  }
+
+  .alphabet-letter {
+    font-size: 1rem;
+  }
+
+  /* Two columns of entries at this width; the notes stay readable because the
+     column, not the page, sets the measure. */
+  .rows--split {
+    columns: 2;
+    column-gap: 28px;
+  }
+
+  .rows--split > li {
+    break-inside: avoid;
+  }
+}
+
+/* A board on a large screen is still a board: it keeps a phone's proportions
+   and sits in the middle, rather than stretching into something nobody can
+   take in at a glance. */
+@media (min-width: 760px) and (min-height: 640px) {
+  .app {
+    max-width: 26rem;
+  }
 }

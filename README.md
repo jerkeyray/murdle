@@ -78,8 +78,10 @@ default; override with `NEXT_PUBLIC_API_URL`. The API allows
 
 ### Google sign-in
 
-Optional, and the button stays hidden until it is configured — a Google button
-that fails at the redirect is worse than no Google button.
+Google is the only way in. Inventing a password for a word game is friction
+nobody wants, and an email flow with no mail sender behind it is worse than
+none. The button stays hidden until Google is configured — one that fails at
+the redirect is worse than no button at all.
 
 In Google Cloud Console, create an OAuth client ID of type *Web application*.
 One client covers both environments:
