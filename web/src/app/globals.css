@@ -1876,22 +1876,6 @@ button {
     padding-inline: 28px;
   }
 
-  .lexicon-top {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 18px;
-    align-items: start;
-  }
-
-  .lexicon-top .plate,
-  .lexicon-top .stats {
-    margin-bottom: 0;
-  }
-
-  .stats {
-    height: 100%;
-  }
-
   /* The calendar grows with the page rather than sitting as a small block in
      the corner of it — and bigger cells mean the letters are properly
      readable, which is the whole reason they are letters. */
@@ -1954,17 +1938,25 @@ button {
   font-size: clamp(1.6rem, 7vw, 2rem);
 }
 
+/* A button that looks like the heading it replaces.
+   Note what is NOT here: `font: inherit`. That shorthand resets family, size
+   and weight, which quietly dropped the name out of the serif and down to body
+   size — the plate looked hollow and nothing lined up. */
 .plate-name--button {
-  display: block;
-  width: 100%;
+  display: inline-block;
+  max-width: 100%;
   padding: 0;
   border: none;
   background: none;
   color: inherit;
-  font: inherit;
   text-align: left;
   cursor: pointer;
   border-bottom: 1px dashed transparent;
+  transition: border-color 0.16s ease;
+}
+
+.plate-name--button:hover {
+  border-bottom-color: var(--border-strong);
 }
 
 .plate-name--button:hover {
@@ -2083,4 +2075,78 @@ button {
   align-items: baseline;
   justify-content: space-between;
   gap: 12px;
+}
+
+/* ---------------------------------------------------------------------------
+   One card instead of four
+
+   The bookplate and three stat boxes were four containers holding, for a new
+   account, one name and three zeroes. They are one card now: who this is, the
+   shelf mark, and the counts along the bottom.
+--------------------------------------------------------------------------- */
+
+.plate {
+  padding: 15px 18px 14px;
+  margin-bottom: 16px;
+}
+
+.plate-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.plate-head .plate-code {
+  font-size: 0.92rem;
+  letter-spacing: 0.18em;
+  color: var(--text-muted);
+}
+
+.plate-name {
+  margin: 2px 0 0;
+  font-size: clamp(1.7rem, 8vw, 2.1rem);
+  line-height: 1.1;
+}
+
+.plate-rule {
+  margin: 13px 0 12px;
+}
+
+/* The counts, as a row of three inside the card rather than three cards. */
+.tally {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 0;
+}
+
+.tally-cell {
+  padding-left: 14px;
+  border-left: 1px solid var(--rule);
+}
+
+.tally-cell:first-child {
+  padding-left: 0;
+  border-left: none;
+}
+
+.tally-number {
+  margin: 0;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 1.45rem;
+  font-weight: 600;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: var(--mark-hit);
+}
+
+.tally-cell .label {
+  display: block;
+  margin-top: 3px;
+}
+
+/* The naming form sits where the name does, so the card does not jump when it
+   opens. */
+.plate .name-form {
+  margin-top: 4px;
 }

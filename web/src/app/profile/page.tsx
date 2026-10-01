@@ -152,55 +152,55 @@ export default function ProfilePage() {
     <main className="sheet">
       {head}
 
-      <div className="lexicon-top">
-        {/* A bookplate: whose collection this is, and the shelf mark someone
-            else types to find it. */}
-        <div className="plate">
+      {/* One card: who this is, the shelf mark someone types to find them, and
+          the three counts. Three separate boxes of zeroes was more furniture
+          than content. */}
+      <div className="plate">
+        <div className="plate-head">
           <span className="plate-ex">Ex libris</span>
-          {renaming ? (
-            <NameForm
-              current={profile.displayName}
-              onSaved={(name) => {
-                setProfile({ ...profile, displayName: name });
-                setRenaming(false);
-              }}
-              onCancel={() => setRenaming(false)}
-            />
-          ) : (
-            <button
-              className="plate-name plate-name--button"
-              onClick={() => setRenaming(true)}
-              title="Change your name"
-            >
-              {profile.displayName}
-            </button>
-          )}
-          <div className="plate-rule" />
-          <div className="plate-foot">
-            <span className="label">Shelf mark</span>
-            <span className="plate-code">{profile.inviteCode}</span>
-          </div>
+          <span className="plate-code">{profile.inviteCode}</span>
         </div>
 
-        <div className="stats">
-          <div className="stat">
-            <span className="stat-number">{profile.streak.current}</span>
-            <span className="label">
+        {renaming ? (
+          <NameForm
+            current={profile.displayName}
+            onSaved={(name) => {
+              setProfile({ ...profile, displayName: name });
+              setRenaming(false);
+            }}
+            onCancel={() => setRenaming(false)}
+          />
+        ) : (
+          <button
+            className="plate-name plate-name--button"
+            onClick={() => setRenaming(true)}
+            title="Change your name"
+          >
+            {profile.displayName}
+          </button>
+        )}
+
+        <div className="plate-rule" />
+
+        <dl className="tally">
+          <div className="tally-cell">
+            <dd className="tally-number">{profile.streak.current}</dd>
+            <dt className="label">
               Day streak
               {profile.streak.current > 0 && !profile.streak.playedToday
                 ? " · play today"
                 : ""}
-            </span>
+            </dt>
           </div>
-          <div className="stat">
-            <span className="stat-number">{profile.wordsLearned}</span>
-            <span className="label">Words met</span>
+          <div className="tally-cell">
+            <dd className="tally-number">{profile.wordsLearned}</dd>
+            <dt className="label">Words met</dt>
           </div>
-          <div className="stat">
-            <span className="stat-number">{profile.streak.longest}</span>
-            <span className="label">Best run</span>
+          <div className="tally-cell">
+            <dd className="tally-number">{profile.streak.longest}</dd>
+            <dt className="label">Best run</dt>
           </div>
-        </div>
+        </dl>
       </div>
 
       {hasHistory ? (
