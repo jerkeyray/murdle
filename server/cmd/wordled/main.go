@@ -1,4 +1,4 @@
-// Command murdled serves the Murdle game API.
+// Command wordled serves the Wordle game API.
 package main
 
 import (
@@ -12,13 +12,14 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/jerkeyray/murdle/server/internal/auth"
-	"github.com/jerkeyray/murdle/server/internal/config"
-	"github.com/jerkeyray/murdle/server/internal/db"
-	murdlehttp "github.com/jerkeyray/murdle/server/internal/http"
-	"github.com/jerkeyray/murdle/server/internal/players"
-	"github.com/jerkeyray/murdle/server/internal/store"
-	"github.com/jerkeyray/murdle/server/internal/words"
+	"github.com/jerkeyray/wordle/server/internal/auth"
+	"github.com/jerkeyray/wordle/server/internal/config"
+	"github.com/jerkeyray/wordle/server/internal/db"
+	"github.com/jerkeyray/wordle/server/internal/duos"
+	wordlehttp "github.com/jerkeyray/wordle/server/internal/http"
+	"github.com/jerkeyray/wordle/server/internal/players"
+	"github.com/jerkeyray/wordle/server/internal/store"
+	"github.com/jerkeyray/wordle/server/internal/words"
 )
 
 // roundTTL is how long an untouched round survives. Long enough that a pair can
@@ -51,6 +52,8 @@ func run(log *slog.Logger) error {
 	// operator asked for would be worse than refusing to start.
 	var playerStore *players.Store
 	var verifier *auth.Verifier
+	var duoStore *duos.Store
+	pool := words.NewPool()
 
 	if url := os.Getenv("DATABASE_URL"); url != "" {
 		conn, err := db.Open(ctx, url)
@@ -70,6 +73,7 @@ func run(log *slog.Logger) error {
 		}
 
 		playerStore = players.New(conn)
+		duoStore = duos.New(conn, pool)
 
 		// Accounts are only meaningful if the tokens can be checked, so the
 		// verifier is fetched here and a failure is fatal. Serving /api/me
@@ -84,19 +88,19 @@ func run(log *slog.Logger) error {
 		log.Warn("DATABASE_URL not set — running without accounts or history")
 	}
 
-	pool := words.NewPool()
 	answers, dictionary := pool.Size()
 	log.Info("word pool loaded", "answers", answers, "dictionary", dictionary)
 
 	rounds := store.NewMemory(roundTTL)
 	go rounds.Reap(ctx, 10*time.Minute)
 
-	handler := murdlehttp.NewServer(murdlehttp.Options{
+	handler := wordlehttp.NewServer(wordlehttp.Options{
 		Pool:           pool,
 		Rounds:         rounds,
 		Log:            log,
 		AllowedOrigins: allowedOrigins(),
 		Players:        playerStore,
+		Duos:           duoStore,
 		Verifier:       verifier,
 	})
 

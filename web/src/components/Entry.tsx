@@ -1,142 +1,77 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "motion/react";
-import { setWordSaved, type Round, type Run } from "@/lib/api";
+import { useEffect, useState } from "react";
+import { getSavedWords, setWordSaved, type Round } from "@/lib/api";
+import { shareRound } from "@/lib/shareCard";
+import { Dialog } from "./Dialog";
+import { Board } from "./Board";
 
-interface EntryProps {
-  round: Round;
-  run: Run | null;
-  onNextWord: () => void;
-  onNewRun: () => void;
-}
-
-/**
- * The end of a board.
- *
- * In a duel the first player finishes without being told the word, because
- * their opponent still has to guess it blind — so this has two faces. Which
- * one it shows is decided by whether the server sent an answer, not by any
- * reasoning repeated here: the server owns that rule and this follows it.
- */
-export function Entry({ round, run, onNextWord, onNewRun }: EntryProps) {
-  const won = round.state === "won";
-  const entry = round.entry;
-  const runComplete = run?.complete ?? false;
-
+export function Entry({ round, onClose, action, actionLabel, busy = false }: {
+  round: Round; onClose: () => void; action?: () => void; actionLabel?: string; busy?: boolean;
+}) {
   const [kept, setKept] = useState(false);
-  const [keepError, setKeepError] = useState(false);
-
+  const [saving, setSaving] = useState(false);
+  const [keepError, setKeepError] = useState("");
+  const [sharing, setSharing] = useState(false);
+  const [shareLabel, setShareLabel] = useState("");
+  useEffect(() => {
+    let cancelled = false;
+    getSavedWords().then((words) => {
+      if (!cancelled) setKept(words.some((word) => word.word === round.answer));
+    }).catch(() => {});
+    return () => { cancelled = true; };
+  }, [round.answer]);
   async function toggleKeep() {
-    if (!round.answer) return;
-    const next = !kept;
-    setKept(next);
-    setKeepError(false);
+    if (!round.answer || saving) return;
+    setSaving(true); setKeepError("");
+    try { await setWordSaved(round.answer, !kept); setKept(!kept); }
+    catch { setKeepError("Could not save this word. Sign in to keep words, or try again."); }
+    finally { setSaving(false); }
+  }
+  async function onShare() {
+    if (sharing) return;
+    setSharing(true);
     try {
-      await setWordSaved(round.answer, next);
+      // "Saved" on a desktop, where the share sheet does not exist and the
+      // image lands in downloads instead.
+      const how = await shareRound(round);
+      setShareLabel(how === "downloaded" ? "Saved as an image" : "Shared");
     } catch {
-      setKept(!next);
-      setKeepError(true);
+      setShareLabel("Could not make the image");
+    } finally {
+      setSharing(false);
     }
   }
 
   return (
-    <motion.div
-      // A handoff hides the board completely rather than dimming it. The
-      // person picking the phone up is about to guess this word, and a blurred
-      // grid still shows which positions came back green.
-      className="scrim"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.22 }}
-    >
-      <motion.div
-        className="entry"
-        role="dialog"
-        aria-label="Round over"
-        initial={{ y: 28, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        exit={{ y: 28, opacity: 0 }}
-        transition={{ type: "spring", stiffness: 380, damping: 32 }}
-      >
-        <>
-            <div className="entry-head">
-              <span className="label">
-                {won ? `Solved in ${round.solvedRow + 1}` : "Out of guesses"}
-              </span>
-              <span className="label">
-                {round.points} {round.points === 1 ? "point" : "points"}
-              </span>
-            </div>
-
-            <div className="entry-word-row">
-              <h2 className="entry-word">{round.answer}</h2>
-              {entry?.register === "slang" ? (
-                <span className="entry-tag">Slang</span>
-              ) : null}
-            </div>
-
-            {entry ? (
-              <>
-                <p className="entry-definition">{entry.definition}</p>
-                <div className="entry-rule" />
-                <p className="entry-note">{entry.note}</p>
-              </>
-            ) : null}
-
-            <div className="entry-grid" aria-hidden>
-              {round.rows.map((row, i) => (
-                <div className="entry-grid-row" key={i}>
-                  {row.marks.map((mark, j) => (
-                    <span className="pip" data-mark={mark} key={j} />
-                  ))}
-                </div>
-              ))}
-            </div>
-
-            <button
-              className="keep"
-              onClick={toggleKeep}
-              aria-pressed={kept}
-              aria-label={kept ? "Kept" : "Keep this word"}
-            >
-              <svg width="13" height="13" viewBox="0 0 24 24" aria-hidden
-                   fill={kept ? "currentColor" : "none"}
-                   stroke="currentColor" strokeWidth="2" strokeLinejoin="round">
-                <path d="M12 3.6l2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.7 1-5.75-4.2-4.1 5.8-.85z" />
-              </svg>
-              {kept ? "Kept" : "Keep"}
-            </button>
-
-            {keepError ? (
-              <p className="form-error">Sign in to keep words.</p>
-            ) : null}
-
-            {runComplete && run?.pack ? (
-              <motion.div
-                className="reveal"
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.25, duration: 0.35 }}
-              >
-                <span className="label">The thread</span>
-                <h3 className="reveal-title">{run.pack.title}</h3>
-                <p className="reveal-blurb">{run.pack.blurb}</p>
-              </motion.div>
-            ) : null}
-
-            <div className="entry-actions">
-              <button
-                className="button"
-                onClick={runComplete ? onNewRun : onNextWord}
-                autoFocus
-              >
-                {runComplete ? "New run" : "Next word"}
-              </button>
-            </div>
-        </>
-      </motion.div>
-    </motion.div>
+    <Dialog title="Word entry" onClose={onClose}>
+      <div className="entry-head">
+        <p>{round.state === "won" ? `Solved in ${round.solvedRow + 1}` : "Out of guesses"}</p>
+        <p>{round.points} {round.points === 1 ? "point" : "points"}</p>
+      </div>
+      <h2 className="entry-word">{round.answer}</h2>
+      {round.hintsUsed > 0 && <p className="assisted">Assisted · {round.hintsUsed} {round.hintsUsed === 1 ? "hint" : "hints"}</p>}
+      {round.entry && <>
+        <p className="entry-definition">{round.entry.definition}</p>
+        <details className="word-history"><summary>Read more</summary><p className="entry-note">{round.entry.note}</p></details>
+      </>}
+      <details className="board-review"><summary>Inspect finished board</summary>
+        <Board rows={round.rows} draft="" wordLength={round.wordLength} maxRows={round.maxRows} revealingRow={null} shake={false} />
+      </details>
+      <div className="entry-tools">
+        <button className="text-button" disabled={saving} onClick={toggleKeep} aria-pressed={kept}>{kept ? "Kept in your lexicon" : "Keep this word"}</button>
+        <button className="text-button" disabled={sharing} onClick={onShare}>
+          <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 15V3m0 0L8 7m4-4 4 4" /><path d="M4 14v5a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-5" />
+          </svg>
+          {sharing ? "Making the image…" : shareLabel || "Share this word"}
+        </button>
+      </div>
+      {keepError && <p role="status" className="form-error">{keepError}</p>}
+      <div className="entry-actions">
+        <button className="button button--quiet" onClick={onClose}>Back to board</button>
+        {action && <button className="button" disabled={busy} onClick={action}>{busy ? "Please wait…" : actionLabel}</button>}
+      </div>
+    </Dialog>
   );
 }

@@ -1,5 +1,5 @@
 {
-  "name": "web",
+  "name": "wordle-web",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,7 +9,10 @@
     "lint": "eslint",
     "dictionary": "node scripts/build-dictionary.mjs",
     "packs:generate": "node scripts/generate-packs.mjs",
-    "packs:review": "node scripts/review-packs.mjs"
+    "packs:review": "node scripts/review-packs.mjs",
+    "packs:check": "node scripts/check-packs.mjs",
+    "test:content": "node --test scripts/packs-lib.test.mjs",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "ai": "^7.0.124",
@@ -22,6 +25,7 @@
     "zod": "^4.6.5"
   },
   "devDependencies": {
+    "@playwright/test": "^1.63.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/pg": "^8.23.1",

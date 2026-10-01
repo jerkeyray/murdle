@@ -7,9 +7,9 @@ import type { MetadataRoute } from "next";
  */
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Murdle",
-    short_name: "Murdle",
-    description: "A word game for two people and one phone.",
+    name: "Wordle",
+    short_name: "Wordle",
+    description: "Solve five words. Uncover one idea.",
     start_url: "/",
     display: "standalone",
     orientation: "portrait",

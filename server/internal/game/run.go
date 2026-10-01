@@ -26,7 +26,9 @@ type Run struct {
 	// RoundIDs in play order. Its length is how many words have been dealt.
 	RoundIDs []string
 	// Points earned across the run.
-	Points int
+	Points   int
+	Results  []Round
+	NewCycle bool
 	// Finished counts rounds played to an end.
 	Finished int
 
@@ -87,4 +89,15 @@ func (r *Run) RecordResult(points int) {
 	r.Points += points
 	r.Finished++
 	r.UpdatedAt = time.Now().UTC()
+}
+
+// RecordRound keeps completed boards with the run for safe restoration.
+func (r *Run) RecordRound(round *Round) {
+	for _, result := range r.Results {
+		if result.ID == round.ID {
+			return
+		}
+	}
+	r.Results = append(r.Results, *round)
+	r.RecordResult(round.Points())
 }

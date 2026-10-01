@@ -7,7 +7,7 @@
  * the browser, which is exactly what we are avoiding.
  */
 
-import { getToken } from "@/lib/token";
+import { clearToken, getToken } from "@/lib/token";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8080";
 
@@ -42,6 +42,8 @@ export interface Entry {
 
 /** The theme reveal. Present only on a completed run. */
 export interface Pack {
+  id: string;
+  connections: { word: string; explanation: string }[];
   title: string;
   blurb: string;
 }
@@ -51,6 +53,9 @@ export interface Run {
   /** Words in the run. */
   length: number;
   started: number;
+  currentRoundId?: string;
+  completedWords: Round[];
+  newCycle: boolean;
   finished: number;
   complete: boolean;
   points: number;
@@ -65,6 +70,7 @@ export interface Round {
   maxRows: number;
   rows: Row[];
   hintsUsed: number;
+  hints: { tier: number; text: string }[];
   /** Row index the board was solved on, or -1. */
   solvedRow: number;
   points: number;
@@ -84,6 +90,7 @@ export class ApiError extends Error {
     readonly code: string,
     message: string,
     readonly status: number,
+    readonly current?: Duo,
   ) {
     super(message);
     this.name = "ApiError";
@@ -101,7 +108,7 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
       ...init,
       headers: {
         "Content-Type": "application/json",
-        "X-Murdle-Date": localDate(),
+        "X-Wordle-Date": localDate(),
         ...(token ? { Authorization: `Bearer ${token}` } : {}),
         ...init?.headers,
       },
@@ -113,11 +120,13 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
   }
 
   if (!res.ok) {
+    if (res.status === 401) clearToken();
     const body = await res.json().catch(() => null);
     throw new ApiError(
       body?.code ?? "unknown",
       body?.message ?? `Request failed (${res.status})`,
       res.status,
+      body?.current,
     );
   }
 
@@ -136,6 +145,8 @@ export function createRun(opts: { excludePacks?: string[] } = {}): Promise<Run> 
     body: JSON.stringify({ excludePacks: opts.excludePacks ?? [] }),
   });
 }
+
+export const getRun = (id: string) => request<Run>(`/api/runs/${id}`);
 
 /** Deals the next word of a run. */
 export function startRunRound(
@@ -167,11 +178,11 @@ export async function submitGuess(
   return "round" in body ? body : { round: body };
 }
 
-/** Spends a hint. Reveals a letter position, and costs a point. */
-export function useHint(
-  id: string,
-): Promise<{ tier: number; position: number; letter: string; round: Round }> {
-  return request(`/api/rounds/${id}/hints`, { method: "POST" });
+/** Requests an explicit authored tier; repeating it does not consume another hint. */
+export function revealHint(
+  id: string, tier: number,
+): Promise<{ tier: number; text: string; round: Round }> {
+  return request(`/api/rounds/${id}/hints`, { method: "POST", body: JSON.stringify({ tier }) });
 }
 
 /**
@@ -231,7 +242,49 @@ export interface FriendRecord {
   status: "pending" | "accepted" | "blocked";
   /** True when they asked you, which is what decides accept versus waiting. */
   incoming: boolean;
+  online: boolean;
+  dayStreak: number;
 }
+
+export interface DuoDay {
+  duoId: string;
+  date: string;
+  deadline: string;
+  state: "playing" | "won" | "lost" | "expired" | "closed";
+  currentPlayer: string;
+  version: number;
+  rows: (Row & { playerId: string })[];
+  passed: string[];
+  streak: number;
+  answer?: string;
+  entry?: Entry;
+}
+export interface Duo {
+  id: string;
+  friendshipId: string;
+  inviterId: string;
+  viewerId: string;
+  members: { id: string; name: string }[];
+  timezone: string;
+  status: "pending" | "active" | "declined" | "cancelled" | "ended";
+  version: number;
+  today?: DuoDay;
+  recent: DuoDay[];
+}
+export interface DuoMutation {
+  requestId: string;
+  version: number;
+  guess?: string;
+  friendshipId?: string;
+  timezone?: string;
+}
+export const getCapabilities = () => request<{ sharedGames: boolean }>("/api/capabilities");
+export const getDuos = () => request<Duo[]>("/api/me/duos");
+export const getDuo = (id: string, date = "today") => request<Duo>(`/api/duos/${id}/days/${date}`);
+export const heartbeat = () => request<void>("/api/me/presence", { method: "POST" });
+export const inviteDuo = (mutation: DuoMutation) => request<Duo>("/api/me/duos", { method: "POST", body: JSON.stringify(mutation) });
+export const mutateDuo = (id: string, action: "accept" | "decline" | "cancel" | "end" | "guesses" | "pass", mutation: DuoMutation, date?: string) =>
+  request<Duo>(`/api/duos/${id}/${date ? `days/${date}/` : ""}${action}`, { method: "POST", body: JSON.stringify(mutation) });
 
 export const getProfile = () => request<Profile>("/api/me");
 

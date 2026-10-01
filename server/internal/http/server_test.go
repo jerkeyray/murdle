@@ -11,8 +11,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/jerkeyray/murdle/server/internal/store"
-	"github.com/jerkeyray/murdle/server/internal/words"
+	"github.com/jerkeyray/wordle/server/internal/store"
+	"github.com/jerkeyray/wordle/server/internal/words"
 )
 
 func newTestServer(t *testing.T) http.Handler {
@@ -60,6 +60,13 @@ func TestHealth(t *testing.T) {
 	}
 	if body["status"] != "ok" {
 		t.Errorf("status field = %v, want ok", body["status"])
+	}
+}
+
+func TestSharedGamesUnavailableWithoutAccounts(t *testing.T) {
+	rec, body := do(t, newTestServer(t), http.MethodGet, "/api/capabilities", nil)
+	if rec.Code != 200 || body["sharedGames"] != false {
+		t.Fatal("shared games advertised without persistence/auth")
 	}
 }
 
@@ -183,26 +190,67 @@ func TestGuessValidation(t *testing.T) {
 	}
 }
 
-func TestHintsAreSpentAndCapped(t *testing.T) {
+func TestHintsAreAuthoredLockedAndRestored(t *testing.T) {
 	h := newTestServer(t)
-
 	_, run := do(t, h, http.MethodPost, "/api/runs", nil)
 	_, dealt := do(t, h, http.MethodPost, "/api/runs/"+run["id"].(string)+"/rounds", nil)
 	id := dealt["round"].(map[string]any)["id"].(string)
-
-	for tier := 0; tier < 3; tier++ {
-		rec, body := do(t, h, http.MethodPost, "/api/rounds/"+id+"/hints", nil)
-		if rec.Code != http.StatusOK {
-			t.Fatalf("hint %d: %d %v", tier, rec.Code, body)
+	path := "/api/rounds/" + id
+	rec, body := do(t, h, http.MethodPost, path+"/hints", map[string]any{"tier": 1})
+	if rec.Code != 409 || body["code"] != "hint_locked" {
+		t.Fatalf("early: %d %v", rec.Code, body)
+	}
+	rec, _ = do(t, h, http.MethodPost, path+"/hints", nil)
+	if rec.Code != 422 {
+		t.Fatalf("missing explicit tier: %d", rec.Code)
+	}
+	for tier := 1; tier <= 2; tier++ {
+		for i := 0; i < 2; i++ {
+			do(t, h, http.MethodPost, path+"/guesses", map[string]any{"guess": "zzzzz"})
 		}
-		if body["tier"].(float64) != float64(tier) {
-			t.Errorf("tier = %v, want %d", body["tier"], tier)
+		for i := 0; i < 2; i++ {
+			do(t, h, http.MethodPost, path+"/guesses", map[string]any{"guess": "adieu"})
+		}
+		var previous string
+		for retry := 0; retry < 2; retry++ {
+			rec, body = do(t, h, http.MethodPost, path+"/hints", map[string]any{"tier": tier})
+			if rec.Code != 200 || body["text"] == "" {
+				t.Fatalf("tier %d: %d %v", tier, rec.Code, body)
+			}
+			for _, key := range []string{`"answer"`, `"letter"`, `"position"`, `"connection"`, `"pack"`} {
+				if strings.Contains(rec.Body.String(), key) {
+					t.Fatalf("leaked %s: %s", key, rec.Body.String())
+				}
+			}
+			if retry == 1 && body["text"].(string) != previous {
+				t.Fatal("retry changed clue")
+			}
+			previous = body["text"].(string)
+			state := body["round"].(map[string]any)
+			if state["hintsUsed"] != float64(tier) {
+				t.Fatal("retry consumed another hint")
+			}
+		}
+		_, restored := do(t, h, http.MethodGet, path, nil)
+		if len(restored["hints"].([]any)) != tier {
+			t.Fatal("did not restore only requested hints")
 		}
 	}
-
-	rec, body := do(t, h, http.MethodPost, "/api/rounds/"+id+"/hints", nil)
-	if rec.Code != http.StatusConflict || body["code"] != "no_hints_left" {
-		t.Errorf("fourth hint: %d %v, want 409 no_hints_left", rec.Code, body["code"])
+	for i := 0; i < 2; i++ {
+		do(t, h, http.MethodPost, path+"/guesses", map[string]any{"guess": "adieu"})
+	}
+	rec, body = do(t, h, http.MethodPost, path+"/hints", map[string]any{"tier": 1})
+	if rec.Code != 409 || body["code"] != "round_over" {
+		t.Fatalf("finished hint: %d %v", rec.Code, body)
+	}
+	_, restored := do(t, h, http.MethodGet, "/api/runs/"+run["id"].(string), nil)
+	completed := restored["completedWords"].([]any)
+	if len(completed) != 1 || restored["currentRoundId"] != id {
+		t.Fatal("missing safe run restoration")
+	}
+	word := completed[0].(map[string]any)
+	if word["answer"] == nil || word["state"] != "lost" || word["hintsUsed"] != float64(2) {
+		t.Fatalf("lost word not retained: %v", word)
 	}
 }
 
@@ -269,7 +317,7 @@ func TestThemeDoesNotLeakUntilTheRunIsComplete(t *testing.T) {
 	if !ok {
 		t.Fatalf("completed run did not reveal its pack: %v", final)
 	}
-	if pack["title"] == "" || pack["blurb"] == "" {
+	if pack["id"] == "" || len(pack["connections"].([]any)) != 5 || pack["title"] == "" || pack["blurb"] == "" {
 		t.Errorf("revealed pack is empty: %v", pack)
 	}
 }

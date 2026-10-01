@@ -6,7 +6,7 @@ import (
 )
 
 // localDateHeader carries the player's own calendar date, as YYYY-MM-DD.
-const localDateHeader = "X-Murdle-Date"
+const localDateHeader = "X-Wordle-Date"
 
 // localDate returns the calendar day to file a round under, and to measure a
 // streak against.

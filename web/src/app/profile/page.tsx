@@ -15,15 +15,16 @@ import {
 } from "@/lib/api";
 import { signOut } from "@/lib/auth-client";
 import { clearToken } from "@/lib/token";
-import { Alphabet } from "@/components/Alphabet";
 import { Preferences } from "@/components/Preferences";
-import { StreakCalendar } from "@/components/StreakCalendar";
 import { BackButton } from "@/components/BackButton";
 import { NameForm } from "@/components/NameForm";
+import { safeReturnTo } from "@/lib/returnTo";
+import { useRouter } from "next/navigation";
 
 type Tab = "collection" | "kept" | "friends";
 
 export default function ProfilePage() {
+  const router = useRouter();
   const [profile, setProfile] = useState<Profile | null>(null);
   const [solves, setSolves] = useState<SolveRecord[]>([]);
   const [saved, setSaved] = useState<SolveRecord[]>([]);
@@ -135,7 +136,11 @@ export default function ProfilePage() {
         <div className="plate plate--naming">
           <NameForm
             firstRun
-            onSaved={(name) => setProfile({ ...profile, displayName: name, needsName: false })}
+            onSaved={(name) => {
+              setProfile({ ...profile, displayName: name, needsName: false });
+              const next = new URLSearchParams(window.location.search).get("returnTo");
+              if (next) router.push(safeReturnTo(next));
+            }}
           />
         </div>
       </main>
@@ -143,9 +148,6 @@ export default function ProfilePage() {
   }
 
   const pending = friends.filter((f) => f.status === "pending" && f.incoming);
-  // A lexicon with nothing in it is mostly empty furniture: 105 blank calendar
-  // squares and 26 blank letters. Until there is something to show, do not.
-  const hasHistory = solves.length > 0;
   const list = tab === "collection" ? solves : tab === "kept" ? saved : [];
 
   return (
@@ -171,13 +173,17 @@ export default function ProfilePage() {
             onCancel={() => setRenaming(false)}
           />
         ) : (
-          <button
-            className="plate-name plate-name--button"
-            onClick={() => setRenaming(true)}
-            title="Change your name"
-          >
-            {profile.displayName}
-          </button>
+          <div className="plate-name-row">
+            <h2 className="plate-name">{profile.displayName}</h2>
+            <button
+              type="button"
+              className="name-edit"
+              onClick={() => setRenaming(true)}
+              aria-label={`Edit nickname ${profile.displayName}`}
+            >
+              Edit
+            </button>
+          </div>
         )}
 
         <div className="plate-rule" />
@@ -203,13 +209,6 @@ export default function ProfilePage() {
         </dl>
       </div>
 
-      {hasHistory ? (
-        <>
-          <StreakCalendar solves={solves} />
-          <Alphabet solves={solves} />
-        </>
-      ) : null}
-
       <nav className="tabs" role="tablist">
         {(["collection", "kept", "friends"] as Tab[]).map((t) => (
           <button
@@ -217,7 +216,7 @@ export default function ProfilePage() {
             className="tab"
             role="tab"
             aria-selected={tab === t}
-            onClick={() => setTab(t)}
+            onClick={() => { if (t === "friends") router.push("/friends"); else setTab(t); }}
           >
             {t === "collection"
               ? `Collection ${solves.length}`

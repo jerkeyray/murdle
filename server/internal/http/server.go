@@ -12,22 +12,20 @@ import (
 	"github.com/go-chi/chi/v5/middleware"
 	"github.com/go-chi/cors"
 
-	"github.com/jerkeyray/murdle/server/internal/auth"
-	"github.com/jerkeyray/murdle/server/internal/game"
-	"github.com/jerkeyray/murdle/server/internal/players"
-	"github.com/jerkeyray/murdle/server/internal/store"
-	"github.com/jerkeyray/murdle/server/internal/words"
+	"github.com/jerkeyray/wordle/server/internal/auth"
+	"github.com/jerkeyray/wordle/server/internal/duos"
+	"github.com/jerkeyray/wordle/server/internal/game"
+	"github.com/jerkeyray/wordle/server/internal/players"
+	"github.com/jerkeyray/wordle/server/internal/store"
+	"github.com/jerkeyray/wordle/server/internal/words"
 )
-
-// hintTiers is how many hints each seat may reveal per round. It matches the
-// three tiers the word pipeline writes: semantic, category, structural.
-const hintTiers = 3
 
 // Server wires the router to its dependencies.
 type Server struct {
 	pool     *words.Pool
 	rounds   store.Store
 	players  *players.Store
+	duos     *duos.Store
 	verifier *auth.Verifier
 	log      *slog.Logger
 }
@@ -43,6 +41,7 @@ type Options struct {
 	Log            *slog.Logger
 	AllowedOrigins []string
 	Players        *players.Store
+	Duos           *duos.Store
 	Verifier       *auth.Verifier
 }
 
@@ -52,6 +51,7 @@ func NewServer(opts Options) http.Handler {
 		pool:     opts.Pool,
 		rounds:   opts.Rounds,
 		players:  opts.Players,
+		duos:     opts.Duos,
 		verifier: opts.Verifier,
 		log:      opts.Log,
 	}
@@ -77,6 +77,9 @@ func NewServer(opts Options) http.Handler {
 	}
 
 	r.Get("/api/health", s.handleHealth)
+	r.Get("/api/capabilities", func(w http.ResponseWriter, r *http.Request) {
+		writeJSON(w, http.StatusOK, map[string]bool{"sharedGames": s.duos != nil && s.players != nil && s.verifier != nil})
+	})
 
 	if s.players != nil {
 		r.Route("/api/me", func(r chi.Router) {
@@ -90,6 +93,20 @@ func NewServer(opts Options) http.Handler {
 			r.Get("/friends", s.handleFriends)
 			r.Post("/friends", s.handleAddFriend)
 			r.Post("/friends/{id}/respond", s.handleRespondFriend)
+			if s.duos != nil {
+				r.Get("/duos", s.handleDuos)
+				r.Post("/duos", s.handleInviteDuo)
+				r.Post("/presence", s.handlePresence)
+			}
+		})
+	}
+	if s.duos != nil && s.players != nil {
+		r.Route("/api/duos/{id}", func(r chi.Router) {
+			r.Use(auth.Require)
+			r.Get("/", s.handleDuo)
+			r.Post("/{action}", s.handleDuoAction)
+			r.Get("/days/{date}", s.handleDuoDay)
+			r.Post("/days/{date}/{action}", s.handleDuoAction)
 		})
 	}
 
@@ -160,6 +177,7 @@ func (s *Server) handleCreateRun(w http.ResponseWriter, r *http.Request) {
 		writeError(w, http.StatusInternalServerError, "create_failed", "could not start the run")
 		return
 	}
+	run.NewCycle = s.pool.Exhausted(exclude)
 	if err := s.rounds.CreateRun(r.Context(), run); err != nil {
 		s.log.Error("storing run", "err", err)
 		writeError(w, http.StatusInternalServerError, "create_failed", "could not start the run")
@@ -246,6 +264,7 @@ func (s *Server) handleGuess(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	s.touchRun(r, round)
 	if justFinished {
 		s.recordSolve(r, round)
 	}
@@ -255,7 +274,7 @@ func (s *Server) handleGuess(w http.ResponseWriter, r *http.Request) {
 	// free of any notion of storage.
 	if justFinished && round.RunID != "" {
 		run, err := s.rounds.UpdateRun(r.Context(), round.RunID, func(run *game.Run) error {
-			run.RecordResult(round.Points())
+			run.RecordRound(round)
 			return nil
 		})
 		if err != nil {
@@ -263,8 +282,7 @@ func (s *Server) handleGuess(w http.ResponseWriter, r *http.Request) {
 			// rather than failing the guess the player just made.
 			s.log.Error("recording run result", "run", round.RunID, "err", err)
 		} else {
-			// Built after RecordResult, so the reveal check sees the partner's
-			// board as finished rather than still in play.
+			// The completed snapshot includes the final connection only after all words finish.
 			writeJSON(w, http.StatusOK, runRoundResponse{
 				Round: s.roundView(round),
 				Run:   newRunView(run, s.pool),
@@ -277,34 +295,44 @@ func (s *Server) handleGuess(w http.ResponseWriter, r *http.Request) {
 }
 
 type hintResponse struct {
-	// Tier is which rung of the ladder was spent. Phase 3 attaches the written
-	// tiers from the word pipeline; this structural reveal is the rung that
-	// needs no generated content.
-	Tier int `json:"tier"`
-	// Position is the 0-indexed slot in the word that Letter belongs to.
-	Position int       `json:"position"`
-	Letter   string    `json:"letter"`
-	Round    roundView `json:"round"`
+	Tier  int       `json:"tier"`
+	Text  string    `json:"text"`
+	Round roundView `json:"round"`
 }
 
 func (s *Server) handleHint(w http.ResponseWriter, r *http.Request) {
+	var req struct {
+		Tier int `json:"tier"`
+	}
+	if err := decodeJSON(w, r, &req); err != nil {
+		writeError(w, http.StatusBadRequest, "invalid_body", err.Error())
+		return
+	}
 	var reveal game.HintReveal
 	round, err := s.rounds.Update(r.Context(), chi.URLParam(r, "id"), func(round *game.Round) error {
+		info, ok := s.pool.WordInfo(round.Answer())
+		if !ok {
+			return game.ErrInvalidHint
+		}
 		var err error
-		reveal, err = round.UseHint(hintTiers)
+		reveal, err = round.UseHint(req.Tier, info.Hints)
 		return err
 	})
 	if err != nil {
 		s.writeGameError(w, err)
 		return
 	}
+	s.touchRun(r, round)
+	writeJSON(w, http.StatusOK, hintResponse{Tier: reveal.Tier, Text: reveal.Text, Round: s.roundView(round)})
+}
 
-	writeJSON(w, http.StatusOK, hintResponse{
-		Tier:     reveal.Tier,
-		Position: reveal.Position,
-		Letter:   reveal.Letter,
-		Round:    s.roundView(round),
-	})
+func (s *Server) touchRun(r *http.Request, round *game.Round) {
+	if round.RunID != "" {
+		_, err := s.rounds.UpdateRun(r.Context(), round.RunID, func(run *game.Run) error { run.UpdatedAt = time.Now().UTC(); return nil })
+		if err != nil {
+			s.log.Warn("refreshing run", "err", err)
+		}
+	}
 }
 
 // recordSolve files a finished round in the player's history.
@@ -363,6 +391,10 @@ func (s *Server) writeGameError(w http.ResponseWriter, err error) {
 		writeError(w, http.StatusUnprocessableEntity, "wrong_length", "that is not five letters")
 	case errors.Is(err, game.ErrNotAWord):
 		writeError(w, http.StatusUnprocessableEntity, "not_a_word", "that is not a word")
+	case errors.Is(err, game.ErrHintLocked):
+		writeError(w, http.StatusConflict, "hint_locked", "context unlocks after two guesses; association after four and the first hint")
+	case errors.Is(err, game.ErrInvalidHint):
+		writeError(w, http.StatusUnprocessableEntity, "invalid_hint", "choose hint 1 or 2")
 	case errors.Is(err, game.ErrNoHintsLeft):
 		writeError(w, http.StatusConflict, "no_hints_left", "you have used every hint")
 	default:

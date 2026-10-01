@@ -31,16 +31,25 @@ import {
 // is a one-line change and needs no provider package.
 const MODEL = "anthropic/claude-sonnet-5-5";
 
-const SYSTEM = `You write word packs for Murdle, a word game played by two people sharing one phone.
+const SYSTEM = `You write word packs for Wordle, a solo vocabulary and hidden-connection game.
 
 A pack is ${WORDS_PER_PACK} ${WORD_LENGTH}-letter words that secretly share a theme. The theme is
 hidden until the last word is solved, so the players spend the run guessing at the
 connection as well as the words. The connection should be guessable in hindsight and
 not obvious on word two.
 
-Register is mixed on purpose. Modern slang sits next to words worth knowing — CLOUT and
-SALVE belong in the same game — and both are treated with exactly the same seriousness.
-Do not wink at the slang or apologise for it.
+Prefer literary and uncommon but useful English. Do not include novelty internet slang,
+specialist jargon, or obscure spellings simply to raise difficulty. Order the five words:
+approachable opener, two richer discoveries, a connecting word, final confirmation.
+Rate word difficulty independently of connection difficulty. Avoid stacking repeated
+letters, rare spellings, and crowded one-letter-different families in the same pack.
+The connection must be specific and defensible for every word; no miscellaneous collections.
+Do not announce the theme with the opening word.
+
+Write two hints separately from each definition: broad context, then a narrower association.
+Never include answer text, exact letters or positions, a near-definition, or the pack theme.
+Consider what earlier answers already tell the player. Write a separate final connection
+explanation for each word, withheld until the whole run ends.
 
 Hard rules:
 - Every word is exactly ${WORD_LENGTH} letters, lowercase a-z. No proper nouns, hyphens or accents.
@@ -94,8 +103,7 @@ for (let i = 0; i < count; i++) {
     system: SYSTEM,
     prompt: theme
       ? `Write a pack on this theme: ${theme}.\n\nExisting pack ids to avoid duplicating: ${avoid}.`
-      : `Write a new pack on a theme of your choosing. Vary the register mix — some packs
-lean modern and online, some lean literate, most are a blend.
+      : `Write a new pack on a theme of your choosing. Choose a precise connection and an intentional progression of challenging but approachable vocabulary.
 
 Existing pack ids, whose themes you must not repeat: ${avoid}.`,
     // Enough freedom to find an angle, not so much that it invents etymology.

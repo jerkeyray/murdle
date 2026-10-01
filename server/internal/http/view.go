@@ -3,8 +3,8 @@
 package http
 
 import (
-	"github.com/jerkeyray/murdle/server/internal/game"
-	"github.com/jerkeyray/murdle/server/internal/words"
+	"github.com/jerkeyray/wordle/server/internal/game"
+	"github.com/jerkeyray/wordle/server/internal/words"
 )
 
 // rowView is one played row as the client sees it.
@@ -24,9 +24,16 @@ type entryView struct {
 
 // packView is the theme reveal. It exists only on a completed run — the whole
 // point of a themed run is that you work the connection out first.
+type connectionView struct {
+	Word        string `json:"word"`
+	Explanation string `json:"explanation"`
+}
+
 type packView struct {
-	Title string `json:"title"`
-	Blurb string `json:"blurb"`
+	ID          string           `json:"id"`
+	Connections []connectionView `json:"connections"`
+	Title       string           `json:"title"`
+	Blurb       string           `json:"blurb"`
 }
 
 // roundView is the whole client-visible state of a round.
@@ -35,15 +42,16 @@ type packView struct {
 // Answer is populated from Round.Reveal, which returns "" until the round is
 // over, so the hidden word cannot leak by someone forgetting a check here.
 type roundView struct {
-	ID         string    `json:"id"`
-	State      string    `json:"state"`
-	WordLength int       `json:"wordLength"`
-	MaxRows    int       `json:"maxRows"`
-	Rows       []rowView `json:"rows"`
-	HintsUsed  int       `json:"hintsUsed"`
-	SolvedRow  int       `json:"solvedRow"`
-	Points     int       `json:"points"`
-	Answer     string    `json:"answer,omitempty"`
+	ID         string            `json:"id"`
+	State      string            `json:"state"`
+	WordLength int               `json:"wordLength"`
+	MaxRows    int               `json:"maxRows"`
+	Rows       []rowView         `json:"rows"`
+	HintsUsed  int               `json:"hintsUsed"`
+	Hints      []game.HintReveal `json:"hints"`
+	SolvedRow  int               `json:"solvedRow"`
+	Points     int               `json:"points"`
+	Answer     string            `json:"answer,omitempty"`
 	// Entry rides along with Answer, for the same reason.
 	Entry *entryView `json:"entry,omitempty"`
 }
@@ -66,6 +74,7 @@ func newRoundView(r *game.Round) roundView {
 		MaxRows:    game.MaxRows,
 		Rows:       rows,
 		HintsUsed:  r.HintsUsed,
+		Hints:      r.Hints,
 		SolvedRow:  r.SolvedRow,
 		Points:     r.Points(),
 		Answer:     r.Reveal(),
@@ -78,28 +87,47 @@ func newRoundView(r *game.Round) roundView {
 // progress. Pack is populated from a single guarded branch below, so the theme
 // cannot leak by someone forgetting a check at a call site.
 type runView struct {
-	ID       string    `json:"id"`
-	Length   int       `json:"length"`
-	Started  int       `json:"started"`
-	Finished int       `json:"finished"`
-	Complete bool      `json:"complete"`
-	Points   int       `json:"points"`
-	Pack     *packView `json:"pack,omitempty"`
+	ID             string      `json:"id"`
+	CurrentRoundID string      `json:"currentRoundId,omitempty"`
+	CompletedWords []roundView `json:"completedWords"`
+	NewCycle       bool        `json:"newCycle"`
+	Length         int         `json:"length"`
+	Started        int         `json:"started"`
+	Finished       int         `json:"finished"`
+	Complete       bool        `json:"complete"`
+	Points         int         `json:"points"`
+	Pack           *packView   `json:"pack,omitempty"`
 }
 
 func newRunView(r *game.Run, pool *words.Pool) runView {
 	v := runView{
-		ID:       r.ID,
-		Length:   r.Length(),
-		Started:  r.Started(),
-		Finished: r.Finished,
-		Complete: r.Complete(),
-		Points:   r.Points,
+		ID:             r.ID,
+		Length:         r.Length(),
+		Started:        r.Started(),
+		Finished:       r.Finished,
+		Complete:       r.Complete(),
+		Points:         r.Points,
+		NewCycle:       r.NewCycle,
+		CompletedWords: make([]roundView, 0, len(r.Results)),
 	}
 
+	if len(r.RoundIDs) > 0 {
+		v.CurrentRoundID = r.RoundIDs[len(r.RoundIDs)-1]
+	}
+	for i := range r.Results {
+		result := newRoundView(&r.Results[i])
+		if info, ok := pool.WordInfo(result.Answer); ok {
+			entry := newEntryView(info)
+			result.Entry = &entry
+		}
+		v.CompletedWords = append(v.CompletedWords, result)
+	}
 	if r.Complete() {
 		if pack, ok := pool.Pack(r.PackID); ok {
-			v.Pack = &packView{Title: pack.Title, Blurb: pack.Blurb}
+			v.Pack = &packView{ID: pack.ID, Title: pack.Title, Blurb: pack.Blurb}
+			for _, word := range pack.Words {
+				v.Pack.Connections = append(v.Pack.Connections, connectionView{word.Word, word.Connection})
+			}
 		}
 	}
 

@@ -1,6 +1,7 @@
 "use client";
 
 import type { Mark } from "@/lib/api";
+import { MARK_LABEL } from "./Board";
 
 const ROWS = ["qwertyuiop", "asdfghjkl", "zxcvbnm"] as const;
 
@@ -47,11 +48,12 @@ export function Keyboard({
               disabled={disabled}
               aria-label={
                 letterStates[letter]
-                  ? `${letter}, ${letterStates[letter]}`
+                  ? `${letter}, ${MARK_LABEL[letterStates[letter]]}`
                   : letter
               }
             >
               {letter}
+              {letterStates[letter] && <span className="key-glyph" aria-hidden>{letterStates[letter] === "hit" ? "●" : letterStates[letter] === "present" ? "◖" : "–"}</span>}
             </button>
           ))}
 

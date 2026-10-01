@@ -5,14 +5,14 @@ import (
 	"encoding/json"
 	"fmt"
 	"math/rand/v2"
+	"regexp"
+	"strings"
 )
 
 //go:embed packs.json
 var packsRaw []byte
 
-// Register says what kind of word this is. The pool deliberately mixes the
-// two: the jolt of GYATT and SALVE sitting in the same game is the joke, and
-// the entry plays both of them straight.
+// Register distinguishes established vocabulary from informal usages.
 type Register string
 
 const (
@@ -28,18 +28,23 @@ type PackWord struct {
 	// Note is the part worth reading — where the word came from, or what it
 	// used to mean. It is what makes the round end in something other than
 	// "you got it".
-	Note string `json:"note"`
+	Note       string   `json:"note"`
+	Hints      []string `json:"hints"`
+	Difficulty string   `json:"difficulty"`
+	Connection string   `json:"connection"`
 }
 
 // Pack is a themed run: several words that secretly belong together.
 //
-// The theme is withheld until the run ends, so the two of you are guessing at
+// The theme is withheld until the run ends, so the player is guessing at
 // the connection as well as the word. Title and Blurb are the payoff.
 type Pack struct {
-	ID    string     `json:"id"`
-	Title string     `json:"title"`
-	Blurb string     `json:"blurb"`
-	Words []PackWord `json:"words"`
+	ID                   string     `json:"id"`
+	ConnectionDifficulty string     `json:"connectionDifficulty"`
+	LegacyTitles         []string   `json:"legacyTitles,omitempty"`
+	Title                string     `json:"title"`
+	Blurb                string     `json:"blurb"`
+	Words                []PackWord `json:"words"`
 }
 
 // WordList returns just the words, in pack order.
@@ -55,6 +60,9 @@ func loadPacks() ([]Pack, error) {
 	var packs []Pack
 	if err := json.Unmarshal(packsRaw, &packs); err != nil {
 		return nil, fmt.Errorf("parsing packs.json: %w", err)
+	}
+	if err := validatePacks(packs); err != nil {
+		return nil, err
 	}
 	return packs, nil
 }
@@ -94,7 +102,7 @@ func (p *Pool) RandomPack(exclude map[string]struct{}) (Pack, bool) {
 	if len(exclude) > 0 {
 		eligible = make([]Pack, 0, len(p.packs))
 		for _, pack := range p.packs {
-			if _, seen := exclude[pack.ID]; !seen {
+			if !packExcluded(pack, exclude) {
 				eligible = append(eligible, pack)
 			}
 		}
@@ -104,4 +112,65 @@ func (p *Pool) RandomPack(exclude map[string]struct{}) (Pack, bool) {
 	}
 
 	return eligible[rand.IntN(len(eligible))], true
+}
+
+func packExcluded(pack Pack, exclude map[string]struct{}) bool {
+	if _, ok := exclude[pack.ID]; ok {
+		return true
+	}
+	if _, ok := exclude[pack.Title]; ok {
+		return true
+	}
+	for _, title := range pack.LegacyTitles {
+		if _, ok := exclude[title]; ok {
+			return true
+		}
+	}
+	return false
+}
+
+func (p *Pool) Exhausted(exclude map[string]struct{}) bool {
+	for _, pack := range p.packs {
+		if !packExcluded(pack, exclude) {
+			return false
+		}
+	}
+	return len(p.packs) > 0
+}
+
+// Embedded content must be structurally complete before the server can start.
+// This cannot substitute for human review of meaning and factual accuracy.
+func validatePacks(packs []Pack) error {
+	ids, words := map[string]bool{}, map[string]bool{}
+	wordPattern := regexp.MustCompile(`^[a-z]{5}$`)
+	for _, pack := range packs {
+		if ids[pack.ID] || pack.ID == "" || len(pack.Words) != 5 || strings.TrimSpace(pack.Title) == "" || strings.TrimSpace(pack.Blurb) == "" {
+			return fmt.Errorf("invalid pack %s", pack.ID)
+		}
+		ids[pack.ID] = true
+		if pack.ConnectionDifficulty != "easy" && pack.ConnectionDifficulty != "medium" && pack.ConnectionDifficulty != "hard" {
+			return fmt.Errorf("missing connection difficulty: %s", pack.ID)
+		}
+		for _, w := range pack.Words {
+			if !wordPattern.MatchString(w.Word) || words[w.Word] || len(w.Hints) != 2 || strings.TrimSpace(w.Connection) == "" || strings.TrimSpace(w.Definition) == "" || strings.TrimSpace(w.Note) == "" {
+				return fmt.Errorf("incomplete word: %s", w.Word)
+			}
+			words[w.Word] = true
+			if w.Difficulty != "familiar" && w.Difficulty != "stretch" && w.Difficulty != "challenging" {
+				return fmt.Errorf("missing word difficulty: %s", w.Word)
+			}
+			for _, hint := range w.Hints {
+				if len(strings.TrimSpace(hint)) < 12 || strings.Contains(strings.ToLower(hint), w.Word) {
+					return fmt.Errorf("invalid hint: %s", w.Word)
+				}
+			}
+			if w.Hints[0] == w.Hints[1] {
+				return fmt.Errorf("repeated hint: %s", w.Word)
+			}
+		}
+	}
+	if len(packs) == 0 {
+		return fmt.Errorf("empty pack pool")
+	}
+	return nil
 }

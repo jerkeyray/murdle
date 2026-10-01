@@ -1,4 +1,4 @@
-module github.com/jerkeyray/murdle/server
+module github.com/jerkeyray/wordle/server
 
 go 1.26.1
 

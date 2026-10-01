@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { signIn } from "@/lib/auth-client";
 import { BackButton } from "@/components/BackButton";
+import { safeReturnTo } from "@/lib/returnTo";
 
 /**
  * The gate.
@@ -44,7 +45,7 @@ export default function SignInPage() {
     // path there is nothing here to await.
     const result = await signIn.social({
       provider: "google",
-      callbackURL: "/profile",
+      callbackURL: safeReturnTo(new URLSearchParams(window.location.search).get("returnTo")),
     });
     if (result?.error) {
       setBusy(false);

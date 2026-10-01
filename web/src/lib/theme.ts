@@ -55,7 +55,7 @@ function persist(key: string, value: string) {
 
 export function setTheme(theme: Theme) {
   document.documentElement.dataset.theme = theme;
-  persist("murdle.theme", theme);
+  persist("wordle.theme", theme);
   emit();
 }
 
@@ -65,6 +65,6 @@ export function setColorBlind(on: boolean) {
   } else {
     delete document.documentElement.dataset.contrast;
   }
-  persist("murdle.contrast", on ? "cb" : "normal");
+  persist("wordle.contrast", on ? "cb" : "normal");
   emit();
 }

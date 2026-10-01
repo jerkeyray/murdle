@@ -1,212 +1,167 @@
-# Murdle
+# Wordle
 
-A word game for two people and one phone.
+Solve five words. Uncover one idea.
 
-Wordle gives everyone the same word once a day and has nothing to say about it
-afterwards. Murdle is built for how two people sitting next to each other
-actually play: a **shared board where guesses alternate** — you take row 1, she
-takes row 2 — so you are reading each other's clues rather than playing two
-separate games. The words are curated to be worth knowing, and when the round
-ends the app teaches you the one you just played.
+Wordle is a solo word game built around five linked, five-letter words. Each
+board allows six guesses. Completed words accumulate as clues to a hidden
+connection; a private theory can be revised throughout the run. The final
+page explains how each word belongs.
 
-## Status
+The interface keeps a dictionary aesthetic: rose paper or plum ink, serif
+letters, short definitions, and optional reading after each word. The game
+works without an account. Signing in enables a lexicon, saved words, streaks,
+and friends. Friends can share a daily board from separate devices, taking
+alternating guesses and building a streak together.
 
-| Phase | What | State |
-|---|---|---|
-| 0 | Game engine, word pool, API | Done |
-| 1 | Solo play + design system | Done |
-| 2 | Two-player | Removed |
-| 3 | Themed runs, entries, word pipeline | Done |
-| 4 | Accounts, profile, streaks, friends | Done |
-| 5 | Two-device realtime (optional) | Planned |
+## Development
 
-The profile is a **lexicon**, not a dashboard: a bookplate with your name and
-your invite code as a shelf mark, a fifteen-week calendar where every day you
-played carries the first letter of that day's word, an A–Z you fill in like a
-stamp album, and your collection numbered as specimens. A contribution graph
-tells you that you turned up; this tells you what you met.
-
-Open on a home screen rather than a board: the mode choice is the point, and a
-game that drops you straight onto a grid never offers it.
-
-Solo only. A shared board and then a duel were both built and both removed —
-the shared board because scoring it rewarded staying quiet when you spotted the
-word on your partner's turn, and the duel because two people on one phone did
-not need a mode. Both are in the history if they are ever wanted back.
-
-## Layout
-
-```
-server/   Go API: game rules, word pool, rounds, profiles and history
-web/      Next.js app: UI, Better Auth, and the pack pipeline
+```sh
+make install
+make dev
+make test
 ```
 
-Auth splits across both. Better Auth (Next) is the only thing that can create a
-session; it signs an EdDSA JWT and publishes its public keys, and Go verifies
-against that JWKS and issues nothing. Both halves share one Neon database, and
-Go's migrations never touch Better Auth's tables — `players.user_id` is the
-single crossing point.
+The web app runs at `http://localhost:3000`, the Go API at
+`http://localhost:8080`. `make api` and `make web` start them separately.
+Copy `.env.example` to the appropriate local environment files if configuring
+authentication or a database. Without `DATABASE_URL`, the API runs with
+in-memory games and no account history.
 
-Playing never requires an account. Signing in is what gives a round a streak,
-a collection and someone to play against.
+The frontend uses Better Auth for Google sign-in and EdDSA session tokens.
+Go verifies those tokens against the frontend JWKS. Both services use the
+same Postgres database when configured; Go migrations leave Better Auth's
+tables alone. Google sign-in stays hidden until configured.
 
-The server holds the answer and scores every guess. The client never knows the
-word until the round is over — on a shared phone, both players are looking at
-the same DevTools if anyone gets curious.
+Production configuration:
 
-## Running it
-
-```bash
-make install   # first time only
-make dev       # both services, one terminal
-```
-
-Open http://localhost:3000. Ctrl-C stops both.
-
-Or one per terminal, if you want the logs apart:
-
-```bash
-make api   # Go API      :8080
-make web   # Next.js app :3000
-```
-
-`make stop` frees both ports when something is still holding one, and
-`make test` runs the Go tests plus the typecheck and lint. The web app talks to `http://localhost:8080` by
-default; override with `NEXT_PUBLIC_API_URL`. The API allows
-`http://localhost:3000` by default; override with `ALLOWED_ORIGINS`.
-
-### Google sign-in
-
-Google is the only way in. Inventing a password for a word game is friction
-nobody wants, and an email flow with no mail sender behind it is worse than
-none. The button stays hidden until Google is configured — one that fails at
-the redirect is worse than no button at all.
-
-In Google Cloud Console, create an OAuth client ID of type *Web application*.
-One client covers both environments:
-
-| Field | Values |
-|---|---|
-| Authorised JavaScript origins | `http://localhost:3000`<br>`https://wordle.jerkeyray.com` |
-| Authorised redirect URIs | `http://localhost:3000/api/auth/callback/google`<br>`https://wordle.jerkeyray.com/api/auth/callback/google` |
-
-Put the client id and secret in `web/.env.local` as `GOOGLE_CLIENT_ID` and
-`GOOGLE_CLIENT_SECRET`, and restart the web app.
-
-The redirect URI is derived from `BETTER_AUTH_URL`, not hardcoded — so that
-variable has to be the real origin in production, or the callback Google
-receives will not match what you registered and sign-in fails with
-`redirect_uri_mismatch`.
-
-### Deploying
-
-The two services need to agree about origins:
-
-| Variable | Where | Production value |
-|---|---|---|
+| Variable | Service | Example |
+| --- | --- | --- |
 | `BETTER_AUTH_URL` | web | `https://wordle.jerkeyray.com` |
 | `NEXT_PUBLIC_API_URL` | web | `https://api.wordle.jerkeyray.com` |
-| `AUTH_BASE_URL` | server | `https://wordle.jerkeyray.com` (where Go fetches the JWKS) |
+| `AUTH_BASE_URL` | server | `https://wordle.jerkeyray.com` |
 | `ALLOWED_ORIGINS` | server | `https://wordle.jerkeyray.com` |
 
-Keeping the API on a subdomain of the same parent domain keeps the session
-cookie same-site, which is much cheaper than retrofitting it later.
+Google's authorised redirect URI is the web origin followed by
+`/api/auth/callback/google`. Better Auth's tables can be created with
+`pnpm dlx @better-auth/cli migrate` from `web/`.
 
-Copy `.env.example` to `web/.env.local` and `server/.env` and fill in a Neon
-connection string. Without one the game still runs — rounds live in memory and
-the word pool is embedded — you just get no accounts or history. Go applies its
-migrations at startup; Better Auth's tables come from
-`pnpm dlx @better-auth/cli migrate`.
+## Hints, restoration, and scoring
 
-## Tests
+Each word has two separately authored clues: context after two accepted
+guesses, association after four. They are optional and sequential. Requests
+specify tier 1 or 2, so repeating a request returns the same clue. The API
+never sends unused hints, future answers, or connection metadata during play.
 
-```bash
-cd server && go test ./...
-```
+Hints mark a result as assisted without reducing its points. A solve is worth
+6 through 1 points according to its row; a loss earns 0. Historical database
+scores are not recalculated.
 
-Covers the parts that are easy to get quietly wrong: duplicate-letter marking,
-turn alternation, the scoring maths, and an assertion that the answer never
-appears in a response while a round is live.
+The device remembers its active run, private theory, and completed pack IDs.
+Restoration reads server state before accepting more input. A lost response
+can therefore be retried without blindly resubmitting a guess. Completed
+boards are kept with the run and can be revisited, including lost boards.
 
-## Design
+**Solo sessions are in memory.** They expire after six hours of inactivity and are
+cleared on server restart. An expired session offers an explicit new start;
+this is not offline play or cross-device synchronisation. Storage-blocked
+browsers can play but cannot retain private notes between visits.
 
-The game is about words worth knowing, so the interface is built to feel like a
-specimen page from a well-made dictionary rather than a game app.
+## Shared daily games
 
-- **Rose, in both themes.** Light is blush paper; dark is plum ink, a
-  near-black with a red cast so even the dark theme reads pink rather than
-  neutral. A blue-cast dark theme reads as software; this one does not.
-- **Green is the right spot, rose is in-the-word.** Not the other way round,
-  however much the palette would prefer it. Green means "correct" to anyone who
-  has played a word game; an earlier pass had green on the wrong-spot mark and
-  the board read backwards at a glance. The app still reads pink because the
-  paper, the chrome and the second mark all are — only the success colour
-  follows the convention. Absent deliberately recedes: it means stop thinking
-  about this letter, so it never competes with the two marks that carry
-  information.
-- **No legend, no status strip.** The board explains itself. Chrome around it
-  only gets in the way.
-- **A serif doing real work.** Fraunces sets the wordmark, the board letters
-  and the entry at the end of a round. Serif letterforms on the tiles are what
-  make the board read as type, and they tie the game to the dictionary entry it
-  produces. The sans carries chrome only — keyboard, labels, buttons — so it
-  never competes with the words.
-- **Editorial furniture.** Hairline rules bracket the board, labels are small
-  caps, and the header carries a specimen number that is a real count of the
-  words this device has played.
-- **Paper grain and a warm pool of light** behind the board, both subtle enough
-  that you would only notice them by their absence.
-- **Colour-blind mode** swaps green/rose for blue/orange *and* adds glyphs, so
-  the marks are readable with no colour perception at all. It lives in
-  Preferences on the profile, as a labelled switch with a live sample — an
-  unlabelled icon toggle for a colour-blind mode is a small joke at the expense
-  of the people who need it — and it works signed out.
-- **One-handed layout** — keyboard in the thumb arc, `100dvh` so iOS Safari's
-  toolbar cannot clip the bottom row, no scrolling during play.
-- Installs to the home screen as a PWA.
+Open Friends from home or your profile. Copy/share your friend link, or add
+someone by code. After a friend request is accepted, select that friend and
+choose **Play together**. They accept a separate daily-game invitation.
+Several friendships can each have their own word and streak.
 
-## Word lists
+Shared boards have six alternating guesses, one optional pass per person, and
+no hints. They reset at midnight in the inviter's timezone. A solve extends the
+pair's streak; a missed or lost day breaks it. The starting player rotates by
+calendar date. Ending a partnership keeps its results and friendship; starting
+another requires another accepted invitation and resets the shared streak.
 
-`server/internal/words/dictionary.txt` — 12,578 five-letter words, generated
-from SCOWL (via the `word-list` package), the corpus behind aspell and
-hunspell. Regenerate with `pnpm dictionary` from `web/`; the output is checked
-in and embedded into the Go binary, so builds need no network.
+PostgreSQL stores partnerships, board/entry snapshots, guesses, passes, and
+retry receipts. Shared games survive API restarts. Every move checks membership,
+turn ownership, deadline, and expected version inside a transaction. Request
+IDs make retries safe. Private drafts and pending request IDs stay on the device,
+scoped to player, partnership, and date.
 
-This decides whether a *guess* is a real word and is deliberately permissive.
-The rule that matters is never rejecting a word a player knows — obscure real
-words being accepted costs nothing, since they can never be answers.
+Visible boards refresh every three seconds; friend summaries refresh every
+30 seconds. Hidden pages pause polling, failures back off, and focus/reconnect
+refresh immediately. Presence is ephemeral and expires after 90 seconds. No
+last-seen timestamps, private collections, or other friendships' games are
+exposed. Shared games require accounts and PostgreSQL; `/api/capabilities`
+reports availability. Apply additive migration `0002_daily_duos.sql` by restarting
+the updated API, and release the updated client alongside it.
 
-It previously came from macOS's `/usr/share/dict/words`, which is Webster's
-Second International (1934). That turned out to be a *headword* list: it had
-"call" but not "calls", "woman" but not "women", and rejected 3.7% of ordinary
-words — `proud`, `women`, `cards`, `lives`, `teams` — while happily accepting
-1934 curiosities. Being told a word you know isn't a word is the worst failure
-this game has, so it had to go.
+Routes include `GET/POST /api/me/duos`, `POST /api/me/presence`,
+`GET /api/duos/{id}`, `POST /api/duos/{id}/{accept|decline|cancel|end}`,
+and `GET /api/duos/{id}/days/{date|today}`. Board mutations are
+`POST /api/duos/{id}/days/{date}/{guesses|pass}` with `requestId` and `version`.
 
-`server/internal/words/answers.txt` — 260 curated answers, kept as guessable
-words. Answers themselves now come from packs.
+Legacy completion lists containing titles are accepted, including titles from
+before the content revision. New completions store stable IDs. After every
+pack has been seen, the next run begins a fresh exclusion cycle.
 
-`server/internal/words/packs.json` — 30 themed runs, 150 words. Each pack is
-five words that secretly share a theme, revealed only once the last word falls,
-plus a definition and a note for each word. Registers are mixed on purpose:
-CLOUT and SALVE belong in the same game and the entry plays both equally
-straight.
+## Content
 
-### Growing the pool
+`server/internal/words/dictionary.txt` is the permissive guess dictionary.
+`packs.json` contains 30 ordered packs and 150 answers with definitions,
+notes, two clues, vocabulary difficulty, and per-word connection explanations.
+Pack connection difficulty is rated separately. `answers.txt` remains the
+legacy curated list; active runs use packs.
 
-```bash
+```sh
 cd web
-pnpm packs:generate          # writes to packs.pending.json
-pnpm packs:review            # read them
+pnpm packs:check
+pnpm test:content
+pnpm packs:generate                 # requires AI_GATEWAY_API_KEY
+pnpm packs:review
 pnpm packs:review -- --approve <id>
 ```
 
-Generation needs `AI_GATEWAY_API_KEY`. The script hard-gates everything a
-script can check — length, charset, duplicates against every existing pack, and
-whether a word claiming to be standard is actually in the dictionary, which is
-the usual tell for an invented one.
+Generation writes pending content only. Approval revalidates structure and
+duplicates before promotion. Read the clues alongside earlier answers:
+a sentence can omit the answer and still give it away. Verify factual claims,
+and use usage notes instead of speculative etymology. Automated checks cannot
+establish editorial fairness. See [content review](docs/content-review.md) for
+the initial audit and player-test checklist.
 
-**Review is not ceremony.** The notes are the whole product, and a confidently
-invented etymology is worse than no note at all. A script cannot check whether
-an etymology is true, so a person reads them before they ship. This list is the seed; Phase 3 replaces it with an LLM-generated
-and human-reviewed pool in Postgres.
+Ship reviewed content, server, and client together: the hint wire format
+changed from `{position, letter}` to `{tier, text, round}`. Restarting the API
+loads the embedded content and expires existing in-memory runs.
+
+## Verification
+
+```sh
+make test                    # Go, TypeScript, ESLint, content checks
+cd server && go test -race ./...
+cd web
+pnpm exec playwright install chromium
+pnpm test:e2e
+```
+
+Browser tests use the web app on port 3000 (reusing a running dev server) and
+an isolated database-free API on 8082. They redirect the browser's default
+localhost:8080 API calls to that test server and stub authentication. Stop
+anything already using 8082 before running them. A custom frontend API URL
+requires adapting the test route.
+
+Tests cover ordered pilot runs, hint gates and restoration, the private theory,
+connection reveals, session expiry, lost responses, and responsive themes.
+Screenshots and failure traces are written to the ignored `web/test-results/`.
+These checks exercise functionality; they do not replace playtesting with people.
+
+PostgreSQL tests use a fresh isolated schema and never migrate the supplied
+database's public schema. Set `TEST_DATABASE_URL` to a disposable PostgreSQL
+database, then run:
+
+```sh
+cd server
+go test -race ./...
+DUO_BROWSER_TEST=1 go test ./internal/http -run '^TestDuoBrowser$' -v
+```
+
+The second command runs two Playwright browser contexts against a real database
+and restarts a separate API process during play. Its authentication, clock,
+answer-inspection, and restart controls exist only in the Go test binary.
+Without these environment variables, database/browser integration tests skip.

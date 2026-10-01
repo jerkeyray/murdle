@@ -46,6 +46,7 @@ function Tile({ letter, mark, index, revealing }: TileProps) {
 
   return (
     <div
+      role="img"
       className="tile"
       data-state={state}
       data-mark={revealing ? undefined : mark}
@@ -75,6 +76,8 @@ interface BoardProps {
   revealingRow: number | null;
   /** Set when a guess was rejected, to shake the draft row. */
   shake: boolean;
+  authors?: string[];
+  authorSeats?: number[];
 }
 
 export function Board({
@@ -84,11 +87,15 @@ export function Board({
   maxRows,
   revealingRow,
   shake,
+  authors,
+  authorSeats,
 }: BoardProps) {
   const draftRow = rows.length;
 
   return (
     <div
+      role="group"
+      aria-label="Word board"
       className="board"
       style={{ "--rows": maxRows, "--cols": wordLength } as React.CSSProperties}
     >
@@ -99,10 +106,13 @@ export function Board({
 
         return (
           <div
+            role="group"
+            aria-label={`Guess ${rowIndex + 1}`}
             className="row"
             key={rowIndex}
             data-shake={isDraft && shake ? "true" : undefined}
           >
+            {authors?.[rowIndex] && <span className="row-author" data-seat={authorSeats?.[rowIndex]} title={authors[rowIndex]} aria-label={`Guessed by ${authors[rowIndex]}`}>{authors[rowIndex].slice(0, 1).toUpperCase()}</span>}
             {Array.from({ length: wordLength }, (_, col) => (
               <Tile
                 key={col}

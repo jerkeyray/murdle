@@ -3,7 +3,7 @@ package words
 import (
 	"testing"
 
-	"github.com/jerkeyray/murdle/server/internal/game"
+	"github.com/jerkeyray/wordle/server/internal/game"
 )
 
 func TestPoolLoads(t *testing.T) {
@@ -70,5 +70,38 @@ func TestRandomFallsBackWhenAllExcluded(t *testing.T) {
 	}
 	if got := p.Random(exclude); got == "" {
 		t.Error("exhausting the pool should fall back to any answer, not return empty")
+	}
+}
+
+func TestPackExclusionsAcceptIDsAndLegacyTitles(t *testing.T) {
+	p := NewPool()
+	for _, useTitles := range []bool{false, true} {
+		exclude := map[string]struct{}{}
+		for _, pack := range p.packs[1:] {
+			key := pack.ID
+			if useTitles {
+				key = pack.Title
+				if len(pack.LegacyTitles) > 0 {
+					key = pack.LegacyTitles[0]
+				}
+			}
+			exclude[key] = struct{}{}
+		}
+		for i := 0; i < 20; i++ {
+			got, ok := p.RandomPack(exclude)
+			if !ok || got.ID != p.packs[0].ID {
+				t.Fatalf("unexpected repeat: %s", got.ID)
+			}
+		}
+		if p.Exhausted(exclude) {
+			t.Fatal("pool not yet exhausted")
+		}
+		exclude[p.packs[0].ID] = struct{}{}
+		if !p.Exhausted(exclude) {
+			t.Fatal("pool should be exhausted")
+		}
+		if _, ok := p.RandomPack(exclude); !ok {
+			t.Fatal("cannot begin new cycle")
+		}
 	}
 }

@@ -11,7 +11,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/jerkeyray/murdle/server/internal/game"
+	"github.com/jerkeyray/wordle/server/internal/game"
 )
 
 // Store is the persistence boundary for rounds and runs.
@@ -65,19 +65,19 @@ func NewMemory(ttl time.Duration) *Memory {
 func (m *Memory) Create(_ context.Context, r *game.Round) error {
 	m.mu.Lock()
 	defer m.mu.Unlock()
-	m.rounds[r.ID] = r
+	m.rounds[r.ID] = cloneRound(r)
 	return nil
 }
 
 func (m *Memory) Get(_ context.Context, id string) (*game.Round, error) {
 	m.mu.RLock()
+	defer m.mu.RUnlock()
 	r, ok := m.rounds[id]
-	m.mu.RUnlock()
 
 	if !ok || m.expired(r) {
 		return nil, game.ErrRoundNotFound
 	}
-	return r, nil
+	return cloneRound(r), nil
 }
 
 func (m *Memory) Update(_ context.Context, id string, fn func(*game.Round) error) (*game.Round, error) {
@@ -94,25 +94,25 @@ func (m *Memory) Update(_ context.Context, id string, fn func(*game.Round) error
 	if err := fn(r); err != nil {
 		return nil, err
 	}
-	return r, nil
+	return cloneRound(r), nil
 }
 
 func (m *Memory) CreateRun(_ context.Context, r *game.Run) error {
 	m.mu.Lock()
 	defer m.mu.Unlock()
-	m.runs[r.ID] = r
+	m.runs[r.ID] = cloneRun(r)
 	return nil
 }
 
 func (m *Memory) GetRun(_ context.Context, id string) (*game.Run, error) {
 	m.mu.RLock()
+	defer m.mu.RUnlock()
 	r, ok := m.runs[id]
-	m.mu.RUnlock()
 
 	if !ok || m.expiredAt(r.UpdatedAt) {
 		return nil, game.ErrRunNotFound
 	}
-	return r, nil
+	return cloneRun(r), nil
 }
 
 func (m *Memory) UpdateRun(_ context.Context, id string, fn func(*game.Run) error) (*game.Run, error) {
@@ -126,7 +126,7 @@ func (m *Memory) UpdateRun(_ context.Context, id string, fn func(*game.Run) erro
 	if err := fn(r); err != nil {
 		return nil, err
 	}
-	return r, nil
+	return cloneRun(r), nil
 }
 
 func (m *Memory) expired(r *game.Round) bool {
@@ -169,4 +169,24 @@ func (m *Memory) Len() int {
 	m.mu.RLock()
 	defer m.mu.RUnlock()
 	return len(m.rounds)
+}
+
+func cloneRound(r *game.Round) *game.Round {
+	copy := *r
+	copy.Rows = append([]game.Row{}, r.Rows...)
+	for i := range copy.Rows {
+		copy.Rows[i].Marks = append([]game.Mark{}, r.Rows[i].Marks...)
+	}
+	copy.Hints = append([]game.HintReveal{}, r.Hints...)
+	return &copy
+}
+func cloneRun(r *game.Run) *game.Run {
+	copy := *r
+	copy.Words = append([]string{}, r.Words...)
+	copy.RoundIDs = append([]string{}, r.RoundIDs...)
+	copy.Results = make([]game.Round, len(r.Results))
+	for i := range r.Results {
+		copy.Results[i] = *cloneRound(&r.Results[i])
+	}
+	return &copy
 }

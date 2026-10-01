@@ -7,8 +7,8 @@ import (
 
 	"github.com/go-chi/chi/v5"
 
-	"github.com/jerkeyray/murdle/server/internal/auth"
-	"github.com/jerkeyray/murdle/server/internal/players"
+	"github.com/jerkeyray/wordle/server/internal/auth"
+	"github.com/jerkeyray/wordle/server/internal/players"
 )
 
 // profileView is everything the profile screen needs in one request. It is a
@@ -44,6 +44,8 @@ type friendView struct {
 	DisplayName string `json:"displayName"`
 	Status      string `json:"status"`
 	Incoming    bool   `json:"incoming"`
+	Online      bool   `json:"online"`
+	DayStreak   int    `json:"dayStreak"`
 }
 
 // player resolves the caller to a profile, creating one on first sight.
@@ -238,11 +240,26 @@ func (s *Server) handleFriends(w http.ResponseWriter, r *http.Request) {
 
 	out := make([]friendView, 0, len(friends))
 	for _, f := range friends {
+		var online bool
+		var dayStreak int
+		if f.Status == "accepted" {
+			if s.duos != nil {
+				online = s.duos.Online(f.PlayerID)
+			}
+			streak, err := s.players.Streak(r.Context(), f.PlayerID, localDate(r))
+			if err != nil {
+				writeError(w, 500, "internal", "Could not read your friends")
+				return
+			}
+			dayStreak = streak.Current
+		}
 		out = append(out, friendView{
 			ID:          f.FriendshipID,
 			DisplayName: f.DisplayName,
 			Status:      f.Status,
 			Incoming:    f.Incoming,
+			Online:      online,
+			DayStreak:   dayStreak,
 		})
 	}
 

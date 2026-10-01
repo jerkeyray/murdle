@@ -33,7 +33,7 @@ type Verifier struct {
 // NewVerifier fetches the key set and keeps it refreshed.
 //
 // baseURL is the Next.js origin that issues the tokens, e.g.
-// https://murdle.xyz. Keys are fetched once here so a bad configuration fails
+// https://wordle.xyz. Keys are fetched once here so a bad configuration fails
 // at startup rather than on a player's first request.
 func NewVerifier(ctx context.Context, baseURL string) (*Verifier, error) {
 	jwksURL := strings.TrimRight(baseURL, "/") + "/api/auth/jwks"

@@ -78,78 +78,60 @@ func TestRoundClosesOnceSolved(t *testing.T) {
 	}
 }
 
-func TestHints(t *testing.T) {
+func TestAuthoredHints(t *testing.T) {
+	clues := []string{"Often used after a minor injury.", "Think of something applied to soothe."}
 	r := NewRound("r1", "salve")
-
-	// Each hint reveals the next position the player does not yet know, left
-	// to right, and never repeats one.
-	wantLetters := []string{"s", "a", "l"}
-	for tier, wantLetter := range wantLetters {
-		got, err := r.UseHint(3)
-		if err != nil {
-			t.Fatalf("hint %d: %v", tier, err)
-		}
-		if got.Tier != tier {
-			t.Errorf("hint returned tier %d, want %d", got.Tier, tier)
-		}
-		if got.Position != tier {
-			t.Errorf("hint revealed position %d, want %d", got.Position, tier)
-		}
-		if got.Letter != wantLetter {
-			t.Errorf("hint revealed %q, want %q", got.Letter, wantLetter)
-		}
+	if _, err := r.UseHint(0, clues); err != ErrInvalidHint {
+		t.Fatalf("invalid tier: %v", err)
 	}
-
-	if _, err := r.UseHint(3); err != ErrNoHintsLeft {
-		t.Errorf("fourth hint = %v, want ErrNoHintsLeft", err)
+	if _, err := r.UseHint(1, clues); err != ErrHintLocked {
+		t.Fatalf("early hint: %v", err)
 	}
-
-}
-
-// A hint must not sell back a position the player already worked out.
-func TestHintSkipsPositionsAlreadyGuessed(t *testing.T) {
-	r := NewRound("r1", "salve")
-
-	// "slate" shares S at position 0 with the answer, so that is a hit.
-	if err := r.Guess("slate", alwaysWord); err != nil {
+	for i := 0; i < 2; i++ {
+		_ = r.Guess("crane", alwaysWord)
+	}
+	first, err := r.UseHint(1, clues)
+	if err != nil || first.Text != clues[0] {
+		t.Fatalf("first: %v %v", first, err)
+	}
+	again, err := r.UseHint(1, clues)
+	if err != nil || first != again || r.HintsUsed != 1 {
+		t.Fatalf("retry consumed a hint: %+v %v", r, err)
+	}
+	if _, err := r.UseHint(2, clues); err != ErrHintLocked {
+		t.Fatalf("second unlocked early: %v", err)
+	}
+	for i := 0; i < 2; i++ {
+		_ = r.Guess("crane", alwaysWord)
+	}
+	if _, err := r.UseHint(2, clues); err != nil {
 		t.Fatal(err)
 	}
-
-	got, err := r.UseHint(3)
-	if err != nil {
-		t.Fatalf("hint: %v", err)
+	if _, err := r.UseHint(3, clues); err != ErrInvalidHint {
+		t.Fatalf("extra tier: %v", err)
 	}
-	if got.Position == 0 {
-		t.Error("hint revealed position 0, which the player had already guessed")
+	_ = r.Guess("salve", alwaysWord)
+	if r.Points() != 2 {
+		t.Fatalf("hints reduced points: %d", r.Points())
 	}
-	if got.Position != 1 || got.Letter != "a" {
-		t.Errorf("hint revealed position %d (%q), want position 1 (\"a\")", got.Position, got.Letter)
+	if _, err := r.UseHint(1, clues); err != ErrRoundOver {
+		t.Fatalf("finished hint: %v", err)
 	}
 }
 
-// Nothing left to reveal means nothing left to charge for.
-func TestHintRefusedWhenEveryPositionIsKnown(t *testing.T) {
-	r := NewRound("r1", "salve")
-	for i := 0; i < WordLength; i++ {
-		if _, err := r.UseHint(WordLength); err != nil {
-			t.Fatalf("hint %d: %v", i, err)
-		}
+func TestHintsRequireFirstTierAndAcceptedGuesses(t *testing.T) {
+	r := NewRound("r", "salve")
+	clues := []string{"A context", "An association"}
+	for i := 0; i < 4; i++ {
+		_ = r.Guess("zzzzz", onlyWords("crane"))
 	}
-	if _, err := r.UseHint(WordLength); err != ErrNoHintsLeft {
-		t.Errorf("hint with nothing left = %v, want ErrNoHintsLeft", err)
+	if _, err := r.UseHint(1, clues); err != ErrHintLocked {
+		t.Fatal("invalid guesses unlocked hints")
 	}
-}
-
-func TestHintsCostTheBoardThatUsedThem(t *testing.T) {
-	r := NewRound("r1", "salve")
-	if _, err := r.UseHint(3); err != nil {
-		t.Fatal(err)
+	for i := 0; i < 4; i++ {
+		_ = r.Guess("crane", alwaysWord)
 	}
-	if err := r.Guess("salve", alwaysWord); err != nil {
-		t.Fatal(err)
-	}
-
-	if got := r.Points(); got != 5 {
-		t.Errorf("solved row 0 (6 pts) minus one hint = %d, want 5", got)
+	if _, err := r.UseHint(2, clues); err != ErrHintLocked {
+		t.Fatal("skipped the first hint")
 	}
 }

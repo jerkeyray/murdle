@@ -1,4 +1,4 @@
-// Package db owns the Postgres connection and the schema Murdle manages.
+// Package db owns the Postgres connection and the schema Wordle manages.
 //
 // Better Auth manages its own tables from the Next.js side; the migrations
 // here never touch them.

@@ -1,4 +1,4 @@
-// Package game holds the pure rules of Murdle: how a guess is scored against an
+// Package game holds the pure rules of Wordle: how a guess is scored against an
 // answer, whose turn it is, and what a round is worth. Nothing here touches I/O
 // or storage, so it is all directly testable.
 package game

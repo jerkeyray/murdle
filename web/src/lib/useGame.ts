@@ -1,47 +1,23 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import {
-  ApiError,
-  createRun,
-  letterStates,
-  startRunRound,
-  submitGuess,
-  type Round,
-  type Run,
-} from "@/lib/api";
+import { ApiError, createRun, getRound, getRun, letterStates, startRunRound, submitGuess, revealHint, type Round, type Run } from "./api";
+import { ACTIVE_KEY, activeRun, playedPacks, readLocal, rememberRun, writeLocal } from "./session";
 
-/**
- * How long the reveal animation takes end to end: the last tile's stagger delay
- * plus its own flip. Kept in sync with the `reveal` keyframes in globals.css —
- * if the timing there changes, change it here too.
- */
-const REVEAL_MS = 5 * 200 + 520;
+const REVEAL_MS = 4 * 200 + 540;
+type Deal = { round: Round; run: Run };
 
-const PACKS_KEY = "murdle.packs";
-
-/** Themes already played on this device, so a new run picks a fresh one. */
-function loadPlayedPacks(): string[] {
-  if (typeof window === "undefined") return [];
-  try {
-    const raw = window.localStorage.getItem(PACKS_KEY);
-    return raw ? (JSON.parse(raw) as string[]) : [];
-  } catch {
-    // Private mode, blocked storage, corrupt value — none of which should stop
-    // anyone playing. Repeating a theme is a far smaller problem.
-    return [];
-  }
+async function restore(id: string): Promise<Deal> {
+  const run = await getRun(id);
+  if (!run.currentRoundId) return startRunRound(id);
+  // Completed boards are retained with the run even if their individual TTL elapsed.
+  const round = run.completedWords.find((r) => r.id === run.currentRoundId) ?? await getRound(run.currentRoundId);
+  return { run, round };
 }
-
-function rememberPack(title: string) {
-  try {
-    const played = loadPlayedPacks();
-    if (!played.includes(title)) {
-      window.localStorage.setItem(PACKS_KEY, JSON.stringify([...played, title]));
-    }
-  } catch {
-    /* ignore — see loadPlayedPacks */
-  }
+async function begin(): Promise<Deal> {
+  const run = await createRun({ excludePacks: playedPacks() });
+  rememberRun(run); // Retain the run even if dealing its first board fails.
+  return startRunRound(run.id);
 }
 
 export function useGame() {
@@ -49,224 +25,132 @@ export function useGame() {
   const [round, setRound] = useState<Round | null>(null);
   const [draft, setDraft] = useState("");
   const [busy, setBusy] = useState(false);
+  const lock = useRef(false);
   const [message, setMessage] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [expired, setExpired] = useState(false);
   const [shake, setShake] = useState(false);
-
-  /**
-   * How many rows have finished their reveal animation. Everything that would
-   * spoil the flip — keyboard colours, the entry card — reads this rather than
-   * round.rows.length.
-   */
   const [revealedRows, setRevealedRows] = useState(0);
   const [revealingRow, setRevealingRow] = useState<number | null>(null);
-
+  const [theory, setTheory] = useState("");
   const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
+  const mounted = useRef(false);
+  const opening = useRef<Promise<Deal> | null>(null);
 
   const later = useCallback((fn: () => void, ms: number) => {
-    const id = setTimeout(fn, ms);
+    const id = setTimeout(() => { if (mounted.current) fn(); }, ms);
     timers.current.push(id);
   }, []);
-
-  useEffect(() => {
-    const pending = timers.current;
-    return () => pending.forEach(clearTimeout);
+  const flash = useCallback((text: string) => {
+    setMessage(text); later(() => setMessage(null), 3500);
+  }, [later]);
+  const accept = useCallback((dealt: Deal) => {
+    setRun(dealt.run); setRound(dealt.round);
+    setDraft(""); setRevealingRow(null); setRevealedRows(dealt.round.rows.length);
+    setTheory(readLocal(`wordle.theory.${dealt.run.id}`) ?? "");
+    rememberRun(dealt.run); setError(null); setExpired(false);
+  }, []);
+  const fail = useCallback((err: unknown) => {
+    const missing = err instanceof ApiError && (err.code === "run_not_found" || err.code === "round_not_found");
+    setExpired(missing);
+    setError(missing
+      ? "This session has expired. Games are kept for six hours of inactivity and are cleared when the server restarts."
+      : err instanceof ApiError ? err.message : "Could not reach the game. Please try again.");
+    if (missing) writeLocal(ACTIVE_KEY, null);
   }, []);
 
-  const flash = useCallback(
-    (text: string) => {
-      setMessage(text);
-      later(() => setMessage(null), 1800);
-    },
-    [later],
-  );
-
-  const clearBoard = useCallback(() => {
-    setDraft("");
-    setRevealedRows(0);
-    setRevealingRow(null);
-  }, []);
-
-  /**
-   * Starts a themed run and deals its first word.
-   *
-   * An effect must not set state synchronously in its body, so the mount path
-   * lives in its own effect below and this is only ever called from a tap.
-   */
-  const newRun = useCallback(async () => {
-    setBusy(true);
-    clearBoard();
-    try {
-      const fresh = await createRun({ excludePacks: loadPlayedPacks() });
-      const dealt = await startRunRound(fresh.id);
-      setRun(dealt.run);
-      setRound(dealt.round);
-    } catch (err) {
-      flash(err instanceof ApiError ? err.message : "Could not start a run");
-    } finally {
-      setBusy(false);
-    }
-  }, [clearBoard, flash]);
-
-  /** Deals the next board — the next word, or your opponent's turn at this one. */
-  const nextWord = useCallback(async () => {
-    if (!run || run.complete) return;
-
-    setBusy(true);
-    clearBoard();
-    try {
-      const dealt = await startRunRound(run.id);
-      setRun(dealt.run);
-      setRound(dealt.round);
-    } catch (err) {
-      flash(err instanceof ApiError ? err.message : "Could not deal the next board");
-    } finally {
-      setBusy(false);
-    }
-  }, [run, clearBoard, flash]);
-
-  /**
-   * Caches the opening request against React's development double-invoke.
-   *
-   * Starting a run is a side effect on the server, not an idempotent read:
-   * firing twice creates two runs and two rounds and abandons one of each.
-   *
-   * The dedupe has to cache the *promise* rather than skip the second effect
-   * run. Skipping it strands the game on the loading screen — the first
-   * invocation's cleanup has already marked its result as cancelled, so if the
-   * second invocation never subscribes, nothing is ever applied.
-   */
-  const opening = useRef<Promise<{ round: Round; run: Run }> | null>(null);
-
   useEffect(() => {
+    mounted.current = true;
     let cancelled = false;
+    const saved = activeRun();
+    opening.current ??= saved ? restore(saved) : begin();
+    opening.current.then((dealt) => { if (!cancelled) accept(dealt); }).catch((err: unknown) => {
+      if (!cancelled) { opening.current = null; fail(err); }
+    });
+    const pending = timers.current;
+    return () => { cancelled = true; mounted.current = false; pending.forEach(clearTimeout); };
+  }, [accept, fail]);
 
-    opening.current ??= createRun({ excludePacks: loadPlayedPacks() }).then(
-      (fresh) => startRunRound(fresh.id),
-    );
+  const perform = useCallback(async (action: () => Promise<Deal>) => {
+    if (lock.current) return;
+    lock.current = true; setBusy(true); setError(null);
+    try { const dealt = await action(); if (mounted.current) accept(dealt); }
+    catch (err) { if (mounted.current) fail(err); }
+    finally { lock.current = false; if (mounted.current) setBusy(false); }
+  }, [accept, fail]);
+  const retry = useCallback(() => perform(() => {
+    const saved = activeRun(); return saved ? restore(saved) : begin();
+  }), [perform]);
+  const newRun = useCallback(() => perform(begin), [perform]);
+  const nextWord = useCallback(() => perform(async () => {
+    if (!run) return begin();
+    // Recover a response lost after the next word was already dealt.
+    const current = await getRun(run.id);
+    if (current.currentRoundId !== round?.id || current.complete) return restore(run.id);
+    return startRunRound(run.id);
+  }), [perform, run, round?.id]);
 
-    opening.current
-      .then((dealt) => {
-        if (cancelled) return;
-        setRun(dealt.run);
-        setRound(dealt.round);
-      })
-      .catch((err: unknown) => {
-        if (cancelled) return;
-        // Let a failed opening be retried rather than cached forever.
-        opening.current = null;
-        setMessage(
-          err instanceof ApiError ? err.message : "Could not start a run",
-        );
-      });
-
-    return () => {
-      cancelled = true;
-    };
-  }, []);
-
-  const playable =
-    round !== null && round.state === "playing" && !busy && revealingRow === null;
-
-  const typeLetter = useCallback(
-    (letter: string) => {
-      if (!playable || !round) return;
-      setDraft((d) => (d.length >= round.wordLength ? d : d + letter));
-    },
-    [playable, round],
-  );
-
-  const backspace = useCallback(() => {
-    if (!playable) return;
-    setDraft((d) => d.slice(0, -1));
-  }, [playable]);
-
-  const reject = useCallback(
-    (text: string) => {
-      flash(text);
-      setShake(true);
-      later(() => setShake(false), 450);
-      // A short buzz on rejection. Silently absent on desktop and on iOS
-      // Safari, which is fine — it is a bonus signal, not the only one.
-      navigator.vibrate?.(60);
-    },
-    [flash, later],
-  );
-
+  const playable = !!round && round.state === "playing" && !busy && !error && revealingRow === null;
+  const typeLetter = useCallback((letter: string) => {
+    if (playable && round) setDraft((d) => d.length >= round.wordLength ? d : d + letter);
+  }, [playable, round]);
+  const backspace = useCallback(() => { if (playable) setDraft((d) => d.slice(0, -1)); }, [playable]);
+  const reject = useCallback((text: string) => {
+    flash(text); setShake(true); later(() => setShake(false), 450);
+  }, [flash, later]);
   const submit = useCallback(async () => {
-    if (!playable || !round) return;
-
-    if (draft.length !== round.wordLength) {
-      reject(`${round.wordLength} letters`);
-      return;
-    }
-
-    setBusy(true);
+    if (!playable || !round || lock.current) return;
+    if (draft.length !== round.wordLength) { reject("Enter five letters"); return; }
+    lock.current = true; setBusy(true);
     try {
       const result = await submitGuess(round.id, draft);
-      const newRowIndex = result.round.rows.length - 1;
-
-      setRound(result.round);
-      setDraft("");
-      setRevealingRow(newRowIndex);
-
-      later(() => {
-        setRevealingRow(null);
-        setRevealedRows(result.round.rows.length);
-        // The run only updates on the guess that ends a round, and holding it
-        // back until the flip finishes keeps the theme reveal from landing
-        // before the last tile has turned over.
-        if (result.run) {
-          setRun(result.run);
-          if (result.run.pack) rememberPack(result.run.pack.title);
-        }
-      }, REVEAL_MS);
+      if (!mounted.current) return;
+      setRound(result.round); setDraft("");
+      const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      setRevealingRow(reduced ? null : result.round.rows.length - 1);
+      const settle = () => {
+        setRevealingRow(null); setRevealedRows(result.round.rows.length);
+        if (result.run) { setRun(result.run); rememberRun(result.run); }
+      };
+      if (reduced) settle(); else later(settle, REVEAL_MS);
     } catch (err) {
-      reject(err instanceof ApiError ? err.message : "Something went wrong");
-    } finally {
-      setBusy(false);
-    }
-  }, [playable, round, draft, reject, later]);
+      if (err instanceof ApiError && ["wrong_length", "not_a_word"].includes(err.code)) reject(err.message);
+      else fail(err); // Retry reads server state before accepting another guess.
+    } finally { lock.current = false; if (mounted.current) setBusy(false); }
+  }, [playable, round, draft, reject, later, fail]);
+  const requestHint = useCallback(async () => {
+    if (!playable || !round || lock.current) return;
+    lock.current = true; setBusy(true);
+    try {
+      const result = await revealHint(round.id, round.hintsUsed + 1);
+      if (mounted.current) setRound(result.round);
+    } catch (err) { if (mounted.current) fail(err); }
+    finally { lock.current = false; if (mounted.current) setBusy(false); }
+  }, [playable, round, fail]);
 
-  // Physical keyboard, so the game is properly playable on a laptop too.
   useEffect(() => {
     function onKeyDown(e: KeyboardEvent) {
-      if (e.metaKey || e.ctrlKey || e.altKey) return;
-
+      if (e.metaKey || e.ctrlKey || e.altKey || e.isComposing || document.querySelector("dialog[open]")) return;
+      if (e.target instanceof HTMLElement && e.target.closest("input, textarea, select, [contenteditable=true]")) return;
       if (e.key === "Enter") {
-        e.preventDefault();
-        void submit();
-      } else if (e.key === "Backspace") {
-        e.preventDefault();
-        backspace();
-      } else if (/^[a-zA-Z]$/.test(e.key)) {
-        typeLetter(e.key.toLowerCase());
+        if (e.target instanceof HTMLElement && e.target.closest("button, a, summary")) return;
+        e.preventDefault(); void submit();
       }
+      else if (e.key === "Backspace") { e.preventDefault(); backspace(); }
+      else if (/^[a-zA-Z]$/.test(e.key)) typeLetter(e.key.toLowerCase());
     }
-
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [submit, backspace, typeLetter]);
 
-  const settledRows = round ? round.rows.slice(0, revealedRows) : [];
-
+  function updateTheory(value: string) {
+    const next = value.slice(0, 280); setTheory(next);
+    if (run) writeLocal(`wordle.theory.${run.id}`, next);
+  }
   return {
-    run,
-    round,
-    draft,
-    message,
-    shake,
-    revealingRow,
-    /** True once the round is over *and* the final row has finished flipping. */
-    finished:
-      round !== null &&
-      round.state !== "playing" &&
-      revealedRows === round.rows.length,
-    letterStates: letterStates(settledRows),
-    inputDisabled: !playable,
-    typeLetter,
-    backspace,
-    submit,
-    nextWord,
-    newRun,
+    run, round, draft, busy, message, error, expired, shake, revealingRow, theory, updateTheory,
+    finished: !!round && round.state !== "playing" && revealedRows === round.rows.length,
+    letterStates: letterStates(round?.rows.slice(0, revealedRows) ?? []),
+    inputDisabled: !playable, typeLetter, backspace, submit, nextWord, newRun, retry, requestHint,
   };
 }

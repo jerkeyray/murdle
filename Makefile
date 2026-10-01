@@ -1,4 +1,4 @@
-# Murdle. Two services: the Go API and the Next.js app.
+# Wordle. Two services: the Go API and the Next.js app.
 #
 #   make dev    both at once, in one terminal
 #   make api    just the Go API      (:8080)
@@ -8,7 +8,7 @@
 .PHONY: dev api web test install stop
 
 api:
-	cd server && go run ./cmd/murdled
+	cd server && go run ./cmd/wordled
 
 web:
 	cd web && pnpm dev
@@ -18,7 +18,7 @@ web:
 # with "address already in use".
 dev:
 	@trap 'kill 0' EXIT INT TERM; \
-	(cd server && go run ./cmd/murdled) & \
+	(cd server && go run ./cmd/wordled) & \
 	(cd web && pnpm dev) & \
 	wait
 
@@ -28,7 +28,8 @@ install:
 
 test:
 	cd server && go test ./...
-	cd web && pnpm exec tsc --noEmit && pnpm exec eslint src --max-warnings=0
+	cd web && pnpm exec tsc --noEmit && pnpm exec eslint src tests playwright.config.ts --max-warnings=0
+	cd web && pnpm packs:check && pnpm test:content
 
 # For when something is still holding a port.
 stop:

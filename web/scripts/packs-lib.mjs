@@ -24,6 +24,9 @@ export const WORD_LENGTH = 5;
 export const packWordSchema = z.object({
   word: z.string().describe("Exactly five letters, lowercase a-z only."),
   register: z.enum(["standard", "slang"]),
+  difficulty: z.enum(["familiar", "stretch", "challenging"]),
+  hints: z.array(z.string().min(12)).length(2).describe("Two separately authored clues: broad context, then a narrower association. No answer text, letters, positions, direct definitions, or pack theme."),
+  connection: z.string().min(15).describe("Explain precisely how this word fits the final connection. Revealed only after the run."),
   definition: z
     .string()
     .describe("One short sentence. Plain, and a little dry."),
@@ -38,6 +41,8 @@ export const packWordSchema = z.object({
 export const packSchema = z.object({
   id: z.string().describe("kebab-case slug."),
   title: z.string().describe("Two or three words. The theme, revealed at the end."),
+  connectionDifficulty: z.enum(["easy", "medium", "hard"]),
+  legacyTitles: z.array(z.string()).optional(),
   blurb: z.string().describe("One line. Dry, funny, no exclamation marks."),
   words: z.array(packWordSchema).length(WORDS_PER_PACK),
 });
@@ -73,6 +78,8 @@ const BLOCKLIST = new Set(["rapes", "nazis", "kikes", "spics", "chink", "wetba"]
  */
 export function checkPack(pack, { dictionary, existingWords, existingIds }) {
   const problems = [];
+  const parsed = packSchema.safeParse(pack);
+  if (!parsed.success) return parsed.error.issues.map((issue) => `${issue.path.join(".")}: ${issue.message}`);
   const seen = new Set();
 
   if (!/^[a-z0-9-]+$/.test(pack.id)) {
@@ -110,6 +117,11 @@ export function checkPack(pack, { dictionary, existingWords, existingIds }) {
     }
     if (!entry.definition?.trim()) problems.push(`"${w}" has no definition`);
     if (!entry.note?.trim()) problems.push(`"${w}" has no note`);
+    if (entry.hints[0].trim() === entry.hints[1].trim()) problems.push(`"${w}" repeats its hint`);
+    for (const hint of entry.hints) {
+      if (hint.toLowerCase().includes(w)) problems.push(`"${w}" appears in its own hint`);
+      if (/\b(first|last|second|third|fourth|fifth) letter|\b(starts|ends) with\b/i.test(hint)) problems.push(`"${w}" has a structural giveaway`);
+    }
   }
 
   return problems;

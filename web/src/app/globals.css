@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* ===========================================================================
-   MURDLE — editorial letterpress
+   WORDLE — editorial letterpress
 
    The premise of the game is words worth knowing, so the interface is built
    to feel like a specimen page from a well-made dictionary rather than a game
@@ -1014,9 +1014,7 @@ button {
 /* ---------------------------------------------------------------------------
    Home
 
-   The mode choice is the whole reason this screen exists: two people on one
-   phone is what the game is for, and a game that opens straight onto a board
-   never offers it.
+   A quiet front cover: the name, the premise, and one way into the game.
 --------------------------------------------------------------------------- */
 
 .home {
@@ -1335,15 +1333,6 @@ button {
   letter-spacing: 0.24em;
 }
 
-/* ---------------------------------------------------------------------------
-   The calendar
-
-   A contribution graph tells you that you turned up. This tells you what you
-   met: every day you played carries the first letter of that day's word.
---------------------------------------------------------------------------- */
-
-.calendar-block,
-.alphabet-block,
 .prefs {
   margin-bottom: 22px;
 }
@@ -1356,100 +1345,6 @@ button {
   padding-bottom: 9px;
   margin-bottom: 11px;
   border-bottom: 1px solid var(--rule);
-}
-
-.calendar {
-  display: flex;
-  gap: 3px;
-  /* Scrolls rather than squeezing on a narrow phone: squeezed letters stop
-     being readable, which is the entire point of this thing. */
-  overflow-x: auto;
-  padding-bottom: 2px;
-  scrollbar-width: none;
-}
-
-.calendar::-webkit-scrollbar {
-  display: none;
-}
-
-.calendar-week {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-
-.calendar-day {
-  display: grid;
-  place-items: center;
-  width: 18px;
-  height: 18px;
-  border-radius: 3px;
-  background: color-mix(in srgb, var(--border) 50%, transparent);
-  font-family: var(--font-serif), Georgia, serif;
-  font-size: 0.68rem;
-  font-weight: 600;
-  line-height: 1;
-  text-transform: uppercase;
-  color: transparent;
-}
-
-.calendar-day[data-played="true"] {
-  background: var(--mark-hit);
-  color: var(--mark-hit-text);
-}
-
-/* A day you played but did not solve still counts for the streak — turning up
-   is the habit — so it is marked, just not in the winning colour. */
-.calendar-day[data-missed="true"] {
-  background: var(--mark-absent);
-  color: var(--mark-absent-text);
-}
-
-/* ---------------------------------------------------------------------------
-   Your alphabet
-
-   A stamp album. The gaps are the interesting part.
---------------------------------------------------------------------------- */
-
-.alphabet {
-  display: grid;
-  grid-template-columns: repeat(13, 1fr);
-  gap: 4px;
-}
-
-.alphabet-letter {
-  position: relative;
-  display: grid;
-  place-items: center;
-  aspect-ratio: 1;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  font-family: var(--font-serif), Georgia, serif;
-  font-size: 0.8rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  color: var(--text-faint);
-}
-
-.alphabet-letter[data-has="true"] {
-  border-color: var(--mark-hit);
-  background: color-mix(in srgb, var(--mark-hit) 14%, transparent);
-  color: var(--text);
-}
-
-.alphabet-count {
-  position: absolute;
-  top: -3px;
-  right: -3px;
-  min-width: 13px;
-  padding: 0 2px;
-  border-radius: 999px;
-  background: var(--mark-hit);
-  color: var(--mark-hit-text);
-  font-family: var(--font-sans), sans-serif;
-  font-size: 0.5rem;
-  line-height: 13px;
-  text-align: center;
 }
 
 /* ---------------------------------------------------------------------------
@@ -1876,28 +1771,6 @@ button {
     padding-inline: 28px;
   }
 
-  /* The calendar grows with the page rather than sitting as a small block in
-     the corner of it — and bigger cells mean the letters are properly
-     readable, which is the whole reason they are letters. */
-  .calendar,
-  .calendar-week {
-    gap: 3px;
-  }
-
-  .calendar-day {
-    width: 19px;
-    height: 19px;
-    font-size: 0.7rem;
-  }
-
-  .alphabet {
-    gap: 6px;
-  }
-
-  .alphabet-letter {
-    font-size: 0.86rem;
-  }
-
   /* Two columns of entries at this width; the notes stay readable because the
      column, not the page, sets the measure. */
   .rows--split {
@@ -1938,31 +1811,6 @@ button {
   font-size: clamp(1.6rem, 7vw, 2rem);
 }
 
-/* A button that looks like the heading it replaces.
-   Note what is NOT here: `font: inherit`. That shorthand resets family, size
-   and weight, which quietly dropped the name out of the serif and down to body
-   size — the plate looked hollow and nothing lined up. */
-.plate-name--button {
-  display: inline-block;
-  max-width: 100%;
-  padding: 0;
-  border: none;
-  background: none;
-  color: inherit;
-  text-align: left;
-  cursor: pointer;
-  border-bottom: 1px dashed transparent;
-  transition: border-color 0.16s ease;
-}
-
-.plate-name--button:hover {
-  border-bottom-color: var(--border-strong);
-}
-
-.plate-name--button:hover {
-  border-bottom-color: var(--border-strong);
-}
-
 .plate-rule {
   margin: 12px 0 10px;
 }
@@ -1990,8 +1838,6 @@ button {
   font-size: 1.5rem;
 }
 
-.calendar-block,
-.alphabet-block,
 .prefs {
   margin-bottom: 18px;
 }
@@ -1999,27 +1845,6 @@ button {
 .block-head {
   padding-bottom: 7px;
   margin-bottom: 9px;
-}
-
-.calendar-day {
-  width: 15px;
-  height: 15px;
-  border-radius: 3px;
-  font-size: 0.6rem;
-}
-
-.calendar,
-.calendar-week {
-  gap: 2px;
-}
-
-.alphabet {
-  gap: 3px;
-}
-
-.alphabet-letter {
-  font-size: 0.72rem;
-  border-radius: 3px;
 }
 
 .tabs {
@@ -2107,6 +1932,29 @@ button {
   margin: 2px 0 0;
   font-size: clamp(1.7rem, 8vw, 2.1rem);
   line-height: 1.1;
+}
+
+.plate-name-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.name-edit {
+  flex: none;
+  min-height: 40px;
+  padding: 8px 0 8px 12px;
+  border: 0;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.76rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.name-edit:hover {
+  color: var(--text);
 }
 
 .plate-rule {
@@ -2242,3 +2090,368 @@ button {
   font-size: 0.82rem;
   color: var(--text-muted);
 }
+
+/* ---------------------------------------------------------------------------
+   Home cover
+
+   The opening page behaves like a book cover on a desk: one compact invitation
+   and one small specimen of the game. The generous space belongs around the
+   composition, rather than between unrelated pieces of it.
+--------------------------------------------------------------------------- */
+
+.home {
+  width: min(100%, 72rem);
+  max-width: none;
+  padding-inline: clamp(20px, 5vw, 64px);
+}
+
+.home-top {
+  min-height: 72px;
+  padding: 14px 0;
+  margin: 0;
+}
+
+.home-middle {
+  display: grid;
+  grid-template-columns: minmax(17rem, 0.82fr) minmax(25rem, 1.18fr);
+  align-items: center;
+  gap: clamp(64px, 10vw, 144px);
+  padding: clamp(48px, 8vh, 96px) 0 clamp(64px, 11vh, 120px);
+}
+
+.home-intro {
+  align-self: center;
+}
+
+.home-mark {
+  margin: 0;
+  font-size: clamp(4.5rem, 8vw, 7.2rem);
+  font-weight: 570;
+  line-height: 0.84;
+  letter-spacing: -0.045em;
+  text-transform: none;
+}
+
+.home-line {
+  margin: 26px 0 34px;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(1.15rem, 1.6vw, 1.4rem);
+  line-height: 1.32;
+  color: var(--text-muted);
+}
+
+.play {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  min-width: 10.5rem;
+  padding: 13px 17px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--text);
+  color: var(--bg);
+  text-decoration: none;
+  transition: color 0.18s ease, border-color 0.18s ease;
+}
+
+.play:hover {
+  background: var(--mark-hit);
+  color: var(--mark-hit-text);
+}
+
+.play-word {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 1.45rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.play-arrow {
+  font-size: 1.4rem;
+  line-height: 1;
+  transition: transform 0.18s ease;
+}
+
+.play:hover .play-arrow {
+  transform: translateX(4px);
+}
+
+.home-specimen {
+  position: relative;
+  width: 100%;
+  max-width: 31rem;
+  justify-self: end;
+  padding: 0;
+}
+
+.specimen-list {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.specimen-list::after {
+  content: "";
+  position: absolute;
+  top: 12px;
+  right: 7px;
+  bottom: 12px;
+  width: 1px;
+  background: var(--border-strong);
+}
+
+.specimen-list li {
+  display: grid;
+  grid-template-columns: 1fr 16px;
+  align-items: center;
+  gap: 12px;
+}
+
+.specimen-word {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 7px;
+}
+
+.specimen-word i {
+  aspect-ratio: 1;
+  border: 1px solid var(--border-strong);
+  border-radius: 5px;
+  background: var(--bg);
+}
+
+.specimen-list li:nth-child(1) .specimen-word i:nth-child(2),
+.specimen-list li:nth-child(2) .specimen-word i:nth-child(4),
+.specimen-list li:nth-child(3) .specimen-word i:nth-child(1),
+.specimen-list li:nth-child(4) .specimen-word i:nth-child(5),
+.specimen-list li:nth-child(5) .specimen-word i:nth-child(3) {
+  border-color: color-mix(in srgb, var(--mark-hit) 60%, var(--border));
+  background: color-mix(in srgb, var(--mark-hit) 16%, var(--bg));
+}
+
+.specimen-node {
+  position: relative;
+  z-index: 1;
+  width: 15px;
+  height: 15px;
+  border: 1px solid var(--mark-present);
+  border-radius: 50%;
+  background: var(--bg-raised);
+}
+
+.specimen-list li:last-child .specimen-node {
+  background: var(--mark-present);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--mark-present) 12%, transparent);
+}
+
+@media (max-width: 759px) {
+  .home {
+    padding-inline: 20px;
+  }
+
+  .home-top {
+    min-height: 64px;
+  }
+
+  .home-middle {
+    display: flex;
+    justify-content: flex-start;
+    gap: 28px;
+    padding: clamp(40px, 8vh, 72px) 0 max(28px, env(safe-area-inset-bottom));
+  }
+
+  .home-mark {
+    font-size: clamp(4.1rem, 22vw, 5.8rem);
+  }
+
+  .home-line {
+    margin: 24px 0 30px;
+    font-size: 1.35rem;
+  }
+
+  .home-specimen {
+    max-width: 24rem;
+    justify-self: auto;
+    padding: 0 14px;
+  }
+
+  .specimen-list {
+    gap: 7px;
+    margin: 0;
+  }
+
+  .specimen-list li {
+    grid-template-columns: 1fr 14px;
+    gap: 9px;
+  }
+
+  .specimen-word {
+    gap: 5px;
+  }
+
+  .specimen-node {
+    width: 13px;
+    height: 13px;
+  }
+
+  .specimen-list::after {
+    right: 6px;
+  }
+
+}
+
+@media (max-height: 700px) and (max-width: 759px) {
+  .home-top {
+    min-height: 56px;
+    padding-block: 8px;
+  }
+
+  .home-middle {
+    gap: 16px;
+    padding: 16px 0 max(12px, env(safe-area-inset-bottom));
+  }
+
+  .home-line {
+    margin-block: 18px 22px;
+  }
+
+  .home-specimen {
+    padding-block: 15px;
+  }
+
+  .specimen-word i {
+    aspect-ratio: 1.22 / 1;
+  }
+
+}
+
+/* The run is a page of discoveries; controls remain readable at phone size. */
+:root { --text-faint: #b09aa6; --mark-absent-text: #c0adba; }
+:root[data-theme="light"] { --text-muted: #755363; --text-faint: #795867; --mark-hit: #08725e; --mark-present: #ae285d; }
+:root[data-contrast="cb"] { --mark-hit: #235d91; --mark-present: #e8964f; }
+:focus-visible { outline: 3px solid var(--mark-present); outline-offset: 3px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.game-app { max-width: 30rem; min-height: 620px; padding-inline: 14px; }
+.game-app .topbar { flex: none; }
+.game-app .topbar > :last-child { justify-self: end; }
+.text-button { border: 0; background: none; color: var(--text-muted); font: inherit; font-size: .85rem; cursor: pointer; padding: 10px 5px; text-decoration: none; min-height: 44px; }
+.text-button:hover { color: var(--text); text-decoration: underline; text-underline-offset: 4px; }
+button:disabled { cursor: default; }
+.text-button:disabled { opacity: .55; text-decoration: none; }
+.run-progress { display: flex; align-items: center; justify-content: center; min-height: 32px; flex: none; color: var(--text-muted); }
+.run-progress ol { display: flex; gap: 6px; list-style: none; padding: 0; margin: 0; }
+.run-progress li { width: 9px; height: 9px; border: 1px solid var(--border-strong); border-radius: 50%; }
+.run-progress li[data-complete="true"] { background: var(--mark-hit); border-color: var(--mark-hit); }
+.run-progress li[aria-current="step"] { outline: 2px solid var(--text-muted); outline-offset: 2px; }
+.word-strip { display: flex; gap: 5px; align-items: center; min-height: 46px; flex: none; flex-wrap: wrap; padding-block: 3px 7px; }
+.word-strip button { border: 1px solid var(--border); background: var(--bg-raised); color: var(--text); border-radius: 6px; padding: 7px 8px; min-height: 40px; font-family: var(--font-serif), Georgia, serif; font-size: .9rem; cursor: pointer; }
+.word-strip button span { color: var(--text-muted); }
+.game-app .board-area { container-type: size; min-height: 270px; padding: 6px 0; }
+.game-app .board { width: min(100%, 21rem, calc(100cqh * 5 / 6)); height: auto; max-height: 100%; }
+.game-app .tile { font-size: clamp(1.15rem, 6cqh, 2rem); }
+.game-tools { display: flex; align-items: center; justify-content: space-between; flex: none; }
+.game-app .keyboard { flex: none; padding-top: 10px; }
+.finished-actions { display: flex; gap: 10px; padding: 16px 0 max(16px, env(safe-area-inset-bottom)); flex: none; }
+.finished-actions .button { flex: 1; }
+.game-dialog { width: min(28rem, calc(100vw - 24px)); position: fixed; inset: 0; margin: auto; color: var(--text); font-size: .95rem; line-height: 1.55; }
+.game-dialog::backdrop { background: rgb(14 7 11 / .7); backdrop-filter: blur(3px); }
+.game-dialog .label { font-size: .72rem; }
+.dialog-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+.game-dialog .entry-head { font-size: .85rem; color: var(--text-muted); }
+.game-dialog .entry-head p { margin-top: 0; }
+.game-dialog .entry-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.game-dialog .entry-actions .button { flex: 1; min-width: 125px; }
+.button--quiet { background: transparent; color: var(--text); border: 1px solid var(--border-strong); }
+.word-history, .board-review { margin-block: 18px; }
+summary { cursor: pointer; color: var(--text-muted); padding-block: 8px; min-height: 44px; }
+.word-history .entry-note { font-size: 1rem; padding-top: 6px; }
+.board-review .board { width: min(100%, 230px); margin: 10px auto; }
+.board-review .tile { font-size: 1.4rem; }
+.assisted { color: var(--text-muted); font-size: .85rem; }
+.conclusion-title { font-family: var(--font-serif), Georgia, serif; font-size: 2rem; line-height: 1.15; margin: 8px 0 14px; }
+.run-result { font-size: .85rem; color: var(--text-muted); }
+.theory-comparison { border-block: 1px solid var(--rule); margin-block: 20px; padding-block: 14px; }
+.theory-comparison h3 { margin: 0; font-size: .9rem; }
+.theory-comparison p { white-space: pre-wrap; overflow-wrap: anywhere; font-family: var(--font-serif), Georgia, serif; }
+.connection-list { padding-left: 22px; }
+.connection-list li { padding: 8px 0 10px 6px; }
+.connection-list strong { font-family: var(--font-serif), Georgia, serif; font-size: 1.35rem; }
+.connection-list p { color: var(--text-muted); margin: 4px 0; }
+.game-dialog textarea { display: block; box-sizing: border-box; resize: vertical; width: 100%; min-height: 140px; max-height: 45dvh; margin-top: 12px; padding: 12px; border: 1px solid var(--border-strong); border-radius: 8px; color: var(--text); background: var(--bg); font: inherit; font-size: 16px; }
+.hint-list { padding-left: 22px; }
+.hint-list li { padding: 10px 0; }
+.hint-list p { margin-bottom: 0; }
+.game-error { max-width: 28rem; padding: 16px; font-size: 1rem; line-height: 1.5; }
+.game-error a { display: block; color: var(--text-muted); padding: 14px 0; }
+.toast { max-width: calc(100vw - 24px); white-space: normal; text-align: center; font-size: .8rem; letter-spacing: 0; text-transform: none; }
+@media (max-height: 720px) {
+  .game-app .topbar { padding-block: 4px; }
+  .game-app .key { height: 44px; }
+  .game-app .board { gap: 5px; }
+  .game-app .row { gap: 5px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tile[data-revealing="true"] { animation-delay: 0ms; }
+}
+.key { position: relative; }
+.key-glyph { display: none; position: absolute; right: 3px; bottom: 2px; font-size: .5rem; line-height: 1; }
+:root[data-contrast="cb"] .key-glyph { display: block; }
+
+/* Friends are the navigation; the board remains the focus of play. */
+.home-friends { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: 26px; padding: 16px 0; border-block: 1px solid var(--border-strong); text-decoration: none; color: var(--text); }
+.home-friends > span:first-child { font-family: var(--font-serif), Georgia, serif; font-size: 1.4rem; }
+.home-friends > span:last-child { color: var(--text-muted); font-size: .8rem; }
+.friend-invite { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 18px; padding: 14px 16px; background: var(--bg-raised); border: 1px solid var(--border); border-radius: 12px; }
+.friend-invite strong { display: block; color: var(--text); font-family: ui-monospace, monospace; font-size: 1.05rem; letter-spacing: .2em; margin-top: 5px; }
+.friend-invite-actions { display: flex; flex-wrap: wrap; gap: 6px; justify-content: end; }
+.friend-list { margin: 26px 0; list-style: none; padding: 0; }
+.friend-list li + li { border-top: 1px solid var(--rule); }
+.friend-tile { display: flex; align-items: center; gap: 14px; width: 100%; min-height: 86px; padding: 14px 5px; text-align: left; color: var(--text); border: 0; background: transparent; cursor: pointer; border-radius: 8px; }
+.friend-tile:hover { background: var(--bg-raised); }
+.friend-avatar { position: relative; display: inline-grid; place-items: center; flex: none; width: 46px; height: 46px; border-radius: 50%; background: color-mix(in srgb,var(--mark-present) 12%,var(--bg-raised)); border: 1px solid var(--border-strong); color: var(--text); font-family: var(--font-serif),Georgia,serif; font-size: 1.4rem; }
+.friend-avatar i { position: absolute; width: 9px; height: 9px; border: 2px solid var(--bg); border-radius: 50%; background: var(--text-faint); right: 0; bottom: 0; }
+.friend-avatar i[data-online="true"] { background: var(--mark-hit); }
+.friend-info { display: flex; flex-direction: column; gap: 4px; min-width: 0; flex: 1; }
+.friend-info strong { overflow-wrap: anywhere; font-family: var(--font-serif),Georgia,serif; font-size: 1.25rem; font-weight: 550; }
+.friend-info > span { color: var(--text-muted); font-size: .75rem; }
+.friend-game-status { color: var(--text-muted); font-size: .75rem; flex: none; text-align: right; }
+.friend-game-status[data-turn="true"] { color: var(--mark-hit); font-weight: 650; }
+.friend-detail-identity { display: flex; align-items: center; gap: 15px; padding: 10px 0 20px; }
+.friend-detail-identity h2 { margin: 0; font: 550 1.7rem var(--font-serif),Georgia,serif; }
+.friend-detail-identity p { margin: 3px 0 0; font-size: .8rem; color: var(--text-muted); }
+.friend-shared-game { padding: 18px 0; margin-bottom: 12px; border-block: 1px solid var(--rule); }
+.friend-shared-game h3 { margin: 5px 0; font: 550 1.5rem var(--font-serif),Georgia,serif; }
+.friend-shared-game p { margin: 0 0 18px; color: var(--text-muted); font-size: .85rem; }
+.duo-recent { padding: 0; list-style: none; margin: 12px 0; }
+.duo-recent li { display: flex; justify-content: space-between; gap: 10px; padding: 9px 0; border-bottom: 1px solid var(--rule); font-size: .75rem; color: var(--text-muted); }
+.duo-recent strong { font-family: var(--font-serif),Georgia,serif; font-size: .95rem; color: var(--text); }
+.duo-recent a { color: var(--text-muted); text-underline-offset: 3px; }
+.end-duo { margin-top: 16px; padding-top: 10px; border-top: 1px solid var(--rule); }
+.duo-members { display: flex; align-items: center; gap: 14px; padding: 8px 0; flex: none; font-size: .85rem; }
+.duo-members > span { display: inline-flex; align-items: center; gap: 6px; }
+.duo-members i { display: inline-grid; place-items: center; border-radius: 50%; width: 24px; height: 24px; font-family: var(--font-serif),Georgia,serif; font-style: normal; border: 1px solid var(--border-strong); }
+.duo-members > span[data-current="true"] i { border-color: var(--mark-hit); color: var(--mark-hit); }
+.duo-members .duo-streak { margin-left: auto; font-size: .75rem; color: var(--text-muted); white-space: nowrap; }
+.duo-deadline { flex: none; color: var(--text-muted); font-size: .7rem; padding: 0 0 10px; }
+.duo-app .row { position: relative; }
+.row-author { display: grid; place-items: center; position: absolute; right: calc(100% + 6px); top: 50%; transform: translateY(-50%); font-family: var(--font-serif),Georgia,serif; font-size: .75rem; color: var(--text-muted); }
+.row-author[data-seat="0"], .duo-members [data-seat="0"] i { color: var(--seat-0); }
+.row-author[data-seat="1"], .duo-members [data-seat="1"] i { color: var(--seat-1); }
+.duo-app .board { width: min(calc(100% - 35px),21rem,calc(100cqh * 5 / 6)); }
+.duo-app .game-tools { font-size: .85rem; min-height: 44px; }
+.duo-error { flex: none; font-size: .8rem; color: var(--text-muted); padding-block: 6px; }
+.duo-result { flex: none; padding: 14px 0 20px; }
+.duo-result h2 { margin: 0 0 8px; font: 550 2rem var(--font-serif),Georgia,serif; }
+.duo-result p { font-size: .9rem; margin: 5px 0; }
+.duo-result details p { color: var(--text-muted); }
+@media (max-width: 380px) { .friend-tile { gap: 9px; } .friend-avatar { width: 38px; height: 38px; } .friend-game-status { font-size: .7rem; } }
+
+/* Keep and Share read as one row of quiet actions under an entry. */
+.entry-tools { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+.entry-tools .text-button { display: inline-flex; align-items: center; gap: 7px; }

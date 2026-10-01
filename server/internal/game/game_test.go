@@ -115,8 +115,8 @@ func TestScore(t *testing.T) {
 	}{
 		{"row 1 clean", 1, 0, 5},
 		{"row 5 clean", 5, 0, 1},
-		{"row 1 with one hint", 1, 1, 4},
-		{"row 5 with two hints", 5, 2, 0},
+		{"row 1 with one hint", 1, 1, 5},
+		{"row 5 with two hints", 5, 2, 1},
 		{"unsolved", -1, 0, 0},
 		{"unsolved after hints never goes negative", -1, 3, 0},
 	}

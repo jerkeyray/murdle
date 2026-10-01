@@ -1,4 +1,4 @@
--- Murdle's own tables.
+-- Wordle's own tables.
 --
 -- Better Auth owns "user", session, account, verification and jwks. Nothing
 -- here alters those; players.user_id is the single crossing point between the
