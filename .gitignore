@@ -12,3 +12,13 @@
 .env
 .env.*
 !.env.example
+
+# Agent and editor local config. Kept on disk, out of the repo.
+.claude/
+CLAUDE.md
+AGENTS.md
+
+# Build output
+.next/
+out/
+dist/
