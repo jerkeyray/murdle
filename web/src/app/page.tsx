@@ -3,7 +3,8 @@
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useState } from "react";
-import { Settings } from "@/components/Settings";
+import { useCallback, useEffect } from "react";
+import { getProfile, type Profile } from "@/lib/api";
 import { loadSeats, saveSeats } from "@/lib/seats";
 
 /**
@@ -17,6 +18,24 @@ export default function Home() {
   const router = useRouter();
   const [choosing, setChoosing] = useState(false);
   const [names, setNames] = useState<[string, string]>(["", ""]);
+
+  // The lexicon card shows the streak rather than just linking to it, so the
+  // number you are protecting is on the screen you open.
+  const [profile, setProfile] = useState<Profile | null>(null);
+  const fetchProfile = useCallback(() => getProfile(), []);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetchProfile()
+      .then((p) => {
+        if (!cancelled) setProfile(p);
+      })
+      // Signed out is the ordinary case, not an error worth showing.
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, [fetchProfile]);
 
   function openShared() {
     // Prefilled from last time: you two will almost always be the same two.
@@ -38,10 +57,6 @@ export default function Home() {
 
   return (
     <main className="home">
-      <header className="home-top">
-        <Settings />
-      </header>
-
       <div className="home-middle">
         <h1 className="home-mark">Murdle</h1>
         <p className="home-line">
@@ -107,8 +122,33 @@ export default function Home() {
       </div>
 
       <footer className="home-foot">
-        <Link href="/profile" className="link-button">
-          Your words
+        <Link href="/profile" className="lexicon">
+          <span className="lexicon-icon" aria-hidden>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H10a2 2 0 0 1 2 2v13a2 2 0 0 0-2-2H5.5A1.5 1.5 0 0 1 4 15.5z"
+                    stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round" />
+              <path d="M20 5.5A1.5 1.5 0 0 0 18.5 4H14a2 2 0 0 0-2 2v13a2 2 0 0 1 2-2h4.5a1.5 1.5 0 0 0 1.5-1.5z"
+                    stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round" />
+            </svg>
+          </span>
+
+          <span className="lexicon-text">
+            <span className="lexicon-title">Your lexicon</span>
+            <span className="lexicon-sub">
+              {profile
+                ? `${profile.wordsLearned} word${profile.wordsLearned === 1 ? "" : "s"} met` +
+                  (profile.streak.current > 0
+                    ? ` · ${profile.streak.current} day streak`
+                    : "")
+                : "Words you have met, and how it looks"}
+            </span>
+          </span>
+
+          {profile && profile.streak.current > 0 && !profile.streak.playedToday ? (
+            <span className="lexicon-flag" title="Play today to keep it">
+              {profile.streak.current}
+            </span>
+          ) : null}
         </Link>
       </footer>
     </main>

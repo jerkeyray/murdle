@@ -15,8 +15,11 @@ import {
 } from "@/lib/api";
 import { signOut } from "@/lib/auth-client";
 import { clearToken } from "@/lib/token";
+import { Alphabet } from "@/components/Alphabet";
+import { Preferences } from "@/components/Preferences";
+import { StreakCalendar } from "@/components/StreakCalendar";
 
-type Tab = "collection" | "saved" | "friends";
+type Tab = "collection" | "kept" | "friends";
 
 export default function ProfilePage() {
   const [profile, setProfile] = useState<Profile | null>(null);
@@ -24,13 +27,12 @@ export default function ProfilePage() {
   const [saved, setSaved] = useState<SolveRecord[]>([]);
   const [friends, setFriends] = useState<FriendRecord[]>([]);
   const [tab, setTab] = useState<Tab>("collection");
+  const [signedOut, setSignedOut] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [code, setCode] = useState("");
 
-  /** One request per section, but they are always wanted together. */
   const fetchAll = useCallback(
-    () =>
-      Promise.all([getProfile(), getSolves(), getSavedWords(), getFriends()]),
+    () => Promise.all([getProfile(), getSolves(), getSavedWords(), getFriends()]),
     [],
   );
 
@@ -40,32 +42,29 @@ export default function ProfilePage() {
       setSolves(s);
       setSaved(sv);
       setFriends(f);
-      setError(null);
+      setSignedOut(false);
     },
     [],
   );
 
-  /** Refresh after an action. Safe to call state synchronously from here — it
-   *  runs from an event handler, not from an effect body. */
+  /** Refresh after an action; safe from an event handler. */
   const load = useCallback(async () => {
     try {
       apply(await fetchAll());
     } catch {
-      setError("signed-out");
+      setSignedOut(true);
     }
   }, [fetchAll, apply]);
 
   useEffect(() => {
     let cancelled = false;
-
     fetchAll()
-      .then((result) => {
-        if (!cancelled) apply(result);
+      .then((r) => {
+        if (!cancelled) apply(r);
       })
       .catch(() => {
-        if (!cancelled) setError("signed-out");
+        if (!cancelled) setSignedOut(true);
       });
-
     return () => {
       cancelled = true;
     };
@@ -77,28 +76,39 @@ export default function ProfilePage() {
     try {
       await addFriend(code.trim());
       setCode("");
+      setError(null);
       await load();
     } catch (err) {
       setError(err instanceof Error ? err.message : "Could not add them");
     }
   }
 
-  if (error === "signed-out") {
+  const head = (
+    <header className="sheet-head">
+      <Link href="/" className="label sheet-back">
+        Back
+      </Link>
+    </header>
+  );
+
+  // Signed out still gets Preferences. Contrast settings are an accessibility
+  // need, and gating them behind an account would be a poor joke.
+  if (signedOut) {
     return (
       <main className="sheet">
-        <header className="sheet-head">
-          <Link href="/" className="label sheet-back">
-            Back
-          </Link>
-          <h1 className="sheet-title">Your words</h1>
-        </header>
+        {head}
+        <div className="plate plate--empty">
+          <span className="plate-ex">Ex libris</span>
+          <h1 className="plate-name">No one yet</h1>
+        </div>
         <p className="empty">
-          Sign in and every round you play joins a collection — with a streak,
-          the words you kept, and a record against whoever you play.
+          Sign in and every word you meet joins a lexicon of your own — with a
+          streak, the words you kept, and someone to play against.
         </p>
         <Link href="/sign-in" className="button button--link">
           Sign in
         </Link>
+        <Preferences />
       </main>
     );
   }
@@ -106,22 +116,30 @@ export default function ProfilePage() {
   if (!profile) {
     return (
       <main className="sheet">
+        {head}
         <span className="label">Loading</span>
       </main>
     );
   }
 
   const pending = friends.filter((f) => f.status === "pending" && f.incoming);
-  const list = tab === "collection" ? solves : tab === "saved" ? saved : [];
+  const list = tab === "collection" ? solves : tab === "kept" ? saved : [];
 
   return (
     <main className="sheet">
-      <header className="sheet-head">
-        <Link href="/" className="label sheet-back">
-          Back
-        </Link>
-        <h1 className="sheet-title">{profile.displayName}</h1>
-      </header>
+      {head}
+
+      {/* A bookplate: whose collection this is, and the shelf mark someone
+          else types to find it. */}
+      <div className="plate">
+        <span className="plate-ex">Ex libris</span>
+        <h1 className="plate-name">{profile.displayName}</h1>
+        <div className="plate-rule" />
+        <div className="plate-foot">
+          <span className="label">Shelf mark</span>
+          <span className="plate-code">{profile.inviteCode}</span>
+        </div>
+      </div>
 
       <div className="stats">
         <div className="stat">
@@ -143,14 +161,11 @@ export default function ProfilePage() {
         </div>
       </div>
 
-      <div className="invite">
-        <span className="label">Your code</span>
-        <span className="invite-code">{profile.inviteCode}</span>
-        <span className="invite-hint">Give this to her so you can play as a pair.</span>
-      </div>
+      <StreakCalendar solves={solves} />
+      <Alphabet solves={solves} />
 
       <nav className="tabs" role="tablist">
-        {(["collection", "saved", "friends"] as Tab[]).map((t) => (
+        {(["collection", "kept", "friends"] as Tab[]).map((t) => (
           <button
             key={t}
             className="tab"
@@ -160,7 +175,7 @@ export default function ProfilePage() {
           >
             {t === "collection"
               ? `Collection ${solves.length}`
-              : t === "saved"
+              : t === "kept"
                 ? `Kept ${saved.length}`
                 : `Friends ${friends.filter((f) => f.status === "accepted").length}`}
             {t === "friends" && pending.length > 0 ? (
@@ -177,7 +192,7 @@ export default function ProfilePage() {
               className="input"
               value={code}
               onChange={(e) => setCode(e.target.value.toUpperCase())}
-              placeholder="Their code"
+              placeholder="Their shelf mark"
               maxLength={6}
               aria-label="Friend's invite code"
             />
@@ -186,12 +201,12 @@ export default function ProfilePage() {
             </button>
           </form>
 
-          {error && error !== "signed-out" ? (
-            <p className="form-error">{error}</p>
-          ) : null}
+          {error ? <p className="form-error">{error}</p> : null}
 
           {friends.length === 0 ? (
-            <p className="empty">Nobody yet. Swap codes and you will both see it here.</p>
+            <p className="empty">
+              Nobody yet. Swap shelf marks and you will both see it here.
+            </p>
           ) : (
             <ul className="rows">
               {friends.map((f) => (
@@ -236,10 +251,15 @@ export default function ProfilePage() {
         </p>
       ) : (
         <ul className="rows">
-          {list.map((s) => (
+          {list.map((s, i) => (
             <li className="entry-row" key={s.word}>
               <div className="entry-row-head">
-                <span className="row-word">{s.word}</span>
+                <span className="row-word">
+                  <span className="entry-no">
+                    {String(i + 1).padStart(3, "0")}
+                  </span>
+                  {s.word}
+                </span>
                 {tab === "collection" ? (
                   <span className="label">
                     {s.solved ? `${s.guesses} guesses` : "Missed"}
@@ -257,12 +277,14 @@ export default function ProfilePage() {
         </ul>
       )}
 
+      <Preferences />
+
       <button
         className="link-button sign-out"
         onClick={async () => {
           await signOut();
           clearToken();
-          setError("signed-out");
+          setSignedOut(true);
         }}
       >
         Sign out

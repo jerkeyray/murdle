@@ -20,6 +20,12 @@ ends the app teaches you the one you just played.
 | 4 | Accounts, profile, streaks, friends | Done |
 | 5 | Two-device realtime (optional) | Planned |
 
+The profile is a **lexicon**, not a dashboard: a bookplate with your name and
+your invite code as a shelf mark, a fifteen-week calendar where every day you
+played carries the first letter of that day's word, an A–Z you fill in like a
+stamp album, and your collection numbered as specimens. A contribution graph
+tells you that you turned up; this tells you what you met.
+
 Open on a home screen rather than a board: the mode choice is the point, and a
 game that drops you straight onto a grid never offers it.
 
@@ -114,8 +120,11 @@ specimen page from a well-made dictionary rather than a game app.
   words this device has played.
 - **Paper grain and a warm pool of light** behind the board, both subtle enough
   that you would only notice them by their absence.
-- **Colour-blind mode** swaps green/amber for blue/orange *and* adds glyphs, so
-  the marks are readable with no colour perception at all.
+- **Colour-blind mode** swaps green/rose for blue/orange *and* adds glyphs, so
+  the marks are readable with no colour perception at all. It lives in
+  Preferences on the profile, as a labelled switch with a live sample — an
+  unlabelled icon toggle for a colour-blind mode is a small joke at the expense
+  of the people who need it — and it works signed out.
 - **One-handed layout** — keyboard in the thumb arc, `100dvh` so iOS Safari's
   toolbar cannot clip the bottom row, no scrolling during play.
 - Installs to the home screen as a PWA.

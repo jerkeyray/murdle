@@ -1274,3 +1274,355 @@ button {
 .specimen--link:hover {
   color: var(--text-muted);
 }
+
+/* ---------------------------------------------------------------------------
+   Bookplate
+
+   Whose collection this is. The invite code is presented as a shelf mark,
+   because that is what it does: it is how someone else finds your shelf.
+--------------------------------------------------------------------------- */
+
+.plate {
+  padding: 20px;
+  margin-bottom: 18px;
+  border: 1px solid var(--border-strong);
+  border-radius: 14px;
+  background: var(--bg-raised);
+  /* A second hairline inside the border, the way a bookplate is printed. */
+  box-shadow: inset 0 0 0 1px var(--bg-raised), inset 0 0 0 2px var(--rule);
+}
+
+.plate--empty {
+  opacity: 0.75;
+}
+
+.plate-ex {
+  font-family: var(--font-serif), Georgia, serif;
+  font-style: italic;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  color: var(--text-faint);
+}
+
+.plate-name {
+  margin: 4px 0 0;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(1.9rem, 10vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+}
+
+.plate-rule {
+  height: 1px;
+  margin: 16px 0 12px;
+  background: var(--rule);
+}
+
+.plate-foot {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.plate-code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+}
+
+/* ---------------------------------------------------------------------------
+   The calendar
+
+   A contribution graph tells you that you turned up. This tells you what you
+   met: every day you played carries the first letter of that day's word.
+--------------------------------------------------------------------------- */
+
+.calendar-block,
+.alphabet-block,
+.prefs {
+  margin-bottom: 22px;
+}
+
+.block-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 9px;
+  margin-bottom: 11px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.calendar {
+  display: flex;
+  gap: 3px;
+  /* Scrolls rather than squeezing on a narrow phone: squeezed letters stop
+     being readable, which is the entire point of this thing. */
+  overflow-x: auto;
+  padding-bottom: 2px;
+  scrollbar-width: none;
+}
+
+.calendar::-webkit-scrollbar {
+  display: none;
+}
+
+.calendar-week {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.calendar-day {
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--border) 50%, transparent);
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  line-height: 1;
+  text-transform: uppercase;
+  color: transparent;
+}
+
+.calendar-day[data-played="true"] {
+  background: var(--mark-hit);
+  color: var(--mark-hit-text);
+}
+
+/* A day you played but did not solve still counts for the streak — turning up
+   is the habit — so it is marked, just not in the winning colour. */
+.calendar-day[data-missed="true"] {
+  background: var(--mark-absent);
+  color: var(--mark-absent-text);
+}
+
+/* ---------------------------------------------------------------------------
+   Your alphabet
+
+   A stamp album. The gaps are the interesting part.
+--------------------------------------------------------------------------- */
+
+.alphabet {
+  display: grid;
+  grid-template-columns: repeat(13, 1fr);
+  gap: 4px;
+}
+
+.alphabet-letter {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.alphabet-letter[data-has="true"] {
+  border-color: var(--mark-hit);
+  background: color-mix(in srgb, var(--mark-hit) 14%, transparent);
+  color: var(--text);
+}
+
+.alphabet-count {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  min-width: 13px;
+  padding: 0 2px;
+  border-radius: 999px;
+  background: var(--mark-hit);
+  color: var(--mark-hit-text);
+  font-family: var(--font-sans), sans-serif;
+  font-size: 0.5rem;
+  line-height: 13px;
+  text-align: center;
+}
+
+/* ---------------------------------------------------------------------------
+   Preferences
+--------------------------------------------------------------------------- */
+
+.pref {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  width: 100%;
+  padding: 13px 0;
+  border: none;
+  border-bottom: 1px solid var(--rule);
+  background: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.pref-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.pref-name {
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.pref-sub {
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: var(--text-faint);
+}
+
+.switch {
+  flex: none;
+  position: relative;
+  width: 42px;
+  height: 24px;
+  border-radius: 999px;
+  background: var(--border-strong);
+  transition: background 0.18s ease;
+}
+
+.switch::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--bg-raised);
+  transition: transform 0.18s cubic-bezier(0.3, 1.3, 0.6, 1);
+}
+
+.pref[aria-pressed="true"] .switch {
+  background: var(--mark-hit);
+}
+
+.pref[aria-pressed="true"] .switch::after {
+  transform: translateX(18px);
+}
+
+/* Shows what the setting actually does, rather than describing it. */
+.pref-sample {
+  display: flex;
+  gap: 5px;
+  padding-top: 14px;
+}
+
+.pref-tile {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.pref-tile[data-mark="hit"] {
+  background: var(--mark-hit);
+  color: var(--mark-hit-text);
+}
+
+.pref-tile[data-mark="present"] {
+  background: var(--mark-present);
+  color: var(--mark-present-text);
+}
+
+.pref-tile[data-mark="absent"] {
+  background: var(--mark-absent);
+  color: var(--mark-absent-text);
+}
+
+/* Specimen numbering on collected words. */
+.entry-no {
+  margin-right: 9px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--text-faint);
+}
+
+/* ---------------------------------------------------------------------------
+   The way in, from the home screen
+--------------------------------------------------------------------------- */
+
+.lexicon {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  width: 100%;
+  padding: 14px 18px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--bg-raised);
+  color: var(--text);
+  text-decoration: none;
+  transition: border-color 0.18s ease;
+}
+
+.lexicon:hover {
+  border-color: var(--border-strong);
+}
+
+.lexicon-icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  color: var(--text-muted);
+}
+
+.lexicon-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.lexicon-title {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 1.02rem;
+  font-weight: 600;
+}
+
+.lexicon-sub {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* A streak that has not been played today is the one thing worth nagging
+   about, because it is the only one with a deadline. */
+.lexicon-flag {
+  flex: none;
+  margin-left: auto;
+  min-width: 26px;
+  height: 26px;
+  padding: 0 7px;
+  border-radius: 999px;
+  background: var(--mark-present);
+  color: var(--mark-present-text);
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 26px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
