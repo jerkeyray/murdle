@@ -8,6 +8,7 @@ import (
 	"crypto/rand"
 	"errors"
 	"fmt"
+	"strings"
 	"time"
 
 	"github.com/jackc/pgx/v5"
@@ -76,8 +77,11 @@ func newInviteCode() (string, error) {
 // Ensure returns the player for a Better Auth user, creating the profile on
 // first sight.
 //
-// The display name is copied from the Better Auth user record rather than
-// asked for separately: one fewer thing to fill in before you can play.
+// A new player has no display name. The one Google supplies is a legal name —
+// "Aditya Srivastava" — which is not what anyone wants written on a game they
+// play with their girlfriend, and it does not fit on a bookplate. So the
+// profile asks for a nickname instead, and until it has one the name is
+// empty and the UI says so.
 func (s *Store) Ensure(ctx context.Context, userID string) (Player, error) {
 	var p Player
 	err := s.pool.QueryRow(ctx, `
@@ -91,16 +95,16 @@ func (s *Store) Ensure(ctx context.Context, userID string) (Player, error) {
 		return Player{}, fmt.Errorf("looking up player: %w", err)
 	}
 
-	var name string
+	// Confirm the user exists before building a profile for them, so a stale
+	// token cannot create orphaned rows.
+	var exists bool
 	err = s.pool.QueryRow(ctx,
-		`select coalesce(nullif(name, ''), split_part(email, '@', 1)) from "user" where id = $1`,
-		userID,
-	).Scan(&name)
+		`select exists (select 1 from "user" where id = $1)`, userID).Scan(&exists)
 	if err != nil {
-		if errors.Is(err, pgx.ErrNoRows) {
-			return Player{}, ErrNotFound
-		}
 		return Player{}, fmt.Errorf("reading user: %w", err)
+	}
+	if !exists {
+		return Player{}, ErrNotFound
 	}
 
 	// Retry on collision. Six characters from a 31-letter alphabet is roughly
@@ -114,9 +118,9 @@ func (s *Store) Ensure(ctx context.Context, userID string) (Player, error) {
 
 		err = s.pool.QueryRow(ctx, `
 			insert into players (user_id, display_name, invite_code)
-			values ($1, $2, $3)
+			values ($1, '', $2)
 			returning id, user_id, display_name, seat_color, invite_code, created_at`,
-			userID, name, code,
+			userID, code,
 		).Scan(&p.ID, &p.UserID, &p.DisplayName, &p.SeatColor, &p.InviteCode, &p.CreatedAt)
 		if err == nil {
 			return p, nil
@@ -132,6 +136,39 @@ func (s *Store) Ensure(ctx context.Context, userID string) (Player, error) {
 func isUniqueViolation(err error) bool {
 	var pgErr interface{ SQLState() string }
 	return errors.As(err, &pgErr) && pgErr.SQLState() == "23505"
+}
+
+// Name limits. Long enough for a real nickname, short enough to sit on one
+// line of a bookplate and in a turn band on a phone.
+const (
+	MinNameLength = 1
+	MaxNameLength = 16
+)
+
+// ErrBadName means the nickname was empty or too long.
+var ErrBadName = errors.New("that name will not fit")
+
+// SetDisplayName renames a player.
+func (s *Store) SetDisplayName(ctx context.Context, playerID, name string) (string, error) {
+	name = strings.TrimSpace(name)
+	// Count runes, not bytes: a name in Devanagari or with an emoji should be
+	// measured the way it is read.
+	if n := len([]rune(name)); n < MinNameLength || n > MaxNameLength {
+		return "", ErrBadName
+	}
+	if strings.ContainsAny(name, "\n\r\t") {
+		return "", ErrBadName
+	}
+
+	tag, err := s.pool.Exec(ctx,
+		`update players set display_name = $1 where id = $2`, name, playerID)
+	if err != nil {
+		return "", fmt.Errorf("renaming player: %w", err)
+	}
+	if tag.RowsAffected() == 0 {
+		return "", ErrNotFound
+	}
+	return name, nil
 }
 
 // RecordSolve stores a finished round.

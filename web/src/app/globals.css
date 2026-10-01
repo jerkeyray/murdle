@@ -1895,19 +1895,15 @@ button {
   /* The calendar grows with the page rather than sitting as a small block in
      the corner of it — and bigger cells mean the letters are properly
      readable, which is the whole reason they are letters. */
-  .calendar {
-    gap: 4px;
-  }
-
+  .calendar,
   .calendar-week {
-    gap: 4px;
+    gap: 3px;
   }
 
   .calendar-day {
-    width: 26px;
-    height: 26px;
-    border-radius: 4px;
-    font-size: 0.86rem;
+    width: 19px;
+    height: 19px;
+    font-size: 0.7rem;
   }
 
   .alphabet {
@@ -1915,7 +1911,7 @@ button {
   }
 
   .alphabet-letter {
-    font-size: 1rem;
+    font-size: 0.86rem;
   }
 
   /* Two columns of entries at this width; the notes stay readable because the
@@ -1937,4 +1933,154 @@ button {
   .app {
     max-width: 26rem;
   }
+}
+
+/* ---------------------------------------------------------------------------
+   Turning the volume down
+
+   The lexicon was built at a size that suited a page full of words and looked
+   enormous on a page with none. Everything here is smaller and tighter; the
+   content should carry the page, not the furniture around it.
+--------------------------------------------------------------------------- */
+
+.plate {
+  padding: 16px 18px;
+  margin-bottom: 14px;
+}
+
+.plate-name {
+  /* A nickname is capped at sixteen characters, so this no longer has to
+     survive "Aditya Srivastava" wrapping onto two lines. */
+  font-size: clamp(1.6rem, 7vw, 2rem);
+}
+
+.plate-name--button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  border-bottom: 1px dashed transparent;
+}
+
+.plate-name--button:hover {
+  border-bottom-color: var(--border-strong);
+}
+
+.plate-rule {
+  margin: 12px 0 10px;
+}
+
+.plate-code {
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+}
+
+.plate--naming {
+  border-style: solid;
+}
+
+.stats {
+  gap: 7px;
+  margin-bottom: 18px;
+}
+
+.stat {
+  gap: 2px;
+  padding: 11px 12px;
+}
+
+.stat-number {
+  font-size: 1.5rem;
+}
+
+.calendar-block,
+.alphabet-block,
+.prefs {
+  margin-bottom: 18px;
+}
+
+.block-head {
+  padding-bottom: 7px;
+  margin-bottom: 9px;
+}
+
+.calendar-day {
+  width: 15px;
+  height: 15px;
+  border-radius: 3px;
+  font-size: 0.6rem;
+}
+
+.calendar,
+.calendar-week {
+  gap: 2px;
+}
+
+.alphabet {
+  gap: 3px;
+}
+
+.alphabet-letter {
+  font-size: 0.72rem;
+  border-radius: 3px;
+}
+
+.tabs {
+  margin-bottom: 12px;
+}
+
+.tab {
+  padding: 7px 3px 9px;
+  margin-right: 10px;
+  font-size: 0.64rem;
+}
+
+/* ---------------------------------------------------------------------------
+   Choosing a name
+--------------------------------------------------------------------------- */
+
+.name-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.name-title {
+  margin: 6px 0 0;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(1.5rem, 7vw, 1.9rem);
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.name-line {
+  margin: 0;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.name-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.name-input {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 1.15rem;
+}
+
+.name-foot {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
 }

@@ -239,6 +239,8 @@ export function letterStates(rows: Row[]): Record<string, Mark> {
 
 export interface Profile {
   displayName: string;
+  /** True until a nickname has been chosen. */
+  needsName: boolean;
   seatColor: string;
   /** Short code a friend types to find you. */
   inviteCode: string;
@@ -266,6 +268,12 @@ export interface FriendRecord {
 }
 
 export const getProfile = () => request<Profile>("/api/me");
+
+export const setDisplayName = (name: string) =>
+  request<{ displayName: string }>("/api/me/name", {
+    method: "POST",
+    body: JSON.stringify({ name }),
+  });
 export const getSolves = () => request<SolveRecord[]>("/api/me/solves");
 export const getSavedWords = () => request<SolveRecord[]>("/api/me/saved");
 export const getFriends = () => request<FriendRecord[]>("/api/me/friends");

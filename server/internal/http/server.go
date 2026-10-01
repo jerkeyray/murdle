@@ -82,6 +82,7 @@ func NewServer(opts Options) http.Handler {
 		r.Route("/api/me", func(r chi.Router) {
 			r.Use(auth.Require)
 			r.Get("/", s.handleMe)
+			r.Post("/name", s.handleSetName)
 			r.Get("/solves", s.handleMySolves)
 			r.Get("/saved", s.handleSavedWords)
 			r.Put("/saved/{word}", s.handleSaveWord)

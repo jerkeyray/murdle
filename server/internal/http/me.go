@@ -15,9 +15,13 @@ import (
 // small amount of data and always wanted together, so it travels together.
 type profileView struct {
 	DisplayName string `json:"displayName"`
-	SeatColor   string `json:"seatColor"`
-	InviteCode  string `json:"inviteCode"`
-	Streak      struct {
+	// NeedsName is true until the player has chosen a nickname. Google hands
+	// us a legal name, which is not what anyone wants on a game they play with
+	// their girlfriend, so we ask instead of assuming.
+	NeedsName  bool   `json:"needsName"`
+	SeatColor  string `json:"seatColor"`
+	InviteCode string `json:"inviteCode"`
+	Streak     struct {
 		Current     int  `json:"current"`
 		Longest     int  `json:"longest"`
 		PlayedToday bool `json:"playedToday"`
@@ -81,6 +85,7 @@ func (s *Server) handleMe(w http.ResponseWriter, r *http.Request) {
 
 	var v profileView
 	v.DisplayName = p.DisplayName
+	v.NeedsName = p.DisplayName == ""
 	v.SeatColor = p.SeatColor
 	v.InviteCode = p.InviteCode
 	v.Streak.Current = streak.Current
@@ -89,6 +94,38 @@ func (s *Server) handleMe(w http.ResponseWriter, r *http.Request) {
 	v.WordsLearned = len(solves)
 
 	writeJSON(w, http.StatusOK, v)
+}
+
+type setNameRequest struct {
+	Name string `json:"name"`
+}
+
+func (s *Server) handleSetName(w http.ResponseWriter, r *http.Request) {
+	p, ok := s.player(r)
+	if !ok {
+		writeError(w, http.StatusUnauthorized, "unauthorized", "sign in to do that")
+		return
+	}
+
+	var req setNameRequest
+	if err := decodeJSON(w, r, &req); err != nil {
+		writeError(w, http.StatusBadRequest, "invalid_body", err.Error())
+		return
+	}
+
+	name, err := s.players.SetDisplayName(r.Context(), p.ID, req.Name)
+	if errors.Is(err, players.ErrBadName) {
+		writeError(w, http.StatusUnprocessableEntity, "bad_name",
+			"one to sixteen characters")
+		return
+	}
+	if err != nil {
+		s.log.Error("renaming player", "err", err)
+		writeError(w, http.StatusInternalServerError, "internal", "could not save that")
+		return
+	}
+
+	writeJSON(w, http.StatusOK, map[string]string{"displayName": name})
 }
 
 func (s *Server) handleMySolves(w http.ResponseWriter, r *http.Request) {

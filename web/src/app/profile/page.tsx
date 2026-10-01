@@ -19,6 +19,7 @@ import { Alphabet } from "@/components/Alphabet";
 import { Preferences } from "@/components/Preferences";
 import { StreakCalendar } from "@/components/StreakCalendar";
 import { BackButton } from "@/components/BackButton";
+import { NameForm } from "@/components/NameForm";
 
 type Tab = "collection" | "kept" | "friends";
 
@@ -28,6 +29,7 @@ export default function ProfilePage() {
   const [saved, setSaved] = useState<SolveRecord[]>([]);
   const [friends, setFriends] = useState<FriendRecord[]>([]);
   const [tab, setTab] = useState<Tab>("collection");
+  const [renaming, setRenaming] = useState(false);
   const [signedOut, setSignedOut] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [code, setCode] = useState("");
@@ -126,7 +128,24 @@ export default function ProfilePage() {
     );
   }
 
+  if (profile.needsName) {
+    return (
+      <main className="sheet">
+        {head}
+        <div className="plate plate--naming">
+          <NameForm
+            firstRun
+            onSaved={(name) => setProfile({ ...profile, displayName: name, needsName: false })}
+          />
+        </div>
+      </main>
+    );
+  }
+
   const pending = friends.filter((f) => f.status === "pending" && f.incoming);
+  // A lexicon with nothing in it is mostly empty furniture: 105 blank calendar
+  // squares and 26 blank letters. Until there is something to show, do not.
+  const hasHistory = solves.length > 0;
   const list = tab === "collection" ? solves : tab === "kept" ? saved : [];
 
   return (
@@ -138,7 +157,24 @@ export default function ProfilePage() {
             else types to find it. */}
         <div className="plate">
           <span className="plate-ex">Ex libris</span>
-          <h1 className="plate-name">{profile.displayName}</h1>
+          {renaming ? (
+            <NameForm
+              current={profile.displayName}
+              onSaved={(name) => {
+                setProfile({ ...profile, displayName: name });
+                setRenaming(false);
+              }}
+              onCancel={() => setRenaming(false)}
+            />
+          ) : (
+            <button
+              className="plate-name plate-name--button"
+              onClick={() => setRenaming(true)}
+              title="Change your name"
+            >
+              {profile.displayName}
+            </button>
+          )}
           <div className="plate-rule" />
           <div className="plate-foot">
             <span className="label">Shelf mark</span>
@@ -167,8 +203,12 @@ export default function ProfilePage() {
         </div>
       </div>
 
-      <StreakCalendar solves={solves} />
-      <Alphabet solves={solves} />
+      {hasHistory ? (
+        <>
+          <StreakCalendar solves={solves} />
+          <Alphabet solves={solves} />
+        </>
+      ) : null}
 
       <nav className="tabs" role="tablist">
         {(["collection", "kept", "friends"] as Tab[]).map((t) => (
