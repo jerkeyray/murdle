@@ -166,24 +166,37 @@ and restarts a separate API process during play. Its authentication, clock,
 answer-inspection, and restart controls exist only in the Go test binary.
 Without these environment variables, database/browser integration tests skip.
 
-## Deploying the API
+## Deploying
 
-The Go API ships as a static binary in a small Alpine image — the word lists
-and packs are embedded, so it needs nothing at runtime but a CA bundle for
-Neon and the JWKS endpoint.
+Both halves ship as one Vercel deployment. `vercel.json` declares two services —
+`web` (Next.js) and `api` (the Go server, built from `server/Dockerfile`) — and
+routes between them.
 
-```bash
-cd server
-fly launch --no-deploy --copy-config --name wordle-api
-fly secrets set DATABASE_URL='<your Neon pooled url>'
-fly deploy
-fly certs add api.wordle.jerkeyray.com
-```
+They share an origin, which removes a whole category of problem: no CORS, no
+cookie-domain juggling, and no `NEXT_PUBLIC_API_URL` to keep in sync. The
+client defaults to the empty string in production, so every request goes to the
+origin it was served from, and a preview deployment calls its own API rather
+than production's.
 
-Then point `api.wordle.jerkeyray.com` at the Fly app with the CNAME `fly certs`
-prints, and make sure the web app's `NEXT_PUBLIC_API_URL` matches it.
+The route table matters. Next owns `/api/auth/*` and `/api/config`; the Go API
+owns the rest. Rewrites are evaluated in order, so the specific Go prefixes
+come first and the catch-all to `web` comes last. Routing into a service is
+final — if the Go service 404s, Vercel does not fall through to Next.
 
-`AUTH_BASE_URL` and `ALLOWED_ORIGINS` are in `fly.toml` because they are not
-secret and they must match the web origin exactly — `AUTH_BASE_URL` is where Go
-fetches the JWKS to verify Better Auth's tokens, so if it is wrong every
-signed-in request fails with an invalid token rather than an obvious error.
+Project settings must have **Root Directory set to the repository root**, not
+`web`, or Vercel will never see `vercel.json`.
+
+Environment variables, all on the one project:
+
+| Variable | Value |
+|---|---|
+| `DATABASE_URL` | Neon pooled connection string |
+| `BETTER_AUTH_SECRET` | `openssl rand -base64 32` |
+| `BETTER_AUTH_URL` | `https://wordle.jerkeyray.com` |
+| `AUTH_BASE_URL` | `https://wordle.jerkeyray.com` — where Go fetches the JWKS |
+| `ALLOWED_ORIGINS` | `https://wordle.jerkeyray.com` |
+| `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` | the OAuth client |
+
+`NEXT_PUBLIC_API_URL` should be **absent**. If it is set to a host that does not
+exist, the site renders and then fails the moment someone presses Play, which
+reads as the app being broken rather than a setting being wrong.

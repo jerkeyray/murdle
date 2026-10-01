@@ -1,0 +1,30 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+
+  "services": {
+    "web": {
+      "root": "web"
+    },
+    "api": {
+      "root": "server",
+      "runtime": "container"
+    }
+  },
+
+  "rewrites": [
+    { "source": "/api/health", "destination": { "service": "api" } },
+    { "source": "/api/capabilities", "destination": { "service": "api" } },
+
+    { "source": "/api/me", "destination": { "service": "api" } },
+    { "source": "/api/me/(.*)", "destination": { "service": "api" } },
+
+    { "source": "/api/duos/(.*)", "destination": { "service": "api" } },
+
+    { "source": "/api/runs", "destination": { "service": "api" } },
+    { "source": "/api/runs/(.*)", "destination": { "service": "api" } },
+
+    { "source": "/api/rounds/(.*)", "destination": { "service": "api" } },
+
+    { "source": "/(.*)", "destination": { "service": "web" } }
+  ]
+}

@@ -9,7 +9,25 @@
 
 import { clearToken, getToken } from "@/lib/token";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8080";
+/**
+ * Where the Go API lives.
+ *
+ * In production it is a service in the same Vercel project, reached through
+ * the rewrites in vercel.json — so the right answer is the empty string, and
+ * every request goes to the origin it was served from. That also means a
+ * preview deployment calls its own API rather than production's.
+ *
+ * Defaulting rather than requiring an environment variable is deliberate: a
+ * stale NEXT_PUBLIC_API_URL pointing at a host that does not exist is a
+ * failure that only shows up when someone presses Play, and it reads as the
+ * app being broken rather than as a setting being wrong.
+ *
+ * Local development is the exception, because the two run as separate
+ * processes on different ports.
+ */
+const API_URL =
+  process.env.NEXT_PUBLIC_API_URL ??
+  (process.env.NODE_ENV === "production" ? "" : "http://localhost:8080");
 
 /**
  * The player's own calendar date.
