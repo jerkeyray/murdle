@@ -15,13 +15,19 @@ ends the app teaches you the one you just played.
 |---|---|---|
 | 0 | Game engine, word pool, API | Done |
 | 1 | Solo play + design system | Done |
-| 2 | Shared board pass-and-play | Next |
+| 2 | Shared board pass-and-play | Done |
 | 3 | Themed runs, entries, word pipeline | Done |
 | 4 | Accounts, profile, streaks, friends | Done |
 | 5 | Two-device realtime (optional) | Planned |
 
-The shared-board rules, scoring and turn order are already implemented and
-tested in the Go engine — Phase 2 is the UI for them.
+Open on a home screen rather than a board: the mode choice is the point, and a
+game that drops you straight onto a grid never offers it.
+
+Shared mode is two people and one phone. You alternate rows on the same board,
+each seat has a colour and a name, and the row being typed into carries it —
+so a glance tells you whether the phone is waiting on you. Names live on the
+device, not in an account: needing to sign in before you can pass a phone back
+and forth would ruin the thing it is for.
 
 ## Layout
 

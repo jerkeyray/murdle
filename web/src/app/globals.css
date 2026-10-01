@@ -1008,3 +1008,269 @@ button {
   border-color: var(--mark-present);
   color: var(--mark-present);
 }
+
+/* ---------------------------------------------------------------------------
+   Home
+
+   The mode choice is the whole reason this screen exists: two people on one
+   phone is what the game is for, and a game that opens straight onto a board
+   never offers it.
+--------------------------------------------------------------------------- */
+
+.home {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  max-width: 30rem;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.home-top {
+  display: flex;
+  justify-content: flex-end;
+  padding: 14px 0;
+}
+
+.home-middle {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 8vh;
+}
+
+.home-mark {
+  margin: 0;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(2.8rem, 16vw, 4rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.home-line {
+  margin: 14px 0 34px;
+  max-width: 24rem;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.choices {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.choice {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  width: 100%;
+  padding: 18px 20px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--bg-raised);
+  color: var(--text);
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color 0.18s ease, transform 0.07s ease;
+}
+
+.choice:active {
+  transform: translateY(1px);
+}
+
+.choice:hover {
+  border-color: var(--border-strong);
+}
+
+/* The shared board is the headline mode, so it is the one wearing colour. */
+.choice--accent {
+  border-color: var(--mark-hit);
+}
+
+.choice-title {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+
+.choice-sub {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.home-foot {
+  display: flex;
+  justify-content: center;
+  padding: 0 0 max(20px, env(safe-area-inset-bottom));
+}
+
+/* ---------------------------------------------------------------------------
+   Seat names
+--------------------------------------------------------------------------- */
+
+.seats {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.seat-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.seat-field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.seat-input {
+  flex: 1;
+}
+
+.seat-dot {
+  flex: none;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--seat-0);
+}
+
+[data-seat="1"] .seat-dot,
+.seat-field[data-seat="1"] .seat-dot {
+  background: var(--seat-1);
+}
+
+.seats-note {
+  margin: 2px 0 4px;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--text-faint);
+}
+
+/* ---------------------------------------------------------------------------
+   Whose turn
+
+   Named as well as coloured: colour alone is never the only signal for the
+   one thing a glancing eye has to resolve in under a second.
+--------------------------------------------------------------------------- */
+
+.turn {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0 2px;
+}
+
+.turn-inner {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.turn-dot {
+  align-self: center;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--seat-0);
+}
+
+.turn[data-seat="1"] .turn-dot {
+  background: var(--seat-1);
+}
+
+.turn-name {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--seat-0);
+}
+
+.turn[data-seat="1"] .turn-name {
+  color: var(--seat-1);
+}
+
+.turn-verb {
+  font-size: 0.62rem;
+  font-weight: 650;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+/* The row being typed into carries the seat's colour, so the board itself
+   says whose guess this is without anyone looking away from it. */
+.row[data-seat="0"] .tile[data-state="filled"],
+.row[data-seat="0"] .tile[data-state="empty"] {
+  border-color: color-mix(in srgb, var(--seat-0) 55%, var(--border));
+}
+
+.row[data-seat="1"] .tile[data-state="filled"],
+.row[data-seat="1"] .tile[data-state="empty"] {
+  border-color: color-mix(in srgb, var(--seat-1) 55%, var(--border));
+}
+
+/* ---------------------------------------------------------------------------
+   Running score
+--------------------------------------------------------------------------- */
+
+.score {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.score-seat {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.score-seat[data-seat="0"] { border-left: 3px solid var(--seat-0); }
+.score-seat[data-seat="1"] { border-left: 3px solid var(--seat-1); }
+
+.score-name {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.score-points {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.reveal-winner {
+  margin: 10px 0 0;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.specimen--link {
+  text-decoration: none;
+}
+
+.specimen--link:hover {
+  color: var(--text-muted);
+}

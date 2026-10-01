@@ -1,84 +1,116 @@
 "use client";
 
-import { AnimatePresence, motion } from "motion/react";
-import { Board } from "@/components/Board";
-import { Keyboard } from "@/components/Keyboard";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { useState } from "react";
 import { Settings } from "@/components/Settings";
-import { Entry } from "@/components/Entry";
-import { useGame } from "@/lib/useGame";
+import { loadSeats, saveSeats } from "@/lib/seats";
 
-export default function Page() {
-  const game = useGame("solo");
-  const { round } = game;
+/**
+ * The front door.
+ *
+ * Dropping straight into a game would mean the only choice that matters never
+ * gets made. Two people and one phone is what this is for, and that has to be
+ * offered rather than buried.
+ */
+export default function Home() {
+  const router = useRouter();
+  const [choosing, setChoosing] = useState(false);
+  const [names, setNames] = useState<[string, string]>(["", ""]);
 
-  if (!round) {
-    return (
-      <div className="loading">
-        <span className="label">{game.message ?? "Setting the type"}</span>
-      </div>
-    );
+  function openShared() {
+    // Prefilled from last time: you two will almost always be the same two.
+    setNames(loadSeats().names);
+    setChoosing(true);
+  }
+
+  function startShared(e: React.FormEvent) {
+    e.preventDefault();
+    const seats = loadSeats();
+    saveSeats({
+      names: [
+        names[0].trim() || seats.names[0],
+        names[1].trim() || seats.names[1],
+      ],
+    });
+    router.push("/play/shared");
   }
 
   return (
-    <main className="app">
-      <header className="topbar">
-        <span className="specimen">
-          {/* Which word of the run this is. Padded so the header does not
-              reflow between single and double digits. */}
-          &#8470;&nbsp;{String(game.run?.started ?? 1).padStart(2, "0")}
-        </span>
-        <h1 className="wordmark">Murdle</h1>
+    <main className="home">
+      <header className="home-top">
         <Settings />
       </header>
 
-      <div className="rule" />
+      <div className="home-middle">
+        <h1 className="home-mark">Murdle</h1>
+        <p className="home-line">
+          Five words that secretly belong together. Work out the connection
+          before the last one falls.
+        </p>
 
-      <div className="board-area">
-        <Board
-          rows={round.rows}
-          draft={game.draft}
-          wordLength={round.wordLength}
-          maxRows={round.maxRows}
-          revealingRow={game.revealingRow}
-          shake={game.shake}
-        />
+        {choosing ? (
+          <form className="seats" onSubmit={startShared}>
+            <span className="label">Who is playing</span>
+
+            <div className="seat-fields">
+              {[0, 1].map((seat) => (
+                <label className="seat-field" key={seat} data-seat={seat}>
+                  <span className="seat-dot" aria-hidden />
+                  <input
+                    className="input seat-input"
+                    value={names[seat]}
+                    onChange={(e) =>
+                      setNames((n) => {
+                        const next: [string, string] = [...n];
+                        next[seat] = e.target.value;
+                        return next;
+                      })
+                    }
+                    maxLength={14}
+                    aria-label={`Player ${seat + 1} name`}
+                    autoFocus={seat === 0}
+                  />
+                </label>
+              ))}
+            </div>
+
+            <p className="seats-note">
+              You take turns on the same board — one row each. Whoever lands the
+              word takes the round.
+            </p>
+
+            <button className="button" type="submit">
+              Start
+            </button>
+            <button
+              type="button"
+              className="link-button"
+              onClick={() => setChoosing(false)}
+            >
+              Back
+            </button>
+          </form>
+        ) : (
+          <div className="choices">
+            <Link className="choice" href="/play/solo">
+              <span className="choice-title">Just me</span>
+              <span className="choice-sub">One board, six guesses</span>
+            </Link>
+
+            <button className="choice choice--accent" onClick={openShared}>
+              <span className="choice-title">Two of us</span>
+              <span className="choice-sub">One phone, alternating turns</span>
+            </button>
+          </div>
+        )}
       </div>
 
-      <div className="rule" />
-
-      <Keyboard
-        letterStates={game.letterStates}
-        onKey={game.typeLetter}
-        onEnter={game.submit}
-        onBackspace={game.backspace}
-        disabled={game.inputDisabled}
-      />
-
-      <AnimatePresence>
-        {game.message && !game.finished ? (
-          <motion.div
-            className="toast"
-            role="status"
-            initial={{ opacity: 0, y: -6 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -6 }}
-            transition={{ duration: 0.18 }}
-          >
-            {game.message}
-          </motion.div>
-        ) : null}
-      </AnimatePresence>
-
-      <AnimatePresence>
-        {game.finished ? (
-          <Entry
-            round={round}
-            run={game.run}
-            onNextWord={game.nextWord}
-            onNewRun={game.newRun}
-          />
-        ) : null}
-      </AnimatePresence>
+      <footer className="home-foot">
+        <Link href="/profile" className="link-button">
+          Your words
+        </Link>
+      </footer>
     </main>
   );
 }

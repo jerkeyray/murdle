@@ -75,6 +75,9 @@ interface BoardProps {
   revealingRow: number | null;
   /** Set when a guess was rejected, to shake the draft row. */
   shake: boolean;
+  /** Seat currently playing, or null in solo where there is nobody to tell
+   *  apart. Tints the row being typed into. */
+  activeSeat?: number | null;
 }
 
 export function Board({
@@ -84,6 +87,7 @@ export function Board({
   maxRows,
   revealingRow,
   shake,
+  activeSeat = null,
 }: BoardProps) {
   const draftRow = rows.length;
 
@@ -96,12 +100,16 @@ export function Board({
         const played = rows[rowIndex];
         const isDraft = rowIndex === draftRow;
         const letters = played?.guess ?? (isDraft ? draft : "");
+        const rowSeat = played ? played.seat : isDraft ? activeSeat : null;
 
         return (
           <div
             className="row"
             key={rowIndex}
             data-shake={isDraft && shake ? "true" : undefined}
+            data-seat={
+              activeSeat !== null && rowSeat !== null ? rowSeat : undefined
+            }
           >
             {Array.from({ length: wordLength }, (_, col) => (
               <Tile

@@ -7,6 +7,8 @@ import { setWordSaved, type Round, type Run } from "@/lib/api";
 interface EntryProps {
   round: Round;
   run: Run | null;
+  /** Seat names, for a shared board. */
+  names: [string, string];
   onNextWord: () => void;
   onNewRun: () => void;
 }
@@ -19,9 +21,15 @@ interface EntryProps {
  * That reveal is the payoff for the whole run: the two of you have been
  * guessing at the connection as well as the words.
  */
-export function Entry({ round, run, onNextWord, onNewRun }: EntryProps) {
+export function Entry({ round, run, names, onNextWord, onNewRun }: EntryProps) {
   const won = round.state === "won";
+  const shared = round.mode === "shared";
   const points = round.scores[0] ?? 0;
+
+  // On a shared board the round belongs to whoever landed the winning guess,
+  // not to whoever happened to be holding the phone at the end.
+  const solverSeat =
+    won && round.solvedRow >= 0 ? round.rows[round.solvedRow]?.seat : null;
   const entry = round.entry;
   const runComplete = run?.complete ?? false;
 
@@ -64,13 +72,17 @@ export function Entry({ round, run, onNextWord, onNewRun }: EntryProps) {
       >
         <div className="entry-head">
           <span className="label">
-            {won ? `Solved in ${round.solvedRow + 1}` : "Out of guesses"}
-          </span>
-          <span className="label">
             {won
-              ? `${points} ${points === 1 ? "point" : "points"}`
-              : "No points"}
+              ? shared && solverSeat !== null && solverSeat !== undefined
+                ? `${names[solverSeat]} got it in ${round.solvedRow + 1}`
+                : `Solved in ${round.solvedRow + 1}`
+              : "Out of guesses"}
           </span>
+          {!shared ? (
+            <span className="label">
+              {won ? `${points} ${points === 1 ? "point" : "points"}` : "No points"}
+            </span>
+          ) : null}
         </div>
 
         <div className="entry-word-row">
@@ -117,6 +129,17 @@ export function Entry({ round, run, onNextWord, onNewRun }: EntryProps) {
           <p className="form-error">Sign in to keep words.</p>
         ) : null}
 
+        {shared && run ? (
+          <div className="score">
+            {[0, 1].map((seat) => (
+              <div className="score-seat" data-seat={seat} key={seat}>
+                <span className="score-name">{names[seat]}</span>
+                <span className="score-points">{run.totals[seat] ?? 0}</span>
+              </div>
+            ))}
+          </div>
+        ) : null}
+
         {runComplete && run?.pack ? (
           <motion.div
             className="reveal"
@@ -127,6 +150,14 @@ export function Entry({ round, run, onNextWord, onNewRun }: EntryProps) {
             <span className="label">The thread</span>
             <h3 className="reveal-title">{run.pack.title}</h3>
             <p className="reveal-blurb">{run.pack.blurb}</p>
+            {shared && run.winner >= 0 ? (
+              <p className="reveal-winner">
+                {names[run.winner]} takes it, {run.totals[run.winner]} to{" "}
+                {run.totals[run.winner === 0 ? 1 : 0]}.
+              </p>
+            ) : shared ? (
+              <p className="reveal-winner">A draw. Again.</p>
+            ) : null}
           </motion.div>
         ) : null}
 
