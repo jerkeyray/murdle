@@ -45,19 +45,22 @@ the same DevTools if anyone gets curious.
 
 ## Running it
 
-Two processes. The Go API first:
-
 ```bash
-cd server && go run ./cmd/murdled
+make install   # first time only
+make dev       # both services, one terminal
 ```
 
-Then the web app:
+Open http://localhost:3000. Ctrl-C stops both.
+
+Or one per terminal, if you want the logs apart:
 
 ```bash
-cd web && pnpm install && pnpm dev
+make api   # Go API      :8080
+make web   # Next.js app :3000
 ```
 
-Open http://localhost:3000. The web app talks to `http://localhost:8080` by
+`make stop` frees both ports when something is still holding one, and
+`make test` runs the Go tests plus the typecheck and lint. The web app talks to `http://localhost:8080` by
 default; override with `NEXT_PUBLIC_API_URL`. The API allows
 `http://localhost:3000` by default; override with `ALLOWED_ORIGINS`.
 
