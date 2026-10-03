@@ -2740,19 +2740,8 @@ summary { cursor: pointer; color: var(--text-muted); padding-block: 8px; min-hei
 .game-progress { margin: 4px 0 0; color: var(--text-muted); font-size: .72rem; letter-spacing: 0; }
 .game-heading .wordmark { margin: 0; }
 .nav-labelled { width: auto; min-height: 44px; padding: 8px 12px; gap: 8px; font-size: .85rem; border: 0; }
-.home-description { max-width: 20rem; margin: 0 0 26px; color: var(--text-muted); font-size: 1rem; line-height: 1.55; }
 .home-mark { margin-bottom: 22px; }
-.home-help { display: block; margin-top: 10px; }
-.help-marks { list-style: none; padding: 0; margin: 22px 0; }
-.help-marks li { display: flex; align-items: center; gap: 14px; margin: 12px 0; }
 .help-marks li > span { display: grid; place-items: center; flex: none; width: 44px; height: 44px; border-radius: 6px; font-weight: 650; }
-.help-marks p { margin: 0; color: var(--text-muted); font-size: .9rem; }
-.help-marks strong { color: var(--text); }
-.help-marks [data-mark="hit"] { background: var(--mark-hit); color: var(--mark-hit-text); }
-.help-marks [data-mark="present"] { background: var(--mark-present); color: var(--mark-present-text); }
-.help-marks [data-mark="absent"] { background: var(--mark-absent); color: var(--mark-absent-text); }
-:root[data-contrast="cb"] .help-marks [data-mark="hit"]::after { content: "●"; font-size: 8px; }
-:root[data-contrast="cb"] .help-marks [data-mark="present"]::after { content: "◆"; font-size: 8px; }
 .appearance-pref { padding: 20px; }
 .appearance-pref .pref-name { margin: 0 0 12px; }
 .appearance-pref .pref-sub { margin: 10px 0 0; display: block; }
@@ -2803,4 +2792,3 @@ summary { cursor: pointer; color: var(--text-muted); padding-block: 8px; min-hei
 /* Navigation targets stay comfortable without enlarging the letter keys. */
 .icon-button { min-width: 44px; min-height: 44px; }
 .nav-labelled { display: flex; height: auto; }
-@media (max-width: 760px) { .home-help { margin-inline: auto; } }
