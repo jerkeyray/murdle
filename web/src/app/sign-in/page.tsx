@@ -54,13 +54,18 @@ export default function SignInPage() {
     setError(null);
     // Better Auth redirects away and returns to callbackURL, so on the happy
     // path there is nothing here to await.
-    const result = await signIn.social({
-      provider: "google",
-      callbackURL: safeReturnTo(new URLSearchParams(window.location.search).get("returnTo")),
-    });
-    if (result?.error) {
+    try {
+      const result = await signIn.social({
+        provider: "google",
+        callbackURL: safeReturnTo(new URLSearchParams(window.location.search).get("returnTo")),
+      });
+      if (result?.error) {
+        setError(result.error.message ?? "Google would not sign you in");
+        setBusy(false);
+      }
+    } catch {
+      setError("Could not start Google sign-in. Check your connection and try again.");
       setBusy(false);
-      setError(result.error.message ?? "Google would not sign you in");
     }
   }
 
