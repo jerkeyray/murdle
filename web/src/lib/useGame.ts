@@ -53,8 +53,10 @@ export function useGame() {
     const missing = err instanceof ApiError && (err.code === "run_not_found" || err.code === "round_not_found");
     setExpired(missing);
     setError(missing
-      // What the player can do about it, not how the server stores it.
-      ? "That run has expired. Unfinished games are kept for six hours."
+      // What the player can do about it, not how the server stores it. Six
+      // hours was a property of keeping runs in one process's memory; they
+      // are in the database now and the window is a month.
+      ? "That run is no longer available. Unfinished games are kept for a month."
       : err instanceof ApiError ? err.message : "Could not reach the game. Please try again.");
     if (missing) writeLocal(ACTIVE_KEY, null);
   }, []);

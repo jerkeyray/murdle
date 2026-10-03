@@ -12,6 +12,8 @@ import (
 	"syscall"
 	"time"
 
+	"github.com/jackc/pgx/v5/pgxpool"
+
 	"github.com/jerkeyray/wordle/server/internal/auth"
 	"github.com/jerkeyray/wordle/server/internal/config"
 	"github.com/jerkeyray/wordle/server/internal/db"
@@ -22,10 +24,12 @@ import (
 	"github.com/jerkeyray/wordle/server/internal/words"
 )
 
-// roundTTL is how long an untouched round survives. Long enough that a pair can
-// put the phone down mid-round and come back to it; short enough that abandoned
-// rounds do not accumulate.
-const roundTTL = 6 * time.Hour
+// roundTTL is how long an untouched run survives.
+//
+// It exists to clear games nobody is coming back to, not to take progress away
+// from anyone, so it is measured in weeks. The old six-hour window was a
+// property of keeping state in memory, and it is gone with it.
+const roundTTL = 30 * 24 * time.Hour
 
 func main() {
 	log := slog.New(slog.NewTextHandler(os.Stdout, &slog.HandlerOptions{Level: slog.LevelInfo}))
@@ -46,17 +50,20 @@ func run(log *slog.Logger) error {
 		return err
 	}
 
-	// The database is optional for now. Rounds live in memory, so the game is
-	// fully playable without it; what it unlocks is accounts and history. A
-	// bad URL is still fatal — silently running without the database the
-	// operator asked for would be worse than refusing to start.
+	// The database is optional only for local development, where one process
+	// serves everything and runs can sit in memory. It is what accounts,
+	// history and durable game state all need. A bad URL is still fatal —
+	// silently running without the database the operator asked for would be
+	// worse than refusing to start.
 	var playerStore *players.Store
 	var verifier *auth.Verifier
 	var duoStore *duos.Store
+	var conn *pgxpool.Pool
 	pool := words.NewPool()
 
 	if url := os.Getenv("DATABASE_URL"); url != "" {
-		conn, err := db.Open(ctx, url)
+		var err error
+		conn, err = db.Open(ctx, url)
 		if err != nil {
 			return err
 		}
@@ -91,8 +98,20 @@ func run(log *slog.Logger) error {
 	answers, dictionary := pool.Size()
 	log.Info("word pool loaded", "answers", answers, "dictionary", dictionary)
 
-	rounds := store.NewMemory(roundTTL)
-	go rounds.Reap(ctx, 10*time.Minute)
+	// Memory only works while one process serves every request, which is true
+	// of `make dev` and of nothing in production.
+	var rounds store.Store
+	if conn != nil {
+		pg := store.NewPostgres(conn, roundTTL)
+		go pg.Reap(ctx, time.Hour)
+		rounds = pg
+		log.Info("game state in postgres", "ttl", roundTTL)
+	} else {
+		mem := store.NewMemory(roundTTL)
+		go mem.Reap(ctx, 10*time.Minute)
+		rounds = mem
+		log.Warn("game state in memory — runs are lost on restart and cannot be shared between instances")
+	}
 
 	handler := wordlehttp.NewServer(wordlehttp.Options{
 		Pool:           pool,

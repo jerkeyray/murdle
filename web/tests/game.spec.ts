@@ -96,7 +96,7 @@ test("expired sessions offer an explicit restart", async ({ page }) => {
   await setup(page);
   await page.addInitScript(() => localStorage.setItem("wordle.active", "expiredsession"));
   await page.goto("/play");
-  await expect(page.getByText(/That run has expired/)).toBeVisible();
+  await expect(page.getByText(/no longer available/)).toBeVisible();
   await page.getByRole("button", { name: "Start a new run" }).click();
   await expectWord(page, 1);
 });
