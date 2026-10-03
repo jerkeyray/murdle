@@ -44,28 +44,28 @@ export function Entry({ round, onClose, action, actionLabel, busy = false }: {
   }
 
   return (
-    <Dialog title="Word entry" onClose={onClose}>
-      <div className="entry-head">
-        <p>{round.state === "won" ? `Solved in ${round.solvedRow + 1}` : "Out of guesses"}</p>
-        <p>{round.points} {round.points === 1 ? "point" : "points"}</p>
-      </div>
+    <Dialog title="Word entry" onClose={onClose} className="entry-dialog">
       <h2 className="entry-word">{round.answer}</h2>
       {round.hintsUsed > 0 && <p className="assisted">Assisted · {round.hintsUsed} {round.hintsUsed === 1 ? "hint" : "hints"}</p>}
       {round.entry && <>
         <p className="entry-definition">{round.entry.definition}</p>
-        <details className="word-history"><summary>Read more</summary><p className="entry-note">{round.entry.note}</p></details>
+        <p className="entry-note">{round.entry.note}</p>
       </>}
       <details className="board-review"><summary>Inspect finished board</summary>
         <Board rows={round.rows} draft="" wordLength={round.wordLength} maxRows={round.maxRows} revealingRow={null} shake={false} />
       </details>
       <div className="entry-tools">
-        <button className="text-button" disabled={saving} onClick={toggleKeep} aria-pressed={kept}>{kept ? "Kept in your lexicon" : "Keep this word"}</button>
-        <button className="text-button" disabled={sharing} onClick={onShare}>
-          <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <button className="icon-button entry-icon-button" disabled={saving} onClick={toggleKeep} aria-pressed={kept} aria-label={kept ? "Remove from lexicon" : "Save to lexicon"} title={kept ? "Remove from lexicon" : "Save to lexicon"}>
+          <svg width="19" height="19" viewBox="0 0 24 24" aria-hidden fill={kept ? "currentColor" : "none"} stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.8L6 21V4.75Z" />
+          </svg>
+        </button>
+        <button className="icon-button entry-icon-button" disabled={sharing} onClick={onShare} aria-label={sharing ? "Creating share image" : shareLabel || "Share this word"} title={sharing ? "Creating share image" : shareLabel || "Share this word"}>
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
             <path d="M12 15V3m0 0L8 7m4-4 4 4" /><path d="M4 14v5a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-5" />
           </svg>
-          {sharing ? "Making the image…" : shareLabel || "Share this word"}
         </button>
+        {shareLabel && <span className="sr-only" role="status">{shareLabel}</span>}
       </div>
       {keepError && <p role="status" className="form-error">{keepError}</p>}
       <div className="entry-actions">

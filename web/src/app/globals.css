@@ -14,35 +14,33 @@
 =========================================================================== */
 
 :root {
-  /* Plum ink — a near-black with a red cast, so even the dark theme reads
-     pink rather than neutral. */
-  --bg: #1a1016;
-  --bg-raised: #241820;
-  --border: #3e2c37;
-  --border-strong: #634a59;
-  --rule: #33232d;
+  /* Neutral charcoal surfaces with gray borders and white type. */
+  --bg: #101010;
+  --bg-raised: #1b1b1b;
+  --border: #333333;
+  --border-strong: #505050;
+  --rule: #292929;
 
-  --text: #f8edf2;
-  --text-muted: #b79fac;
-  --text-faint: #806a77;
+  --text: #f2f2f2;
+  --text-muted: #ababab;
+  --text-faint: #909090;
 
   /* Green is the right spot and rose is in-the-word.
      
      Not the other way round, however much the palette would prefer it. Green
      means "correct" to anyone who has played a word game, and an earlier pass
      had it on the wrong-spot mark — the board read backwards at a glance. The
-     app still reads pink because the paper, the chrome and the second mark
-     all are; only the success colour follows the convention. */
+     feedback keeps its color against the neutral dark surfaces. */
   --mark-hit: #2fb894;
   --mark-hit-text: #04201a;
   --mark-present: #e0568f;
   --mark-present-text: #1a0a12;
-  --mark-absent: #3a2b34;
-  --mark-absent-text: #9b8794;
+  --mark-absent: #303030;
+  --mark-absent-text: #b5b5b5;
 
-  --key-bg: #2c1f27;
-  --key-border: #3d2c36;
-  --key-text: #f0e2e9;
+  --key-bg: #242424;
+  --key-border: #363636;
+  --key-text: #eeeeee;
 
   /* Player identity for the shared board in Phase 2. Rose and violet, so the
      two of you are told apart by hue as well as by name. */
@@ -50,7 +48,7 @@
   --seat-1: #ab9ae8;
 
   --grain-opacity: 0.038;
-  --glow: rgb(255 120 175 / 0.1);
+  --glow: rgb(255 255 255 / 0.025);
 
   --radius-tile: 7px;
   --radius-key: 7px;
@@ -440,12 +438,12 @@ button {
 .key {
   flex: 1;
   min-width: 0;
-  height: 56px;
+  height: 62px;
   border: 1px solid var(--key-border);
   border-radius: var(--radius-key);
   background: var(--key-bg);
   color: var(--key-text);
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   font-weight: 550;
   letter-spacing: 0.02em;
   text-transform: uppercase;
@@ -473,7 +471,7 @@ button {
 .key--wide {
   flex: 1.7;
   font-family: var(--font-sans), sans-serif;
-  font-size: 0.62rem;
+  font-size: 0.68rem;
   font-weight: 650;
   letter-spacing: 0.14em;
 }
@@ -557,7 +555,7 @@ button {
   display: grid;
   place-items: end center;
   padding: 16px;
-  background: rgb(14 7 11 / 0.64);
+  background: rgb(0 0 0 / 0.64);
   backdrop-filter: blur(4px);
 }
 
@@ -2557,7 +2555,7 @@ button {
 }
 
 /* The run is a page of discoveries; controls remain readable at phone size. */
-:root { --text-faint: #b09aa6; --mark-absent-text: #c0adba; }
+:root:not([data-theme="light"]) { --text-faint: #909090; --mark-absent-text: #b5b5b5; }
 :root[data-theme="light"] { --text-muted: #755363; --text-faint: #795867; --mark-hit: #08725e; --mark-present: #ae285d; }
 :root[data-contrast="cb"] { --mark-hit: #235d91; --mark-present: #e8964f; }
 :focus-visible { outline: 3px solid var(--mark-present); outline-offset: 3px; }
@@ -2575,11 +2573,6 @@ button {
 .text-button:hover { color: var(--text); text-decoration: underline; text-underline-offset: 4px; }
 button:disabled { cursor: default; }
 .text-button:disabled { opacity: .55; text-decoration: none; }
-.run-progress { display: flex; align-items: center; justify-content: center; min-height: 32px; flex: none; color: var(--text-muted); }
-.run-progress ol { display: flex; gap: 6px; list-style: none; padding: 0; margin: 0; }
-.run-progress li { width: 9px; height: 9px; border: 1px solid var(--border-strong); border-radius: 50%; }
-.run-progress li[data-complete="true"] { background: var(--mark-hit); border-color: var(--mark-hit); }
-.run-progress li[aria-current="step"] { outline: 2px solid var(--text-muted); outline-offset: 2px; }
 .word-strip { display: flex; gap: 5px; align-items: center; min-height: 46px; flex: none; flex-wrap: wrap; padding-block: 3px 7px; }
 .word-strip button { border: 1px solid var(--border); background: var(--bg-raised); color: var(--text); border-radius: 6px; padding: 7px 8px; min-height: 40px; font-family: var(--font-serif), Georgia, serif; font-size: .9rem; cursor: pointer; }
 /* Solved or merely revealed, as a status dot rather than punctuation: a bare
@@ -2588,6 +2581,10 @@ button:disabled { cursor: default; }
 .word-strip button span[data-state="won"] { color: var(--mark-hit); }
 .game-app .board-area { container-type: size; min-height: 270px; padding: 6px 0; }
 .game-app .board { width: min(100%, 21rem, calc(100cqh * 5 / 6)); height: auto; max-height: 100%; }
+.game-app:not(.duo-app) .board-area { min-height: 220px; padding: 16px 0 20px; }
+.board-stage { position: relative; width: min(20rem, calc(100% - 88px), calc((100cqh - 12px) * 5 / 6)); }
+.game-app .board-stage .board { width: 100%; max-height: none; }
+.game-app .board-stage .game-hint { position: absolute; top: 0; left: -48px; width: 36px; height: 36px; border-color: var(--border); border-radius: 50%; color: var(--text-muted); }
 .game-app .tile { font-size: clamp(1.15rem, 6cqh, 2rem); }
 .game-tools { display: flex; align-items: center; justify-content: space-between; flex: none; }
 /* Icon only, so the strip under the board carries no prose. The count rides on
@@ -2595,15 +2592,29 @@ button:disabled { cursor: default; }
 .hint-button { position: relative; }
 .hint-button:disabled { opacity: .4; cursor: default; }
 .hint-count { position: absolute; top: 2px; right: 2px; min-width: 14px; height: 14px; padding: 0 3px; border-radius: 999px; background: var(--mark-hit); color: var(--mark-hit-text); font-size: .6rem; font-weight: 700; line-height: 14px; text-align: center; }
-.game-app .keyboard { flex: none; padding-top: 10px; }
+.game-app .keyboard { flex: none; padding: 10px 0 4px; }
+.game-app .key { height: 68px; font-size: 1.25rem; }
+.game-app .key--wide { font-size: .72rem; letter-spacing: .06em; }
+.game-app .keyboard-submit { flex: none; width: 100%; height: 62px; margin: 2px 0 max(12px, env(safe-area-inset-bottom)); font-size: .82rem; }
+.game-app .keyboard-submit[data-state="incomplete"] { border-color: var(--border-strong); background: var(--bg-raised); color: var(--text-muted); opacity: 1; }
+.game-app .keyboard-submit[data-state="word"] { border-color: var(--mark-hit); background: var(--mark-hit); color: var(--mark-hit-text); }
+.game-app .keyboard-submit[data-state="unknown"] { border-color: var(--border-strong); background: var(--bg-raised); color: var(--text); }
 .finished-actions { display: flex; gap: 10px; padding: 16px 0 max(16px, env(safe-area-inset-bottom)); flex: none; }
 .finished-actions .button { flex: 1; }
 .game-dialog { width: min(28rem, calc(100vw - 24px)); position: fixed; inset: 0; margin: auto; color: var(--text); font-size: .95rem; line-height: 1.55; }
-.game-dialog::backdrop { background: rgb(14 7 11 / .7); backdrop-filter: blur(3px); }
+.game-dialog::backdrop { background: rgb(0 0 0 / .7); backdrop-filter: blur(3px); }
+.game-dialog.entry-dialog { padding: 24px; border-color: var(--border-strong); background: var(--bg-raised); box-shadow: 0 28px 90px rgb(0 0 0 / .55), 0 0 0 1px rgb(255 255 255 / .025) inset; }
 .game-dialog .label { font-size: .72rem; }
 .dialog-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
-.game-dialog .entry-head { font-size: .85rem; color: var(--text-muted); }
-.game-dialog .entry-head p { margin-top: 0; }
+.game-dialog.entry-dialog .entry-word { margin-top: 12px; font-size: clamp(3rem, 14vw, 3.65rem); line-height: .98; }
+.game-dialog.entry-dialog .entry-definition { max-width: 31ch; margin-top: 8px; font-size: 1.05rem; line-height: 1.5; }
+.game-dialog.entry-dialog .entry-note { margin: 8px 0 0; padding-top: 0; }
+.game-dialog.entry-dialog .board-review { padding: 0 12px; border: 1px solid var(--border); border-radius: 9px; background: color-mix(in srgb, var(--bg) 55%, transparent); }
+.game-dialog.entry-dialog .board-review { margin-top: 8px; }
+.game-dialog.entry-dialog .board-review[open] { padding-bottom: 10px; }
+.game-dialog.entry-dialog .board-review summary { color: var(--text-muted); }
+.game-dialog.entry-dialog .entry-tools { justify-content: flex-end; gap: 8px; margin-top: 14px; padding-top: 10px; }
+.entry-icon-button { width: 44px; height: 44px; border-radius: 12px; }
 /* A button closing out a sheet needs air above it: the note explaining why a
    hint is still locked was sitting flush against this edge, reading as clipped.
    The note needs the same separation from the line it qualifies. */
@@ -2644,7 +2655,7 @@ summary { cursor: pointer; color: var(--text-muted); padding-block: 8px; min-hei
 .toast { max-width: calc(100vw - 24px); white-space: normal; text-align: center; font-size: .8rem; letter-spacing: 0; text-transform: none; }
 @media (max-height: 720px) {
   .game-app .topbar { padding-block: 4px; }
-  .game-app .key { height: 48px; font-size: 1rem; }
+  .game-app .key { height: 58px; font-size: 1.1rem; }
   .game-app .board { gap: 5px; }
   .game-app .row { gap: 5px; }
 }
