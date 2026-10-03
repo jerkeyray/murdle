@@ -3,12 +3,11 @@
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import {
-  addFriend,
+  ApiError,
   getFriends,
   getProfile,
   getSavedWords,
   getSolves,
-  respondToFriend,
   type FriendRecord,
   type Profile,
   type SolveRecord,
@@ -22,7 +21,7 @@ import { useRouter } from "next/navigation";
 import { Loader } from "@/components/Loader";
 import { SettingsButton } from "@/components/SettingsButton";
 
-type Tab = "collection" | "kept" | "friends";
+type Tab = "collection" | "kept";
 
 export default function ProfilePage() {
   const router = useRouter();
@@ -34,7 +33,7 @@ export default function ProfilePage() {
   const [renaming, setRenaming] = useState(false);
   const [signedOut, setSignedOut] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [code, setCode] = useState("");
+  const [query, setQuery] = useState("");
 
   const fetchAll = useCallback(
     () => Promise.all([getProfile(), getSolves(), getSavedWords(), getFriends()]),
@@ -52,46 +51,26 @@ export default function ProfilePage() {
     [],
   );
 
-  /** Refresh after an action; safe from an event handler. */
-  const load = useCallback(async () => {
-    try {
-      apply(await fetchAll());
-    } catch {
-      setSignedOut(true);
-    }
-  }, [fetchAll, apply]);
-
   useEffect(() => {
     let cancelled = false;
     fetchAll()
       .then((r) => {
         if (!cancelled) apply(r);
       })
-      .catch(() => {
-        if (!cancelled) setSignedOut(true);
+      .catch((err) => {
+        if (cancelled) return;
+        if (err instanceof ApiError && err.status === 401) setSignedOut(true);
+        else setError("Your words could not load. Please try again.");
       });
     return () => {
       cancelled = true;
     };
   }, [fetchAll, apply]);
 
-  async function onAddFriend(e: React.FormEvent) {
-    e.preventDefault();
-    if (!code.trim()) return;
-    try {
-      await addFriend(code.trim());
-      setCode("");
-      setError(null);
-      await load();
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Could not add them");
-    }
-  }
-
   const head = (
     <header className="sheet-head">
       <BackButton href="/" />
-      <h1 className="sheet-title">Your lexicon</h1>
+      <h1 className="sheet-title">Your words</h1>
       <SettingsButton />
     </header>
   );
@@ -102,20 +81,14 @@ export default function ProfilePage() {
     return (
       <main className="sheet">
         {head}
-        {/* An unfilled bookplate: the blank is the invitation. */}
-        <div className="plate plate--empty">
-          <span className="plate-ex">Ex libris</span>
-          <div className="plate-blank" aria-hidden />
-        </div>
-
-        <p className="empty">
-          Sign in and every word you meet joins a lexicon of your own — with a
-          streak, the words you kept, and someone to play against.
-        </p>
-
-        <Link href="/sign-in" className="button button--link">
-          Sign in
-        </Link>
+        <section className="guest-profile">
+          <span className="label">Your collection starts here</span>
+          <h2>Words worth keeping.</h2>
+          <p>Sign in to keep the words you discover, build a daily streak, and play with friends.</p>
+          <ul><li>Every discovered word, in one place</li><li>Save favourites to revisit</li><li>Track your streak and play together</li></ul>
+          <Link href="/sign-in?returnTo=%2Fprofile" className="button button--link">Sign in</Link>
+          <Link href="/play" className="text-button">Play a round</Link>
+        </section>
       </main>
     );
   }
@@ -124,7 +97,7 @@ export default function ProfilePage() {
     return (
       <main className="sheet">
         {head}
-        <Loader />
+        {error ? <div className="empty"><p role="alert">{error}</p><button className="button" onClick={() => window.location.reload()}>Try again</button></div> : <Loader />}
       </main>
     );
   }
@@ -148,7 +121,8 @@ export default function ProfilePage() {
   }
 
   const pending = friends.filter((f) => f.status === "pending" && f.incoming);
-  const list = tab === "collection" ? solves : tab === "kept" ? saved : [];
+  const source = tab === "collection" ? solves : saved;
+  const list = source.filter((word) => [word.word, word.entry?.definition, word.entry?.note].join(" ").toLowerCase().includes(query.trim().toLowerCase()));
 
   return (
     <main className="sheet">
@@ -209,118 +183,26 @@ export default function ProfilePage() {
         </dl>
       </div>
 
-      <nav className="tabs" role="tablist">
-        {(["collection", "kept", "friends"] as Tab[]).map((t) => (
-          <button
-            key={t}
-            className="tab"
-            role="tab"
-            aria-selected={tab === t}
-            onClick={() => { if (t === "friends") router.push("/friends"); else setTab(t); }}
-          >
-            {t === "collection"
-              ? `Collection ${solves.length}`
-              : t === "kept"
-                ? `Kept ${saved.length}`
-                : `Friends ${friends.filter((f) => f.status === "accepted").length}`}
-            {t === "friends" && pending.length > 0 ? (
-              <span className="tab-dot" aria-label={`${pending.length} waiting`} />
-            ) : null}
-          </button>
-        ))}
-      </nav>
-
-      {tab === "friends" ? (
-        <section>
-          <form className="code-form" onSubmit={onAddFriend}>
-            <input
-              className="input"
-              value={code}
-              onChange={(e) => setCode(e.target.value.toUpperCase())}
-              placeholder="Their shelf mark"
-              maxLength={6}
-              aria-label="Friend's invite code"
-            />
-            <button className="button button--inline" type="submit">
-              Add
-            </button>
-          </form>
-
-          {error ? <p className="form-error">{error}</p> : null}
-
-          {friends.length === 0 ? (
-            <p className="empty">
-              Nobody yet. Swap shelf marks and you will both see it here.
-            </p>
-          ) : (
-            <ul className="rows">
-              {friends.map((f) => (
-                <li className="row-item" key={f.id}>
-                  <span className="row-word">{f.displayName}</span>
-                  {f.status === "accepted" ? (
-                    <span className="label">Playing</span>
-                  ) : f.incoming ? (
-                    <span className="row-actions">
-                      <button
-                        className="button button--tiny"
-                        onClick={async () => {
-                          await respondToFriend(f.id, true);
-                          await load();
-                        }}
-                      >
-                        Accept
-                      </button>
-                      <button
-                        className="link-button"
-                        onClick={async () => {
-                          await respondToFriend(f.id, false);
-                          await load();
-                        }}
-                      >
-                        No
-                      </button>
-                    </span>
-                  ) : (
-                    <span className="label">Waiting</span>
-                  )}
-                </li>
-              ))}
-            </ul>
-          )}
-        </section>
-      ) : list.length === 0 ? (
-        <p className="empty">
-          {tab === "collection"
-            ? "Nothing yet. Play a round and it lands here."
-            : "Star a word at the end of a round to keep it."}
-        </p>
-      ) : (
-        <ul className="rows rows--split">
-          {list.map((s, i) => (
-            <li className="entry-row" key={s.word}>
-              <div className="entry-row-head">
-                <span className="row-word">
-                  <span className="entry-no">
-                    {String(i + 1).padStart(3, "0")}
-                  </span>
-                  {s.word}
-                </span>
-                {tab === "collection" ? (
-                  <span className="label">
-                    {s.solved ? `${s.guesses} guesses` : "Missed"}
-                  </span>
-                ) : null}
-              </div>
-              {s.entry ? (
-                <>
-                  <p className="entry-row-def">{s.entry.definition}</p>
-                  <p className="entry-row-note">{s.entry.note}</p>
-                </>
-              ) : null}
-            </li>
-          ))}
-        </ul>
-      )}
+      <div className="collection-controls">
+        <div className="collection-tabs" role="group" aria-label="Word collection">
+          <button aria-pressed={tab === "collection"} onClick={() => setTab("collection")}>All words <span>{solves.length}</span></button>
+          <button aria-pressed={tab === "kept"} onClick={() => setTab("kept")}>Saved <span>{saved.length}</span></button>
+        </div>
+        <Link className="text-button" href="/friends">Friends{pending.length ? ` · ${pending.length} waiting` : ""}</Link>
+      </div>
+      {source.length > 0 && <div className="collection-search">
+        <label className="sr-only" htmlFor="word-search">Search your words</label>
+        <input id="word-search" className="input" type="search" placeholder="Search words or meanings" value={query} onChange={(event) => setQuery(event.target.value)} />
+        {query && <p className="collection-count" role="status">{list.length} {list.length === 1 ? "word" : "words"} found</p>}
+      </div>}
+      {list.length === 0 ? <div className="empty"><p>{query.trim() && source.length ? "No words match your search." : tab === "collection" ? "Play a round to discover your first words." : "Tap the bookmark on a word card to save it here."}</p>
+        {query.trim() && source.length ? <button className="text-button" onClick={() => setQuery("")}>Clear search</button> : <Link className="text-button" href="/play">Play a round</Link>}
+      </div> : <ul className="collection-list">{list.map((word) => <li key={word.word}>
+        <details className="collection-word">
+          <summary><span><strong>{word.word}</strong>{word.entry && <span className="collection-definition">{word.entry.definition}</span>}</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden><path d="m9 5 7 7-7 7" /></svg></summary>
+          {word.entry ? <p>{word.entry.note}</p> : <p>No word note available yet.</p>}
+        </details>
+      </li>)}</ul>}
 
       {/* Appearance used to be repeated here as well as on /settings, so the
           page ran identity, then a word list, then a settings panel, then a

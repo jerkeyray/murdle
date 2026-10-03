@@ -6,6 +6,7 @@ import { getProfile, type Profile } from "@/lib/api";
 import { ProfileButton } from "@/components/ProfileButton";
 import { activeRun, subscribeSession } from "@/lib/session";
 import { SettingsButton } from "@/components/SettingsButton";
+import { HowToPlay } from "@/components/HowToPlay";
 import { FriendsEntry } from "@/components/FriendsEntry";
 
 /**
@@ -38,8 +39,8 @@ export default function Home() {
   return (
     <main className="home">
       <header className="home-top">
-        <SettingsButton />
-        <ProfileButton
+        <SettingsButton showLabel />
+        <ProfileButton showLabel
           streakAtRisk={
             profile && profile.streak.current > 0 && !profile.streak.playedToday
               ? profile.streak.current
@@ -51,12 +52,14 @@ export default function Home() {
       <div className="home-middle">
         <section className="home-intro">
           <h1 className="home-mark">Wordle</h1>
+          <p className="home-description">Solve five words. Discover what connects them.</p>
           <Link className="play" href="/play">
             <span className="play-word">
               {savedRun ? "Continue" : "Begin"}
             </span>
           </Link>
           <FriendsEntry />
+          <HowToPlay />
         </section>
 
         <div className="home-specimen" aria-hidden>

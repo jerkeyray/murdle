@@ -210,7 +210,7 @@ export async function drawShareCard(round: Round): Promise<Blob> {
  * — but it does not exist on most desktops and rejects files on some, so the
  * download is not a fallback for errors so much as the desktop behaviour.
  */
-export async function shareRound(round: Round): Promise<"shared" | "downloaded"> {
+export async function shareRound(round: Round): Promise<"shared" | "downloaded" | "cancelled"> {
   const blob = await drawShareCard(round);
   const file = new File([blob], `murdle-${round.answer ?? "word"}.png`, {
     type: "image/png",
@@ -224,7 +224,7 @@ export async function shareRound(round: Round): Promise<"shared" | "downloaded">
       // A cancelled share sheet is the user saying no, not a failure to
       // recover from by downloading something they did not ask for.
       if (err instanceof DOMException && err.name === "AbortError") {
-        return "shared";
+        return "cancelled";
       }
     }
   }

@@ -6,6 +6,7 @@ interface ProfileButtonProps {
   /** Shown as a badge when a streak is running but today has not been played
    *  — the one count here with a deadline. */
   streakAtRisk?: number;
+  showLabel?: boolean;
 }
 
 /**
@@ -13,17 +14,17 @@ interface ProfileButtonProps {
  *
  * Top right on every screen, which is where a person looks for themselves.
  */
-export function ProfileButton({ streakAtRisk }: ProfileButtonProps) {
+export function ProfileButton({ streakAtRisk, showLabel = false }: ProfileButtonProps) {
   return (
     <Link
-      className="icon-button profile-button"
+      className={`icon-button profile-button ${showLabel ? "nav-labelled" : ""}`}
       href="/profile"
       aria-label={
         streakAtRisk
-          ? `Your lexicon — ${streakAtRisk} day streak, not played today`
-          : "Your lexicon"
+          ? `Your words — ${streakAtRisk} day streak, not played today`
+          : "Your words"
       }
-      title="Your lexicon"
+      title="Your words"
     >
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden>
         <path
@@ -40,6 +41,7 @@ export function ProfileButton({ streakAtRisk }: ProfileButtonProps) {
         />
       </svg>
 
+      {showLabel && <span>Your words</span>}
       {streakAtRisk ? (
         <span className="profile-badge" aria-hidden>
           {streakAtRisk}

@@ -34,17 +34,13 @@ export function Preferences() {
       </div>
 
       <div className="prefs-card">
-        <button
-          className="pref"
-          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-          aria-pressed={theme === "light"}
-        >
-          <span className="pref-text">
-            <span className="pref-name">Paper</span>
-            <span className="pref-sub">Light instead of ink</span>
-          </span>
-          <span className="switch" aria-hidden />
-        </button>
+        <div className="appearance-pref">
+          <p className="pref-name">Appearance</p>
+          <div className="appearance-options" role="group" aria-label="Appearance">
+            {(["light", "dark", "system"] as const).map((choice) => <button key={choice} aria-pressed={theme === choice} onClick={() => setTheme(choice)}>{choice === "light" ? "Light" : choice === "dark" ? "Dark" : "System"}</button>)}
+          </div>
+          <p className="pref-sub">System follows your device’s appearance.</p>
+        </div>
 
         <button
           className="pref"

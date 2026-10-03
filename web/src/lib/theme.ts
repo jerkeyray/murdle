@@ -8,7 +8,7 @@
  * useSyncExternalStore exists to replace.
  */
 
-export type Theme = "dark" | "light";
+export type Theme = "dark" | "light" | "system";
 
 const listeners = new Set<() => void>();
 
@@ -18,13 +18,27 @@ function emit() {
 
 export function subscribe(listener: () => void) {
   listeners.add(listener);
+  const scheme = window.matchMedia("(prefers-color-scheme: light)");
+  const onScheme = () => { if (getTheme() === "system") { applyTheme("system"); emit(); } };
+  const onStorage = (event: StorageEvent) => {
+    if (event.key === "wordle.theme") { applyTheme(normalizeTheme(event.newValue)); emit(); }
+    if (event.key === "wordle.contrast") { document.documentElement.dataset.contrast = event.newValue === "cb" ? "cb" : "normal"; emit(); }
+  };
+  scheme.addEventListener("change", onScheme);
+  window.addEventListener("storage", onStorage);
   return () => {
     listeners.delete(listener);
+    scheme.removeEventListener("change", onScheme);
+    window.removeEventListener("storage", onStorage);
   };
 }
 
+function normalizeTheme(theme: string | null | undefined): Theme {
+  return theme === "light" || theme === "dark" ? theme : "system";
+}
+
 export function getTheme(): Theme {
-  return document.documentElement.dataset.theme === "light" ? "light" : "dark";
+  return normalizeTheme(document.documentElement.dataset.themePreference);
 }
 
 export function getColorBlind(): boolean {
@@ -37,7 +51,7 @@ export function getColorBlind(): boolean {
  * useSyncExternalStore re-renders with the real value straight after hydration.
  */
 export function getServerTheme(): Theme {
-  return "dark";
+  return "system";
 }
 
 export function getServerColorBlind(): boolean {
@@ -53,8 +67,15 @@ function persist(key: string, value: string) {
   }
 }
 
+function applyTheme(theme: Theme) {
+  document.documentElement.dataset.themePreference = theme;
+  document.documentElement.dataset.theme = theme === "system"
+    ? window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark"
+    : theme;
+}
+
 export function setTheme(theme: Theme) {
-  document.documentElement.dataset.theme = theme;
+  applyTheme(theme);
   persist("wordle.theme", theme);
   emit();
 }

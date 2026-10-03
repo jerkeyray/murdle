@@ -2606,15 +2606,23 @@ button:disabled { cursor: default; }
 .game-dialog.entry-dialog { padding: 24px; border-color: var(--border-strong); background: var(--bg-raised); box-shadow: 0 28px 90px rgb(0 0 0 / .55), 0 0 0 1px rgb(255 255 255 / .025) inset; }
 .game-dialog .label { font-size: .72rem; }
 .dialog-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
-.game-dialog.entry-dialog .entry-word { margin-top: 12px; font-size: clamp(3rem, 14vw, 3.65rem); line-height: .98; }
-.game-dialog.entry-dialog .entry-definition { max-width: 31ch; margin-top: 8px; font-size: 1.05rem; line-height: 1.5; }
-.game-dialog.entry-dialog .entry-note { margin: 8px 0 0; padding-top: 0; }
-.game-dialog.entry-dialog .board-review { padding: 0 12px; border: 1px solid var(--border); border-radius: 9px; background: color-mix(in srgb, var(--bg) 55%, transparent); }
-.game-dialog.entry-dialog .board-review { margin-top: 8px; }
-.game-dialog.entry-dialog .board-review[open] { padding-bottom: 10px; }
-.game-dialog.entry-dialog .board-review summary { color: var(--text-muted); }
-.game-dialog.entry-dialog .entry-tools { justify-content: flex-end; gap: 8px; margin-top: 14px; padding-top: 10px; }
-.entry-icon-button { width: 44px; height: 44px; border-radius: 12px; }
+.dialog-heading .label:focus { outline: none; }
+.dialog-close { flex: none; width: 44px; height: 44px; border: 0; border-radius: 50%; color: var(--text-muted); }
+.dialog-close:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
+.game-dialog.entry-dialog .dialog-heading { margin-bottom: 4px; }
+.game-dialog.entry-dialog .entry-word-row { justify-content: space-between; align-items: center; flex-wrap: nowrap; margin-top: 0; gap: 12px; }
+.game-dialog.entry-dialog .entry-word { margin: 0; padding: 0; font-size: clamp(2.35rem, 10vw, 2.9rem); font-weight: 550; line-height: 1.15; }
+.game-dialog.entry-dialog .entry-definition { max-width: none; margin: 18px 0 0; font-size: 1rem; font-weight: 500; line-height: 1.5; }
+.game-dialog.entry-dialog .entry-note { margin: 10px 0 0; padding: 0; font-family: var(--font-sans), system-ui, sans-serif; font-size: .95rem; line-height: 1.65; }
+.game-dialog.entry-dialog .board-review { margin: 12px 0 0; padding: 0; border: 0; background: none; }
+.game-dialog.entry-dialog .board-review summary { display: flex; align-items: center; gap: 8px; width: fit-content; min-height: 44px; padding: 6px 0; list-style: none; color: var(--text-muted); font-size: .85rem; }
+.game-dialog.entry-dialog .board-review summary::-webkit-details-marker { display: none; }
+.game-dialog.entry-dialog .board-review summary svg { transition: transform .15s ease; }
+.game-dialog.entry-dialog .board-review[open] summary svg { transform: rotate(90deg); }
+.game-dialog.entry-dialog .entry-tools { flex: none; justify-content: flex-end; gap: 2px; margin: 0; padding: 0; border: 0; }
+.entry-icon-button { width: 44px; height: 44px; border: 0; border-radius: 50%; color: var(--text-muted); }
+.game-dialog.entry-dialog .entry-actions { margin-top: 16px; }
+.game-dialog.entry-dialog .entry-actions .button { font-size: .95rem; font-weight: 600; letter-spacing: 0; text-transform: none; }
 /* A button closing out a sheet needs air above it: the note explaining why a
    hint is still locked was sitting flush against this edge, reading as clipped.
    The note needs the same separation from the line it qualifies. */
@@ -2723,3 +2731,76 @@ summary { cursor: pointer; color: var(--text-muted); padding-block: 8px; min-hei
    as a toolbar instead of leaving two quiet links adrift under the disclosures. */
 .entry-tools { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; margin-top: 10px; padding-top: 6px; border-top: 1px solid var(--rule); }
 .entry-tools .text-button { display: inline-flex; align-items: center; gap: 7px; }
+
+/* Controls follow the available viewport, including mobile browser chrome. */
+.game-app { min-height: 0; padding-top: env(safe-area-inset-top); }
+.game-app .board-area, .game-app:not(.duo-app) .board-area { min-height: 0; }
+.game-app .board-stage .game-hint { width: 44px; height: 44px; left: -50px; }
+.game-heading { text-align: center; }
+.game-progress { margin: 4px 0 0; color: var(--text-muted); font-size: .72rem; letter-spacing: 0; }
+.game-heading .wordmark { margin: 0; }
+.nav-labelled { width: auto; min-height: 44px; padding: 8px 12px; gap: 8px; font-size: .85rem; border: 0; }
+.home-description { max-width: 20rem; margin: 0 0 26px; color: var(--text-muted); font-size: 1rem; line-height: 1.55; }
+.home-mark { margin-bottom: 22px; }
+.home-help { display: block; margin-top: 10px; }
+.help-marks { list-style: none; padding: 0; margin: 22px 0; }
+.help-marks li { display: flex; align-items: center; gap: 14px; margin: 12px 0; }
+.help-marks li > span { display: grid; place-items: center; flex: none; width: 44px; height: 44px; border-radius: 6px; font-weight: 650; }
+.help-marks p { margin: 0; color: var(--text-muted); font-size: .9rem; }
+.help-marks strong { color: var(--text); }
+.help-marks [data-mark="hit"] { background: var(--mark-hit); color: var(--mark-hit-text); }
+.help-marks [data-mark="present"] { background: var(--mark-present); color: var(--mark-present-text); }
+.help-marks [data-mark="absent"] { background: var(--mark-absent); color: var(--mark-absent-text); }
+:root[data-contrast="cb"] .help-marks [data-mark="hit"]::after { content: "●"; font-size: 8px; }
+:root[data-contrast="cb"] .help-marks [data-mark="present"]::after { content: "◆"; font-size: 8px; }
+.appearance-pref { padding: 20px; }
+.appearance-pref .pref-name { margin: 0 0 12px; }
+.appearance-pref .pref-sub { margin: 10px 0 0; display: block; }
+.appearance-options, .collection-tabs { display: flex; gap: 4px; padding: 4px; border: 1px solid var(--border); border-radius: 10px; background: var(--bg); }
+.appearance-options button, .collection-tabs button { flex: 1; min-height: 44px; border: 0; border-radius: 6px; background: transparent; color: var(--text-muted); font: inherit; font-size: .9rem; cursor: pointer; }
+.appearance-options button[aria-pressed="true"], .collection-tabs button[aria-pressed="true"] { background: var(--bg-raised); color: var(--text); box-shadow: 0 1px 4px rgb(0 0 0 / .12); }
+.guest-profile { margin: 32px 0; }
+.guest-profile h2 { font: 550 2.6rem/1.12 var(--font-serif), Georgia, serif; margin: 16px 0; }
+.guest-profile > p { color: var(--text-muted); font-size: 1rem; line-height: 1.65; }
+.guest-profile ul { padding: 0; list-style: none; margin: 28px 0; color: var(--text-muted); font-size: .95rem; }
+.guest-profile li { padding: 12px 0; border-bottom: 1px solid var(--rule); }
+.guest-profile > .text-button { display: block; text-align: center; margin-top: 8px; }
+.collection-controls { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; align-items: center; margin: 26px 0 16px; }
+.collection-tabs { flex: 1; min-width: 200px; }
+.collection-tabs button { padding: 8px 12px; }
+.collection-tabs span { font-size: .75rem; margin-left: 4px; color: var(--text-muted); }
+.collection-search .input { width: 100%; font-size: 16px; }
+.collection-count { margin: 8px 0; font-size: .85rem; color: var(--text-muted); }
+.collection-list { padding: 0; margin: 20px 0; list-style: none; }
+.collection-list li { border-bottom: 1px solid var(--rule); }
+.collection-word summary { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 16px 0; list-style: none; }
+.collection-word summary::-webkit-details-marker { display: none; }
+.collection-word summary strong { display: block; font: 550 1.6rem/1.2 var(--font-serif), Georgia, serif; color: var(--text); }
+.collection-definition { display: block; margin-top: 6px; color: var(--text-muted); font-size: .95rem; line-height: 1.5; }
+.collection-word summary svg { flex: none; transition: transform .15s; }
+.collection-word[open] summary svg { transform: rotate(90deg); }
+.collection-word > p { margin: 0 0 18px; color: var(--text-muted); font-size: .95rem; line-height: 1.65; }
+.entry-feedback { color: var(--text-muted); font-size: .85rem; margin: 12px 0 0; }
+.entry-feedback a { display: inline-flex; align-items: center; min-height: 44px; color: var(--text); text-underline-offset: 3px; }
+.name-edit, .link-button, .button--tiny { min-height: 44px; }
+@media (max-width: 600px) {
+  .sheet { padding-bottom: max(24px, env(safe-area-inset-bottom)); }
+  .game-dialog.entry-dialog { inset: auto 0 0; width: 100%; max-width: 100%; margin: 0; padding: 20px 22px 0; max-height: calc(100dvh - 20px - env(safe-area-inset-top)); border-radius: 22px 22px 0 0; border-bottom: 0; }
+  .game-dialog.entry-dialog .entry-actions { position: sticky; bottom: 0; padding: 14px 0 max(18px, env(safe-area-inset-bottom)); margin-top: 8px; background: var(--bg-raised); }
+  .game-dialog.entry-dialog .entry-actions .button { min-height: 52px; }
+}
+@media (max-height: 640px) {
+  .game-app .key { height: 48px; font-size: 1rem; }
+  .game-app .keyboard-submit { height: 48px; }
+  .game-app:not(.duo-app) .board-area { padding-block: 8px; }
+}
+@media (max-height: 420px) {
+  .game-app { height: auto; min-height: 100dvh; }
+  .game-app .board-area { container-type: normal; min-height: 210px; }
+  .board-stage { width: min(160px, calc(100% - 100px)); }
+}
+
+/* Navigation targets stay comfortable without enlarging the letter keys. */
+.icon-button { min-width: 44px; min-height: 44px; }
+.nav-labelled { display: flex; height: auto; }
+@media (max-width: 760px) { .home-help { margin-inline: auto; } }

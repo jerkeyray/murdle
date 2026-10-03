@@ -8,10 +8,10 @@ import Link from "next/link";
  * A cog, opposite the lexicon, so the two things you might want from outside a
  * game sit in the two top corners and neither is buried.
  */
-export function SettingsButton() {
+export function SettingsButton({ showLabel = false }: { showLabel?: boolean }) {
   return (
     <Link
-      className="icon-button"
+      className={`icon-button ${showLabel ? "nav-labelled" : ""}`}
       href="/settings"
       aria-label="Settings"
       title="Settings"
@@ -25,6 +25,7 @@ export function SettingsButton() {
           strokeLinecap="round"
         />
       </svg>
+      {showLabel && <span>Settings</span>}
     </Link>
   );
 }

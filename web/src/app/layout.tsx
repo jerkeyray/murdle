@@ -31,7 +31,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   viewportFit: "cover",
   themeColor: [
-    { media: "(prefers-color-scheme: dark)", color: "#1a1016" },
+    { media: "(prefers-color-scheme: dark)", color: "#101010" },
     { media: "(prefers-color-scheme: light)", color: "#fcf0f4" },
   ],
 };
@@ -43,21 +43,27 @@ export const viewport: Viewport = {
  */
 const themeScript = `
 (function () {
+  var t = 'system';
+  var c = 'normal';
   try {
     var p = 'wordle.';
     var old = ['mur', 'dle.'].join('');
-    var t = localStorage.getItem(p + 'theme') || localStorage.getItem(old + 'theme');
-    var c = localStorage.getItem(p + 'contrast') || localStorage.getItem(old + 'contrast');
+    t = localStorage.getItem(p + 'theme') || localStorage.getItem(old + 'theme') || 'system';
+    c = localStorage.getItem(p + 'contrast') || localStorage.getItem(old + 'contrast');
     if (!localStorage.getItem(p + 'theme') && t) localStorage.setItem(p + 'theme', t);
     if (!localStorage.getItem(p + 'contrast') && c) localStorage.setItem(p + 'contrast', c);
     localStorage.removeItem(old + 'theme');
     localStorage.removeItem(old + 'contrast');
-    if (!t) t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-    document.documentElement.dataset.theme = t;
-    if (c === 'cb') {
-      document.documentElement.dataset.contrast = 'cb';
-    }
   } catch (e) {}
+  var scheme = matchMedia('(prefers-color-scheme: light)');
+  document.documentElement.dataset.themePreference = t === 'light' || t === 'dark' ? t : 'system';
+  function apply() {
+    var preference = document.documentElement.dataset.themePreference;
+    document.documentElement.dataset.theme = preference === 'system' ? (scheme.matches ? 'light' : 'dark') : preference;
+  }
+  apply();
+  scheme.addEventListener('change', apply);
+  if (c === 'cb') document.documentElement.dataset.contrast = 'cb';
 })();
 `;
 

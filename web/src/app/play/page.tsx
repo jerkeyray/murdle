@@ -54,10 +54,9 @@ export default function PlayPage() {
   return <main className="app game-app">
     <header className="topbar">
       <BackButton href="/" />
-      <h1 className="wordmark">Wordle</h1>
+      <div className="game-heading"><h1 className="wordmark">Wordle</h1><p className="game-progress" role="status">Word {run.started} of {run.length}</p></div>
       <ProfileButton />
     </header>
-    <p className="sr-only" role="status">Word {run.started} of {run.length}</p>
     <div className="board-area">
       <div className="board-stage">
       <Board rows={round.rows} draft={game.draft} wordLength={round.wordLength} maxRows={round.maxRows} revealingRow={game.revealingRow} shake={game.shake} />
