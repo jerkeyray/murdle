@@ -15,11 +15,12 @@ import {
 } from "@/lib/api";
 import { signOut } from "@/lib/auth-client";
 import { clearToken } from "@/lib/token";
-import { Preferences } from "@/components/Preferences";
 import { BackButton } from "@/components/BackButton";
 import { NameForm } from "@/components/NameForm";
 import { safeReturnTo } from "@/lib/returnTo";
 import { useRouter } from "next/navigation";
+import { Loader } from "@/components/Loader";
+import { SettingsButton } from "@/components/SettingsButton";
 
 type Tab = "collection" | "kept" | "friends";
 
@@ -91,6 +92,7 @@ export default function ProfilePage() {
     <header className="sheet-head">
       <BackButton href="/" />
       <h1 className="sheet-title">Your lexicon</h1>
+      <SettingsButton />
     </header>
   );
 
@@ -114,8 +116,6 @@ export default function ProfilePage() {
         <Link href="/sign-in" className="button button--link">
           Sign in
         </Link>
-
-        <Preferences />
       </main>
     );
   }
@@ -124,7 +124,7 @@ export default function ProfilePage() {
     return (
       <main className="sheet">
         {head}
-        <span className="label">Loading</span>
+        <Loader />
       </main>
     );
   }
@@ -322,18 +322,21 @@ export default function ProfilePage() {
         </ul>
       )}
 
-      <Preferences />
-
-      <button
-        className="link-button sign-out"
-        onClick={async () => {
-          await signOut();
-          clearToken();
-          setSignedOut(true);
-        }}
-      >
-        Sign out
-      </button>
+      {/* Appearance used to be repeated here as well as on /settings, so the
+          page ran identity, then a word list, then a settings panel, then a
+          stray link. It lives in one place now, behind the cog. */}
+      <div className="sheet-foot">
+        <button
+          className="text-button"
+          onClick={async () => {
+            await signOut();
+            clearToken();
+            setSignedOut(true);
+          }}
+        >
+          Sign out
+        </button>
+      </div>
     </main>
   );
 }

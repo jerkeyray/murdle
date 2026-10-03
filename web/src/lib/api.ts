@@ -266,6 +266,9 @@ export interface FriendRecord {
 
 export interface DuoDay {
   duoId: string;
+  /** The rules, as the server holds them — never a second copy in the UI. */
+  wordLength: number;
+  maxRows: number;
   date: string;
   deadline: string;
   state: "playing" | "won" | "lost" | "expired" | "closed";

@@ -87,7 +87,7 @@ func TestAuthoredHints(t *testing.T) {
 	if _, err := r.UseHint(1, clues); err != ErrHintLocked {
 		t.Fatalf("early hint: %v", err)
 	}
-	for i := 0; i < 2; i++ {
+	for i := 0; i < HintUnlocksAfter(1); i++ {
 		_ = r.Guess("crane", alwaysWord)
 	}
 	first, err := r.UseHint(1, clues)
@@ -101,7 +101,7 @@ func TestAuthoredHints(t *testing.T) {
 	if _, err := r.UseHint(2, clues); err != ErrHintLocked {
 		t.Fatalf("second unlocked early: %v", err)
 	}
-	for i := 0; i < 2; i++ {
+	for i := len(r.Rows); i < HintUnlocksAfter(2); i++ {
 		_ = r.Guess("crane", alwaysWord)
 	}
 	if _, err := r.UseHint(2, clues); err != nil {
@@ -110,8 +110,9 @@ func TestAuthoredHints(t *testing.T) {
 	if _, err := r.UseHint(3, clues); err != ErrInvalidHint {
 		t.Fatalf("extra tier: %v", err)
 	}
+	solvedOn := len(r.Rows)
 	_ = r.Guess("salve", alwaysWord)
-	if r.Points() != 2 {
+	if r.Points() != Points(solvedOn) {
 		t.Fatalf("hints reduced points: %d", r.Points())
 	}
 	if _, err := r.UseHint(1, clues); err != ErrRoundOver {

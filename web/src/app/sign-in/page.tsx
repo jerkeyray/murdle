@@ -38,6 +38,17 @@ export default function SignInPage() {
     };
   }, [fetchConfig]);
 
+  // Whoever has to act on this is reading a console, not this page. Naming
+  // environment variables at a player is noise at best, and at worst it tells
+  // a stranger exactly how the app is wired.
+  useEffect(() => {
+    if (available === false) {
+      console.warn(
+        "Google sign-in is off: set GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET, then restart the app.",
+      );
+    }
+  }, [available]);
+
   async function onGoogle() {
     setBusy(true);
     setError(null);
@@ -60,6 +71,7 @@ export default function SignInPage() {
       </div>
 
       <div className="gate-middle">
+        <p className="gate-mark" aria-hidden>Wordle</p>
         <div className="gate-card">
           <span className="gate-ex">Ex libris</span>
           <h1 className="gate-title">Keep what you learn</h1>
@@ -69,10 +81,7 @@ export default function SignInPage() {
           </p>
 
           {available === false ? (
-            <p className="hint gate-hint">
-              Google sign-in is not configured yet. Set GOOGLE_CLIENT_ID and
-              GOOGLE_CLIENT_SECRET, then restart the app.
-            </p>
+            <p className="gate-unavailable">Sign-in is unavailable right now.</p>
           ) : (
             <button
               className="google"

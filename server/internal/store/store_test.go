@@ -13,7 +13,7 @@ func TestSnapshotIsolationDuringHintRetries(t *testing.T) {
 	ctx := context.Background()
 	store := NewMemory(time.Hour)
 	round := game.NewRound("round", "salve")
-	for i := 0; i < 2; i++ {
+	for i := 0; i < game.HintUnlocksAfter(1); i++ {
 		_ = round.Guess("crane", func(string) bool { return true })
 	}
 	_ = store.Create(ctx, round)

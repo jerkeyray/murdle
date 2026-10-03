@@ -5,9 +5,11 @@ import { use, useCallback, useEffect, useRef, useState } from "react";
 import { ApiError, getDuo, letterStates, mutateDuo, type Duo, type DuoMutation } from "@/lib/api";
 import { useVisiblePolling } from "@/lib/useVisiblePolling";
 import { readLocal, writeLocal } from "@/lib/session";
+import { lettersPhrase } from "@/lib/letters";
 import { Board, MARK_LABEL } from "@/components/Board";
 import { Keyboard } from "@/components/Keyboard";
 import { BackButton } from "@/components/BackButton";
+import { Loader } from "@/components/Loader";
 
 type Pending = { action: "guesses" | "pass"; date: string; mutation: DuoMutation };
 export default function DuoPage({ params }: { params: Promise<{ id: string }> }) {
@@ -30,7 +32,7 @@ export default function DuoPage({ params }: { params: Promise<{ id: string }> })
     if (dayKey.current !== key) {
       if (dayKey.current) setClosedDate(dayKey.current.split(".").at(-1)!);
       dayKey.current = key;
-      setDraft((readLocal(key) ?? "").replace(/[^a-z]/g, "").slice(0, 5));
+      setDraft((readLocal(key) ?? "").replace(/[^a-z]/g, "").slice(0, d.today?.wordLength ?? 0));
       pending.current = null;
       try { const value = JSON.parse(readLocal(key + ".pending") ?? "null") as Pending | null; if (value && value.date === d.today?.date) pending.current = value; } catch { /* Ignore incomplete local state. */ }
       setHasPending(!!pending.current);
@@ -47,18 +49,27 @@ export default function DuoPage({ params }: { params: Promise<{ id: string }> })
       throw e;
     }
   }, [id, accept]);
-  useVisiblePolling(load, 3_000);
   const day = duo?.today;
+  const wordLength = day?.wordLength ?? 0;
   const yourTurn = day?.state === "playing" && day.currentPlayer === duo?.viewerId && duo?.status === "active";
+  // Waiting on your friend is the one case worth polling quickly: their guess
+  // should land on your board while you are both looking at it. On your own
+  // turn, or once the day is done, the only things that can still change are
+  // the deadline and the duo itself, and every poll costs a locking write
+  // transaction — so a board left open on a desk backs off instead of billing
+  // for a move that cannot arrive. Focus, reconnect and visibility changes
+  // refresh immediately either way.
+  const waiting = day?.state === "playing" && duo?.status === "active" && !yourTurn;
+  useVisiblePolling(load, waiting ? 3_000 : 30_000);
   const enabled = !!yourTurn && !busy && !signedOut && !closedDate && !hasPending;
   const updateDraft = useCallback((next: string) => { setDraft(next); if (dayKey.current) writeLocal(dayKey.current, next); }, []);
-  const type = useCallback((letter: string) => { if (enabled) updateDraft((draft + letter.toLowerCase()).slice(0, 5)); }, [enabled, updateDraft, draft]);
+  const type = useCallback((letter: string) => { if (enabled) updateDraft((draft + letter.toLowerCase()).slice(0, wordLength)); }, [enabled, updateDraft, draft, wordLength]);
   const backspace = useCallback(() => { if (enabled) updateDraft(draft.slice(0, -1)); }, [enabled, updateDraft, draft]);
 
   const submit = useCallback(async (action: "guesses" | "pass" = "guesses") => {
     if (lock.current || !duo?.today) return;
     if (!pending.current && !yourTurn) return;
-    if (!pending.current && action === "guesses" && draft.length !== 5) { setError("Enter five letters"); return; }
+    if (!pending.current && action === "guesses" && draft.length !== duo.today.wordLength) { setError(`Enter ${lettersPhrase(duo.today.wordLength)}`); return; }
     lock.current = true; setBusy(true); setError("");
     try {
       if (!pending.current) {
@@ -95,11 +106,11 @@ export default function DuoPage({ params }: { params: Promise<{ id: string }> })
 
   return <main className="app game-app duo-app">
     <header className="topbar"><BackButton href="/friends" /><h1 className="wordmark">Wordle</h1><Link className="text-button" href="/friends">Friends</Link></header>
-    {signedOut ? <section className="game-error"><p>Sign in to open your shared board.</p><Link className="button button--link" href={`/sign-in?returnTo=${encodeURIComponent(`/duos/${id}`)}`}>Sign in</Link></section> : !duo ? <section className="game-error"><p role="status">{error || (reconnecting ? "Reconnecting…" : "Loading…")}</p><button className="text-button" onClick={() => void load().catch(() => {})}>Retry</button></section> : !day ? <section className="game-error"><p>{duo.status === "pending" ? "This invitation is waiting for acceptance." : "This daily game has ended."}</p><Link href="/friends">Back to friends</Link></section> : <>
+    {signedOut ? <section className="game-error"><p>Sign in to open your shared board.</p><Link className="button button--link" href={`/sign-in?returnTo=${encodeURIComponent(`/duos/${id}`)}`}>Sign in</Link></section> : !duo ? <section className="game-error">{error ? <p role="status">{error}</p> : <Loader label={reconnecting ? "Reconnecting" : "Loading"} />}<button className="text-button" onClick={() => void load().catch(() => {})}>Retry</button></section> : !day ? <section className="game-error"><p>{duo.status === "pending" ? "This invitation is waiting for acceptance." : "This daily game has ended."}</p><Link href="/friends">Back to friends</Link></section> : <>
       <div className="duo-members">{duo.members.map((m, seat) => <span key={m.id} data-seat={seat} data-current={m.id === day.currentPlayer && day.state === "playing"}><i aria-hidden>{m.name.slice(0, 1).toUpperCase()}</i>{m.id === duo.viewerId ? "You" : m.name}</span>)}<span className="duo-streak">{day.streak} {day.streak === 1 ? "day" : "days"}</span></div>
       <div className="duo-deadline">Resets {new Date(day.deadline).toLocaleString(undefined, { weekday: "short", hour: "numeric", minute: "2-digit" })}</div>
       <div className="rule" />
-      <div className="board-area"><Board rows={day.rows} authors={day.rows.map(r => duo.members.find(m => m.id === r.playerId)?.name || "Friend")} authorSeats={day.rows.map(r => duo.members.findIndex(m => m.id === r.playerId))} draft={draft} wordLength={5} maxRows={6} revealingRow={null} shake={false} /></div>
+      <div className="board-area"><Board rows={day.rows} authors={day.rows.map(r => duo.members.find(m => m.id === r.playerId)?.name || "Friend")} authorSeats={day.rows.map(r => duo.members.findIndex(m => m.id === r.playerId))} draft={draft} wordLength={day.wordLength} maxRows={day.maxRows} revealingRow={null} shake={false} /></div>
       <div className="sr-only" role="status" aria-live="polite">{day.rows.at(-1)?.guess.split("").map((letter, i) => `${letter}: ${MARK_LABEL[day.rows.at(-1)!.marks[i]]}`).join("; ")}</div>
       <div className="game-tools"><span role="status">{reconnecting ? "Reconnecting…" : status}</span>{yourTurn && !day.passed.includes(duo.viewerId) && !closedDate && <button className="text-button" disabled={busy || hasPending} onClick={() => void submit("pass")}>Pass turn</button>}</div>
       {error && <div className="duo-error" role="alert">{error}</div>}

@@ -69,7 +69,9 @@ export function Entry({ round, onClose, action, actionLabel, busy = false }: {
       </div>
       {keepError && <p role="status" className="form-error">{keepError}</p>}
       <div className="entry-actions">
-        <button className="button button--quiet" onClick={onClose}>Back to board</button>
+        {/* Outlined only when there is something for it to be quieter than.
+            On its own it reads as a disabled button with no partner. */}
+        <button className={action ? "button button--quiet" : "button"} onClick={onClose}>Back to board</button>
         {action && <button className="button" disabled={busy} onClick={action}>{busy ? "Please wait…" : actionLabel}</button>}
       </div>
     </Dialog>

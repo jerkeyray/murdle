@@ -31,7 +31,7 @@ async function expectWord(page: Page, word: number) {
   await expect(page.getByRole("list", { name: `Word ${word} of 5`, exact: true })).toBeVisible();
 }
 
-test("accessible modal, keyboard, theory, hints, restoration, conclusion", async ({ page }) => {
+test("accessible modal, keyboard, hints, restoration, conclusion", async ({ page }) => {
   await setup(page);
   await page.goto("/play");
   await expectWord(page, 1);
@@ -44,21 +44,22 @@ test("accessible modal, keyboard, theory, hints, restoration, conclusion", async
   await expect(page.locator(".row").first().locator('[data-mark]')).toHaveCount(5);
   await guess(page, "stone");
   await expect(page.locator(".row").nth(1).locator('[data-mark]')).toHaveCount(5);
+  // The first hint waits for three accepted guesses.
+  await page.getByRole("button", { name: "Hint", exact: true }).click();
+  await expect(page.getByRole("button", { name: "Reveal context" })).toBeDisabled();
+  await page.keyboard.press("Escape");
+  await guess(page, "crane");
+  await expect(page.locator(".row").nth(2).locator('[data-mark]')).toHaveCount(5);
   await page.getByRole("button", { name: "Hint", exact: true }).click();
   await page.getByRole("button", { name: "Reveal context" }).click();
   await expect(page.getByText(packs[0].words[0].hints[0], { exact: true })).toBeVisible();
   await expect(page.getByRole("button", { name: "Reveal association" })).toBeDisabled();
   await page.keyboard.press("Escape");
   await page.reload();
-  await expect(page.getByRole("button", { name: "Hint · 1/2" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Hint · 1 of 2 used" })).toBeVisible();
   await solve(page, packs[0].words[0].word);
   await expect(page.getByText("Assisted · 1 hint", { exact: true })).toBeVisible();
   await page.getByRole("button", { name: "Back to board", exact: true }).click();
-  await page.getByRole("button", { name: "My theory", exact: true }).click();
-  await page.getByLabel("What connects these words?").fill("Ways people influence each other");
-  await page.keyboard.press("Enter");
-  await page.keyboard.type("Possibly power");
-  await page.getByRole("button", { name: "Back to the words" }).click();
   await page.getByRole("button", { name: "Next word", exact: true }).click();
   await expectWord(page, 2);
   await expect(page.locator('.tile[data-state="filled"]')).toHaveCount(0);
@@ -75,7 +76,6 @@ test("accessible modal, keyboard, theory, hints, restoration, conclusion", async
   await expect(page.getByRole("dialog", { name: "The connection", exact: true })).toBeVisible();
   await expect(page.getByRole("heading", { name: packs[0].title })).toBeVisible();
   await expect(page.locator(".connection-list li")).toHaveCount(5);
-  await expect(page.locator(".theory-comparison")).toContainText("Possibly power");
   await page.screenshot({ path: "test-results/conclusion-mobile.png" });
 });
 
@@ -96,7 +96,7 @@ test("expired sessions offer an explicit restart", async ({ page }) => {
   await setup(page);
   await page.addInitScript(() => localStorage.setItem("wordle.active", "expiredsession"));
   await page.goto("/play");
-  await expect(page.getByText(/This session has expired/)).toBeVisible();
+  await expect(page.getByText(/That run has expired/)).toBeVisible();
   await page.getByRole("button", { name: "Start a new run" }).click();
   await expectWord(page, 1);
 });
@@ -134,7 +134,8 @@ test("light, dark, colour-blind, short mobile and desktop layouts", async ({ pag
 test("lost words remain in the strip and both hints survive restoration", async ({ page }) => {
   await setup(page); await page.goto("/play");
   await expectWord(page, 1);
-  for (let i = 0; i < 4; i++) {
+  // Five accepted guesses: the second hint unlocks at 2*tier + 1.
+  for (let i = 0; i < 5; i++) {
     await guess(page, "adieu");
     await expect(page.locator(".row").nth(i).locator('[data-mark]')).toHaveCount(5);
   }
@@ -144,11 +145,8 @@ test("lost words remain in the strip and both hints survive restoration", async 
   await expect(page.locator(".hint-list li")).toHaveCount(2);
   await page.keyboard.press("Escape");
   await page.reload();
-  await expect(page.getByRole("button", { name: "Hint · 2/2" })).toBeVisible();
-  for (let i = 4; i < 6; i++) {
-    await guess(page, "adieu");
-    if (i === 4) await expect(page.locator(".row").nth(i).locator('[data-mark]')).toHaveCount(5);
-  }
+  await expect(page.getByRole("button", { name: "Hint · 2 of 2 used" })).toBeVisible();
+  await guess(page, "adieu");
   await expect(page.getByText("Out of guesses", { exact: true })).toBeVisible();
   await page.getByRole("button", { name: "Next word", exact: true }).last().click();
   await page.getByRole("button", { name: "Read voice, revealed", exact: true }).click();

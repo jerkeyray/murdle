@@ -63,12 +63,17 @@ test("friends invite, shared turns, retry, pass, persistence and daily reset", a
   await expect(adi.locator('.row').nth(1).locator('[data-mark="hit"]')).toHaveCount(5);
   await expect(ananya.getByText("Solved together", { exact: true })).toBeVisible();
   await expect(adi.locator(".duo-streak")).toHaveText("1 day");
+  await adi.screenshot({ path: "test-results/shared-board-mobile.png" });
   await adi.goto("/friends"); await adi.getByRole("button", { name: /Ananya/ }).click();
   await expect(adi.locator(".duo-recent")).toContainText(answer.answer);
   await adi.screenshot({ path: "test-results/friend-detail-mobile.png" });
   await ananya.screenshot({ path: "test-results/shared-board-desktop.png" });
   await ananya.request.get(API! + "/test/advance?seconds=86400");
-  await expect(ananya.getByRole("button", { name: "Today’s word" })).toBeVisible();
+  // A solved board polls on the slow tier, since the only things left to change
+  // are the daily reset and the duo itself. Discovering the rollover therefore
+  // takes up to one slow interval — instant in practice, because picking the
+  // phone up fires the focus refresh, but this tab never loses focus.
+  await expect(ananya.getByRole("button", { name: "Today’s word" })).toBeVisible({ timeout: 35_000 });
   await ananya.getByRole("button", { name: "Today’s word" }).click();
   await expect(ananya.locator(".row [data-mark]")).toHaveCount(0);
   await expect(ananya.locator(".duo-streak")).toHaveText("1 day");

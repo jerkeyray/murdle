@@ -109,6 +109,14 @@ func (r *Round) Guess(guess string, isWord func(string) bool) error {
 	return nil
 }
 
+// HintUnlocksAfter is how many accepted guesses a tier waits for.
+//
+// The first hint holds back until three attempts: by then the board has told
+// you something on its own, so the clue reads as a nudge rather than a way to
+// skip the puzzle. The second arrives two guesses later, still leaving a row to
+// use it on.
+func HintUnlocksAfter(tier int) int { return 2*tier + 1 }
+
 // UseHint reveals an authored clue. Tiers are one-based and retry-safe.
 func (r *Round) UseHint(tier int, clues []string) (HintReveal, error) {
 	if r.State != StatePlaying {
@@ -122,7 +130,7 @@ func (r *Round) UseHint(tier int, clues []string) (HintReveal, error) {
 			return hint, nil
 		}
 	}
-	if len(r.Rows) < tier*2 || tier != r.HintsUsed+1 {
+	if len(r.Rows) < HintUnlocksAfter(tier) || tier != r.HintsUsed+1 {
 		return HintReveal{}, ErrHintLocked
 	}
 	hint := HintReveal{Tier: tier, Text: clues[tier-1]}

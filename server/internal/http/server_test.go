@@ -11,6 +11,7 @@ import (
 	"testing"
 	"time"
 
+	"github.com/jerkeyray/wordle/server/internal/game"
 	"github.com/jerkeyray/wordle/server/internal/store"
 	"github.com/jerkeyray/wordle/server/internal/words"
 )
@@ -204,11 +205,13 @@ func TestHintsAreAuthoredLockedAndRestored(t *testing.T) {
 	if rec.Code != 422 {
 		t.Fatalf("missing explicit tier: %d", rec.Code)
 	}
+	// Rejected guesses never count towards a tier; only accepted rows do.
+	rows := 0
 	for tier := 1; tier <= 2; tier++ {
 		for i := 0; i < 2; i++ {
 			do(t, h, http.MethodPost, path+"/guesses", map[string]any{"guess": "zzzzz"})
 		}
-		for i := 0; i < 2; i++ {
+		for ; rows < game.HintUnlocksAfter(tier); rows++ {
 			do(t, h, http.MethodPost, path+"/guesses", map[string]any{"guess": "adieu"})
 		}
 		var previous string

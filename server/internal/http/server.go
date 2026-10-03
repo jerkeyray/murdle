@@ -3,6 +3,7 @@ package http
 import (
 	"encoding/json"
 	"errors"
+	"fmt"
 	"io"
 	"log/slog"
 	"net/http"
@@ -388,11 +389,11 @@ func (s *Server) writeGameError(w http.ResponseWriter, err error) {
 	case errors.Is(err, game.ErrRoundOver):
 		writeError(w, http.StatusConflict, "round_over", "this round has already finished")
 	case errors.Is(err, game.ErrWrongLength):
-		writeError(w, http.StatusUnprocessableEntity, "wrong_length", "that is not five letters")
+		writeError(w, http.StatusUnprocessableEntity, "wrong_length", "that is not "+game.LengthWord()+" letters")
 	case errors.Is(err, game.ErrNotAWord):
 		writeError(w, http.StatusUnprocessableEntity, "not_a_word", "that is not a word")
 	case errors.Is(err, game.ErrHintLocked):
-		writeError(w, http.StatusConflict, "hint_locked", "context unlocks after two guesses; association after four and the first hint")
+		writeError(w, http.StatusConflict, "hint_locked", fmt.Sprintf("context unlocks after %d guesses; association after %d and the first hint", game.HintUnlocksAfter(1), game.HintUnlocksAfter(2)))
 	case errors.Is(err, game.ErrInvalidHint):
 		writeError(w, http.StatusUnprocessableEntity, "invalid_hint", "choose hint 1 or 2")
 	case errors.Is(err, game.ErrNoHintsLeft):

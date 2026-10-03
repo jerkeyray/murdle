@@ -1,10 +1,30 @@
 package game
 
+import "strconv"
+
 // WordLength is the number of letters in every answer.
 const WordLength = 5
 
 // MaxRows is how many guesses each word allows.
 const MaxRows = 6
+
+// LengthWord spells WordLength for player-facing prose, so a message telling
+// someone how many letters to enter cannot disagree with the rule itself.
+func LengthWord() string {
+	switch WordLength {
+	case 4:
+		return "four"
+	case 5:
+		return "five"
+	case 6:
+		return "six"
+	case 7:
+		return "seven"
+	case 8:
+		return "eight"
+	}
+	return strconv.Itoa(WordLength)
+}
 
 // Points is what solving on the given row index is worth.
 //

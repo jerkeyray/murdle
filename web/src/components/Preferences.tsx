@@ -33,38 +33,45 @@ export function Preferences() {
         <span className="label">How it looks</span>
       </div>
 
-      <button
-        className="pref"
-        onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-        aria-pressed={theme === "light"}
-      >
-        <span className="pref-text">
-          <span className="pref-name">Paper</span>
-          <span className="pref-sub">Light instead of ink</span>
-        </span>
-        <span className="switch" aria-hidden />
-      </button>
-
-      <button
-        className="pref"
-        onClick={() => setColorBlind(!colorBlind)}
-        aria-pressed={colorBlind}
-      >
-        <span className="pref-text">
-          <span className="pref-name">High contrast marks</span>
-          <span className="pref-sub">
-            Blue and orange instead of green and rose, with shapes
+      <div className="prefs-card">
+        <button
+          className="pref"
+          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          aria-pressed={theme === "light"}
+        >
+          <span className="pref-text">
+            <span className="pref-name">Paper</span>
+            <span className="pref-sub">Light instead of ink</span>
           </span>
-        </span>
-        <span className="switch" aria-hidden />
-      </button>
+          <span className="switch" aria-hidden />
+        </button>
 
-      <div className="pref-sample" aria-hidden>
-        {(["hit", "present", "absent"] as const).map((mark, i) => (
-          <span className="pref-tile" data-mark={mark} key={mark}>
-            {"abc"[i]}
+        <button
+          className="pref"
+          onClick={() => setColorBlind(!colorBlind)}
+          aria-pressed={colorBlind}
+        >
+          <span className="pref-text">
+            <span className="pref-name">High contrast marks</span>
+            <span className="pref-sub">
+              Blue and orange instead of green and rose, with shapes
+            </span>
           </span>
-        ))}
+          <span className="switch" aria-hidden />
+        </button>
+
+        <div className="pref-sample">
+          <span className="pref-sample-label">
+            Right spot · elsewhere · not in the word
+          </span>
+          <span className="pref-sample-tiles" aria-hidden>
+            {(["hit", "present", "absent"] as const).map((mark, i) => (
+              <span className="pref-tile" data-mark={mark} key={mark}>
+                {"abc"[i]}
+              </span>
+            ))}
+          </span>
+        </div>
       </div>
     </section>
   );

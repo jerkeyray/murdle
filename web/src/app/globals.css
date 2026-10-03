@@ -226,24 +226,26 @@ button {
   justify-self: end;
 }
 
+/* Bordered and at full text colour. Muted and borderless, a thin-stroked cog
+   alone in a corner read as an ornament — people looked straight past it. The
+   outline is what says "this is a control you can press". */
 .icon-button {
   display: grid;
   place-items: center;
-  width: 34px;
-  height: 34px;
-  border: none;
-  border-radius: 8px;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
   background: transparent;
-  /* Muted rather than faint: on the home screen this is the only control, and
-     the faint tone read as decoration. */
-  color: var(--text-muted);
+  color: var(--text);
   cursor: pointer;
-  transition: color 0.18s ease, background 0.18s ease;
+  transition: color 0.18s ease, background 0.18s ease, border-color 0.18s ease;
 }
 
 .icon-button:hover,
 .icon-button[aria-pressed="true"] {
   background: var(--bg-raised);
+  border-color: var(--text);
   color: var(--text);
 }
 
@@ -569,7 +571,12 @@ button {
   font-family: var(--font-serif), Georgia, serif;
   font-size: clamp(2.4rem, 13vw, 3.2rem);
   font-weight: 600;
+  /* Set tight, the way a display word wants to be — but a line box shorter
+     than the type leaves the descender hanging outside it, so "forge" lands
+     its g on whatever follows. The padding gives the tail its room back
+     without loosening the line. */
   line-height: 0.95;
+  padding-bottom: 0.16em;
   letter-spacing: -0.015em;
   text-transform: lowercase;
 }
@@ -683,9 +690,62 @@ button {
   transform: translateY(1px);
 }
 
+/* A primary button at full brightness reads as tappable. Without this a locked
+   hint, a submitting form or a move already in flight looks exactly like one
+   that will do something, so the tap that does nothing feels like a bug. */
+.button:disabled {
+  opacity: 0.4;
+}
+
+.button:disabled:active {
+  transform: none;
+}
+
 /* ---------------------------------------------------------------------------
    Loading
 --------------------------------------------------------------------------- */
+
+/* The waiting mark. A square, because everything else here is one, turning on
+   its own corner. Reduced motion gets a steady pulse of opacity instead of a
+   rotation — still clearly "working", with nothing moving across the screen. */
+/* Fixed rather than in flow: a loader belongs in the middle of the screen, not
+   wherever its page happened to put it. On the sheets it was landing just under
+   the header with the rest of the viewport empty beneath it. */
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+}
+
+.loader-mark {
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--border-strong);
+  border-top-color: var(--mark-hit);
+  border-radius: var(--radius-tile);
+  animation: loader-turn 0.9s linear infinite;
+}
+
+@keyframes loader-turn {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loader-mark {
+    border-top-color: var(--border-strong);
+    animation: loader-breathe 1.6s ease-in-out infinite;
+  }
+
+  @keyframes loader-breathe {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+}
 
 .loading {
   position: relative;
@@ -840,10 +900,25 @@ button {
   padding: 0;
 }
 
-.row-item,
-.entry-row {
+.row-item {
   padding: 14px 0;
   border-bottom: 1px solid var(--rule);
+}
+
+/* Each word is its own object — a definition, a note, the round it came from —
+   so it gets its own card. Separated by hairlines they ran together into one
+   undifferentiated column of text. */
+.entry-row {
+  padding: 16px 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  background: var(--bg-raised);
+}
+
+.rows--split {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .row-item {
@@ -977,6 +1052,18 @@ button {
 
 .link-button:hover {
   color: var(--text);
+}
+
+/* The page's two exits, as a pair, with a rule to close the page off. On its
+   own at the bottom of a scroll, sign out read as an orphaned footnote. */
+.sheet-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 30px;
+  padding-top: 14px;
+  border-top: 1px solid var(--rule);
 }
 
 .sign-out {
@@ -1351,6 +1438,16 @@ button {
    Preferences
 --------------------------------------------------------------------------- */
 
+/* Boxed, so the page has an object with a bottom edge. Left as bare rows the
+   two settings trailed off into two thirds of an empty screen and read as the
+   top of a page that had failed to load the rest of itself. */
+.prefs-card {
+  padding: 4px 16px 16px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--bg-raised);
+}
+
 .pref {
   display: flex;
   align-items: center;
@@ -1364,6 +1461,8 @@ button {
   text-align: left;
   cursor: pointer;
 }
+
+.prefs-card .pref:first-of-type { padding-top: 10px; }
 
 .pref-text {
   display: flex;
@@ -1412,11 +1511,25 @@ button {
   transform: translateX(18px);
 }
 
-/* Shows what the setting actually does, rather than describing it. */
+/* Shows what the setting actually does, rather than describing it. The caption
+   is what keeps three unexplained squares from reading as leftover debris, and
+   it doubles as the legend the board itself deliberately does without. */
 .pref-sample {
   display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 16px;
+}
+
+.pref-sample-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--text-faint);
+}
+
+.pref-sample-tiles {
+  display: flex;
   gap: 5px;
-  padding-top: 14px;
 }
 
 .pref-tile {
@@ -1603,6 +1716,13 @@ button {
   padding: 6px 0 16px;
 }
 
+/* The cog sits where it sits everywhere else: in the top bar, opposite the way
+   back. Mirrored inset so it lines up with the right edge of the content. */
+.sheet-head > .icon-button:last-child {
+  margin-left: auto;
+  margin-right: -9px;
+}
+
 .sheet-title {
   font-size: 1.3rem;
 }
@@ -1685,7 +1805,29 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-bottom: 10vh;
+  padding-bottom: 6vh;
+}
+
+/* The screen needs to say whose it is. Without a mark the card floats in an
+   empty field with only a back arrow for company, which is what made this
+   read as an unfinished page rather than a front door. */
+.gate-mark {
+  margin: 0 0 14px;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+/* Said plainly. Boxed in a dashed outline it read as a broken element waiting
+   for something to load rather than as the answer to "can I sign in?". */
+.gate-unavailable {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--text-faint);
 }
 
 .gate-card {
@@ -1751,9 +1893,14 @@ button {
     padding: 22px 24px;
   }
 
-  .home,
-  .gate {
+  .home {
     max-width: 38rem;
+  }
+
+  /* A sign-in card holds one sentence and one button. At 38rem it stretched
+     into a banner with the text marooned along the top of it. */
+  .gate {
+    max-width: 25rem;
   }
 
   .home-middle {
@@ -1772,14 +1919,18 @@ button {
   }
 
   /* Two columns of entries at this width; the notes stay readable because the
-     column, not the page, sets the measure. */
+     column, not the page, sets the measure. `columns` does nothing on a flex
+     container, so the stacked layout's display has to be undone here, and the
+     gap between cards becomes a margin. */
   .rows--split {
+    display: block;
     columns: 2;
-    column-gap: 28px;
+    column-gap: 16px;
   }
 
   .rows--split > li {
     break-inside: avoid;
+    margin-bottom: 16px;
   }
 }
 
@@ -2111,11 +2262,17 @@ button {
   margin: 0;
 }
 
+/* Two columns sized to their contents and centred as a pair. The fr units let
+   the gap grow with the viewport, which pushed the text left and stranded the
+   board out on the right instead of keeping them together in the middle. */
 .home-middle {
   display: grid;
-  grid-template-columns: minmax(17rem, 0.82fr) minmax(25rem, 1.18fr);
+  /* The board column is sized explicitly: against an `auto` track its own
+     width:100% resolves to the minimum and the whole board collapses. */
+  grid-template-columns: auto clamp(15rem, 26vw, 19rem);
+  justify-content: center;
   align-items: center;
-  gap: clamp(64px, 10vw, 144px);
+  gap: clamp(48px, 7vw, 96px);
   padding: clamp(48px, 8vh, 96px) 0 clamp(64px, 11vh, 120px);
 }
 
@@ -2123,8 +2280,11 @@ button {
   align-self: center;
 }
 
+/* The margin used to come from the line underneath. With that gone the mark
+   has to hold its own distance from the buttons, and its 0.84 line box needs
+   the extra to clear the descender on the d. */
 .home-mark {
-  margin: 0;
+  margin: 0 0 34px;
   font-size: clamp(4.5rem, 8vw, 7.2rem);
   font-weight: 570;
   line-height: 0.84;
@@ -2140,20 +2300,28 @@ button {
   color: var(--text-muted);
 }
 
-.play {
-  display: inline-flex;
-  flex-direction: row;
+/* The two front-door buttons share one box so they cannot drift apart, and
+   they take the board's corner rather than a pill: this is a game made of
+   squares, and the buttons should look like they come from it. */
+.play,
+.home-friends {
+  display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 32px;
-  min-width: 10.5rem;
-  padding: 13px 17px;
-  border: 0;
-  border-radius: 999px;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 15rem;
+  min-height: 58px;
+  padding: 0 20px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-tile);
+  text-decoration: none;
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+
+.play {
   background: var(--text);
   color: var(--bg);
-  text-decoration: none;
-  transition: color 0.18s ease, border-color 0.18s ease;
 }
 
 .play:hover {
@@ -2161,29 +2329,24 @@ button {
   color: var(--mark-hit-text);
 }
 
-.play-word {
+.play-word,
+.home-friends-word {
   font-family: var(--font-serif), Georgia, serif;
-  font-size: 1.45rem;
+  font-size: 1.3rem;
   font-weight: 600;
   line-height: 1;
 }
 
-.play-arrow {
-  font-size: 1.4rem;
-  line-height: 1;
-  transition: transform 0.18s ease;
-}
-
-.play:hover .play-arrow {
-  transform: translateX(4px);
-}
-
+/* Capped here as well as on the phone layout: at 31rem the wide screen was
+   still showing a full-size board that nobody can play, which is the thing
+   this diagram must not be mistaken for. */
 .home-specimen {
   position: relative;
   width: 100%;
-  max-width: 31rem;
-  justify-self: end;
+  max-width: 19rem;
+  justify-self: center;
   padding: 0;
+  opacity: 0.9;
 }
 
 .specimen-list {
@@ -2226,13 +2389,20 @@ button {
   background: var(--bg);
 }
 
+/* This is a board, so it has to be a legal one. A row goes fully green exactly
+   once, on the guess that ends the game, and nothing can follow it — three
+   green rows is a position Wordle cannot reach. What is drawn here is a real
+   solve in three: a loose first guess, a closer second, then the word. */
 .specimen-list li:nth-child(1) .specimen-word i:nth-child(2),
-.specimen-list li:nth-child(2) .specimen-word i:nth-child(4),
-.specimen-list li:nth-child(3) .specimen-word i:nth-child(1),
-.specimen-list li:nth-child(4) .specimen-word i:nth-child(5),
-.specimen-list li:nth-child(5) .specimen-word i:nth-child(3) {
-  border-color: color-mix(in srgb, var(--mark-hit) 60%, var(--border));
-  background: color-mix(in srgb, var(--mark-hit) 16%, var(--bg));
+.specimen-list li:nth-child(2) .specimen-word i:nth-child(4) {
+  border-color: color-mix(in srgb, var(--mark-present) 55%, var(--border));
+  background: color-mix(in srgb, var(--mark-present) 20%, var(--bg));
+}
+
+.specimen-list li:nth-child(2) .specimen-word i:nth-child(1),
+.specimen-list li:nth-child(3) .specimen-word i {
+  border-color: color-mix(in srgb, var(--mark-hit) 55%, var(--border));
+  background: color-mix(in srgb, var(--mark-hit) 20%, var(--bg));
 }
 
 .specimen-node {
@@ -2245,7 +2415,8 @@ button {
   background: var(--bg-raised);
 }
 
-.specimen-list li:last-child .specimen-node {
+/* The row the word fell on. */
+.specimen-list li:nth-child(3) .specimen-node {
   background: var(--mark-present);
   box-shadow: 0 0 0 4px color-mix(in srgb, var(--mark-present) 12%, transparent);
 }
@@ -2266,7 +2437,25 @@ button {
     padding: clamp(40px, 8vh, 72px) 0 max(28px, env(safe-area-inset-bottom));
   }
 
+  /* One centred column. The intro stretches so the wordmark, both buttons and
+     the board below all measure from the same box rather than each finding its
+     own middle. */
+  .home-middle {
+    align-items: center;
+  }
+
+  .home-intro {
+    align-self: stretch;
+    text-align: center;
+  }
+
+  .play,
+  .home-friends {
+    margin-inline: auto;
+  }
+
   .home-mark {
+    margin-bottom: 30px;
     font-size: clamp(4.1rem, 22vw, 5.8rem);
   }
 
@@ -2275,10 +2464,18 @@ button {
     font-size: 1.35rem;
   }
 
+  /* Drawn at board scale this read as a playable grid with real marks on it,
+     which is the last thing a front door should suggest. Small, it goes back
+     to being what it is: a diagram of five words and the thread through them. */
+  /* Same width as the buttons, so the front door is one column, not three
+     things of three different sizes. */
   .home-specimen {
-    max-width: 24rem;
+    max-width: 15rem;
     justify-self: auto;
-    padding: 0 14px;
+    align-self: center;
+    margin-inline: auto;
+    padding: 0;
+    opacity: 0.9;
   }
 
   .specimen-list {
@@ -2351,11 +2548,19 @@ button:disabled { cursor: default; }
 .run-progress li[aria-current="step"] { outline: 2px solid var(--text-muted); outline-offset: 2px; }
 .word-strip { display: flex; gap: 5px; align-items: center; min-height: 46px; flex: none; flex-wrap: wrap; padding-block: 3px 7px; }
 .word-strip button { border: 1px solid var(--border); background: var(--bg-raised); color: var(--text); border-radius: 6px; padding: 7px 8px; min-height: 40px; font-family: var(--font-serif), Georgia, serif; font-size: .9rem; cursor: pointer; }
-.word-strip button span { color: var(--text-muted); }
+/* Solved or merely revealed, as a status dot rather than punctuation: a bare
+   middot after a word reads as a separator with its other half missing. */
+.word-strip button span { margin-left: 5px; font-size: .6em; vertical-align: middle; color: var(--text-faint); }
+.word-strip button span[data-state="won"] { color: var(--mark-hit); }
 .game-app .board-area { container-type: size; min-height: 270px; padding: 6px 0; }
 .game-app .board { width: min(100%, 21rem, calc(100cqh * 5 / 6)); height: auto; max-height: 100%; }
 .game-app .tile { font-size: clamp(1.15rem, 6cqh, 2rem); }
 .game-tools { display: flex; align-items: center; justify-content: space-between; flex: none; }
+/* Icon only, so the strip under the board carries no prose. The count rides on
+   the corner rather than in a label, the way a notification badge does. */
+.hint-button { position: relative; }
+.hint-button:disabled { opacity: .4; cursor: default; }
+.hint-count { position: absolute; top: 2px; right: 2px; min-width: 14px; height: 14px; padding: 0 3px; border-radius: 999px; background: var(--mark-hit); color: var(--mark-hit-text); font-size: .6rem; font-weight: 700; line-height: 14px; text-align: center; }
 .game-app .keyboard { flex: none; padding-top: 10px; }
 .finished-actions { display: flex; gap: 10px; padding: 16px 0 max(16px, env(safe-area-inset-bottom)); flex: none; }
 .finished-actions .button { flex: 1; }
@@ -2365,10 +2570,19 @@ button:disabled { cursor: default; }
 .dialog-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
 .game-dialog .entry-head { font-size: .85rem; color: var(--text-muted); }
 .game-dialog .entry-head p { margin-top: 0; }
-.game-dialog .entry-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+/* A button closing out a sheet needs air above it: the note explaining why a
+   hint is still locked was sitting flush against this edge, reading as clipped.
+   The note needs the same separation from the line it qualifies. */
+.game-dialog > .button { margin-top: 16px; }
+.game-dialog > .hint { margin-top: 10px; }
+.game-dialog .entry-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
 .game-dialog .entry-actions .button { flex: 1; min-width: 125px; }
 .button--quiet { background: transparent; color: var(--text); border: 1px solid var(--border-strong); }
-.word-history, .board-review { margin-block: 18px; }
+/* The 44px tap target on the summary already supplies the breathing room; the
+   old 18px margins on top of it left each disclosure floating in ~80px of air,
+   so the card read as three unrelated things drifting apart. */
+.word-history, .board-review { margin-block: 2px; }
+.word-history[open], .board-review[open] { margin-block: 8px; }
 summary { cursor: pointer; color: var(--text-muted); padding-block: 8px; min-height: 44px; }
 .word-history .entry-note { font-size: 1rem; padding-top: 6px; }
 .board-review .board { width: min(100%, 230px); margin: 10px auto; }
@@ -2376,9 +2590,6 @@ summary { cursor: pointer; color: var(--text-muted); padding-block: 8px; min-hei
 .assisted { color: var(--text-muted); font-size: .85rem; }
 .conclusion-title { font-family: var(--font-serif), Georgia, serif; font-size: 2rem; line-height: 1.15; margin: 8px 0 14px; }
 .run-result { font-size: .85rem; color: var(--text-muted); }
-.theory-comparison { border-block: 1px solid var(--rule); margin-block: 20px; padding-block: 14px; }
-.theory-comparison h3 { margin: 0; font-size: .9rem; }
-.theory-comparison p { white-space: pre-wrap; overflow-wrap: anywhere; font-family: var(--font-serif), Georgia, serif; }
 .connection-list { padding-left: 22px; }
 .connection-list li { padding: 8px 0 10px 6px; }
 .connection-list strong { font-family: var(--font-serif), Georgia, serif; font-size: 1.35rem; }
@@ -2387,8 +2598,15 @@ summary { cursor: pointer; color: var(--text-muted); padding-block: 8px; min-hei
 .hint-list { padding-left: 22px; }
 .hint-list li { padding: 10px 0; }
 .hint-list p { margin-bottom: 0; }
-.game-error { max-width: 28rem; padding: 16px; font-size: 1rem; line-height: 1.5; }
-.game-error a { display: block; color: var(--text-muted); padding: 14px 0; }
+.game-error { width: 100%; max-width: 25rem; padding: 16px; font-size: 1rem; line-height: 1.5; }
+.game-error .gate-card { padding: 24px 22px; }
+.game-error-line { margin: 0 0 18px; color: var(--text-muted); }
+.game-error .gate-foot a { color: var(--text-muted); text-underline-offset: 3px; }
+/* The duo board's errors are still bare rows rather than cards, so whatever
+   follows their message needs its own separation. */
+.game-error > p + a,
+.game-error > p + button { margin-top: 12px; }
+.game-error > a { display: block; color: var(--text-muted); padding: 14px 0; }
 .toast { max-width: calc(100vw - 24px); white-space: normal; text-align: center; font-size: .8rem; letter-spacing: 0; text-transform: none; }
 @media (max-height: 720px) {
   .game-app .topbar { padding-block: 4px; }
@@ -2404,9 +2622,12 @@ summary { cursor: pointer; color: var(--text-muted); padding-block: 8px; min-hei
 :root[data-contrast="cb"] .key-glyph { display: block; }
 
 /* Friends are the navigation; the board remains the focus of play. */
-.home-friends { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: 26px; padding: 16px 0; border-block: 1px solid var(--border-strong); text-decoration: none; color: var(--text); }
-.home-friends > span:first-child { font-family: var(--font-serif), Georgia, serif; font-size: 1.4rem; }
-.home-friends > span:last-child { color: var(--text-muted); font-size: .8rem; }
+/* The quieter of the two: outlined where Continue is filled, same box. */
+.home-friends { margin-top: 10px; border-color: var(--border-strong); color: var(--text-muted); }
+.home-friends:hover { color: var(--text); border-color: var(--text); }
+
+/* A turn waiting on you is the only thing here with a deadline. */
+.home-friends[data-news] { color: var(--text); border-color: var(--mark-hit); }
 .friend-invite { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 18px; padding: 14px 16px; background: var(--bg-raised); border: 1px solid var(--border); border-radius: 12px; }
 .friend-invite strong { display: block; color: var(--text); font-family: ui-monospace, monospace; font-size: 1.05rem; letter-spacing: .2em; margin-top: 5px; }
 .friend-invite-actions { display: flex; flex-wrap: wrap; gap: 6px; justify-content: end; }
@@ -2453,5 +2674,7 @@ summary { cursor: pointer; color: var(--text-muted); padding-block: 8px; min-hei
 @media (max-width: 380px) { .friend-tile { gap: 9px; } .friend-avatar { width: 38px; height: 38px; } .friend-game-status { font-size: .7rem; } }
 
 /* Keep and Share read as one row of quiet actions under an entry. */
-.entry-tools { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+/* Keeping and sharing are actions, not more prose, so a rule above groups them
+   as a toolbar instead of leaving two quiet links adrift under the disclosures. */
+.entry-tools { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; margin-top: 10px; padding-top: 6px; border-top: 1px solid var(--rule); }
 .entry-tools .text-button { display: inline-flex; align-items: center; gap: 7px; }

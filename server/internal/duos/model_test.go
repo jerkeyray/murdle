@@ -23,6 +23,13 @@ func TestCalendarAndStarter(t *testing.T) {
 	if starter("2026-03-07", "2026-03-08", members) != "b" || starter("2026-03-07", "2026-03-09", members) != "a" {
 		t.Fatal("starter must follow calendar dates")
 	}
+	// A day before the start, or an unset start, used to index out of range and
+	// panic the whole request rather than picking somebody.
+	for _, tc := range [][2]string{{"2026-03-10", "2026-03-09"}, {"2026-03-10", "2026-03-01"}, {"", "2026-03-09"}, {"2026-03-10", ""}} {
+		if id := starter(tc[0], tc[1], members); id != "a" && id != "b" {
+			t.Fatalf("starter(%q,%q) returned %q", tc[0], tc[1], id)
+		}
+	}
 	states := map[string]string{"2026-10-01": "playing", "2026-09-30": "won", "2026-09-29": "won"}
 	if streak(states, "2026-10-01") != 2 {
 		t.Fatal("pending day erased streak")

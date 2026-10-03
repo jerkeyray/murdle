@@ -2,7 +2,8 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ApiError, createRun, getRound, getRun, letterStates, startRunRound, submitGuess, revealHint, type Round, type Run } from "./api";
-import { ACTIVE_KEY, activeRun, playedPacks, readLocal, rememberRun, writeLocal } from "./session";
+import { ACTIVE_KEY, activeRun, playedPacks, rememberRun, writeLocal } from "./session";
+import { lettersPhrase } from "./letters";
 
 const REVEAL_MS = 4 * 200 + 540;
 type Deal = { round: Round; run: Run };
@@ -32,7 +33,6 @@ export function useGame() {
   const [shake, setShake] = useState(false);
   const [revealedRows, setRevealedRows] = useState(0);
   const [revealingRow, setRevealingRow] = useState<number | null>(null);
-  const [theory, setTheory] = useState("");
   const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
   const mounted = useRef(false);
   const opening = useRef<Promise<Deal> | null>(null);
@@ -47,14 +47,14 @@ export function useGame() {
   const accept = useCallback((dealt: Deal) => {
     setRun(dealt.run); setRound(dealt.round);
     setDraft(""); setRevealingRow(null); setRevealedRows(dealt.round.rows.length);
-    setTheory(readLocal(`wordle.theory.${dealt.run.id}`) ?? "");
     rememberRun(dealt.run); setError(null); setExpired(false);
   }, []);
   const fail = useCallback((err: unknown) => {
     const missing = err instanceof ApiError && (err.code === "run_not_found" || err.code === "round_not_found");
     setExpired(missing);
     setError(missing
-      ? "This session has expired. Games are kept for six hours of inactivity and are cleared when the server restarts."
+      // What the player can do about it, not how the server stores it.
+      ? "That run has expired. Unfinished games are kept for six hours."
       : err instanceof ApiError ? err.message : "Could not reach the game. Please try again.");
     if (missing) writeLocal(ACTIVE_KEY, null);
   }, []);
@@ -100,7 +100,7 @@ export function useGame() {
   }, [flash, later]);
   const submit = useCallback(async () => {
     if (!playable || !round || lock.current) return;
-    if (draft.length !== round.wordLength) { reject("Enter five letters"); return; }
+    if (draft.length !== round.wordLength) { reject(`Enter ${lettersPhrase(round.wordLength)}`); return; }
     lock.current = true; setBusy(true);
     try {
       const result = await submitGuess(round.id, draft);
@@ -143,12 +143,8 @@ export function useGame() {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [submit, backspace, typeLetter]);
 
-  function updateTheory(value: string) {
-    const next = value.slice(0, 280); setTheory(next);
-    if (run) writeLocal(`wordle.theory.${run.id}`, next);
-  }
   return {
-    run, round, draft, busy, message, error, expired, shake, revealingRow, theory, updateTheory,
+    run, round, draft, busy, message, error, expired, shake, revealingRow,
     finished: !!round && round.state !== "playing" && revealedRows === round.rows.length,
     letterStates: letterStates(round?.rows.slice(0, revealedRows) ?? []),
     inputDisabled: !playable, typeLetter, backspace, submit, nextWord, newRun, retry, requestHint,

@@ -51,15 +51,10 @@ export default function Home() {
       <div className="home-middle">
         <section className="home-intro">
           <h1 className="home-mark">Wordle</h1>
-          <p className="home-line">
-            Five words. One hidden connection.
-          </p>
-
           <Link className="play" href="/play">
             <span className="play-word">
               {savedRun ? "Continue" : "Begin"}
             </span>
-            <span className="play-arrow" aria-hidden>→</span>
           </Link>
           <FriendsEntry />
         </section>

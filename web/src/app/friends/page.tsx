@@ -8,6 +8,7 @@ import { BackButton } from "@/components/BackButton";
 import { Dialog } from "@/components/Dialog";
 import { useVisiblePolling } from "@/lib/useVisiblePolling";
 import { duoStatus } from "@/lib/duoStatus";
+import { Loader } from "@/components/Loader";
 
 export default function FriendsPage() {
   const router = useRouter();
@@ -82,7 +83,7 @@ export default function FriendsPage() {
 
   return <main className="sheet friends-page">
     <header className="sheet-head"><BackButton href="/" /><h1 className="sheet-title">Friends</h1></header>
-    {!ready ? <p role="status">Loading…</p> : !profile ? <>
+    {!ready ? <Loader /> : !profile ? <>
       <p className="empty">Sign in to play with friends.</p>
       <Link className="button button--link" href={`/sign-in?returnTo=${encodeURIComponent(`/friends${code ? `?code=${code}` : ""}`)}`}>Sign in</Link>
       {error && <p role="alert">{error}</p>}

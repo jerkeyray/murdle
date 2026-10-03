@@ -21,7 +21,11 @@ type Guess struct {
 	PlayerID string   `json:"playerId"`
 }
 type Day struct {
-	DuoID         string    `json:"duoId"`
+	DuoID string `json:"duoId"`
+	// WordLength and MaxRows ship the rules to the client so the board and the
+	// draft cap follow the server instead of keeping their own copy.
+	WordLength    int       `json:"wordLength"`
+	MaxRows       int       `json:"maxRows"`
 	Date          string    `json:"date"`
 	Deadline      time.Time `json:"deadline"`
 	State         string    `json:"state"`
@@ -66,10 +70,22 @@ func dateAt(now time.Time, zone string) (string, time.Time, error) {
 	midnight := time.Date(t.Year(), t.Month(), t.Day(), 0, 0, 0, 0, loc)
 	return midnight.Format("2006-01-02"), midnight.AddDate(0, 0, 1), nil
 }
+
+// starter alternates the opening turn by whole days since the duo began.
+//
+// Both guards matter: an unset started_on fails to parse, and a day that
+// precedes the start — a clock stepping backwards over midnight, or a duo whose
+// timezone moves — makes the difference negative. Either one used to index the
+// slice out of range and panic the request, so both now fall back to the first
+// member and let the duo keep playing.
 func starter(start, day string, members []Member) string {
-	a, _ := time.Parse("2006-01-02", start)
-	b, _ := time.Parse("2006-01-02", day)
-	return members[int(b.Sub(a).Hours()/24)%2].ID
+	a, errStart := time.Parse("2006-01-02", start)
+	b, errDay := time.Parse("2006-01-02", day)
+	if errStart != nil || errDay != nil {
+		return members[0].ID
+	}
+	days := int(b.Sub(a).Hours() / 24)
+	return members[((days%len(members))+len(members))%len(members)].ID
 }
 func streak(states map[string]string, today string) int {
 	t, _ := time.Parse("2006-01-02", today)

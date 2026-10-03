@@ -56,7 +56,7 @@ func (s *Store) load(ctx context.Context, tx pgx.Tx, id, player string) (*Duo, e
 	return d, nil
 }
 func (s *Store) day(ctx context.Context, tx pgx.Tx, id, date string) (*Day, error) {
-	d := &Day{DuoID: id, Rows: []Guess{}, Passed: []string{}}
+	d := &Day{DuoID: id, WordLength: game.WordLength, MaxRows: game.MaxRows, Rows: []Guess{}, Passed: []string{}}
 	var entry []byte
 	err := tx.QueryRow(ctx, `select day::text,deadline,state,current_player,version,answer,entry from duo_days where duo_id=$1 and day=$2`, id, date).Scan(&d.Date, &d.Deadline, &d.State, &d.CurrentPlayer, &d.Version, &d.hiddenAnswer, &entry)
 	if err != nil {
@@ -172,8 +172,12 @@ func (s *Store) populate(ctx context.Context, tx pgx.Tx, d *Duo) error {
 			}
 		}
 	}
+	// Scoped to the friendship, not this duo, because Recent is: ending a daily
+	// game and starting a fresh one with the same friend used to leave a zeroed
+	// streak sitting beside a history that plainly showed the run continuing.
+	// Where two duos covered the same date the newer one wins, hence the guard.
 	states := map[string]string{}
-	rows, err := tx.Query(ctx, `select day::text,state from duo_days where duo_id=$1 order by day desc`, d.ID)
+	rows, err := tx.Query(ctx, `select b.day::text,b.state from duo_days b join duos p on p.id=b.duo_id where p.friendship_id=$1 order by b.day desc,p.created_at desc`, d.FriendshipID)
 	if err != nil {
 		return err
 	}
@@ -183,7 +187,9 @@ func (s *Store) populate(ctx context.Context, tx pgx.Tx, d *Duo) error {
 			rows.Close()
 			return err
 		}
-		states[date] = state
+		if _, seen := states[date]; !seen {
+			states[date] = state
+		}
 	}
 	err = rows.Err()
 	rows.Close()
@@ -221,19 +227,16 @@ func (s *Store) populate(ctx context.Context, tx pgx.Tx, d *Duo) error {
 		if e != nil {
 			return e
 		}
-		if h.id == d.ID {
-			r.Streak = streak(states, h.date)
-		}
+		r.Streak = streak(states, h.date)
 		d.Recent = append(d.Recent, *r)
 	}
 	return nil
 }
-func (s *Store) Get(ctx context.Context, id, player string) (*Duo, error) {
-	tx, err := s.db.Begin(ctx)
-	if err != nil {
-		return nil, err
-	}
-	defer tx.Rollback(ctx)
+
+// get reads and freshens one duo inside a transaction the caller owns. Both
+// Get and List go through it so a listing does not open — and lock — one
+// transaction per duo.
+func (s *Store) get(ctx context.Context, tx pgx.Tx, id, player string) (*Duo, error) {
 	d, err := s.load(ctx, tx, id, player)
 	if err != nil {
 		return nil, err
@@ -241,10 +244,27 @@ func (s *Store) Get(ctx context.Context, id, player string) (*Duo, error) {
 	if err = s.populate(ctx, tx, d); err != nil {
 		return nil, err
 	}
+	return d, nil
+}
+func (s *Store) Get(ctx context.Context, id, player string) (*Duo, error) {
+	tx, err := s.db.Begin(ctx)
+	if err != nil {
+		return nil, err
+	}
+	defer tx.Rollback(ctx)
+	d, err := s.get(ctx, tx, id, player)
+	if err != nil {
+		return nil, err
+	}
 	return d, tx.Commit(ctx)
 }
 func (s *Store) List(ctx context.Context, player string) ([]*Duo, error) {
-	rows, err := s.db.Query(ctx, `select distinct on (friendship_id) id from duos where $1 in (low_id,high_id) order by friendship_id,case when status in ('active','pending') then 0 else 1 end,created_at desc`, player)
+	tx, err := s.db.Begin(ctx)
+	if err != nil {
+		return nil, err
+	}
+	defer tx.Rollback(ctx)
+	rows, err := tx.Query(ctx, `select distinct on (friendship_id) id from duos where $1 in (low_id,high_id) order by friendship_id,case when status in ('active','pending') then 0 else 1 end,created_at desc`, player)
 	if err != nil {
 		return nil, err
 	}
@@ -264,13 +284,13 @@ func (s *Store) List(ctx context.Context, player string) ([]*Duo, error) {
 	}
 	out := []*Duo{}
 	for _, id := range ids {
-		d, e := s.Get(ctx, id, player)
+		d, e := s.get(ctx, tx, id, player)
 		if e != nil {
 			return nil, e
 		}
 		out = append(out, d)
 	}
-	return out, nil
+	return out, tx.Commit(ctx)
 }
 
 type Mutation struct {
@@ -436,8 +456,8 @@ func (s *Store) Mutate(ctx context.Context, player, id, date, action string, m M
 			_, err = tx.Exec(ctx, `insert into duo_passes(duo_id,day,player_id) values($1,$2,$3)`, d.ID, date, player)
 		} else {
 			guess := strings.ToLower(strings.TrimSpace(m.Guess))
-			if len(guess) != 5 {
-				return nil, fail("wrong_length", "Enter five letters")
+			if len(guess) != game.WordLength {
+				return nil, fail("wrong_length", "Enter "+game.LengthWord()+" letters")
 			}
 			if !s.words.IsWord(guess) {
 				return nil, fail("not_a_word", "Not in the word list")
@@ -451,7 +471,7 @@ func (s *Store) Mutate(ctx context.Context, player, id, date, action string, m M
 			_, err = tx.Exec(ctx, `insert into duo_guesses(duo_id,day,row_index,player_id,guess,marks) values($1,$2,$3,$4,$5,$6)`, d.ID, date, len(b.Rows), player, guess, markJSON)
 			if game.Solved(marks) {
 				state = "won"
-			} else if len(b.Rows)+1 == 6 {
+			} else if len(b.Rows)+1 >= game.MaxRows {
 				state = "lost"
 			}
 		}
@@ -477,6 +497,14 @@ func (s *Store) Mutate(ctx context.Context, player, id, date, action string, m M
 		return nil, err
 	}
 	_, err = tx.Exec(ctx, `insert into duo_requests(player_id,request_id,fingerprint,response) values($1,$2,$3,$4)`, player, m.RequestID, fingerprint, response)
+	if err != nil {
+		return nil, err
+	}
+	// A receipt only has to survive a reconnecting phone retrying its last move,
+	// so sweep this player's older ones rather than storing a response per
+	// mutation forever. Scoped to the player whose row we just wrote, inside the
+	// transaction that wrote it, so it needs no separate job or lock.
+	_, err = tx.Exec(ctx, `delete from duo_requests where player_id=$1 and created_at < $2`, player, s.Now().Add(-24*time.Hour))
 	if err != nil {
 		return nil, err
 	}
