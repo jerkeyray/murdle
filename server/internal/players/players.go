@@ -219,6 +219,34 @@ func (s *Store) Solves(ctx context.Context, playerID string, limit int) ([]Solve
 	return out, rows.Err()
 }
 
+// PackWordCounts is how many distinct words the player has recorded from each
+// pack, keyed by pack ID.
+//
+// This is what lets a run skip themes you have already finished no matter which
+// device you are on. The client keeps its own list in local storage for players
+// who never sign in, but that list does not survive a new phone or a cleared
+// browser, and it was the only thing selection consulted.
+func (s *Store) PackWordCounts(ctx context.Context, playerID string) (map[string]int, error) {
+	rows, err := s.pool.Query(ctx, `
+		select pack_id, count(distinct word) from solves
+		where player_id = $1 group by pack_id`, playerID)
+	if err != nil {
+		return nil, fmt.Errorf("counting played packs: %w", err)
+	}
+	defer rows.Close()
+
+	out := map[string]int{}
+	for rows.Next() {
+		var id string
+		var n int
+		if err := rows.Scan(&id, &n); err != nil {
+			return nil, err
+		}
+		out[id] = n
+	}
+	return out, rows.Err()
+}
+
 // Streak counts consecutive days played.
 //
 // Walking the dates in Go rather than in SQL: the window function version is

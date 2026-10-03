@@ -17,16 +17,18 @@ func TestPoolLoads(t *testing.T) {
 	}
 }
 
-// Every curated answer has to be the right length and guessable, or a round
-// could hand a player a word the keyboard refuses to accept.
+// Every word a pack can deal has to be the right length and guessable, or a
+// round could hand a player a word the keyboard refuses to accept.
 func TestEveryAnswerIsPlayable(t *testing.T) {
 	p := NewPool()
-	for _, w := range p.answers {
-		if len(w) != game.WordLength {
-			t.Errorf("answer %q has length %d, want %d", w, len(w), game.WordLength)
-		}
-		if !p.IsWord(w) {
-			t.Errorf("answer %q is not in the dictionary", w)
+	for _, pack := range p.Packs() {
+		for _, w := range pack.Words {
+			if len(w.Word) != game.WordLength {
+				t.Errorf("answer %q has length %d, want %d", w.Word, len(w.Word), game.WordLength)
+			}
+			if !p.IsWord(w.Word) {
+				t.Errorf("answer %q is not in the dictionary", w.Word)
+			}
 		}
 	}
 }
@@ -41,35 +43,6 @@ func TestIsWord(t *testing.T) {
 	}
 	if p.IsWord("zzzzz") {
 		t.Error("nonsense should not validate")
-	}
-}
-
-func TestRandomRespectsExclusions(t *testing.T) {
-	p := NewPool()
-
-	// Exclude everything but one word and we must get that word back.
-	only := p.answers[7]
-	exclude := make(map[string]struct{}, len(p.answers))
-	for _, w := range p.answers {
-		if w != only {
-			exclude[w] = struct{}{}
-		}
-	}
-	for i := 0; i < 20; i++ {
-		if got := p.Random(exclude); got != only {
-			t.Fatalf("Random() = %q, want the single eligible word %q", got, only)
-		}
-	}
-}
-
-func TestRandomFallsBackWhenAllExcluded(t *testing.T) {
-	p := NewPool()
-	exclude := make(map[string]struct{}, len(p.answers))
-	for _, w := range p.answers {
-		exclude[w] = struct{}{}
-	}
-	if got := p.Random(exclude); got == "" {
-		t.Error("exhausting the pool should fall back to any answer, not return empty")
 	}
 }
 

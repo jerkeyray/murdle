@@ -150,7 +150,10 @@ func (s *Server) roundView(round *game.Round) roundView {
 
 type createRunRequest struct {
 	// ExcludePacks are themes already played, so a new run picks a fresh one.
-	// The client holds this list until history is per-player.
+	// Signed-out players have nowhere else to keep this, so the client sends
+	// its local list; a signed-in player's real history is read from the
+	// database and merged in, because local storage does not follow anyone to
+	// a new phone.
 	ExcludePacks []string `json:"excludePacks"`
 }
 
@@ -165,6 +168,7 @@ func (s *Server) handleCreateRun(w http.ResponseWriter, r *http.Request) {
 	for _, id := range req.ExcludePacks {
 		exclude[id] = struct{}{}
 	}
+	s.excludePlayedPacks(r, exclude)
 
 	pack, ok := s.pool.RandomPack(exclude)
 	if !ok {
@@ -186,6 +190,29 @@ func (s *Server) handleCreateRun(w http.ResponseWriter, r *http.Request) {
 	}
 
 	writeJSON(w, http.StatusCreated, newRunView(run, s.pool))
+}
+
+// excludePlayedPacks adds the themes a signed-in player has finished.
+//
+// A pack counts as played only once every one of its words is recorded, which
+// matches what the client does: abandoning a run halfway should let that theme
+// come round again. Failures here are logged and ignored — not knowing your
+// history is a reason to risk a repeat, never a reason to refuse a game.
+func (s *Server) excludePlayedPacks(r *http.Request, exclude map[string]struct{}) {
+	p, ok := s.player(r)
+	if !ok {
+		return
+	}
+	counts, err := s.players.PackWordCounts(r.Context(), p.ID)
+	if err != nil {
+		s.log.Error("reading played packs", "player", p.ID, "err", err)
+		return
+	}
+	for id, played := range counts {
+		if pack, ok := s.pool.Pack(id); ok && played >= len(pack.Words) {
+			exclude[id] = struct{}{}
+		}
+	}
 }
 
 func (s *Server) handleGetRun(w http.ResponseWriter, r *http.Request) {

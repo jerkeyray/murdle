@@ -2110,5 +2110,413 @@
     "legacyTitles": [
       "Running Late"
     ]
+  },
+  {
+    "id": "ratio-d",
+    "title": "Losing the Argument",
+    "connectionDifficulty": "medium",
+    "blurb": "Five ways a disagreement stops going your way in public.",
+    "words": [
+      {
+        "word": "ratio",
+        "register": "slang",
+        "definition": "A reply that outperforms the post it answers.",
+        "note": "In arithmetic this is simply a comparison of two quantities, and the online sense keeps that exactly: it weighs the response against the original. The verb form spread on Twitter around 2017.",
+        "hints": [
+          "Arithmetic lent this one to the timeline.",
+          "A comparison of two numbers, used as a verdict."
+        ],
+        "connection": "Being out-measured by the person answering you is the first sign the room has turned.",
+        "difficulty": "stretch"
+      },
+      {
+        "word": "reply",
+        "register": "standard",
+        "definition": "An answer sent back to whoever spoke first.",
+        "note": "From Old French replier, to fold back, from Latin replicare. The same root gives replicate and replica, all carrying the idea of folding something over on itself.",
+        "hints": [
+          "Folding something back on itself, originally.",
+          "What arrives underneath, often in numbers."
+        ],
+        "connection": "Every public argument begins with someone answering.",
+        "difficulty": "familiar"
+      },
+      {
+        "word": "block",
+        "register": "standard",
+        "definition": "To cut someone off from reaching you.",
+        "note": "The word began as a solid lump of wood, and the sense of obstruction came from putting such a lump in the way. The social media meaning is the newest branch of a very old tree.",
+        "hints": [
+          "Started life as a lump of timber.",
+          "An obstruction, now also a button."
+        ],
+        "connection": "The last move available when answering has stopped working.",
+        "difficulty": "familiar"
+      },
+      {
+        "word": "troll",
+        "register": "standard",
+        "definition": "Someone who provokes for the reaction alone.",
+        "note": "Two separate words collided here. The Norse creature of folklore is unrelated to the fishing sense, dragging a baited line slowly through water, and it is the fishing one the internet meaning almost certainly comes from.",
+        "hints": [
+          "Folklore and fishing both claim this word.",
+          "Dragging bait slowly and waiting."
+        ],
+        "connection": "The provocation is the point, not the position.",
+        "difficulty": "stretch"
+      },
+      {
+        "word": "dunks",
+        "register": "slang",
+        "definition": "Public mockery, delivered for an audience.",
+        "note": "From basketball, where the ball is pushed down through the hoop from above. Before that it meant to dip something into liquid, from a Middle High German word.",
+        "hints": [
+          "Basketball gave this its modern swagger.",
+          "Before the court, it meant dipping something."
+        ],
+        "connection": "Scoring off someone from above, where everyone can see it.",
+        "difficulty": "stretch"
+      }
+    ]
+  },
+  {
+    "id": "no-notes",
+    "title": "High Praise",
+    "connectionDifficulty": "easy",
+    "blurb": "Five ways to call something good without using the word.",
+    "words": [
+      {
+        "word": "based",
+        "register": "slang",
+        "definition": "Admirably willing to hold an unpopular view.",
+        "note": "Popularised by the rapper Lil B in the early 2010s, who took a word that had been an insult and turned it into praise for being yourself regardless of judgement. The approving sense grew outward from his following.",
+        "hints": [
+          "One rapper turned an insult into a compliment.",
+          "Praise aimed at nerve, not at taste."
+        ],
+        "connection": "Approval for conviction rather than for agreement.",
+        "difficulty": "stretch"
+      },
+      {
+        "word": "slaps",
+        "register": "slang",
+        "definition": "Said of music that lands with force.",
+        "note": "The sense comes straight from the physical blow, something that arrives hard. It spread through Bay Area hip-hop, where the noun described a track with heavy bass.",
+        "hints": [
+          "Bay Area bass culture carried this one.",
+          "A physical blow, repurposed as a review."
+        ],
+        "connection": "Approval borrowed from the force of an impact.",
+        "difficulty": "familiar"
+      },
+      {
+        "word": "slays",
+        "register": "slang",
+        "definition": "Describes a performance that wins completely.",
+        "note": "The older sense is to kill, from Old English slean, to strike. The admiring use was carried into wider speech by Black and Latino ballroom culture.",
+        "hints": [
+          "Ballroom culture lent this to everyone else.",
+          "Its old meaning was far more violent."
+        ],
+        "connection": "Approval phrased as total victory over the room.",
+        "difficulty": "familiar"
+      },
+      {
+        "word": "elite",
+        "register": "standard",
+        "definition": "Belonging to the best of a group.",
+        "note": "From French elite, the chosen, from Latin eligere, to pick out. The same root gives elect and eligible.",
+        "hints": [
+          "Latin for picking out the chosen few.",
+          "Shares a root with elect and eligible."
+        ],
+        "connection": "Approval that places something at the top of a field.",
+        "difficulty": "familiar"
+      },
+      {
+        "word": "valid",
+        "register": "standard",
+        "definition": "Reasonable, and worth taking seriously.",
+        "note": "From Latin validus, strong or healthy, the root behind invalid in both of its senses. Granting that a feeling is reasonable narrows an older logical meaning down to something warmer.",
+        "hints": [
+          "Latin for strong or healthy.",
+          "Logic used it long before feelings did."
+        ],
+        "connection": "Approval offered to a feeling rather than a performance.",
+        "difficulty": "familiar"
+      }
+    ]
+  },
+  {
+    "id": "touch-grass",
+    "title": "Too Online",
+    "connectionDifficulty": "medium",
+    "blurb": "Five words for the condition, and for the cure.",
+    "words": [
+      {
+        "word": "feral",
+        "register": "standard",
+        "definition": "Gone wild after a stretch of confinement.",
+        "note": "From Latin fera, a wild animal. It described escaped livestock reverting to the wild long before it described anybody's behaviour after a week indoors.",
+        "hints": [
+          "Latin for a wild animal.",
+          "First used of livestock that escaped."
+        ],
+        "connection": "What a person becomes without daylight or company.",
+        "difficulty": "stretch"
+      },
+      {
+        "word": "lurks",
+        "register": "standard",
+        "definition": "Reads everything and posts nothing.",
+        "note": "Probably from Middle English lurken, to lie hidden. Early message boards in the 1980s adopted it almost unchanged, and the meaning has not moved since.",
+        "hints": [
+          "Message boards borrowed this one in the 1980s.",
+          "Lying hidden, in Middle English."
+        ],
+        "connection": "Presence without participation, the default state of being online.",
+        "difficulty": "familiar"
+      },
+      {
+        "word": "grass",
+        "register": "standard",
+        "definition": "The ground cover you are repeatedly told to go outside and touch.",
+        "note": "From Old English graes, related to green and to grow. All three descend from a root meaning to sprout.",
+        "hints": [
+          "Related to both green and grow.",
+          "What the famous instruction tells you to touch."
+        ],
+        "connection": "The prescribed cure, named in the instruction itself.",
+        "difficulty": "familiar"
+      },
+      {
+        "word": "brain",
+        "register": "standard",
+        "definition": "The organ said to rot from too much scrolling.",
+        "note": "From Old English braegen. The complaint is older than the internet: brain-rot appears in Thoreau's Walden in 1854, grumbling that nobody worried about it the way they worried about potato rot.",
+        "hints": [
+          "Thoreau complained about this one rotting in 1854.",
+          "The organ blamed for the whole condition."
+        ],
+        "connection": "The part reportedly damaged by all of it.",
+        "difficulty": "familiar"
+      },
+      {
+        "word": "binge",
+        "register": "standard",
+        "definition": "A single sitting in which far too much is consumed.",
+        "note": "An English dialect word meaning to soak a wooden vessel until it stops leaking. It moved from soaking wood to soaking oneself, and then to episodes of television.",
+        "hints": [
+          "Dialect for soaking a barrel watertight.",
+          "Television borrowed it from drinking."
+        ],
+        "connection": "How the hours disappear once you have stopped noticing.",
+        "difficulty": "familiar"
+      }
+    ]
+  },
+  {
+    "id": "ranked",
+    "title": "In the Lobby",
+    "connectionDifficulty": "hard",
+    "blurb": "Five words a generation learned from a loading screen.",
+    "words": [
+      {
+        "word": "smurf",
+        "register": "slang",
+        "definition": "A strong player on a new account, beating beginners.",
+        "note": "From Warcraft II, where two well-known players made fresh accounts under the names PapaSmurf and Smurfette so that opponents would agree to play them. The name stuck to the practice.",
+        "hints": [
+          "Two players picked cartoon names to stay anonymous.",
+          "Strength disguised as inexperience."
+        ],
+        "connection": "Hiding your skill behind a new name, which only a game lets you do.",
+        "difficulty": "challenging"
+      },
+      {
+        "word": "carry",
+        "register": "standard",
+        "definition": "To win a team game almost single-handed.",
+        "note": "From Old North French carier, to transport in a vehicle, the same root as car and cargo. The team sense is a short step from bearing a weight nobody else will.",
+        "hints": [
+          "Shares a root with car and cargo.",
+          "Bearing a weight the rest of the team will not."
+        ],
+        "connection": "Bearing four other people to a victory they did not earn.",
+        "difficulty": "stretch"
+      },
+      {
+        "word": "nerfs",
+        "register": "slang",
+        "definition": "Weakens something that had become too strong.",
+        "note": "Named after the brand of foam toys, on the logic that the weapon has been swapped for a harmless version. Its opposite, to buff, was borrowed from polishing instead.",
+        "hints": [
+          "A foam toy brand gave this its name.",
+          "The opposite was borrowed from polishing."
+        ],
+        "connection": "The correction applied when one option stops being a choice.",
+        "difficulty": "challenging"
+      },
+      {
+        "word": "spawn",
+        "register": "standard",
+        "definition": "To appear at a starting point.",
+        "note": "From Anglo-French espaundre, to shed roe. Fish producing offspring in great numbers gave the word its sense of sudden mass appearance, which games then took literally.",
+        "hints": [
+          "Fish and their roe gave us this word.",
+          "Sudden appearance, taken literally."
+        ],
+        "connection": "Arriving from nowhere, which only happens somewhere like this.",
+        "difficulty": "stretch"
+      },
+      {
+        "word": "lobby",
+        "register": "standard",
+        "definition": "The room where everyone waits before it begins.",
+        "note": "From medieval Latin lobia, a covered walkway, the same root as lodge. The political sense came from people waiting in the corridors of Parliament to catch members on their way past.",
+        "hints": [
+          "Parliament's corridors gave politics a verb.",
+          "A covered walkway, in medieval Latin."
+        ],
+        "connection": "The waiting room everything else happens after.",
+        "difficulty": "familiar"
+      }
+    ]
+  },
+  {
+    "id": "swipe-right",
+    "title": "Modern Courtship",
+    "connectionDifficulty": "easy",
+    "blurb": "Five stages of meeting someone through a telephone.",
+    "words": [
+      {
+        "word": "swipe",
+        "register": "standard",
+        "definition": "To move a finger across a screen and decide.",
+        "note": "Originally a sweeping blow, probably related to sweep. It picked up the sense of theft, then of running a card through a reader, and finally the gesture itself.",
+        "hints": [
+          "Probably related to sweep.",
+          "Meant theft before it meant a gesture."
+        ],
+        "connection": "The gesture the whole arrangement is named after.",
+        "difficulty": "familiar"
+      },
+      {
+        "word": "match",
+        "register": "standard",
+        "definition": "Two people who both said yes.",
+        "note": "From Old English gemaecca, a companion or mate. The fire-lighting kind is an entirely different word, from Old French mesche, a lamp wick.",
+        "hints": [
+          "Old English for a companion or mate.",
+          "The fire-lighting kind is a different word entirely."
+        ],
+        "connection": "The moment the arrangement decides you are both interested.",
+        "difficulty": "familiar"
+      },
+      {
+        "word": "chats",
+        "register": "standard",
+        "definition": "Light exchanges that go nowhere in particular.",
+        "note": "A shortening of chatter, which is imitative: the word was built to sound like the noise it describes.",
+        "hints": [
+          "The longer form was built to sound like noise.",
+          "Exchanges that rarely arrive anywhere."
+        ],
+        "connection": "What fills the week between agreeing and never meeting.",
+        "difficulty": "familiar"
+      },
+      {
+        "word": "flake",
+        "register": "slang",
+        "definition": "Someone who cancels, and keeps cancelling.",
+        "note": "From the sense of a thin loose piece that falls away. Calling an unreliable person one is American slang from the 1950s, carrying the same image of something that will not hold together.",
+        "hints": [
+          "American slang from the 1950s.",
+          "The image is of something not holding together."
+        ],
+        "connection": "The outcome most of it arrives at.",
+        "difficulty": "familiar"
+      },
+      {
+        "word": "spark",
+        "register": "standard",
+        "definition": "The small trace of interest that either catches or does not.",
+        "note": "From Old English spearca. Using it for a trace of feeling is old: a spark of pity appears in English centuries before anyone used it about a first date.",
+        "hints": [
+          "Old English, and older than romance.",
+          "A trace of fire standing in for feeling."
+        ],
+        "connection": "The thing everyone claims to be looking for.",
+        "difficulty": "stretch"
+      }
+    ]
+  },
+  {
+    "id": "in-my-feels",
+    "title": "Mild Distress",
+    "connectionDifficulty": "medium",
+    "blurb": "Five states that stop well short of an actual crisis.",
+    "words": [
+      {
+        "word": "shook",
+        "register": "slang",
+        "definition": "Badly rattled by something small.",
+        "note": "The standard past participle is shaken; this older form survived in dialect and in Black American English, which is where the emotional use comes from.",
+        "hints": [
+          "An older past tense that never quite died.",
+          "Rattled rather than genuinely harmed."
+        ],
+        "connection": "Rattled, but recoverable by the evening.",
+        "difficulty": "familiar"
+      },
+      {
+        "word": "salty",
+        "register": "slang",
+        "definition": "Bitter about losing, and not hiding it.",
+        "note": "Naval slang for a sailor long enough at sea to be weathered and short-tempered. The sense of sour resentment came ashore from there.",
+        "hints": [
+          "Sailors were described this way first.",
+          "A taste standing in for resentment."
+        ],
+        "connection": "Resentment that everyone can see and nobody will mention.",
+        "difficulty": "familiar"
+      },
+      {
+        "word": "extra",
+        "register": "slang",
+        "definition": "More than the occasion called for.",
+        "note": "A shortening of the Latin phrase extra ordinem, outside the usual order, which also gives extraordinary. The criticism is precise: someone is doing more than the moment ordered.",
+        "hints": [
+          "Latin for outside the usual order.",
+          "The complaint is about scale, not sincerity."
+        ],
+        "connection": "Distress performed slightly larger than it is felt.",
+        "difficulty": "familiar"
+      },
+      {
+        "word": "basic",
+        "register": "standard",
+        "definition": "Predictable in taste, and perfectly happy about it.",
+        "note": "From base, the bottom of a thing, via Latin basis, a step or pedestal. The dismissive use is recent; for centuries the word meant fundamental, which was a compliment.",
+        "hints": [
+          "Latin for a step or pedestal.",
+          "It was a compliment for several centuries."
+        ],
+        "connection": "An insult only because taste became something to defend.",
+        "difficulty": "stretch"
+      },
+      {
+        "word": "moody",
+        "register": "standard",
+        "definition": "Given to sudden changes of temper.",
+        "note": "From Old English mod, which meant mind, spirit or courage rather than a passing humour. Someone described this way once meant a brave or proud one.",
+        "hints": [
+          "Old English used its root for courage.",
+          "Once described the proud, not the sullen."
+        ],
+        "connection": "Temper treated as weather rather than as a decision.",
+        "difficulty": "familiar"
+      }
+    ]
   }
 ]

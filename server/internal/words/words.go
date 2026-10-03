@@ -13,20 +13,15 @@ package words
 
 import (
 	_ "embed"
-	"math/rand/v2"
 	"strings"
 )
 
 //go:embed dictionary.txt
 var dictionaryRaw string
 
-//go:embed answers.txt
-var answersRaw string
-
 // Pool answers "is this a word?" and "give me something to play".
 type Pool struct {
 	dictionary map[string]struct{}
-	answers    []string
 
 	packs    []Pack
 	packByID map[string]Pack
@@ -46,16 +41,9 @@ func NewPool() *Pool {
 		panic("words: " + err.Error())
 	}
 
-	answers := strings.Fields(answersRaw)
-
 	dictWords := strings.Fields(dictionaryRaw)
-	dictionary := make(map[string]struct{}, len(dictWords)+len(answers))
+	dictionary := make(map[string]struct{}, len(dictWords)+len(packs)*5)
 	for _, w := range dictWords {
-		dictionary[w] = struct{}{}
-	}
-	// Belt and braces: every answer must be guessable, even if the curated list
-	// and the dictionary ever drift apart.
-	for _, w := range answers {
 		dictionary[w] = struct{}{}
 	}
 
@@ -76,7 +64,6 @@ func NewPool() *Pool {
 
 	return &Pool{
 		dictionary: dictionary,
-		answers:    answers,
 		packs:      packs,
 		packByID:   packByID,
 		wordInfo:   wordInfo,
@@ -90,34 +77,13 @@ func (p *Pool) IsWord(guess string) bool {
 	return ok
 }
 
-// Random returns an answer chosen uniformly, skipping anything in exclude.
+// Size reports how many playable answers and dictionary entries are loaded,
+// for the health endpoint and startup logging.
 //
-// exclude is how "don't show us a word we've already played" is enforced. If
-// every answer is excluded it falls back to an unfiltered pick rather than
-// failing — running out of unseen words should not be able to break a round.
-func (p *Pool) Random(exclude map[string]struct{}) string {
-	if len(p.answers) == 0 {
-		return ""
-	}
-
-	eligible := p.answers
-	if len(exclude) > 0 {
-		eligible = make([]string, 0, len(p.answers))
-		for _, w := range p.answers {
-			if _, seen := exclude[w]; !seen {
-				eligible = append(eligible, w)
-			}
-		}
-		if len(eligible) == 0 {
-			eligible = p.answers
-		}
-	}
-
-	return eligible[rand.IntN(len(eligible))]
-}
-
-// Size reports how many answers and dictionary entries are loaded, for the
-// health endpoint and startup logging.
+// Answers are counted from the packs, which is where every word a player is
+// actually dealt now comes from. A separate curated list used to sit alongside
+// them and was reported here long after nothing read it, so the number on the
+// health endpoint described a pool the game had stopped playing from.
 func (p *Pool) Size() (answers, dictionary int) {
-	return len(p.answers), len(p.dictionary)
+	return len(p.wordInfo), len(p.dictionary)
 }
