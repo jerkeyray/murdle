@@ -12,8 +12,6 @@ import {
   type Profile,
   type SolveRecord,
 } from "@/lib/api";
-import { signOut } from "@/lib/auth-client";
-import { clearToken } from "@/lib/token";
 import { BackButton } from "@/components/BackButton";
 import { NameForm } from "@/components/NameForm";
 import { safeReturnTo } from "@/lib/returnTo";
@@ -197,28 +195,22 @@ export default function ProfilePage() {
       </div>}
       {list.length === 0 ? <div className="empty"><p>{query.trim() && source.length ? "No words match your search." : tab === "collection" ? "Play a round to discover your first words." : "Tap the bookmark on a word card to save it here."}</p>
         {query.trim() && source.length ? <button className="text-button" onClick={() => setQuery("")}>Clear search</button> : <Link className="text-button" href="/play">Play a round</Link>}
-      </div> : <ul className="collection-list">{list.map((word) => <li key={word.word}>
+      </div> : <ul className="collection-list">{list.map((word, index) => <li className="collection-card" key={word.word}>
         <details className="collection-word">
-          <summary><span><strong>{word.word}</strong>{word.entry && <span className="collection-definition">{word.entry.definition}</span>}</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden><path d="m9 5 7 7-7 7" /></svg></summary>
-          {word.entry ? <p>{word.entry.note}</p> : <p>No word note available yet.</p>}
+          <summary>
+            <span className="collection-card-index">WORD {String(index + 1).padStart(2, "0")}</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden><path d="m9 5 7 7-7 7" /></svg>
+            <strong>{word.word}</strong>
+            {word.entry && <span className="collection-definition">{word.entry.definition}</span>}
+            <span className="collection-story-cue">Read the word story</span>
+          </summary>
+          <div className="collection-note">
+            <span className="collection-note-label">Word story</span>
+            <p>{word.entry?.note ?? "No word note available yet."}</p>
+          </div>
         </details>
       </li>)}</ul>}
 
-      {/* Appearance used to be repeated here as well as on /settings, so the
-          page ran identity, then a word list, then a settings panel, then a
-          stray link. It lives in one place now, behind the cog. */}
-      <div className="sheet-foot">
-        <button
-          className="text-button"
-          onClick={async () => {
-            await signOut();
-            clearToken();
-            setSignedOut(true);
-          }}
-        >
-          Sign out
-        </button>
-      </div>
     </main>
   );
 }

@@ -509,9 +509,9 @@ button {
 }
 
 .key[data-mark="absent"] {
-  background: var(--mark-absent);
-  border-color: var(--mark-absent);
-  color: var(--mark-absent-text);
+  background: color-mix(in srgb, var(--key-bg) 72%, var(--text));
+  border-color: color-mix(in srgb, var(--key-border) 55%, var(--text-muted));
+  color: var(--text);
 }
 
 .key-spacer {
@@ -2584,7 +2584,7 @@ button:disabled { cursor: default; }
 .game-app:not(.duo-app) .board-area { min-height: 220px; padding: 16px 0 20px; }
 .board-stage { position: relative; width: min(20rem, calc(100% - 88px), calc((100cqh - 12px) * 5 / 6)); }
 .game-app .board-stage .board { width: 100%; max-height: none; }
-.game-app .board-stage .game-hint { position: absolute; top: 0; left: -48px; width: 36px; height: 36px; border-color: var(--border); border-radius: 50%; color: var(--text-muted); }
+.game-app .board-stage .game-hint { position: absolute; top: auto; bottom: max(calc(8.333% - 25px), 0px); left: -48px; width: 36px; height: 36px; border-color: var(--border); border-radius: 50%; color: var(--text-muted); }
 .game-app .tile { font-size: clamp(1.15rem, 6cqh, 2rem); }
 .game-tools { display: flex; align-items: center; justify-content: space-between; flex: none; }
 /* Icon only, so the strip under the board carries no prose. The count rides on
@@ -2760,15 +2760,27 @@ summary { cursor: pointer; color: var(--text-muted); padding-block: 8px; min-hei
 .collection-tabs span { font-size: .75rem; margin-left: 4px; color: var(--text-muted); }
 .collection-search .input { width: 100%; font-size: 16px; }
 .collection-count { margin: 8px 0; font-size: .85rem; color: var(--text-muted); }
-.collection-list { padding: 0; margin: 20px 0; list-style: none; }
-.collection-list li { border-bottom: 1px solid var(--rule); }
-.collection-word summary { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 16px 0; list-style: none; }
+.collection-list { display: grid; gap: 12px; padding: 0; margin: 20px 0; list-style: none; }
+.collection-card { overflow: hidden; border: 1px solid var(--border); border-radius: 16px; background: var(--bg-raised); box-shadow: 0 8px 24px rgb(0 0 0 / .08); }
+.collection-word summary { display: grid; grid-template-columns: minmax(0, 1fr) 36px; align-items: center; gap: 8px 12px; padding: 18px; list-style: none; cursor: pointer; }
 .collection-word summary::-webkit-details-marker { display: none; }
-.collection-word summary strong { display: block; font: 550 1.6rem/1.2 var(--font-serif), Georgia, serif; color: var(--text); }
-.collection-definition { display: block; margin-top: 6px; color: var(--text-muted); font-size: .95rem; line-height: 1.5; }
-.collection-word summary svg { flex: none; transition: transform .15s; }
+.collection-card-index { grid-column: 1; grid-row: 1; color: var(--text-faint); font-size: .65rem; font-weight: 650; letter-spacing: .12em; }
+.collection-word summary strong { grid-column: 1; grid-row: 2; display: block; margin-top: 2px; font: 600 clamp(1.8rem, 8vw, 2.25rem)/1.1 var(--font-serif), Georgia, serif; color: var(--text); }
+.collection-definition { grid-column: 1; grid-row: 3; display: block; color: var(--text-muted); font-size: .98rem; line-height: 1.5; }
+.collection-story-cue { grid-column: 1; grid-row: 4; display: inline-flex; align-items: center; gap: 7px; margin-top: 5px; color: var(--text-faint); font-size: .78rem; }
+.collection-story-cue::after { content: ""; width: 5px; height: 5px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg) translateY(-2px); transition: transform .15s; }
+.collection-word summary svg { grid-column: 2; grid-row: 1 / span 4; justify-self: center; width: 34px; height: 34px; padding: 8px; border: 1px solid var(--border); border-radius: 50%; color: var(--text-muted); transition: transform .15s, background .15s; }
 .collection-word[open] summary svg { transform: rotate(90deg); }
-.collection-word > p { margin: 0 0 18px; color: var(--text-muted); font-size: .95rem; line-height: 1.65; }
+.collection-word[open] .collection-story-cue::after { transform: rotate(225deg) translateY(-1px); }
+.collection-note { padding: 0 18px 18px; border-top: 1px solid var(--rule); }
+.collection-note-label { display: block; margin-top: 15px; color: var(--text-faint); font-size: .65rem; font-weight: 650; letter-spacing: .12em; text-transform: uppercase; }
+.collection-note p { margin: 7px 0 0; color: var(--text-muted); font-size: .93rem; line-height: 1.65; }
+.settings-account { margin-top: 32px; }
+.settings-account-card { padding: 16px; border: 1px solid var(--border); border-radius: 14px; background: var(--bg-raised); }
+.settings-account-card > p:first-child { margin: 0 0 14px; color: var(--text-muted); font-size: .9rem; }
+.settings-signout { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; min-height: 48px; padding: 0 14px; border: 1px solid var(--border-strong); border-radius: 9px; background: transparent; color: var(--text); font: inherit; cursor: pointer; }
+.settings-signout:hover { background: var(--bg); border-color: var(--text-muted); }
+.settings-signout:disabled { opacity: .6; cursor: progress; }
 .entry-feedback { color: var(--text-muted); font-size: .85rem; margin: 12px 0 0; }
 .entry-feedback a { display: inline-flex; align-items: center; min-height: 44px; color: var(--text); text-underline-offset: 3px; }
 .name-edit, .link-button, .button--tiny { min-height: 44px; }
