@@ -1,9 +1,13 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { ApiError, createRun, getRound, getRun, letterStates, startRunRound, submitGuess, revealHint, type Round, type Run } from "./api";
 import { ACTIVE_KEY, activeRun, playedPacks, rememberRun, writeLocal } from "./session";
 import { lettersPhrase } from "./letters";
+import { dictionaryReady, isKnownWord, loadDictionary, serverDictionaryReady, subscribeDictionary } from "./dictionary";
+
+/** How the Enter key presents itself. */
+export type EnterState = "idle" | "incomplete" | "unknown" | "word";
 
 const REVEAL_MS = 4 * 200 + 540;
 type Deal = { round: Round; run: Run };
@@ -61,6 +65,10 @@ export function useGame() {
     if (missing) writeLocal(ACTIVE_KEY, null);
   }, []);
 
+  // Off the critical path: the board does not wait on it, and the Enter key
+  // simply has no opinion until it lands.
+  useEffect(() => { loadDictionary(); }, []);
+
   useEffect(() => {
     mounted.current = true;
     let cancelled = false;
@@ -93,6 +101,20 @@ export function useGame() {
   }), [perform, run, round?.id]);
 
   const playable = !!round && round.state === "playing" && !busy && !error && revealingRow === null;
+
+  // What Enter should look like. Both "word" and "unknown" still submit — the
+  // server is the authority on a guess — so only an unfinished draft disables
+  // it. A dictionary that never arrives leaves every full draft looking
+  // submittable, which is the safe way to be wrong.
+  const dictionaryReady_ = useSyncExternalStore(subscribeDictionary, dictionaryReady, serverDictionaryReady);
+  const known = dictionaryReady_ ? isKnownWord(draft) : null;
+  const enterState: EnterState = !playable || !round
+    ? "idle"
+    : draft.length < round.wordLength
+      ? "incomplete"
+      : known === false
+        ? "unknown"
+        : "word";
   const typeLetter = useCallback((letter: string) => {
     if (playable && round) setDraft((d) => d.length >= round.wordLength ? d : d + letter);
   }, [playable, round]);
@@ -149,6 +171,7 @@ export function useGame() {
     run, round, draft, busy, message, error, expired, shake, revealingRow,
     finished: !!round && round.state !== "playing" && revealedRows === round.rows.length,
     letterStates: letterStates(round?.rows.slice(0, revealedRows) ?? []),
-    inputDisabled: !playable, typeLetter, backspace, submit, nextWord, newRun, retry, requestHint,
+    inputDisabled: !playable, enterState,
+    typeLetter, backspace, submit, nextWord, newRun, retry, requestHint,
   };
 }

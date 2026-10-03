@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "dictionary": "node scripts/build-dictionary.mjs",
+    "dictionary": "node scripts/build-dictionary.mjs && node scripts/build-client-dictionary.mjs",
     "packs:generate": "node scripts/generate-packs.mjs",
     "packs:review": "node scripts/review-packs.mjs",
     "packs:check": "node scripts/check-packs.mjs",

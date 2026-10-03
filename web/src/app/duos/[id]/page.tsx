@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { use, useCallback, useEffect, useRef, useState } from "react";
+import { use, useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { ApiError, getDuo, letterStates, mutateDuo, type Duo, type DuoMutation } from "@/lib/api";
 import { useVisiblePolling } from "@/lib/useVisiblePolling";
 import { readLocal, writeLocal } from "@/lib/session";
@@ -10,6 +10,8 @@ import { Board, MARK_LABEL } from "@/components/Board";
 import { Keyboard } from "@/components/Keyboard";
 import { BackButton } from "@/components/BackButton";
 import { Loader } from "@/components/Loader";
+import { dictionaryReady, isKnownWord, loadDictionary, serverDictionaryReady, subscribeDictionary } from "@/lib/dictionary";
+import type { EnterState } from "@/lib/useGame";
 
 type Pending = { action: "guesses" | "pass"; date: string; mutation: DuoMutation };
 export default function DuoPage({ params }: { params: Promise<{ id: string }> }) {
@@ -61,7 +63,18 @@ export default function DuoPage({ params }: { params: Promise<{ id: string }> })
   // refresh immediately either way.
   const waiting = day?.state === "playing" && duo?.status === "active" && !yourTurn;
   useVisiblePolling(load, waiting ? 3_000 : 30_000);
+  useEffect(() => { loadDictionary(); }, []);
   const enabled = !!yourTurn && !busy && !signedOut && !closedDate && !hasPending;
+  // The same Enter treatment as the solo board. Unknown words still submit;
+  // the server decides, here as there.
+  const dictionaryReady_ = useSyncExternalStore(subscribeDictionary, dictionaryReady, serverDictionaryReady);
+  const enterState: EnterState = !enabled
+    ? "idle"
+    : draft.length < wordLength
+      ? "incomplete"
+      : dictionaryReady_ && isKnownWord(draft) === false
+        ? "unknown"
+        : "word";
   const updateDraft = useCallback((next: string) => { setDraft(next); if (dayKey.current) writeLocal(dayKey.current, next); }, []);
   const type = useCallback((letter: string) => { if (enabled) updateDraft((draft + letter.toLowerCase()).slice(0, wordLength)); }, [enabled, updateDraft, draft, wordLength]);
   const backspace = useCallback(() => { if (enabled) updateDraft(draft.slice(0, -1)); }, [enabled, updateDraft, draft]);
@@ -115,7 +128,7 @@ export default function DuoPage({ params }: { params: Promise<{ id: string }> })
       <div className="game-tools"><span role="status">{reconnecting ? "Reconnecting…" : status}</span>{yourTurn && !day.passed.includes(duo.viewerId) && !closedDate && <button className="text-button" disabled={busy || hasPending} onClick={() => void submit("pass")}>Pass turn</button>}</div>
       {error && <div className="duo-error" role="alert">{error}</div>}
       {hasPending && <button className="button button--quiet" disabled={busy} onClick={() => void submit()}>Retry move</button>}
-      {closedDate ? <section className="duo-result"><p>{closedDate} has finished.</p><button className="button" onClick={() => { setClosedDate(null); updateDraft(""); }}>Today’s word</button></section> : day.state === "playing" ? <><div className="rule" /><Keyboard letterStates={letterStates(day.rows)} onKey={type} onBackspace={backspace} onEnter={() => void submit()} disabled={!enabled} /></> : <section className="duo-result"><h2>{day.answer}</h2><p>{day.entry?.definition}</p>{day.entry?.note && <details><summary>Read more</summary><p>{day.entry.note}</p></details>}<Link className="text-button" href="/friends">Back to friends</Link></section>}
+      {closedDate ? <section className="duo-result"><p>{closedDate} has finished.</p><button className="button" onClick={() => { setClosedDate(null); updateDraft(""); }}>Today’s word</button></section> : day.state === "playing" ? <><div className="rule" /><Keyboard letterStates={letterStates(day.rows)} onKey={type} onBackspace={backspace} onEnter={() => void submit()} disabled={!enabled} enterState={enterState} /></> : <section className="duo-result"><h2>{day.answer}</h2><p>{day.entry?.definition}</p>{day.entry?.note && <details><summary>Read more</summary><p>{day.entry.note}</p></details>}<Link className="text-button" href="/friends">Back to friends</Link></section>}
     </>}
   </main>;
 }

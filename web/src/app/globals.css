@@ -433,24 +433,32 @@ button {
 
 .keyboard-row {
   display: flex;
-  gap: 5px;
+  gap: 6px;
   justify-content: center;
 }
 
 .key {
   flex: 1;
   min-width: 0;
-  height: 50px;
+  height: 56px;
   border: 1px solid var(--key-border);
   border-radius: var(--radius-key);
   background: var(--key-bg);
   color: var(--key-text);
-  font-size: 0.92rem;
+  font-size: 1.05rem;
   font-weight: 550;
   letter-spacing: 0.02em;
   text-transform: uppercase;
   cursor: pointer;
-  transition: transform 0.07s ease, opacity 0.18s ease, background 0.18s ease;
+  /* The three that matter on a phone. Without manipulation the browser holds
+     every tap back ~300ms waiting to see if it is a double-tap zoom, which is
+     exactly the lag that makes typing feel heavy. The other two stop a quick
+     run of taps selecting letters or leaving grey flashes behind. */
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.07s ease, opacity 0.18s ease, background 0.18s ease,
+    border-color 0.18s ease, color 0.18s ease;
 }
 
 .key:active {
@@ -468,6 +476,26 @@ button {
   font-size: 0.62rem;
   font-weight: 650;
   letter-spacing: 0.14em;
+}
+
+/* Enter answers the question "is this a word?" before you press it.
+   incomplete — nothing to send yet, so it is the one state that is disabled.
+   unknown    — the local list does not have it. Still pressable: the server is
+                the authority, and a stale local copy must never cost a move.
+   word       — recognised, and lit so the thumb knows where to go. */
+.key--enter[data-state="word"] {
+  background: var(--mark-hit);
+  border-color: var(--mark-hit);
+  color: var(--mark-hit-text);
+}
+
+.key--enter[data-state="unknown"] {
+  border-color: var(--key-border);
+  color: var(--text-faint);
+}
+
+.key--enter[data-state="incomplete"]:disabled {
+  opacity: 0.35;
 }
 
 .key[data-mark="hit"] {
@@ -2535,6 +2563,12 @@ button {
 :focus-visible { outline: 3px solid var(--mark-present); outline-offset: 3px; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .game-app { max-width: 30rem; min-height: 620px; padding-inline: 14px; }
+/* The board keeps the gutter; the keyboard spans the full width, which buys
+   every key about 3px and the ten-key top row most of that. */
+@media (max-width: 420px) {
+  .game-app .keyboard { margin-inline: -8px; }
+  .game-app .keyboard-row { gap: 5px; }
+}
 .game-app .topbar { flex: none; }
 .game-app .topbar > :last-child { justify-self: end; }
 .text-button { border: 0; background: none; color: var(--text-muted); font: inherit; font-size: .85rem; cursor: pointer; padding: 10px 5px; text-decoration: none; min-height: 44px; }
@@ -2610,7 +2644,7 @@ summary { cursor: pointer; color: var(--text-muted); padding-block: 8px; min-hei
 .toast { max-width: calc(100vw - 24px); white-space: normal; text-align: center; font-size: .8rem; letter-spacing: 0; text-transform: none; }
 @media (max-height: 720px) {
   .game-app .topbar { padding-block: 4px; }
-  .game-app .key { height: 44px; }
+  .game-app .key { height: 48px; font-size: 1rem; }
   .game-app .board { gap: 5px; }
   .game-app .row { gap: 5px; }
 }

@@ -218,3 +218,28 @@ test("exhaustion starts a fresh exclusion cycle with stable IDs", async ({ page 
   const seen = await page.evaluate(() => JSON.parse(localStorage.getItem("wordle.packs") ?? "[]"));
   expect(seen).toEqual([completed.pack.id]);
 });
+
+test("enter reflects whether the typed word is real, without ever blocking a guess", async ({ page }) => {
+  await setup(page);
+  await page.goto("/play");
+  await expectWord(page, 1);
+  const enter = page.getByRole("button", { name: /^Submit guess/ });
+
+  // Nothing typed: there is nothing to send.
+  await expect(enter).toBeDisabled();
+
+  await page.locator("h1").click();
+  await page.keyboard.type("zzzz");
+  await expect(enter).toBeDisabled();
+
+  // Full length but not a word. Muted, and still pressable: the server is the
+  // authority on a guess, so a stale local list must never cost a move.
+  await page.keyboard.type("z");
+  await expect(enter).toHaveAttribute("data-state", "unknown");
+  await expect(enter).toBeEnabled();
+
+  for (let i = 0; i < 5; i++) await page.keyboard.press("Backspace");
+  await page.keyboard.type("crane");
+  await expect(enter).toHaveAttribute("data-state", "word");
+  await expect(enter).toBeEnabled();
+});

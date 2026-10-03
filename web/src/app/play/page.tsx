@@ -79,7 +79,7 @@ export default function PlayPage() {
     {finished ? <div className="finished-actions">
       <button className="button button--quiet" onClick={() => setSelected(round)}>Word entry</button>
       <button className="button" disabled={game.busy} onClick={run.complete ? openConclusion : advance}>{run.complete ? "Uncover the connection" : "Next word"}</button>
-    </div> : <Keyboard letterStates={game.letterStates} onKey={game.typeLetter} onEnter={game.submit} onBackspace={game.backspace} disabled={game.inputDisabled} />}
+    </div> : <Keyboard letterStates={game.letterStates} onKey={game.typeLetter} onEnter={game.submit} onBackspace={game.backspace} disabled={game.inputDisabled} enterState={game.enterState} />}
     {game.message && <div className="toast" role="status">{game.message}</div>}
     {error && <Dialog title="Game interrupted" onClose={() => { void game.retry(); }}>{error}</Dialog>}
     {!game.error && !panel && activeEntry && <Entry key={activeEntry.id} round={activeEntry} onClose={() => { setSelected(null); setDismissedRound(round.id); }} action={activeEntry.id === round.id ? (run.complete ? openConclusion : advance) : undefined} actionLabel={run.complete ? "Uncover the connection" : "Next word"} busy={game.busy} />}
