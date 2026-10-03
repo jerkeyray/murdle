@@ -39,7 +39,7 @@ export default function Home() {
   return (
     <main className="home">
       <header className="home-top">
-        <SettingsButton showLabel />
+        <SettingsButton />
         <ProfileButton showLabel
           streakAtRisk={
             profile && profile.streak.current > 0 && !profile.streak.playedToday
