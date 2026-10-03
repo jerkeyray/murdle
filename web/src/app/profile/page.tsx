@@ -186,7 +186,7 @@ export default function ProfilePage() {
           <button aria-pressed={tab === "collection"} onClick={() => setTab("collection")}>All words <span>{solves.length}</span></button>
           <button aria-pressed={tab === "kept"} onClick={() => setTab("kept")}>Saved <span>{saved.length}</span></button>
         </div>
-        <Link className="text-button" href="/friends">Friends{pending.length ? ` · ${pending.length} waiting` : ""}</Link>
+        <Link className="collection-friends" href="/friends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3" /><path d="M3 20v-2a6 6 0 0 1 12 0v2M17 5a3 3 0 0 1 0 6m2 9v-2a6 6 0 0 0-2-4" /></svg><span>Friends</span>{pending.length > 0 && <span className="collection-friends-badge" aria-label={`${pending.length} pending requests`}>{pending.length}</span>}</Link>
       </div>
       {source.length > 0 && <div className="collection-search">
         <label className="sr-only" htmlFor="word-search">Search your words</label>

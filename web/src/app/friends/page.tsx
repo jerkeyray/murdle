@@ -10,6 +10,12 @@ import { useVisiblePolling } from "@/lib/useVisiblePolling";
 import { duoStatus } from "@/lib/duoStatus";
 import { Loader } from "@/components/Loader";
 
+function FriendIcon({ kind }: { kind: "copy" | "share" | "people" | "arrow" }) {
+  return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    {kind === "copy" ? <><rect x="8" y="8" width="12" height="12" rx="2" /><path d="M16 8V4H4v12h4" /></> : kind === "share" ? <><path d="M12 16V3m-4 4 4-4 4 4M5 13v7h14v-7" /></> : kind === "arrow" ? <path d="m9 5 7 7-7 7" /> : <><circle cx="9" cy="8" r="3" /><path d="M3 20v-2a6 6 0 0 1 12 0v2M17 5a3 3 0 0 1 0 6m2 9v-2a6 6 0 0 0-2-4" /></>}
+  </svg>;
+}
+
 export default function FriendsPage() {
   const router = useRouter();
   const [profile, setProfile] = useState<Profile | null>(null);
@@ -88,23 +94,36 @@ export default function FriendsPage() {
       <Link className="button button--link" href={`/sign-in?returnTo=${encodeURIComponent(`/friends${code ? `?code=${code}` : ""}`)}`}>Sign in</Link>
       {error && <p role="alert">{error}</p>}
     </> : <>
-      <section className="friend-invite">
-        <div><span className="label">Your friend code</span><strong>{profile.inviteCode}</strong></div>
-        <div className="friend-invite-actions"><button className="text-button" onClick={() => void share(true)}>Copy link</button><button className="text-button" onClick={() => void share()}>Share</button></div>
+      <section className="friend-invite" aria-label="Invite a friend">
+        <div className="friend-invite-top">
+          <div><span className="label">Your invite code</span><strong>{profile.inviteCode}</strong></div>
+          <div className="friend-invite-actions">
+            <button className="friend-icon-button" aria-label="Copy invite link" title="Copy invite link" onClick={() => void share(true)}><FriendIcon kind="copy" /></button>
+            <button className="friend-icon-button" aria-label="Share invite link" title="Share invite link" onClick={() => void share()}><FriendIcon kind="share" /></button>
+          </div>
+        </div>
+        <p className="friend-invite-caption">Share your code to play the daily word together.</p>
+        <form className="code-form" onSubmit={connect}>
+          <label htmlFor="friend-code">Have a friend’s code?</label>
+          <div className="friend-code-entry"><input id="friend-code" className="input" value={code} onChange={e => setCode(e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, ""))} maxLength={6} autoCapitalize="characters" autoComplete="off" autoCorrect="off" spellCheck={false} placeholder="Enter code" /><button className="button button--inline" disabled={busy || code.trim().length !== 6}>{busy ? "Adding…" : "Add"}</button></div>
+        </form>
       </section>
-      <form className="code-form" onSubmit={connect}><input className="input" aria-label="Friend code" value={code} onChange={e => setCode(e.target.value.toUpperCase())} maxLength={6} placeholder="Friend code" /><button className="button button--inline" disabled={busy || !code.trim()}>Add friend</button></form>
       {!available && <p className="hint">Shared games are unavailable on this server.</p>}
       {error && <p className="form-error" role="alert">{error} <button className="text-button" onClick={() => void load().catch(() => {})}>Retry</button></p>}
       {notice && <p className="hint" role="status">{notice}</p>}
-      {sorted.length === 0 ? <p className="empty">Invite a friend to get started.</p> : <ul className="friend-list">{sorted.map(f => {
+      {sorted.length === 0 ? <section className="friends-empty">
+        <div className="friends-empty-icon"><FriendIcon kind="people" /></div>
+        <h2>A word, shared.</h2><p>Six guesses. Two minds.<br />Invite your first friend to get started.</p>
+        <button className="button button--quiet" onClick={() => void share()}><FriendIcon kind="share" />Invite a friend</button>
+      </section> : <><div className="friends-list-heading"><h2>Your friends</h2><span>{sorted.length}</span></div><ul className="friend-list">{sorted.map(f => {
         const d = duos.find(d => d.friendshipId === f.id);
         const status = f.status === "pending" ? f.incoming ? "Friend request" : "Request sent" : duoStatus(d);
         return <li key={f.id}><button className="friend-tile" onClick={() => { setSelected(f.id); setError(""); setEnding(false); }}>
           <span className="friend-avatar" aria-hidden>{f.displayName.slice(0, 1).toUpperCase() || "?"}<i data-online={f.online} /></span>
           <span className="friend-info"><strong>{f.displayName || "Friend"}</strong><span>{f.status === "accepted" ? f.online ? "Online" : "Offline" : "Pending"}</span></span>
-          <span className="friend-game-status" data-turn={status === "Your turn"}>{status}<span aria-hidden> ↗</span></span>
+          <span className="friend-game-status" data-turn={status === "Your turn"}>{status}</span><span className="friend-chevron"><FriendIcon kind="arrow" /></span>
         </button></li>;
-      })}</ul>}
+      })}</ul></>}
       {friend && <Dialog title={friend.displayName || "Friend"} onClose={() => { setSelected(null); setEnding(false); }}>
         {friend.status === "accepted" ? <>
           <div className="friend-detail-identity"><span className="friend-avatar" aria-hidden>{friend.displayName.slice(0, 1).toUpperCase()}<i data-online={friend.online} /></span><div><h2>{friend.displayName}</h2><p>{friend.online ? "Online" : "Offline"} · {friend.dayStreak} day streak</p></div></div>
