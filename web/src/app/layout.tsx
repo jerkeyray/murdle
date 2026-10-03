@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Instrument_Sans, Fraunces } from "next/font/google";
 import "./globals.css";
-import { Presence } from "@/components/Presence";
 
 // The sans carries the chrome only: keyboard, labels, buttons. It stays
 // quiet so it never competes with the words themselves.
@@ -45,15 +44,19 @@ const themeScript = `
 (function () {
   var t = 'system';
   var c = 'normal';
+  var palette = 'classic';
   try {
     var p = 'wordle.';
     var old = ['mur', 'dle.'].join('');
     t = localStorage.getItem(p + 'theme') || localStorage.getItem(old + 'theme') || 'system';
     c = localStorage.getItem(p + 'contrast') || localStorage.getItem(old + 'contrast');
+    palette = localStorage.getItem(p + 'palette') || localStorage.getItem(old + 'palette') || 'classic';
     if (!localStorage.getItem(p + 'theme') && t) localStorage.setItem(p + 'theme', t);
     if (!localStorage.getItem(p + 'contrast') && c) localStorage.setItem(p + 'contrast', c);
+    if (!localStorage.getItem(p + 'palette') && palette) localStorage.setItem(p + 'palette', palette);
     localStorage.removeItem(old + 'theme');
     localStorage.removeItem(old + 'contrast');
+    localStorage.removeItem(old + 'palette');
   } catch (e) {}
   var scheme = matchMedia('(prefers-color-scheme: light)');
   document.documentElement.dataset.themePreference = t === 'light' || t === 'dark' ? t : 'system';
@@ -64,6 +67,7 @@ const themeScript = `
   apply();
   scheme.addEventListener('change', apply);
   if (c === 'cb') document.documentElement.dataset.contrast = 'cb';
+  if (palette === 'ocean' || palette === 'violet') document.documentElement.dataset.palette = palette;
 })();
 `;
 
@@ -75,7 +79,7 @@ export default function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body className={`${sans.variable} ${serif.variable}`}><Presence />{children}</body>
+      <body className={`${sans.variable} ${serif.variable}`}>{children}</body>
     </html>
   );
 }

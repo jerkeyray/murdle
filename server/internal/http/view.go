@@ -70,7 +70,7 @@ func newRoundView(r *game.Round) roundView {
 	return roundView{
 		ID:         r.ID,
 		State:      string(r.State),
-		WordLength: game.WordLength,
+		WordLength: r.WordLength,
 		MaxRows:    game.MaxRows,
 		Rows:       rows,
 		HintsUsed:  r.HintsUsed,
@@ -88,6 +88,8 @@ func newRoundView(r *game.Round) roundView {
 // cannot leak by someone forgetting a check at a call site.
 type runView struct {
 	ID             string      `json:"id"`
+	Mode           string      `json:"mode"`
+	WordLength     int         `json:"wordLength"`
 	CurrentRoundID string      `json:"currentRoundId,omitempty"`
 	CompletedWords []roundView `json:"completedWords"`
 	NewCycle       bool        `json:"newCycle"`
@@ -102,6 +104,8 @@ type runView struct {
 func newRunView(r *game.Run, pool *words.Pool) runView {
 	v := runView{
 		ID:             r.ID,
+		Mode:           r.Mode,
+		WordLength:     r.WordLength,
 		Length:         r.Length(),
 		Started:        r.Started(),
 		Finished:       r.Finished,
@@ -122,7 +126,7 @@ func newRunView(r *game.Run, pool *words.Pool) runView {
 		}
 		v.CompletedWords = append(v.CompletedWords, result)
 	}
-	if r.Complete() {
+	if r.Mode == "themed" && r.Complete() {
 		if pack, ok := pool.Pack(r.PackID); ok {
 			v.Pack = &packView{ID: pack.ID, Title: pack.Title, Blurb: pack.Blurb}
 			for _, word := range pack.Words {

@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useEffect, useState, useSyncExternalStore } from "react";
-import { getProfile, type Profile } from "@/lib/api";
+import { startTransition, useCallback, useEffect, useState, useSyncExternalStore } from "react";
+import { getHomeSummary, type HomeSummary } from "@/lib/api";
 import { ProfileButton } from "@/components/ProfileButton";
-import { activeRun, subscribeSession } from "@/lib/session";
+import { activeRunFor, readLocal, subscribeSession, type GameConfig, writeLocal } from "@/lib/session";
 import { SettingsButton } from "@/components/SettingsButton";
 import { FriendsEntry } from "@/components/FriendsEntry";
 
@@ -18,22 +18,32 @@ import { FriendsEntry } from "@/components/FriendsEntry";
 const serverSession = () => null;
 
 export default function Home() {
-  const savedRun = useSyncExternalStore(subscribeSession, activeRun, serverSession);
-  const [profile, setProfile] = useState<Profile | null>(null);
-  const fetchProfile = useCallback(() => getProfile(), []);
+  const [config, setConfig] = useState<GameConfig>({ mode: "classic", wordLength: 5, difficulty: "mixed" });
+  const savedRun = useSyncExternalStore(subscribeSession, () => activeRunFor(config), serverSession);
+  const [homeSummary, setHomeSummary] = useState<HomeSummary | null>(null);
+  const fetchHomeSummary = useCallback(() => getHomeSummary(), []);
 
   useEffect(() => {
     let cancelled = false;
-    fetchProfile()
-      .then((p) => {
-        if (!cancelled) setProfile(p);
+    fetchHomeSummary()
+      .then((summary) => {
+        if (!cancelled) setHomeSummary(summary);
       })
       // Signed out is the ordinary case, not an error worth showing.
       .catch(() => {});
     return () => {
       cancelled = true;
     };
-  }, [fetchProfile]);
+  }, [fetchHomeSummary]);
+  useEffect(() => {
+    try {
+      const saved = JSON.parse(readLocal("wordle.mode") ?? "null") as GameConfig | null;
+      if (saved && (saved.mode === "classic" || saved.mode === "themed") && (saved.wordLength === 5 || saved.wordLength === 6)) {
+        startTransition(() => setConfig({ ...saved, difficulty: saved.difficulty === "learning" ? "learning" : "mixed" }));
+      }
+    } catch { /* Start with Classic 5 when storage is unavailable or stale. */ }
+  }, []);
+  useEffect(() => { writeLocal("wordle.mode", JSON.stringify(config)); }, [config]);
 
   return (
     <main className="home">
@@ -41,8 +51,8 @@ export default function Home() {
         <SettingsButton />
         <ProfileButton
           streakAtRisk={
-            profile && profile.streak.current > 0 && !profile.streak.playedToday
-              ? profile.streak.current
+            homeSummary && homeSummary.streak.current > 0 && !homeSummary.streak.playedToday
+              ? homeSummary.streak.current
               : undefined
           }
         />
@@ -51,7 +61,7 @@ export default function Home() {
       <div className="home-middle">
         <section className="home-intro">
           <h1 className="home-mark">Wordle</h1>
-          <Link className="play" href="/play">
+          <Link className="play" href={`/play?mode=${config.mode}&length=${config.wordLength}&difficulty=${config.difficulty}`}>
             <span className="play-word">
               {savedRun ? "Continue" : "Begin"}
             </span>

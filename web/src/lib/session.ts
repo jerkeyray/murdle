@@ -29,14 +29,24 @@ export function activeRun(): string | null {
   const id = readLocal(ACTIVE_KEY);
   return id && /^[a-z0-9]+$/.test(id) ? id : null;
 }
+export type GameDifficulty = "mixed" | "learning";
+export type GameConfig = { mode: "classic" | "themed"; wordLength: 5 | 6; difficulty: GameDifficulty };
+export function configKey(config: GameConfig) { return `${ACTIVE_KEY}.${config.mode}.${config.wordLength}.${config.difficulty}`; }
+export function activeRunFor(config: GameConfig): string | null {
+  // Existing themed five-letter games used the unqualified key. Continue to
+  // restore that one only for the old mixed setting.
+  const id = readLocal(configKey(config)) ?? (config.mode === "themed" && config.wordLength === 5 && config.difficulty === "mixed" ? readLocal(ACTIVE_KEY) : null);
+  return id && /^[a-z0-9]+$/.test(id) ? id : null;
+}
 export function playedPacks(): string[] {
   try {
     const value: unknown = JSON.parse(readLocal(PACKS_KEY) ?? "[]");
     return Array.isArray(value) ? value.filter((x): x is string => typeof x === "string") : [];
   } catch { return []; }
 }
-export function rememberRun(run: Run) {
-  writeLocal(ACTIVE_KEY, run.id);
+export function rememberRun(run: Run, config: GameConfig) {
+  writeLocal(configKey(config), run.id);
+  if (config.mode === "themed" && config.wordLength === 5 && config.difficulty === "mixed") writeLocal(ACTIVE_KEY, run.id);
   if (run.complete && run.pack) {
     const seen = run.newCycle ? [] : playedPacks();
     writeLocal(PACKS_KEY, JSON.stringify([...new Set([...seen, run.pack.id])]));

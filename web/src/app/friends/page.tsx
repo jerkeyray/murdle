@@ -9,6 +9,7 @@ import { Dialog } from "@/components/Dialog";
 import { useVisiblePolling } from "@/lib/useVisiblePolling";
 import { duoStatus } from "@/lib/duoStatus";
 import { Loader } from "@/components/Loader";
+import { Presence } from "@/components/Presence";
 
 function FriendIcon({ kind }: { kind: "copy" | "share" | "people" | "arrow" }) {
   return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -88,6 +89,7 @@ export default function FriendsPage() {
   }
 
   return <main className="sheet friends-page">
+    <Presence />
     <header className="sheet-head"><BackButton href="/" /><h1 className="sheet-title">Friends</h1></header>
     {!ready ? <Loader /> : !profile ? <>
       <p className="empty">Sign in to play with friends.</p>
@@ -118,11 +120,12 @@ export default function FriendsPage() {
       </section> : <><div className="friends-list-heading"><h2>Your friends</h2><span>{sorted.length}</span></div><ul className="friend-list">{sorted.map(f => {
         const d = duos.find(d => d.friendshipId === f.id);
         const status = f.status === "pending" ? f.incoming ? "Friend request" : "Request sent" : duoStatus(d);
-        return <li key={f.id}><button className="friend-tile" onClick={() => { setSelected(f.id); setError(""); setEnding(false); }}>
+        const tile = <>
           <span className="friend-avatar" aria-hidden>{f.displayName.slice(0, 1).toUpperCase() || "?"}<i data-online={f.online} /></span>
           <span className="friend-info"><strong>{f.displayName || "Friend"}</strong><span>{f.status === "accepted" ? f.online ? "Online" : "Offline" : "Pending"}</span></span>
-          <span className="friend-game-status" data-turn={status === "Your turn"}>{status}</span><span className="friend-chevron"><FriendIcon kind="arrow" /></span>
-        </button></li>;
+          <span className="friend-game-status" data-turn={status === "Your turn"}>{d?.status === "active" ? `Open board · ${status}` : status}</span><span className="friend-chevron"><FriendIcon kind="arrow" /></span>
+        </>;
+        return <li key={f.id}>{d?.status === "active" ? <Link className="friend-tile" href={`/duos/${d.id}`}>{tile}</Link> : <button className="friend-tile" onClick={() => { setSelected(f.id); setError(""); setEnding(false); }}>{tile}</button>}</li>;
       })}</ul></>}
       {friend && <Dialog title={friend.displayName || "Friend"} onClose={() => { setSelected(null); setEnding(false); }}>
         {friend.status === "accepted" ? <>

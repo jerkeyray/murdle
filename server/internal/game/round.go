@@ -43,8 +43,10 @@ type HintReveal struct {
 type Round struct {
 	ID string
 	// RunID is the themed run this round belongs to, or "" for a one-off.
-	RunID string
-	Rows  []Row
+	RunID      string
+	Mode       string
+	WordLength int
+	Rows       []Row
 	// HintsUsed counts the tiers this player has spent on their own board.
 	HintsUsed int
 	SolvedRow int
@@ -61,14 +63,15 @@ type Round struct {
 func NewRound(id, answer string) *Round {
 	now := time.Now().UTC()
 	return &Round{
-		ID:        id,
-		Rows:      make([]Row, 0, MaxRows),
-		SolvedRow: -1,
-		State:     StatePlaying,
-		CreatedAt: now,
-		UpdatedAt: now,
-		answer:    strings.ToLower(answer),
-		Hints:     make([]HintReveal, 0, 2),
+		ID:         id,
+		WordLength: len([]rune(answer)),
+		Rows:       make([]Row, 0, MaxRows),
+		SolvedRow:  -1,
+		State:      StatePlaying,
+		CreatedAt:  now,
+		UpdatedAt:  now,
+		answer:     strings.ToLower(answer),
+		Hints:      make([]HintReveal, 0, 2),
 	}
 }
 
@@ -86,7 +89,7 @@ func (r *Round) Guess(guess string, isWord func(string) bool) error {
 	}
 
 	guess = strings.ToLower(strings.TrimSpace(guess))
-	if len([]rune(guess)) != WordLength {
+	if len([]rune(guess)) != r.WordLength {
 		return ErrWrongLength
 	}
 	if !isWord(guess) {

@@ -1,6 +1,7 @@
 package http
 
 import (
+	"context"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -86,6 +87,7 @@ func NewServer(opts Options) http.Handler {
 		r.Route("/api/me", func(r chi.Router) {
 			r.Use(auth.Require)
 			r.Get("/", s.handleMe)
+			r.Get("/home", s.handleHome)
 			r.Post("/name", s.handleSetName)
 			r.Get("/solves", s.handleMySolves)
 			r.Get("/saved", s.handleSavedWords)
@@ -155,6 +157,9 @@ type createRunRequest struct {
 	// database and merged in, because local storage does not follow anyone to
 	// a new phone.
 	ExcludePacks []string `json:"excludePacks"`
+	Mode         string   `json:"mode"`
+	WordLength   int      `json:"wordLength"`
+	Difficulty   string   `json:"difficulty"`
 }
 
 func (s *Server) handleCreateRun(w http.ResponseWriter, r *http.Request) {
@@ -170,22 +175,67 @@ func (s *Server) handleCreateRun(w http.ResponseWriter, r *http.Request) {
 	}
 	s.excludePlayedPacks(r, exclude)
 
-	pack, ok := s.pool.RandomPack(exclude)
-	if !ok {
-		writeError(w, http.StatusInternalServerError, "no_packs", "no themed packs are loaded")
+	mode := req.Mode
+	if mode == "" {
+		mode = "themed"
+	}
+	length := req.WordLength
+	if length == 0 {
+		length = game.WordLength
+	}
+	if (mode != "classic" && mode != "themed") || (length != 5 && length != 6) {
+		writeError(w, http.StatusBadRequest, "invalid_mode", "choose classic or themed, with five or six letters")
 		return
 	}
-
-	run, err := game.NewRun(store.NewID(), pack.ID, pack.WordList())
+	difficulty := req.Difficulty
+	if difficulty == "" {
+		difficulty = "mixed"
+	}
+	if difficulty != "mixed" && difficulty != "learning" {
+		writeError(w, http.StatusBadRequest, "invalid_difficulty", "choose mixed or learning vocabulary")
+		return
+	}
+	var wordsToPlay []string
+	packID := ""
+	newCycle := false
+	if mode == "themed" {
+		pack, ok := s.pool.RandomPackForLength(exclude, length)
+		if !ok {
+			writeError(w, http.StatusInternalServerError, "no_packs", "no themed packs are loaded for that length")
+			return
+		}
+		packID, wordsToPlay, newCycle = pack.ID, pack.WordList(), s.pool.ExhaustedForLength(exclude, length)
+	} else {
+		word, ok := s.pool.RandomWordForDifficulty(length, difficulty)
+		if !ok {
+			writeError(w, http.StatusInternalServerError, "no_words", "no words are loaded for that length")
+			return
+		}
+		wordsToPlay = []string{word.Word}
+	}
+	run, err := game.NewRunWithMode(store.NewID(), mode, packID, wordsToPlay)
 	if err != nil {
 		s.log.Error("creating run", "err", err)
 		writeError(w, http.StatusInternalServerError, "create_failed", "could not start the run")
 		return
 	}
-	run.NewCycle = s.pool.Exhausted(exclude)
+	run.NewCycle = newCycle
 	if err := s.rounds.CreateRun(r.Context(), run); err != nil {
 		s.log.Error("storing run", "err", err)
 		writeError(w, http.StatusInternalServerError, "create_failed", "could not start the run")
+		return
+	}
+	// The first board is always needed immediately. Dealing it in this request
+	// removes a full client/server round trip from tapping Begin, while the
+	// existing create-then-deal flow remains available to older clients.
+	if r.URL.Query().Get("deal") == "1" {
+		started, round, err := s.startRunRound(r.Context(), run.ID)
+		if err != nil {
+			s.log.Error("creating first round", "err", err)
+			writeError(w, http.StatusInternalServerError, "create_failed", "could not start the round")
+			return
+		}
+		writeJSON(w, http.StatusCreated, runRoundResponse{Round: s.roundView(round), Run: newRunView(started, s.pool)})
 		return
 	}
 
@@ -230,25 +280,9 @@ type runRoundResponse struct {
 }
 
 func (s *Server) handleStartRunRound(w http.ResponseWriter, r *http.Request) {
-	runID := chi.URLParam(r, "id")
-	roundID := store.NewID()
-
-	var answer string
-	run, err := s.rounds.UpdateRun(r.Context(), runID, func(run *game.Run) error {
-		var err error
-		answer, err = run.StartRound(roundID)
-		return err
-	})
+	run, round, err := s.startRunRound(r.Context(), chi.URLParam(r, "id"))
 	if err != nil {
 		s.writeGameError(w, err)
-		return
-	}
-
-	round := game.NewRound(roundID, answer)
-	round.RunID = runID
-	if err := s.rounds.Create(r.Context(), round); err != nil {
-		s.log.Error("creating round", "err", err)
-		writeError(w, http.StatusInternalServerError, "create_failed", "could not start the round")
 		return
 	}
 
@@ -256,6 +290,27 @@ func (s *Server) handleStartRunRound(w http.ResponseWriter, r *http.Request) {
 		Round: s.roundView(round),
 		Run:   newRunView(run, s.pool),
 	})
+}
+
+func (s *Server) startRunRound(ctx context.Context, runID string) (*game.Run, *game.Round, error) {
+	roundID := store.NewID()
+	var answer string
+	run, err := s.rounds.UpdateRun(ctx, runID, func(run *game.Run) error {
+		var err error
+		answer, err = run.StartRound(roundID)
+		return err
+	})
+	if err != nil {
+		return nil, nil, err
+	}
+
+	round := game.NewRound(roundID, answer)
+	round.RunID = runID
+	round.Mode = run.Mode
+	if err := s.rounds.Create(ctx, round); err != nil {
+		return nil, nil, err
+	}
+	return run, round, nil
 }
 
 func (s *Server) handleGetRound(w http.ResponseWriter, r *http.Request) {
@@ -378,7 +433,10 @@ func (s *Server) recordSolve(r *http.Request, round *game.Round) {
 	}
 
 	answer := round.Reveal()
-	packID, _ := s.pool.PackIDFor(answer)
+	packID := ""
+	if round.Mode == "" || round.Mode == "themed" {
+		packID, _ = s.pool.PackIDFor(answer)
+	}
 
 	var solvedRow *int
 	if round.State == game.StateWon {
@@ -416,7 +474,7 @@ func (s *Server) writeGameError(w http.ResponseWriter, err error) {
 	case errors.Is(err, game.ErrRoundOver):
 		writeError(w, http.StatusConflict, "round_over", "this round has already finished")
 	case errors.Is(err, game.ErrWrongLength):
-		writeError(w, http.StatusUnprocessableEntity, "wrong_length", "that is not "+game.LengthWord()+" letters")
+		writeError(w, http.StatusUnprocessableEntity, "wrong_length", "that is not the right number of letters")
 	case errors.Is(err, game.ErrNotAWord):
 		writeError(w, http.StatusUnprocessableEntity, "not_a_word", "that is not a word")
 	case errors.Is(err, game.ErrHintLocked):

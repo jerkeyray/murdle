@@ -11,7 +11,11 @@ const MaxRows = 6
 // LengthWord spells WordLength for player-facing prose, so a message telling
 // someone how many letters to enter cannot disagree with the rule itself.
 func LengthWord() string {
-	switch WordLength {
+	return LengthWordFor(WordLength)
+}
+
+func LengthWordFor(length int) string {
+	switch length {
 	case 4:
 		return "four"
 	case 5:
@@ -23,7 +27,7 @@ func LengthWord() string {
 	case 8:
 		return "eight"
 	}
-	return strconv.Itoa(WordLength)
+	return strconv.Itoa(length)
 }
 
 // Points is what solving on the given row index is worth.

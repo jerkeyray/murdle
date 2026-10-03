@@ -18,7 +18,7 @@ import { fileURLToPath } from "node:url";
 import path from "node:path";
 import wordListPath from "word-list";
 
-const WORD_LENGTH = 5;
+const WORD_LENGTHS = [5, 6];
 const OUT = path.join(
   path.dirname(fileURLToPath(import.meta.url)),
   "..",
@@ -38,9 +38,9 @@ const words = [
       .map((w) => w.trim().toLowerCase())
       // Plain a-z only: no proper nouns, accents, apostrophes or hyphens,
       // none of which the keyboard can produce.
-      .filter((w) => new RegExp(`^[a-z]{${WORD_LENGTH}}$`).test(w)),
+      .filter((w) => WORD_LENGTHS.includes(w.length) && /^[a-z]+$/.test(w)),
   ),
 ].sort();
 
 await writeFile(OUT, words.join("\n") + "\n");
-console.log(`wrote ${words.length} ${WORD_LENGTH}-letter words to ${OUT}`);
+console.log(`wrote ${words.length} five- and six-letter words to ${OUT}`);

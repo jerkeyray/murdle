@@ -9,6 +9,7 @@
  */
 
 export type Theme = "dark" | "light" | "system";
+export type Palette = "classic" | "ocean" | "violet";
 
 const listeners = new Set<() => void>();
 
@@ -23,6 +24,7 @@ export function subscribe(listener: () => void) {
   const onStorage = (event: StorageEvent) => {
     if (event.key === "wordle.theme") { applyTheme(normalizeTheme(event.newValue)); emit(); }
     if (event.key === "wordle.contrast") { document.documentElement.dataset.contrast = event.newValue === "cb" ? "cb" : "normal"; emit(); }
+    if (event.key === "wordle.palette") { applyPalette(normalizePalette(event.newValue)); emit(); }
   };
   scheme.addEventListener("change", onScheme);
   window.addEventListener("storage", onStorage);
@@ -37,12 +39,20 @@ function normalizeTheme(theme: string | null | undefined): Theme {
   return theme === "light" || theme === "dark" ? theme : "system";
 }
 
+function normalizePalette(palette: string | null | undefined): Palette {
+  return palette === "ocean" || palette === "violet" ? palette : "classic";
+}
+
 export function getTheme(): Theme {
   return normalizeTheme(document.documentElement.dataset.themePreference);
 }
 
 export function getColorBlind(): boolean {
   return document.documentElement.dataset.contrast === "cb";
+}
+
+export function getPalette(): Palette {
+  return normalizePalette(document.documentElement.dataset.palette);
 }
 
 /**
@@ -56,6 +66,10 @@ export function getServerTheme(): Theme {
 
 export function getServerColorBlind(): boolean {
   return false;
+}
+
+export function getServerPalette(): Palette {
+  return "classic";
 }
 
 function persist(key: string, value: string) {
@@ -74,6 +88,11 @@ function applyTheme(theme: Theme) {
     : theme;
 }
 
+function applyPalette(palette: Palette) {
+  if (palette === "classic") delete document.documentElement.dataset.palette;
+  else document.documentElement.dataset.palette = palette;
+}
+
 export function setTheme(theme: Theme) {
   applyTheme(theme);
   persist("wordle.theme", theme);
@@ -87,5 +106,11 @@ export function setColorBlind(on: boolean) {
     delete document.documentElement.dataset.contrast;
   }
   persist("wordle.contrast", on ? "cb" : "normal");
+  emit();
+}
+
+export function setPalette(palette: Palette) {
+  applyPalette(palette);
+  persist("wordle.palette", palette);
   emit();
 }

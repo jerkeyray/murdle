@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { ApiError, createRun, getRound, getRun, letterStates, startRunRound, submitGuess, revealHint, type Round, type Run } from "./api";
-import { ACTIVE_KEY, activeRun, playedPacks, rememberRun, writeLocal } from "./session";
+import { ACTIVE_KEY, activeRunFor, type GameConfig, playedPacks, rememberRun, writeLocal } from "./session";
 import { lettersPhrase } from "./letters";
 import { dictionaryReady, isKnownWord, loadDictionary, serverDictionaryReady, subscribeDictionary } from "./dictionary";
 
@@ -19,16 +19,21 @@ async function restore(id: string): Promise<Deal> {
   const round = run.completedWords.find((r) => r.id === run.currentRoundId) ?? await getRound(run.currentRoundId);
   return { run, round };
 }
-async function begin(): Promise<Deal> {
-  const run = await createRun({ excludePacks: playedPacks() });
-  rememberRun(run); // Retain the run even if dealing its first board fails.
-  return startRunRound(run.id);
+async function begin(config: GameConfig): Promise<Deal> {
+  const dealt = await createRun({ excludePacks: config.mode === "themed" ? playedPacks() : [], ...config });
+  rememberRun(dealt.run, config);
+  return dealt;
 }
 
-export function useGame() {
+export function useGame(config: GameConfig = { mode: "themed", wordLength: 5, difficulty: "mixed" }) {
+  const { mode, wordLength, difficulty } = config;
   const [run, setRun] = useState<Run | null>(null);
   const [round, setRound] = useState<Round | null>(null);
-  const [draft, setDraft] = useState("");
+  // Empty strings retain a player's chosen tile positions. That means they can
+  // work through a word from the middle without letters shifting left.
+  const [draft, setDraft] = useState<string[]>([]);
+  const [draftCursor, setDraftCursor] = useState(0);
+  const draftCursorRef = useRef(0);
   const [busy, setBusy] = useState(false);
   const lock = useRef(false);
   const [message, setMessage] = useState<string | null>(null);
@@ -50,9 +55,9 @@ export function useGame() {
   }, [later]);
   const accept = useCallback((dealt: Deal) => {
     setRun(dealt.run); setRound(dealt.round);
-    setDraft(""); setRevealingRow(null); setRevealedRows(dealt.round.rows.length);
-    rememberRun(dealt.run); setError(null); setExpired(false);
-  }, []);
+    setDraft([]); draftCursorRef.current = 0; setDraftCursor(0); setRevealingRow(null); setRevealedRows(dealt.round.rows.length);
+    rememberRun(dealt.run, { mode, wordLength, difficulty }); setError(null); setExpired(false);
+  }, [mode, wordLength, difficulty]);
   const fail = useCallback((err: unknown) => {
     const missing = err instanceof ApiError && (err.code === "run_not_found" || err.code === "round_not_found");
     setExpired(missing);
@@ -72,14 +77,14 @@ export function useGame() {
   useEffect(() => {
     mounted.current = true;
     let cancelled = false;
-    const saved = activeRun();
-    opening.current ??= saved ? restore(saved) : begin();
+    const saved = activeRunFor({ mode, wordLength, difficulty });
+    opening.current ??= saved ? restore(saved) : begin({ mode, wordLength, difficulty });
     opening.current.then((dealt) => { if (!cancelled) accept(dealt); }).catch((err: unknown) => {
       if (!cancelled) { opening.current = null; fail(err); }
     });
     const pending = timers.current;
     return () => { cancelled = true; mounted.current = false; pending.forEach(clearTimeout); };
-  }, [accept, fail]);
+  }, [accept, fail, mode, wordLength, difficulty]);
 
   const perform = useCallback(async (action: () => Promise<Deal>) => {
     if (lock.current) return;
@@ -89,16 +94,16 @@ export function useGame() {
     finally { lock.current = false; if (mounted.current) setBusy(false); }
   }, [accept, fail]);
   const retry = useCallback(() => perform(() => {
-    const saved = activeRun(); return saved ? restore(saved) : begin();
-  }), [perform]);
-  const newRun = useCallback(() => perform(begin), [perform]);
+    const saved = activeRunFor({ mode, wordLength, difficulty }); return saved ? restore(saved) : begin({ mode, wordLength, difficulty });
+  }), [perform, mode, wordLength, difficulty]);
+  const newRun = useCallback(() => perform(() => begin({ mode, wordLength, difficulty })), [perform, mode, wordLength, difficulty]);
   const nextWord = useCallback(() => perform(async () => {
-    if (!run) return begin();
+    if (!run) return begin({ mode, wordLength, difficulty });
     // Recover a response lost after the next word was already dealt.
     const current = await getRun(run.id);
     if (current.currentRoundId !== round?.id || current.complete) return restore(run.id);
     return startRunRound(run.id);
-  }), [perform, run, round?.id]);
+  }), [perform, run, round?.id, mode, wordLength, difficulty]);
 
   const playable = !!round && round.state === "playing" && !busy && !error && revealingRow === null;
 
@@ -107,41 +112,69 @@ export function useGame() {
   // it. A dictionary that never arrives leaves every full draft looking
   // submittable, which is the safe way to be wrong.
   const dictionaryReady_ = useSyncExternalStore(subscribeDictionary, dictionaryReady, serverDictionaryReady);
-  const known = dictionaryReady_ ? isKnownWord(draft) : null;
+  const draftWord = draft.join("");
+  const draftComplete = !!round && draft.length === round.wordLength && draft.every(Boolean);
+  const known = dictionaryReady_ && draftComplete ? isKnownWord(draftWord) : null;
   const enterState: EnterState = !playable || !round
     ? "idle"
-    : draft.length < round.wordLength
+    : !draftComplete
       ? "incomplete"
       : known === false
         ? "unknown"
         : "word";
   const typeLetter = useCallback((letter: string) => {
-    if (playable && round) setDraft((d) => d.length >= round.wordLength ? d : d + letter);
+    const position = draftCursorRef.current;
+    if (!playable || !round || position >= round.wordLength) return;
+    setDraft((current) => {
+      const next = Array.from({ length: round.wordLength }, (_, index) => current[index] ?? "");
+      next[position] = letter;
+      return next;
+    });
+    const nextPosition = Math.min(position + 1, round.wordLength);
+    draftCursorRef.current = nextPosition;
+    setDraftCursor(nextPosition);
   }, [playable, round]);
-  const backspace = useCallback(() => { if (playable) setDraft((d) => d.slice(0, -1)); }, [playable]);
+  const backspace = useCallback(() => {
+    const cursor = draftCursorRef.current;
+    if (!playable || !round || cursor === 0) return;
+    const position = Math.min(cursor, round.wordLength) - 1;
+    setDraft((current) => {
+      const next = Array.from({ length: round.wordLength }, (_, index) => current[index] ?? "");
+      next[position] = "";
+      return next;
+    });
+    draftCursorRef.current = position;
+    setDraftCursor(position);
+  }, [playable, round]);
+  const selectDraftTile = useCallback((index: number) => {
+    if (playable && round && index >= 0 && index < round.wordLength) {
+      draftCursorRef.current = index;
+      setDraftCursor(index);
+    }
+  }, [playable, round]);
   const reject = useCallback((text: string) => {
     flash(text); setShake(true); later(() => setShake(false), 450);
   }, [flash, later]);
   const submit = useCallback(async () => {
     if (!playable || !round || lock.current) return;
-    if (draft.length !== round.wordLength) { reject(`Enter ${lettersPhrase(round.wordLength)}`); return; }
+    if (!draftComplete) { reject(`Enter ${lettersPhrase(round.wordLength)}`); return; }
     lock.current = true; setBusy(true);
     try {
-      const result = await submitGuess(round.id, draft);
+      const result = await submitGuess(round.id, draftWord);
       if (!mounted.current) return;
-      setRound(result.round); setDraft("");
+      setRound(result.round); setDraft([]); draftCursorRef.current = 0; setDraftCursor(0);
       const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       setRevealingRow(reduced ? null : result.round.rows.length - 1);
       const settle = () => {
         setRevealingRow(null); setRevealedRows(result.round.rows.length);
-        if (result.run) { setRun(result.run); rememberRun(result.run); }
+        if (result.run) { setRun(result.run); rememberRun(result.run, { mode, wordLength, difficulty }); }
       };
       if (reduced) settle(); else later(settle, REVEAL_MS);
     } catch (err) {
       if (err instanceof ApiError && ["wrong_length", "not_a_word"].includes(err.code)) reject(err.message);
       else fail(err); // Retry reads server state before accepting another guess.
     } finally { lock.current = false; if (mounted.current) setBusy(false); }
-  }, [playable, round, draft, reject, later, fail]);
+  }, [playable, round, draftComplete, draftWord, reject, later, fail, mode, wordLength, difficulty]);
   const requestHint = useCallback(async () => {
     if (!playable || !round || lock.current) return;
     lock.current = true; setBusy(true);
@@ -168,10 +201,10 @@ export function useGame() {
   }, [submit, backspace, typeLetter]);
 
   return {
-    run, round, draft, busy, message, error, expired, shake, revealingRow,
+    run, round, draft, draftCursor, busy, message, error, expired, shake, revealingRow,
     finished: !!round && round.state !== "playing" && revealedRows === round.rows.length,
     letterStates: letterStates(round?.rows.slice(0, revealedRows) ?? []),
     inputDisabled: !playable, enterState,
-    typeLetter, backspace, submit, nextWord, newRun, retry, requestHint,
+    typeLetter, backspace, selectDraftTile, submit, nextWord, newRun, retry, requestHint,
   };
 }

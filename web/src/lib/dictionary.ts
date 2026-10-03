@@ -14,6 +14,10 @@
  * is never on the path that puts the board on screen.
  */
 let words: Set<string> | null = null;
+// Keep feedback aligned with the server’s uncensored supplement. The server
+// remains authoritative, so a full draft is always still submittable.
+const BROAD_GUESSES = ["rapes", "raped", "rapist", "sexing", "sexual", "slangs", "slangy", "swears", "swore", "curse", "cursed", "curses", "damned", "damnit", "fucked", "fucker", "fucks", "shitty", "shit", "asshole", "bastard", "queers", "queer", "dykes", "dyke", "whored", "whores", "whore", "nudity", "nudes", "naked", "genital", "genitals"];
+const SIX_LETTER_ANSWERS = "comets aurora nebula planet meteor chorus melody rhythm encore actors beacon harbor sailor voyage island author volume leafed margin phrase petals shovel trowel seeded pruned frosty flurry winter icicle sleigh pillow kettle drawer carpet window street subway market museum arcade ticket engine travel detour tarmac recipe ladles simmer pepper saucer breeze cloudy stormy sunset melted beetle weevil rabbit otters insect hammer chisel sawing sander planer reason debate proofs listen assent sports league racket umpire medals yellow orange violet indigo sienna minute second season spring autumn friend family smiles voices kindly meadow valley forest summit canyon weaver potter sketch writer design".split(" ");
 let loading: Promise<Set<string> | null> | null = null;
 const listeners = new Set<() => void>();
 
@@ -22,7 +26,7 @@ async function fetchWords(): Promise<Set<string> | null> {
     const res = await fetch("/dictionary.txt");
     if (!res.ok) return null;
     const text = await res.text();
-    return new Set(text.split("\n").map((w) => w.trim()).filter(Boolean));
+    return new Set([...text.split("\n").map((w) => w.trim()).filter(Boolean), ...BROAD_GUESSES, ...SIX_LETTER_ANSWERS]);
   } catch {
     // Offline, blocked, or missing. The Enter key simply stops predicting.
     return null;

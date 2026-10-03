@@ -18,7 +18,9 @@ var (
 // The words secretly share a theme, withheld until the run ends, so the player
 // is working out the connection as well as the words.
 type Run struct {
-	ID string
+	ID         string
+	Mode       string
+	WordLength int
 	// PackID identifies the theme. Never serialize this before the run ends.
 	PackID string
 	Words  []string
@@ -38,18 +40,24 @@ type Run struct {
 
 // NewRun starts a run over the given words, in order.
 func NewRun(id, packID string, words []string) (*Run, error) {
+	return NewRunWithMode(id, "themed", packID, words)
+}
+
+func NewRunWithMode(id, mode, packID string, words []string) (*Run, error) {
 	if len(words) == 0 {
 		return nil, ErrEmptyWordList
 	}
 
 	now := time.Now().UTC()
 	return &Run{
-		ID:        id,
-		PackID:    packID,
-		Words:     words,
-		RoundIDs:  make([]string, 0, len(words)),
-		CreatedAt: now,
-		UpdatedAt: now,
+		ID:         id,
+		Mode:       mode,
+		WordLength: len([]rune(words[0])),
+		PackID:     packID,
+		Words:      words,
+		RoundIDs:   make([]string, 0, len(words)),
+		CreatedAt:  now,
+		UpdatedAt:  now,
 	}, nil
 }
 

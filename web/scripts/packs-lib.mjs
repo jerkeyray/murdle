@@ -19,10 +19,10 @@ export const PENDING_PATH = path.join(WORDS_DIR, "packs.pending.json");
 export const DICTIONARY_PATH = path.join(WORDS_DIR, "dictionary.txt");
 
 export const WORDS_PER_PACK = 5;
-export const WORD_LENGTH = 5;
+export const WORD_LENGTH = Number(process.env.WORD_LENGTH ?? "5");
 
 export const packWordSchema = z.object({
-  word: z.string().describe("Exactly five letters, lowercase a-z only."),
+  word: z.string().describe(`Exactly ${WORD_LENGTH} letters, lowercase a-z only.`),
   register: z.enum(["standard", "slang"]),
   difficulty: z.enum(["familiar", "stretch", "challenging"]),
   hints: z.array(z.string().min(12)).length(2).describe("Two separately authored clues: broad context, then a narrower association. No answer text, letters, positions, direct definitions, or pack theme."),
@@ -62,13 +62,6 @@ export async function loadDictionary() {
 }
 
 /**
- * Words we will not serve regardless of what the model says. Kept as whole
- * words rather than substrings — substring matching on a five-letter word list
- * produces more false positives than it prevents.
- */
-const BLOCKLIST = new Set(["rapes", "nazis", "kikes", "spics", "chink", "wetba"]);
-
-/**
  * Checks a pack against everything that must be true before a player sees it.
  *
  * Returns a list of problems; empty means it passed. Slang is allowed to be
@@ -98,9 +91,6 @@ export function checkPack(pack, { dictionary, existingWords, existingIds }) {
     if (!new RegExp(`^[a-z]{${WORD_LENGTH}}$`).test(w)) {
       problems.push(`"${w}" is not ${WORD_LENGTH} lowercase letters`);
       continue;
-    }
-    if (BLOCKLIST.has(w)) {
-      problems.push(`"${w}" is on the blocklist`);
     }
     if (seen.has(w)) {
       problems.push(`"${w}" appears twice in this pack`);

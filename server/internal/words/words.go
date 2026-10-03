@@ -19,6 +19,13 @@ import (
 //go:embed dictionary.txt
 var dictionaryRaw string
 
+// dictionaryExtra is a small uncensored supplement while the broad-source
+// import is reviewed. Guess acceptance is intentionally separate from which
+// words the game can serve as answers.
+//
+//go:embed dictionary_extra.txt
+var dictionaryExtra string
+
 // Pool answers "is this a word?" and "give me something to play".
 type Pool struct {
 	dictionary map[string]struct{}
@@ -41,7 +48,7 @@ func NewPool() *Pool {
 		panic("words: " + err.Error())
 	}
 
-	dictWords := strings.Fields(dictionaryRaw)
+	dictWords := append(strings.Fields(dictionaryRaw), strings.Fields(dictionaryExtra)...)
 	dictionary := make(map[string]struct{}, len(dictWords)+len(packs)*5)
 	for _, w := range dictWords {
 		dictionary[w] = struct{}{}

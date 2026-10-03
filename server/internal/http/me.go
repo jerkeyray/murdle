@@ -28,6 +28,17 @@ type profileView struct {
 	WordsLearned int `json:"wordsLearned"`
 }
 
+// homeView is deliberately smaller than a profile. The front page only needs
+// to know whether a signed-in player could lose a streak; loading hundreds of
+// solved words just to paint a badge makes the first screen wait on work it
+// does not show.
+type homeView struct {
+	Streak struct {
+		Current     int  `json:"current"`
+		PlayedToday bool `json:"playedToday"`
+	} `json:"streak"`
+}
+
 type solveView struct {
 	Word      string     `json:"word"`
 	PackID    string     `json:"packId"`
@@ -93,6 +104,26 @@ func (s *Server) handleMe(w http.ResponseWriter, r *http.Request) {
 	v.Streak.PlayedToday = streak.PlayedToday
 	v.WordsLearned = len(solves)
 
+	writeJSON(w, http.StatusOK, v)
+}
+
+func (s *Server) handleHome(w http.ResponseWriter, r *http.Request) {
+	p, ok := s.player(r)
+	if !ok {
+		writeError(w, http.StatusUnauthorized, "unauthorized", "sign in to do that")
+		return
+	}
+
+	streak, err := s.players.Streak(r.Context(), p.ID, localDate(r))
+	if err != nil {
+		s.log.Error("reading home streak", "err", err)
+		writeError(w, http.StatusInternalServerError, "internal", "could not read your home")
+		return
+	}
+
+	var v homeView
+	v.Streak.Current = streak.Current
+	v.Streak.PlayedToday = streak.PlayedToday
 	writeJSON(w, http.StatusOK, v)
 }
 

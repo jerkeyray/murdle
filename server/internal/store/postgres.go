@@ -39,34 +39,38 @@ func NewPostgres(pool *pgxpool.Pool, ttl time.Duration) *Postgres {
 // accident. Writing the mapping out here means persistence can see the answer
 // without the game package ever offering it to anything else.
 type roundRecord struct {
-	ID        string            `json:"id"`
-	RunID     string            `json:"runId"`
-	Answer    string            `json:"answer"`
-	Rows      []game.Row        `json:"rows"`
-	HintsUsed int               `json:"hintsUsed"`
-	SolvedRow int               `json:"solvedRow"`
-	State     game.State        `json:"state"`
-	Hints     []game.HintReveal `json:"hints"`
-	CreatedAt time.Time         `json:"createdAt"`
-	UpdatedAt time.Time         `json:"updatedAt"`
+	ID         string            `json:"id"`
+	RunID      string            `json:"runId"`
+	Mode       string            `json:"mode,omitempty"`
+	Answer     string            `json:"answer"`
+	WordLength int               `json:"wordLength,omitempty"`
+	Rows       []game.Row        `json:"rows"`
+	HintsUsed  int               `json:"hintsUsed"`
+	SolvedRow  int               `json:"solvedRow"`
+	State      game.State        `json:"state"`
+	Hints      []game.HintReveal `json:"hints"`
+	CreatedAt  time.Time         `json:"createdAt"`
+	UpdatedAt  time.Time         `json:"updatedAt"`
 }
 
 type runRecord struct {
-	ID        string        `json:"id"`
-	PackID    string        `json:"packId"`
-	Words     []string      `json:"words"`
-	RoundIDs  []string      `json:"roundIds"`
-	Points    int           `json:"points"`
-	Results   []roundRecord `json:"results"`
-	NewCycle  bool          `json:"newCycle"`
-	Finished  int           `json:"finished"`
-	CreatedAt time.Time     `json:"createdAt"`
-	UpdatedAt time.Time     `json:"updatedAt"`
+	ID         string        `json:"id"`
+	PackID     string        `json:"packId"`
+	Mode       string        `json:"mode,omitempty"`
+	WordLength int           `json:"wordLength,omitempty"`
+	Words      []string      `json:"words"`
+	RoundIDs   []string      `json:"roundIds"`
+	Points     int           `json:"points"`
+	Results    []roundRecord `json:"results"`
+	NewCycle   bool          `json:"newCycle"`
+	Finished   int           `json:"finished"`
+	CreatedAt  time.Time     `json:"createdAt"`
+	UpdatedAt  time.Time     `json:"updatedAt"`
 }
 
 func newRoundRecord(r *game.Round) roundRecord {
 	return roundRecord{
-		ID: r.ID, RunID: r.RunID, Answer: r.Answer(), Rows: r.Rows,
+		ID: r.ID, RunID: r.RunID, Mode: r.Mode, Answer: r.Answer(), WordLength: r.WordLength, Rows: r.Rows,
 		HintsUsed: r.HintsUsed, SolvedRow: r.SolvedRow, State: r.State,
 		Hints: r.Hints, CreatedAt: r.CreatedAt, UpdatedAt: r.UpdatedAt,
 	}
@@ -74,6 +78,10 @@ func newRoundRecord(r *game.Round) roundRecord {
 
 func (rec roundRecord) round() *game.Round {
 	r := game.NewRound(rec.ID, rec.Answer)
+	r.Mode = rec.Mode
+	if rec.WordLength > 0 {
+		r.WordLength = rec.WordLength
+	}
 	r.RunID = rec.RunID
 	r.HintsUsed = rec.HintsUsed
 	r.SolvedRow = rec.SolvedRow
@@ -95,7 +103,7 @@ func newRunRecord(r *game.Run) runRecord {
 		results[i] = newRoundRecord(&r.Results[i])
 	}
 	return runRecord{
-		ID: r.ID, PackID: r.PackID, Words: r.Words, RoundIDs: r.RoundIDs,
+		ID: r.ID, PackID: r.PackID, Mode: r.Mode, WordLength: r.WordLength, Words: r.Words, RoundIDs: r.RoundIDs,
 		Points: r.Points, Results: results, NewCycle: r.NewCycle,
 		Finished: r.Finished, CreatedAt: r.CreatedAt, UpdatedAt: r.UpdatedAt,
 	}
@@ -103,12 +111,18 @@ func newRunRecord(r *game.Run) runRecord {
 
 func (rec runRecord) run() *game.Run {
 	r := &game.Run{
-		ID: rec.ID, PackID: rec.PackID, Words: rec.Words, RoundIDs: rec.RoundIDs,
+		ID: rec.ID, PackID: rec.PackID, Mode: rec.Mode, WordLength: rec.WordLength, Words: rec.Words, RoundIDs: rec.RoundIDs,
 		Points: rec.Points, NewCycle: rec.NewCycle, Finished: rec.Finished,
 		CreatedAt: rec.CreatedAt, UpdatedAt: rec.UpdatedAt,
 	}
 	if r.RoundIDs == nil {
 		r.RoundIDs = []string{}
+	}
+	if r.Mode == "" {
+		r.Mode = "themed"
+	}
+	if r.WordLength == 0 && len(r.Words) > 0 {
+		r.WordLength = len([]rune(r.Words[0]))
 	}
 	r.Results = make([]game.Round, len(rec.Results))
 	for i := range rec.Results {

@@ -3,10 +3,13 @@
 import { useSyncExternalStore } from "react";
 import {
   getColorBlind,
+  getPalette,
   getServerColorBlind,
+  getServerPalette,
   getServerTheme,
   getTheme,
   setColorBlind,
+  setPalette,
   setTheme,
   subscribe,
 } from "@/lib/theme";
@@ -26,6 +29,7 @@ export function Preferences() {
     getColorBlind,
     getServerColorBlind,
   );
+  const palette = useSyncExternalStore(subscribe, getPalette, getServerPalette);
 
   return (
     <section className="prefs">
@@ -42,13 +46,25 @@ export function Preferences() {
           <p className="pref-sub">System follows your device’s appearance.</p>
         </div>
 
+        <div className="appearance-pref palette-pref">
+          <p className="pref-name">Board colours</p>
+          <div className="palette-options" role="group" aria-label="Board colours">
+            {([
+              ["classic", "Classic"],
+              ["ocean", "Ocean"],
+              ["violet", "Violet"],
+            ] as const).map(([choice, label]) => <button key={choice} aria-pressed={palette === choice} onClick={() => setPalette(choice)}><span className="palette-dots" data-palette={choice} aria-hidden><i /><i /></span>{label}</button>)}
+          </div>
+          <p className="pref-sub">Choose the colours used for correct and misplaced letters.</p>
+        </div>
+
         <button
           className="pref"
           onClick={() => setColorBlind(!colorBlind)}
           aria-pressed={colorBlind}
         >
           <span className="pref-text">
-            <span className="pref-name">High contrast marks</span>
+            <span className="pref-name">Colour-blind marks</span>
             <span className="pref-sub">
               Blue and orange instead of green and rose, with shapes
             </span>

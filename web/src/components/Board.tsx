@@ -8,6 +8,8 @@ interface TileProps {
   /** Position in the row, which staggers the reveal flip. */
   index: number;
   revealing?: boolean;
+  selected?: boolean;
+  onSelect?: () => void;
 }
 
 /** Glyphs shown only in colour-blind mode, so the marks survive with no hue. */
@@ -36,7 +38,7 @@ const MARK_VARS: Record<Mark, { bg: string; text: string }> = {
   absent: { bg: "var(--mark-absent)", text: "var(--mark-absent-text)" },
 };
 
-function Tile({ letter, mark, index, revealing }: TileProps) {
+function Tile({ letter, mark, index, revealing, selected, onSelect }: TileProps) {
   const state = mark ? "revealed" : letter ? "filled" : "empty";
 
   // While a row is revealing, the mark is passed to the animation as custom
@@ -44,24 +46,40 @@ function Tile({ letter, mark, index, revealing }: TileProps) {
   // midpoint of the flip instead of appearing instantly.
   const vars = mark ? MARK_VARS[mark] : undefined;
 
+  const content = <>
+    {letter}
+    {mark ? <span className="tile-glyph" aria-hidden>{GLYPH[mark]}</span> : null}
+  </>;
+  const props = {
+    className: "tile",
+    "data-state": state,
+    "data-mark": revealing ? undefined : mark,
+    "data-revealing": revealing || undefined,
+    "data-selected": selected || undefined,
+    style: {
+      "--reveal-index": index,
+      "--tile-bg": vars?.bg,
+      "--tile-text": vars?.text,
+    } as React.CSSProperties,
+  };
+
+  if (onSelect) {
+    return <button
+      type="button"
+      {...props}
+      onClick={onSelect}
+      aria-label={`Letter ${index + 1}${letter ? `, ${letter}` : ", empty"}`}
+      aria-pressed={selected}
+    >{content}</button>;
+  }
+
   return (
     <div
+      {...props}
       role="img"
-      className="tile"
-      data-state={state}
-      data-mark={revealing ? undefined : mark}
-      data-revealing={revealing || undefined}
-      style={
-        {
-          "--reveal-index": index,
-          "--tile-bg": vars?.bg,
-          "--tile-text": vars?.text,
-        } as React.CSSProperties
-      }
       aria-label={mark ? `${letter}, ${MARK_LABEL[mark]}` : letter || "empty"}
     >
-      {letter}
-      {mark ? <span className="tile-glyph" aria-hidden>{GLYPH[mark]}</span> : null}
+      {content}
     </div>
   );
 }
@@ -69,7 +87,7 @@ function Tile({ letter, mark, index, revealing }: TileProps) {
 interface BoardProps {
   rows: Row[];
   /** The guess being typed, not yet submitted. */
-  draft: string;
+  draft: string | readonly string[];
   wordLength: number;
   maxRows: number;
   /** Index of the row currently playing its reveal animation, if any. */
@@ -78,6 +96,9 @@ interface BoardProps {
   shake: boolean;
   authors?: string[];
   authorSeats?: number[];
+  /** Lets the active player replace a letter without clearing their whole guess. */
+  onDraftTileSelect?: (index: number) => void;
+  draftCursor?: number;
 }
 
 export function Board({
@@ -89,6 +110,8 @@ export function Board({
   shake,
   authors,
   authorSeats,
+  onDraftTileSelect,
+  draftCursor,
 }: BoardProps) {
   const draftRow = rows.length;
 
@@ -120,6 +143,8 @@ export function Board({
                 mark={played?.marks[col]}
                 index={col}
                 revealing={revealingRow === rowIndex}
+                selected={isDraft && !!onDraftTileSelect && draftCursor === col}
+                onSelect={isDraft && onDraftTileSelect ? () => onDraftTileSelect(col) : undefined}
               />
             ))}
           </div>

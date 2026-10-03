@@ -47,6 +47,13 @@ type Pack struct {
 	Words                []PackWord `json:"words"`
 }
 
+func (p Pack) WordLength() int {
+	if len(p.Words) == 0 {
+		return 0
+	}
+	return len([]rune(p.Words[0].Word))
+}
+
 // WordList returns just the words, in pack order.
 func (p Pack) WordList() []string {
 	out := make([]string, len(p.Words))
@@ -61,6 +68,7 @@ func loadPacks() ([]Pack, error) {
 	if err := json.Unmarshal(packsRaw, &packs); err != nil {
 		return nil, fmt.Errorf("parsing packs.json: %w", err)
 	}
+	packs = append(packs, sixPacks()...)
 	if err := validatePacks(packs); err != nil {
 		return nil, err
 	}
@@ -94,6 +102,58 @@ func (p *Pool) PackIDFor(word string) (string, bool) {
 // than failing — running out of fresh themes should mean repeats, not an
 // error in the middle of a game.
 func (p *Pool) RandomPack(exclude map[string]struct{}) (Pack, bool) {
+	return p.RandomPackForLength(exclude, 5)
+}
+
+func (p *Pool) RandomPackForLength(exclude map[string]struct{}, length int) (Pack, bool) {
+	pool := make([]Pack, 0, len(p.packs))
+	for _, pack := range p.packs {
+		if pack.WordLength() == length {
+			pool = append(pool, pack)
+		}
+	}
+	if len(pool) == 0 {
+		return Pack{}, false
+	}
+	eligible := pool
+	if len(exclude) > 0 {
+		eligible = make([]Pack, 0, len(pool))
+		for _, pack := range pool {
+			if !packExcluded(pack, exclude) {
+				eligible = append(eligible, pack)
+			}
+		}
+		if len(eligible) == 0 {
+			eligible = pool
+		}
+	}
+	return eligible[rand.IntN(len(eligible))], true
+}
+
+func (p *Pool) RandomWord(length int) (PackWord, bool) {
+	return p.RandomWordForDifficulty(length, "mixed")
+}
+
+// RandomWordForDifficulty picks answers separately from the broad guess
+// dictionary. Learning leaves everyday answers out, giving a player a word
+// worth meeting without making their valid guesses any narrower.
+func (p *Pool) RandomWordForDifficulty(length int, difficulty string) (PackWord, bool) {
+	all := []PackWord{}
+	for _, pack := range p.packs {
+		for _, word := range pack.Words {
+			if len([]rune(word.Word)) == length && (difficulty != "learning" || word.Difficulty != "familiar") {
+				all = append(all, word)
+			}
+		}
+	}
+	if len(all) == 0 {
+		return PackWord{}, false
+	}
+	return all[rand.IntN(len(all))], true
+}
+
+/*
+func (p *Pool) RandomPackLegacy(exclude map[string]struct{}) (Pack, bool) {
 	if len(p.packs) == 0 {
 		return Pack{}, false
 	}
@@ -113,6 +173,7 @@ func (p *Pool) RandomPack(exclude map[string]struct{}) (Pack, bool) {
 
 	return eligible[rand.IntN(len(eligible))], true
 }
+*/
 
 func packExcluded(pack Pack, exclude map[string]struct{}) bool {
 	if _, ok := exclude[pack.ID]; ok {
@@ -130,29 +191,42 @@ func packExcluded(pack Pack, exclude map[string]struct{}) bool {
 }
 
 func (p *Pool) Exhausted(exclude map[string]struct{}) bool {
+	return p.ExhaustedForLength(exclude, 5)
+}
+
+func (p *Pool) ExhaustedForLength(exclude map[string]struct{}, length int) bool {
+	any := false
 	for _, pack := range p.packs {
+		if pack.WordLength() != length {
+			continue
+		}
+		any = true
 		if !packExcluded(pack, exclude) {
 			return false
 		}
 	}
-	return len(p.packs) > 0
+	return any
 }
 
 // Embedded content must be structurally complete before the server can start.
 // This cannot substitute for human review of meaning and factual accuracy.
 func validatePacks(packs []Pack) error {
 	ids, words := map[string]bool{}, map[string]bool{}
-	wordPattern := regexp.MustCompile(`^[a-z]{5}$`)
+	wordPattern := regexp.MustCompile(`^[a-z]{5,6}$`)
 	for _, pack := range packs {
 		if ids[pack.ID] || pack.ID == "" || len(pack.Words) != 5 || strings.TrimSpace(pack.Title) == "" || strings.TrimSpace(pack.Blurb) == "" {
 			return fmt.Errorf("invalid pack %s", pack.ID)
 		}
 		ids[pack.ID] = true
+		length := pack.WordLength()
+		if length != 5 && length != 6 {
+			return fmt.Errorf("invalid word length: %s", pack.ID)
+		}
 		if pack.ConnectionDifficulty != "easy" && pack.ConnectionDifficulty != "medium" && pack.ConnectionDifficulty != "hard" {
 			return fmt.Errorf("missing connection difficulty: %s", pack.ID)
 		}
 		for _, w := range pack.Words {
-			if !wordPattern.MatchString(w.Word) || words[w.Word] || len(w.Hints) != 2 || strings.TrimSpace(w.Connection) == "" || strings.TrimSpace(w.Definition) == "" || strings.TrimSpace(w.Note) == "" {
+			if !wordPattern.MatchString(w.Word) || len(w.Word) != length || words[w.Word] || len(w.Hints) != 2 || strings.TrimSpace(w.Connection) == "" || strings.TrimSpace(w.Definition) == "" || strings.TrimSpace(w.Note) == "" {
 				return fmt.Errorf("incomplete word: %s", w.Word)
 			}
 			words[w.Word] = true

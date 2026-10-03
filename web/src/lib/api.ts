@@ -68,6 +68,8 @@ export interface Pack {
 
 export interface Run {
   id: string;
+  mode: "classic" | "themed";
+  wordLength: 5 | 6;
   /** Words in the run. */
   length: number;
   started: number;
@@ -157,10 +159,10 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
   return res.json() as Promise<T>;
 }
 
-export function createRun(opts: { excludePacks?: string[] } = {}): Promise<Run> {
-  return request<Run>("/api/runs", {
+export function createRun(opts: { excludePacks?: string[]; mode?: "classic" | "themed"; wordLength?: 5 | 6; difficulty?: "mixed" | "learning" } = {}): Promise<{ round: Round; run: Run }> {
+  return request<{ round: Round; run: Run }>("/api/runs?deal=1", {
     method: "POST",
-    body: JSON.stringify({ excludePacks: opts.excludePacks ?? [] }),
+    body: JSON.stringify({ excludePacks: opts.excludePacks ?? [], mode: opts.mode, wordLength: opts.wordLength, difficulty: opts.difficulty }),
   });
 }
 
@@ -243,6 +245,10 @@ export interface Profile {
   wordsLearned: number;
 }
 
+export interface HomeSummary {
+  streak: { current: number; playedToday: boolean };
+}
+
 export interface SolveRecord {
   word: string;
   packId: string;
@@ -308,6 +314,7 @@ export const mutateDuo = (id: string, action: "accept" | "decline" | "cancel" | 
   request<Duo>(`/api/duos/${id}/${date ? `days/${date}/` : ""}${action}`, { method: "POST", body: JSON.stringify(mutation) });
 
 export const getProfile = () => request<Profile>("/api/me");
+export const getHomeSummary = () => request<HomeSummary>("/api/me/home");
 
 export const setDisplayName = (name: string) =>
   request<{ displayName: string }>("/api/me/name", {

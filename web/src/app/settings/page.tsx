@@ -6,18 +6,37 @@ import { BackButton } from "@/components/BackButton";
 import { Preferences } from "@/components/Preferences";
 import { clearToken } from "@/lib/token";
 import { signOut, useSession } from "@/lib/auth-client";
+import { readLocal, type GameConfig, writeLocal } from "@/lib/session";
+
+const DEFAULT_GAME_CONFIG: GameConfig = { mode: "classic", wordLength: 5, difficulty: "mixed" };
+
+function savedGameConfig(): GameConfig {
+  try {
+    const saved = JSON.parse(readLocal("wordle.mode") ?? "null") as GameConfig | null;
+    if (saved && (saved.mode === "classic" || saved.mode === "themed") && (saved.wordLength === 5 || saved.wordLength === 6)) {
+      return { ...saved, difficulty: saved.difficulty === "learning" ? "learning" : "mixed" };
+    }
+  } catch { /* Classic five-letter play is the default. */ }
+  return DEFAULT_GAME_CONFIG;
+}
 
 /**
  * Settings, reached by the cog on the home screen.
  *
- * Only appearance lives here so far. Word length and hint behaviour belong
- * here too and are not built yet.
+ * Appearance and the default game setup live here. The front page stays a
+ * calm way into a game rather than becoming a configuration form.
  */
 export default function SettingsPage() {
   const router = useRouter();
   const { data: session, isPending } = useSession();
   const [signingOut, setSigningOut] = useState(false);
   const [signOutError, setSignOutError] = useState("");
+  const [gameConfig, setGameConfig] = useState<GameConfig>(savedGameConfig);
+
+  function chooseGameConfig(next: GameConfig) {
+    setGameConfig(next);
+    writeLocal("wordle.mode", JSON.stringify(next));
+  }
 
   async function onSignOut() {
     setSigningOut(true);
@@ -40,6 +59,40 @@ export default function SettingsPage() {
         <BackButton href="/" />
         <h1 className="sheet-title">Settings</h1>
       </header>
+      <section className="game-setup" aria-labelledby="game-setup-title">
+        <div className="block-head"><span className="label">Game setup</span></div>
+        <div className="game-setup-card">
+          <div className="game-setting">
+            <div>
+              <h2 id="game-setup-title">Game type</h2>
+              <p>Classic is the default.</p>
+            </div>
+            <div className="game-options" role="group" aria-label="Game mode">
+              <button aria-pressed={gameConfig.mode === "classic"} onClick={() => chooseGameConfig({ ...gameConfig, mode: "classic" })}>Classic</button>
+              <button aria-pressed={gameConfig.mode === "themed"} onClick={() => chooseGameConfig({ ...gameConfig, mode: "themed" })}>Themed</button>
+            </div>
+          </div>
+          <div className="game-setting">
+            <div>
+              <h2>Word length</h2>
+              <p>Choose five or six letters.</p>
+            </div>
+            <div className="game-options" role="group" aria-label="Word length">
+              {[5, 6].map((length) => <button key={length} aria-pressed={gameConfig.wordLength === length} onClick={() => chooseGameConfig({ ...gameConfig, wordLength: length as 5 | 6 })}>{length} letters</button>)}
+            </div>
+          </div>
+          <div className="game-setting">
+            <div>
+              <h2>Answer vocabulary</h2>
+              <p>{gameConfig.mode === "classic" ? "Learning leaves out the most familiar answers." : "Themed sets keep their curated mix of words."}</p>
+            </div>
+            <div className="game-options" role="group" aria-label="Answer vocabulary">
+              <button aria-pressed={gameConfig.difficulty === "mixed"} onClick={() => chooseGameConfig({ ...gameConfig, difficulty: "mixed" })}>Mixed</button>
+              <button aria-pressed={gameConfig.difficulty === "learning"} onClick={() => chooseGameConfig({ ...gameConfig, difficulty: "learning" })}>Learning</button>
+            </div>
+          </div>
+        </div>
+      </section>
       <Preferences />
       {!isPending && session && <section className="settings-account">
         <div className="block-head"><span className="label">Account</span></div>
