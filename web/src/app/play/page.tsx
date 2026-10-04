@@ -84,12 +84,12 @@ function PlayScreen() {
     {game.message && <div className="toast" role="status">{game.message}</div>}
     {error && <Dialog title="Game interrupted" onClose={() => { void game.retry(); }}>{error}</Dialog>}
     {!game.error && !panel && activeEntry && <Entry key={activeEntry.id} round={activeEntry} onClose={() => { setSelected(null); setDismissedRound(round.id); }} action={activeEntry.id === round.id ? (run.mode === "themed" && run.complete ? openConclusion : newRun) : undefined} actionLabel={run.mode === "themed" && run.complete ? "Uncover the connection" : "Next word"} busy={game.busy} />}
-    {!game.error && panel === "hints" && <Dialog title="Hint" onClose={() => setPanel(null)}>
+    {!game.error && panel === "hints" && <Dialog title="Clues" onClose={() => setPanel(null)}>
       <section className="hint-panel">
-        {round.hints.map((hint) => <article className="hint-card" key={hint.tier}><span>{hint.tier === 1 ? "First clue" : "Second clue"}</span><p>{hint.text}</p></article>)}
+        {round.hints.length > 0 && <ol className="hint-list">{round.hints.map((hint) => <li key={hint.tier}><span>Clue {hint.tier}</span><p>{hint.text}</p></li>)}</ol>}
         {round.state === "playing" && nextHint <= 2 && <div className="hint-next">
-          <p>{hintAvailable ? "A nudge, without giving away a letter." : `Available after ${hintUnlocksAfter(nextHint)} guesses.`}</p>
-          <button className="button" disabled={!hintAvailable || game.busy} onClick={game.requestHint}>{game.busy ? "Opening…" : nextHint === 1 ? "Reveal a clue" : "Reveal the next clue"}</button>
+          <p>{hintAvailable ? "Use a clue when you want a direction, not a letter." : `Clue ${nextHint} opens after ${hintUnlocksAfter(nextHint)} guesses.`}</p>
+          <button className="button" disabled={!hintAvailable || game.busy} onClick={game.requestHint}>{game.busy ? "Opening…" : `Reveal clue ${nextHint}`}</button>
         </div>}
         {hintsUsed === 2 && <p className="hint-panel-done">Both clues are open.</p>}
       </section>

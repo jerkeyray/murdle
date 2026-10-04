@@ -20,6 +20,13 @@ export const DICTIONARY_PATH = path.join(WORDS_DIR, "dictionary.txt");
 
 export const WORDS_PER_PACK = 5;
 export const WORD_LENGTH = Number(process.env.WORD_LENGTH ?? "5");
+const PLACEHOLDER_COPY = [
+  "a common english word in this set",
+  "first expanded wordle bank",
+  "think about an everyday setting or idea",
+  "its use becomes clearer in a familiar context",
+  "it belongs to the set’s shared idea",
+];
 
 export const packWordSchema = z.object({
   word: z.string().describe(`Exactly ${WORD_LENGTH} letters, lowercase a-z only.`),
@@ -107,10 +114,16 @@ export function checkPack(pack, { dictionary, existingWords, existingIds }) {
     }
     if (!entry.definition?.trim()) problems.push(`"${w}" has no definition`);
     if (!entry.note?.trim()) problems.push(`"${w}" has no note`);
+    const editorial = [entry.definition, entry.note, entry.connection, ...entry.hints]
+      .join(" ")
+      .toLowerCase();
+    if (PLACEHOLDER_COPY.some((copy) => editorial.includes(copy))) {
+      problems.push(`"${w}" uses placeholder editorial copy`);
+    }
     if (entry.hints[0].trim() === entry.hints[1].trim()) problems.push(`"${w}" repeats its hint`);
     for (const hint of entry.hints) {
       if (hint.toLowerCase().includes(w)) problems.push(`"${w}" appears in its own hint`);
-      if (/\b(first|last|second|third|fourth|fifth) letter|\b(starts|ends) with\b/i.test(hint)) problems.push(`"${w}" has a structural giveaway`);
+      if (/\b(first|last|second|third|fourth|fifth|sixth) letter|\b(starts?|ends?) with\b/i.test(hint)) problems.push(`"${w}" has a structural giveaway`);
     }
   }
 

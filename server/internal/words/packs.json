@@ -2518,5 +2518,376 @@
         "difficulty": "familiar"
       }
     ]
+  },
+  {
+    "id": "laying-the-table",
+    "title": "Laying the Table",
+    "blurb": "Five things that turn dinner into an occasion.",
+    "connectionDifficulty": "easy",
+    "words": [
+      {
+        "word": "plate",
+        "register": "standard",
+        "definition": "A flat dish used for serving or eating food.",
+        "note": "Plate has meant a thin sheet of metal as well as dinnerware. That older sense survives in terms such as armour plate and licence plate.",
+        "hints": ["Often waits at every seat before a meal.", "It gives a serving its own small territory."],
+        "connection": "A plate is placed for each person at a prepared table.",
+        "difficulty": "familiar"
+      },
+      {
+        "word": "glass",
+        "register": "standard",
+        "definition": "A hard transparent material, or a vessel made from it.",
+        "note": "The material can be made by cooling molten sand so quickly that its particles never form a regular crystal pattern. English uses the same word for the material and for a drinking vessel.",
+        "hints": ["It can be clear, coloured, or carefully polished.", "Water may be poured into one beside a meal."],
+        "connection": "A glass is a common place setting for a drink.",
+        "difficulty": "familiar"
+      },
+      {
+        "word": "knife",
+        "register": "standard",
+        "definition": "A tool or utensil with a sharp blade.",
+        "note": "The silent initial letter records the word’s Norse ancestry. In older English it was pronounced, as it still is in related Scandinavian languages.",
+        "hints": ["It has uses in a workshop as well as a kitchen.", "At dinner it is usually paired with a fork."],
+        "connection": "A knife is one of the utensils laid beside a plate.",
+        "difficulty": "familiar"
+      },
+      {
+        "word": "cloth",
+        "register": "standard",
+        "definition": "Woven or knitted fabric.",
+        "note": "The word is related to Old English forms for a covering. Its use in tablecloth keeps that older sense close to the surface.",
+        "hints": ["It begins as threads worked together.", "It can cover a dining surface before anything is served."],
+        "connection": "A cloth can cover and protect a dining table.",
+        "difficulty": "familiar"
+      },
+      {
+        "word": "spoon",
+        "register": "standard",
+        "definition": "A utensil with a small bowl on a handle.",
+        "note": "Spoon comes from an Old English word for a chip of wood, probably because early examples resembled a splinter or shaving.",
+        "hints": ["It carries something without needing to pierce it.", "Soup makes its purpose especially clear."],
+        "connection": "A spoon completes a familiar set of table utensils.",
+        "difficulty": "familiar"
+      }
+    ]
+  },
+  {
+    "id": "working-with-wood",
+    "title": "Working With Wood",
+    "blurb": "The material answers back in five different ways.",
+    "connectionDifficulty": "medium",
+    "words": [
+      {
+        "word": "grain",
+        "register": "standard",
+        "definition": "The direction and visible pattern of fibres in wood.",
+        "note": "Grain also names seeds and a tiny unit of weight. The shared idea is a small repeated structure that gives a material its character.",
+        "hints": ["It can run straight, curl, or catch the light.", "A craftsperson usually follows it rather than fighting it."],
+        "connection": "Grain is the natural pattern a woodworker reads in timber.",
+        "difficulty": "stretch"
+      },
+      {
+        "word": "plane",
+        "register": "standard",
+        "definition": "A tool that shaves thin layers from wood to make it smooth.",
+        "note": "The tool takes its name from the flat surface it creates. A hand plane can leave long curled shavings that show exactly what it has removed.",
+        "hints": ["It removes less than a saw but more than sandpaper.", "Its job is to make a board even and smooth."],
+        "connection": "A plane shapes and flattens a piece of wood.",
+        "difficulty": "stretch"
+      },
+      {
+        "word": "joint",
+        "register": "standard",
+        "definition": "A place where two pieces are joined together.",
+        "note": "In furniture, a well-made joint can be stronger than a fastener alone. The same word is used for the meeting of bones in a body.",
+        "hints": ["It is a meeting point rather than a separate object.", "A dovetail is a celebrated kind of this."],
+        "connection": "A joint is where parts of a wooden object are fitted together.",
+        "difficulty": "stretch"
+      },
+      {
+        "word": "carve",
+        "register": "standard",
+        "definition": "To cut a shape or pattern from a solid material.",
+        "note": "Carve can describe both making a sculpture and dividing a roast. In both cases, a larger whole is deliberately cut into a useful form.",
+        "hints": ["It changes a solid piece by removing parts of it.", "A sharp edge can turn timber into a figure or ornament."],
+        "connection": "To carve is to shape wood by cutting material away.",
+        "difficulty": "familiar"
+      },
+      {
+        "word": "stain",
+        "register": "standard",
+        "definition": "A coloured substance that changes the surface of a material.",
+        "note": "Wood stain colours while leaving the grain visible, unlike an opaque paint. The word’s figurative sense of a mark on a reputation came later.",
+        "hints": ["It changes colour without necessarily hiding texture.", "A finish may use it before a protective coat."],
+        "connection": "A stain is used to colour and finish wooden surfaces.",
+        "difficulty": "stretch"
+      }
+    ]
+  },
+  {
+    "id": "finding-the-way",
+    "title": "Finding the Way",
+    "blurb": "A journey viewed from the map rather than the window.",
+    "connectionDifficulty": "medium",
+    "words": [
+      {
+        "word": "chart",
+        "register": "standard",
+        "definition": "A map or diagram that presents information clearly.",
+        "note": "A nautical chart is built for navigation and includes dangers, depths and aids to steering. The word later widened to include graphs of any kind.",
+        "hints": ["It makes a large area legible at a glance.", "Sailors consult one before moving through unfamiliar water."],
+        "connection": "A chart helps a traveller understand where to go.",
+        "difficulty": "stretch"
+      },
+      {
+        "word": "route",
+        "register": "standard",
+        "definition": "A way or course taken from one place to another.",
+        "note": "Route entered English from French, and its pronunciation still varies by region. It can describe a bus line, a delivery run or a planned journey.",
+        "hints": ["It joins a departure to an arrival.", "A detour asks you to change this."],
+        "connection": "A route is the planned course of a journey.",
+        "difficulty": "familiar"
+      },
+      {
+        "word": "trail",
+        "register": "standard",
+        "definition": "A path made or used by people or animals.",
+        "note": "Trail began as a word for dragging something behind, which explains both a woodland path and the line left by a moving object.",
+        "hints": ["It may be worn into the ground over time.", "Hikers follow one through country without roads."],
+        "connection": "A trail is a route made by repeated passage.",
+        "difficulty": "familiar"
+      },
+      {
+        "word": "guide",
+        "register": "standard",
+        "definition": "A person or thing that shows the way.",
+        "note": "Guide works as a noun and a verb. A guidebook can lead someone without ever travelling alongside them.",
+        "hints": ["It can be a person, a book, or a helpful sign.", "Its value is clearest in an unfamiliar place."],
+        "connection": "A guide helps a traveller choose the right way.",
+        "difficulty": "familiar"
+      },
+      {
+        "word": "north",
+        "register": "standard",
+        "definition": "The direction toward the North Pole.",
+        "note": "On most modern maps this direction sits at the top, a convention rather than a universal law. A compass needle is used to find it.",
+        "hints": ["Most maps place it above the other directions.", "A compass points toward this end of the world."],
+        "connection": "North is a cardinal direction used for navigation.",
+        "difficulty": "familiar"
+      }
+    ]
+  },
+  {
+    "id": "after-the-match",
+    "title": "After the Match",
+    "blurb": "Five small things that make competition matter.",
+    "connectionDifficulty": "easy",
+    "words": [
+      {
+        "word": "score",
+        "register": "standard",
+        "definition": "The number of points earned in a game or contest.",
+        "note": "Score also means a group of twenty, a written piece of music, and a mark cut into a surface. The sporting sense is another kind of record.",
+        "hints": ["It changes when a side succeeds.", "A board may display it above the field."],
+        "connection": "A score records what each side has achieved in a match.",
+        "difficulty": "familiar"
+      },
+      {
+        "word": "medal",
+        "register": "standard",
+        "definition": "A small metal award given for achievement.",
+        "note": "Medals have marked service, learning and athletic success for centuries. The familiar gold, silver and bronze sequence became standard in modern international sport.",
+        "hints": ["It is small enough to hang from a ribbon.", "Podium finishers may receive one."],
+        "connection": "A medal recognises an outstanding result in competition.",
+        "difficulty": "familiar"
+      },
+      {
+        "word": "prize",
+        "register": "standard",
+        "definition": "Something given or won in recognition of success.",
+        "note": "Prize is related to price, but its meaning shifted from value paid to a thing worth winning. It can be tangible or simply an honour.",
+        "hints": ["It may be offered before an event begins.", "Winning can bring this even without money."],
+        "connection": "A prize is awarded to reward a successful competitor.",
+        "difficulty": "familiar"
+      },
+      {
+        "word": "cheer",
+        "register": "standard",
+        "definition": "A shout or expression of encouragement and approval.",
+        "note": "Cheer once meant the face or expression, then a mood, before becoming a sound of support. Its older sense survives in the phrase good cheer.",
+        "hints": ["It can rise suddenly from a crowd.", "Supporters make this when a side does well."],
+        "connection": "A cheer is the sound spectators make to support a team.",
+        "difficulty": "familiar"
+      },
+      {
+        "word": "goals",
+        "register": "standard",
+        "definition": "Objectives to be achieved, or points scored in certain sports.",
+        "note": "The sporting and personal senses share the same image: a defined end point to work toward. In football, the word can name both the target structure and the point scored there.",
+        "hints": ["They can be scored, set, or revised.", "A team pursues these on a field while a person sets them for a year."],
+        "connection": "Goals give a sporting contest both its target and its result.",
+        "difficulty": "familiar"
+      }
+    ]
+  },
+  {
+    "id": "things-we-keep",
+    "title": "Things We Keep",
+    "blurb": "Small objects that are asked to hold more than themselves.",
+    "connectionDifficulty": "medium",
+    "words": [
+      {
+        "word": "photo",
+        "register": "standard",
+        "definition": "A photograph, especially a printed or digital image.",
+        "note": "Photo is a shortening of photograph, built from Greek roots meaning light and writing. It records an image by using light to make a lasting trace.",
+        "hints": ["It preserves an instant after it has passed.", "An album can hold many of these."],
+        "connection": "A photo can keep a visible record of a memory.",
+        "difficulty": "familiar"
+      },
+      {
+        "word": "diary",
+        "register": "standard",
+        "definition": "A book in which someone records daily events or thoughts.",
+        "note": "Diary comes from the Latin word for day. It began as a daily record of events before becoming a private personal habit.",
+        "hints": ["Its entries are usually dated.", "It can keep thoughts that were not meant for an audience."],
+        "connection": "A diary keeps a personal record over time.",
+        "difficulty": "familiar"
+      },
+      {
+        "word": "token",
+        "register": "standard",
+        "definition": "A small object that stands for an idea, feeling or right.",
+        "note": "A token may be a souvenir, a voucher or a symbolic gesture. What matters is the meaning it carries beyond its material value.",
+        "hints": ["Its value often comes from what it represents.", "A small souvenir can become one."],
+        "connection": "A token is kept because it stands for something larger.",
+        "difficulty": "stretch"
+      },
+      {
+        "word": "shelf",
+        "register": "standard",
+        "definition": "A flat surface fixed to a wall or furniture for holding things.",
+        "note": "Shelf is related to the nautical word shelf, once used for a sandbank or ledge. Both senses describe a horizontal support or projection.",
+        "hints": ["It turns a wall into storage.", "Books, framed pictures and souvenirs may gather here."],
+        "connection": "A shelf gives saved objects a place to remain visible.",
+        "difficulty": "familiar"
+      },
+      {
+        "word": "stamp",
+        "register": "standard",
+        "definition": "A small printed label used to show payment for post.",
+        "note": "Stamps also leave an impression when pressed into ink, metal or wax. Postal ones became collectable because each carries a small design and a date in history.",
+        "hints": ["It is small enough to collect in an album.", "A letter may need one before it can travel."],
+        "connection": "A stamp can be kept as a small record of place and time.",
+        "difficulty": "familiar"
+      }
+    ]
+  },
+  {
+    "id": "on-the-stage",
+    "title": "On the Stage",
+    "blurb": "The work that exists for an audience in the dark.",
+    "connectionDifficulty": "easy",
+    "words": [
+      {
+        "word": "stage",
+        "register": "standard",
+        "definition": "A raised area where performers appear before an audience.",
+        "note": "Stage once referred to a stopping place on a journey. Its theatrical sense grew from temporary platforms erected for public performances.",
+        "hints": ["It is empty until someone steps into view.", "Curtains and spotlights often frame it."],
+        "connection": "A stage is the physical place where a performance is presented.",
+        "difficulty": "familiar"
+      },
+      {
+        "word": "roles",
+        "register": "standard",
+        "definition": "Parts played by performers, or functions people take on.",
+        "note": "Role came into English through French from a word for a roll of paper. A performer’s part was once written on such a roll.",
+        "hints": ["A cast divides these among its members.", "Outside theatre, a person may have several at work and home."],
+        "connection": "Roles are the parts performers take in a production.",
+        "difficulty": "familiar"
+      },
+      {
+        "word": "scene",
+        "register": "standard",
+        "definition": "A section of a play, film or story set in one place or time.",
+        "note": "Scene comes from a Greek word for a stage building. It can now mean a dramatic episode, a view, or a public commotion.",
+        "hints": ["It changes when the action moves somewhere else.", "A script is commonly divided into acts and these."],
+        "connection": "A scene is a distinct unit in a staged story.",
+        "difficulty": "familiar"
+      },
+      {
+        "word": "drama",
+        "register": "standard",
+        "definition": "A story written or performed for the stage or screen.",
+        "note": "The word comes from Greek for an action or deed. Its everyday use for exaggerated conflict keeps that sense of action alive.",
+        "hints": ["It may be written, rehearsed and performed.", "Conflict gives this form its movement."],
+        "connection": "Drama is the story form performers bring to an audience.",
+        "difficulty": "familiar"
+      },
+      {
+        "word": "props",
+        "register": "standard",
+        "definition": "Objects used by performers during a production.",
+        "note": "Props is a shortening of properties, the theatrical term for objects owned or used by a company. A letter, a cup or a sword can all serve this function.",
+        "hints": ["They are handled during a performance.", "A convincing room on stage may be full of these."],
+        "connection": "Props are the objects that help performers make a scene believable.",
+        "difficulty": "stretch"
+      }
+    ]
+  },
+  {
+    "id": "in-the-garden",
+    "title": "In the Garden",
+    "blurb": "Five signs that something patient is growing.",
+    "connectionDifficulty": "easy",
+    "words": [
+      {
+        "word": "plant",
+        "register": "standard",
+        "definition": "A living thing that usually grows in soil and makes energy from light.",
+        "note": "Plant is also a verb for putting something in the ground and a noun for a factory. The living sense remains the centre of the word’s everyday use.",
+        "hints": ["It needs light, water and time.", "Its leaves make energy from sunlight."],
+        "connection": "A plant is the living subject of a garden.",
+        "difficulty": "familiar"
+      },
+      {
+        "word": "earth",
+        "register": "standard",
+        "definition": "Soil, ground, or the planet on which people live.",
+        "note": "Earth has kept both its local and cosmic senses for centuries. In a garden it means the material that holds roots, water and nutrients.",
+        "hints": ["It can be held in a hand or seen from space.", "Roots push down into this as they grow."],
+        "connection": "Earth is the soil from which a garden grows.",
+        "difficulty": "familiar"
+      },
+      {
+        "word": "bloom",
+        "register": "standard",
+        "definition": "A flower, or the act of producing flowers.",
+        "note": "Bloom is related to blossom, though modern English tends to use it for a flower’s best moment. It can also describe a healthy flush of colour in a face.",
+        "hints": ["It is a brief bright stage in a plant’s year.", "A rose opens into one."],
+        "connection": "A bloom is the flowering result of garden work.",
+        "difficulty": "familiar"
+      },
+      {
+        "word": "roots",
+        "register": "standard",
+        "definition": "The parts of a plant that anchor it and take in water.",
+        "note": "Roots are usually hidden, which makes them a useful metaphor for origins and deep connections. They can spread far beyond the visible stem.",
+        "hints": ["They work below the surface.", "They hold a plant in place and draw up water."],
+        "connection": "Roots anchor a garden plant and feed it from below.",
+        "difficulty": "familiar"
+      },
+      {
+        "word": "weeds",
+        "register": "standard",
+        "definition": "Plants growing where they are not wanted.",
+        "note": "Weed is a judgment rather than a botanical category. The same plant can be welcomed for its flowers in one place and removed from another.",
+        "hints": ["Its identity depends on where it chooses to grow.", "Gardeners pull these from places reserved for other plants."],
+        "connection": "Weeds are plants competing with a gardener’s intended growth.",
+        "difficulty": "familiar"
+      }
+    ]
   }
 ]

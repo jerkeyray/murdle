@@ -213,6 +213,14 @@ func (p *Pool) ExhaustedForLength(exclude map[string]struct{}, length int) bool 
 func validatePacks(packs []Pack) error {
 	ids, words := map[string]bool{}, map[string]bool{}
 	wordPattern := regexp.MustCompile(`^[a-z]{5,6}$`)
+	structuralHint := regexp.MustCompile(`(?i)\b(first|last|second|third|fourth|fifth|sixth) letter\b|\b(starts?|ends?) with\b`)
+	placeholderCopy := []string{
+		"a common english word in this set",
+		"first expanded wordle bank",
+		"think about an everyday setting or idea",
+		"its use becomes clearer in a familiar context",
+		"it belongs to the set’s shared idea",
+	}
 	for _, pack := range packs {
 		if ids[pack.ID] || pack.ID == "" || len(pack.Words) != 5 || strings.TrimSpace(pack.Title) == "" || strings.TrimSpace(pack.Blurb) == "" {
 			return fmt.Errorf("invalid pack %s", pack.ID)
@@ -234,8 +242,14 @@ func validatePacks(packs []Pack) error {
 				return fmt.Errorf("missing word difficulty: %s", w.Word)
 			}
 			for _, hint := range w.Hints {
-				if len(strings.TrimSpace(hint)) < 12 || strings.Contains(strings.ToLower(hint), w.Word) {
+				if len(strings.TrimSpace(hint)) < 12 || strings.Contains(strings.ToLower(hint), w.Word) || structuralHint.MatchString(hint) {
 					return fmt.Errorf("invalid hint: %s", w.Word)
+				}
+			}
+			content := strings.ToLower(strings.Join(append(append([]string{}, w.Hints...), w.Definition, w.Note, w.Connection), " "))
+			for _, placeholder := range placeholderCopy {
+				if strings.Contains(content, placeholder) {
+					return fmt.Errorf("placeholder editorial copy: %s", w.Word)
 				}
 			}
 			if w.Hints[0] == w.Hints[1] {

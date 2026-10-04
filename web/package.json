@@ -11,6 +11,7 @@
     "packs:generate": "node scripts/generate-packs.mjs",
     "packs:review": "node scripts/review-packs.mjs",
     "packs:check": "node scripts/check-packs.mjs",
+    "answers:queue:check": "node scripts/check-answer-queue.mjs",
     "test:content": "node --test scripts/packs-lib.test.mjs",
     "test:e2e": "playwright test"
   },
