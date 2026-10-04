@@ -2356,6 +2356,9 @@ button.tile:focus-visible {
 --------------------------------------------------------------------------- */
 
 .home {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
   width: min(100%, 72rem);
   max-width: none;
   padding-inline: clamp(20px, 5vw, 64px);
@@ -2367,22 +2370,23 @@ button.tile:focus-visible {
   margin: 0;
 }
 
-/* Two columns sized to their contents and centred as a pair. The fr units let
-   the gap grow with the viewport, which pushed the text left and stranded the
-   board out on the right instead of keeping them together in the middle. */
+/* One centred column, at every width.
+   Two columns put the wordmark on the left and stacked the board and the
+   buttons on the right, so nothing lined up with anything and the eye had to
+   cross the page to get from the name to the thing you press. Stacked, the
+   front door reads top to bottom: whose it is, what it is, how to start. */
 .home-middle {
-  display: grid;
-  grid-template-columns: auto clamp(15rem, 26vw, 19rem);
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  column-gap: clamp(42px, 6vw, 76px);
-  row-gap: 22px;
-  padding: clamp(36px, 6vh, 72px) 0 clamp(52px, 9vh, 96px);
+  flex: 1;
+  gap: clamp(26px, 4vh, 44px);
+  padding: clamp(24px, 4vh, 48px) 0 clamp(40px, 7vh, 80px);
 }
 
 .home-intro {
-  grid-column: 1;
-  grid-row: 1 / span 2;
+  text-align: center;
 }
 
 /* The margin used to come from the line underneath. With that gone the mark
@@ -2428,8 +2432,6 @@ button.tile:focus-visible {
   display: grid;
   width: min(100%, 15rem);
   gap: 10px;
-  grid-column: 2;
-  grid-row: 2;
   margin: 0 auto;
 }
 
@@ -2517,11 +2519,13 @@ button.tile:focus-visible {
     min-height: 64px;
   }
 
+  /* Centred rather than stacked at the top: it left the lower half of the
+     screen empty, and it put Begin further from the thumb than it needed to be. */
   .home-middle {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    padding: clamp(28px, 6vh, 52px) 0 max(28px, env(safe-area-inset-bottom));
+    justify-content: center;
+    padding: clamp(20px, 4vh, 40px) 0 max(28px, env(safe-area-inset-bottom));
   }
 
   /* One centred column. The intro stretches so the wordmark, both buttons and
@@ -2639,9 +2643,17 @@ button:disabled { cursor: default; }
 .game-app .board-area { container-type: size; min-height: 270px; padding: 6px 0; }
 .game-app .board { width: min(100%, 21rem, calc(100cqh * 5 / 6)); height: auto; max-height: 100%; }
 .game-app:not(.duo-app) .board-area { min-height: 220px; padding: 16px 0 20px; }
-.board-stage { position: relative; width: min(20rem, calc(100% - 88px), calc((100cqh - 12px) * 5 / 6)); }
+/* The board gets the full column back: the 88px was a gutter reserved for a
+   clue button that no longer lives there. */
+.board-stage { position: relative; width: min(22rem, 100%, calc((100cqh - 12px) * 5 / 6)); }
 .game-app .board-stage .board { width: 100%; max-height: none; }
-.game-app .board-stage .game-hint { position: absolute; top: auto; bottom: max(calc(8.333% - 25px), 0px); left: -48px; width: 36px; height: 36px; border-color: var(--border); border-radius: 50%; color: var(--text-muted); }
+/* Submit, centred under the thumb. */
+.game-app .play-actions {
+  display: flex;
+  justify-content: center;
+  flex: none;
+  margin: 2px 0 max(12px, env(safe-area-inset-bottom));
+}
 .game-app .tile { font-size: clamp(1.15rem, 6cqh, 2rem); }
 .game-tools { display: flex; align-items: center; justify-content: space-between; flex: none; }
 /* Icon only, so the strip under the board carries no prose. The count rides on
@@ -2652,7 +2664,7 @@ button:disabled { cursor: default; }
 .game-app .keyboard { flex: none; padding: 10px 0 4px; }
 .game-app .key { height: 68px; font-size: 1.25rem; }
 .game-app .key--wide { font-size: .72rem; letter-spacing: .06em; }
-.game-app .keyboard-submit { flex: none; width: 100%; height: 62px; margin: 2px 0 max(12px, env(safe-area-inset-bottom)); font-size: .82rem; }
+.game-app .keyboard-submit { flex: none; width: min(17rem, 100%); height: 62px; margin: 0; font-size: .82rem; }
 .game-app .keyboard-submit[data-state="incomplete"] { border-color: var(--border-strong); background: var(--bg-raised); color: var(--text-muted); opacity: 1; }
 .game-app .keyboard-submit[data-state="word"] { border-color: var(--mark-hit); background: var(--mark-hit); color: var(--mark-hit-text); }
 .game-app .keyboard-submit[data-state="unknown"] { border-color: var(--border-strong); background: var(--bg-raised); color: var(--text); }
@@ -2822,10 +2834,13 @@ summary { cursor: pointer; color: var(--text-muted); padding-block: 8px; min-hei
 /* Controls follow the available viewport, including mobile browser chrome. */
 .game-app { min-height: 0; padding-top: env(safe-area-inset-top); }
 .game-app .board-area, .game-app:not(.duo-app) .board-area { min-height: 0; }
-.game-app .board-stage .game-hint { width: 44px; height: 44px; left: -50px; }
-.game-heading { text-align: center; }
-.game-progress { margin: 4px 0 0; color: var(--text-muted); font-size: .72rem; letter-spacing: 0; }
+
+/* The clue sits beside the wordmark. In the board's left margin it floated in
+   dead space and cost the board 88px of width to sit in; up here it is in the
+   bar that already holds the other two controls. */
+.game-heading { display: flex; align-items: center; justify-content: center; gap: 8px; }
 .game-heading .wordmark { margin: 0; }
+.game-app .game-heading .game-hint { flex: none; width: 34px; height: 34px; border-color: var(--border); border-radius: 50%; color: var(--text-muted); }
 .nav-labelled { width: auto; min-height: 44px; padding: 8px 12px; gap: 8px; font-size: .85rem; border: 0; }
 .home-mark { margin-bottom: 22px; }
 .help-marks li > span { display: grid; place-items: center; flex: none; width: 44px; height: 44px; border-radius: 6px; font-weight: 650; }
@@ -2952,7 +2967,7 @@ summary { cursor: pointer; color: var(--text-muted); padding-block: 8px; min-hei
 @media (max-height: 420px) {
   .game-app { height: auto; min-height: 100dvh; }
   .game-app .board-area { container-type: normal; min-height: 210px; }
-  .board-stage { width: min(160px, calc(100% - 100px)); }
+  .board-stage { width: min(190px, 100%); }
 }
 
 /* Navigation targets stay comfortable without enlarging the letter keys. */

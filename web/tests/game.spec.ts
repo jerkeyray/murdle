@@ -28,7 +28,9 @@ async function solve(page: Page, word: string) {
   await expect(page.getByRole("dialog", { name: "Word entry", exact: true })).toBeVisible();
 }
 async function expectWord(page: Page, word: number) {
-  await expect(page.getByRole("list", { name: `Word ${word} of 5`, exact: true })).toBeVisible();
+  // Progress is announced rather than drawn, so assert it is present rather
+  // than visible: the element is deliberately clipped for sighted players.
+  await expect(page.getByText(`Word ${word} of 5`, { exact: true })).toBeAttached();
 }
 
 test("accessible modal, keyboard, hints, restoration, conclusion", async ({ page }) => {
@@ -223,7 +225,7 @@ test("enter reflects whether the typed word is real, without ever blocking a gue
   await setup(page);
   await page.goto("/play");
   await expectWord(page, 1);
-  const enter = page.getByRole("button", { name: /^Submit guess/ });
+  const enter = page.getByRole("button", { name: "Submit", exact: true });
 
   // Nothing typed: there is nothing to send.
   await expect(enter).toBeDisabled();

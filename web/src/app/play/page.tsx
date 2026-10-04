@@ -55,19 +55,24 @@ function PlayScreen() {
   return <main className="app game-app">
     <header className="topbar">
       <BackButton href="/" />
-      <div className="game-heading"><h1 className="wordmark">Wordle</h1>{run.mode === "themed" && <p className="game-progress" role="status">Word {run.started} of {run.length}</p>}</div>
-      <ProfileButton />
-    </header>
-    <div className="board-area">
-      <div className="board-stage">
-      <Board rows={round.rows} draft={game.draft} wordLength={round.wordLength} maxRows={round.maxRows} revealingRow={game.revealingRow} shake={game.shake} onDraftTileSelect={game.selectDraftTile} draftCursor={game.draftCursor} />
-      {!finished && <button className="icon-button hint-button game-hint" disabled={game.busy || game.revealingRow !== null || (round.state !== "playing" && !hintsUsed)} onClick={() => setPanel("hints")} aria-label={hintsUsed ? "Clue used" : "Clue"} title={hintsUsed ? "Clue used" : "Clue"}>
+      <div className="game-heading">
+        <h1 className="wordmark">Wordle</h1>
+        {/* Not shown: which word you are on is obvious from the strip of solved
+            words. It stays for screen readers, who get none of that. */}
+        <p className="sr-only" role="status">Word {run.started} of {run.length}</p>
+        {!finished && <button className="icon-button hint-button game-hint" disabled={game.busy || game.revealingRow !== null || (round.state !== "playing" && !hintsUsed)} onClick={() => setPanel("hints")} aria-label={hintsUsed ? "Clue used" : "Clue"} title={hintsUsed ? "Clue used" : "Clue"}>
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
           <path d="M9 18h6M10 21h4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
           <path d="M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .9 1.6l.1.6h5.2l.1-.6c.1-.6.4-1.2.9-1.6A6 6 0 0 0 12 3Z" stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round" />
         </svg>
         {hintsUsed > 0 && <span className="hint-count" aria-hidden>{hintsUsed}</span>}
-      </button>}
+        </button>}
+      </div>
+      <ProfileButton />
+    </header>
+    <div className="board-area">
+      <div className="board-stage">
+      <Board rows={round.rows} draft={game.draft} wordLength={round.wordLength} maxRows={round.maxRows} revealingRow={game.revealingRow} shake={game.shake} onDraftTileSelect={game.selectDraftTile} draftCursor={game.draftCursor} />
       </div>
     </div>
     <div className="sr-only" role="status" aria-live="polite">{game.revealingRow === null && round.rows.length > 0 ? round.rows.at(-1)?.guess.split("").map((letter, i) => `${letter}: ${MARK_LABEL[round.rows.at(-1)!.marks[i]]}`).join("; ") : ""}</div>
@@ -76,7 +81,12 @@ function PlayScreen() {
       <button className="button" disabled={game.busy} onClick={run.mode === "themed" && run.complete ? openConclusion : newRun}>{run.mode === "themed" && run.complete ? "Uncover the connection" : "Next word"}</button>
     </div> : <>
       <Keyboard letterStates={game.letterStates} onKey={game.typeLetter} onBackspace={game.backspace} disabled={game.inputDisabled} />
-      <button className="button keyboard-submit" data-state={game.enterState} disabled={game.inputDisabled || game.enterState === "incomplete"} onClick={game.submit}>Submit</button>
+      {/* Submit centred, with the clue parked at the end of the same row. In
+          the board's left margin the clue was floating in dead space and
+          costing the board 88px of width to sit in. */}
+      <div className="play-actions">
+        <button className="button keyboard-submit" data-state={game.enterState} disabled={game.inputDisabled || game.enterState === "incomplete"} onClick={game.submit}>Submit</button>
+      </div>
     </>}
     {game.message && <div className="toast" role="status">{game.message}</div>}
     {error && <Dialog title="Game interrupted" onClose={() => { void game.retry(); }}>{error}</Dialog>}
