@@ -323,7 +323,8 @@ func (s *Server) handleGetRound(w http.ResponseWriter, r *http.Request) {
 }
 
 type guessRequest struct {
-	Guess string `json:"guess"`
+	Guess     string `json:"guess"`
+	RequestID string `json:"requestId"`
 }
 
 func (s *Server) handleGuess(w http.ResponseWriter, r *http.Request) {
@@ -335,9 +336,18 @@ func (s *Server) handleGuess(w http.ResponseWriter, r *http.Request) {
 
 	var justFinished bool
 	round, err := s.rounds.Update(r.Context(), chi.URLParam(r, "id"), func(round *game.Round) error {
+		if req.RequestID != "" && round.RequestIDs[req.RequestID] {
+			return nil
+		}
 		before := round.State
 		if err := round.Guess(req.Guess, s.pool.IsWord); err != nil {
 			return err
+		}
+		if req.RequestID != "" {
+			if round.RequestIDs == nil {
+				round.RequestIDs = make(map[string]bool)
+			}
+			round.RequestIDs[req.RequestID] = true
 		}
 		justFinished = before == game.StatePlaying && round.State != game.StatePlaying
 		return nil
@@ -355,7 +365,10 @@ func (s *Server) handleGuess(w http.ResponseWriter, r *http.Request) {
 	// A round that just ended inside a run folds its scores into the run
 	// totals. Doing it here rather than in Round.Guess keeps the rules package
 	// free of any notion of storage.
-	if justFinished && round.RunID != "" {
+	// A retried final guess has already finished the round. Recording a run is
+	// idempotent, and returning it here lets the client recover the completed
+	// theme instead of being left with a stale local total.
+	if round.State != game.StatePlaying && round.RunID != "" {
 		run, err := s.rounds.UpdateRun(r.Context(), round.RunID, func(run *game.Run) error {
 			run.RecordRound(round)
 			return nil

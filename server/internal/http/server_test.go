@@ -104,6 +104,21 @@ func TestRunDealsWords(t *testing.T) {
 	}
 }
 
+func TestGuessRetryDoesNotConsumeAnotherRow(t *testing.T) {
+	h := newTestServer(t)
+	_, run := do(t, h, http.MethodPost, "/api/runs", nil)
+	_, dealt := do(t, h, http.MethodPost, "/api/runs/"+run["id"].(string)+"/rounds", nil)
+	id := dealt["round"].(map[string]any)["id"].(string)
+	body := map[string]any{"guess": "crane", "requestId": "lost-response"}
+	if rec, _ := do(t, h, http.MethodPost, "/api/rounds/"+id+"/guesses", body); rec.Code != http.StatusOK {
+		t.Fatalf("first guess status = %d", rec.Code)
+	}
+	_, restored := do(t, h, http.MethodPost, "/api/rounds/"+id+"/guesses", body)
+	if got := len(restored["rows"].([]any)); got != 1 {
+		t.Fatalf("retry rows = %d, want 1", got)
+	}
+}
+
 // The single most important property: while a round is in play the answer must
 // not appear anywhere in any response, in any field.
 func TestAnswerDoesNotLeakWhilePlaying(t *testing.T) {

@@ -117,27 +117,31 @@ export class ApiError extends Error {
   }
 }
 
-async function request<T>(path: string, init?: RequestInit): Promise<T> {
+async function request<T>(path: string, init?: RequestInit, retry = 0): Promise<T> {
   // Signing in is optional. A token makes the round count towards your
   // history; without one you still get a perfectly good game.
   const token = await getToken();
 
-  let res: Response;
-  try {
-    res = await fetch(`${API_URL}${path}`, {
-      ...init,
-      headers: {
-        "Content-Type": "application/json",
-        "X-Wordle-Date": localDate(),
-        ...(token ? { Authorization: `Bearer ${token}` } : {}),
-        ...init?.headers,
-      },
-    });
-  } catch {
-    // A dead server and a flaky connection look identical from here, and the
-    // player can act on neither, so say the one true thing.
-    throw new ApiError("offline", "Can't reach the game server", 0);
+  let res: Response | undefined;
+  for (let attempt = 0; attempt <= retry; attempt++) {
+    try {
+      res = await fetch(`${API_URL}${path}`, {
+        ...init,
+        headers: {
+          "Content-Type": "application/json",
+          "X-Wordle-Date": localDate(),
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
+          ...init?.headers,
+        },
+      });
+      break;
+    } catch {
+      if (attempt === retry) throw new ApiError("offline", "Can't reach the game server", 0);
+      await new Promise((resolve) => window.setTimeout(resolve, 300 * (attempt + 1)));
+    }
   }
+
+  if (!res) throw new ApiError("offline", "Can't reach the game server", 0);
 
   if (!res.ok) {
     if (res.status === 401) clearToken();
@@ -192,7 +196,8 @@ export async function submitGuess(
 ): Promise<{ round: Round; run?: Run }> {
   const body = await request<Round | { round: Round; run: Run }>(
     `/api/rounds/${id}/guesses`,
-    { method: "POST", body: JSON.stringify({ guess }) },
+    { method: "POST", body: JSON.stringify({ guess, requestId: crypto.randomUUID() }) },
+    2,
   );
 
   return "round" in body ? body : { round: body };

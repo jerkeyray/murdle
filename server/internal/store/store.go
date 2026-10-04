@@ -178,6 +178,10 @@ func cloneRound(r *game.Round) *game.Round {
 		copy.Rows[i].Marks = append([]game.Mark{}, r.Rows[i].Marks...)
 	}
 	copy.Hints = append([]game.HintReveal{}, r.Hints...)
+	copy.RequestIDs = make(map[string]bool, len(r.RequestIDs))
+	for id, seen := range r.RequestIDs {
+		copy.RequestIDs[id] = seen
+	}
 	return &copy
 }
 func cloneRun(r *game.Run) *game.Run {

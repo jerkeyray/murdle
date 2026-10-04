@@ -57,6 +57,10 @@ type Round struct {
 	answer string
 	// Hints contains only the clues already requested.
 	Hints []HintReveal
+	// RequestIDs makes a lost response safe to retry without consuming another
+	// row. It is persisted with the round because mobile networks routinely
+	// drop a response after the server has already accepted the guess.
+	RequestIDs map[string]bool
 }
 
 // NewRound starts a round on the given answer.
@@ -72,6 +76,7 @@ func NewRound(id, answer string) *Round {
 		UpdatedAt:  now,
 		answer:     strings.ToLower(answer),
 		Hints:      make([]HintReveal, 0, 2),
+		RequestIDs: make(map[string]bool),
 	}
 }
 

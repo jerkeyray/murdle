@@ -49,6 +49,7 @@ type roundRecord struct {
 	SolvedRow  int               `json:"solvedRow"`
 	State      game.State        `json:"state"`
 	Hints      []game.HintReveal `json:"hints"`
+	RequestIDs map[string]bool   `json:"requestIds,omitempty"`
 	CreatedAt  time.Time         `json:"createdAt"`
 	UpdatedAt  time.Time         `json:"updatedAt"`
 }
@@ -72,7 +73,7 @@ func newRoundRecord(r *game.Round) roundRecord {
 	return roundRecord{
 		ID: r.ID, RunID: r.RunID, Mode: r.Mode, Answer: r.Answer(), WordLength: r.WordLength, Rows: r.Rows,
 		HintsUsed: r.HintsUsed, SolvedRow: r.SolvedRow, State: r.State,
-		Hints: r.Hints, CreatedAt: r.CreatedAt, UpdatedAt: r.UpdatedAt,
+		Hints: r.Hints, RequestIDs: r.RequestIDs, CreatedAt: r.CreatedAt, UpdatedAt: r.UpdatedAt,
 	}
 }
 
@@ -93,6 +94,9 @@ func (rec roundRecord) round() *game.Round {
 	}
 	if rec.Hints != nil {
 		r.Hints = rec.Hints
+	}
+	if rec.RequestIDs != nil {
+		r.RequestIDs = rec.RequestIDs
 	}
 	return r
 }
