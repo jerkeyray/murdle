@@ -7,6 +7,8 @@ import { ProfileButton } from "@/components/ProfileButton";
 import { activeRunFor, readLocal, subscribeSession, type GameConfig, writeLocal } from "@/lib/session";
 import { SettingsButton } from "@/components/SettingsButton";
 import { FriendsEntry } from "@/components/FriendsEntry";
+import { HomeRow } from "@/components/HomeRow";
+import { HomeMeta } from "@/components/HomeMeta";
 
 /**
  * The front door: one button.
@@ -61,20 +63,9 @@ export default function Home() {
       <div className="home-middle">
         <section className="home-intro">
           <h1 className="home-mark">Wordle</h1>
+          <HomeMeta streak={homeSummary?.streak.current} />
         </section>
-        <div className="home-specimen" aria-hidden>
-          <ol className="specimen-list">
-            {Array.from({ length: 3 }, (_, row) => (
-              <li key={row}>
-                <span className="specimen-word">
-                  {Array.from({ length: 5 }, (_, tile) => (
-                    <i key={tile} />
-                  ))}
-                </span>
-              </li>
-            ))}
-          </ol>
-        </div>
+        <HomeRow />
         <div className="home-actions">
           <Link className="play" href={`/play?mode=${config.mode}&length=${config.wordLength}&difficulty=${config.difficulty}`}>
             <span className="play-word">

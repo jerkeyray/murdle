@@ -2423,11 +2423,10 @@ button.tile:focus-visible {
   justify-content: center;
   box-sizing: border-box;
   width: 100%;
-  max-width: 15rem;
-  /* Narrower than the column it sits in, so without this it hugs the left edge
-     of that column and lands 40px off the centre everything else shares. */
+  /* The row above and this button are the two shapes under the name, so they
+     take the same measure rather than stacking two different widths. */
   margin-inline: auto;
-  min-height: 58px;
+  min-height: 60px;
   padding: 0 20px;
   border: 1px solid transparent;
   border-radius: var(--radius-tile);
@@ -2461,68 +2460,115 @@ button.tile:focus-visible {
   line-height: 1;
 }
 
+/* Capped here as well as on the phone layout: at 31rem the wide screen was
+   still showing a full-size board that nobody can play, which is the thing
+   this diagram must not be mistaken for. */
+/* One row, solid, in the colour that already means "right letter, right
+   place" — so a full row of it says "solved" in the game's own grammar rather
+   than being a decorative colour that means nothing. Faded tiles were the
+   problem; this is the cure, and it is one shape instead of eighteen. */
+.home-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  width: min(100%, 20rem);
+  margin-inline: auto;
+}
+
+.home-tile {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-tile);
+  background: transparent;
+  color: transparent;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(1.4rem, 5vw, 2rem);
+  font-weight: 600;
+  line-height: 1;
+  text-transform: uppercase;
+  transition: none;
+}
+
+.home-tile[data-filled] {
+  border-color: var(--mark-hit);
+  background: var(--mark-hit);
+  color: var(--mark-hit-text);
+  animation: home-tile-in 340ms cubic-bezier(0.2, 0.7, 0.3, 1) backwards;
+}
+
+/* Turns over once, on first paint, and is never seen again. */
+@keyframes home-tile-in {
+  from { transform: rotateX(-90deg); }
+  to { transform: rotateX(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-tile[data-filled] { animation: none; }
+}
+
+/* Small, letterspaced, and carrying only what is true. The detail that does
+   the decorating so nothing else has to. */
+.home-meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 8px;
+  min-height: 1.2em;
+  margin: 14px 0 0;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.home-meta b {
+  font-weight: 700;
+  color: var(--mark-hit);
+}
+
+/* Outlined where Begin is filled: a real button on the same measure, not a
+   pale link. Cut, do not fade — the point was to stop it rivalling Begin, not
+   to make it hard to find. */
+.home-friends {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 56px;
+  margin-inline: auto;
+  padding: 0 20px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-tile);
+  color: var(--text);
+  text-decoration: none;
+  transition: border-color 0.18s ease, color 0.18s ease;
+}
+
+.home-friends:hover { border-color: var(--text); }
+
 .home-friends-word {
   font-family: var(--font-serif), Georgia, serif;
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   font-weight: 550;
   line-height: 1;
 }
 
-/* Capped here as well as on the phone layout: at 31rem the wide screen was
-   still showing a full-size board that nobody can play, which is the thing
-   this diagram must not be mistaken for. */
-.home-specimen {
-  position: relative;
-  width: 100%;
-  max-width: 13rem;
-  justify-self: center;
-  padding: 0;
-  opacity: 0.55;
-  margin-inline: auto;
+/* The accent earns its place by meaning something: somebody is waiting. */
+.home-friends-status {
+  color: var(--mark-hit);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
-.specimen-list {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.specimen-list li {
-  display: block;
-}
-
-.specimen-word {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 7px;
-}
-
-.specimen-word i {
-  aspect-ratio: 1;
-  border: 1px solid var(--border-strong);
-  border-radius: 5px;
-  background: var(--bg);
-}
-
-/* This is a board, so it has to be a legal one. A row goes fully green exactly
-   once, on the guess that ends the game, and nothing can follow it — three
-   green rows is a position Wordle cannot reach. What is drawn here is a real
-   solve in three: a loose first guess, a closer second, then the word. */
-.specimen-list li:nth-child(1) .specimen-word i:nth-child(2),
-.specimen-list li:nth-child(2) .specimen-word i:nth-child(4) {
-  border-color: color-mix(in srgb, var(--mark-present) 55%, var(--border));
-  background: color-mix(in srgb, var(--mark-present) 20%, var(--bg));
-}
-
-.specimen-list li:nth-child(2) .specimen-word i:nth-child(1),
-.specimen-list li:nth-child(3) .specimen-word i {
-  border-color: color-mix(in srgb, var(--mark-hit) 55%, var(--border));
-  background: color-mix(in srgb, var(--mark-hit) 20%, var(--bg));
-}
+.home-friends[data-news] { border-color: var(--mark-hit); }
 
 
 @media (max-width: 759px) {
@@ -2569,34 +2615,8 @@ button.tile:focus-visible {
     font-size: 1.35rem;
   }
 
-  /* Drawn at board scale this read as a playable grid with real marks on it,
-     which is the last thing a front door should suggest. Small, it goes back
-     to being what it is: a diagram of five words and the thread through them. */
-  /* Same width as the buttons, so the front door is one column, not three
-     things of three different sizes. */
-  .home-specimen {
-    max-width: 12rem;
-    justify-self: auto;
-    align-self: center;
-    margin-inline: auto;
-    padding: 0;
-    opacity: 0.9;
-  }
-
-  /* The wider measure is a desktop affordance; a phone keeps the proportions
-     it already had. */
   .home-actions {
-    width: min(100%, 15rem);
-    margin-top: 24px;
-  }
-
-  .specimen-list {
-    gap: 7px;
-    margin: 0;
-  }
-
-  .specimen-word {
-    gap: 5px;
+    margin-top: 26px;
   }
 
 }
@@ -2615,16 +2635,8 @@ button.tile:focus-visible {
     margin-block: 18px 22px;
   }
 
-  .home-specimen {
-    padding-block: 15px;
-  }
-
   .home-actions {
     margin-top: 14px;
-  }
-
-  .specimen-word i {
-    aspect-ratio: 1.22 / 1;
   }
 
 }
@@ -2761,25 +2773,6 @@ summary { cursor: pointer; color: var(--text-muted); padding-block: 8px; min-hei
 
 /* Friends are the navigation; the board remains the focus of play. */
 /* The quieter of the two: outlined where Continue is filled, same box. */
-/* A quiet line rather than a rival to Begin. Two matching buttons made the
-   page ask you to choose; one button and one link tells you what the page is
-   for and leaves the other way out available. */
-.home-friends {
-  display: inline-flex;
-  align-items: baseline;
-  justify-content: center;
-  gap: 8px;
-  margin: 0 auto;
-  padding: 10px 8px;
-  color: var(--text-muted);
-  text-decoration: none;
-  transition: color 0.18s ease;
-}
-.home-friends:hover { color: var(--text); }
-.home-friends-status { color: var(--mark-hit); font-size: .72rem; font-weight: 650; letter-spacing: .02em; }
-
-/* A turn waiting on you is the only thing here with a deadline. */
-.home-friends[data-news] { color: var(--text); border-color: var(--mark-hit); }
 .friend-invite { margin-bottom: 24px; padding: 20px; background: var(--bg-raised); border: 1px solid var(--border); border-radius: 18px; }
 .friend-invite-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .friend-invite strong { display: block; color: var(--text); font-family: ui-monospace, monospace; font-size: 1.5rem; letter-spacing: .16em; margin-top: 7px; }
