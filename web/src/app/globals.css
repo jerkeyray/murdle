@@ -2355,13 +2355,16 @@ button.tile:focus-visible {
    composition, rather than between unrelated pieces of it.
 --------------------------------------------------------------------------- */
 
+/* 72rem gave the header a 1024px span while the content below it was a 240px
+   ribbon, so the cog and the lexicon ended up 400px from anything they relate
+   to. Narrower, the chrome frames the composition instead of the monitor. */
 .home {
   display: flex;
   flex-direction: column;
   min-height: 100dvh;
-  width: min(100%, 72rem);
+  width: min(100%, 40rem);
   max-width: none;
-  padding-inline: clamp(20px, 5vw, 64px);
+  padding-inline: clamp(20px, 5vw, 40px);
 }
 
 .home-top {
@@ -2392,12 +2395,15 @@ button.tile:focus-visible {
 /* The margin used to come from the line underneath. With that gone the mark
    has to hold its own distance from the buttons, and its 0.84 line box needs
    the extra to clear the descender on the d. */
+/* The name is the design. At 7vw it was merely a heading on a page of
+   furniture; given the room to run it becomes the thing you are looking at,
+   and everything under it can afford to be quiet. */
 .home-mark {
   margin: 0;
-  font-size: clamp(4rem, 7vw, 6rem);
+  font-size: clamp(4rem, 13vw, 11rem);
   font-weight: 570;
   line-height: 0.84;
-  letter-spacing: -0.045em;
+  letter-spacing: -0.05em;
   text-transform: none;
 }
 
@@ -2409,17 +2415,18 @@ button.tile:focus-visible {
   color: var(--text-muted);
 }
 
-/* The two front-door buttons share one box so they cannot drift apart, and
-   they take the board's corner rather than a pill: this is a game made of
-   squares, and the buttons should look like they come from it. */
-.play,
-.home-friends {
+/* One button, taking the board's corner rather than a pill: this is a game
+   made of squares and the way in should look like it comes from one. */
+.play {
   display: flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
   width: 100%;
   max-width: 15rem;
+  /* Narrower than the column it sits in, so without this it hugs the left edge
+     of that column and lands 40px off the centre everything else shares. */
+  margin-inline: auto;
   min-height: 58px;
   padding: 0 20px;
   border: 1px solid transparent;
@@ -2428,9 +2435,11 @@ button.tile:focus-visible {
   transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
 }
 
+/* 15rem is a phone's measure. On a desktop it left the whole composition
+   looking like a screenshot of a phone pasted into the middle of the page. */
 .home-actions {
   display: grid;
-  width: min(100%, 15rem);
+  width: min(100%, 20rem);
   gap: 10px;
   margin: 0 auto;
 }
@@ -2445,11 +2454,17 @@ button.tile:focus-visible {
   color: var(--mark-hit-text);
 }
 
-.play-word,
-.home-friends-word {
+.play-word {
   font-family: var(--font-serif), Georgia, serif;
   font-size: 1.3rem;
   font-weight: 600;
+  line-height: 1;
+}
+
+.home-friends-word {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 550;
   line-height: 1;
 }
 
@@ -2459,10 +2474,10 @@ button.tile:focus-visible {
 .home-specimen {
   position: relative;
   width: 100%;
-  max-width: 15rem;
+  max-width: 13rem;
   justify-self: center;
   padding: 0;
-  opacity: 0.9;
+  opacity: 0.55;
   margin-inline: auto;
 }
 
@@ -2540,14 +2555,13 @@ button.tile:focus-visible {
     text-align: center;
   }
 
-  .play,
-  .home-friends {
+  .play {
     margin-inline: auto;
   }
 
   .home-mark {
     margin-bottom: 26px;
-    font-size: clamp(3.7rem, 18vw, 4.6rem);
+    font-size: clamp(3.9rem, 23vw, 6rem);
   }
 
   .home-line {
@@ -2561,7 +2575,7 @@ button.tile:focus-visible {
   /* Same width as the buttons, so the front door is one column, not three
      things of three different sizes. */
   .home-specimen {
-    max-width: 13rem;
+    max-width: 12rem;
     justify-self: auto;
     align-self: center;
     margin-inline: auto;
@@ -2569,7 +2583,10 @@ button.tile:focus-visible {
     opacity: 0.9;
   }
 
+  /* The wider measure is a desktop affordance; a phone keeps the proportions
+     it already had. */
   .home-actions {
+    width: min(100%, 15rem);
     margin-top: 24px;
   }
 
@@ -2744,9 +2761,21 @@ summary { cursor: pointer; color: var(--text-muted); padding-block: 8px; min-hei
 
 /* Friends are the navigation; the board remains the focus of play. */
 /* The quieter of the two: outlined where Continue is filled, same box. */
-.home-friends { margin-top: 10px; border-color: var(--border-strong); color: var(--text-muted); }
-.home-friends:hover { color: var(--text); border-color: var(--text); }
-.home-friends { flex-direction: column; gap: 3px; }
+/* A quiet line rather than a rival to Begin. Two matching buttons made the
+   page ask you to choose; one button and one link tells you what the page is
+   for and leaves the other way out available. */
+.home-friends {
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 8px;
+  margin: 0 auto;
+  padding: 10px 8px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.18s ease;
+}
+.home-friends:hover { color: var(--text); }
 .home-friends-status { color: var(--mark-hit); font-size: .72rem; font-weight: 650; letter-spacing: .02em; }
 
 /* A turn waiting on you is the only thing here with a deadline. */
@@ -2991,7 +3020,7 @@ summary { cursor: pointer; color: var(--text-muted); padding-block: 8px; min-hei
   .sheet-head > .icon-button:last-child { margin-left: auto; }
 
   .home { padding-inline: 16px; }
-  .home-mark { margin-bottom: 18px; font-size: clamp(3.45rem, 20vw, 4.1rem); }
+  .home-mark { margin-bottom: 18px; font-size: clamp(3.4rem, 23vw, 5rem); }
   .mode-picker { gap: 6px; margin-top: 16px; }
   .mode-picker button { min-height: 82px; padding: 10px; }
   .mode-picker strong { font-size: .94rem; }
