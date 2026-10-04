@@ -1,17 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { ApiError, getSavedWords, setWordSaved, type Round } from "@/lib/api";
 import { shareRound } from "@/lib/shareCard";
 import { Dialog } from "./Dialog";
-import { Board } from "./Board";
 
 export function Entry({ round, onClose, action, actionLabel, busy = false }: {
   round: Round; onClose: () => void; action?: () => void; actionLabel?: string; busy?: boolean;
 }) {
   const [needsSignIn, setNeedsSignIn] = useState(false);
-  const [saveLabel, setSaveLabel] = useState("");
   const [kept, setKept] = useState(false);
   const [saving, setSaving] = useState(false);
   const [keepError, setKeepError] = useState("");
@@ -26,10 +23,10 @@ export function Entry({ round, onClose, action, actionLabel, busy = false }: {
   }, [round.answer]);
   async function toggleKeep() {
     if (!round.answer || saving) return;
-    if (needsSignIn) { setSaveLabel("Sign in to save words to your collection."); return; }
+    if (needsSignIn) { window.location.assign("/sign-in?returnTo=%2Fplay"); return; }
     setSaving(true); setKeepError(""); setShareLabel("");
-    try { await setWordSaved(round.answer, !kept); setKept(!kept); setSaveLabel(kept ? "Removed from saved words" : "Word saved"); }
-    catch (err) { if (err instanceof ApiError && err.status === 401) { setNeedsSignIn(true); setSaveLabel("Sign in to save words to your collection."); } else setKeepError("Could not save this word. Please try again."); }
+    try { await setWordSaved(round.answer, !kept); setKept(!kept); }
+    catch (err) { if (err instanceof ApiError && err.status === 401) { setNeedsSignIn(true); window.location.assign("/sign-in?returnTo=%2Fplay"); } else setKeepError("Could not save this word. Please try again."); }
     finally { setSaving(false); }
   }
   async function onShare() {
@@ -52,7 +49,7 @@ export function Entry({ round, onClose, action, actionLabel, busy = false }: {
       <div className="entry-word-row">
         <h2 className="entry-word">{round.answer}</h2>
         <div className="entry-tools">
-          <button className="icon-button entry-icon-button" disabled={saving} onClick={toggleKeep} aria-pressed={kept} aria-label={kept ? "Remove from saved words" : "Save this word"} title={kept ? "Remove from saved words" : "Save this word"}>
+          <button className="icon-button entry-icon-button" disabled={saving} onClick={toggleKeep} aria-pressed={kept} aria-label={kept ? "Remove from saved words" : needsSignIn ? "Sign in to save this word" : "Save this word"} title={kept ? "Remove from saved words" : needsSignIn ? "Sign in to save this word" : "Save this word"}>
             <svg width="19" height="19" viewBox="0 0 24 24" aria-hidden fill={kept ? "currentColor" : "none"} stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
               <path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.8L6 21V4.75Z" />
             </svg>
@@ -65,18 +62,11 @@ export function Entry({ round, onClose, action, actionLabel, busy = false }: {
 
         </div>
       </div>
-      {round.hintsUsed > 0 && <p className="assisted">Assisted · {round.hintsUsed} {round.hintsUsed === 1 ? "hint" : "hints"}</p>}
       {round.entry && <>
         <p className="entry-definition">{round.entry.definition}</p>
         <p className="entry-note">{round.entry.note}</p>
       </>}
-      <details className="board-review"><summary>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="m9 5 7 7-7 7" /></svg>
-        View board
-      </summary>
-        <Board rows={round.rows} draft="" wordLength={round.wordLength} maxRows={round.maxRows} revealingRow={null} shake={false} />
-      </details>
-      {(saveLabel || shareLabel) && <p className="entry-feedback" role="status">{shareLabel || saveLabel}{needsSignIn && saveLabel && <><br /><Link href="/sign-in?returnTo=%2Fplay">Sign in</Link></>}</p>}
+      {shareLabel && <p className="entry-feedback" role="status">{shareLabel}</p>}
       {keepError && <p role="status" className="form-error">{keepError}</p>}
       <div className="entry-actions">
         {action ? <button className="button" disabled={busy} onClick={action}>{busy ? "Please wait…" : actionLabel}</button> : <button className="button" onClick={onClose}>Done</button>}

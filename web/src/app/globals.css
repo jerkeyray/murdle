@@ -1921,23 +1921,14 @@ button.tile:focus-visible {
   flex: 1;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
-  padding-bottom: 6vh;
+  padding-bottom: 7dvh;
 }
 
 /* The screen needs to say whose it is. Without a mark the card floats in an
    empty field with only a back arrow for company, which is what made this
    read as an unfinished page rather than a front door. */
-.gate-mark {
-  margin: 0 0 14px;
-  font-family: var(--font-serif), Georgia, serif;
-  font-size: 1.5rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  text-align: center;
-  color: var(--text-muted);
-}
-
 /* Said plainly. Boxed in a dashed outline it read as a broken element waiting
    for something to load rather than as the answer to "can I sign in?". */
 .gate-unavailable {
@@ -1948,33 +1939,24 @@ button.tile:focus-visible {
 }
 
 .gate-card {
-  padding: 28px 24px 26px;
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  background: var(--bg-raised);
-  box-shadow: 0 24px 60px -34px rgb(0 0 0 / 0.5);
-}
-
-.gate-ex {
-  font-family: var(--font-serif), Georgia, serif;
-  font-style: italic;
-  font-size: 0.85rem;
-  letter-spacing: 0.06em;
-  color: var(--text-faint);
+  width: 100%;
+  padding: 0;
+  text-align: center;
 }
 
 .gate-title {
-  margin: 6px 0 0;
+  margin: 0;
   font-family: var(--font-serif), Georgia, serif;
-  font-size: clamp(1.9rem, 8vw, 2.3rem);
+  font-size: clamp(2rem, 9vw, 2.65rem);
   font-weight: 600;
   line-height: 1.08;
   letter-spacing: -0.015em;
 }
 
 .gate-line {
-  margin: 12px 0 22px;
-  font-size: 0.92rem;
+  max-width: 27rem;
+  margin: 14px auto 26px;
+  font-size: 1rem;
   line-height: 1.55;
   color: var(--text-muted);
 }
@@ -1985,8 +1967,14 @@ button.tile:focus-visible {
 }
 
 .gate-foot {
-  margin: 18px 0 0;
-  text-align: center;
+  display: inline-flex;
+  width: fit-content;
+  min-height: 44px;
+  align-items: center;
+  margin: 20px auto 0;
+  color: var(--text-muted);
+  font-size: .9rem;
+  text-underline-offset: 4px;
 }
 
 /* ---------------------------------------------------------------------------
@@ -2697,6 +2685,9 @@ button:disabled { cursor: default; }
 .finished-actions .button { flex: 1; }
 .game-dialog { width: min(28rem, calc(100vw - 24px)); position: fixed; inset: 0; margin: auto; color: var(--text); font-size: .95rem; line-height: 1.55; }
 .game-dialog::backdrop { background: rgb(0 0 0 / .7); backdrop-filter: blur(3px); }
+.game-dialog.clue-dialog { width: min(25rem, calc(100vw - 32px)); max-height: none; padding: 18px 20px 20px; border-color: var(--border-strong); border-radius: 18px; background: var(--bg-raised); box-shadow: 0 22px 64px rgb(0 0 0 / .5); }
+.game-dialog.clue-dialog .dialog-heading { margin-bottom: 14px; }
+.game-dialog.clue-dialog .dialog-close { width: 38px; height: 38px; }
 .game-dialog.entry-dialog { padding: 24px; border-color: var(--border-strong); background: var(--bg-raised); box-shadow: 0 28px 90px rgb(0 0 0 / .55), 0 0 0 1px rgb(255 255 255 / .025) inset; }
 .game-dialog .label { font-size: .72rem; }
 .dialog-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
@@ -2708,13 +2699,9 @@ button:disabled { cursor: default; }
 .game-dialog.entry-dialog .entry-word { margin: 0; padding: 0; font-size: clamp(2.35rem, 10vw, 2.9rem); font-weight: 550; line-height: 1.15; }
 .game-dialog.entry-dialog .entry-definition { max-width: none; margin: 18px 0 0; font-size: 1rem; font-weight: 500; line-height: 1.5; }
 .game-dialog.entry-dialog .entry-note { margin: 10px 0 0; padding: 0; font-family: var(--font-sans), system-ui, sans-serif; font-size: .95rem; line-height: 1.65; }
-.game-dialog.entry-dialog .board-review { margin: 12px 0 0; padding: 0; border: 0; background: none; }
-.game-dialog.entry-dialog .board-review summary { display: flex; align-items: center; gap: 8px; width: fit-content; min-height: 44px; padding: 6px 0; list-style: none; color: var(--text-muted); font-size: .85rem; }
-.game-dialog.entry-dialog .board-review summary::-webkit-details-marker { display: none; }
-.game-dialog.entry-dialog .board-review summary svg { transition: transform .15s ease; }
-.game-dialog.entry-dialog .board-review[open] summary svg { transform: rotate(90deg); }
 .game-dialog.entry-dialog .entry-tools { flex: none; justify-content: flex-end; gap: 2px; margin: 0; padding: 0; border: 0; }
 .entry-icon-button { width: 44px; height: 44px; border: 0; border-radius: 50%; color: var(--text-muted); }
+.entry-icon-button[aria-pressed="true"] { color: var(--text); }
 .game-dialog.entry-dialog .entry-actions { margin-top: 16px; }
 .game-dialog.entry-dialog .entry-actions .button { font-size: .95rem; font-weight: 600; letter-spacing: 0; text-transform: none; }
 /* A button closing out a sheet needs air above it: the note explaining why a
@@ -2728,12 +2715,10 @@ button:disabled { cursor: default; }
 /* The 44px tap target on the summary already supplies the breathing room; the
    old 18px margins on top of it left each disclosure floating in ~80px of air,
    so the card read as three unrelated things drifting apart. */
-.word-history, .board-review { margin-block: 2px; }
-.word-history[open], .board-review[open] { margin-block: 8px; }
+.word-history { margin-block: 2px; }
+.word-history[open] { margin-block: 8px; }
 summary { cursor: pointer; color: var(--text-muted); padding-block: 8px; min-height: 44px; }
 .word-history .entry-note { font-size: 1rem; padding-top: 6px; }
-.board-review .board { width: min(100%, 230px); margin: 10px auto; }
-.board-review .tile { font-size: 1.4rem; }
 .assisted { color: var(--text-muted); font-size: .85rem; }
 .conclusion-title { font-family: var(--font-serif), Georgia, serif; font-size: 2rem; line-height: 1.15; margin: 8px 0 14px; }
 .run-result { font-size: .85rem; color: var(--text-muted); }
@@ -2742,13 +2727,10 @@ summary { cursor: pointer; color: var(--text-muted); padding-block: 8px; min-hei
 .connection-list strong { font-family: var(--font-serif), Georgia, serif; font-size: 1.35rem; }
 .connection-list p { color: var(--text-muted); margin: 4px 0; }
 .game-dialog textarea { display: block; box-sizing: border-box; resize: vertical; width: 100%; min-height: 140px; max-height: 45dvh; margin-top: 12px; padding: 12px; border: 1px solid var(--border-strong); border-radius: 8px; color: var(--text); background: var(--bg); font: inherit; font-size: 16px; }
-.hint-panel { display: grid; gap: 18px; }
-.hint-list { display: grid; gap: 14px; margin: 0; padding: 0; list-style: none; }
-.hint-list li { padding-left: 14px; border-left: 2px solid var(--border-strong); }
-.hint-list li:first-child { border-left-color: var(--mark-hit); }
-.hint-list span { display: block; color: var(--text-faint); font-size: .65rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
-.hint-list p { margin: 5px 0 0; color: var(--text); font: 500 1.05rem/1.45 var(--font-serif), Georgia, serif; }
-.hint-next { display: grid; gap: 12px; padding-top: 16px; border-top: 1px solid var(--border); }
+.hint-panel { display: grid; gap: 16px; }
+.hint-list { margin: 0; padding: 0; list-style: none; }
+.hint-list p { margin: 0; color: var(--text); font: 500 1.05rem/1.5 var(--font-sans), system-ui, sans-serif; }
+.hint-next { display: grid; gap: 14px; }
 .hint-next p, .hint-panel-done { margin: 0; color: var(--text-muted); font-size: .85rem; line-height: 1.45; }
 .hint-next .button { margin: 0; }
 .game-error { width: 100%; max-width: 25rem; padding: 16px; font-size: 1rem; line-height: 1.5; }
@@ -2937,11 +2919,10 @@ summary { cursor: pointer; color: var(--text-muted); padding-block: 8px; min-hei
 .library-filter button { min-width: 33px; min-height: 38px; padding: 0 8px; font-size: .8rem; }
 .library-count { margin: 12px 0; color: var(--text-faint); font-size: .78rem; }
 .library-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; padding: 0; margin: 0; list-style: none; }
-.library-card { display: grid; align-content: start; width: 100%; min-height: 150px; padding: 14px; border: 1px solid var(--border); border-radius: 14px; background: var(--bg-raised); color: var(--text); text-align: left; cursor: pointer; }
+.library-card { position: relative; display: grid; align-content: start; width: 100%; min-height: 150px; padding: 14px; border: 1px solid var(--border); border-radius: 14px; background: var(--bg-raised); color: var(--text); text-align: left; cursor: pointer; }
 .library-card:hover { border-color: var(--border-strong); }
-.library-card-top { display: flex; justify-content: space-between; min-height: 18px; color: var(--text-faint); font-size: .64rem; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; }
-.library-card-top b { color: var(--mark-hit); font-size: 1rem; line-height: .7; }
-.library-card strong { margin: 13px 0 7px; font: 600 clamp(1.55rem, 7vw, 2rem)/1 var(--font-serif), Georgia, serif; }
+.library-card-saved { position: absolute; top: 13px; right: 14px; color: var(--mark-hit); font-size: 1rem; line-height: 1; }
+.library-card strong { margin: 3px 0 10px; font: 600 clamp(1.55rem, 7vw, 2rem)/1 var(--font-serif), Georgia, serif; }
 .library-card > span:last-child { display: -webkit-box; overflow: hidden; color: var(--text-muted); font-size: .8rem; line-height: 1.4; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
 .library-more { display: block; width: 100%; margin: 16px 0 6px; }
 .library-entry h2 { margin: 6px 0; font: 600 clamp(2.35rem, 13vw, 3.3rem)/.95 var(--font-serif), Georgia, serif; }

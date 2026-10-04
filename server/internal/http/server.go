@@ -491,7 +491,7 @@ func (s *Server) writeGameError(w http.ResponseWriter, err error) {
 	case errors.Is(err, game.ErrNotAWord):
 		writeError(w, http.StatusUnprocessableEntity, "not_a_word", "that is not a word")
 	case errors.Is(err, game.ErrHintLocked):
-		writeError(w, http.StatusConflict, "hint_locked", fmt.Sprintf("context unlocks after %d guesses; association after %d and the first hint", game.HintUnlocksAfter(1), game.HintUnlocksAfter(2)))
+		writeError(w, http.StatusConflict, "hint_locked", fmt.Sprintf("a clue unlocks after %d guesses", game.HintUnlocksAfter(1)))
 	case errors.Is(err, game.ErrInvalidHint):
 		writeError(w, http.StatusUnprocessableEntity, "invalid_hint", "choose hint 1 or 2")
 	case errors.Is(err, game.ErrNoHintsLeft):

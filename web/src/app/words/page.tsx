@@ -91,7 +91,7 @@ export default function WordsPage() {
       {words.length === 0 ? <div className="empty"><p>{query || length !== "all" ? "No words match those filters." : shelf === "saved" ? "Save a word to return to it here." : "Play a round to discover your first words."}</p>{(query || length !== "all") && <button className="text-button" onClick={() => { changeQuery(""); chooseLength("all"); }}>Clear filters</button>}</div> : <>
         <p className="library-count" role="status">Showing {shown.length} of {words.length}</p>
         <ul className="library-grid">{shown.map((word) => <li key={word.word}><button className="library-card" onClick={() => setSelected(word)}>
-          <span className="library-card-top"><span>{word.word.length} letters</span>{savedWords.has(word.word) && <b aria-label="Saved">⌑</b>}</span>
+          {savedWords.has(word.word) && <b className="library-card-saved" aria-label="Saved">⌑</b>}
           <strong>{word.word}</strong><span>{word.entry?.definition ?? "A word from your completed board."}</span>
         </button></li>)}</ul>
         {visible < words.length && <button className="button button--quiet library-more" onClick={() => setVisible((count) => count + PAGE_SIZE)}>Load more words</button>}

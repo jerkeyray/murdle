@@ -49,10 +49,7 @@ function PlayScreen() {
   const finished = game.finished;
   const activeEntry = selected ?? (finished && dismissedRound !== round.id ? round : null);
   const hintsUsed = round.hintsUsed;
-  const nextHint = hintsUsed + 1;
-  // Mirrors game.HintUnlocksAfter on the server: 2*tier + 1 accepted guesses.
-  const hintUnlocksAfter = (tier: number) => tier * 2 + 1;
-  const hintAvailable = nextHint <= 2 && round.rows.length >= hintUnlocksAfter(nextHint);
+  const hintAvailable = hintsUsed === 0 && round.rows.length >= 3;
   const openConclusion = () => { setDismissedRound(round.id); setPanel("conclusion"); };
 
   return <main className="app game-app">
@@ -64,7 +61,7 @@ function PlayScreen() {
     <div className="board-area">
       <div className="board-stage">
       <Board rows={round.rows} draft={game.draft} wordLength={round.wordLength} maxRows={round.maxRows} revealingRow={game.revealingRow} shake={game.shake} onDraftTileSelect={game.selectDraftTile} draftCursor={game.draftCursor} />
-      {!finished && <button className="icon-button hint-button game-hint" disabled={game.busy || game.revealingRow !== null || (round.state !== "playing" && !hintsUsed)} onClick={() => setPanel("hints")} aria-label={hintsUsed ? `Hint · ${hintsUsed} of 2 used` : "Hint"} title={hintsUsed ? `Hint · ${hintsUsed}/2` : "Hint"}>
+      {!finished && <button className="icon-button hint-button game-hint" disabled={game.busy || game.revealingRow !== null || (round.state !== "playing" && !hintsUsed)} onClick={() => setPanel("hints")} aria-label={hintsUsed ? "Clue used" : "Clue"} title={hintsUsed ? "Clue used" : "Clue"}>
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
           <path d="M9 18h6M10 21h4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
           <path d="M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .9 1.6l.1.6h5.2l.1-.6c.1-.6.4-1.2.9-1.6A6 6 0 0 0 12 3Z" stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round" />
@@ -84,14 +81,13 @@ function PlayScreen() {
     {game.message && <div className="toast" role="status">{game.message}</div>}
     {error && <Dialog title="Game interrupted" onClose={() => { void game.retry(); }}>{error}</Dialog>}
     {!game.error && !panel && activeEntry && <Entry key={activeEntry.id} round={activeEntry} onClose={() => { setSelected(null); setDismissedRound(round.id); }} action={activeEntry.id === round.id ? (run.mode === "themed" && run.complete ? openConclusion : newRun) : undefined} actionLabel={run.mode === "themed" && run.complete ? "Uncover the connection" : "Next word"} busy={game.busy} />}
-    {!game.error && panel === "hints" && <Dialog title="Clues" onClose={() => setPanel(null)}>
+    {!game.error && panel === "hints" && <Dialog title="Clue" onClose={() => setPanel(null)} className="clue-dialog">
       <section className="hint-panel">
-        {round.hints.length > 0 && <ol className="hint-list">{round.hints.map((hint) => <li key={hint.tier}><span>Clue {hint.tier}</span><p>{hint.text}</p></li>)}</ol>}
-        {round.state === "playing" && nextHint <= 2 && <div className="hint-next">
-          <p>{hintAvailable ? "Use a clue when you want a direction, not a letter." : `Clue ${nextHint} opens after ${hintUnlocksAfter(nextHint)} guesses.`}</p>
-          <button className="button" disabled={!hintAvailable || game.busy} onClick={game.requestHint}>{game.busy ? "Opening…" : `Reveal clue ${nextHint}`}</button>
+        {round.hints.length > 0 && <ol className="hint-list">{round.hints.slice(0, 1).map((hint) => <li key={hint.tier}><p>{hint.text}</p></li>)}</ol>}
+        {round.state === "playing" && hintsUsed === 0 && <div className="hint-next">
+          <p>{hintAvailable ? "A small nudge, without giving away a letter." : "Available after 3 guesses."}</p>
+          <button className="button" disabled={!hintAvailable || game.busy} onClick={game.requestHint}>{game.busy ? "Opening…" : "Reveal clue"}</button>
         </div>}
-        {hintsUsed === 2 && <p className="hint-panel-done">Both clues are open.</p>}
       </section>
     </Dialog>}
     {!game.error && panel === "conclusion" && <RunConclusion run={run} onClose={() => setPanel(null)} onNewRun={newRun} busy={game.busy} />}

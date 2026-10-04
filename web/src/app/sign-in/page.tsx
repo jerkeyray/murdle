@@ -76,13 +76,10 @@ export default function SignInPage() {
       </div>
 
       <div className="gate-middle">
-        <p className="gate-mark" aria-hidden>Wordle</p>
         <div className="gate-card">
-          <span className="gate-ex">Ex libris</span>
-          <h1 className="gate-title">Keep what you learn</h1>
+          <h1 className="gate-title">Save words.</h1>
           <p className="gate-line">
-            Sign in and every word you meet joins a lexicon of your own — a
-            streak, the words you kept, and someone to play against.
+            Sign in to save words and play with friends.
           </p>
 
           {available === false ? (
@@ -106,10 +103,7 @@ export default function SignInPage() {
           {error ? <p className="form-error gate-error">{error}</p> : null}
         </div>
 
-        <p className="hint gate-foot">
-          You never need an account to play.{" "}
-          <Link href="/">Go straight to a game</Link>.
-        </p>
+        <Link href="/" className="gate-foot">Play without an account</Link>
       </div>
     </main>
   );
