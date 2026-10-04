@@ -123,7 +123,7 @@ export function checkPack(pack, { dictionary, existingWords, existingIds }) {
     if (entry.hints[0].trim() === entry.hints[1].trim()) problems.push(`"${w}" repeats its hint`);
     for (const hint of entry.hints) {
       if (hint.toLowerCase().includes(w)) problems.push(`"${w}" appears in its own hint`);
-      if (/\b(first|last|second|third|fourth|fifth|sixth) letter|\b(starts?|ends?) with\b/i.test(hint)) problems.push(`"${w}" has a structural giveaway`);
+      if (/\b(first|last|second|third|fourth|fifth|sixth) letter|\b(starts?|ends?) with (the )?(letter|vowel|consonant)\b/i.test(hint)) problems.push(`"${w}" has a structural giveaway`);
     }
   }
 

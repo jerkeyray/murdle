@@ -213,7 +213,7 @@ func (p *Pool) ExhaustedForLength(exclude map[string]struct{}, length int) bool 
 func validatePacks(packs []Pack) error {
 	ids, words := map[string]bool{}, map[string]bool{}
 	wordPattern := regexp.MustCompile(`^[a-z]{5,6}$`)
-	structuralHint := regexp.MustCompile(`(?i)\b(first|last|second|third|fourth|fifth|sixth) letter\b|\b(starts?|ends?) with\b`)
+	structuralHint := regexp.MustCompile(`(?i)\b(first|last|second|third|fourth|fifth|sixth) letter\b|\b(starts?|ends?) with (the )?(letter|vowel|consonant)\b`)
 	placeholderCopy := []string{
 		"a common english word in this set",
 		"first expanded wordle bank",
@@ -243,7 +243,7 @@ func validatePacks(packs []Pack) error {
 			}
 			for _, hint := range w.Hints {
 				if len(strings.TrimSpace(hint)) < 12 || strings.Contains(strings.ToLower(hint), w.Word) || structuralHint.MatchString(hint) {
-					return fmt.Errorf("invalid hint: %s", w.Word)
+					return fmt.Errorf("invalid hint for %s: %q", w.Word, hint)
 				}
 			}
 			content := strings.ToLower(strings.Join(append(append([]string{}, w.Hints...), w.Definition, w.Note, w.Connection), " "))
