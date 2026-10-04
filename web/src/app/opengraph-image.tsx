@@ -1,6 +1,7 @@
 import { ImageResponse } from "next/og";
 
-export const runtime = "edge";
+// Default (Node) runtime: Vercel Services cannot deploy Edge functions, and
+// with no dynamic inputs this image is rendered once at build time anyway.
 export const alt = "Wordle word game";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
