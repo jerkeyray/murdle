@@ -61,27 +61,27 @@ export default function Home() {
       <div className="home-middle">
         <section className="home-intro">
           <h1 className="home-mark">Wordle</h1>
-          <Link className="play" href={`/play?mode=${config.mode}&length=${config.wordLength}&difficulty=${config.difficulty}`}>
-            <span className="play-word">
-              {savedRun ? "Continue" : "Begin"}
-            </span>
-          </Link>
-          <FriendsEntry />
         </section>
-
         <div className="home-specimen" aria-hidden>
           <ol className="specimen-list">
-            {Array.from({ length: 5 }, (_, row) => (
+            {Array.from({ length: 3 }, (_, row) => (
               <li key={row}>
                 <span className="specimen-word">
                   {Array.from({ length: 5 }, (_, tile) => (
                     <i key={tile} />
                   ))}
                 </span>
-                <span className="specimen-node" />
               </li>
             ))}
           </ol>
+        </div>
+        <div className="home-actions">
+          <Link className="play" href={`/play?mode=${config.mode}&length=${config.wordLength}&difficulty=${config.difficulty}`}>
+            <span className="play-word">
+              {savedRun ? "Continue" : "Begin"}
+            </span>
+          </Link>
+          <FriendsEntry />
         </div>
       </div>
     </main>

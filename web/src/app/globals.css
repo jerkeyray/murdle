@@ -2372,25 +2372,25 @@ button.tile:focus-visible {
    board out on the right instead of keeping them together in the middle. */
 .home-middle {
   display: grid;
-  /* The board column is sized explicitly: against an `auto` track its own
-     width:100% resolves to the minimum and the whole board collapses. */
   grid-template-columns: auto clamp(15rem, 26vw, 19rem);
-  justify-content: center;
   align-items: center;
-  gap: clamp(48px, 7vw, 96px);
-  padding: clamp(48px, 8vh, 96px) 0 clamp(64px, 11vh, 120px);
+  justify-content: center;
+  column-gap: clamp(42px, 6vw, 76px);
+  row-gap: 22px;
+  padding: clamp(36px, 6vh, 72px) 0 clamp(52px, 9vh, 96px);
 }
 
 .home-intro {
-  align-self: center;
+  grid-column: 1;
+  grid-row: 1 / span 2;
 }
 
 /* The margin used to come from the line underneath. With that gone the mark
    has to hold its own distance from the buttons, and its 0.84 line box needs
    the extra to clear the descender on the d. */
 .home-mark {
-  margin: 0 0 34px;
-  font-size: clamp(4.5rem, 8vw, 7.2rem);
+  margin: 0;
+  font-size: clamp(4rem, 7vw, 6rem);
   font-weight: 570;
   line-height: 0.84;
   letter-spacing: -0.045em;
@@ -2424,6 +2424,15 @@ button.tile:focus-visible {
   transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
 }
 
+.home-actions {
+  display: grid;
+  width: min(100%, 15rem);
+  gap: 10px;
+  grid-column: 2;
+  grid-row: 2;
+  margin: 0 auto;
+}
+
 .play {
   background: var(--text);
   color: var(--bg);
@@ -2448,10 +2457,11 @@ button.tile:focus-visible {
 .home-specimen {
   position: relative;
   width: 100%;
-  max-width: 19rem;
+  max-width: 15rem;
   justify-self: center;
   padding: 0;
   opacity: 0.9;
+  margin-inline: auto;
 }
 
 .specimen-list {
@@ -2464,21 +2474,8 @@ button.tile:focus-visible {
   list-style: none;
 }
 
-.specimen-list::after {
-  content: "";
-  position: absolute;
-  top: 12px;
-  right: 7px;
-  bottom: 12px;
-  width: 1px;
-  background: var(--border-strong);
-}
-
 .specimen-list li {
-  display: grid;
-  grid-template-columns: 1fr 16px;
-  align-items: center;
-  gap: 12px;
+  display: block;
 }
 
 .specimen-word {
@@ -2510,21 +2507,6 @@ button.tile:focus-visible {
   background: color-mix(in srgb, var(--mark-hit) 20%, var(--bg));
 }
 
-.specimen-node {
-  position: relative;
-  z-index: 1;
-  width: 15px;
-  height: 15px;
-  border: 1px solid var(--mark-present);
-  border-radius: 50%;
-  background: var(--bg-raised);
-}
-
-/* The row the word fell on. */
-.specimen-list li:nth-child(3) .specimen-node {
-  background: var(--mark-present);
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--mark-present) 12%, transparent);
-}
 
 @media (max-width: 759px) {
   .home {
@@ -2537,9 +2519,9 @@ button.tile:focus-visible {
 
   .home-middle {
     display: flex;
+    flex-direction: column;
     justify-content: flex-start;
-    gap: 28px;
-    padding: clamp(40px, 8vh, 72px) 0 max(28px, env(safe-area-inset-bottom));
+    padding: clamp(28px, 6vh, 52px) 0 max(28px, env(safe-area-inset-bottom));
   }
 
   /* One centred column. The intro stretches so the wordmark, both buttons and
@@ -2560,8 +2542,8 @@ button.tile:focus-visible {
   }
 
   .home-mark {
-    margin-bottom: 30px;
-    font-size: clamp(4.1rem, 22vw, 5.8rem);
+    margin-bottom: 26px;
+    font-size: clamp(3.7rem, 18vw, 4.6rem);
   }
 
   .home-line {
@@ -2575,7 +2557,7 @@ button.tile:focus-visible {
   /* Same width as the buttons, so the front door is one column, not three
      things of three different sizes. */
   .home-specimen {
-    max-width: 15rem;
+    max-width: 13rem;
     justify-self: auto;
     align-self: center;
     margin-inline: auto;
@@ -2583,27 +2565,17 @@ button.tile:focus-visible {
     opacity: 0.9;
   }
 
+  .home-actions {
+    margin-top: 24px;
+  }
+
   .specimen-list {
     gap: 7px;
     margin: 0;
   }
 
-  .specimen-list li {
-    grid-template-columns: 1fr 14px;
-    gap: 9px;
-  }
-
   .specimen-word {
     gap: 5px;
-  }
-
-  .specimen-node {
-    width: 13px;
-    height: 13px;
-  }
-
-  .specimen-list::after {
-    right: 6px;
   }
 
 }
@@ -2615,7 +2587,6 @@ button.tile:focus-visible {
   }
 
   .home-middle {
-    gap: 16px;
     padding: 16px 0 max(12px, env(safe-area-inset-bottom));
   }
 
@@ -2625,6 +2596,10 @@ button.tile:focus-visible {
 
   .home-specimen {
     padding-block: 15px;
+  }
+
+  .home-actions {
+    margin-top: 14px;
   }
 
   .specimen-word i {
