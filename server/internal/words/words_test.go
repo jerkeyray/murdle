@@ -104,3 +104,27 @@ func TestPackExclusionsAcceptIDsAndLegacyTitles(t *testing.T) {
 		}
 	}
 }
+
+// Classic must deal every word in the pool once before any word comes round
+// again, and only then report a new cycle.
+func TestFreshWordNeverRepeatsUntilThePoolIsSpent(t *testing.T) {
+	p := NewPool()
+	pool := p.answersFor(5, "mixed")
+	seen := map[string]struct{}{}
+	for i := range pool {
+		w, cycled, ok := p.FreshWord(5, "mixed", seen)
+		if !ok {
+			t.Fatal("no word dealt")
+		}
+		if cycled {
+			t.Fatalf("reported a new cycle after only %d of %d words", i, len(pool))
+		}
+		if _, dup := seen[w.Word]; dup {
+			t.Fatalf("repeated %q after %d words", w.Word, i)
+		}
+		seen[w.Word] = struct{}{}
+	}
+	if _, cycled, _ := p.FreshWord(5, "mixed", seen); !cycled {
+		t.Fatal("a spent pool should start a new cycle")
+	}
+}

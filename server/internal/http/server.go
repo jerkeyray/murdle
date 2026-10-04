@@ -157,6 +157,9 @@ type createRunRequest struct {
 	// database and merged in, because local storage does not follow anyone to
 	// a new phone.
 	ExcludePacks []string `json:"excludePacks"`
+	// ExcludeWords does the same for Classic: answers already played, sent by
+	// a signed-out client and merged with the database for a signed-in one.
+	ExcludeWords []string `json:"excludeWords"`
 	Mode         string   `json:"mode"`
 	WordLength   int      `json:"wordLength"`
 	Difficulty   string   `json:"difficulty"`
@@ -206,12 +209,17 @@ func (s *Server) handleCreateRun(w http.ResponseWriter, r *http.Request) {
 		}
 		packID, wordsToPlay, newCycle = pack.ID, pack.WordList(), s.pool.ExhaustedForLength(exclude, length)
 	} else {
-		word, ok := s.pool.RandomWordForDifficulty(length, difficulty)
+		seen := make(map[string]struct{}, len(req.ExcludeWords))
+		for _, w := range req.ExcludeWords {
+			seen[w] = struct{}{}
+		}
+		s.excludePlayedWords(r, seen)
+		word, cycled, ok := s.pool.FreshWord(length, difficulty, seen)
 		if !ok {
 			writeError(w, http.StatusInternalServerError, "no_words", "no words are loaded for that length")
 			return
 		}
-		wordsToPlay = []string{word.Word}
+		wordsToPlay, newCycle = []string{word.Word}, cycled
 	}
 	run, err := game.NewRunWithMode(store.NewID(), mode, packID, wordsToPlay)
 	if err != nil {
@@ -262,6 +270,24 @@ func (s *Server) excludePlayedPacks(r *http.Request, exclude map[string]struct{}
 		if pack, ok := s.pool.Pack(id); ok && played >= len(pack.Words) {
 			exclude[id] = struct{}{}
 		}
+	}
+}
+
+// excludePlayedWords adds every word a signed-in player has finished, so a
+// Classic game never repeats one across devices. As with packs, a failed
+// lookup risks a repeat rather than refusing a game.
+func (s *Server) excludePlayedWords(r *http.Request, exclude map[string]struct{}) {
+	p, ok := s.player(r)
+	if !ok {
+		return
+	}
+	played, err := s.players.PlayedWords(r.Context(), p.ID)
+	if err != nil {
+		s.log.Error("reading played words", "player", p.ID, "err", err)
+		return
+	}
+	for _, w := range played {
+		exclude[w] = struct{}{}
 	}
 }
 

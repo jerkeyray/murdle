@@ -138,6 +138,37 @@ func (p *Pool) RandomWord(length int) (PackWord, bool) {
 // dictionary. Learning leaves everyday answers out, giving a player a word
 // worth meeting without making their valid guesses any narrower.
 func (p *Pool) RandomWordForDifficulty(length int, difficulty string) (PackWord, bool) {
+	word, _, ok := p.FreshWord(length, difficulty, nil)
+	return word, ok
+}
+
+// FreshWord picks an answer the player has not had yet.
+//
+// exclude holds every word they have already played. Once the whole pool is
+// spent it starts over from all of it and reports a new cycle, the same way
+// themed packs do, rather than refusing to deal a game. Until then a Classic
+// game never repeats; before this, each game was an independent draw and a
+// repeat turned up within about fifteen games.
+func (p *Pool) FreshWord(length int, difficulty string, exclude map[string]struct{}) (word PackWord, newCycle, ok bool) {
+	all := p.answersFor(length, difficulty)
+	if len(all) == 0 {
+		return PackWord{}, false, false
+	}
+	fresh := make([]PackWord, 0, len(all))
+	for _, w := range all {
+		if _, seen := exclude[w.Word]; !seen {
+			fresh = append(fresh, w)
+		}
+	}
+	if len(fresh) == 0 {
+		return all[rand.IntN(len(all))], true, true
+	}
+	return fresh[rand.IntN(len(fresh))], false, true
+}
+
+// answersFor is every word a Classic game of this shape may deal. Learning
+// leaves everyday answers out without narrowing what a player may guess.
+func (p *Pool) answersFor(length int, difficulty string) []PackWord {
 	all := []PackWord{}
 	for _, pack := range p.packs {
 		for _, word := range pack.Words {
@@ -146,10 +177,7 @@ func (p *Pool) RandomWordForDifficulty(length int, difficulty string) (PackWord,
 			}
 		}
 	}
-	if len(all) == 0 {
-		return PackWord{}, false
-	}
-	return all[rand.IntN(len(all))], true
+	return all
 }
 
 /*

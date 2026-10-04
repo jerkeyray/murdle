@@ -2,6 +2,8 @@ import type { Run } from "./api";
 
 export const ACTIVE_KEY = "wordle.active";
 const PACKS_KEY = "wordle.packs";
+// Classic answers already played, for players with no account to hold them.
+const WORDS_KEY = "wordle.words";
 const LEGACY_PREFIX = ["mur", "dle."].join("");
 
 export function readLocal(key: string): string | null {
@@ -44,12 +46,26 @@ export function playedPacks(): string[] {
     return Array.isArray(value) ? value.filter((x): x is string => typeof x === "string") : [];
   } catch { return []; }
 }
+export function playedWords(): string[] {
+  try {
+    const value: unknown = JSON.parse(readLocal(WORDS_KEY) ?? "[]");
+    return Array.isArray(value) ? value.filter((x): x is string => typeof x === "string") : [];
+  } catch { return []; }
+}
 export function rememberRun(run: Run, config: GameConfig) {
   writeLocal(configKey(config), run.id);
   if (config.mode === "themed" && config.wordLength === 5 && config.difficulty === "mixed") writeLocal(ACTIVE_KEY, run.id);
   if (run.complete && run.pack) {
     const seen = run.newCycle ? [] : playedPacks();
     writeLocal(PACKS_KEY, JSON.stringify([...new Set([...seen, run.pack.id])]));
+  }
+  // A Classic run is one word; once it is over the answer is known and goes on
+  // the list the next deal avoids. A new cycle means the pool was spent, so the
+  // list starts again rather than excluding everything forever.
+  if (run.complete && config.mode === "classic") {
+    const answers = run.completedWords.map((r) => r.answer).filter((a): a is string => !!a);
+    const seen = run.newCycle ? [] : playedWords();
+    writeLocal(WORDS_KEY, JSON.stringify([...new Set([...seen, ...answers])]));
   }
 }
 export function subscribeSession(fn: () => void) {

@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { ApiError, createRun, getRound, getRun, letterStates, startRunRound, submitGuess, revealHint, type Round, type Run } from "./api";
-import { ACTIVE_KEY, activeRunFor, type GameConfig, playedPacks, rememberRun, writeLocal } from "./session";
+import { ACTIVE_KEY, activeRunFor, type GameConfig, playedPacks, playedWords, rememberRun, writeLocal } from "./session";
 import { lettersPhrase } from "./letters";
 import { dictionaryReady, isKnownWord, loadDictionary, serverDictionaryReady, subscribeDictionary } from "./dictionary";
 
@@ -23,7 +23,7 @@ async function restore(id: string): Promise<Deal> {
 // Remembering early would let a prefetch from the home page flip its button
 // from Begin to Continue while you were looking at it.
 function begin(config: GameConfig): Promise<Deal> {
-  return createRun({ excludePacks: config.mode === "themed" ? playedPacks() : [], ...config });
+  return createRun({ excludePacks: config.mode === "themed" ? playedPacks() : [], excludeWords: config.mode === "classic" ? playedWords() : [], ...config });
 }
 
 function open(config: GameConfig): Promise<Deal> {

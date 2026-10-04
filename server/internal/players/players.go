@@ -219,6 +219,26 @@ func (s *Store) Solves(ctx context.Context, playerID string, limit int) ([]Solve
 	return out, rows.Err()
 }
 
+// PlayedWords is every word the player has finished, on any device.
+//
+// solves is unique on (player, word), so this is already one row per word.
+func (s *Store) PlayedWords(ctx context.Context, playerID string) ([]string, error) {
+	rows, err := s.pool.Query(ctx, `select word from solves where player_id = $1`, playerID)
+	if err != nil {
+		return nil, fmt.Errorf("listing played words: %w", err)
+	}
+	defer rows.Close()
+	var out []string
+	for rows.Next() {
+		var w string
+		if err := rows.Scan(&w); err != nil {
+			return nil, err
+		}
+		out = append(out, w)
+	}
+	return out, rows.Err()
+}
+
 // PackWordCounts is how many distinct words the player has recorded from each
 // pack, keyed by pack ID.
 //
