@@ -2643,10 +2643,9 @@ button:disabled { cursor: default; }
 .game-app .board-area { container-type: size; min-height: 270px; padding: 6px 0; }
 .game-app .board { width: min(100%, 21rem, calc(100cqh * 5 / 6)); height: auto; max-height: 100%; }
 .game-app:not(.duo-app) .board-area { min-height: 220px; padding: 16px 0 20px; }
-/* The board gets the full column back: the 88px was a gutter reserved for a
-   clue button that no longer lives there. */
-.board-stage { position: relative; width: min(22rem, 100%, calc((100cqh - 12px) * 5 / 6)); }
+.board-stage { position: relative; width: min(20rem, calc(100% - 88px), calc((100cqh - 12px) * 5 / 6)); }
 .game-app .board-stage .board { width: 100%; max-height: none; }
+.game-app .board-stage .game-hint { position: absolute; top: auto; bottom: max(calc(8.333% - 25px), 0px); left: -48px; width: 36px; height: 36px; border-color: var(--border); border-radius: 50%; color: var(--text-muted); }
 /* Submit, centred under the thumb. */
 .game-app .play-actions {
   display: flex;
@@ -2834,13 +2833,10 @@ summary { cursor: pointer; color: var(--text-muted); padding-block: 8px; min-hei
 /* Controls follow the available viewport, including mobile browser chrome. */
 .game-app { min-height: 0; padding-top: env(safe-area-inset-top); }
 .game-app .board-area, .game-app:not(.duo-app) .board-area { min-height: 0; }
+.game-app .board-stage .game-hint { width: 44px; height: 44px; left: -50px; }
 
-/* The clue sits beside the wordmark. In the board's left margin it floated in
-   dead space and cost the board 88px of width to sit in; up here it is in the
-   bar that already holds the other two controls. */
-.game-heading { display: flex; align-items: center; justify-content: center; gap: 8px; }
+.game-heading { text-align: center; }
 .game-heading .wordmark { margin: 0; }
-.game-app .game-heading .game-hint { flex: none; width: 34px; height: 34px; border-color: var(--border); border-radius: 50%; color: var(--text-muted); }
 .nav-labelled { width: auto; min-height: 44px; padding: 8px 12px; gap: 8px; font-size: .85rem; border: 0; }
 .home-mark { margin-bottom: 22px; }
 .help-marks li > span { display: grid; place-items: center; flex: none; width: 44px; height: 44px; border-radius: 6px; font-weight: 650; }
@@ -2967,7 +2963,7 @@ summary { cursor: pointer; color: var(--text-muted); padding-block: 8px; min-hei
 @media (max-height: 420px) {
   .game-app { height: auto; min-height: 100dvh; }
   .game-app .board-area { container-type: normal; min-height: 210px; }
-  .board-stage { width: min(190px, 100%); }
+  .board-stage { width: min(160px, calc(100% - 100px)); }
 }
 
 /* Navigation targets stay comfortable without enlarging the letter keys. */
