@@ -22,11 +22,13 @@ const WORDS_DIR = path.join(here, "..", "..", "server", "internal", "words");
 const OUT = path.join(here, "..", "public", "dictionary.txt");
 
 const dictionary = await readFile(path.join(WORDS_DIR, "dictionary.txt"), "utf8");
+const dictionaryExtra = await readFile(path.join(WORDS_DIR, "dictionary_extra.txt"), "utf8");
 const packs = JSON.parse(await readFile(path.join(WORDS_DIR, "packs.json"), "utf8"));
 
 const words = [
   ...new Set([
     ...dictionary.split("\n").map((w) => w.trim()).filter(Boolean),
+    ...dictionaryExtra.split("\n").map((w) => w.trim()).filter(Boolean),
     ...packs.flatMap((p) => p.words.map((w) => w.word)),
   ]),
 ].sort();
