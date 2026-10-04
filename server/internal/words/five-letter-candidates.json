@@ -2,7 +2,7 @@
   "version": 1,
   "purpose": "Five-letter answer candidates. Not playable until editorial review.",
   "targetLiveAnswers": 1000,
-  "existingLiveAnswers": 215,
+  "existingLiveAnswers": 220,
   "candidates": [
     {
       "word": "still",
@@ -391,11 +391,6 @@
     },
     {
       "word": "ideas",
-      "frequency": 4.84,
-      "status": "needs-editorial"
-    },
-    {
-      "word": "notes",
       "frequency": 4.84,
       "status": "needs-editorial"
     },
@@ -3906,26 +3901,6 @@
     },
     {
       "word": "cheek",
-      "frequency": 3.96,
-      "status": "needs-editorial"
-    },
-    {
-      "word": "curry",
-      "frequency": 3.96,
-      "status": "needs-editorial"
-    },
-    {
-      "word": "modes",
-      "frequency": 3.96,
-      "status": "needs-editorial"
-    },
-    {
-      "word": "polar",
-      "frequency": 3.96,
-      "status": "needs-editorial"
-    },
-    {
-      "word": "skirt",
       "frequency": 3.96,
       "status": "needs-editorial"
     }

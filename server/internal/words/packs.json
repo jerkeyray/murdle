@@ -2889,5 +2889,58 @@
         "difficulty": "familiar"
       }
     ]
+  },
+  {
+    "id": "at-the-desk",
+    "title": "At the Desk",
+    "blurb": "The quiet equipment behind a finished page.",
+    "connectionDifficulty": "easy",
+    "words": [
+      {
+        "word": "paper",
+        "register": "standard",
+        "definition": "A thin material made for writing, printing or wrapping.",
+        "note": "Paper was developed in ancient China from fibres suspended in water and pressed into sheets. It eventually displaced parchment for most everyday writing.",
+        "hints": ["It begins as fibres and ends as a thin surface.", "Words, drawings and receipts are often kept on it."],
+        "connection": "Paper is the surface on which desk work is recorded.",
+        "difficulty": "familiar"
+      },
+      {
+        "word": "notes",
+        "register": "standard",
+        "definition": "Short written records made to remember information.",
+        "note": "Note came through Latin from a word for a mark or sign. It can also refer to a musical sound, preserving the idea of a small meaningful mark.",
+        "hints": ["They are brief enough to capture before a thought escapes.", "A meeting may end with a page full of these."],
+        "connection": "Notes preserve the small pieces of work done at a desk.",
+        "difficulty": "familiar"
+      },
+      {
+        "word": "books",
+        "register": "standard",
+        "definition": "Bound collections of written or printed pages.",
+        "note": "Book is related to an old Germanic word for beech, perhaps because early writing was sometimes scratched onto beechwood tablets.",
+        "hints": ["They contain more than one page and one sitting.", "A shelf is built to keep these upright."],
+        "connection": "Books are the longer works consulted and kept near a desk.",
+        "difficulty": "familiar"
+      },
+      {
+        "word": "write",
+        "register": "standard",
+        "definition": "To form letters or words in order to communicate.",
+        "note": "Write comes from an Old English word for scratching or drawing. The physical mark came first; its use for language followed naturally.",
+        "hints": ["It turns a thought into marks another person can read.", "A blank page asks you to do this."],
+        "connection": "To write is the central action a desk is made to support.",
+        "difficulty": "familiar"
+      },
+      {
+        "word": "title",
+        "register": "standard",
+        "definition": "The name of a book, work, office or position.",
+        "note": "Title comes from a Latin word for an inscription or label. It still sits at the threshold of a work, telling a reader how to approach it.",
+        "hints": ["It appears before the first chapter begins.", "A book’s cover usually carries one."],
+        "connection": "A title labels the work produced or consulted at a desk.",
+        "difficulty": "familiar"
+      }
+    ]
   }
 ]
