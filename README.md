@@ -1,17 +1,23 @@
 # Wordle
 
-Solve five words. Uncover one idea.
+Solve words. Keep the good ones.
 
-Wordle is a solo word game built around five linked, five-letter words. Each
-board allows six guesses. Completed words accumulate as clues to a hidden
-connection; a private theory can be revised throughout the run. The final
-page explains how each word belongs.
+Wordle is a vocabulary game with two ways to play: **Classic** gives you one
+standalone word, while **Themed** connects five words and reveals their shared
+idea at the end. Both modes support five- and six-letter boards. Each board
+allows six guesses; completed words become entries in a personal library.
 
-The interface keeps a dictionary aesthetic: rose paper or plum ink, serif
-letters, short definitions, and optional reading after each word. The game
-works without an account. Signing in enables a lexicon, saved words, streaks,
+The game works without an account. Signing in enables saved words, streaks,
 and friends. Friends can share a daily board from separate devices, taking
 alternating guesses and building a streak together.
+
+## What players can do
+
+- Play Classic or Themed runs in five or six letters.
+- Choose mixed or learning difficulty without narrowing valid guesses.
+- Save completed words into a searchable library.
+- Play a shared five-letter daily board with a friend.
+- Use one optional authored clue after three accepted guesses.
 
 ## Development
 
@@ -45,23 +51,21 @@ Google's authorised redirect URI is the web origin followed by
 `/api/auth/callback/google`. Better Auth's tables can be created with
 `pnpm dlx @better-auth/cli migrate` from `web/`.
 
-## Hints, restoration, and scoring
+## Clues, restoration, and scoring
 
-Each word has two separately authored clues: context after two accepted
-guesses, association after four. They are optional and sequential. Requests
-specify tier 1 or 2, so repeating a request returns the same clue. The API
-never sends unused hints, future answers, or connection metadata during play.
+Each word has one optional authored clue, available after three accepted
+guesses. Repeating its request returns the same clue. The API never sends
+unused clues, future answers, or connection metadata during play.
 
-Hints mark a result as assisted without reducing its points. A solve is worth
-6 through 1 points according to its row; a loss earns 0. Historical database
-scores are not recalculated.
+A solve is worth 6 through 1 points according to its row; a loss earns 0.
+Historical database scores are not recalculated.
 
 The device remembers its active run, private theory, and completed pack IDs.
 Restoration reads server state before accepting more input. A lost response
 can therefore be retried without blindly resubmitting a guess. Completed
 boards are kept with the run and can be revisited, including lost boards.
 
-**Solo sessions are in memory.** They expire after six hours of inactivity and are
+**Solo sessions are in memory.** They expire after 30 days of inactivity and are
 cleared on server restart. An expired session offers an explicit new start;
 this is not offline play or cross-device synchronisation. Storage-blocked
 browsers can play but cannot retain private notes between visits.
@@ -104,11 +108,12 @@ pack has been seen, the next run begins a fresh exclusion cycle.
 
 ## Content
 
-`server/internal/words/dictionary.txt` is the permissive guess dictionary.
-`packs.json` contains 30 ordered packs and 150 answers with definitions,
-notes, two clues, vocabulary difficulty, and per-word connection explanations.
-Pack connection difficulty is rated separately. `answers.txt` remains the
-legacy curated list; active runs use packs.
+`server/internal/words/dictionary.txt` is the permissive guess dictionary for
+five- and six-letter guesses. `packs.json` contains reviewed five-letter
+answers; the six-letter editorial bank lives alongside it in Go while its JSON
+pipeline is completed. Every playable answer has a definition, note, authored
+clue, vocabulary difficulty, and (for themed play) connection explanation.
+The answer bank is curated separately from valid guesses.
 
 ```sh
 cd web
@@ -126,9 +131,8 @@ and use usage notes instead of speculative etymology. Automated checks cannot
 establish editorial fairness. See [content review](docs/content-review.md) for
 the initial audit and player-test checklist.
 
-Ship reviewed content, server, and client together: the hint wire format
-changed from `{position, letter}` to `{tier, text, round}`. Restarting the API
-loads the embedded content and expires existing in-memory runs.
+Ship reviewed content, server, and client together. Restarting the API loads
+the embedded content and expires existing in-memory runs.
 
 ## Verification
 

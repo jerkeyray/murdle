@@ -20,8 +20,25 @@ const serif = Fraunces({
 });
 
 export const metadata: Metadata = {
-  title: "Wordle",
-  description: "Solve five words. Uncover one idea.",
+  metadataBase: new URL("https://wordle.jerkeyray.com"),
+  title: { default: "Wordle", template: "%s · Wordle" },
+  description: "A word game for curious people. Solve, save words, and uncover the connection.",
+  applicationName: "Wordle",
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    url: "/",
+    siteName: "Wordle",
+    title: "Wordle",
+    description: "A word game for curious people. Solve, save words, and uncover the connection.",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Wordle word game" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Wordle",
+    description: "A word game for curious people. Solve, save words, and uncover the connection.",
+    images: ["/opengraph-image"],
+  },
   appleWebApp: { capable: true, title: "Wordle", statusBarStyle: "black-translucent" },
 };
 
