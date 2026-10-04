@@ -9,6 +9,7 @@ import { SettingsButton } from "@/components/SettingsButton";
 import { FriendsEntry } from "@/components/FriendsEntry";
 import { HomeRow } from "@/components/HomeRow";
 import { HomeMeta } from "@/components/HomeMeta";
+import { prefetchGame } from "@/lib/useGame";
 
 /**
  * The front door: one button.
@@ -38,12 +39,18 @@ export default function Home() {
     };
   }, [fetchHomeSummary]);
   useEffect(() => {
+    let effective: GameConfig = { mode: "classic", wordLength: 5, difficulty: "mixed" };
     try {
       const saved = JSON.parse(readLocal("wordle.mode") ?? "null") as GameConfig | null;
       if (saved && (saved.mode === "classic" || saved.mode === "themed") && (saved.wordLength === 5 || saved.wordLength === 6)) {
-        startTransition(() => setConfig({ ...saved, difficulty: saved.difficulty === "learning" ? "learning" : "mixed" }));
+        effective = { ...saved, difficulty: saved.difficulty === "learning" ? "learning" : "mixed" };
+        startTransition(() => setConfig(effective));
       }
     } catch { /* Start with Classic 5 when storage is unavailable or stale. */ }
+    // Deal the game now, for the settings Begin will actually open with, so the
+    // round trip happens while you are looking at this page rather than after
+    // you have tapped.
+    prefetchGame(effective);
   }, []);
   useEffect(() => { writeLocal("wordle.mode", JSON.stringify(config)); }, [config]);
 

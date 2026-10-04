@@ -19,10 +19,47 @@ async function restore(id: string): Promise<Deal> {
   const round = run.completedWords.find((r) => r.id === run.currentRoundId) ?? await getRound(run.currentRoundId);
   return { run, round };
 }
-async function begin(config: GameConfig): Promise<Deal> {
-  const dealt = await createRun({ excludePacks: config.mode === "themed" ? playedPacks() : [], ...config });
-  rememberRun(dealt.run, config);
-  return dealt;
+// Not remembered here: every deal goes through accept(), which remembers it.
+// Remembering early would let a prefetch from the home page flip its button
+// from Begin to Continue while you were looking at it.
+function begin(config: GameConfig): Promise<Deal> {
+  return createRun({ excludePacks: config.mode === "themed" ? playedPacks() : [], ...config });
+}
+
+function open(config: GameConfig): Promise<Deal> {
+  const saved = activeRunFor(config);
+  return saved ? restore(saved) : begin(config);
+}
+
+/**
+ * A game dealt before its board is on screen.
+ *
+ * The home page starts one as soon as it loads, so by the time Begin is tapped
+ * the word has usually already crossed the ocean and the board opens straight
+ * onto it instead of onto a loader. Consumed once, keyed by the settings it was
+ * dealt for, and dropped after a few minutes so a long stay on the home page
+ * never opens something stale.
+ */
+type Prefetch = { key: string; at: number; deal: Promise<Deal> };
+let prefetched: Prefetch | null = null;
+const PREFETCH_TTL_MS = 5 * 60 * 1000;
+const keyOf = (c: GameConfig) => `${c.mode}:${c.wordLength}:${c.difficulty}`;
+
+export function prefetchGame(config: GameConfig): void {
+  const key = keyOf(config);
+  if (prefetched && prefetched.key === key && Date.now() - prefetched.at < PREFETCH_TTL_MS) return;
+  const deal = open(config);
+  // A failed prefetch is forgotten, so the board makes its own attempt and
+  // shows its own error rather than inheriting a stale one.
+  deal.catch(() => { if (prefetched?.deal === deal) prefetched = null; });
+  prefetched = { key, at: Date.now(), deal };
+}
+
+function takePrefetched(config: GameConfig): Promise<Deal> | null {
+  const p = prefetched;
+  if (!p || p.key !== keyOf(config) || Date.now() - p.at >= PREFETCH_TTL_MS) return null;
+  prefetched = null;
+  return p.deal;
 }
 
 export function useGame(config: GameConfig = { mode: "themed", wordLength: 5, difficulty: "mixed" }) {
@@ -77,8 +114,8 @@ export function useGame(config: GameConfig = { mode: "themed", wordLength: 5, di
   useEffect(() => {
     mounted.current = true;
     let cancelled = false;
-    const saved = activeRunFor({ mode, wordLength, difficulty });
-    opening.current ??= saved ? restore(saved) : begin({ mode, wordLength, difficulty });
+    const config = { mode, wordLength, difficulty };
+    opening.current ??= takePrefetched(config) ?? open(config);
     opening.current.then((dealt) => { if (!cancelled) accept(dealt); }).catch((err: unknown) => {
       if (!cancelled) { opening.current = null; fail(err); }
     });
@@ -94,7 +131,7 @@ export function useGame(config: GameConfig = { mode: "themed", wordLength: 5, di
     finally { lock.current = false; if (mounted.current) setBusy(false); }
   }, [accept, fail]);
   const retry = useCallback(() => perform(() => {
-    const saved = activeRunFor({ mode, wordLength, difficulty }); return saved ? restore(saved) : begin({ mode, wordLength, difficulty });
+    return open({ mode, wordLength, difficulty });
   }), [perform, mode, wordLength, difficulty]);
   const newRun = useCallback(() => perform(() => begin({ mode, wordLength, difficulty })), [perform, mode, wordLength, difficulty]);
   const nextWord = useCallback(() => perform(async () => {
