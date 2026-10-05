@@ -17724,6 +17724,18 @@
   "connection": ""
  },
  {
+  "word": "shire",
+  "register": "standard",
+  "definition": "An English county.",
+  "note": "From Old English scir, 'district'. It is the ending in county names such as Lancashire.",
+  "hints": [
+   "Where Tolkien's hobbits lived.",
+   "The final part of several English county names."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
   "word": "shirk",
   "register": "standard",
   "definition": "To avoid a duty.",
@@ -17947,6 +17959,582 @@
   "hints": [
    "An army camped around a castle.",
    "Troy endured a famous one."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "sieve",
+  "register": "standard",
+  "definition": "A tool with small holes for separating fine from coarse bits.",
+  "note": "From Old English sife. Flour is passed through one, and the phrase 'a memory like one' means forgetful.",
+  "hints": [
+   "A kitchen tool with a mesh for flour.",
+   "Said of a poor memory that lets things fall through."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "sight",
+  "register": "standard",
+  "definition": "The ability to see; or something seen.",
+  "note": "From Old English gesihth, 'vision'. It also names the aiming device on a gun.",
+  "hints": [
+   "One of the five senses.",
+   "What a tourist attraction is called."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "sigma",
+  "register": "standard",
+  "definition": "The eighteenth letter of the Greek alphabet.",
+  "note": "From Greek sigma. In mathematics it stands for a sum, and in statistics for standard deviation.",
+  "hints": [
+   "A Greek letter used for summing.",
+   "Written as an angular capital or a looping small letter."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "silky",
+  "register": "standard",
+  "definition": "Soft and smooth, like fine fabric.",
+  "note": "From silk plus -y. Silk was prized as a luxury import from China.",
+  "hints": [
+   "A smooth, glossy hair or voice.",
+   "Soft as a fabric made by caterpillars."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "silly",
+  "register": "standard",
+  "definition": "Foolish or playful.",
+  "note": "From Old English saelig, 'happy' or 'blessed'. Its meaning slid from lucky to innocent to foolish over centuries.",
+  "hints": [
+   "A clown's behaviour.",
+   "Once meant 'blessed' in Old English."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "since",
+  "register": "standard",
+  "definition": "From a past time up to now; or because.",
+  "note": "From Middle English sithens, from Old English sith tham, 'after that'. It can start a time clause or a reason.",
+  "hints": [
+   "A word used with dates, as in 'from then'.",
+   "Can also mean 'because'."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "singe",
+  "register": "standard",
+  "definition": "To burn slightly at the surface.",
+  "note": "From Old English sengan, 'to burn slightly'. Hair and fabric are easily scorched this way.",
+  "hints": [
+   "What a match might do to hair.",
+   "A light scorch, not a full burn."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "siren",
+  "register": "standard",
+  "definition": "A loud warning device; also a mythical sea singer.",
+  "note": "From Greek Seiren, the sea women whose song lured sailors to their doom. The warning device took the name for its wail.",
+  "hints": [
+   "Wails on an ambulance.",
+   "A mythical singer who lured sailors."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "sixth",
+  "register": "standard",
+  "definition": "Number six in a sequence.",
+  "note": "From Old English siexta, built on six plus the ordinal ending. It follows the fifth.",
+  "hints": [
+   "The one after the fifth.",
+   "A year of school in Britain, before university."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "sixty",
+  "register": "standard",
+  "definition": "The number after fifty-nine.",
+  "note": "From Old English sixtig, 'six tens'. It marks the number of minutes in an hour.",
+  "hints": [
+   "Minutes in an hour.",
+   "A ripe age for a retirement party."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "skate",
+  "register": "standard",
+  "definition": "To glide on a blade or wheels; also a flat fish.",
+  "note": "From Dutch schaats, from a word for a stilt. The fish is a separate word, from Old Norse.",
+  "hints": [
+   "A blade fixed to a boot.",
+   "A flat ray-like fish."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "skier",
+  "register": "standard",
+  "definition": "A person who glides down snow on long runners.",
+  "note": "From ski plus -er. Ski is a Norwegian word meaning 'stick of wood'.",
+  "hints": [
+   "Wears goggles on a mountain.",
+   "Moves down a slope on boards."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "skiff",
+  "register": "standard",
+  "definition": "A small light boat.",
+  "note": "From Middle French esquif, from Italian schifo. It is the same root as the word ship.",
+  "hints": [
+   "A small rowing boat.",
+   "A little boat for one or two."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "skill",
+  "register": "standard",
+  "definition": "The ability to do something well.",
+  "note": "From Old Norse skil, 'distinction' or 'discernment'. It is gained through practice.",
+  "hints": [
+   "What practice builds.",
+   "Something an expert has and a beginner lacks."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "skirt",
+  "register": "standard",
+  "definition": "A garment that hangs from the waist.",
+  "note": "From Old Norse skyrta, 'shirt'. It is a cousin of the word shirt.",
+  "hints": [
+   "Worn at the waist, falling below.",
+   "Also to avoid a topic by going around it."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "skulk",
+  "register": "standard",
+  "definition": "To move around stealthily.",
+  "note": "From Middle English sculken, from a North Germanic word. A group of foxes is also called one.",
+  "hints": [
+   "To sneak around.",
+   "What a fox does in the dark."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "skull",
+  "register": "standard",
+  "definition": "The bony frame of the head.",
+  "note": "From Middle English sculle, probably of Scandinavian origin. A pirate flag shows one.",
+  "hints": [
+   "The bone that shelters the brain.",
+   "The symbol on a pirate flag."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "skunk",
+  "register": "standard",
+  "definition": "A small black-and-white animal that sprays a foul-smelling fluid.",
+  "note": "From an Algonquian word, from a root meaning 'one who squirts'. It reached English in the 1630s.",
+  "hints": [
+   "An animal with a bad smell.",
+   "A black animal with a white stripe."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "slack",
+  "register": "standard",
+  "definition": "Loose; not taut; or lazy.",
+  "note": "From Old English slaec, 'lazy' or 'loose'. A rope can be this, and so can a worker.",
+  "hints": [
+   "A rope that hangs loose.",
+   "Lazy in doing duties."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "slain",
+  "register": "standard",
+  "definition": "Killed, especially in battle.",
+  "note": "The past participle of slay, from Old English slean, 'to strike'. It belongs to epic poetry.",
+  "hints": [
+   "What a dragon-killer's victim was.",
+   "A dragon, once the knight was done."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "slang",
+  "register": "standard",
+  "definition": "Casual, informal language.",
+  "note": "First recorded around 1756 for the special talk of thieves. Its origin is unknown.",
+  "hints": [
+   "Words like 'cool' and 'bro'.",
+   "Casual words that dictionaries record later."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "slant",
+  "register": "standard",
+  "definition": "A slope; or a point of view.",
+  "note": "From Middle English, probably from a Scandinavian word. In news it can mean a particular bias in how a story is told.",
+  "hints": [
+   "A tilt, like a roof.",
+   "A bias in a news story."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "slash",
+  "register": "standard",
+  "definition": "To cut with a sweeping stroke; or the symbol /.",
+  "note": "From Late Middle English, of uncertain origin. It is also the key above the Enter key.",
+  "hints": [
+   "A sword stroke.",
+   "The key beside the full stop."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "slate",
+  "register": "standard",
+  "definition": "A grey rock used for roofs; or a list of candidates.",
+  "note": "From Old French esclate, 'splinter'. 'A clean slate' is a fresh start, from the writing tablets that were wiped.",
+  "hints": [
+   "A grey roofing tile.",
+   "What you wipe clean to start over."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "slave",
+  "register": "standard",
+  "definition": "A person owned by another and forced to work.",
+  "note": "From Medieval Latin sclavus, from the name of the Slavic peoples, many of whom were enslaved in the Middle Ages. It is also used for a device controlled by another.",
+  "hints": [
+   "A person held in bondage.",
+   "A device controlled by a master."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "sleek",
+  "register": "standard",
+  "definition": "Smooth and glossy.",
+  "note": "A late variant of slick. It is used for hair, cars and designs.",
+  "hints": [
+   "Describes a polished car or an otter's coat.",
+   "Smooth, shiny and elegant."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "sleep",
+  "register": "standard",
+  "definition": "To rest with your eyes closed.",
+  "note": "From Old English slaepan. People do it for about a third of their lives.",
+  "hints": [
+   "What you do at night.",
+   "What a dormouse does all winter."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "slice",
+  "register": "standard",
+  "definition": "A thin piece cut from something.",
+  "note": "From Old French esclice, 'splinter'. It is what you cut from a cake.",
+  "hints": [
+   "A piece of bread.",
+   "A wedge of pizza."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "slick",
+  "register": "standard",
+  "definition": "Smooth and slippery; or polished and clever.",
+  "note": "From Old English slic, 'smooth'. An oil spill is one on water.",
+  "hints": [
+   "Oil on water may make one.",
+   "A clever, too-polished salesman."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "slide",
+  "register": "standard",
+  "definition": "To glide smoothly; or a playground structure.",
+  "note": "From Old English slidan. It names a playground feature and a presentation page.",
+  "hints": [
+   "Children go down one at the park.",
+   "A page in a presentation."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "slime",
+  "register": "standard",
+  "definition": "A thick slippery goo.",
+  "note": "From Old English slim, 'mud' or 'sticky stuff'. Snails leave a trail of it.",
+  "hints": [
+   "What a snail leaves behind.",
+   "Green ooze in a children's show."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "slimy",
+  "register": "standard",
+  "definition": "Covered in slime; or repulsively insincere.",
+  "note": "From slime plus -y. A slimy person is an oily flatterer.",
+  "hints": [
+   "Like a wet frog.",
+   "A used-car salesman, in a rude description."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "sling",
+  "register": "standard",
+  "definition": "To throw; or a strap for holding something.",
+  "note": "From Middle English slyngen, probably from Old Norse slyngva, 'to hurl'. David used one against Goliath.",
+  "hints": [
+   "What David used against Goliath.",
+   "A band that supports a broken arm."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "slink",
+  "register": "standard",
+  "definition": "To move quietly and guiltily.",
+  "note": "From Old English slincan, 'to creep'. A cat that has done wrong may do it.",
+  "hints": [
+   "How a guilty dog leaves the room.",
+   "To creep away, ashamed."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "sloop",
+  "register": "standard",
+  "definition": "A single-masted sailing boat.",
+  "note": "Borrowed from Dutch sloep. It is a doublet of chalupa and shallop.",
+  "hints": [
+   "A one-masted sailboat.",
+   "A small ship in the age of sail."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "slope",
+  "register": "standard",
+  "definition": "A surface that tilts upward or downward.",
+  "note": "From the adjective aslope, 'at an angle'. A hill side or a ski run is one.",
+  "hints": [
+   "A hillside that tilts, good for skiing.",
+   "Not flat; running at an angle."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "slosh",
+  "register": "standard",
+  "definition": "To splash noisily.",
+  "note": "Imitative of the sound of liquid moving. Compare splash and splosh.",
+  "hints": [
+   "What water in a bucket does when carried.",
+   "The noise of boots in puddles."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "sloth",
+  "register": "standard",
+  "definition": "Laziness; or a slow tree-dwelling animal.",
+  "note": "From Middle English slouthe, 'laziness', built from slow. One of the seven deadly sins.",
+  "hints": [
+   "One of the seven deadly sins.",
+   "An animal that hangs from branches."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "slunk",
+  "register": "standard",
+  "definition": "Past tense of slink.",
+  "note": "The past tense of slink, from Old English slincan, 'to creep'. It is used for sneaking away.",
+  "hints": [
+   "What a thief did on leaving.",
+   "What a cat did after being caught."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "slurp",
+  "register": "standard",
+  "definition": "To drink or eat noisily.",
+  "note": "From Middle Dutch slurpen, 'to sip'. It is considered polite with noodles in Japan.",
+  "hints": [
+   "The noise of soup eaten with relish.",
+   "What you do with a straw at the end of a drink."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "slush",
+  "register": "standard",
+  "definition": "Half-melted snow.",
+  "note": "Possibly a variant of sludge, or imitative of the sound. It makes city streets messy.",
+  "hints": [
+   "Grey snow in a street.",
+   "Wet snow in thaw."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "slyly",
+  "register": "standard",
+  "definition": "In a sneaky or cunning way.",
+  "note": "From Middle English sleighly, built from sly plus -ly. It suggests a secretive smile.",
+  "hints": [
+   "A secretive smile, as of a fox.",
+   "Doing something while hoping no one notices."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "smack",
+  "register": "standard",
+  "definition": "A sharp slap; or a slight taste.",
+  "note": "The slap is imitative. The taste sense is from Old English smaec, 'taste'.",
+  "hints": [
+   "A sharp blow with a flat hand.",
+   "A touch of flavour or trace of something."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "small",
+  "register": "standard",
+  "definition": "Little in size.",
+  "note": "From Old English smael, 'narrow' or 'slender'. It is the opposite of large.",
+  "hints": [
+   "The opposite of big.",
+   "Tiny, like a mouse."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "smart",
+  "register": "standard",
+  "definition": "Clever; or to sting.",
+  "note": "From Old English smeortan, 'to hurt'. The sense of clever evolved from being sharp or stinging.",
+  "hints": [
+   "What a bright student is.",
+   "What a stinging cut does."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "smash",
+  "register": "standard",
+  "definition": "To break violently; or a big hit.",
+  "note": "Probably imitative of the sound. A tennis shot is named for it.",
+  "hints": [
+   "What a hammer does to glass.",
+   "A hit show or film."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "smear",
+  "register": "standard",
+  "definition": "To spread something messy across a surface.",
+  "note": "From Old English smerian, 'to anoint with fat'. It also means to damage someone's name.",
+  "hints": [
+   "What jam does on a cheek.",
+   "To blacken a rival's reputation."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "smell",
+  "register": "standard",
+  "definition": "The sense that detects odours.",
+  "note": "From Middle English smellen, of unknown earlier origin. It is the sense of the nose.",
+  "hints": [
+   "What your nose picks up.",
+   "Fresh bread has a good one."
   ],
   "difficulty": "familiar",
   "connection": ""
