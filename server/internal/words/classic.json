@@ -14494,5 +14494,1145 @@
   ],
   "difficulty": "familiar",
   "connection": ""
+ },
+ {
+  "word": "phase",
+  "register": "standard",
+  "definition": "One stage in a series of changes.",
+  "note": "From Greek phasis, 'appearance'. The Moon goes through four of these each month.",
+  "hints": [
+   "A stage the moon goes through.",
+   "A teenager's passing stage."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "phone",
+  "register": "slang",
+  "definition": "A device for talking to people far away.",
+  "note": "Short for telephone, from Greek tele, 'far', and phone, 'sound'. It is now often a pocket computer.",
+  "hints": [
+   "Rings or buzzes in your pocket.",
+   "A device you tap, swipe and call from."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "phony",
+  "register": "slang",
+  "definition": "Fake or insincere.",
+  "note": "Of unknown origin, though it may come from an old slang word for a swindlers' brass ring. It is used for anything pretending to be real.",
+  "hints": [
+   "A word for a fraud.",
+   "Describes a smile that is not genuine."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "piano",
+  "register": "standard",
+  "definition": "A large keyboard instrument played with hammers striking strings.",
+  "note": "Short for pianoforte, Italian for 'soft-loud', because it could play both quietly and loudly. Earlier keyboards could not vary volume with touch.",
+  "hints": [
+   "Has black and white keys.",
+   "A concert grand is a big one."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "picky",
+  "register": "standard",
+  "definition": "Fussy about what you will accept.",
+  "note": "From pick plus -y. A picky eater chooses carefully among what is offered.",
+  "hints": [
+   "A child refusing vegetables may be this.",
+   "One who is hard to please at dinner."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "piece",
+  "register": "standard",
+  "definition": "A part broken or cut from something larger.",
+  "note": "From Old French piece, from Late Latin pecia, of uncertain origin. It also names a single item in a set, such as a chess man.",
+  "hints": [
+   "A slice of cake or a chess man.",
+   "One part of a jigsaw."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "piety",
+  "register": "standard",
+  "definition": "Deep devotion to religion or duty.",
+  "note": "From Latin pietas, meaning dutiful respect. It shares a root with pity.",
+  "hints": [
+   "A word for being religious.",
+   "Sister word of 'pity'."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "piggy",
+  "register": "slang",
+  "definition": "A little pig, or a pet name for one.",
+  "note": "From pig plus -y. It is used in 'piggy bank', a savings pot shaped like the animal.",
+  "hints": [
+   "What a child may call a young swine.",
+   "A bank with a coin slot in its back."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "pilot",
+  "register": "standard",
+  "definition": "A person who flies an aircraft or steers a ship.",
+  "note": "From Middle French pilot, from Italian pilota. It first meant a ship's guide into harbour before being used for aircraft.",
+  "hints": [
+   "Sits in the cockpit.",
+   "A first episode of a series is called this."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "pinky",
+  "register": "slang",
+  "definition": "The smallest finger on the hand.",
+  "note": "From a Dutch word for 'little', pink or pinkje, and the -y ending. The shade pink is a different word.",
+  "hints": [
+   "The finger you swear a promise with.",
+   "The little one on your hand."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "pinto",
+  "register": "standard",
+  "definition": "A horse or bean with a patchy, spotted coat.",
+  "note": "From Spanish pinto, 'painted' or 'mottled'. It names piebald horses and a speckled bean.",
+  "hints": [
+   "A spotted horse in a western.",
+   "A kind of bean in chilli."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "piper",
+  "register": "standard",
+  "definition": "A person who plays a pipe or bagpipes.",
+  "note": "From pipe plus -er. The Pied one in the old tale lured rats and children.",
+  "hints": [
+   "A famous one led rats out of a town.",
+   "Plays the bagpipes at a Scottish parade."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "pique",
+  "register": "standard",
+  "definition": "Irritation caused by hurt pride; or to stir interest.",
+  "note": "From French piquer, 'to prick'. Curiosity can be this, in the phrase 'to ___ someone's interest'.",
+  "hints": [
+   "A feeling after a slight to your pride.",
+   "A fit of this makes someone storm off."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "pitch",
+  "register": "standard",
+  "definition": "A black sticky substance; also to throw, or the tone of a sound.",
+  "note": "The tar sense is from Old English pic, from Latin pix. The throwing sense is a separate word of uncertain origin.",
+  "hints": [
+   "What a baseball player throws.",
+   "How high or low a note sounds."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "pithy",
+  "register": "standard",
+  "definition": "Short and full of meaning.",
+  "note": "From pith plus -y. Pith is the spongy centre of a plant stem, and by extension the core of an idea.",
+  "hints": [
+   "Describes a short, sharp remark.",
+   "A quip is this."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "pixel",
+  "register": "standard",
+  "definition": "The smallest dot of a digital image.",
+  "note": "A blend of 'pix', for pictures, and 'element'. A screen is built from millions of them.",
+  "hints": [
+   "A tiny square on a screen.",
+   "A camera rating is counted in millions of them."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "pixie",
+  "register": "standard",
+  "definition": "A small mischievous fairy.",
+  "note": "The word is first recorded in the seventeenth century in the folklore of south-west England. Its origin is uncertain.",
+  "hints": [
+   "A mythical creature with pointed ears.",
+   "Associated with Cornish folklore."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "pizza",
+  "register": "standard",
+  "definition": "A round flat bread baked with tomato and cheese.",
+  "note": "Borrowed from Neapolitan, first recorded in Naples in 1590. It reached English in 1931.",
+  "hints": [
+   "Often delivered in a box.",
+   "Naples is its famous home."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "place",
+  "register": "standard",
+  "definition": "A particular spot or position.",
+  "note": "From Old English place and Old French place, both from Latin platea, 'broad street'. It can name a position, a home, or a rank.",
+  "hints": [
+   "Where something is located.",
+   "What you take at the table."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "plaid",
+  "register": "standard",
+  "definition": "Cloth with a pattern of crossing stripes.",
+  "note": "From Scots plaid, of uncertain origin, and ultimately from Scottish Gaelic plaide, 'blanket'. In North America it names any tartan-like pattern.",
+  "hints": [
+   "A pattern on a lumberjack shirt.",
+   "Tartan is a close cousin."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "plain",
+  "register": "standard",
+  "definition": "Simple and without decoration; also a flat stretch of land.",
+  "note": "From Old French plain, from Latin planus, 'flat'. Both senses come from the idea of something smooth and even.",
+  "hints": [
+   "Opposite of fancy.",
+   "A great, flat grassland."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "plait",
+  "register": "standard",
+  "definition": "A braid of hair or straw.",
+  "note": "From Old French pleit, from Latin plectere, 'to weave'. A pleat is a related form.",
+  "hints": [
+   "A braid in a girl's hair.",
+   "Three strands woven together."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "plank",
+  "register": "standard",
+  "definition": "A long, flat piece of timber.",
+  "note": "From Old Northern French planque, from Latin planca. It also names a sport exercise and a part of a political platform.",
+  "hints": [
+   "A pirate victim walked off one.",
+   "A flat board used to build a deck."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "plaza",
+  "register": "standard",
+  "definition": "A public square in a town.",
+  "note": "From Spanish plaza, from Latin platea, 'broad street'. It is a word for an open gathering space.",
+  "hints": [
+   "Where people meet in a city centre.",
+   "A Spanish word for a town square."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "plead",
+  "register": "standard",
+  "definition": "To beg earnestly; or to enter a response in court.",
+  "note": "From Old French plaidier, 'to bring a legal case'. A defendant pleads guilty or not guilty.",
+  "hints": [
+   "What a child does for a treat.",
+   "A defendant makes one in court."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "pleat",
+  "register": "standard",
+  "definition": "A fold pressed into cloth.",
+  "note": "From Middle English, a variant of plait. A kilt is full of them.",
+  "hints": [
+   "A crease sewn into a skirt.",
+   "Folds in a kilt."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "plier",
+  "register": "standard",
+  "definition": "A person who plies; also a tool, in the plural.",
+  "note": "From ply plus -er. You are far more likely to see it as 'pliers', a gripping tool.",
+  "hints": [
+   "Singular of a gripping tool's name.",
+   "You rarely see this form without an s."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "pluck",
+  "register": "standard",
+  "definition": "To pull sharply; also courage.",
+  "note": "From Old English pluccian, 'to pull'. The sense of courage is figurative, as in 'having the pluck to try'.",
+  "hints": [
+   "What you do to a guitar string.",
+   "Courage, as in having plenty of it."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "plumb",
+  "register": "standard",
+  "definition": "Exactly vertical; also a lead weight on a line.",
+  "note": "From Old French plombe, from Latin plumbum, 'lead'. A plumber originally worked with lead pipes.",
+  "hints": [
+   "A builder checks a wall is this.",
+   "Weight hanging from a string."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "plume",
+  "register": "standard",
+  "definition": "A large feather, or a rising column of smoke.",
+  "note": "From Latin pluma, 'feather'. Smoke or water rising in a feathery shape is named after it.",
+  "hints": [
+   "A feather on a hat.",
+   "What smoke rising from a chimney can form."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "plump",
+  "register": "standard",
+  "definition": "Pleasantly rounded or chubby.",
+  "note": "From Middle Dutch plomp. It was once also used to mean 'blunt', as in 'a plump refusal'.",
+  "hints": [
+   "A cheek or a fruit might be this.",
+   "Round and well-fed."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "plunk",
+  "register": "slang",
+  "definition": "To drop or place with a dull sound.",
+  "note": "Imitative of the sound. The noun is recorded earlier than the verb.",
+  "hints": [
+   "A sound like a pebble landing in water.",
+   "How a heavy coin lands in a jar."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "plush",
+  "register": "standard",
+  "definition": "Luxurious and soft; or a soft fabric.",
+  "note": "From French peluche, 'fluff'. Toy bears made of it are called by the same word.",
+  "hints": [
+   "A soft toy bear's fabric.",
+   "A velvet-like fabric, or very luxurious."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "poesy",
+  "register": "standard",
+  "definition": "An old word for poetry.",
+  "note": "From Old French poesie, from Greek poiesis, 'a making'. It has a bookish, old-fashioned feel.",
+  "hints": [
+   "A dusty word for verse.",
+   "What a bard composes."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "point",
+  "register": "standard",
+  "definition": "A sharp end; also a purpose or a score.",
+  "note": "From Old French point, from Latin punctum, 'a prick'. It covers a tip, a dot, a score and the main idea.",
+  "hints": [
+   "The sharp end of a pencil.",
+   "The idea behind an argument."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "poise",
+  "register": "standard",
+  "definition": "Calm balance and self-assurance.",
+  "note": "From Old French pois, 'weight'. Balanced weight became balanced bearing.",
+  "hints": [
+   "A graceful and steady manner.",
+   "What a ballerina has on one foot."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "poker",
+  "register": "standard",
+  "definition": "A card game of betting and bluffing; also an iron rod.",
+  "note": "The card game is American, of uncertain origin. The tool for stirring a fire is a separate word, from poke.",
+  "hints": [
+   "A game where you hold your cards close.",
+   "What you stir the fireplace with."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "polar",
+  "register": "standard",
+  "definition": "Relating to the Earth's poles.",
+  "note": "From Latin polus, from Greek polos, 'pivot'. Bears and ice caps are described with it.",
+  "hints": [
+   "A bear that lives in the Arctic.",
+   "A cold region at the top of the globe."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "polka",
+  "register": "standard",
+  "definition": "A lively dance from Bohemia.",
+  "note": "From Czech, probably from pulka, 'half', for the half-step. It spread across Europe in the nineteenth century.",
+  "hints": [
+   "Spotted pattern as well as a dance.",
+   "Dots, in the name of a pattern."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "polyp",
+  "register": "standard",
+  "definition": "A small growth; or a tubelike sea creature.",
+  "note": "From Greek polypous, 'many-footed'. Coral is made of colonies of these.",
+  "hints": [
+   "A tiny animal that builds a reef.",
+   "A word for a growth with many feet, in Greek."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "pooch",
+  "register": "slang",
+  "definition": "A pet dog.",
+  "note": "Its origin is uncertain. It has been used as a friendly term for a dog since the early twentieth century.",
+  "hints": [
+   "A friendly name for a dog.",
+   "What you walk each evening."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "poppy",
+  "register": "standard",
+  "definition": "A bright red flower; also its colour.",
+  "note": "From Old English popig, from Latin papaver. Red ones are worn on Remembrance Day.",
+  "hints": [
+   "A red flower worn in November.",
+   "Its seeds go on a bagel."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "porch",
+  "register": "standard",
+  "definition": "A covered entrance or veranda at the front of a house.",
+  "note": "From Old French porche, from Latin porticus, 'portico'. It is where you may sit on a swing.",
+  "hints": [
+   "Where a rocking chair sits.",
+   "The covered part by a front door."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "poser",
+  "register": "standard",
+  "definition": "A hard puzzle; or someone who pretends.",
+  "note": "From pose plus -er. It also means a person who acts in a false way to impress.",
+  "hints": [
+   "A brain-teaser.",
+   "Someone who acts like what they are not."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "posit",
+  "register": "standard",
+  "definition": "To put forward as a basis for argument.",
+  "note": "From Latin positus, 'placed'. Philosophers posit theories before testing them.",
+  "hints": [
+   "To suggest an idea for debate.",
+   "What a scientist does with a hypothesis."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "posse",
+  "register": "standard",
+  "definition": "A group summoned to chase a criminal.",
+  "note": "Short for Latin posse comitatus, 'the power of the county'. It is now a casual word for a group of friends.",
+  "hints": [
+   "In old westerns, a sheriff gathers one.",
+   "A band of friends, in slang."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "pouch",
+  "register": "standard",
+  "definition": "A small bag; or a kangaroo's pocket.",
+  "note": "From Old French pouche, from a Frankish word. Marsupials carry their young in one.",
+  "hints": [
+   "Where a kangaroo carries its baby.",
+   "A small bag on a belt."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "pound",
+  "register": "standard",
+  "definition": "A unit of weight or of British money; also to hit repeatedly.",
+  "note": "From Old English pund, from Latin pondo, 'weight'. The hitting sense is a separate word.",
+  "hints": [
+   "Sterling money unit.",
+   "What a hammer does to a nail."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "pouty",
+  "register": "slang",
+  "definition": "Tending to pout.",
+  "note": "Built from pout plus -y. Pout is a verb for pushing out the lips in sulkiness.",
+  "hints": [
+   "How a sulking child's lips look.",
+   "Sticking out the lower lip."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "power",
+  "register": "standard",
+  "definition": "The ability to do something, or control over others.",
+  "note": "From Old French povoir, from Latin potis, 'able'. It covers strength, authority, and electricity.",
+  "hints": [
+   "What a strong engine produces.",
+   "What a ruler holds over a country."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "prank",
+  "register": "standard",
+  "definition": "A mischievous trick played for fun.",
+  "note": "Of uncertain origin; it may be linked to an old verb meaning to show off or dress up. 1 April is the day it is most expected.",
+  "hints": [
+   "A whoopee cushion on a chair.",
+   "A harmless trick on April Fools' Day."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "prawn",
+  "register": "standard",
+  "definition": "A large edible shellfish like a shrimp.",
+  "note": "First recorded in the early fifteenth century in several spellings. It has no clear relatives in other languages.",
+  "hints": [
+   "Often served in a cocktail.",
+   "A seafood close to a shrimp."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "preen",
+  "register": "standard",
+  "definition": "To tidy feathers, or to admire yourself.",
+  "note": "From Middle English, from an old word for a pin. Birds preen to keep their feathers neat, and people preen to look good.",
+  "hints": [
+   "A bird does it to its feathers.",
+   "What a vain person does before a mirror."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "press",
+  "register": "standard",
+  "definition": "To push firmly; also newspapers or a printing machine.",
+  "note": "From Old French presser, from Latin pressare, 'to press'. The newspapers sense comes from the printing press.",
+  "hints": [
+   "What you do to a doorbell.",
+   "A collective word for journalists."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "price",
+  "register": "standard",
+  "definition": "The cost of something.",
+  "note": "From Old French pris, from Latin pretium, 'worth'. Price and prize were once the same word.",
+  "hints": [
+   "What a tag shows.",
+   "What a shopper checks before buying."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "pride",
+  "register": "standard",
+  "definition": "A feeling of satisfaction in your own worth; also a group of lions.",
+  "note": "From Old English pryde, from an older word for 'proud'. A group of lions is called a pride, a poetic use.",
+  "hints": [
+   "A feeling after a big win.",
+   "A group of lions."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "prime",
+  "register": "standard",
+  "definition": "Best in quality; or first in importance.",
+  "note": "From Latin primus, 'first'. A prime number has only itself and one as factors.",
+  "hints": [
+   "A number such as seven, in maths.",
+   "The highest quality, as of beef."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "primo",
+  "register": "slang",
+  "definition": "First-rate; excellent.",
+  "note": "Borrowed from Italian primo, 'first'. It is a doublet of prime.",
+  "hints": [
+   "Slang for top quality.",
+   "An Italian word for 'first'."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "print",
+  "register": "standard",
+  "definition": "To mark letters onto paper; or a mark left behind.",
+  "note": "From Middle English prenten, shortened from emprinten, 'to imprint'. It names text, pictures and a fingerprint.",
+  "hints": [
+   "What a machine does with ink.",
+   "A mark left by a thumb."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "prior",
+  "register": "standard",
+  "definition": "Coming before in time; also a monastery official.",
+  "note": "From Latin prior, 'earlier'. In law it describes a previous conviction.",
+  "hints": [
+   "Earlier in time, as in a previous commitment.",
+   "A head of a small monastery."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "prism",
+  "register": "standard",
+  "definition": "A glass shape that splits light into colours.",
+  "note": "From Greek prisma, 'something sawn off'. Newton used glass ones to show light breaking into a spectrum.",
+  "hints": [
+   "Used to make a rainbow of light.",
+   "A shape with triangular ends."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "privy",
+  "register": "standard",
+  "definition": "Sharing in secret knowledge; also an outhouse.",
+  "note": "From Old French prive, 'private'. 'Privy to' means let in on a secret.",
+  "hints": [
+   "Told in confidence, you are said to be this to it.",
+   "A word for an old outdoor toilet."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "probe",
+  "register": "standard",
+  "definition": "To explore or investigate; or a tool or craft for exploring.",
+  "note": "From Latin probare, 'to test'. It names a doctor's instrument and a spacecraft.",
+  "hints": [
+   "What space agencies send to far planets.",
+   "A journalist might do it into a scandal."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "prone",
+  "register": "standard",
+  "definition": "Lying face down; or likely to suffer something.",
+  "note": "From Latin pronus, 'bent forward'. People are prone to colds, or lie prone on the ground.",
+  "hints": [
+   "Lying face down on the floor.",
+   "Likely to suffer something, as in 'accident-___'."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "prong",
+  "register": "standard",
+  "definition": "A pointed tip of a fork.",
+  "note": "From Middle English pronge. A trident has three.",
+  "hints": [
+   "One tip on a fork.",
+   "A tooth of a pitchfork."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "proof",
+  "register": "standard",
+  "definition": "Evidence that shows something is true.",
+  "note": "From Old French prove, from Latin probare, 'to test'. It is also the strength of alcohol.",
+  "hints": [
+   "What a lawyer must show a court.",
+   "What a maths exercise ends with."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "proud",
+  "register": "standard",
+  "definition": "Feeling deep satisfaction in yourself or others.",
+  "note": "From Old English prud, 'proud' or 'haughty'. The word moved from vanity towards healthy satisfaction.",
+  "hints": [
+   "How a parent feels at a graduation.",
+   "Said of someone pleased with an achievement."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "prove",
+  "register": "standard",
+  "definition": "To show that something is true.",
+  "note": "From Old English profian and Old French prover, from Latin probare, 'to test'. It once meant to try or test something.",
+  "hints": [
+   "What evidence does to a claim.",
+   "Show that a claim is correct."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "prowl",
+  "register": "standard",
+  "definition": "To move quietly in search of prey.",
+  "note": "From Middle English prollen, of unknown origin. Cats and burglars prowl.",
+  "hints": [
+   "What a tiger does at night.",
+   "A burglar might do it around a house."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "proxy",
+  "register": "standard",
+  "definition": "A person or thing authorised to stand in for another.",
+  "note": "From Middle English, a contraction of procuracie, from Latin procuratio, 'management'. In computing it relays web traffic.",
+  "hints": [
+   "One who votes in your place.",
+   "A server that relays web traffic."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "prune",
+  "register": "standard",
+  "definition": "A dried plum; also to cut back a plant.",
+  "note": "The fruit is from Old French prune, from Latin prunum. The cutting verb is separate, from Old French proignier.",
+  "hints": [
+   "A wrinkled dried fruit.",
+   "What a gardener does to a rose bush."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "psalm",
+  "register": "standard",
+  "definition": "A sacred song or poem of praise.",
+  "note": "From Old English psealm, from Greek psalmos, 'song sung to a harp'. The Bible contains 150 of them.",
+  "hints": [
+   "A song in the Bible.",
+   "Sung by choirs in church."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "pudgy",
+  "register": "standard",
+  "definition": "Short and plump.",
+  "note": "From pudge, a word of uncertain origin, plus -y. It is often used affectionately for children's fingers.",
+  "hints": [
+   "A chubby baby's hands.",
+   "Round and soft."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "puffy",
+  "register": "standard",
+  "definition": "Swollen or full, as if inflated.",
+  "note": "From puff plus -y. It describes eyes after crying or a jacket full of down.",
+  "hints": [
+   "What eyes look like after crying.",
+   "A jacket filled with down."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "pulpy",
+  "register": "standard",
+  "definition": "Soft and fleshy; or in a cheap sensational style.",
+  "note": "From pulp plus -y. Pulp is the soft inside of fruit, and cheap magazines were once printed on pulp paper.",
+  "hints": [
+   "Orange juice with bits.",
+   "Like the cheap fiction of old magazines."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "punch",
+  "register": "standard",
+  "definition": "A blow with the fist; also a fruity drink.",
+  "note": "The blow is from Old French ponchonner, 'to punch'. The drink is a separate word, likely from Hindi.",
+  "hints": [
+   "A boxer throws one.",
+   "A bowl at a party with fruit juice."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "pupal",
+  "register": "standard",
+  "definition": "Relating to the stage between larva and adult insect.",
+  "note": "From pupa plus -al. Pupa is Latin for 'girl' or 'doll'.",
+  "hints": [
+   "A stage in a butterfly's life.",
+   "The chrysalis phase."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "pupil",
+  "register": "standard",
+  "definition": "A student; also the dark centre of the eye.",
+  "note": "From Latin pupillus, 'orphan' or 'ward'. The eye sense is from Latin pupilla, 'little doll', after the tiny reflection seen in it.",
+  "hints": [
+   "A student in a class.",
+   "The black centre in the middle of the iris."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "puppy",
+  "register": "standard",
+  "definition": "A young dog.",
+  "note": "From earlier puppie, once a woman's pet dog, of uncertain origin. It was probably from French poupee, 'doll'.",
+  "hints": [
+   "A young dog that chews your shoes.",
+   "Eight weeks old and full of play."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "puree",
+  "register": "standard",
+  "definition": "Food blended to a smooth paste.",
+  "note": "Borrowed from French puree. Baby food is often this.",
+  "hints": [
+   "A smooth blend of cooked vegetables.",
+   "What a blender makes of soup."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "purge",
+  "register": "standard",
+  "definition": "To rid of something unwanted.",
+  "note": "From Old French purgier, from Latin purgare, 'to make pure'. It is used for cleansing and for removing members of a group.",
+  "hints": [
+   "To clear out what is unwanted.",
+   "A political clearing out of rivals."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "purse",
+  "register": "standard",
+  "definition": "A small bag for money; or to tighten the lips.",
+  "note": "From Old English purs, from Latin bursa, 'bag'. Lips are said to be pursed when pressed tight.",
+  "hints": [
+   "A handbag or coin holder.",
+   "What lips do when puckered."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "pushy",
+  "register": "standard",
+  "definition": "Aggressively assertive.",
+  "note": "From push plus -y. A pushy salesperson does not take no for an answer.",
+  "hints": [
+   "A salesman who will not accept refusal.",
+   "A person who shoves forward to get ahead."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "putty",
+  "register": "standard",
+  "definition": "A soft paste that sets hard, used to fix window glass.",
+  "note": "From French potee, 'potful', originally a polishing powder. It stays soft until it dries.",
+  "hints": [
+   "What holds a pane in its frame.",
+   "Clay-like stuff for sealing cracks."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "quack",
+  "register": "standard",
+  "definition": "The cry of a duck; or a fake doctor.",
+  "note": "Imitative of the duck's call. The fraud sense is short for quacksalver, someone who boasts of remedies.",
+  "hints": [
+   "What a duck says.",
+   "A fraudulent healer."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "quail",
+  "register": "standard",
+  "definition": "To shrink back in fear; also a small game bird.",
+  "note": "The verb is from Middle Dutch queilen. The bird is a separate word, from Old French quaille.",
+  "hints": [
+   "What a coward might do before a bully.",
+   "A small game bird with speckled feathers."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "quark",
+  "register": "standard",
+  "definition": "A tiny particle that makes up protons.",
+  "note": "Coined in 1963 by physicist Murray Gell-Mann, apparently an arbitrary word. It is also a fresh cheese in German.",
+  "hints": [
+   "A tiny part of a proton.",
+   "Up and down are two flavours."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "quart",
+  "register": "standard",
+  "definition": "A quarter of a gallon.",
+  "note": "From Old French quarte, from Latin quartus, 'fourth'. It equals two pints.",
+  "hints": [
+   "Two pints of milk.",
+   "A fourth of a gallon."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "quash",
+  "register": "standard",
+  "definition": "To put an end to; to annul.",
+  "note": "From Old French quasser, from Latin quassare, 'to shake'. Courts quash verdicts and rebels are quashed.",
+  "hints": [
+   "What a judge does to a conviction.",
+   "To crush a rebellion."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "quasi",
+  "register": "standard",
+  "definition": "Seemingly; almost but not quite.",
+  "note": "Latin for 'as if'. It is used as a prefix, as in 'quasi-official'.",
+  "hints": [
+   "A Latin word meaning 'as if'.",
+   "Used as a prefix, as in '-official'."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "queen",
+  "register": "standard",
+  "definition": "A female monarch, or the wife of a king.",
+  "note": "From Old English cwen, 'woman' or 'wife'. It is also a chess piece and a card.",
+  "hints": [
+   "Wears a crown.",
+   "The strongest piece on a chessboard."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "quell",
+  "register": "standard",
+  "definition": "To calm or put down.",
+  "note": "From Old English cwellan, 'to kill'. It now means to suppress, as of riots or fears.",
+  "hints": [
+   "What police do to a riot.",
+   "To calm fears."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "query",
+  "register": "standard",
+  "definition": "A question.",
+  "note": "From Latin quaere, 'ask'. It is a word for a database request.",
+  "hints": [
+   "Typed into a search box.",
+   "A question put to a database."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "quest",
+  "register": "standard",
+  "definition": "A long search for something.",
+  "note": "From Old French queste, from Latin quaerere, 'to seek'. Knights went on one for the Holy Grail.",
+  "hints": [
+   "What knights set out on.",
+   "A game mission with a reward."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "queue",
+  "register": "standard",
+  "definition": "A line of people waiting.",
+  "note": "From Old French cue, 'tail', from Latin cauda. British people are famed for joining one.",
+  "hints": [
+   "What people form at a bus stop.",
+   "A British word for a line."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
  }
 ]
