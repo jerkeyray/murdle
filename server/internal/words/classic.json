@@ -598,5 +598,1205 @@
   ],
   "difficulty": "familiar",
   "connection": ""
+ },
+ {
+  "word": "alive",
+  "register": "standard",
+  "definition": "Living; not dead.",
+  "note": "From Old English on life, literally 'in life'. The a- in many such words is a worn-down 'on'.",
+  "hints": [
+   "The opposite of dead.",
+   "Full of energy, or simply breathing."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "allay",
+  "register": "standard",
+  "definition": "To calm or lessen a fear or worry.",
+  "note": "From Old English alecgan, 'to lay down'. You lay a fear to rest.",
+  "hints": [
+   "What reassurance does to fears.",
+   "To put a worry to rest."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "alley",
+  "register": "standard",
+  "definition": "A narrow passage between buildings.",
+  "note": "From Old French alee, 'a going', from aller 'to go'. A bowling alley is a long narrow lane too.",
+  "hints": [
+   "Cats and bins live in one.",
+   "Bowling happens in one."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "allot",
+  "register": "standard",
+  "definition": "To give out as a share.",
+  "note": "From Old French aloter, 'to divide by lot'. Shares were once settled by drawing lots.",
+  "hints": [
+   "What you do with time or seats.",
+   "To share out portions."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "allow",
+  "register": "standard",
+  "definition": "To let something happen.",
+  "note": "From Old French alouer, which blended two Latin verbs, one for praise and one for placing.",
+  "hints": [
+   "To give permission.",
+   "Parents decide what to do this with."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "alloy",
+  "register": "standard",
+  "definition": "A metal made by mixing two or more metals.",
+  "note": "From Old French aloi, from a Latin word for binding together. Bronze is copper and tin.",
+  "hints": [
+   "Brass and bronze are examples.",
+   "Metals melted together."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "aloft",
+  "register": "standard",
+  "definition": "Up in the air.",
+  "note": "From Old Norse a lopti, 'in the sky'. Sailors used it for anything up the mast.",
+  "hints": [
+   "Up in the rigging, to a sailor.",
+   "Held up high."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "alone",
+  "register": "standard",
+  "definition": "By yourself.",
+  "note": "From all plus one, 'wholly one'. 'Lonely' was later formed from it by dropping the a-.",
+  "hints": [
+   "Without company.",
+   "'Lonely' was clipped from it."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "along",
+  "register": "standard",
+  "definition": "Moving in a line beside something.",
+  "note": "From Old English andlang, 'extending opposite'. You walk along a beach.",
+  "hints": [
+   "How you walk a riverbank.",
+   "Coming with others: tagging this."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "aloof",
+  "register": "standard",
+  "definition": "Distant and cool towards others.",
+  "note": "A sailing term: to keep a ship's head 'a loof', to windward, away from the shore.",
+  "hints": [
+   "Standoffish.",
+   "Its root is a sailing command."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "aloud",
+  "register": "standard",
+  "definition": "In a voice others can hear.",
+  "note": "Simply a- plus loud. Reading aloud was normal; silent reading once astonished people.",
+  "hints": [
+   "Not silently.",
+   "How you read to a child."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "alpha",
+  "register": "standard",
+  "definition": "The first letter of the Greek alphabet.",
+  "note": "From Phoenician aleph, 'ox', whose letter was drawn as an ox head. Turn our A upside down and you can still see the horns.",
+  "hints": [
+   "Comes before beta.",
+   "Software releases begin with it."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "altar",
+  "register": "standard",
+  "definition": "A table used for religious offerings or ceremonies.",
+  "note": "From Latin altare, likely related to altus, 'high'. Weddings take place in front of one.",
+  "hints": [
+   "Couples stand before one to marry.",
+   "A raised table in a church."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "alter",
+  "register": "standard",
+  "definition": "To change.",
+  "note": "From Latin alter, 'the other'. Altering something makes it other than it was.",
+  "hints": [
+   "Tailors do it to trousers.",
+   "To make different."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "amass",
+  "register": "standard",
+  "definition": "To gather a large amount.",
+  "note": "From French amasser, 'to heap up', from masse, 'mass'.",
+  "hints": [
+   "What hoarders do with things.",
+   "To pile up over time."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "amaze",
+  "register": "standard",
+  "definition": "To astonish.",
+  "note": "Middle English amasen meant to bewilder. 'Maze' is the same word: a place made to bewilder you.",
+  "hints": [
+   "What magicians aim to do.",
+   "Related to a puzzle of paths."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "amber",
+  "register": "standard",
+  "definition": "Fossilised tree resin, or its golden-orange colour.",
+  "note": "From Arabic anbar, which first meant ambergris from whales. The name slid onto the resin.",
+  "hints": [
+   "Insects are found trapped in it.",
+   "The middle traffic light."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "amble",
+  "register": "standard",
+  "definition": "To walk slowly and easily.",
+  "note": "From Old French ambler, 'to walk like a horse', from Latin ambulare 'to walk'.",
+  "hints": [
+   "A relaxed stroll.",
+   "Ambulance shares its root."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "amend",
+  "register": "standard",
+  "definition": "To change to make better.",
+  "note": "From Latin emendare, 'to remove a fault'. The US Constitution has twenty-seven of them.",
+  "hints": [
+   "Constitutions get these.",
+   "To correct a text."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "amiss",
+  "register": "standard",
+  "definition": "Wrong or out of place.",
+  "note": "A- plus miss. 'Something is amiss' means something has missed its mark.",
+  "hints": [
+   "Something is not right.",
+   "Often follows 'something is'."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "amity",
+  "register": "standard",
+  "definition": "Friendly relations.",
+  "note": "From Old French amistie, from Latin amicus, 'friend'.",
+  "hints": [
+   "Friendship between nations.",
+   "Its Latin root is friend."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "among",
+  "register": "standard",
+  "definition": "Surrounded by; in the company of.",
+  "note": "From Old English on gemang, 'in a crowd'.",
+  "hints": [
+   "In the middle of a group.",
+   "Similar to amid."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "ample",
+  "register": "standard",
+  "definition": "More than enough.",
+  "note": "From Latin amplus, 'large, spacious'. Amplify comes from the same root.",
+  "hints": [
+   "Plenty, with room to spare.",
+   "Related to amplify."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "amply",
+  "register": "standard",
+  "definition": "In a way that is more than enough.",
+  "note": "From ample, from Latin amplus, 'large'. To be amply rewarded is to get plenty.",
+  "hints": [
+   "Generously or fully.",
+   "How a debt might be repaid."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "amuse",
+  "register": "standard",
+  "definition": "To make someone laugh or smile.",
+  "note": "From Old French amuser, 'to divert attention'. It first meant to fool or distract someone.",
+  "hints": [
+   "What a clown tries to do.",
+   "Its old meaning was to distract."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "angel",
+  "register": "standard",
+  "definition": "A heavenly messenger.",
+  "note": "From Greek angelos, 'messenger'. Angels were defined by their job, carrying word from God.",
+  "hints": [
+   "Tops many Christmas trees.",
+   "Its Greek root meant messenger."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "anger",
+  "register": "standard",
+  "definition": "A strong feeling of displeasure.",
+  "note": "From Old Norse angr, 'grief'. It meant sorrow before it meant rage.",
+  "hints": [
+   "What a temper unleashes.",
+   "Seeing red is this."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "angle",
+  "register": "standard",
+  "definition": "The space between two lines that meet.",
+  "note": "From Latin angulus, 'corner'. Angling for fish comes from a different word meaning hook.",
+  "hints": [
+   "Measured in degrees.",
+   "A protractor measures it."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "angry",
+  "register": "standard",
+  "definition": "Feeling or showing anger.",
+  "note": "From anger, which in Old Norse meant grief or trouble.",
+  "hints": [
+   "Cross, or worse than cross.",
+   "How you feel when wronged."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "anime",
+  "register": "slang",
+  "definition": "Japanese animated film and television.",
+  "note": "A Japanese clipping of the English 'animation'. English borrowed the clipped word back.",
+  "hints": [
+   "Studio Ghibli makes it.",
+   "Animation from Japan."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "ankle",
+  "register": "standard",
+  "definition": "The joint between the foot and the leg.",
+  "note": "From Old English ancleow. The bones were once compared to an angle or bend.",
+  "hints": [
+   "Easy to twist.",
+   "Where a sock ends."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "annex",
+  "register": "standard",
+  "definition": "An extra building attached to a main one; or to take over territory.",
+  "note": "From Latin annexus, 'joined to'. Countries annex land; hotels have annexes.",
+  "hints": [
+   "An extension of a building.",
+   "What empires do to land."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "annoy",
+  "register": "standard",
+  "definition": "To irritate.",
+  "note": "From Old French anoier, from Latin in odio, 'in hatred'. Ennui shares the root.",
+  "hints": [
+   "What a buzzing fly does.",
+   "Shares a root with ennui."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "annul",
+  "register": "standard",
+  "definition": "To declare legally invalid.",
+  "note": "From Latin annullare, 'to make nothing', from nullus.",
+  "hints": [
+   "What can happen to a marriage.",
+   "Related to null."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "anode",
+  "register": "standard",
+  "definition": "The positive electrode of a battery or cell.",
+  "note": "Coined in 1834 for Michael Faraday, from Greek ana 'up' and hodos 'way'.",
+  "hints": [
+   "Partner of the cathode.",
+   "Faraday asked for the word."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "antic",
+  "register": "standard",
+  "definition": "Playful and silly behaviour.",
+  "note": "From Italian antico, 'ancient', used for the strange creatures painted on Roman walls.",
+  "hints": [
+   "Usually plural: silly capers.",
+   "Grotesque old paintings gave it its name."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "anvil",
+  "register": "standard",
+  "definition": "A heavy iron block on which metal is hammered.",
+  "note": "From Old English anfilt, 'something beaten on'. One of the ear's tiny bones is named after it.",
+  "hints": [
+   "A blacksmith's essential.",
+   "Cartoon villains drop these."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "aorta",
+  "register": "standard",
+  "definition": "The main artery leaving the heart.",
+  "note": "From Greek aorte, 'that which is hung up'. Aristotle named it.",
+  "hints": [
+   "The body's largest artery.",
+   "Carries blood away from the heart."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "apart",
+  "register": "standard",
+  "definition": "Separated by distance.",
+  "note": "From French a part, 'to the side'.",
+  "hints": [
+   "Not together.",
+   "How couples feel when separated."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "aphid",
+  "register": "standard",
+  "definition": "A small sap-sucking insect.",
+  "note": "Linnaeus coined aphis in 1758, possibly misreading the Greek word for bug.",
+  "hints": [
+   "Ladybirds eat them.",
+   "A garden pest on roses."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "apnea",
+  "register": "standard",
+  "definition": "A temporary pause in breathing, often during sleep.",
+  "note": "From Greek apnoia, 'without breath'.",
+  "hints": [
+   "A sleep disorder.",
+   "Breathing stops for a while."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "apple",
+  "register": "standard",
+  "definition": "A round fruit with crisp flesh.",
+  "note": "Old English æppel meant any fruit. The fruit in Eden is never named as an apple.",
+  "hints": [
+   "Keeps the doctor away.",
+   "Newton watched one fall."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "apply",
+  "register": "standard",
+  "definition": "To put on; or to request formally.",
+  "note": "From Latin applicare, 'to fold onto'. You apply paint, and apply for a job.",
+  "hints": [
+   "You do it for a job.",
+   "What you do with sunscreen."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "apron",
+  "register": "standard",
+  "definition": "A garment worn over clothes to keep them clean.",
+  "note": "Originally 'a napron'. People heard 'an apron', and the n moved across. Napkin keeps it.",
+  "hints": [
+   "Worn while cooking.",
+   "It lost its first letter to 'an'."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "aptly",
+  "register": "standard",
+  "definition": "In a fitting way.",
+  "note": "From apt, from Latin aptus, 'fitted'.",
+  "hints": [
+   "Done in a fitting way.",
+   "How a well-chosen name suits."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "arbor",
+  "register": "standard",
+  "definition": "A shady garden shelter covered in climbing plants.",
+  "note": "From Old French erbier, 'herb garden'. People later linked it to Latin arbor, 'tree'.",
+  "hints": [
+   "Vines and roses climb it.",
+   "A shady garden nook."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "arena",
+  "register": "standard",
+  "definition": "An enclosed area for sport or shows.",
+  "note": "Latin for 'sand'. Roman arenas were strewn with it to soak up the blood.",
+  "hints": [
+   "Gladiators fought in one.",
+   "Its Latin root meant sand."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "argue",
+  "register": "standard",
+  "definition": "To disagree with words.",
+  "note": "From Latin arguere, 'to make clear'. It was once about proving a point, not fighting.",
+  "hints": [
+   "What lawyers do in court.",
+   "Not quite agreeing."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "arise",
+  "register": "standard",
+  "definition": "To come into being; to get up.",
+  "note": "From Old English arisan, 'to rise'.",
+  "hints": [
+   "What problems tend to do.",
+   "To stand up, in older English."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "armor",
+  "register": "standard",
+  "definition": "Protective covering worn in battle.",
+  "note": "From Latin armatura, 'equipment', from arma, 'weapons'.",
+  "hints": [
+   "Knights clanked in it.",
+   "Shares a root with army."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "aroma",
+  "register": "standard",
+  "definition": "A distinctive, usually pleasant smell.",
+  "note": "From Greek aroma, 'spice'. In Latin it was used in the plural for spices and sweet herbs.",
+  "hints": [
+   "Coffee and fresh bread have one.",
+   "A pleasant smell drifting out."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "array",
+  "register": "standard",
+  "definition": "An impressive range or display of things.",
+  "note": "From Old French areer, 'to put in order'. Programmers use it for an ordered list of values.",
+  "hints": [
+   "A wide, orderly display.",
+   "A list of values, to a programmer."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "arrow",
+  "register": "standard",
+  "definition": "A pointed shaft shot from a bow.",
+  "note": "From Old English earh. Its shape now points the way on every sign and screen.",
+  "hints": [
+   "Cupid fires them.",
+   "A bow sends it flying."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "arson",
+  "register": "standard",
+  "definition": "The crime of deliberately setting fire to property.",
+  "note": "From Old French arsoun, from Latin ardere, 'to burn'. Ardent shares the root.",
+  "hints": [
+   "A crime involving fire.",
+   "Investigators look for accelerants."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "artsy",
+  "register": "slang",
+  "definition": "Showily artistic or bohemian.",
+  "note": "An American form of arty, from arts plus -y. Often said with a slight eye-roll.",
+  "hints": [
+   "Like a beret-wearing gallery crowd.",
+   "Arty, with an eye-roll."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "ascot",
+  "register": "standard",
+  "definition": "A wide silk tie looped under the chin.",
+  "note": "Named after Royal Ascot, the racecourse where fashionable men wore them.",
+  "hints": [
+   "A cravat by another name.",
+   "Named after a racecourse."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "ashen",
+  "register": "standard",
+  "definition": "Pale grey, especially from shock or illness.",
+  "note": "From ash plus -en, 'made of ash'. Faces turn ashen with fright.",
+  "hints": [
+   "How a frightened face looks.",
+   "The colour of something burnt out."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "aside",
+  "register": "standard",
+  "definition": "To one side; or a remark made quietly.",
+  "note": "From Old English on side. In theatre, an aside is spoken to the audience, unheard by the others on stage.",
+  "hints": [
+   "Actors speak one to the audience.",
+   "Out of the way."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "askew",
+  "register": "standard",
+  "definition": "Not straight; crooked.",
+  "note": "A- plus skew. A picture on a wall can hang this way.",
+  "hints": [
+   "Not hanging straight.",
+   "Wonky, off-kilter."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "assay",
+  "register": "standard",
+  "definition": "A test of a metal's purity.",
+  "note": "From Old French assai, 'trial'. Essay comes from the same word: an essay is an attempt.",
+  "hints": [
+   "Gold is tested this way.",
+   "Shares a root with essay."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "atoll",
+  "register": "standard",
+  "definition": "A ring-shaped coral island around a lagoon.",
+  "note": "From Dhivehi, the language of the Maldives, where the country is made of them.",
+  "hints": [
+   "A ring of coral.",
+   "The Maldives are built of them."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "atone",
+  "register": "standard",
+  "definition": "To make amends for a wrong.",
+  "note": "From 'at one'. To atone was to bring two sides into harmony again.",
+  "hints": [
+   "Make up for a sin.",
+   "Literally 'at one'."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "attic",
+  "register": "standard",
+  "definition": "The space just below a roof.",
+  "note": "From Attica, the region around Athens: its architectural style used a decorated top storey.",
+  "hints": [
+   "Old boxes are stored up there.",
+   "Named after the region around Athens."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "audit",
+  "register": "standard",
+  "definition": "An official check of accounts.",
+  "note": "From Latin auditus, 'hearing'. Accounts were once read aloud to the examiner.",
+  "hints": [
+   "Accountants dread or perform it.",
+   "Its root means hearing."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "augur",
+  "register": "standard",
+  "definition": "To be a sign of what will happen.",
+  "note": "A Roman augur foretold the future from the flight of birds. Inauguration began with one.",
+  "hints": [
+   "Things may bode well or ill this way.",
+   "Romans read birds to do it."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "aunty",
+  "register": "standard",
+  "definition": "An aunt, or an affectionate name for an older woman.",
+  "note": "A pet form of aunt. In many cultures it is used for any respected older woman.",
+  "hints": [
+   "Your parent's sister.",
+   "A fond name for an older woman."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "avail",
+  "register": "standard",
+  "definition": "Use or benefit.",
+  "note": "From Old French valoir, 'to be worth'. 'To no avail' means it did no good.",
+  "hints": [
+   "Usually 'to no ...'.",
+   "Of use or help."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "avert",
+  "register": "standard",
+  "definition": "To turn away; to prevent.",
+  "note": "From Latin avertere, 'to turn from'. You avert your eyes, or a disaster.",
+  "hints": [
+   "What you do with your eyes from a horror.",
+   "To stop something bad happening."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "avian",
+  "register": "standard",
+  "definition": "Relating to birds.",
+  "note": "From Latin avis, 'bird'. Aviation comes from the same root.",
+  "hints": [
+   "Bird flu is this kind of influenza.",
+   "Related to aviation."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "avoid",
+  "register": "standard",
+  "definition": "To stay away from.",
+  "note": "From Old French esvuidier, 'to empty out'. Void shares the root.",
+  "hints": [
+   "What you do with an ex in the street.",
+   "To steer clear."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "await",
+  "register": "standard",
+  "definition": "To wait for.",
+  "note": "From Old French awaitier, 'to lie in wait'.",
+  "hints": [
+   "What you do for news.",
+   "A grand way to wait."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "awake",
+  "register": "standard",
+  "definition": "Not asleep.",
+  "note": "From Old English awacan, 'to arise'. Two older verbs, one for waking up and one for being up, merged into it.",
+  "hints": [
+   "The opposite of asleep.",
+   "Eyes open in the morning."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "award",
+  "register": "standard",
+  "definition": "A prize given for achievement.",
+  "note": "From Old French awarder, 'to observe, then decide'. It began as a judge's decision.",
+  "hints": [
+   "An Oscar is one.",
+   "A prize or ruling."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "aware",
+  "register": "standard",
+  "definition": "Knowing about something.",
+  "note": "From Old English gewær, 'watchful'. Wary shares the root.",
+  "hints": [
+   "Conscious of something.",
+   "Related to wary."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "awash",
+  "register": "standard",
+  "definition": "Flooded or covered with water.",
+  "note": "A- plus wash. A rock is awash when waves just cover it.",
+  "hints": [
+   "Flooded, literally or with something.",
+   "A city might be this with tourists."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "awful",
+  "register": "standard",
+  "definition": "Very bad.",
+  "note": "Awe plus -ful. It once meant full of awe, inspiring wonder, before it slid to dreadful.",
+  "hints": [
+   "Terrible, or very bad.",
+   "It once meant inspiring wonder."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "axial",
+  "register": "standard",
+  "definition": "Relating to an axis.",
+  "note": "From Latin axis, 'axle'. An axial line runs down the centre of something.",
+  "hints": [
+   "Along a central line.",
+   "The Earth's tilt is this."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "axiom",
+  "register": "standard",
+  "definition": "A statement accepted as true without proof.",
+  "note": "From Greek axioma, 'what is thought worthy'. Euclid's geometry is built on five.",
+  "hints": [
+   "A self-evident truth.",
+   "Euclid started from them."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "axion",
+  "register": "standard",
+  "definition": "A proposed subatomic particle.",
+  "note": "Coined by physicist Frank Wilczek in 1978, who named it after a brand of laundry detergent because it 'cleaned up' a problem.",
+  "hints": [
+   "A hypothetical particle.",
+   "Named after a laundry detergent."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "azure",
+  "register": "standard",
+  "definition": "Bright blue, like a clear sky.",
+  "note": "From Arabic lazaward, 'lapis lazuli', the blue stone. The first letter fell off in Old French.",
+  "hints": [
+   "The colour of a cloudless sky.",
+   "Named after a blue stone."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "bacon",
+  "register": "standard",
+  "definition": "Cured meat from the back and sides of a pig.",
+  "note": "From Old French bacon, 'back meat'. Bringing home the bacon first meant winning a prize.",
+  "hints": [
+   "Sizzles in a breakfast pan.",
+   "Sizzling slices of pork."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "badge",
+  "register": "standard",
+  "definition": "A small sign worn to show identity or achievement.",
+  "note": "Of uncertain origin; first used for heraldic symbols showing whose household you served.",
+  "hints": [
+   "Scouts sew them on sleeves.",
+   "A police officer shows one."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "badly",
+  "register": "standard",
+  "definition": "In a poor or unsatisfactory way.",
+  "note": "Bad plus -ly. To want something badly is to want it very much.",
+  "hints": [
+   "Not well at all.",
+   "How you want something you crave."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "bagel",
+  "register": "standard",
+  "definition": "A ring-shaped bread roll, boiled then baked.",
+  "note": "From Yiddish beygl, from a German word for ring or bracelet.",
+  "hints": [
+   "Often eaten with cream cheese.",
+   "A bread roll with a hole."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "baggy",
+  "register": "standard",
+  "definition": "Loose and hanging away from the body.",
+  "note": "Bag plus -y. Baggy jeans had a revival in the nineties and again in the 2020s.",
+  "hints": [
+   "Not tight-fitting.",
+   "Nineties jeans were this."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "baker",
+  "register": "standard",
+  "definition": "Someone who makes bread and cakes.",
+  "note": "From Old English bæcere. A baker's dozen is thirteen, an extra loaf against short weight.",
+  "hints": [
+   "Works at dawn with ovens.",
+   "Their dozen is thirteen."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "baler",
+  "register": "standard",
+  "definition": "A machine that packs hay or straw into bales.",
+  "note": "From bale, a bundle. Farmers tow them behind tractors.",
+  "hints": [
+   "Farm machine for hay.",
+   "Turns loose straw into blocks."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "balmy",
+  "register": "standard",
+  "definition": "Pleasantly warm.",
+  "note": "From balm, a soothing ointment. A balmy evening soothes like one.",
+  "hints": [
+   "Warm summer evenings are this.",
+   "Soothingly mild weather."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "banal",
+  "register": "standard",
+  "definition": "Boring and unoriginal.",
+  "note": "From Old French ban, 'compulsory feudal service'. Shared by everyone, so commonplace.",
+  "hints": [
+   "Trite and predictable.",
+   "Common to the point of boredom."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "banjo",
+  "register": "standard",
+  "definition": "A stringed instrument with a round drum-like body.",
+  "note": "Brought to America by enslaved West Africans, from an instrument like the akonting.",
+  "hints": [
+   "Bluegrass leans on its twang.",
+   "Has a drum-like body."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "barge",
+  "register": "standard",
+  "definition": "A flat-bottomed boat for carrying goods on rivers.",
+  "note": "From Old French barge, via Latin barca, 'small boat'. To barge in is to push in clumsily.",
+  "hints": [
+   "Floats slowly down a canal.",
+   "To push rudely into a room."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "baron",
+  "register": "standard",
+  "definition": "A nobleman of the lowest rank; or a powerful businessman.",
+  "note": "From Old French barun, 'man, warrior'. Robber barons were the ruthless tycoons of the 1800s.",
+  "hints": [
+   "Media or oil tycoons are called this.",
+   "The lowest rank of peer."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "basal",
+  "register": "standard",
+  "definition": "Forming the base; fundamental.",
+  "note": "From base. Your basal metabolic rate is what your body burns at rest.",
+  "hints": [
+   "At the base of something.",
+   "A metabolic rate at rest."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "basil",
+  "register": "standard",
+  "definition": "An aromatic herb used in cooking.",
+  "note": "From Greek basilikon, 'royal'. It was considered a herb fit for kings.",
+  "hints": [
+   "Key in pesto.",
+   "Its Greek name meant royal."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "basin",
+  "register": "standard",
+  "definition": "A bowl for washing, or a large dip in land.",
+  "note": "From Old French bacin, from Latin baccinum, 'water vessel'.",
+  "hints": [
+   "A sink is one.",
+   "A river drains into one."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "basis",
+  "register": "standard",
+  "definition": "The foundation or starting point for something.",
+  "note": "From Greek basis, 'step' or 'pedestal'. Base shares the root.",
+  "hints": [
+   "Facts form this for an argument.",
+   "The grounds for something."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "batch",
+  "register": "standard",
+  "definition": "A quantity made at one time.",
+  "note": "From Old English, 'something baked'. A batch was first the bread from a single firing.",
+  "hints": [
+   "Cookies come out of the oven in one.",
+   "A group made together."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "bathe",
+  "register": "standard",
+  "definition": "To wash in water, or swim.",
+  "note": "From Old English baþian. Sunbathing borrowed it for lying in light.",
+  "hints": [
+   "To soak in water.",
+   "Sunlight can do it to a room."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "baton",
+  "register": "standard",
+  "definition": "A short stick used by a conductor, relay runner or officer.",
+  "note": "From French bâton, 'stick'. Passing the baton means handing over responsibility.",
+  "hints": [
+   "Relay runners pass it.",
+   "A conductor waves it."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "batty",
+  "register": "slang",
+  "definition": "Slightly mad.",
+  "note": "From 'bats in the belfry', for a head full of fluttering thoughts.",
+  "hints": [
+   "Eccentric, a bit dotty.",
+   "Bats in the belfry."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
  }
 ]
