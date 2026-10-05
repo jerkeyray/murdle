@@ -1884,6 +1884,18 @@
   "connection": ""
  },
  {
+  "word": "aspect",
+  "register": "standard",
+  "definition": "One part or feature of something.",
+  "note": "From Latin aspectus, 'a looking at'.",
+  "hints": [
+   "A facet of a problem.",
+   "A particular way something looks."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "aspen",
   "register": "standard",
   "definition": "A tree with leaves that tremble in the breeze.",
@@ -2868,6 +2880,18 @@
   "connection": ""
  },
  {
+  "word": "behalf",
+  "register": "standard",
+  "definition": "Interest or support on someone's part.",
+  "note": "From Middle English on his halve, 'on his side'.",
+  "hints": [
+   "Speak on someone's account.",
+   "Used in a phrase with 'on'."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "behind",
   "register": "standard",
   "definition": "At the back of, or late.",
@@ -3261,6 +3285,18 @@
    "Rubbish talk."
   ],
   "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "bimbo",
+  "register": "slang",
+  "definition": "A pretty but unintelligent person, in a mocking slang.",
+  "note": "Borrowed from Italian bimbo, 'little child', and first used of a man.",
+  "hints": [
+   "Mocking word, once used of men.",
+   "Italian for baby."
+  ],
+  "difficulty": "stretch",
   "connection": ""
  },
  {
@@ -3871,6 +3907,18 @@
   "hints": [
    "The line between two countries.",
    "A flowerbed edge."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "boring",
+  "register": "standard",
+  "definition": "Dull and not interesting.",
+  "note": "From bore plus -ing; the origin of that bore is uncertain.",
+  "hints": [
+   "Makes you yawn.",
+   "Tedious and uninteresting."
   ],
   "difficulty": "familiar",
   "connection": ""
@@ -4644,6 +4692,30 @@
   "connection": ""
  },
  {
+  "word": "bureau",
+  "register": "standard",
+  "definition": "An office or agency; or a chest of drawers.",
+  "note": "From French bureau, a coarse cloth that covered desks, then the desk, then the office.",
+  "hints": [
+   "A government office.",
+   "A desk with drawers."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "buried",
+  "register": "standard",
+  "definition": "Put underground or hidden.",
+  "note": "The past participle of bury, from Old English byrgan.",
+  "hints": [
+   "Placed in a grave.",
+   "Treasure under sand."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "burly",
   "register": "standard",
   "definition": "Large, strong and heavily built.",
@@ -4704,6 +4776,18 @@
   "connection": ""
  },
  {
+  "word": "butch",
+  "register": "slang",
+  "definition": "Having a tough, masculine manner or look.",
+  "note": "Its origin is uncertain; it may be linked to butcher or to a nickname. It dates from the early 1900s.",
+  "hints": [
+   "Opposite of dainty, in slang.",
+   "Describes a look or manner thought of as rugged."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
   "word": "butte",
   "register": "standard",
   "definition": "A steep isolated hill with a flat top.",
@@ -4716,6 +4800,18 @@
   "connection": ""
  },
  {
+  "word": "butter",
+  "register": "standard",
+  "definition": "A fatty spread made by churning cream.",
+  "note": "From Old English butere, from Greek bouturon, 'cow cheese'.",
+  "hints": [
+   "Spread on toast.",
+   "Churned from cream."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "button",
   "register": "standard",
   "definition": "A small disc used to fasten clothing, or a switch you push.",
@@ -4725,6 +4821,18 @@
    "What you press on a remote."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "buxom",
+  "register": "standard",
+  "definition": "Plump and healthy-looking, said of a woman.",
+  "note": "From Middle English buhsum, which originally meant obedient or pliable, then good-natured, then plump.",
+  "hints": [
+   "Old word that began by meaning obliging.",
+   "Describes a full-figured look."
+  ],
+  "difficulty": "stretch",
   "connection": ""
  },
  {
@@ -6756,6 +6864,18 @@
   "connection": ""
  },
  {
+  "word": "cousin",
+  "register": "standard",
+  "definition": "The child of an aunt or uncle.",
+  "note": "From Old French cosin, from Latin consobrinus.",
+  "hints": [
+   "Related through your parents' siblings.",
+   "A relative from a different branch."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "coven",
   "register": "standard",
   "definition": "A gathering of witches.",
@@ -7800,6 +7920,18 @@
   "connection": ""
  },
  {
+  "word": "decent",
+  "register": "standard",
+  "definition": "Respectable, adequate or kind.",
+  "note": "From Latin decens, 'fitting' or 'proper'.",
+  "hints": [
+   "Fairly good, as in a meal.",
+   "Behaving correctly."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "decide",
   "register": "standard",
   "definition": "To make up your mind.",
@@ -8049,6 +8181,18 @@
    "A match between two teams of the same city."
   ],
   "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "desert",
+  "register": "standard",
+  "definition": "A dry, barren region; or to abandon.",
+  "note": "The land from Latin desertus, 'abandoned'. The verb is the same word.",
+  "hints": [
+   "Sahara or Gobi.",
+   "To leave someone behind."
+  ],
+  "difficulty": "familiar",
   "connection": ""
  },
  {
@@ -8683,6 +8827,18 @@
   "hints": [
    "A first version of an essay.",
    "A cold breeze from an open window."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "dragon",
+  "register": "standard",
+  "definition": "A fire-breathing monster of legend.",
+  "note": "From Greek drakon, 'serpent'.",
+  "hints": [
+   "St George slew one.",
+   "Winged beast that hoards treasure."
   ],
   "difficulty": "familiar",
   "connection": ""
@@ -9636,6 +9792,18 @@
   "connection": ""
  },
  {
+  "word": "enema",
+  "register": "standard",
+  "definition": "A liquid injected into the bowel, for cleaning or for medical treatment.",
+  "note": "From Greek enienai, 'to send in'.",
+  "hints": [
+   "A medical procedure that sends fluid in.",
+   "A Greek word for injection gave its name."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
   "word": "enemy",
   "register": "standard",
   "definition": "A person or group that is hostile to you.",
@@ -10404,6 +10572,18 @@
   "connection": ""
  },
  {
+  "word": "fatty",
+  "register": "standard",
+  "definition": "Containing a lot of fat.",
+  "note": "From fat plus -y.",
+  "hints": [
+   "Describes greasy food.",
+   "Rich in oil or lard."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "fatwa",
   "register": "standard",
   "definition": "A formal legal opinion issued by an Islamic scholar.",
@@ -10509,6 +10689,18 @@
    "A hen or a mare, for example."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "femme",
+  "register": "standard",
+  "definition": "A woman, in French; in English, a feminine-presenting person.",
+  "note": "Borrowed from French femme, 'woman', from Latin femina.",
+  "hints": [
+   "A glamorous schemer in old films is a fatale one.",
+   "French for woman, borrowed as slang."
+  ],
+  "difficulty": "stretch",
   "connection": ""
  },
  {
@@ -11205,6 +11397,18 @@
    "To show contempt for a law."
   ],
   "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "flower",
+  "register": "standard",
+  "definition": "The colourful part of a plant that makes seeds.",
+  "note": "From Old French flor, from Latin flos. Flour was originally the same word, meaning the finest part of the wheat.",
+  "hints": [
+   "A rose, for example.",
+   "Same word as flour, once."
+  ],
+  "difficulty": "familiar",
   "connection": ""
  },
  {
@@ -12192,6 +12396,18 @@
   "connection": ""
  },
  {
+  "word": "gayer",
+  "register": "standard",
+  "definition": "More cheerful or brightly coloured; comparative of gay.",
+  "note": "From gay, which came from Old French gai, 'joyful'.",
+  "hints": [
+   "Merrier in mood.",
+   "Brighter and more festive than before."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "gazer",
   "register": "standard",
   "definition": "A person who looks steadily at something.",
@@ -12681,6 +12897,18 @@
    "Often said as 'Well, ...!'"
   ],
   "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "gonad",
+  "register": "standard",
+  "definition": "An organ that produces reproductive cells, such as an ovary or testis.",
+  "note": "From Greek gone, 'seed' or 'generation'.",
+  "hints": [
+   "A biology word for an ovary or testis.",
+   "Produces eggs or sperm."
+  ],
+  "difficulty": "challenging",
   "connection": ""
  },
  {
@@ -13524,6 +13752,18 @@
   "connection": ""
  },
  {
+  "word": "halal",
+  "register": "standard",
+  "definition": "Permitted under Islamic law, especially of food.",
+  "note": "Borrowed from Arabic halal, 'permissible'.",
+  "hints": [
+   "Meat prepared according to Muslim practice.",
+   "The opposite of haram."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
   "word": "halve",
   "register": "standard",
   "definition": "To divide into two equal parts.",
@@ -13593,6 +13833,18 @@
    "What a smiling face expresses."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "haram",
+  "register": "standard",
+  "definition": "Forbidden under Islamic law.",
+  "note": "Borrowed from Arabic haram, 'forbidden', the opposite of halal.",
+  "hints": [
+   "The opposite of permitted in Islam.",
+   "Arabic for forbidden."
+  ],
+  "difficulty": "stretch",
   "connection": ""
  },
  {
@@ -13968,6 +14220,18 @@
   "connection": ""
  },
  {
+  "word": "hijab",
+  "register": "standard",
+  "definition": "A headscarf worn by some Muslim women.",
+  "note": "From Arabic hijab, 'cover' or 'curtain'.",
+  "hints": [
+   "Covers hair and neck.",
+   "Arabic for a covering."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
   "word": "hiker",
   "register": "standard",
   "definition": "A person who walks long distances in the countryside.",
@@ -14035,6 +14299,18 @@
   "hints": [
    "Stamp collecting is one.",
    "Something you do for fun after work."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "hockey",
+  "register": "standard",
+  "definition": "A team sport played with sticks and a ball or puck.",
+  "note": "Of uncertain origin; it first appears in the early 1500s.",
+  "hints": [
+   "Played on ice or on grass.",
+   "Sport with sticks and goals."
   ],
   "difficulty": "familiar",
   "connection": ""
@@ -14436,6 +14712,18 @@
   "connection": ""
  },
  {
+  "word": "hussy",
+  "register": "slang",
+  "definition": "A cheeky or shameless woman, in old-fashioned speech.",
+  "note": "A contraction of housewife; the word once simply meant the woman of a house before it turned into an insult.",
+  "hints": [
+   "An old scolding word for a brazen girl.",
+   "Began as a short form of housewife."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
   "word": "hutch",
   "register": "standard",
   "definition": "A small cage for a pet rabbit, or a cabinet.",
@@ -14484,6 +14772,18 @@
   "connection": ""
  },
  {
+  "word": "hymen",
+  "register": "standard",
+  "definition": "A thin membrane at the entrance to the vagina; also, in poetry, marriage.",
+  "note": "From Greek hymen, 'membrane'. Hymen was also the Greek god of weddings, which is why the word can mean marriage in poetry.",
+  "hints": [
+   "The Greek god of marriage shares its name.",
+   "A thin fold of tissue, and a wedding god."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
   "word": "hyper",
   "register": "slang",
   "definition": "Overexcited or overactive.",
@@ -14529,6 +14829,18 @@
    "A figure of speech particular to a language."
   ],
   "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "idiot",
+  "register": "standard",
+  "definition": "A foolish or stupid person.",
+  "note": "From Greek idiotes, 'private person', someone with no public role, then an ignorant person.",
+  "hints": [
+   "Calling someone this is an insult.",
+   "Its Greek root meant a private citizen."
+  ],
+  "difficulty": "familiar",
   "connection": ""
  },
  {
@@ -14844,6 +15156,18 @@
   "connection": ""
  },
  {
+  "word": "insane",
+  "register": "standard",
+  "definition": "Seriously mentally ill, or utterly wild.",
+  "note": "From Latin insanus, 'not healthy'.",
+  "hints": [
+   "Wildly crazy.",
+   "Slang for amazing, too."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "inset",
   "register": "standard",
   "definition": "To put in as an addition; or a small picture within a larger one.",
@@ -15105,6 +15429,18 @@
    "A very brief time."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "jihad",
+  "register": "standard",
+  "definition": "Struggle or striving in the cause of Islam.",
+  "note": "Borrowed from Arabic jihad, 'struggle' or 'effort'. It can mean inner spiritual effort or armed struggle.",
+  "hints": [
+   "Arabic for striving.",
+   "A word for effort in Islamic teaching."
+  ],
+  "difficulty": "stretch",
   "connection": ""
  },
  {
@@ -15756,6 +16092,18 @@
   "connection": ""
  },
  {
+  "word": "lately",
+  "register": "standard",
+  "definition": "In recent times.",
+  "note": "From Old English laetlice, from late.",
+  "hints": [
+   "In the last few days or weeks.",
+   "A word for in recent times."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "later",
   "register": "standard",
   "definition": "At a time after now.",
@@ -16092,6 +16440,18 @@
   "connection": ""
  },
  {
+  "word": "leggy",
+  "register": "standard",
+  "definition": "Having long legs, or of a plant, tall and spindly.",
+  "note": "From leg plus -y.",
+  "hints": [
+   "Describes a foal or a stretched houseplant.",
+   "Long in the limbs."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "legit",
   "register": "slang",
   "definition": "Legitimate; genuine.",
@@ -16149,6 +16509,18 @@
    "The long dimension."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "leper",
+  "register": "standard",
+  "definition": "A person with leprosy; or, figuratively, an outcast.",
+  "note": "From Greek lepra, 'scaly'. The disease is now usually called Hansen's disease.",
+  "hints": [
+   "Sufferer of an old skin and nerve disease.",
+   "Figuratively, someone shunned by society."
+  ],
+  "difficulty": "stretch",
   "connection": ""
  },
  {
@@ -16932,6 +17304,18 @@
   "connection": ""
  },
  {
+  "word": "lusty",
+  "register": "standard",
+  "definition": "Full of vigour and energy.",
+  "note": "From Middle English lust, which meant joy or vigour before it narrowed to desire.",
+  "hints": [
+   "A hearty cheer might be described this way.",
+   "Robust and enthusiastic."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
   "word": "lying",
   "register": "standard",
   "definition": "Telling untruths; or resting flat.",
@@ -16941,6 +17325,18 @@
    "What you do when you rest flat on a bed."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "lynch",
+  "register": "standard",
+  "definition": "To kill someone by mob action without a lawful trial.",
+  "note": "Probably from the surname Lynch, though which Lynch is uncertain. The practice has a long and shameful history in the United States.",
+  "hints": [
+   "A killing by an unlawful crowd.",
+   "An unlawful execution by a mob."
+  ],
+  "difficulty": "stretch",
   "connection": ""
  },
  {
@@ -18192,6 +18588,18 @@
   "connection": ""
  },
  {
+  "word": "moron",
+  "register": "standard",
+  "definition": "A foolish person; once a technical term for mild intellectual disability.",
+  "note": "Coined in 1910 from Greek moros, 'foolish'; it is now regarded as an insult.",
+  "hints": [
+   "An insult for a dim person.",
+   "Used in 1900s psychology before becoming slang."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
   "word": "morph",
   "register": "standard",
   "definition": "To change shape smoothly; also a unit of linguistic form.",
@@ -19044,6 +19452,18 @@
   "connection": ""
  },
  {
+  "word": "ninny",
+  "register": "standard",
+  "definition": "A silly, foolish person.",
+  "note": "Its origin is unknown; the related word ninnyhammer appears around the same time.",
+  "hints": [
+   "An old word for a fool.",
+   "Silly person, in a gentle jibe."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
   "word": "ninth",
   "register": "standard",
   "definition": "Number nine in order.",
@@ -19339,6 +19759,18 @@
   "hints": [
    "A physical item, or a goal.",
    "To protest against a proposal."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "obtain",
+  "register": "standard",
+  "definition": "To get or acquire.",
+  "note": "From Latin obtinere, 'to hold on to'.",
+  "hints": [
+   "Get hold of something.",
+   "Secure a permit."
   ],
   "difficulty": "familiar",
   "connection": ""
@@ -21096,6 +21528,18 @@
   "connection": ""
  },
  {
+  "word": "poetry",
+  "register": "standard",
+  "definition": "Writing arranged in lines with rhythm or imagery.",
+  "note": "From Greek poiesis, 'making', from poiein, 'to make'.",
+  "hints": [
+   "Verse written by poets.",
+   "Sonnets and haiku are examples."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "point",
   "register": "standard",
   "definition": "A sharp end; also a purpose or a score.",
@@ -21403,6 +21847,18 @@
   "hints": [
    "Often served in a cocktail.",
    "A seafood close to a shrimp."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "prayer",
+  "register": "standard",
+  "definition": "A spoken request or thanks to a god.",
+  "note": "From Old French preiere, from Latin precari, 'to ask earnestly'.",
+  "hints": [
+   "Said at bedtime.",
+   "Spoken to a deity."
   ],
   "difficulty": "familiar",
   "connection": ""
@@ -21768,6 +22224,18 @@
   "connection": ""
  },
  {
+  "word": "pubic",
+  "register": "standard",
+  "definition": "Of the lower front part of the pelvis.",
+  "note": "From pubes, Latin for the groin or private parts.",
+  "hints": [
+   "Relating to a pelvic bone.",
+   "A word for part of the pelvis."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
   "word": "public",
   "register": "standard",
   "definition": "Open to everyone, or relating to the people at large.",
@@ -21924,6 +22392,18 @@
   "connection": ""
  },
  {
+  "word": "pygmy",
+  "register": "standard",
+  "definition": "A very small person or animal; also a legendary race of tiny people.",
+  "note": "From Greek pygme, 'a fist', as a measure of length, so the pygmies were fist-high. The word is now considered offensive when used for people.",
+  "hints": [
+   "A dwarf hippo is called by this name.",
+   "From a Greek word for a fist-length."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
   "word": "pylon",
   "register": "standard",
   "definition": "A tall steel tower holding up electricity cables.",
@@ -22041,6 +22521,18 @@
    "The strongest piece on a chessboard."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "queer",
+  "register": "standard",
+  "definition": "Strange or odd; also an inclusive term for people who are not heterosexual or cisgender.",
+  "note": "From a word possibly of German origin that first meant strange. It was once an insult but has been reclaimed by many.",
+  "hints": [
+   "Old word for peculiar, now also an identity.",
+   "Strange, in older use."
+  ],
+  "difficulty": "stretch",
   "connection": ""
  },
  {
@@ -22212,6 +22704,18 @@
   "connection": ""
  },
  {
+  "word": "racist",
+  "register": "standard",
+  "definition": "A person who believes some races are better than others, or showing such bias.",
+  "note": "From race plus -ist.",
+  "hints": [
+   "Someone who discriminates by race.",
+   "Opposite of tolerant."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "radar",
   "register": "standard",
   "definition": "A system that finds objects by bouncing radio waves off them.",
@@ -22320,6 +22824,18 @@
   "connection": ""
  },
  {
+  "word": "randy",
+  "register": "slang",
+  "definition": "Sexually aroused, in British slang.",
+  "note": "First recorded in the 1600s; its origin is uncertain.",
+  "hints": [
+   "A cheeky British adjective.",
+   "Slang for being in the mood."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
   "word": "range",
   "register": "standard",
   "definition": "A line of mountains; or the extent of something.",
@@ -22339,6 +22855,18 @@
   "hints": [
    "White water in a river.",
    "Very quick in motion."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "rarely",
+  "register": "standard",
+  "definition": "Not often.",
+  "note": "From rare plus -ly.",
+  "hints": [
+   "Not occurring often at all.",
+   "Not frequently at all."
   ],
   "difficulty": "familiar",
   "connection": ""
@@ -22545,6 +23073,18 @@
    "A wordless word game."
   ],
   "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "recall",
+  "register": "standard",
+  "definition": "To remember, or to call back.",
+  "note": "From re- plus call.",
+  "hints": [
+   "Bring to mind.",
+   "A maker may order one for a faulty product."
+  ],
+  "difficulty": "familiar",
   "connection": ""
  },
  {
@@ -22836,6 +23376,18 @@
   "connection": ""
  },
  {
+  "word": "remote",
+  "register": "standard",
+  "definition": "Far away or isolated; also a controller.",
+  "note": "From Latin remotus, 'moved back'.",
+  "hints": [
+   "Hard to reach.",
+   "Changes the television channel."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "remove",
   "register": "standard",
   "definition": "To take away.",
@@ -22867,6 +23419,18 @@
   "hints": [
    "What you do to a subscription.",
    "What you do to a library loan."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "repair",
+  "register": "standard",
+  "definition": "To fix something broken.",
+  "note": "From Latin reparare, 'to make ready again'.",
+  "hints": [
+   "Mend a broken thing.",
+   "What a garage does."
   ],
   "difficulty": "familiar",
   "connection": ""
@@ -25068,6 +25632,18 @@
   "connection": ""
  },
  {
+  "word": "shiva",
+  "register": "standard",
+  "definition": "The seven-day mourning period in Judaism after a death.",
+  "note": "From Hebrew shiv'a, 'seven'.",
+  "hints": [
+   "Mourners sit at home for a week.",
+   "Hebrew for seven, for a week of grief."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
   "word": "shoal",
   "register": "standard",
   "definition": "A group of fish; or a shallow area of sea.",
@@ -25497,6 +26073,18 @@
    "A mythical singer who lured sailors."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "sissy",
+  "register": "slang",
+  "definition": "A timid or unadventurous person, used mockingly.",
+  "note": "From sis, short for sister, plus -y.",
+  "hints": [
+   "A schoolyard taunt.",
+   "From a childish word for sister."
+  ],
+  "difficulty": "stretch",
   "connection": ""
  },
  {
@@ -26100,6 +26688,18 @@
   "connection": ""
  },
  {
+  "word": "smooth",
+  "register": "standard",
+  "definition": "Having an even surface, free of bumps.",
+  "note": "From Old English smoth, of unknown origin.",
+  "hints": [
+   "Like polished stone.",
+   "Not rough or lumpy."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "snack",
   "register": "standard",
   "definition": "A small bit of food eaten between meals.",
@@ -26532,6 +27132,18 @@
   "connection": ""
  },
  {
+  "word": "spank",
+  "register": "standard",
+  "definition": "To slap, especially on the bottom as punishment.",
+  "note": "Probably imitative of the sound of a slap.",
+  "hints": [
+   "What a parent might do to a naughty child.",
+   "Smack on the bottom."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "spasm",
   "register": "standard",
   "definition": "A sudden involuntary muscle contraction.",
@@ -26647,6 +27259,18 @@
   "hints": [
    "What a shopper does.",
    "What you do with a holiday week."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "sperm",
+  "register": "standard",
+  "definition": "The male reproductive cell; also the sperm whale's waxy oil.",
+  "note": "From Greek sperma, 'seed'.",
+  "hints": [
+   "Reproductive cell of a male.",
+   "The whale named after this fluid."
   ],
   "difficulty": "familiar",
   "connection": ""
@@ -27528,6 +28152,18 @@
   "connection": ""
  },
  {
+  "word": "stolen",
+  "register": "standard",
+  "definition": "Taken without permission.",
+  "note": "The past participle of steal.",
+  "hints": [
+   "What a thief takes.",
+   "Not paid for."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "stomp",
   "register": "standard",
   "definition": "To step down heavily.",
@@ -27744,6 +28380,18 @@
   "connection": ""
  },
  {
+  "word": "string",
+  "register": "standard",
+  "definition": "A thin cord, or a sequence of characters.",
+  "note": "From Old English streng.",
+  "hints": [
+   "Tied to a kite.",
+   "What a guitar has six of."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "strip",
   "register": "standard",
   "definition": "A long narrow piece; or to remove clothing or covering.",
@@ -27897,6 +28545,18 @@
    "Charming, like a film spy."
   ],
   "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "sudden",
+  "register": "standard",
+  "definition": "Happening quickly and without warning.",
+  "note": "From Old French sodain, from Latin subitaneus.",
+  "hints": [
+   "An abrupt change.",
+   "Without any warning."
+  ],
+  "difficulty": "familiar",
   "connection": ""
  },
  {
@@ -29244,6 +29904,18 @@
   "connection": ""
  },
  {
+  "word": "thrown",
+  "register": "standard",
+  "definition": "Hurled through the air.",
+  "note": "The past participle of throw.",
+  "hints": [
+   "What a ball is after it leaves your hand.",
+   "Tossed or flung by someone."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "thrum",
   "register": "standard",
   "definition": "A low, steady humming sound.",
@@ -29803,6 +30475,18 @@
   "hints": [
    "A long, heavy walk through mud.",
    "A wanderer without a home."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "trans",
+  "register": "standard",
+  "definition": "Across or beyond; also short for transgender.",
+  "note": "From Latin trans, 'across'.",
+  "hints": [
+   "A prefix meaning across.",
+   "A short word for those who live a gender different from the one assigned at birth."
   ],
   "difficulty": "familiar",
   "connection": ""
@@ -31440,6 +32124,18 @@
   "connection": ""
  },
  {
+  "word": "walker",
+  "register": "standard",
+  "definition": "A person who goes on foot; also a frame that helps someone walk.",
+  "note": "From walk plus -er.",
+  "hints": [
+   "One who takes a stroll.",
+   "A frame for support on the move."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "waltz",
   "register": "standard",
   "definition": "A ballroom dance in three-beat time.",
@@ -31653,6 +32349,18 @@
    "Once meant fate in Old English."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "wench",
+  "register": "slang",
+  "definition": "An old word for a girl or young woman, often a servant.",
+  "note": "From Middle English wenchel, 'child', which was neutral before it became patronising.",
+  "hints": [
+   "Tavern server in a historical drama.",
+   "Medieval word for a young lass."
+  ],
+  "difficulty": "stretch",
   "connection": ""
  },
  {
