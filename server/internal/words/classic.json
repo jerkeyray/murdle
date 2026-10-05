@@ -4534,5 +4534,2069 @@
   ],
   "difficulty": "stretch",
   "connection": ""
+ },
+ {
+  "word": "coven",
+  "register": "standard",
+  "definition": "A gathering of witches.",
+  "note": "From Middle English covent, from Old French and Latin conventum, 'a coming together'. It is the same word as convent, whose spelling changed to mean the witches' version.",
+  "hints": [
+   "Thirteen witches is the traditional number.",
+   "A group of witches gathering."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "cover",
+  "register": "standard",
+  "definition": "To put something over another thing.",
+  "note": "From Old French covrir, from Latin cooperire, 'to cover completely'. It has many senses, from a lid to a song someone else wrote.",
+  "hints": [
+   "A lid or a blanket does it.",
+   "A band plays a version of another's song, called a ___ song."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "covet",
+  "register": "standard",
+  "definition": "To desire something that belongs to someone else.",
+  "note": "From Old French coveitier, 'to desire'. The Tenth Commandment warns against it.",
+  "hints": [
+   "The Tenth Commandment warns not to do this to a neighbour's goods.",
+   "To long enviously for what another person has."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "covey",
+  "register": "standard",
+  "definition": "A small flock of partridges or quail.",
+  "note": "From Old French covee, 'a brood', from Latin cubare, 'to lie down'. It describes a family group of game birds.",
+  "hints": [
+   "A hunter flushes a group of quail like this.",
+   "A small gathering of game birds."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "crack",
+  "register": "standard",
+  "definition": "To break with a sharp sound without splitting apart.",
+  "note": "From Old English cracian, 'to resound', imitative of the sound. It is both the break and the noise it makes.",
+  "hints": [
+   "A line that appears in a broken egg.",
+   "What a whip does."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "craft",
+  "register": "standard",
+  "definition": "A skill, especially one done by hand.",
+  "note": "From Old English craeft, 'strength, power, skill'. Strength gave way to skill, and then to a trade or an art.",
+  "hints": [
+   "Knitting is a handmade one.",
+   "Also a general word for a small boat or a plane."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "cramp",
+  "register": "standard",
+  "definition": "A painful, sudden tightening of a muscle.",
+  "note": "From Old French crampe, from a Frankish word meaning bent or hooked. It describes a muscle clenching up.",
+  "hints": [
+   "What swimmers sometimes get in their legs.",
+   "A sudden knot in your calf at night."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "crane",
+  "register": "standard",
+  "definition": "A tall wading bird, or a machine for lifting.",
+  "note": "From Old English cran, the bird. The lifting machine was named for its long neck.",
+  "hints": [
+   "A building site has one towering over it.",
+   "Origami paper birds are often this."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "crank",
+  "register": "standard",
+  "definition": "A handle that turns a shaft; or an odd person.",
+  "note": "From Old English crencestaef, a weaver's tool, with a Germanic word meaning bent. The grumpy person sense came later.",
+  "hints": [
+   "Turn it to start an old engine.",
+   "A grumpy eccentric with strange ideas."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "crash",
+  "register": "standard",
+  "definition": "To hit something violently with a loud noise.",
+  "note": "From Middle English crasshen, 'to break into pieces', of uncertain origin. It seems to combine sounds like crack and smash.",
+  "hints": [
+   "What two cars might do at an intersection.",
+   "A computer might do this and freeze."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "crass",
+  "register": "standard",
+  "definition": "Crude and insensitive.",
+  "note": "From Latin crassus, 'thick, dense'. The thickness of a crass person is of manners.",
+  "hints": [
+   "A tasteless remark at a funeral.",
+   "Lacking refinement or tact."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "crate",
+  "register": "standard",
+  "definition": "A large box for moving goods.",
+  "note": "From Dutch krat, 'basket, box'. It is used for fruit, bottles and pets.",
+  "hints": [
+   "A box of oranges for shipping.",
+   "A dog may be trained in a wire one."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "crave",
+  "register": "standard",
+  "definition": "To want something very badly.",
+  "note": "From Old English crafian, 'to ask, demand'. Cravings have long been spoken of as demands.",
+  "hints": [
+   "What a pregnant person might do for pickles.",
+   "To long for chocolate after dinner."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "crawl",
+  "register": "standard",
+  "definition": "To move along on hands and knees.",
+  "note": "From Old Norse krafla, 'to claw about, crawl'. A baby does it before walking.",
+  "hints": [
+   "Babies do it before they walk.",
+   "A swimming stroke has this name."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "craze",
+  "register": "standard",
+  "definition": "A short-lived but intense fashion.",
+  "note": "From Middle English crasen, 'to shatter', from Old Norse. The meaning moved from smash to a mind that's cracked, then a passing mania.",
+  "hints": [
+   "Fidget spinners were one.",
+   "A passing fad that everyone follows."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "crazy",
+  "register": "standard",
+  "definition": "Mad or wildly irrational.",
+  "note": "Built from craze, 'to crush', plus -y. Like cracked, it refers to a mind that has broken.",
+  "hints": [
+   "Way to say something is wild or nuts.",
+   "What you might call a plan that makes no sense."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "creak",
+  "register": "standard",
+  "definition": "To make a long, squeaky sound.",
+  "note": "From Middle English creken, from an Old English word meaning to chatter or crash. It is imitative.",
+  "hints": [
+   "Old stairs do it when stepped on.",
+   "A rusty hinge on a door."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "cream",
+  "register": "standard",
+  "definition": "The rich fat that rises to the top of milk.",
+  "note": "From Old French creme, a blend of Late Latin chrisma, 'ointment', and an older word for the dairy fat. The best of something is the 'cream of the crop'.",
+  "hints": [
+   "Whipped and put on desserts.",
+   "Poured into coffee."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "credo",
+  "register": "standard",
+  "definition": "A statement of beliefs.",
+  "note": "From Latin credo, 'I believe'. It is the same word as creed, and the opening word of a famous Latin prayer.",
+  "hints": [
+   "A personal motto or guiding belief.",
+   "Latin for 'I believe'."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "creed",
+  "register": "standard",
+  "definition": "A set of beliefs.",
+  "note": "From Old English creda, from Latin credo, 'I believe'. It names a statement of faith recited in church.",
+  "hints": [
+   "A formal statement of what a faith holds.",
+   "Not a political one but a religious one."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "creek",
+  "register": "standard",
+  "definition": "A small stream.",
+  "note": "From Middle English crike, from Old Norse kriki, 'bend, nook'. In Britain it means a narrow inlet; in America a stream.",
+  "hints": [
+   "Kids splash and catch tadpoles in it.",
+   "Proverbially, you are up one without a paddle."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "crepe",
+  "register": "standard",
+  "definition": "A very thin pancake.",
+  "note": "Borrowed from French crepe, from Latin crispus, 'curled'. The word also names a crinkled fabric.",
+  "hints": [
+   "Filled with Nutella and folded.",
+   "A French thin pancake."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "cress",
+  "register": "standard",
+  "definition": "A peppery plant used in salads and sandwiches.",
+  "note": "From Old English cressa, a Germanic word. Egg and ___ sandwiches are a British classic.",
+  "hints": [
+   "Grows quickly on damp cotton wool.",
+   "A peppery green in a sandwich."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "crick",
+  "register": "standard",
+  "definition": "A sharp stiffness in the neck or back.",
+  "note": "From Middle English crike, 'muscular spasm', possibly from Old Norse kriki, 'bend'. It appears in English from the 1400s.",
+  "hints": [
+   "Sleeping badly may give you one in your neck.",
+   "A painful kink in your neck."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "crime",
+  "register": "standard",
+  "definition": "An act that breaks the law.",
+  "note": "From Old French crime, from Latin crimen, 'charge, accusation, offence'. It has stood for lawbreaking for centuries.",
+  "hints": [
+   "What a detective investigates.",
+   "Theft or arson, for example."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "crimp",
+  "register": "standard",
+  "definition": "To press into small folds or ridges.",
+  "note": "From Middle English crimpen and Middle Dutch crimpen, 'to wrinkle'. It is related to the shrinking verbs.",
+  "hints": [
+   "Pinching the edge of a pie crust.",
+   "A hairdresser's tool gives hair a wavy texture."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "crisp",
+  "register": "standard",
+  "definition": "Firm, dry and brittle.",
+  "note": "From Old English crisp, from Latin crispus, 'curly'. The word first described curled hair, and later things that snap.",
+  "hints": [
+   "Fresh celery is this.",
+   "Describes autumn air or a fried potato slice."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "croak",
+  "register": "standard",
+  "definition": "A low, hoarse noise like a frog's.",
+  "note": "From Middle English, back-formed from an Old English word meaning to croak. It imitates the sound.",
+  "hints": [
+   "A frog's call.",
+   "A hoarse voice with a sore throat."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "crock",
+  "register": "standard",
+  "definition": "An earthenware pot.",
+  "note": "From Old English crocc, 'pot, jar'. A slow cooker is named for it.",
+  "hints": [
+   "A slow cooker has this word in its name.",
+   "A big pottery pot."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "crone",
+  "register": "standard",
+  "definition": "An old woman, often an unkind picture of one.",
+  "note": "From Anglo-Norman carogne, related to carrion. It started as an insult meaning an old ewe or worn-out thing.",
+  "hints": [
+   "A hag in a fairy tale.",
+   "An old woman who might stir a cauldron."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "crony",
+  "register": "standard",
+  "definition": "A close friend or associate, often in questionable dealings.",
+  "note": "Coined in the 1660s from Greek khronios, 'long-lasting', as Cambridge student slang for an old friend. Politicians' friends get this label.",
+  "hints": [
+   "'___ capitalism' favours friends of the powerful.",
+   "A buddy who gets favours from you."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "crook",
+  "register": "standard",
+  "definition": "A criminal; or a bend or hook.",
+  "note": "From Old Norse krokr, 'hook'. The criminal sense is from the bent, not straight, character. A shepherd's staff has one too.",
+  "hints": [
+   "A dishonest person.",
+   "What a shepherd's staff is curved into."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "cross",
+  "register": "standard",
+  "definition": "Angry; or the shape of two lines meeting.",
+  "note": "From Latin crux, 'cross', through Old Irish and Old English. The angry sense came from 'crossing' someone's wishes.",
+  "hints": [
+   "Annoyed or ill-tempered.",
+   "A plus sign is a small one."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "croup",
+  "register": "standard",
+  "definition": "A children's illness with a barking cough.",
+  "note": "The name probably imitates the sound of the cough. A horse's rump has the same spelling from a different word.",
+  "hints": [
+   "A child's cough that sounds like a seal.",
+   "A childhood illness with a barking cough."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "crowd",
+  "register": "standard",
+  "definition": "A large group of people together.",
+  "note": "From Old English crudan, 'to press, drive'. It first meant to push before it meant a mass of people.",
+  "hints": [
+   "Gathers at a football match.",
+   "To squeeze together in a small space."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "crown",
+  "register": "standard",
+  "definition": "A ring worn on a monarch's head.",
+  "note": "From Anglo-Norman corone, from Latin corona, 'wreath', from Greek. It also names the top of the head or a tooth cap.",
+  "hints": [
+   "A queen wears it.",
+   "The top of your head."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "crude",
+  "register": "standard",
+  "definition": "Rough and unrefined.",
+  "note": "From Latin crudus, 'raw, rough'. It is related to cruel. It names oil in its raw state.",
+  "hints": [
+   "Petroleum before refining.",
+   "A rough joke in poor taste."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "cruel",
+  "register": "standard",
+  "definition": "Willing to cause pain or suffering.",
+  "note": "From Old French cruel and Latin crudelis, 'hard, severe', related to crudus, 'raw'. A cruel person is raw, not softened.",
+  "hints": [
+   "Describes someone who takes pleasure in others' pain.",
+   "The opposite of kind."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "crumb",
+  "register": "standard",
+  "definition": "A tiny piece of bread or cake.",
+  "note": "From Old English cruma, from a Germanic root. The b was added to the spelling later, as in thumb.",
+  "hints": [
+   "What toast leaves on the table.",
+   "A little piece a bird might peck."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "crust",
+  "register": "standard",
+  "definition": "The hard outer layer of bread or pie.",
+  "note": "From Latin crusta, 'rind, shell', through Old French. It also names the Earth's outer layer.",
+  "hints": [
+   "The hard part of a loaf.",
+   "The outer layer of the planet."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "crypt",
+  "register": "standard",
+  "definition": "An underground room, often beneath a church, used for burials.",
+  "note": "From Latin crypta, from Greek kryptos, 'hidden'. The word is related to cryptic.",
+  "hints": [
+   "Beneath a cathedral, with tombs inside.",
+   "Dracula sleeps in one."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "cubic",
+  "register": "standard",
+  "definition": "Relating to the shape or measure of a cube.",
+  "note": "From Middle French cubique, from cube plus -ic. Volumes are measured in these units.",
+  "hints": [
+   "A measure of volume, as in 'a ___ metre'.",
+   "Shaped like dice."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "cumin",
+  "register": "standard",
+  "definition": "A spice used in curries and chilli.",
+  "note": "From Old English cymen and Old French cumin, from Latin cuminum, ultimately from a Semitic source. It has been used in cooking for thousands of years.",
+  "hints": [
+   "A warm brown spice in Indian and Mexican dishes.",
+   "Seeds from a plant in the parsley family."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "curio",
+  "register": "standard",
+  "definition": "A small unusual object that people collect.",
+  "note": "A clipping of curiosity, dated 1851. Collectors displayed them in cabinets of curiosities.",
+  "hints": [
+   "A small, odd collectable in a shop.",
+   "An antique trinket on a shelf."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "curly",
+  "register": "standard",
+  "definition": "Having curls.",
+  "note": "From curl plus -y. It describes hair or things that twist into spirals.",
+  "hints": [
+   "Hair that's not straight.",
+   "A pig's tail is this."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "curry",
+  "register": "standard",
+  "definition": "A spiced dish, popular across India and the UK.",
+  "note": "From Tamil kari, 'sauce', influenced by an older English word cury, 'cooking'. The first English recipe printed was in 1747.",
+  "hints": [
+   "Served with rice or naan.",
+   "A fragrant dish with a spicy sauce."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "curse",
+  "register": "standard",
+  "definition": "A wish that harm will fall on someone; or a swear word.",
+  "note": "From Old English curs, of unknown origin. It names both a spell of misfortune and rude language.",
+  "hints": [
+   "A witch casts one on a prince in a tale.",
+   "To swear angrily when you stub your toe."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "curve",
+  "register": "standard",
+  "definition": "A smooth bend without corners.",
+  "note": "From Latin curvus, 'bent', with a root meaning to turn or bend. It has been in English since the 1690s.",
+  "hints": [
+   "A road bends in one.",
+   "What a baseball pitcher throws to fool the batter."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "curvy",
+  "register": "standard",
+  "definition": "Having many smooth bends.",
+  "note": "From curve plus -y. It describes roads, shapes and figures.",
+  "hints": [
+   "A mountain road with many bends is this.",
+   "Winding, with no straight lines."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "cycle",
+  "register": "standard",
+  "definition": "A series of events that repeat; or a bicycle.",
+  "note": "From Late Latin cyclus and Greek kyklos, 'circle'. A cycle is a sequence that goes around and returns to its start.",
+  "hints": [
+   "The washing machine has several settings of this kind.",
+   "Water goes through one of evaporation and rain."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "cynic",
+  "register": "standard",
+  "definition": "A person who assumes the worst about people's motives.",
+  "note": "From Greek kynikos, 'dog-like'. It named a school of ancient Greek philosophers who rejected comforts and conventions.",
+  "hints": [
+   "Expects everyone to be selfish.",
+   "Opposite of an optimist."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "daddy",
+  "register": "slang",
+  "definition": "A child's word for father.",
+  "note": "From dad plus the -y ending. It is also used for the biggest or best of something.",
+  "hints": [
+   "What a small child calls their father.",
+   "Informal word for dad."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "daily",
+  "register": "standard",
+  "definition": "Happening every day.",
+  "note": "From Old English daeglic, from day plus -ly. It is also the name for newspapers that come out every day.",
+  "hints": [
+   "A newspaper that comes out each morning.",
+   "Done once every twenty-four hours."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "dairy",
+  "register": "standard",
+  "definition": "Milk and foods made from it.",
+  "note": "From Middle English deyerie, from deye, 'dairymaid', plus -erie. The dairymaid made butter and cheese.",
+  "hints": [
+   "Cheese and butter belong in this food group.",
+   "A farm or shop section for milk and yoghurt."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "daisy",
+  "register": "standard",
+  "definition": "A small flower with white petals and a yellow centre.",
+  "note": "From Old English daeges eage, 'day's eye', because the flower closes at night and opens at dawn.",
+  "hints": [
+   "Children make chains of them.",
+   "'She loves me, she loves me not' is played with one."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "dally",
+  "register": "standard",
+  "definition": "To waste time or move slowly.",
+  "note": "From Middle English dalien, from Anglo-Norman. It is a cousin of the word delay.",
+  "hints": [
+   "Don't linger on the way home.",
+   "To dawdle instead of getting on with things."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "dance",
+  "register": "standard",
+  "definition": "To move your body to music.",
+  "note": "From Old French dancier, of uncertain earlier origin. It has been in English since the 1300s.",
+  "hints": [
+   "What you do at a party.",
+   "Ballet and the tango are forms of it."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "dandy",
+  "register": "standard",
+  "definition": "A man who takes great care over his clothes.",
+  "note": "Borrowed from Scots, of uncertain origin. It may be a pet form of the name Andrew. It also means excellent, as in 'fine and ___'.",
+  "hints": [
+   "A sharply dressed man of fashion.",
+   "'Yankee Doodle' called himself one."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "datum",
+  "register": "standard",
+  "definition": "A single piece of information.",
+  "note": "From Latin datum, 'given'. The plural, data, is far more familiar.",
+  "hints": [
+   "The singular of a word usually in the plural.",
+   "One fact among many."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "daunt",
+  "register": "standard",
+  "definition": "To make someone feel afraid or discouraged.",
+  "note": "From Old French danter, from Latin domitare, 'to tame'. To be daunted was first to be tamed.",
+  "hints": [
+   "A steep mountain might do this to a new climber.",
+   "'Nothing ___ed' means unafraid."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "death",
+  "register": "standard",
+  "definition": "The end of life.",
+  "note": "From Old English death, from a Germanic root. It has been the most solemn word for the end for over a thousand years.",
+  "hints": [
+   "The Grim Reaper is its figure.",
+   "What a funeral marks."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "debit",
+  "register": "standard",
+  "definition": "An amount of money taken from an account.",
+  "note": "From Latin debitum, 'what is owed', from debere, 'to owe'. It is a cousin of the word debt.",
+  "hints": [
+   "What a purchase makes to your bank balance.",
+   "Opposite of credit in bookkeeping."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "debug",
+  "register": "standard",
+  "definition": "To find and fix faults in software.",
+  "note": "From de- plus bug. Admiral Grace Hopper's team supposedly found a real moth in a computer in 1947, though the word bug was older.",
+  "hints": [
+   "A programmer does it to fix errors in code.",
+   "To remove glitches from a program."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "debut",
+  "register": "standard",
+  "definition": "A first public appearance.",
+  "note": "From French debut, from debuter, 'to begin'. It comes from a word meaning 'goal', as in the first shot at a target.",
+  "hints": [
+   "A singer's first album.",
+   "An actor's first film."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "decal",
+  "register": "standard",
+  "definition": "A sticker that can be transferred to a surface.",
+  "note": "A clipping of decalcomania, a French craft of transferring pictures. It names a transfer sticker.",
+  "hints": [
+   "A sticker on a car's rear window.",
+   "A transfer you rub onto a model plane."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "decay",
+  "register": "standard",
+  "definition": "To rot or break down.",
+  "note": "From Anglo-Norman decaeir, 'to fall away'. It originally meant simply to decrease.",
+  "hints": [
+   "What happens to a tooth with too much sugar.",
+   "Slow breakdown of dead plants into soil."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "decor",
+  "register": "standard",
+  "definition": "The style in which a room is decorated.",
+  "note": "From French decor, from Latin decor, 'beauty, grace'. It is a shortened word for decoration.",
+  "hints": [
+   "A designer chooses it for a house.",
+   "The look of a room, from curtains to cushions."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "decry",
+  "register": "standard",
+  "definition": "To publicly criticise something as bad.",
+  "note": "Dating from about 1600, from Old French descrier, 'to shout down'. It is a cousin of descry.",
+  "hints": [
+   "An activist might do this at a rally.",
+   "To denounce loudly."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "defer",
+  "register": "standard",
+  "definition": "To put off until later.",
+  "note": "From Middle English differren, 'to postpone', from Latin differre. It is a doublet of differ.",
+  "hints": [
+   "What a student might do with a university place.",
+   "To delay, as with a payment."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "deign",
+  "register": "standard",
+  "definition": "To do something as if it's beneath you.",
+  "note": "From Old French deignier, 'to think worthy', from Latin dignare. It is related to dignity.",
+  "hints": [
+   "A snob won't ___ to speak to servants.",
+   "To condescend."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "deity",
+  "register": "standard",
+  "definition": "A god or goddess.",
+  "note": "From Middle French deite, from Latin deitas, 'divine nature'. It is a formal word for a god.",
+  "hints": [
+   "Zeus was one.",
+   "A divine being that is worshipped."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "delta",
+  "register": "standard",
+  "definition": "A triangular landform where a river meets the sea; or a Greek letter.",
+  "note": "From Greek delta, borrowed from a Phoenician word for 'door'. The Nile mouth looked like the capital letter triangle.",
+  "hints": [
+   "The Nile ends in one.",
+   "A letter of the Greek alphabet shaped like a triangle."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "delve",
+  "register": "standard",
+  "definition": "To dig deeply, or to search thoroughly.",
+  "note": "From Old English delfan, 'to dig, burrow'. It is the same root as a ditch dug with a spade, and now it is used for digging into information.",
+  "hints": [
+   "What a researcher does into old records.",
+   "To dig into a topic."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "demon",
+  "register": "standard",
+  "definition": "An evil spirit.",
+  "note": "From Medieval Latin daemon, from Greek daimon, 'spirit, divine power'. In Greek a daimon wasn't evil; Christianity changed that.",
+  "hints": [
+   "An evil spirit from hell.",
+   "Exorcists try to drive them out."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "demur",
+  "register": "standard",
+  "definition": "To raise doubts or politely object.",
+  "note": "From Anglo-Norman demorer and Old French, 'to linger, delay'. To demur was first to hold back.",
+  "hints": [
+   "Said of someone who politely declines.",
+   "To hesitate before agreeing."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "dense",
+  "register": "standard",
+  "definition": "Packed closely together.",
+  "note": "From French dense and Latin densus, 'thick'. It is used of fog, forests and slow-witted people.",
+  "hints": [
+   "A jungle full of thick trees.",
+   "Fog that's hard to see through."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "depot",
+  "register": "standard",
+  "definition": "A storage place, or a bus or railway station.",
+  "note": "From French depot, from Latin depositum, 'something put down'. It is a doublet of deposit.",
+  "hints": [
+   "Where buses are parked overnight.",
+   "A warehouse for supplies."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "depth",
+  "register": "standard",
+  "definition": "How deep something is.",
+  "note": "From Old English dieph, from deep plus -th. It forms a noun like width or length.",
+  "hints": [
+   "What a diver measures.",
+   "The opposite of height."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "derby",
+  "register": "standard",
+  "definition": "A horse race, or a local sports rivalry.",
+  "note": "The race is named for Edward Smith-Stanley, 12th Earl of Derby. The Epsom race began in 1780.",
+  "hints": [
+   "The Kentucky one is a famous horse race.",
+   "A match between two teams of the same city."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "deter",
+  "register": "standard",
+  "definition": "To discourage someone from doing something.",
+  "note": "From Latin deterrere, 'to frighten from', from de- and terrere, 'to frighten'. It is a cousin of terror.",
+  "hints": [
+   "A guard dog might do this to burglars.",
+   "The aim of a 'no entry' sign."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "detox",
+  "register": "slang",
+  "definition": "A process of ridding the body of toxins.",
+  "note": "A clipping of detoxification. It's used for diets and for rehab from addiction.",
+  "hints": [
+   "A juice diet, supposedly.",
+   "Treatment for someone giving up drink."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "deuce",
+  "register": "standard",
+  "definition": "A score of forty all in tennis; or a two.",
+  "note": "From Old French deus, 'two', from Latin duo. It also mildly names the devil, as in 'what the ___!'",
+  "hints": [
+   "A tennis score where either side needs two points to win.",
+   "A playing card with two pips."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "devil",
+  "register": "standard",
+  "definition": "A fiend; the king of evil.",
+  "note": "From Greek diabolos, 'slanderer', through Latin and Old English. It names Satan and any very wicked or mischievous person.",
+  "hints": [
+   "Said to wear red with a pitchfork.",
+   "A cheeky person might be called a little one."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "dicey",
+  "register": "slang",
+  "definition": "Risky or uncertain.",
+  "note": "From dice plus -y. A throw of the dice is a gamble.",
+  "hints": [
+   "A risky plan with an uncertain outcome.",
+   "Crossing a stormy sea in a small boat."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "digit",
+  "register": "standard",
+  "definition": "A single numeral, or a finger or toe.",
+  "note": "From Latin digitus, 'finger, toe'. People counted on their fingers.",
+  "hints": [
+   "The number 7 is one.",
+   "A thumb counts as one."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "diner",
+  "register": "standard",
+  "definition": "A small restaurant serving casual meals; or a person eating.",
+  "note": "From dine plus -er. In America the word was borrowed for cheap restaurants shaped like railway dining cars.",
+  "hints": [
+   "Serves all-day breakfast and milkshakes.",
+   "A person sitting at a table in a restaurant."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "dingo",
+  "register": "standard",
+  "definition": "A wild dog of Australia.",
+  "note": "Borrowed from Dharug dingu, 'tame dingo'. It was the name the Sydney Aboriginal people gave to it.",
+  "hints": [
+   "A wild dog Down Under.",
+   "A baby was famously said to have been taken by one."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "dingy",
+  "register": "standard",
+  "definition": "Dirty, dull and shabby.",
+  "note": "From a Kentish dialect word for dirty, of unknown origin. It rhymes with stingy.",
+  "hints": [
+   "A poorly lit and grubby room.",
+   "A cheap hotel might be called this."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "diode",
+  "register": "standard",
+  "definition": "A device that lets current flow one way only.",
+  "note": "From di-, 'two', and -ode, coined in 1919 by William Eccles, after Greek diodos, 'passage through'. LEDs are a type.",
+  "hints": [
+   "A one-way valve for electricity.",
+   "LED stands for light-emitting one."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "dirty",
+  "register": "standard",
+  "definition": "Not clean.",
+  "note": "From Middle English dirti, from dirt plus -y. It once was dritti, from drit, an old word for excrement.",
+  "hints": [
+   "Describes laundry that needs washing.",
+   "Covered in mud."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "disco",
+  "register": "standard",
+  "definition": "Dance music of the 1970s, or a club that plays it.",
+  "note": "A shortening of the French discotheque. A mirrored ball and flares are classic symbols of it.",
+  "hints": [
+   "Gloria Gaynor sang 'I Will Survive' in this style.",
+   "A glittering ball hangs over the floor."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "ditch",
+  "register": "standard",
+  "definition": "A long narrow channel dug in the ground.",
+  "note": "From Old English dic, a Germanic word. It is the same word as dyke, and as a verb it means to get rid of something.",
+  "hints": [
+   "A shallow trench beside a road.",
+   "To abandon, as in dumping a plan."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "ditto",
+  "register": "standard",
+  "definition": "The same again.",
+  "note": "From Italian detto, 'said', from Latin dicere, 'to say'. It first appeared in English in 1625, in bookkeeping and lists.",
+  "hints": [
+   "Two small marks in a list mean this.",
+   "What you say when you agree with the thing just said."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "ditty",
+  "register": "standard",
+  "definition": "A short, simple song or poem.",
+  "note": "From Old French dite, from Latin dictare, 'to dictate'. It first meant a composed poem.",
+  "hints": [
+   "A little tune you might hum.",
+   "A catchy little rhyme."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "dizzy",
+  "register": "standard",
+  "definition": "Feeling as if everything is spinning.",
+  "note": "From Old English dysig, 'foolish, stupid'. It started with foolish and moved to giddy.",
+  "hints": [
+   "What a fairground ride might make you.",
+   "How you feel after spinning around."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "dodge",
+  "register": "standard",
+  "definition": "To move quickly out of the way.",
+  "note": "Perhaps from a dialect word meaning to jerk or jog about, of uncertain origin. It also means to evade, as in a question.",
+  "hints": [
+   "A boxer ducks to do this to a punch.",
+   "A game of this involves throwing balls at players."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "dodgy",
+  "register": "slang",
+  "definition": "Unreliable or suspicious.",
+  "note": "From dodge plus -y, first used in the mid 1800s in England. It describes things that seem to be evading honesty.",
+  "hints": [
+   "An unreliable seller of used cars.",
+   "Something that looks risky, as with a questionable alibi."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "dogma",
+  "register": "standard",
+  "definition": "A belief that is held to be undoubtedly true.",
+  "note": "From Greek dogma, 'opinion, tenet', from dokein, 'to seem good, think'. It once meant any set opinion before it became rigid.",
+  "hints": [
+   "A rigid set of beliefs not open to question.",
+   "A church's official teaching."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "donor",
+  "register": "standard",
+  "definition": "A person who gives something, such as blood or money.",
+  "note": "From Anglo-Norman donour, from Old French doneur. It names someone who gives for a cause.",
+  "hints": [
+   "Gives blood at a clinic.",
+   "One who gives an organ or funds."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "dopey",
+  "register": "slang",
+  "definition": "Silly or slow-witted.",
+  "note": "From dope plus -y. It is an informal word for a foolish person, also the name of one of the seven dwarfs.",
+  "hints": [
+   "One of the seven dwarfs.",
+   "Acting stupid or confused."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "doubt",
+  "register": "standard",
+  "definition": "To feel unsure about something.",
+  "note": "From Old French douter and Latin dubitare, 'to hesitate'. The b was added in spelling to match the Latin.",
+  "hints": [
+   "What you feel when you aren't sure it's true.",
+   "'Beyond a reasonable one' is the standard for a guilty verdict."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "dough",
+  "register": "standard",
+  "definition": "A thick mix of flour and water that is baked.",
+  "note": "From Old English dag, a Germanic word related to the word for 'to knead'. It is also slang for money.",
+  "hints": [
+   "Bread begins as this.",
+   "A pizza chef tosses it in the air."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "dowdy",
+  "register": "standard",
+  "definition": "Plain, dull and unfashionable.",
+  "note": "First appearing around 1581, likely from an earlier word for a poorly dressed woman. It suggests drab or shabby clothing.",
+  "hints": [
+   "A frumpy outfit.",
+   "Dressed in old-fashioned, shapeless clothes."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "dowel",
+  "register": "standard",
+  "definition": "A short wooden peg used to join pieces.",
+  "note": "From Middle English dowle, of uncertain origin. Carpenters use it to join two boards.",
+  "hints": [
+   "A woodworker uses it to join two boards.",
+   "A round wooden rod."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "downy",
+  "register": "standard",
+  "definition": "Soft and covered with fine feathers or fluff.",
+  "note": "From down, from Old Norse dunn, 'soft feathers'. It describes a baby bird or a peach's skin.",
+  "hints": [
+   "A newborn chick's coat.",
+   "As soft as a duckling."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "dowry",
+  "register": "standard",
+  "definition": "Money or property given when a couple marry.",
+  "note": "From Anglo-Norman douarie, from Medieval Latin dotarium and Latin dos, 'dowry'. It is related to the word dower.",
+  "hints": [
+   "Property a bride's family gives at a wedding.",
+   "Jane Austen's characters worry about them."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "dozen",
+  "register": "standard",
+  "definition": "Twelve.",
+  "note": "From Old French dozaine, 'a group of twelve', from doze, 'twelve'. Eggs are often sold this way.",
+  "hints": [
+   "How many eggs in a carton.",
+   "A baker's thirteen is one more than it."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "draft",
+  "register": "standard",
+  "definition": "A first rough version; or a current of cold air.",
+  "note": "A phonetic spelling of draught, from Middle English draght, 'that which is drawn'. It also means a military call-up.",
+  "hints": [
+   "A first version of an essay.",
+   "A cold breeze from an open window."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "drain",
+  "register": "standard",
+  "definition": "To let liquid flow out.",
+  "note": "From Old English dreahnian, 'to strain out'. It names both a pipe and the act of emptying.",
+  "hints": [
+   "What the plug hole does to bath water.",
+   "Where the water goes when you pull the plug."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "drake",
+  "register": "standard",
+  "definition": "A male duck.",
+  "note": "From Middle English, from an old word for duck. A dragon was once also called this.",
+  "hints": [
+   "The male of a mallard.",
+   "A male duck."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "drape",
+  "register": "standard",
+  "definition": "To hang cloth loosely.",
+  "note": "From Old French draper, 'to weave or make cloth', from drap, 'cloth'. It also names a curtain.",
+  "hints": [
+   "To hang fabric over a chair.",
+   "How a gown falls from the shoulders."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "dress",
+  "register": "standard",
+  "definition": "A one-piece outfit; or to put clothes on.",
+  "note": "From Old French dresser, 'to arrange, put in order'. It meant to set straight before it meant to clothe.",
+  "hints": [
+   "A one-piece garment often worn to a wedding.",
+   "Salad ___ing goes on lettuce."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "drift",
+  "register": "standard",
+  "definition": "To be carried slowly by a current.",
+  "note": "From Middle English drift, 'act of driving', from Old English. Snow banks and slow movement share the name.",
+  "hints": [
+   "What a boat does when its engine is off.",
+   "Snow piles up in these in the winter."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "drill",
+  "register": "standard",
+  "definition": "A tool for making holes; or a repeated practice.",
+  "note": "From Middle Dutch drillen, 'to bore, move in a circle'. The practising sense came from soldiers' repeated exercises.",
+  "hints": [
+   "A dentist uses a small one.",
+   "A fire practice at school."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "drink",
+  "register": "standard",
+  "definition": "To swallow a liquid.",
+  "note": "From Old English drincan, from a Germanic verb. It is also the name for the liquid itself.",
+  "hints": [
+   "What you do with a glass of water.",
+   "Water or a soda."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "drive",
+  "register": "standard",
+  "definition": "To operate a car.",
+  "note": "From Old English drifan, 'to push, force'. The word first meant to push cattle, not vehicles.",
+  "hints": [
+   "What you do with a steering wheel.",
+   "A strong motivation inside a person."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "droll",
+  "register": "standard",
+  "definition": "Amusing in an odd, dry way.",
+  "note": "From French drole, 'comical', from a Middle French word for a merry rascal. It carries a quirky tone.",
+  "hints": [
+   "A dry, understated sense of humour.",
+   "Funny in a quietly peculiar way."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "drone",
+  "register": "standard",
+  "definition": "A low humming noise; or a remote-controlled flying machine.",
+  "note": "From Old English dran, the male bee. The buzzing sound gave us the sound, and a lazy person was compared to the non-working bee.",
+  "hints": [
+   "A male honeybee that doesn't work.",
+   "A small flying camera with spinning blades."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "drool",
+  "register": "standard",
+  "definition": "To let saliva run from the mouth.",
+  "note": "From earlier drule, probably an alteration of drivel. It comes from a word meaning to dribble.",
+  "hints": [
+   "What a hungry dog does at dinner time.",
+   "A baby does it when teething."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "droop",
+  "register": "standard",
+  "definition": "To hang or sag downward.",
+  "note": "From Old Norse drupa, 'to droop', related to drip and drop. Plants do it when thirsty.",
+  "hints": [
+   "A flower does it without water.",
+   "Eyelids do it when you are sleepy."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "dross",
+  "register": "standard",
+  "definition": "Worthless waste material.",
+  "note": "From Old English dros, 'dregs, sediment'. Metalworkers skim it from molten metal.",
+  "hints": [
+   "What's skimmed off melted metal.",
+   "Rubbish left behind after the good part is taken."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "drown",
+  "register": "standard",
+  "definition": "To die from being under water.",
+  "note": "From Middle English drownen, of obscure origin. It is a verb with a long history of uncertain roots.",
+  "hints": [
+   "What a lifeguard prevents.",
+   "To be covered by a flood, or to overwhelm a sound."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "druid",
+  "register": "standard",
+  "definition": "A priest in ancient Celtic religion.",
+  "note": "Via French and Latin Druidae, from Gaulish. The name may mean 'oak-knower', as they were linked with oak trees.",
+  "hints": [
+   "Associated with Stonehenge in popular belief.",
+   "A priest of the ancient Celts."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "drunk",
+  "register": "standard",
+  "definition": "Having had too much alcohol.",
+  "note": "From Old English druncen, the past participle of drincan. It is both an adjective and a noun.",
+  "hints": [
+   "Wobbly after too many pints.",
+   "The opposite of sober."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "dryer",
+  "register": "standard",
+  "definition": "A machine that removes moisture.",
+  "note": "From Middle English driere, 'one who dries'. A laundry machine and a hair device both go by it.",
+  "hints": [
+   "Hot machine for wet laundry.",
+   "A hairdresser's hot-air device."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "duchy",
+  "register": "standard",
+  "definition": "The territory ruled by a duke or duchess.",
+  "note": "From Old French duche, from Latin dux, 'leader'. Cornwall and Lancaster are English ones.",
+  "hints": [
+   "The land a duke governs.",
+   "Prince Charles held the one in Cornwall."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "dummy",
+  "register": "standard",
+  "definition": "A model of a person; or a baby's pacifier.",
+  "note": "From dumb plus -y. The sense of a fake model, like a shop-window figure, is from a mute, silent stand-in.",
+  "hints": [
+   "A ventriloquist's partner.",
+   "A fake used in crash testing a car."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "dumpy",
+  "register": "standard",
+  "definition": "Short and stout.",
+  "note": "First recorded in 1750, of uncertain origin. It may be related to dumpling.",
+  "hints": [
+   "A squat, round figure.",
+   "Describes a plump little teapot."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "dunce",
+  "register": "standard",
+  "definition": "A person who is slow to learn.",
+  "note": "Named for John Duns Scotus, a medieval Scottish thinker. His followers were mocked after his ideas fell out of favour.",
+  "hints": [
+   "Wore a pointed cap in the corner of a classroom.",
+   "A slow learner."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "dusky",
+  "register": "standard",
+  "definition": "Dim, dark or shadowy in colour.",
+  "note": "From dusk plus -y. It describes the half-light of evening or a deep, muted shade.",
+  "hints": [
+   "The colour of the sky just after sunset.",
+   "A soft, dark shade, like a plum."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "dusty",
+  "register": "standard",
+  "definition": "Covered in fine dry particles.",
+  "note": "From Old English dustig, from dust plus -y. It describes shelves and old books.",
+  "hints": [
+   "An attic that hasn't been cleaned for years.",
+   "A bookshelf nobody touches."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "duvet",
+  "register": "standard",
+  "definition": "A soft quilt for a bed.",
+  "note": "From French duvet, 'down', from Old French dumet, meaning the soft feathers of young birds. It was originally filled with down.",
+  "hints": [
+   "British word for a bed cover filled with feathers.",
+   "Goes inside a cover and keeps you warm in bed."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "dwarf",
+  "register": "standard",
+  "definition": "A very small being in fairy tales; or something much smaller than usual.",
+  "note": "From Old English dweorg, a Germanic word for the small beings of folklore. It also names small stars and plants.",
+  "hints": [
+   "Snow White lives with seven of them.",
+   "A small kind of planet, such as Pluto."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "dwell",
+  "register": "standard",
+  "definition": "To live in a place.",
+  "note": "From Old English dwellan, which meant 'to lead astray' or 'delay'. The sense of staying in a place came from lingering.",
+  "hints": [
+   "A poetic way to say 'to live'.",
+   "To keep thinking about something, as in 'don't ___ on it'."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "eager",
+  "register": "standard",
+  "definition": "Keen and impatient to do something.",
+  "note": "From Old French aigre, 'sharp', from Latin acer. Eager once meant sharp or sour, and keenness came from that sharpness.",
+  "hints": [
+   "A child waiting at a school gate on the last day.",
+   "Describes the beaver who is always busy, in a saying."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "eagle",
+  "register": "standard",
+  "definition": "A large bird of prey.",
+  "note": "From Old French aigle, from Latin aquila. It has long been a symbol of strength and empire.",
+  "hints": [
+   "Appears on the American national seal.",
+   "A large raptor with a sharp beak."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "early",
+  "register": "standard",
+  "definition": "Before the usual or expected time.",
+  "note": "From Old English aerlic, from aer, 'before'. It is related to the word ere.",
+  "hints": [
+   "The bird who gets the worm.",
+   "The opposite of late."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "easel",
+  "register": "standard",
+  "definition": "A stand that holds a painting.",
+  "note": "From Dutch ezel, 'donkey', from Latin asellus, 'young ass'. It was named because it carries a load like a donkey.",
+  "hints": [
+   "An artist's three-legged stand.",
+   "What a canvas rests on while painting."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "ebony",
+  "register": "standard",
+  "definition": "A hard, dark black wood.",
+  "note": "From Greek ebenos, ultimately from an Egyptian word for the wood. It has been traded since ancient times.",
+  "hints": [
+   "Piano keys were once made from it.",
+   "A very dark colour, like polished wood."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "edify",
+  "register": "standard",
+  "definition": "To teach or uplift someone morally or mentally.",
+  "note": "From Old French edifier and Latin aedificare, 'to build'. To edify someone is to build up their mind or character.",
+  "hints": [
+   "A good lecture should do this.",
+   "To improve by instruction."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "egret",
+  "register": "standard",
+  "definition": "A white wading bird with long legs.",
+  "note": "From Anglo-Norman egret, related to the word for heron. The word also names a plume of feathers.",
+  "hints": [
+   "A graceful white bird that stands in water.",
+   "A type of heron."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "eight",
+  "register": "standard",
+  "definition": "The number after seven.",
+  "note": "From Old English eahta, from an ancient root shared by many Indo-European languages. It is a very old number word.",
+  "hints": [
+   "A spider has this many legs.",
+   "An octopus's arms."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "eject",
+  "register": "standard",
+  "definition": "To force out.",
+  "note": "From Latin eicere, 'to throw out'. It is used for pilots, discs and troublemakers.",
+  "hints": [
+   "What a pilot does from a damaged plane.",
+   "What a bouncer does to a rowdy guest."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "elate",
+  "register": "standard",
+  "definition": "To fill with great joy.",
+  "note": "From Latin elatus, 'lifted up'. Feeling elated is feeling uplifted.",
+  "hints": [
+   "A win might do this to a team.",
+   "To lift someone's spirits high."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "elbow",
+  "register": "standard",
+  "definition": "The joint in the middle of your arm.",
+  "note": "From Old English elnboga, 'ell-bow', where ell means the forearm length and bow means a bend. It is literally the bend of the arm.",
+  "hints": [
+   "You can bend it to flex your arm.",
+   "What you use to nudge someone gently."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "elder",
+  "register": "standard",
+  "definition": "An older person; or the older of two.",
+  "note": "From Old English eldra, 'older', from a Germanic root. In many communities an elder is a respected senior person.",
+  "hints": [
+   "An older sibling is this.",
+   "A respected senior member of a community."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "elect",
+  "register": "standard",
+  "definition": "To choose by voting.",
+  "note": "From Latin electus, 'chosen', from eligere, 'to pick out'. It is a cousin of the word select.",
+  "hints": [
+   "What citizens do on voting day.",
+   "To pick for office."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "elegy",
+  "register": "standard",
+  "definition": "A sad poem for someone who has died.",
+  "note": "From Greek elegeia, a poem in a certain metre, which in time came to mean mournful verse. Thomas Gray wrote a famous one in a country churchyard.",
+  "hints": [
+   "A poem for the dead.",
+   "A mournful poem recited at a funeral."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "elfin",
+  "register": "standard",
+  "definition": "Small, delicate and a bit magical.",
+  "note": "From Old English elfen, 'elf', from elf plus a feminine ending. It describes features like those of an elf.",
+  "hints": [
+   "Describes small pointed ears and a pixie haircut.",
+   "Dainty, like a fairy."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "elide",
+  "register": "standard",
+  "definition": "To leave out a sound or part of a word.",
+  "note": "From Latin elidere, 'to strike out'. Speakers elide sounds when saying 'cuppa' for 'cup of'.",
+  "hints": [
+   "What we do to a letter when saying 'fish 'n' chips'.",
+   "To omit or skip over."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "elope",
+  "register": "standard",
+  "definition": "To run away secretly to get married.",
+  "note": "From Anglo-Norman aloper, 'to run away', from a Germanic word related to leap. It once simply meant to escape.",
+  "hints": [
+   "Lovers do it without telling their parents.",
+   "A secret dash to a wedding chapel."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "elude",
+  "register": "standard",
+  "definition": "To escape or avoid someone cleverly.",
+  "note": "From Latin eludere, 'to evade', from ex- and ludere, 'to play, trick'. It is related to ludicrous and illusion.",
+  "hints": [
+   "A fox does this to the hounds.",
+   "How the answer sometimes behaves when you can't remember it."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "email",
+  "register": "standard",
+  "definition": "A message sent by computer.",
+  "note": "From electronic plus mail. The word electric goes back to Greek elektron, 'amber', since amber was rubbed to produce static.",
+  "hints": [
+   "Sent from one inbox to another.",
+   "What you check when you open your computer in the morning."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "embed",
+  "register": "standard",
+  "definition": "To fix firmly within something.",
+  "note": "From en- plus bed. It means to set something in a surrounding mass.",
+  "hints": [
+   "A journalist travels with troops as one.",
+   "To set a stone firmly in cement."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "empty",
+  "register": "standard",
+  "definition": "Having nothing inside.",
+  "note": "From Old English aemtig, 'vacant, free, idle', from a word meaning leisure or free time. A person without work had empty hands.",
+  "hints": [
+   "A glass after the last drop.",
+   "The opposite of full."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "enact",
+  "register": "standard",
+  "definition": "To make into law, or to act out.",
+  "note": "From Middle English enacten, from en- and act. It's said of laws and of plays.",
+  "hints": [
+   "A government might do this to a bill.",
+   "To perform a scene on stage."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "endow",
+  "register": "standard",
+  "definition": "To give money or a gift to support something.",
+  "note": "From Middle English endowen, 'to provide with assets'. A generous donor might do it for a college.",
+  "hints": [
+   "A rich donor might do this for a university.",
+   "To provide with a talent, as 'nature has ___ed her'."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "enemy",
+  "register": "standard",
+  "definition": "A person or group that is hostile to you.",
+  "note": "From Old French enemi, from Latin inimicus, 'not a friend'. It is made up of in-, 'not', and amicus, 'friend'.",
+  "hints": [
+   "The opposite of a friend.",
+   "A foe in battle."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "enjoy",
+  "register": "standard",
+  "definition": "To take pleasure in something.",
+  "note": "From Old French enjoier, 'to give joy, rejoice', from en- and joy. Enjoying something is bringing joy into it.",
+  "hints": [
+   "What you wish a diner before they eat.",
+   "To take delight in a film."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "ennui",
+  "register": "standard",
+  "definition": "A feeling of weary boredom.",
+  "note": "Borrowed from French, from Latin in odio, 'in hatred', the same root that gave us annoy. It means a restless dissatisfaction.",
+  "hints": [
+   "A French word for listless boredom.",
+   "A sense of dull, tired boredom."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "ensue",
+  "register": "standard",
+  "definition": "To follow as a result.",
+  "note": "From Old French ensuivre, from Latin insequi, 'to follow close upon'. The word is often used in news reports of a chaotic scene.",
+  "hints": [
+   "What happens after a fight breaks out and chaos follows.",
+   "To come afterwards."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "enter",
+  "register": "standard",
+  "definition": "To go into a place.",
+  "note": "From Old French entrer, from Latin intrare, 'to go in'. It also means to type or register something.",
+  "hints": [
+   "A key on your keyboard.",
+   "Come in through the door."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "entry",
+  "register": "standard",
+  "definition": "The act of going in; or a way in.",
+  "note": "From Old French entree, from Latin intrare. It names a doorway, an item in a list or a contest submission.",
+  "hints": [
+   "A door or gate is one.",
+   "A submission to a competition."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "envoy",
+  "register": "standard",
+  "definition": "A messenger or representative, often of a government.",
+  "note": "From French envoye, 'sent', from envoyer, 'to send'. The title is for a diplomat ranking just below an ambassador.",
+  "hints": [
+   "Sent abroad with a message from the government.",
+   "A diplomat below an ambassador in rank."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "epoxy",
+  "register": "standard",
+  "definition": "A strong glue that hardens when two parts are mixed.",
+  "note": "From Greek oxys, 'sharp' and a chemical prefix. It is a hard resin used in adhesives and coatings.",
+  "hints": [
+   "Comes in two tubes that you mix together.",
+   "A powerful glue for repairing ceramics."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "equal",
+  "register": "standard",
+  "definition": "The same in size, value or rights.",
+  "note": "From Latin aequalis, from aequus, 'level, even'. Equal means level, like a fair scale.",
+  "hints": [
+   "What the sign made of two lines stands for.",
+   "Having the same rights as everyone else."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "equip",
+  "register": "standard",
+  "definition": "To supply with what is needed.",
+  "note": "From French equiper, 'to fit out', first said of ships. It may come from a Norse word for a ship.",
+  "hints": [
+   "To fit out a ship or a team.",
+   "To give someone the tools for a job."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "erase",
+  "register": "standard",
+  "definition": "To rub out or remove.",
+  "note": "From Latin eradere, 'to scrape out'. It was first used for scraping words off wax tablets.",
+  "hints": [
+   "What a rubber at the end of a pencil does.",
+   "To wipe a file or a whiteboard clean."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "erect",
+  "register": "standard",
+  "definition": "Upright and standing straight.",
+  "note": "From Latin erectus, 'upright', from erigere, 'to raise'. It can also mean to build, as in 'erect a tent'.",
+  "hints": [
+   "To put up a tent.",
+   "Standing with straight posture."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "erode",
+  "register": "standard",
+  "definition": "To wear away slowly.",
+  "note": "From French eroder and Latin erodere, 'to gnaw away'. Wind and water do it to rock.",
+  "hints": [
+   "What waves do to a cliff over time.",
+   "To gradually weaken, as trust might."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "error",
+  "register": "standard",
+  "definition": "A mistake.",
+  "note": "From Old French error, from Latin error, 'a wandering about', from errare, 'to wander'. A mistake was seen as wandering off the right path.",
+  "hints": [
+   "A typo is one.",
+   "A message that pops up when a program fails."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "erupt",
+  "register": "standard",
+  "definition": "To burst out suddenly.",
+  "note": "From Latin eruptus, 'broken out', from erumpere, 'to burst out'. It is related to the word rupture.",
+  "hints": [
+   "A volcano does it with lava.",
+   "Anger might do it at a dinner table."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
  }
 ]
