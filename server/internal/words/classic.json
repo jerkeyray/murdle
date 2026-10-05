@@ -8062,5 +8062,1901 @@
   ],
   "difficulty": "stretch",
   "connection": ""
+ },
+ {
+  "word": "gecko",
+  "register": "standard",
+  "definition": "A small, mostly nocturnal lizard with sticky toe pads.",
+  "note": "English probably took it from Dutch gekko in the 1700s. Many geckos can climb smooth walls and ceilings.",
+  "hints": [
+   "A small lizard found in warm places.",
+   "Known for walking up walls and glass."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "geeky",
+  "register": "slang",
+  "definition": "Showing an enthusiastic, slightly awkward devotion to technical or niche interests.",
+  "note": "Built from geek plus the -y ending. It was once an insult but is now often worn proudly.",
+  "hints": [
+   "Describes someone absorbed in gadgets or fandoms.",
+   "Said of a person who loves sci-fi and coding."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "genie",
+  "register": "standard",
+  "definition": "A magical spirit who grants wishes.",
+  "note": "From French génie, which was matched to the Arabic jinn. English picked it up through translations of the Arabian Nights.",
+  "hints": [
+   "Lives in a lamp in fairy tales.",
+   "Often grants three wishes."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "genre",
+  "register": "standard",
+  "definition": "A category of art, music or writing with shared style.",
+  "note": "Borrowed unchanged from French, from the same Latin root as gender and genus.",
+  "hints": [
+   "Western, horror and romance are examples.",
+   "A label that sorts books and films."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "ghoul",
+  "register": "standard",
+  "definition": "A spirit said to feed on the dead.",
+  "note": "Borrowed from French, which got it from Arabic ghul via Persian. It was first a desert demon in Arabic stories.",
+  "hints": [
+   "Haunts graveyards in horror stories.",
+   "A creature that robs graves."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "giant",
+  "register": "standard",
+  "definition": "A being of enormous size, especially in myth.",
+  "note": "Through Old French from Latin gigas, which came from Greek gigas, the name of the mythical race that fought the gods.",
+  "hints": [
+   "Jack climbed a beanstalk to meet one.",
+   "Anything much bigger than its kind."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "giddy",
+  "register": "standard",
+  "definition": "Dizzy, or lightheaded with excitement.",
+  "note": "Middle English gidi once meant mad or possessed by a spirit, long before it became merely dizzy.",
+  "hints": [
+   "How a fast spin on a roundabout can leave you.",
+   "Feeling silly with delight."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "girth",
+  "register": "standard",
+  "definition": "The distance around something, such as a tree or a waist.",
+  "note": "From Old Norse gjord, a band. The original sense was the strap that holds a saddle on a horse.",
+  "hints": [
+   "The measurement around a thick trunk.",
+   "The strap that keeps a saddle in place."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "gland",
+  "register": "standard",
+  "definition": "An organ that makes and releases substances such as hormones or sweat.",
+  "note": "From French glande, tracing to Latin glandula, a small acorn. The Latin word was used for throat glands.",
+  "hints": [
+   "The thyroid is one in your neck.",
+   "It secretes something the body needs."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "glare",
+  "register": "standard",
+  "definition": "A fierce stare, or harsh bright light.",
+  "note": "From Middle English glaren, probably tied to shining. It was used for brightness before it described angry looks.",
+  "hints": [
+   "What an annoyed person gives you.",
+   "Sunlight on a windscreen can cause it."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "glaze",
+  "register": "standard",
+  "definition": "A shiny coating, as on pottery or a doughnut.",
+  "note": "From Middle English glasen, from the word glass. Glazed pottery gets a thin glassy surface.",
+  "hints": [
+   "Painted onto clay before it is fired.",
+   "What makes a ham or pastry shine."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "gleam",
+  "register": "standard",
+  "definition": "A soft, brief flash of light.",
+  "note": "From Middle English glem, a shaft of light or radiance. It can also mean a faint sign, as in a gleam of hope.",
+  "hints": [
+   "What polished silver does in the sun.",
+   "A faint light, or a spark in the eye."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "glean",
+  "register": "standard",
+  "definition": "To gather bit by bit, as information or leftover grain.",
+  "note": "Middle English glenen meant to gather the grain left behind by reapers. The sense later widened to picking up facts.",
+  "hints": [
+   "Poor villagers once did this in harvested fields.",
+   "Picking up clues from scattered sources."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "glide",
+  "register": "standard",
+  "definition": "To move smoothly and effortlessly.",
+  "note": "From Old English glidan. It describes birds and aircraft moving without power.",
+  "hints": [
+   "What an eagle does on rising air.",
+   "Skaters do it across ice."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "glint",
+  "register": "standard",
+  "definition": "A tiny flash of reflected light.",
+  "note": "Borrowed from Scots glint, likely from Old Norse. It also names a quick sparkle of emotion in the eyes.",
+  "hints": [
+   "The flash from a blade or coin.",
+   "A sparkle in someone's eye."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "gloat",
+  "register": "standard",
+  "definition": "To enjoy your own success or someone else's failure openly.",
+  "note": "Middle English likely took it from Old Norse glotta, to grin scornfully. It still carries a smug grin.",
+  "hints": [
+   "Winners should not do this.",
+   "Rubbing a rival's loss in his face."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "globe",
+  "register": "standard",
+  "definition": "A sphere, especially a model of the Earth.",
+  "note": "Via French from Latin globus, a ball. It is also used for the planet itself.",
+  "hints": [
+   "A spinning map on a stand.",
+   "Another word for the whole world."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "gloom",
+  "register": "standard",
+  "definition": "Darkness, or a mood of heavy sadness.",
+  "note": "From Old English glom, meaning twilight. The dark of dusk became a dark mood.",
+  "hints": [
+   "What a rainy grey day can bring.",
+   "Opposite of cheer."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "glory",
+  "register": "standard",
+  "definition": "Great honour and fame won by achievement.",
+  "note": "Via Old French from Latin gloria, meaning fame or renown.",
+  "hints": [
+   "What soldiers and athletes chase.",
+   "Often follows 'hallelujah' or 'days of'."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "gloss",
+  "register": "standard",
+  "definition": "A shine on a surface, or a brief explanation of a word.",
+  "note": "The shine sense probably came from a Nordic language. The explanation sense is separate, from Greek glossa, tongue.",
+  "hints": [
+   "Used loosely for a shine on a surface.",
+   "A shine on lips, paint or nails."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "glove",
+  "register": "standard",
+  "definition": "A covering for the hand with separate fingers.",
+  "note": "From Old English glof. It is an old word, kept almost unchanged for over a thousand years.",
+  "hints": [
+   "Worn to keep hands warm.",
+   "Boxers and surgeons both wear them."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "glyph",
+  "register": "standard",
+  "definition": "A carved symbol or character.",
+  "note": "Borrowed from French, from Greek gluphe, a carving. Mayan hieroglyphs are a famous example.",
+  "hints": [
+   "Carved on ancient temple walls.",
+   "One symbol in a writing system."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "gnash",
+  "register": "standard",
+  "definition": "To grind the teeth together in anger or pain.",
+  "note": "Origin uncertain, perhaps imitating the sound. The silent g is kept from older spellings.",
+  "hints": [
+   "Teeth do it in a rage.",
+   "Paired with 'wailing' in a biblical phrase."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "gnome",
+  "register": "standard",
+  "definition": "A small bearded creature of folklore, often a garden figure.",
+  "note": "From New Latin gnomus, a term used by the physician Paracelsus for earth spirits.",
+  "hints": [
+   "Wears a pointed red hat.",
+   "Found standing in lawns."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "godly",
+  "register": "standard",
+  "definition": "Devoted to God; pious.",
+  "note": "From Old English, formed from god plus the -ly ending. It has long described a righteous way of life.",
+  "hints": [
+   "Often said of a very devout person.",
+   "The opposite of wicked."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "golem",
+  "register": "standard",
+  "definition": "A figure of clay brought to life by magic in Jewish legend.",
+  "note": "Borrowed from Hebrew golem. The most famous tale concerns a rabbi in Prague.",
+  "hints": [
+   "Made of mud and animated with words.",
+   "A lumbering servant that cannot speak."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "golly",
+  "register": "slang",
+  "definition": "A mild old-fashioned cry of surprise.",
+  "note": "A euphemism for God from the 1700s, softened to avoid swearing.",
+  "hints": [
+   "An exclamation your grandfather might use.",
+   "Often said as 'Well, ...!'"
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "goner",
+  "register": "slang",
+  "definition": "Someone or something doomed or beyond saving.",
+  "note": "From gone plus -er, recorded from around 1850.",
+  "hints": [
+   "Said of a plant that will not recover.",
+   "You are this if the cliff crumbles."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "gooey",
+  "register": "slang",
+  "definition": "Soft, sticky and messy.",
+  "note": "Formed from goo plus the -y ending. It can also mean sappy and sentimental.",
+  "hints": [
+   "Describes warm melted cheese or caramel.",
+   "A brownie fresh from the oven might be this."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "goofy",
+  "register": "slang",
+  "definition": "Silly in a harmless, playful way.",
+  "note": "Built from goof plus -y. It is also the name of a cartoon dog.",
+  "hints": [
+   "Describes a funny grin or a silly walk.",
+   "Not serious at all."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "goose",
+  "register": "standard",
+  "definition": "A large waterbird with a long neck, related to ducks and swans.",
+  "note": "From Old English gos, with relatives across the Germanic languages and deeper still. The plural geese is a leftover vowel change.",
+  "hints": [
+   "Flies south in a V formation.",
+   "Honks loudly and lays golden eggs in a fable."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "gorge",
+  "register": "standard",
+  "definition": "A deep narrow valley, or to stuff yourself with food.",
+  "note": "From Old French, meaning throat. A gorge is a throat cut in the land, and gorging is feeding the throat.",
+  "hints": [
+   "A river may cut one through rock.",
+   "What you do at an all-you-can-eat buffet."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "gouge",
+  "register": "standard",
+  "definition": "To dig or scoop out roughly, or to overcharge.",
+  "note": "From Old French for a curved chisel. Overcharging sense came later in American use.",
+  "hints": [
+   "A deep scratch in a wooden table.",
+   "What a price-hiking seller might do."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "gourd",
+  "register": "standard",
+  "definition": "A hard-shelled fruit of a vine, such as a pumpkin relative.",
+  "note": "Via Anglo-Norman from Latin cucurbita. Dried ones were used as bottles and bowls.",
+  "hints": [
+   "Decorative in autumn displays.",
+   "Hollowed and dried for use as a container."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "grade",
+  "register": "standard",
+  "definition": "A level of quality, or a mark given for schoolwork.",
+  "note": "From Latin gradus, a step. A grade is a step on a ladder of quality.",
+  "hints": [
+   "What you get on a test.",
+   "Fifth in a school year."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "graft",
+  "register": "standard",
+  "definition": "To join a shoot onto another plant, or to engage in corrupt gain.",
+  "note": "Originally from Greek graphein via the Old French word for a stylus, because a cutting looks like a pen. The corruption sense is later.",
+  "hints": [
+   "Gardeners do it to fruit trees.",
+   "Skin is moved in this way in surgery."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "grail",
+  "register": "standard",
+  "definition": "The legendary cup sought by King Arthur's knights.",
+  "note": "From Old French graal, meaning cup. It now means any object of a long quest.",
+  "hints": [
+   "Subject of a medieval quest.",
+   "Holy, in the legend."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "grand",
+  "register": "standard",
+  "definition": "Impressive in size or style.",
+  "note": "Via Old French from Latin grandis, meaning large.",
+  "hints": [
+   "A piano may be this kind.",
+   "Slang for a thousand dollars."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "grant",
+  "register": "standard",
+  "definition": "To give or allow, or money given for a purpose.",
+  "note": "From Old French granter, to promise or agree. It also names funds awarded to researchers.",
+  "hints": [
+   "A wish may be this by a genie.",
+   "A scholarship is one kind."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "grape",
+  "register": "standard",
+  "definition": "A small juicy fruit that grows in bunches on a vine.",
+  "note": "Via Old French grappe, a cluster, which was originally a hook for picking fruit.",
+  "hints": [
+   "Crushed to make wine.",
+   "Dried, it becomes a raisin."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "graph",
+  "register": "standard",
+  "definition": "A diagram showing how quantities relate.",
+  "note": "A clipping of 'graphic formula', from the 1870s.",
+  "hints": [
+   "Lines and bars on a chart.",
+   "Plots one value against another."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "grasp",
+  "register": "standard",
+  "definition": "To take hold of firmly, or to understand.",
+  "note": "From Middle English graspen, to grope or feel around. Understanding an idea is likened to getting a hand around it.",
+  "hints": [
+   "What fingers do to a rope.",
+   "To finally get what a hard lesson means."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "grate",
+  "register": "standard",
+  "definition": "To shred against a rough surface, or to irritate.",
+  "note": "The noun for an iron frame comes from Latin for a hurdle or lattice. The verb for scraping is a separate word.",
+  "hints": [
+   "Cheese is shredded this way.",
+   "A noise that does it to your nerves."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "grave",
+  "register": "standard",
+  "definition": "A hole in the ground for a burial, or very serious.",
+  "note": "From Old English graf, meaning a trench or cave. The serious adjective is a different word, from Latin gravis, heavy.",
+  "hints": [
+   "A churchyard is full of them.",
+   "A word to describe a doctor's solemn warning."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "gravy",
+  "register": "standard",
+  "definition": "A sauce made from the juices of cooked meat.",
+  "note": "Middle English gravey, perhaps from a word for the sediment of melted fat. Its exact origin is uncertain.",
+  "hints": [
+   "Poured over roast dinners.",
+   "Turkey's partner at a holiday table."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "graze",
+  "register": "standard",
+  "definition": "To feed on grass, or to scrape the skin lightly.",
+  "note": "The feeding verb comes from the Old English word for grass. The scratching sense is later and may be a separate use.",
+  "hints": [
+   "What cows do in a field.",
+   "A scrape on the knee after a fall."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "great",
+  "register": "standard",
+  "definition": "Very large, or very good.",
+  "note": "From Old English great, which meant big, thick or coarse. It only later became a word of praise.",
+  "hints": [
+   "Britain is called this in its formal name.",
+   "A word of enthusiastic approval."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "greed",
+  "register": "standard",
+  "definition": "An excessive desire for more than you need.",
+  "note": "Back-formed from greedy around 1600.",
+  "hints": [
+   "One of the seven deadly sins.",
+   "Wanting more money than you could ever spend."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "green",
+  "register": "standard",
+  "definition": "The colour of grass and leaves.",
+  "note": "From Old English grene, related to grow and grass. All three come from the same Germanic root.",
+  "hints": [
+   "Sits between yellow and blue.",
+   "Signals go on a traffic light."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "greet",
+  "register": "standard",
+  "definition": "To welcome someone with words or a gesture.",
+  "note": "From Old English gretan, to approach or address. It once carried the sense of coming up to someone.",
+  "hints": [
+   "What you do when a guest arrives.",
+   "A handshake or a hello does this."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "grief",
+  "register": "standard",
+  "definition": "Deep sorrow, especially after a loss.",
+  "note": "From Old French grief, heavy, from Latin gravis. Grave is the same root.",
+  "hints": [
+   "What follows a bereavement.",
+   "Heavy sorrow, or trouble given to someone."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "grill",
+  "register": "standard",
+  "definition": "To cook over direct heat on a metal grid.",
+  "note": "From French gril, ultimately from a Latin word for a small lattice. It can also mean to question someone intensely.",
+  "hints": [
+   "Used for burgers outdoors.",
+   "What police may do in an interrogation."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "grime",
+  "register": "standard",
+  "definition": "Dirt that is ground in and hard to remove.",
+  "note": "Middle English grim meant soot on the face. It is also a London music genre.",
+  "hints": [
+   "What builds up on an unwashed window.",
+   "A mechanic's hands might be coated in it."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "grind",
+  "register": "standard",
+  "definition": "To crush into small pieces, or a tiring routine.",
+  "note": "From Old English grindan. The sense of dull daily labour is likened to turning a mill.",
+  "hints": [
+   "What a coffee mill does to beans.",
+   "The daily slog of work."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "gripe",
+  "register": "slang",
+  "definition": "To complain, especially about small things.",
+  "note": "From Old English gripan, to seize. It has the same root as grip.",
+  "hints": [
+   "What a grumbler does about the food.",
+   "A minor complaint."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "groan",
+  "register": "standard",
+  "definition": "A low sound made in pain, boredom or disapproval.",
+  "note": "From Old English granian, to lament or murmur.",
+  "hints": [
+   "How the audience reacts to a bad pun.",
+   "Floorboards may make this noise too."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "groin",
+  "register": "standard",
+  "definition": "The crease where the thigh meets the lower body.",
+  "note": "The exact origin is uncertain. Architects also use it for the edge where two vaults intersect.",
+  "hints": [
+   "A muscle strain might occur here.",
+   "Part of the body near the hip."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "groom",
+  "register": "standard",
+  "definition": "Someone about to marry, or to tend an animal's coat.",
+  "note": "Short for bridegroom. The verb came from stable servants, who brushed horses.",
+  "hints": [
+   "Stands at the altar beside the bride.",
+   "What you do to a horse with a brush."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "gross",
+  "register": "standard",
+  "definition": "Disgusting, or total before deductions.",
+  "note": "From Old French gros, big or thick, from Latin grossus. Gross pay is the large full amount.",
+  "hints": [
+   "What a mouldy sandwich is.",
+   "Pay before tax comes off."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "group",
+  "register": "standard",
+  "definition": "A number of people or things gathered together.",
+  "note": "Through French from Italian gruppo, probably a Germanic word. It first meant a cluster in painting.",
+  "hints": [
+   "A band or a team is one.",
+   "Friends who meet regularly."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "grout",
+  "register": "standard",
+  "definition": "Thin mortar used to fill gaps between tiles.",
+  "note": "From Old English grut, coarse meal or dregs. The building material kept the sense of a coarse paste.",
+  "hints": [
+   "Fills the lines between bathroom tiles.",
+   "It can go mouldy if damp."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "growl",
+  "register": "standard",
+  "definition": "A low, rumbling sound of anger, made in the throat.",
+  "note": "From Middle English groulen, first used of the bowels rumbling.",
+  "hints": [
+   "A dog makes it to warn you off.",
+   "A bear's warning noise."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "gruel",
+  "register": "standard",
+  "definition": "A thin porridge of oats or other grain.",
+  "note": "From Old French gruel, coarse meal. It was food of the poor and the sick.",
+  "hints": [
+   "What Oliver Twist was served.",
+   "A meagre watery meal."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "gruff",
+  "register": "standard",
+  "definition": "Rough and abrupt in manner or voice.",
+  "note": "From Dutch grof, coarse or rude, in the 1500s.",
+  "hints": [
+   "A grumpy old man's tone.",
+   "Describes the billy goats in a fairy tale."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "grunt",
+  "register": "standard",
+  "definition": "A short, low sound, or a basic infantry soldier.",
+  "note": "From Old English grunnettan, imitating the pig's noise.",
+  "hints": [
+   "A pig makes it in a pen.",
+   "What a teenager answers in place of words."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "guard",
+  "register": "standard",
+  "definition": "To protect, or someone who does so.",
+  "note": "Through Old French from a Germanic root related to ward and warden.",
+  "hints": [
+   "Stands by the palace gate.",
+   "Prisons employ them."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "guava",
+  "register": "standard",
+  "definition": "A tropical fruit with pink or white flesh and many seeds.",
+  "note": "From Spanish guayaba, which came from a Taino word. It was recorded in English in the 1500s.",
+  "hints": [
+   "Grows in warm climates.",
+   "Often made into paste or juice."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "guess",
+  "register": "standard",
+  "definition": "To estimate without full knowledge.",
+  "note": "Middle English gessen, probably from a Scandinavian word. It once meant to aim or take aim.",
+  "hints": [
+   "What you do when you don't know.",
+   "A try at a riddle."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "guest",
+  "register": "standard",
+  "definition": "Someone invited to a home, event or hotel.",
+  "note": "From Old Norse gestr. It shares a root with Latin hostis, which gave host and hostile.",
+  "hints": [
+   "Arrives when you throw a party.",
+   "A visitor who stays the night."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "guild",
+  "register": "standard",
+  "definition": "An association of craftsmen or merchants in the Middle Ages.",
+  "note": "From Middle English gilde, from Old Norse gildi, meaning payment. Members paid dues to join.",
+  "hints": [
+   "A medieval group of weavers or masons.",
+   "Often found in fantasy role-playing games."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "guile",
+  "register": "standard",
+  "definition": "Cunning used to deceive.",
+  "note": "From Old French guile, deception, via a Frankish word for a trick. It is related to wile.",
+  "hints": [
+   "What a fox is said to have.",
+   "A trickster wins by it, not force."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "guilt",
+  "register": "standard",
+  "definition": "The state of having done wrong, or the feeling that comes with it.",
+  "note": "From Old English gylt, a crime or fault.",
+  "hints": [
+   "The feeling after a broken promise.",
+   "What a jury must decide."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "gulch",
+  "register": "standard",
+  "definition": "A narrow, steep-sided ravine, often cut by a stream.",
+  "note": "A word chiefly from American English. Gold-rush stories place prospectors in them.",
+  "hints": [
+   "Prospectors panned in one.",
+   "A deep ditch in the mountains."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "gully",
+  "register": "standard",
+  "definition": "A narrow channel cut in the ground by flowing water.",
+  "note": "Origin uncertain, possibly connected with an old word for the throat.",
+  "hints": [
+   "Rain carves one down a hillside.",
+   "A narrow ditch beside a road."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "gumbo",
+  "register": "standard",
+  "definition": "A thick Louisiana stew thickened with okra.",
+  "note": "From Louisiana French gombo, which traces to a Bantu word for okra.",
+  "hints": [
+   "A speciality of New Orleans.",
+   "Served over rice with sausage or shrimp."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "guppy",
+  "register": "standard",
+  "definition": "A small, colourful freshwater aquarium fish.",
+  "note": "Named by mistake after Robert Guppy, who sent specimens from Trinidad to London.",
+  "hints": [
+   "A beginner's pet fish.",
+   "Gives birth to live young."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "gusto",
+  "register": "standard",
+  "definition": "Hearty enthusiasm in doing something.",
+  "note": "From Italian gusto, taste, ultimately from Latin gustus.",
+  "hints": [
+   "Eating a meal with it means relishing every bite.",
+   "Sung with it means belting it out."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "habit",
+  "register": "standard",
+  "definition": "A routine you do regularly, often without thinking.",
+  "note": "From Latin habitus, condition or dress, from habere, to have. A monk's habit is the clothing worn as a routine.",
+  "hints": [
+   "Nail biting can be a bad one.",
+   "Something repeated until automatic."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "hairy",
+  "register": "standard",
+  "definition": "Covered with hair; also risky.",
+  "note": "From Old English-derived hair plus -y. The informal sense of dangerous is later.",
+  "hints": [
+   "Describes a gorilla's arms.",
+   "A tense or scary moment, informally."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "halve",
+  "register": "standard",
+  "definition": "To divide into two equal parts.",
+  "note": "From Old English words for half. The silent l is kept from the older spelling.",
+  "hints": [
+   "What you do with a cake for two people.",
+   "Cut an apple down the middle."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "handy",
+  "register": "standard",
+  "definition": "Useful, or conveniently near.",
+  "note": "From Middle English handi, formed on hand. It once meant skilful.",
+  "hints": [
+   "A tool within reach is this.",
+   "Said of a person good at fixing things."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "happy",
+  "register": "standard",
+  "definition": "Feeling pleasure or contentment.",
+  "note": "From Middle English hap, meaning luck or chance. To be happy was first to be lucky.",
+  "hints": [
+   "The opposite of sad.",
+   "What a smiling face expresses."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "hardy",
+  "register": "standard",
+  "definition": "Tough and able to endure difficult conditions.",
+  "note": "From Old French hardi, bold, probably connected to the word for becoming hard.",
+  "hints": [
+   "Describes plants that survive winter frost.",
+   "A word for a sturdy mountain pony."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "harpy",
+  "register": "standard",
+  "definition": "A mythical bird-woman, or a nagging woman.",
+  "note": "From Latin harpyia, from Greek harpuiai, meaning snatchers. The creatures grabbed food and people in myth.",
+  "hints": [
+   "A winged monster in Greek stories.",
+   "An insulting term for a shrill, grasping person."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "harsh",
+  "register": "standard",
+  "definition": "Rough, severe or unpleasantly strong.",
+  "note": "From Middle English harsk, linked to Old Norse harskr, which meant rancid. It later widened to cover anything rough or cruel.",
+  "hints": [
+   "Describes a bitter winter or a stern punishment.",
+   "A word for grating light or a cruel remark."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "haste",
+  "register": "standard",
+  "definition": "Speed in doing something, often too much of it.",
+  "note": "Middle English hast, from Old French. A proverb warns that it makes waste.",
+  "hints": [
+   "What a hurried packer shows.",
+   "Often followed by 'makes waste'."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "hatch",
+  "register": "standard",
+  "definition": "To emerge from an egg, or a small door in a floor or deck.",
+  "note": "The door sense comes from Old English hec, a gate. The egg sense is a separate word of uncertain origin.",
+  "hints": [
+   "What a chick does from its shell.",
+   "An opening in a ship's deck."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "haunt",
+  "register": "standard",
+  "definition": "To visit a place repeatedly, as a ghost does.",
+  "note": "From Old French hanter, to frequent. It originally meant just to reside or often visit.",
+  "hints": [
+   "What a ghost does to an old house.",
+   "A memory can do it to you."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "haven",
+  "register": "standard",
+  "definition": "A safe place, or a sheltered harbour.",
+  "note": "From Old English haefen, meaning harbour. A port and a refuge were the same idea.",
+  "hints": [
+   "A sheltered bay for ships.",
+   "Somewhere you feel safe and protected."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "havoc",
+  "register": "standard",
+  "definition": "Widespread destruction and chaos.",
+  "note": "From Old French in the phrase 'cry havoc', a battle signal for soldiers to seize plunder.",
+  "hints": [
+   "A storm can wreak it.",
+   "What a toddler loose in a kitchen causes."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "hazel",
+  "register": "standard",
+  "definition": "A tree that bears edible nuts, or a light brown-green colour.",
+  "note": "From Old English haesl, with ancient Germanic roots. The eye colour is named after the nut.",
+  "hints": [
+   "Its nuts are used in spread.",
+   "A shade of eye between brown and green."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "heady",
+  "register": "standard",
+  "definition": "Intoxicating, or exciting to the senses.",
+  "note": "From Middle English hedi, formed from head plus -y. It first meant headstrong.",
+  "hints": [
+   "Describes strong wine or a thrilling success.",
+   "Perfume that goes straight to your head."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "heart",
+  "register": "standard",
+  "definition": "The muscle that pumps blood, or the seat of feeling.",
+  "note": "From Old English heorte, with roots shared across Germanic languages and Latin cor.",
+  "hints": [
+   "It beats in your chest.",
+   "The shape on a Valentine's card."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "heave",
+  "register": "standard",
+  "definition": "To lift or throw with great effort.",
+  "note": "From Old English hebban, to lift. It also means to retch.",
+  "hints": [
+   "What sailors do hauling a rope.",
+   "A struggle to move a heavy trunk."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "heavy",
+  "register": "standard",
+  "definition": "Weighing a great deal.",
+  "note": "From Old English hefig, from the root of heave. The heavy thing is what one has to heave.",
+  "hints": [
+   "Opposite of light.",
+   "A loaded suitcase might be this."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "hefty",
+  "register": "standard",
+  "definition": "Large, weighty and powerful.",
+  "note": "Built from heft, weight, plus -y in the 1800s. The resemblance to German heftig is a coincidence.",
+  "hints": [
+   "Describes a large, weighty parcel.",
+   "A burly man with a mighty swing."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "helix",
+  "register": "standard",
+  "definition": "A spiral curve like a corkscrew or a coiled spring.",
+  "note": "Latin helix, from Greek helix, something twisted.",
+  "hints": [
+   "DNA has a double one.",
+   "Shape of a spiral staircase."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "hello",
+  "register": "standard",
+  "definition": "A common greeting.",
+  "note": "First recorded in 1826, from earlier holla and hollo. It became the standard telephone greeting in the late 1800s.",
+  "hints": [
+   "A friendly word when meeting.",
+   "What you say when you answer the phone."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "hence",
+  "register": "standard",
+  "definition": "From this place or time; for this reason.",
+  "note": "From Middle English hennes, from Old English heonan, away.",
+  "hints": [
+   "Used in phrases like 'a week from now'.",
+   "A formal way of saying therefore."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "heron",
+  "register": "standard",
+  "definition": "A tall wading bird with a long neck and sharp bill.",
+  "note": "From Old French, from a Frankish word of Germanic origin.",
+  "hints": [
+   "Stands motionless in shallow water.",
+   "Hunts fish with a quick stab."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "hinge",
+  "register": "standard",
+  "definition": "A joint on which a door or lid swings.",
+  "note": "From Middle English henge, related to hang. A hinge is something a door hangs on.",
+  "hints": [
+   "What a door swings on.",
+   "Squeaks if it needs oil."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "hitch",
+  "register": "standard",
+  "definition": "A small problem, or a knot or quick fastening.",
+  "note": "Probably from Middle English hicchen, to move with a jerk. Its origin is obscure.",
+  "hints": [
+   "A snag in the plans.",
+   "To thumb a ride, informally."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "hobby",
+  "register": "standard",
+  "definition": "An activity done for pleasure in spare time.",
+  "note": "From Middle English hobyn, a small horse. A hobbyhorse was a toy, so the word gradually came to mean a pastime.",
+  "hints": [
+   "Stamp collecting is one.",
+   "Something you do for fun after work."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "hoist",
+  "register": "standard",
+  "definition": "To raise something, especially with ropes or a pulley.",
+  "note": "An alteration of hoise, from Middle Dutch hisen. It is first a nautical word.",
+  "hints": [
+   "A flag may be pulled up this way.",
+   "A crane does it with a heavy load."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "holly",
+  "register": "standard",
+  "definition": "An evergreen shrub with spiky leaves and red berries.",
+  "note": "From Old English holegn. It is associated with Christmas decoration.",
+  "hints": [
+   "A festive door wreath.",
+   "Prickly leaves and red berries."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "honey",
+  "register": "standard",
+  "definition": "A sweet golden fluid made by bees.",
+  "note": "From Old English hunig, an ancient Germanic word. As an endearment it has been used for centuries.",
+  "hints": [
+   "Spread on toast.",
+   "Made in a hive."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "honor",
+  "register": "standard",
+  "definition": "Great respect, or a code of moral integrity.",
+  "note": "From Old French honor, from Latin honor.",
+  "hints": [
+   "A knight's code of conduct.",
+   "To pay it is to show respect."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "horde",
+  "register": "standard",
+  "definition": "A huge crowd, often moving noisily.",
+  "note": "From Polish horda and Russian orda, a nomadic tribe's camp. It entered English in the 1500s.",
+  "hints": [
+   "A swarm of tourists.",
+   "Zombies come in these."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "horse",
+  "register": "standard",
+  "definition": "A large hoofed animal used for riding and pulling loads.",
+  "note": "From Old English hors, an old Germanic word.",
+  "hints": [
+   "Has a mane and gallops.",
+   "Ridden in a race."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "hotel",
+  "register": "standard",
+  "definition": "A building offering rooms to paying guests.",
+  "note": "From French hotel, which once meant a town mansion. The word shares a root with hospital and host.",
+  "hints": [
+   "You check into it on holiday.",
+   "A porter carries your bags in it."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "hound",
+  "register": "standard",
+  "definition": "A hunting dog, or to pursue persistently.",
+  "note": "From Old English hund, which was once the general word for dog.",
+  "hints": [
+   "A basset or beagle is one.",
+   "Reporters do this to a celebrity."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "house",
+  "register": "standard",
+  "definition": "A building where people live.",
+  "note": "From Old English hus, a very old Germanic word.",
+  "hints": [
+   "Where a family lives.",
+   "It has rooms, a roof and a door."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "hovel",
+  "register": "standard",
+  "definition": "A small, miserable dwelling.",
+  "note": "From Middle English hovel, a shed or shelter.",
+  "hints": [
+   "A rundown shack.",
+   "The opposite of a mansion."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "hover",
+  "register": "standard",
+  "definition": "To hang in the air in one place.",
+  "note": "From Middle English hoveren, to float or linger.",
+  "hints": [
+   "What a helicopter or hummingbird does.",
+   "A wasp lingering above a picnic."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "howdy",
+  "register": "slang",
+  "definition": "An informal cowboy-style greeting.",
+  "note": "Shortened from how do you do.",
+  "hints": [
+   "What a Texan might say as hello.",
+   "A friendly western hello."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "human",
+  "register": "standard",
+  "definition": "A person, or relating to people.",
+  "note": "From Latin humanus, probably related to homo, man, with a link to humus, earth.",
+  "hints": [
+   "Not an animal or a robot.",
+   "Our species."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "humid",
+  "register": "standard",
+  "definition": "Damp with water vapour in the air.",
+  "note": "From Latin humidus, from umere, to be moist.",
+  "hints": [
+   "A tropical summer day feels it.",
+   "Weather that makes your clothes cling."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "humus",
+  "register": "standard",
+  "definition": "Dark organic matter in soil made from rotted plants.",
+  "note": "Borrowed straight from Latin humus, meaning earth or soil.",
+  "hints": [
+   "Gardeners love it for rich soil.",
+   "Decayed leaves become this."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "hunch",
+  "register": "standard",
+  "definition": "A feeling about something without proof, or to curve the shoulders.",
+  "note": "Originally a lump or hump, and the verb meant to push. The feeling sense came later.",
+  "hints": [
+   "A gut feeling.",
+   "How you sit over a desk with poor posture."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "hurry",
+  "register": "standard",
+  "definition": "To move or act quickly.",
+  "note": "From Middle English horien, to rush, perhaps imitating a buzzing sound.",
+  "hints": [
+   "What you do when you are late.",
+   "Opposite of dawdle."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "husky",
+  "register": "standard",
+  "definition": "Hoarse and rough, or a strong sled dog.",
+  "note": "From husk plus -y. A voice was called husky because it sounds as dry as a husk.",
+  "hints": [
+   "A throaty voice.",
+   "A dog that pulls sleds in the Arctic."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "hutch",
+  "register": "standard",
+  "definition": "A small cage for a pet rabbit, or a cabinet.",
+  "note": "From Middle English hucche, a storage chest.",
+  "hints": [
+   "A rabbit's home in a garden.",
+   "A dresser with shelves on top."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "hyena",
+  "register": "standard",
+  "definition": "A doglike African carnivore known for its laughing cry.",
+  "note": "From Greek huaina, via Latin. The name may come from a word for pig.",
+  "hints": [
+   "Scavenges on the savanna.",
+   "Known for a cackling call."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "ideal",
+  "register": "standard",
+  "definition": "A perfect standard, or being perfect for a purpose.",
+  "note": "From Late Latin idealis, meaning existing in idea. An ideal was first something that exists only as a thought.",
+  "hints": [
+   "Perfect weather for a picnic.",
+   "What you aim for but rarely reach."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "idiom",
+  "register": "standard",
+  "definition": "A phrase whose meaning isn't clear from its words alone.",
+  "note": "From Greek idioma, a peculiarity. 'Kick the bucket' is one.",
+  "hints": [
+   "'It's raining cats and dogs' is an example.",
+   "A figure of speech particular to a language."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "idyll",
+  "register": "standard",
+  "definition": "A peaceful, charming scene or period, often rural.",
+  "note": "From Greek eidyllion, a little picture, used for short pastoral poems.",
+  "hints": [
+   "A quiet country summer.",
+   "A perfect, pastoral setting."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "igloo",
+  "register": "standard",
+  "definition": "A dome-shaped shelter built from blocks of snow.",
+  "note": "From Inuktitut iglu, which means a house of any kind, not just one of snow.",
+  "hints": [
+   "Built in the Arctic.",
+   "Home of ice blocks."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "image",
+  "register": "standard",
+  "definition": "A picture, or a likeness of someone or something.",
+  "note": "From Old French image, from Latin imago, a copy or likeness.",
+  "hints": [
+   "A photo or painting.",
+   "What a mirror shows."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "imbue",
+  "register": "standard",
+  "definition": "To fill or saturate with a quality or feeling.",
+  "note": "From Latin imbuere, to wet or moisten. It first meant to soak, as with dye.",
+  "hints": [
+   "A teacher may do it with curiosity.",
+   "To fill with a feeling or idea."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "impel",
+  "register": "standard",
+  "definition": "To drive or urge someone to act.",
+  "note": "Borrowed from Latin impellere, to push against.",
+  "hints": [
+   "A strong sense of duty may do it.",
+   "To push forward, as if forced."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "imply",
+  "register": "standard",
+  "definition": "To suggest something without stating it outright.",
+  "note": "From Old French emplier, from Latin implicare, to fold in. The meaning is folded inside what's said.",
+  "hints": [
+   "Hinting rather than saying.",
+   "What a raised eyebrow may do."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "inane",
+  "register": "standard",
+  "definition": "Silly and empty of meaning.",
+  "note": "From Latin inanis, empty or void.",
+  "hints": [
+   "Pointless chatter.",
+   "A mindless remark."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "inbox",
+  "register": "standard",
+  "definition": "The folder where incoming messages arrive.",
+  "note": "Formed from in plus box. It began as a tray for incoming paper.",
+  "hints": [
+   "Where new email lands.",
+   "Often needs clearing to reach zero."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "incur",
+  "register": "standard",
+  "definition": "To bring something unwelcome upon yourself.",
+  "note": "From Latin incurrere, to run into.",
+  "hints": [
+   "What you do when you rack up debt.",
+   "A late fee is one you may do."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "index",
+  "register": "standard",
+  "definition": "An alphabetical list at the back of a book, or a pointing finger.",
+  "note": "From Latin index, one who points out. The index finger is the one used to point.",
+  "hints": [
+   "Find a topic quickly in a book.",
+   "The finger next to the thumb."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "inept",
+  "register": "standard",
+  "definition": "Clumsy or unskilled.",
+  "note": "Via French from Latin ineptus, not fitting. It shares a root with apt.",
+  "hints": [
+   "Said of a bungling beginner.",
+   "Opposite of skilled."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "inert",
+  "register": "standard",
+  "definition": "Without power to move or react.",
+  "note": "From Latin iners, inactive or unskilled.",
+  "hints": [
+   "Neon and argon are examples of such gases.",
+   "A lifeless, still lump."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "infer",
+  "register": "standard",
+  "definition": "To conclude from evidence.",
+  "note": "From Latin inferre, to bring in.",
+  "hints": [
+   "What a detective does with clues.",
+   "To work out a conclusion."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "ingot",
+  "register": "standard",
+  "definition": "A block of cast metal, such as gold or iron.",
+  "note": "Middle English ingot meant a mould for casting metal. Its origin is uncertain.",
+  "hints": [
+   "Poured into a mould.",
+   "A bar of gold in a vault."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "inlay",
+  "register": "standard",
+  "definition": "To set a decorative piece into a surface.",
+  "note": "Formed from in plus lay.",
+  "hints": [
+   "A wooden box with a mother-of-pearl design.",
+   "A dentist may fit one into a tooth."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "inlet",
+  "register": "standard",
+  "definition": "A narrow arm of water leading into land.",
+  "note": "From Middle English inlete, from the verb to let in.",
+  "hints": [
+   "A small bay or cove.",
+   "Where the sea reaches inland."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "input",
+  "register": "standard",
+  "definition": "What is put into a system, or advice offered to it.",
+  "note": "Formed from in plus put.",
+  "hints": [
+   "What you type on a keyboard.",
+   "Your opinion offered to a group."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "irony",
+  "register": "standard",
+  "definition": "A contrast between what is said and what is meant, or between expectation and outcome.",
+  "note": "From Greek eironeia, feigned ignorance. Socrates used the technique in questioning others.",
+  "hints": [
+   "Rain at a weather forecaster's picnic.",
+   "When something turns out the opposite of what is expected."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "islet",
+  "register": "standard",
+  "definition": "A very small island.",
+  "note": "From Middle French islette, a little isle.",
+  "hints": [
+   "Too small for more than a few trees.",
+   "A speck of land in the sea."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "issue",
+  "register": "standard",
+  "definition": "A topic of concern, or to send out.",
+  "note": "From Old French issue, which comes from Latin exire, to go out.",
+  "hints": [
+   "A magazine appears in one each month.",
+   "A problem to be resolved."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "itchy",
+  "register": "standard",
+  "definition": "Feeling a need to scratch.",
+  "note": "From Old English giccig, from itch plus -y.",
+  "hints": [
+   "What a mosquito bite makes you.",
+   "Wool jumpers can make skin this way."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "ivory",
+  "register": "standard",
+  "definition": "The hard white material of elephant tusks, or a creamy colour.",
+  "note": "Through Anglo-Norman from Latin eboreus, from ebur. The colour is named after the material.",
+  "hints": [
+   "Piano keys were once made of it.",
+   "A pale shade between white and cream."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "jaunt",
+  "register": "standard",
+  "definition": "A short trip taken for pleasure.",
+  "note": "Origin uncertain. It first meant a tiring journey and later a pleasant one.",
+  "hints": [
+   "A quick day out.",
+   "A brief pleasure trip."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "jelly",
+  "register": "standard",
+  "definition": "A wobbling dessert, or a fruit spread.",
+  "note": "From French gelee, from Latin gelare, to freeze.",
+  "hints": [
+   "It wobbles on a plate.",
+   "Spread on toast with peanut butter."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "jerky",
+  "register": "standard",
+  "definition": "Moving in sudden starts and stops, or dried strips of meat.",
+  "note": "From jerk plus -y. The meat sense comes from a different word, charqui, from Quechua.",
+  "hints": [
+   "A bumpy ride feels this way.",
+   "A dried beef snack."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "jetty",
+  "register": "standard",
+  "definition": "A structure built out into water to protect a harbour or moor boats.",
+  "note": "From Old French jetee, something thrown out.",
+  "hints": [
+   "Boats tie up at one.",
+   "A small pier."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "jewel",
+  "register": "standard",
+  "definition": "A precious stone, or a valued ornament.",
+  "note": "From Anglo-Norman juel. Its ultimate origin is uncertain.",
+  "hints": [
+   "A gem in a crown.",
+   "A ruby in a ring."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "jiffy",
+  "register": "slang",
+  "definition": "A very short moment.",
+  "note": "Origin unknown. It was said to be thieves' slang for lightning.",
+  "hints": [
+   "Said in 'I'll be back in a ...'.",
+   "A very brief time."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "joist",
+  "register": "standard",
+  "definition": "A horizontal beam that supports a floor or ceiling.",
+  "note": "From Old French giste, from gesir, to lie down. A joist lies across the structure.",
+  "hints": [
+   "Floorboards rest on them.",
+   "A timber hidden under a floor."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "joker",
+  "register": "standard",
+  "definition": "A person who jokes, or a card in a pack.",
+  "note": "From joke plus -er. The playing card is possibly named from German Jucker, tied to euchre.",
+  "hints": [
+   "A card with a jester on it.",
+   "A prankster."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "jolly",
+  "register": "standard",
+  "definition": "Cheerful and merry.",
+  "note": "From Old French joli, merry. The word was used for happy people long before it meant extremely.",
+  "hints": [
+   "Santa is described this way.",
+   "Full of good spirits."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "joust",
+  "register": "standard",
+  "definition": "A combat between two mounted knights with lances.",
+  "note": "From Old French jouster, from a Latin word meaning near. It means to come together.",
+  "hints": [
+   "A medieval tournament event.",
+   "Two horsemen charge each other."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "judge",
+  "register": "standard",
+  "definition": "A person who decides legal cases, or to form an opinion.",
+  "note": "From Old French juge, from Latin iudex.",
+  "hints": [
+   "Wears a robe in court.",
+   "What you do when you assess someone."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
  }
 ]
