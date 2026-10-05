@@ -9756,6 +9756,18 @@
   "connection": ""
  },
  {
+  "word": "inner",
+  "register": "standard",
+  "definition": "Located farther inside.",
+  "note": "From Old English innera, comparative of inne, within.",
+  "hints": [
+   "Opposite of outer.",
+   "A circle of your closest friends."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "input",
   "register": "standard",
   "definition": "What is put into a system, or advice offered to it.",
@@ -9957,6 +9969,882 @@
    "What you do when you assess someone."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "juice",
+  "register": "standard",
+  "definition": "The liquid squeezed from fruit or vegetables.",
+  "note": "From Old French jus, from Latin ius, which meant broth or sauce.",
+  "hints": [
+   "Squeezed from oranges.",
+   "A breakfast drink in a glass."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "juicy",
+  "register": "standard",
+  "definition": "Full of juice, or full of tempting gossip.",
+  "note": "Middle English jousy meant drunken, literally full of liquor. The sense of something rich and exciting grew from there.",
+  "hints": [
+   "Ripe peaches are this.",
+   "Gossip that is exciting."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "jumbo",
+  "register": "standard",
+  "definition": "Unusually large.",
+  "note": "Named after Jumbo, a huge African elephant bought by P. T. Barnum in 1882.",
+  "hints": [
+   "A giant-sized pack.",
+   "A big jet plane."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "junta",
+  "register": "standard",
+  "definition": "A group of military officers ruling a country after seizing power.",
+  "note": "Borrowed from Spanish junta, a thing joined, from Latin iungere, to join.",
+  "hints": [
+   "Takes over after a coup.",
+   "Military leaders running a state."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "juror",
+  "register": "standard",
+  "definition": "A member of a jury.",
+  "note": "From Anglo-Norman jurour, from Old French jurer, to swear. Jurors take an oath.",
+  "hints": [
+   "One of twelve in a trial.",
+   "Listens to evidence in court."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "karma",
+  "register": "standard",
+  "definition": "The idea that your actions bring matching consequences.",
+  "note": "From Sanskrit karman, meaning act or deed. It is a concept in Hindu and Buddhist thought.",
+  "hints": [
+   "What goes around comes around.",
+   "Good deeds are said to earn it."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "kayak",
+  "register": "standard",
+  "definition": "A small covered boat paddled with a double-bladed paddle.",
+  "note": "From Inuktitut qayaq, a hunter's boat.",
+  "hints": [
+   "Paddled by one person.",
+   "Used in the Arctic and in whitewater."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "kebab",
+  "register": "standard",
+  "definition": "Pieces of grilled or roasted meat, often on a skewer.",
+  "note": "From Arabic kabab, by way of Turkish and other languages.",
+  "hints": [
+   "Served in pitta with salad.",
+   "Meat roasted on a stick."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "kiosk",
+  "register": "standard",
+  "definition": "A small booth selling newspapers, snacks or tickets.",
+  "note": "From Persian kushk, a pavilion, via Turkish and French.",
+  "hints": [
+   "A tiny stall on a street corner.",
+   "A self-service ticket machine."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "knack",
+  "register": "standard",
+  "definition": "A natural talent for doing something easily.",
+  "note": "From Middle English knak, a sharp sound. How it came to mean skill is unclear.",
+  "hints": [
+   "You either have it or you don't.",
+   "A clever trick of doing a job."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "kneel",
+  "register": "standard",
+  "definition": "To go down on your knees.",
+  "note": "From Old English cneowlian, formed from knee.",
+  "hints": [
+   "What you do to propose or pray.",
+   "A knight did this before a king."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "knock",
+  "register": "standard",
+  "definition": "To strike a door to be let in.",
+  "note": "From Old English cnocian, likely imitating the sound.",
+  "hints": [
+   "A polite way to announce yourself at a door.",
+   "Rap on wood."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "knoll",
+  "register": "standard",
+  "definition": "A small round hill.",
+  "note": "From Old English cnoll, a summit.",
+  "hints": [
+   "A grassy rise in a meadow.",
+   "Smaller than a hill."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "koala",
+  "register": "standard",
+  "definition": "A grey tree-climbing Australian marsupial that eats eucalyptus.",
+  "note": "From the Dharug word gula. It is not a bear, despite its look.",
+  "hints": [
+   "Sleeps most of the day.",
+   "Cuddly marsupial from Australia."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "krill",
+  "register": "standard",
+  "definition": "Tiny shrimp-like sea creatures eaten by whales.",
+  "note": "From Norwegian kril, meaning small fish fry.",
+  "hints": [
+   "Baleen whales feed on them.",
+   "A swarm in cold southern oceans."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "label",
+  "register": "standard",
+  "definition": "A tag showing what something is or costs.",
+  "note": "From Old French label, a strip, from a Frankish word for a rag.",
+  "hints": [
+   "Stuck on a jar or sewn inside a shirt.",
+   "What a price sticker is."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "ladle",
+  "register": "standard",
+  "definition": "A deep long-handled spoon for serving soup.",
+  "note": "From Old English hlaedel, from a root meaning to load.",
+  "hints": [
+   "Used to serve soup from a pot.",
+   "A big spoon for punch."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "lance",
+  "register": "standard",
+  "definition": "A long spear used by a mounted knight.",
+  "note": "From Old French lance, from Latin lancea.",
+  "hints": [
+   "A jousting weapon.",
+   "To cut open a boil."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "lanky",
+  "register": "standard",
+  "definition": "Tall, thin and a bit awkward.",
+  "note": "From lank plus -y.",
+  "hints": [
+   "Said of a gangly teenager.",
+   "Long-limbed."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "lapel",
+  "register": "standard",
+  "definition": "The folded flap on the front of a jacket.",
+  "note": "Formed from lap plus a small ending, meaning a little fold.",
+  "hints": [
+   "A pin may be worn on it.",
+   "Part of a suit jacket collar."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "lapse",
+  "register": "standard",
+  "definition": "A brief slip or a gradual passing of time.",
+  "note": "From Latin lapsus, from labi, to slip.",
+  "hints": [
+   "A moment of poor judgement.",
+   "What a membership does if not renewed."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "large",
+  "register": "standard",
+  "definition": "Of great size.",
+  "note": "From Old French large, from Latin largus, abundant.",
+  "hints": [
+   "Opposite of small.",
+   "A big size on a clothing tag."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "larva",
+  "register": "standard",
+  "definition": "The early, wormlike stage of an insect.",
+  "note": "From Latin larva, meaning ghost or mask. The larva was seen as a mask hiding the adult.",
+  "hints": [
+   "What a caterpillar is.",
+   "Hatches from an egg before pupating."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "lasso",
+  "register": "standard",
+  "definition": "A rope with a loop used to catch cattle.",
+  "note": "From Spanish lazo, from Latin laqueus, a snare. It is a doublet of lace.",
+  "hints": [
+   "A cowboy swings it overhead.",
+   "A looped rope for catching a calf."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "latch",
+  "register": "standard",
+  "definition": "A simple catch that holds a door or gate shut.",
+  "note": "From Middle English lacchen, to seize or catch.",
+  "hints": [
+   "Lift it to open a gate.",
+   "Fastens a garden gate."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "lathe",
+  "register": "standard",
+  "definition": "A machine that spins wood or metal so it can be shaped.",
+  "note": "Origin uncertain.",
+  "hints": [
+   "Makes table legs round.",
+   "Spins material against a cutting tool."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "latte",
+  "register": "standard",
+  "definition": "Coffee made with steamed milk.",
+  "note": "Short for Italian caffe latte, meaning milk coffee.",
+  "hints": [
+   "Ordered at a cafe.",
+   "Espresso topped with foam."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "laugh",
+  "register": "standard",
+  "definition": "To make sounds that show amusement.",
+  "note": "From Old English hlehhan, thought to imitate the sound.",
+  "hints": [
+   "The reaction to a joke.",
+   "The sound that follows a good joke."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "layer",
+  "register": "standard",
+  "definition": "A single thickness of something spread over a surface.",
+  "note": "From lay plus -er.",
+  "hints": [
+   "A cake has several.",
+   "Onions have many."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "leach",
+  "register": "standard",
+  "definition": "To drain away by liquid passing through.",
+  "note": "From Old English words for a muddy stream.",
+  "hints": [
+   "Rain does this to nutrients in soil.",
+   "To soak out slowly, as chemicals into water."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "learn",
+  "register": "standard",
+  "definition": "To gain knowledge or a skill.",
+  "note": "From Old English leornian. Strangely, learn once could also mean to teach.",
+  "hints": [
+   "What you do at school.",
+   "Pick up a new skill."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "lease",
+  "register": "standard",
+  "definition": "A contract to rent property for a set time.",
+  "note": "From Anglo-Norman lesser, to let go.",
+  "hints": [
+   "Signed with a landlord.",
+   "Often runs for a year."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "leash",
+  "register": "standard",
+  "definition": "A strap used to hold a dog.",
+  "note": "From Old French lesse, from a verb meaning to let go.",
+  "hints": [
+   "Walkies need one.",
+   "Keeps a pet from running off."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "leave",
+  "register": "standard",
+  "definition": "To go away from, or to let remain.",
+  "note": "From Old English laefan, to let stay.",
+  "hints": [
+   "What you do when you depart.",
+   "To go away or let something stay."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "ledge",
+  "register": "standard",
+  "definition": "A narrow shelf jutting out from a wall or cliff.",
+  "note": "From Middle English legge, from an Old English word for a bar.",
+  "hints": [
+   "A narrow rock shelf.",
+   "Where a bird nests on a cliff."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "leech",
+  "register": "standard",
+  "definition": "A blood-sucking worm, or a person who lives off others.",
+  "note": "From Old English laece, a blood-sucking worm. The old word for doctor is a separate one.",
+  "hints": [
+   "Used by doctors long ago to draw blood.",
+   "A freeloader."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "leery",
+  "register": "standard",
+  "definition": "Wary and suspicious.",
+  "note": "First recorded in the 1700s, from an old sense of leer, a sideways glance.",
+  "hints": [
+   "A sideways look of doubt.",
+   "Distrustful of a stranger's offer."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "legal",
+  "register": "standard",
+  "definition": "Allowed by law.",
+  "note": "From Latin legalis, from lex, law. Loyal is a doublet of the same word.",
+  "hints": [
+   "What a lawyer is concerned with.",
+   "Permitted under the rules of the land."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "lemon",
+  "register": "standard",
+  "definition": "A sour yellow citrus fruit.",
+  "note": "Through Old French from Arabic laymun, a word for citrus.",
+  "hints": [
+   "Squeezed on fish or into tea.",
+   "Also a defective car, informally."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "lemur",
+  "register": "standard",
+  "definition": "A long-tailed primate native to Madagascar.",
+  "note": "From Latin lemures, spirits of the dead, a name chosen by Linnaeus in 1754, likely for their ghostly eyes.",
+  "hints": [
+   "Ring-tailed ones live in Madagascar.",
+   "A primate with a banded tail."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "level",
+  "register": "standard",
+  "definition": "Flat and even, or a floor of a building.",
+  "note": "From Old French livel, from Latin libella, a small balance or plumb tool. Its root is libra, scales.",
+  "hints": [
+   "A spirit one shows if a shelf is straight.",
+   "A stage in a video game."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "lever",
+  "register": "standard",
+  "definition": "A bar that turns on a fixed point to lift or move something.",
+  "note": "From Old French leveor, a lifter, from Latin levare, to raise.",
+  "hints": [
+   "Archimedes said he could move the world with one.",
+   "Pull it to start the machine."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "libel",
+  "register": "standard",
+  "definition": "A false written statement that damages someone's reputation.",
+  "note": "From Latin libellus, a little book. It first meant any small written document.",
+  "hints": [
+   "Sued in court by a defamed celebrity.",
+   "Slander's written counterpart."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "liege",
+  "register": "standard",
+  "definition": "A feudal lord to whom loyalty is owed.",
+  "note": "From Old French liege, probably from a Germanic word meaning free.",
+  "hints": [
+   "A vassal's sworn lord.",
+   "Knights swore fealty to their ..."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "light",
+  "register": "standard",
+  "definition": "Brightness that makes things visible, or not heavy.",
+  "note": "From Old English leoht, from a root also behind lucid.",
+  "hints": [
+   "Switched on in a dark room.",
+   "Opposite of heavy or dark."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "lilac",
+  "register": "standard",
+  "definition": "A shrub with fragrant purple blossoms, or a pale purple colour.",
+  "note": "Ultimately from Persian nilak, bluish, via Arabic and Spanish. The shade is named after the flower.",
+  "hints": [
+   "Blooms in spring with a sweet smell.",
+   "A pale shade of purple."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "limbo",
+  "register": "standard",
+  "definition": "An uncertain in-between state.",
+  "note": "From Latin limbus, an edge. In medieval belief it was the borderland of hell for souls who could not enter heaven.",
+  "hints": [
+   "Waiting with no decision made.",
+   "Also a dance with a low bar."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "limit",
+  "register": "standard",
+  "definition": "A boundary that cannot be passed.",
+  "note": "Through Old French from Latin limes, a boundary path between fields.",
+  "hints": [
+   "What a speed sign shows.",
+   "The point beyond which you cannot go."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "linen",
+  "register": "standard",
+  "definition": "Cloth woven from flax.",
+  "note": "From Old English linen, meaning made of flax. The word lin was the plant itself.",
+  "hints": [
+   "Tablecloths and bedsheets.",
+   "Woven from the flax plant."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "lingo",
+  "register": "slang",
+  "definition": "The specialised language of a particular group.",
+  "note": "Probably from Latin lingua, tongue, via Portuguese or a similar source.",
+  "hints": [
+   "Jargon of sailors or gamers.",
+   "Slang used by a particular profession."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "lipid",
+  "register": "standard",
+  "definition": "A fat or oil-like substance in living cells.",
+  "note": "From Greek lipos, fat.",
+  "hints": [
+   "Cholesterol is one.",
+   "A scientific word for fats."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "lithe",
+  "register": "standard",
+  "definition": "Slim, flexible and graceful.",
+  "note": "From Old English lithe, which meant gentle or mild. The sense of supple came later.",
+  "hints": [
+   "Describes a dancer or a cat.",
+   "Moves with easy grace."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "liver",
+  "register": "standard",
+  "definition": "The large organ that filters blood and makes bile.",
+  "note": "From Old English lifer, a very old Germanic word.",
+  "hints": [
+   "Eaten with onions.",
+   "Alcohol harms it."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "livid",
+  "register": "standard",
+  "definition": "Furiously angry, or a bruised bluish colour.",
+  "note": "From Latin lividus, bluish or leaden. Anger was linked to the colour of a bruise.",
+  "hints": [
+   "Furious enough to turn colour.",
+   "A very angry parent."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "llama",
+  "register": "standard",
+  "definition": "A woolly South American animal related to the camel.",
+  "note": "From Spanish llama, from Quechua.",
+  "hints": [
+   "Spits when annoyed.",
+   "Carries loads in the Andes."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "loath",
+  "register": "standard",
+  "definition": "Unwilling; reluctant.",
+  "note": "From Old English lath, which meant hateful or evil.",
+  "hints": [
+   "Describes your feeling about going to a boring meeting.",
+   "Reluctant to do something."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "local",
+  "register": "standard",
+  "definition": "Belonging to a nearby place.",
+  "note": "From Late Latin localis, from locus, a place.",
+  "hints": [
+   "A shop in your neighbourhood.",
+   "Not from far away."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "locus",
+  "register": "standard",
+  "definition": "A particular place or point where something occurs.",
+  "note": "Borrowed from Latin locus, place.",
+  "hints": [
+   "The scene of a crime.",
+   "A central point of activity."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "lodge",
+  "register": "standard",
+  "definition": "A small house or cabin, or to stay somewhere briefly.",
+  "note": "From Old French loge, a hut or arbour, from a Germanic root.",
+  "hints": [
+   "A hunting cabin in the woods.",
+   "To submit a complaint officially."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "lofty",
+  "register": "standard",
+  "definition": "Very high, or noble and proud.",
+  "note": "From Middle English loft, sky or upper room, plus -y.",
+  "hints": [
+   "A mountain peak or an ambition.",
+   "Aims that are grand and ambitious."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "logic",
+  "register": "standard",
+  "definition": "Reasoning that follows strict rules.",
+  "note": "Through Old French from Greek logike, from logos, word or reason.",
+  "hints": [
+   "A step-by-step argument.",
+   "What Mr Spock prizes."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "loopy",
+  "register": "slang",
+  "definition": "Silly or a bit crazy.",
+  "note": "From loop plus -y.",
+  "hints": [
+   "A word for a scatterbrained idea.",
+   "A little off your rocker."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "loose",
+  "register": "standard",
+  "definition": "Not tight or firmly fixed.",
+  "note": "From Old Norse lauss, meaning free or empty.",
+  "hints": [
+   "A wobbly tooth is this.",
+   "Not fastened."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "lorry",
+  "register": "standard",
+  "definition": "A large motor vehicle for carrying goods.",
+  "note": "Origin uncertain, perhaps from a dialect verb meaning to drag.",
+  "hints": [
+   "What Americans call a truck.",
+   "A large goods vehicle on a motorway."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "louse",
+  "register": "standard",
+  "definition": "A tiny wingless insect that lives on skin or hair.",
+  "note": "From Old English lus, an old Germanic word. The plural is lice.",
+  "hints": [
+   "Found in hair.",
+   "A contemptible person, informally."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "lousy",
+  "register": "slang",
+  "definition": "Very bad or poor in quality.",
+  "note": "From louse plus -y. Being infested with lice was a miserable state.",
+  "hints": [
+   "A rotten day.",
+   "Terrible service in a restaurant."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "loyal",
+  "register": "standard",
+  "definition": "Faithful to a person or cause.",
+  "note": "From Old French loial, from Latin legalis. Legal is its doublet.",
+  "hints": [
+   "Describes a dog or a friend.",
+   "Sticks by you through thick and thin."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "lucid",
+  "register": "standard",
+  "definition": "Clearly expressed or thinking clearly.",
+  "note": "From Latin lucidus, bright, from lucere, to shine.",
+  "hints": [
+   "An explanation that is easy to follow.",
+   "A dream where you know you are dreaming."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "lumen",
+  "register": "standard",
+  "definition": "A unit measuring the amount of light from a source.",
+  "note": "From Latin lumen, light. It was adopted as a unit in 1894 by André Blondel.",
+  "hints": [
+   "Printed on a lightbulb box.",
+   "A measure of brightness."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "lunch",
+  "register": "standard",
+  "definition": "A meal eaten in the middle of the day.",
+  "note": "First recorded in 1580 as a word for a lump or hunk of food.",
+  "hints": [
+   "Midday meal.",
+   "What a sandwich is often for."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "lunge",
+  "register": "standard",
+  "definition": "A sudden forward thrust, as in fencing.",
+  "note": "From French allonge, from a Latin root meaning long.",
+  "hints": [
+   "A fencer does it with a sword.",
+   "An exercise stepping forward on one leg."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "lurch",
+  "register": "standard",
+  "definition": "To stagger or move suddenly and unsteadily.",
+  "note": "Originally a nautical word for a ship's sudden roll, of unknown origin.",
+  "hints": [
+   "A boat in rough waves.",
+   "Staggering after too many drinks."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "lurid",
+  "register": "standard",
+  "definition": "Shocking and sensational, or glaringly vivid.",
+  "note": "From Latin luridus, pale yellow or wan.",
+  "hints": [
+   "A tabloid's gruesome details.",
+   "Harsh and garish colours."
+  ],
+  "difficulty": "stretch",
   "connection": ""
  }
 ]
