@@ -720,6 +720,18 @@
   "connection": ""
  },
  {
+  "word": "aline",
+  "register": "standard",
+  "definition": "An old spelling of align.",
+  "note": "Formed from a- plus line, an old form of align.",
+  "hints": [
+   "To straighten something into a row.",
+   "Archaic version of a word for lining up."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
   "word": "alive",
   "register": "standard",
   "definition": "Living; not dead.",
@@ -1416,6 +1428,18 @@
   "connection": ""
  },
  {
+  "word": "arras",
+  "register": "standard",
+  "definition": "A large woven tapestry hung on a wall.",
+  "note": "Named after the French city of Arras, a famous centre for tapestry in the Middle Ages. In Hamlet, Polonius hides behind one.",
+  "hints": [
+   "Polonius hid behind one in Hamlet.",
+   "Wall hanging named for a French town."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
   "word": "array",
   "register": "standard",
   "definition": "An impressive range or display of things.",
@@ -1908,6 +1932,18 @@
   "connection": ""
  },
  {
+  "word": "baldy",
+  "register": "slang",
+  "definition": "A bald person, informally.",
+  "note": "From bald plus -y, a teasing nickname.",
+  "hints": [
+   "Hairless head, teasingly.",
+   "A nickname for someone with no hair."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "baler",
   "register": "standard",
   "definition": "A machine that packs hay or straw into bales.",
@@ -1951,6 +1987,18 @@
   "hints": [
    "Trite and predictable.",
    "Common to the point of boredom."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "bandy",
+  "register": "standard",
+  "definition": "To toss around, as words or ideas.",
+  "note": "From a French word for striking a ball back and forth at tennis.",
+  "hints": [
+   "Often paired with words or names.",
+   "Pass back and forth, as a rumour might be."
   ],
   "difficulty": "stretch",
   "connection": ""
@@ -2076,6 +2124,18 @@
   "connection": ""
  },
  {
+  "word": "batik",
+  "register": "standard",
+  "definition": "A way of dyeing cloth by covering patterns with wax.",
+  "note": "From Javanese bathik. Indonesia is the best-known home of the craft.",
+  "hints": [
+   "Cloth patterned with wax and dye.",
+   "Indonesian fabric art."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
   "word": "baton",
   "register": "standard",
   "definition": "A short stick used by a conductor, relay runner or officer.",
@@ -2172,6 +2232,18 @@
   "connection": ""
  },
  {
+  "word": "beaut",
+  "register": "slang",
+  "definition": "A fine example, especially in Australian speech.",
+  "note": "A clipping of beauty.",
+  "hints": [
+   "Australian exclamation of approval.",
+   "Short word for something splendid."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "bebop",
   "register": "standard",
   "definition": "A fast, complex style of jazz from the 1940s.",
@@ -2241,6 +2313,18 @@
    "What you do at the start."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "begum",
+  "register": "standard",
+  "definition": "A title for a Muslim noblewoman in South Asia.",
+  "note": "A title used in South Asia, reaching English through Urdu and Persian.",
+  "hints": [
+   "A royal or noble woman in Pakistan or India.",
+   "Title for a lady of rank."
+  ],
+  "difficulty": "challenging",
   "connection": ""
  },
  {
@@ -2347,6 +2431,18 @@
   "hints": [
    "Parks are full of them.",
    "Players wait on it during a match."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "bendy",
+  "register": "standard",
+  "definition": "Able to bend easily.",
+  "note": "From bend plus -y. A British bus with a flexible middle is called this.",
+  "hints": [
+   "Flexible, like a rubber ruler.",
+   "A nickname for an articulated bus."
   ],
   "difficulty": "familiar",
   "connection": ""
@@ -2505,6 +2601,18 @@
    "From a pet form of Bridget."
   ],
   "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "bidet",
+  "register": "standard",
+  "definition": "A low basin for washing the lower body.",
+  "note": "From French bidet, which originally meant a small horse.",
+  "hints": [
+   "Fixture in French bathrooms.",
+   "Its name means pony in French."
+  ],
+  "difficulty": "familiar",
   "connection": ""
  },
  {
@@ -3813,6 +3921,18 @@
    "A shade of orange or sienna may start with it."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "burqa",
+  "register": "standard",
+  "definition": "A garment that covers the whole body, including the face.",
+  "note": "From Persian and Arabic burqa. It reached English through Hindustani.",
+  "hints": [
+   "A long covering garment worn by some women.",
+   "Known in Afghanistan."
+  ],
+  "difficulty": "stretch",
   "connection": ""
  },
  {
@@ -5376,6 +5496,18 @@
   "connection": ""
  },
  {
+  "word": "corky",
+  "register": "standard",
+  "definition": "Like cork, or spoiled by a bad cork.",
+  "note": "From cork plus -y. Cork comes from Latin cortex, 'bark'.",
+  "hints": [
+   "Describes wine that smells musty.",
+   "Light and springy like bark."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
   "word": "corny",
   "register": "standard",
   "definition": "Cheesy and sentimental.",
@@ -5976,6 +6108,18 @@
   "connection": ""
  },
  {
+  "word": "cubby",
+  "register": "standard",
+  "definition": "A small cosy space for storage or hiding.",
+  "note": "From a Middle English word for a stall, plus a diminutive ending.",
+  "hints": [
+   "Where a child hangs a coat at school.",
+   "A little nook in a classroom."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "cubic",
   "register": "standard",
   "definition": "Relating to the shape or measure of a cube.",
@@ -6021,6 +6165,18 @@
    "Short for a cup of something warm."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "curia",
+  "register": "standard",
+  "definition": "The papal court, or an ancient Roman council.",
+  "note": "Borrowed from Latin curia, the Roman senate house.",
+  "hints": [
+   "The administrative body of the Vatican.",
+   "Roman senate house."
+  ],
+  "difficulty": "challenging",
   "connection": ""
  },
  {
@@ -6648,6 +6804,18 @@
   "connection": ""
  },
  {
+  "word": "dinar",
+  "register": "standard",
+  "definition": "The currency of several Arab and Balkan countries.",
+  "note": "Ultimately from the Latin denarius, a Roman coin.",
+  "hints": [
+   "Money in Kuwait.",
+   "A coin name descended from Rome."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
   "word": "diner",
   "register": "standard",
   "definition": "A small restaurant serving casual meals; or a person eating.",
@@ -6933,6 +7101,18 @@
    "A pizza chef tosses it in the air."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "douse",
+  "register": "standard",
+  "definition": "To drench with liquid or to put out a flame with it.",
+  "note": "Probably from a Scandinavian word for a heavy plunge or thump.",
+  "hints": [
+   "What a bucket of water does to a fire.",
+   "To soak in water or put out a flame."
+  ],
+  "difficulty": "stretch",
   "connection": ""
  },
  {
@@ -8256,6 +8436,18 @@
   "connection": ""
  },
  {
+  "word": "fader",
+  "register": "standard",
+  "definition": "A slider that raises or lowers volume or lighting.",
+  "note": "From fade plus -er.",
+  "hints": [
+   "Slides on a mixing desk.",
+   "Sound engineers push them up and down."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
   "word": "faint",
   "register": "standard",
   "definition": "Weak or barely noticeable; or to pass out briefly.",
@@ -9348,6 +9540,18 @@
   "connection": ""
  },
  {
+  "word": "fossa",
+  "register": "standard",
+  "definition": "A pit or hollow in the body; also a cat-like predator of Madagascar.",
+  "note": "Latin for 'ditch'. The animal's name is a separate borrowing from Malagasy.",
+  "hints": [
+   "A depression in a bone.",
+   "A ditch, in Latin."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
   "word": "found",
   "register": "standard",
   "definition": "Past tense of find; also, to establish an institution.",
@@ -9696,6 +9900,18 @@
   "connection": ""
  },
  {
+  "word": "futon",
+  "register": "standard",
+  "definition": "A thin Japanese mattress, or a sofa bed in the West.",
+  "note": "From Japanese futon, itself from a Chinese word for a meditation cushion.",
+  "hints": [
+   "Sofa that folds into a bed.",
+   "Japanese bedding laid on the floor."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "fuzzy",
   "register": "standard",
   "definition": "Covered with soft short fibres; or unclear.",
@@ -9933,6 +10149,18 @@
    "Said of a person who loves sci-fi and coding."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "geist",
+  "register": "standard",
+  "definition": "Spirit, especially of an age or group, from German.",
+  "note": "Borrowed from German, and a cousin of ghost.",
+  "hints": [
+   "German word for spirit, as in the spirit of an age.",
+   "Cousin of the English word ghost."
+  ],
+  "difficulty": "challenging",
   "connection": ""
  },
  {
@@ -11136,6 +11364,18 @@
   "connection": ""
  },
  {
+  "word": "hammy",
+  "register": "standard",
+  "definition": "Overacted in a showy, exaggerated way.",
+  "note": "From ham, an old theatre term for an amateur or clumsy actor, plus -y.",
+  "hints": [
+   "What bad stage acting is called.",
+   "Describes theatrical overdoing."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "handy",
   "register": "standard",
   "definition": "Useful, or conveniently near.",
@@ -11203,6 +11443,18 @@
   "hints": [
    "Describes a bitter winter or a stern punishment.",
    "A word for grating light or a cruel remark."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "hasta",
+  "register": "standard",
+  "definition": "Spanish for until.",
+  "note": "Borrowed from Spanish. In English it is mainly seen in hasta la vista.",
+  "hints": [
+   "As in a Terminator farewell.",
+   "Spanish preposition for until."
   ],
   "difficulty": "familiar",
   "connection": ""
@@ -11508,6 +11760,18 @@
   "connection": ""
  },
  {
+  "word": "hocus",
+  "register": "standard",
+  "definition": "To trick or cheat someone.",
+  "note": "A shortening of hocus-pocus, a pseudo-Latin phrase used by conjurers.",
+  "hints": [
+   "Part of a magician's stage phrase.",
+   "Conjuror's word that shortened to a verb."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
   "word": "hoist",
   "register": "standard",
   "definition": "To raise something, especially with ropes or a pulley.",
@@ -11601,6 +11865,18 @@
    "To pay it is to show respect."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "hooch",
+  "register": "slang",
+  "definition": "Cheap or illegal liquor.",
+  "note": "Short for hoochinoo, a spirit made by the Tlingit people of Alaska.",
+  "hints": [
+   "Moonshine, for example.",
+   "Illicit booze in the Prohibition era."
+  ],
+  "difficulty": "stretch",
   "connection": ""
  },
  {
@@ -12684,6 +12960,18 @@
   "connection": ""
  },
  {
+  "word": "knell",
+  "register": "standard",
+  "definition": "The slow sound of a bell, especially at a funeral.",
+  "note": "From Old English cnyllan, 'to strike'. The silent k was once pronounced.",
+  "hints": [
+   "A funeral bell's sound.",
+   "Toll that marks a death."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
   "word": "knock",
   "register": "standard",
   "definition": "To strike a door to be let in.",
@@ -12727,6 +13015,18 @@
   "hints": [
    "Sleeps most of the day.",
    "Cuddly marsupial from Australia."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "kooky",
+  "register": "slang",
+  "definition": "Odd or eccentric.",
+  "note": "From kook, an American slang word for an eccentric, plus -y.",
+  "hints": [
+   "A bit eccentric.",
+   "Quirky in an off-beat way."
   ],
   "difficulty": "familiar",
   "connection": ""
@@ -12888,6 +13188,18 @@
   "connection": ""
  },
  {
+  "word": "larch",
+  "register": "standard",
+  "definition": "A conifer that drops its needles in autumn.",
+  "note": "From German Lärche, an early borrowing from Latin.",
+  "hints": [
+   "A needle-bearing tree that goes bare in winter.",
+   "Evergreen-like but deciduous."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
   "word": "large",
   "register": "standard",
   "definition": "Of great size.",
@@ -13017,6 +13329,18 @@
    "The sound that follows a good joke."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "laver",
+  "register": "standard",
+  "definition": "An edible red seaweed, eaten especially in Wales.",
+  "note": "From Old English, where it was a name for a water plant. Welsh laverbread is made from it.",
+  "hints": [
+   "Seaweed turned into a Welsh breakfast item.",
+   "A purple seaweed boiled into a paste."
+  ],
+  "difficulty": "challenging",
   "connection": ""
  },
  {
@@ -13545,6 +13869,18 @@
    "Not from far away."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "locum",
+  "register": "standard",
+  "definition": "A doctor or other professional who stands in for another.",
+  "note": "Short for Latin locum tenens, 'holding the place'.",
+  "hints": [
+   "A temporary stand-in for a regular doctor.",
+   "From a Latin phrase meaning place-holder."
+  ],
+  "difficulty": "stretch",
   "connection": ""
  },
  {
@@ -14556,6 +14892,18 @@
   "connection": ""
  },
  {
+  "word": "mezzo",
+  "register": "standard",
+  "definition": "Short for mezzo-soprano, a singing voice between soprano and contralto.",
+  "note": "From Italian mezzo, 'middle'. The word is a clipping of mezzo-soprano.",
+  "hints": [
+   "A voice that sits in the middle of a choir's range.",
+   "Carmen is a famous role for this voice."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
   "word": "micro",
   "register": "standard",
   "definition": "Very small.",
@@ -14601,6 +14949,18 @@
    "A word for great force."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "miler",
+  "register": "standard",
+  "definition": "A runner who specialises in the mile.",
+  "note": "From mile plus -er.",
+  "hints": [
+   "Roger Bannister was this kind of athlete.",
+   "A middle-distance racer."
+  ],
+  "difficulty": "stretch",
   "connection": ""
  },
  {
@@ -15084,6 +15444,30 @@
   "connection": ""
  },
  {
+  "word": "moxie",
+  "register": "slang",
+  "definition": "Courage, nerve and spirit.",
+  "note": "Named after Moxie, an American soft drink first sold in the 1880s whose ads boasted of its effects.",
+  "hints": [
+   "Plenty of this gets you through hard times.",
+   "Nerve, or an old soda brand."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "mucho",
+  "register": "slang",
+  "definition": "Spanish for a lot; used in English for emphasis.",
+  "note": "Borrowed from Spanish. It is not related to English much.",
+  "hints": [
+   "Spanish for 'a great deal'.",
+   "Often paired with grande or gracias."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "mucky",
   "register": "slang",
   "definition": "Dirty with muck or mud.",
@@ -15336,6 +15720,18 @@
   "connection": ""
  },
  {
+  "word": "narco",
+  "register": "slang",
+  "definition": "Narcotics or a drug trafficker, in informal use.",
+  "note": "Clipping of narcotics.",
+  "hints": [
+   "Slang for a drug lord.",
+   "Short for something that numbs."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
   "word": "nasal",
   "register": "standard",
   "definition": "Relating to the nose.",
@@ -15405,6 +15801,18 @@
    "An orange can be named for this."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "nawab",
+  "register": "standard",
+  "definition": "A Muslim ruler or high official in South Asia under the Mughals.",
+  "note": "From Hindi and Urdu, ultimately from an Arabic plural meaning 'deputies'.",
+  "hints": [
+   "A historic title in the Indian subcontinent.",
+   "A provincial governor under Mughal emperors."
+  ],
+  "difficulty": "challenging",
   "connection": ""
  },
  {
@@ -15583,6 +15991,18 @@
   "hints": [
    "Describes a kind act or a brave sacrifice.",
    "Acting with honour and generosity."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "nodal",
+  "register": "standard",
+  "definition": "Relating to a node or point where lines meet.",
+  "note": "From node plus -al.",
+  "hints": [
+   "Describes a junction or intersection.",
+   "Used for points where things connect."
   ],
   "difficulty": "stretch",
   "connection": ""
@@ -15825,6 +16245,18 @@
    "Used before 'enough' to introduce a surprise."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "odeon",
+  "register": "standard",
+  "definition": "A theatre or concert hall; originally a small Greek building for music.",
+  "note": "From Greek oideion, from ode, 'song'.",
+  "hints": [
+   "Ancient building for music, and a cinema name.",
+   "A cinema chain borrowed it."
+  ],
+  "difficulty": "stretch",
   "connection": ""
  },
  {
@@ -16368,6 +16800,18 @@
   "connection": ""
  },
  {
+  "word": "pappy",
+  "register": "slang",
+  "definition": "A father, in folksy speech; or soft and mushy.",
+  "note": "From pap, a soft food, or an alteration of papa.",
+  "hints": [
+   "Southern name for dad.",
+   "A folksy name for a dad."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "parer",
   "register": "standard",
   "definition": "A tool for peeling or trimming.",
@@ -16653,6 +17097,18 @@
    "A tubular Italian pasta."
   ],
   "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "peony",
+  "register": "standard",
+  "definition": "A garden plant with large, fragrant, pink or white flowers.",
+  "note": "From Latin paeonia, from Greek, which comes from the name of a legendary healer, Paeon.",
+  "hints": [
+   "Big, ruffled blooms in late spring.",
+   "Peachy blossoms with a sweet scent."
+  ],
+  "difficulty": "familiar",
   "connection": ""
  },
  {
@@ -17256,6 +17712,18 @@
   "connection": ""
  },
  {
+  "word": "pokey",
+  "register": "slang",
+  "definition": "Cramped and small, or very slow.",
+  "note": "Derived from poke plus -y.",
+  "hints": [
+   "Describes a tiny room or a slow driver.",
+   "Cramped rather than roomy."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "polar",
   "register": "standard",
   "definition": "Relating to the Earth's poles.",
@@ -17323,6 +17791,18 @@
   "hints": [
    "A friendly name for a dog.",
    "What you walk each evening."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "poppa",
+  "register": "slang",
+  "definition": "A father, in informal speech.",
+  "note": "An alteration of papa.",
+  "hints": [
+   "A folksy word for dad.",
+   "Used affectionately for a father."
   ],
   "difficulty": "familiar",
   "connection": ""
@@ -17935,6 +18415,18 @@
   "hints": [
    "What a coward might do before a bully.",
    "A small game bird with speckled feathers."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "quant",
+  "register": "slang",
+  "definition": "A financial analyst who uses mathematical models.",
+  "note": "Short for quantitative analyst.",
+  "hints": [
+   "Wall Street number cruncher.",
+   "Short for the type of analyst who builds models."
   ],
   "difficulty": "stretch",
   "connection": ""
@@ -18597,6 +19089,18 @@
    "Treatment after an injury."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "reiki",
+  "register": "standard",
+  "definition": "A Japanese practice in which healers hold their palms over a person to channel energy.",
+  "note": "From Japanese for 'spiritual energy'. Scientists have found no proof that it works.",
+  "hints": [
+   "Hands-on healing from Japan.",
+   "Alternative therapy using the palms."
+  ],
+  "difficulty": "stretch",
   "connection": ""
  },
  {
@@ -19488,6 +19992,30 @@
   "connection": ""
  },
  {
+  "word": "saran",
+  "register": "standard",
+  "definition": "A clingy plastic film used to wrap food.",
+  "note": "A trade name coined by the Dow Chemical Company. The plastic is a chlorine-based polymer.",
+  "hints": [
+   "Wrap that clings to a bowl.",
+   "Brand name of kitchen film."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "sarge",
+  "register": "slang",
+  "definition": "Informal name for a sergeant.",
+  "note": "A clipping of sergeant, which comes from Old French.",
+  "hints": [
+   "What soldiers call their drill leader.",
+   "Short for a certain army rank."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "sarin",
   "register": "standard",
   "definition": "A deadly nerve agent used as a chemical weapon.",
@@ -19896,6 +20424,18 @@
   "connection": ""
  },
  {
+  "word": "scrip",
+  "register": "standard",
+  "definition": "A certificate or token used in place of money.",
+  "note": "From Middle English scrippe, a small bag for carrying food or coins, so the word began as a purse.",
+  "hints": [
+   "A voucher used instead of cash.",
+   "Company towns once paid workers in it."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
   "word": "scrub",
   "register": "standard",
   "definition": "To rub hard to clean; or low bushes.",
@@ -19941,6 +20481,18 @@
    "A chair carried by two porters."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "seder",
+  "register": "standard",
+  "definition": "The ritual meal held at the start of the Jewish festival of Passover.",
+  "note": "From Hebrew for 'order', since the meal follows a set sequence.",
+  "hints": [
+   "A meal with matzo and bitter herbs.",
+   "Passover supper."
+  ],
+  "difficulty": "stretch",
   "connection": ""
  },
  {
@@ -20313,6 +20865,18 @@
    "Done to a beard each morning."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "sheaf",
+  "register": "standard",
+  "definition": "A bundle of grain stalks tied together, or a bunch of papers.",
+  "note": "From Old English sceaf. Its plural is sheaves.",
+  "hints": [
+   "Farmers bound stalks of wheat in one.",
+   "A bundle of papers held together."
+  ],
+  "difficulty": "stretch",
   "connection": ""
  },
  {
@@ -21972,6 +22536,18 @@
   "connection": ""
  },
  {
+  "word": "spitz",
+  "register": "standard",
+  "definition": "A kind of dog with a pointed muzzle, thick fur and curled tail.",
+  "note": "From German Spitz, meaning pointed. Pomeranians and Samoyeds are spitz breeds.",
+  "hints": [
+   "A fluffy dog breed type.",
+   "Group that includes the Pomeranian."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
   "word": "splat",
   "register": "standard",
   "definition": "The sound of a soft thing hitting a flat surface.",
@@ -22279,6 +22855,18 @@
   "hints": [
    "What rotten eggs did in the fridge.",
    "A past form of a word about foul smells."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "staph",
+  "register": "standard",
+  "definition": "A common bacterium that can infect skin.",
+  "note": "Short for staphylococcus, from Greek for a bunch of grapes, after how it clusters.",
+  "hints": [
+   "Bacteria that cause boils.",
+   "A clump of germs that look like grapes."
   ],
   "difficulty": "familiar",
   "connection": ""
@@ -23508,6 +24096,18 @@
   "connection": ""
  },
  {
+  "word": "tanto",
+  "register": "standard",
+  "definition": "A short Japanese dagger.",
+  "note": "Borrowed from Japanese tanto, 'short blade'. It was carried by samurai as a backup to the katana.",
+  "hints": [
+   "Samurai kept one as a secondary blade.",
+   "Short Japanese blade."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
   "word": "tapas",
   "register": "standard",
   "definition": "Small Spanish snacks or starters.",
@@ -23580,6 +24180,18 @@
   "connection": ""
  },
  {
+  "word": "tater",
+  "register": "slang",
+  "definition": "A potato, informally.",
+  "note": "A clipped form of potato, like 'mater for tomato.",
+  "hints": [
+   "Slang for a spud.",
+   "Hash browns are made from them."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "tatty",
   "register": "slang",
   "definition": "Worn out and shabby.",
@@ -23587,6 +24199,18 @@
   "hints": [
    "A scruffy old coat.",
    "Faded and frayed."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "taupe",
+  "register": "standard",
+  "definition": "A greyish-brown colour.",
+  "note": "From French taupe, 'mole', via Latin talpa, since the colour matches the animal's fur.",
+  "hints": [
+   "Colour of a mole's fur.",
+   "A neutral shade between brown and grey."
   ],
   "difficulty": "stretch",
   "connection": ""
@@ -23661,6 +24285,18 @@
    "What a dentist inspects."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "telco",
+  "register": "standard",
+  "definition": "A telecommunications company.",
+  "note": "Short for the older Tel. Co., as in names of local telephone companies.",
+  "hints": [
+   "A company that sells phone and broadband service.",
+   "Short for a phone or broadband provider."
+  ],
+  "difficulty": "stretch",
   "connection": ""
  },
  {
@@ -24057,6 +24693,18 @@
    "A dull knock on a door."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "thunk",
+  "register": "standard",
+  "definition": "A dull sound of something heavy landing; also a jocular past tense of think.",
+  "note": "Imitates the sound, and the past tense form follows words like sunk.",
+  "hints": [
+   "A book dropped on a carpet makes this sound.",
+   "A hollow thud."
+  ],
+  "difficulty": "stretch",
   "connection": ""
  },
  {
@@ -25452,6 +26100,18 @@
   "connection": ""
  },
  {
+  "word": "usury",
+  "register": "standard",
+  "definition": "The lending of money at an unfairly high interest rate.",
+  "note": "From Latin usura, 'use', since the lender charges for the use of money.",
+  "hints": [
+   "Medieval churches condemned it.",
+   "Loan sharks practise it."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
   "word": "utile",
   "register": "standard",
   "definition": "Useful.",
@@ -25620,6 +26280,18 @@
   "connection": ""
  },
  {
+  "word": "vesta",
+  "register": "standard",
+  "definition": "A short match made of wax or wood.",
+  "note": "Named after Vesta, the Roman goddess of fire and hearth.",
+  "hints": [
+   "Old name for a match.",
+   "Roman goddess whose flame was tended by priestesses."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
   "word": "vicar",
   "register": "standard",
   "definition": "A parish priest in the Church of England.",
@@ -25776,6 +26448,18 @@
   "connection": ""
  },
  {
+  "word": "vocab",
+  "register": "slang",
+  "definition": "Short for vocabulary, the words you know.",
+  "note": "A clipping of vocabulary.",
+  "hints": [
+   "What students memorise before a language test.",
+   "Words you know."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "vocal",
   "register": "standard",
   "definition": "Relating to the voice; or speaking out.",
@@ -25905,6 +26589,18 @@
    "A child's pull-along toy cart."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "wahoo",
+  "register": "standard",
+  "definition": "A fast, slender tropical game fish; also a cry of joy.",
+  "note": "Perhaps named after Oahu, an obsolete spelling of which was Wahoo.",
+  "hints": [
+   "A game fish related to the mackerel.",
+   "Fast ocean predator."
+  ],
+  "difficulty": "stretch",
   "connection": ""
  },
  {
@@ -26289,6 +26985,18 @@
    "What a crowd gives at a win."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "whorl",
+  "register": "standard",
+  "definition": "A spiral or circular pattern, like a fingerprint ridge.",
+  "note": "An alteration of whirl. The word is also used for a ring of leaves around a stem.",
+  "hints": [
+   "Pattern at the tip of your finger.",
+   "A swirl of leaves around a stem."
+  ],
+  "difficulty": "stretch",
   "connection": ""
  },
  {
@@ -26877,6 +27585,18 @@
    "A kind of defence in football, not man-to-man."
   ],
   "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "zooey",
+  "register": "slang",
+  "definition": "Chaotic and crowded like a zoo.",
+  "note": "From zoo plus -ey.",
+  "hints": [
+   "An airport at Christmas.",
+   "Messy and noisy, as an animal enclosure."
+  ],
+  "difficulty": "familiar",
   "connection": ""
  }
 ]
