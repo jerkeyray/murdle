@@ -16810,5 +16810,1145 @@
   ],
   "difficulty": "familiar",
   "connection": ""
+ },
+ {
+  "word": "salon",
+  "register": "standard",
+  "definition": "A place where hairdressers or beauticians work; or a grand reception room.",
+  "note": "Borrowed from French, which took it from Italian salone, 'large hall'. In the 1700s a salon was also a gathering for talk and ideas.",
+  "hints": [
+   "A place for a haircut or a manicure.",
+   "A gathering of thinkers in an eighteenth-century drawing room."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "salsa",
+  "register": "standard",
+  "definition": "A spicy sauce; also a Latin dance and its music.",
+  "note": "From Spanish salsa, 'sauce', from Latin salsus, 'salted'. The music style took the same word.",
+  "hints": [
+   "A dip to go with tortilla chips.",
+   "A Latin dance with quick steps."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "salve",
+  "register": "standard",
+  "definition": "A healing ointment.",
+  "note": "From Old English sealf, from an old Germanic word for 'ointment'. It is also used for anything that soothes, such as a salve for guilt.",
+  "hints": [
+   "A cream for a minor burn.",
+   "Anything that eases a conscience."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "salvo",
+  "register": "standard",
+  "definition": "A burst of gunfire; or a sudden round of applause or criticism.",
+  "note": "From Latin salvo, 'safe' or 'reserved', first used in law for an exception. It later came to mean a volley of guns fired together.",
+  "hints": [
+   "A volley of cannon fire.",
+   "An opening attack in a dispute."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "sappy",
+  "register": "standard",
+  "definition": "Too sentimental; or full of tree juice.",
+  "note": "From Old English saepig, 'full of sap', built from sap plus -y. The sentimental sense is figurative, like something too sweet.",
+  "hints": [
+   "A movie that is too soppy.",
+   "A tree full of sticky sugar."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "sassy",
+  "register": "slang",
+  "definition": "Bold, cheeky and lively.",
+  "note": "An American alteration of saucy, first recorded in 1799. It describes a confident tongue.",
+  "hints": [
+   "A cheeky answer to an elder.",
+   "A bold, spirited retort."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "satin",
+  "register": "standard",
+  "definition": "A smooth fabric with a glossy surface.",
+  "note": "From French satin, which may trace to the Arabic name of a Chinese port city. It reached Europe through trade.",
+  "hints": [
+   "A glossy fabric for evening wear.",
+   "Sheets or gowns that feel silky."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "satyr",
+  "register": "standard",
+  "definition": "A half-man, half-goat spirit of Greek myth.",
+  "note": "From Greek satyros, through Latin and French. In myth satyrs followed the god Dionysus.",
+  "hints": [
+   "A creature from Greek myth with a goat's legs.",
+   "A woodland follower of the god of wine."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "sauce",
+  "register": "standard",
+  "definition": "A liquid served with food.",
+  "note": "From Old French sauce, from Latin salsa, 'salted'. Salt was the original seasoning.",
+  "hints": [
+   "What pasta is served with.",
+   "Tomato or soy, perhaps."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "saucy",
+  "register": "standard",
+  "definition": "Cheeky; or a little bit rude in a fun way.",
+  "note": "From sauce plus -y. A sauce adds spice, so a saucy remark has a bit of spice.",
+  "hints": [
+   "A cheeky remark with a bit of spice.",
+   "Slightly rude, but in a fun way."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "sauna",
+  "register": "standard",
+  "definition": "A small room heated to high temperatures for sweating.",
+  "note": "Borrowed from Finnish sauna. Finland has a long tradition of them.",
+  "hints": [
+   "A hot Finnish steam room.",
+   "A hot wooden room people sit in to sweat."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "savvy",
+  "register": "slang",
+  "definition": "Shrewd and well-informed.",
+  "note": "Probably from creole forms of Portuguese sabe, 'he knows', from saber. It began as a pidgin word for 'to know'.",
+  "hints": [
+   "What a tech-literate person is.",
+   "Streetwise and clever."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "scald",
+  "register": "standard",
+  "definition": "To burn with hot liquid or steam.",
+  "note": "From Old Northern French escalder, from Latin excaldare, 'to wash in hot water'. Milk is scalded by heating it almost to boiling.",
+  "hints": [
+   "What boiling water does to skin.",
+   "A burn from steam."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "scale",
+  "register": "standard",
+  "definition": "A set of marks for measuring; also a device for weighing; or a small plate on a fish.",
+  "note": "From Latin scala, 'ladder', for the measuring sense, and from a separate Old French word for the plate on a fish.",
+  "hints": [
+   "A bathroom device for weighing yourself.",
+   "A fish's armour plate."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "scalp",
+  "register": "standard",
+  "definition": "The skin on top of the head, under the hair.",
+  "note": "From Middle English scalp, probably from a North Germanic word. It once meant the skull's crown.",
+  "hints": [
+   "Where dandruff forms.",
+   "The skin under your hair."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "scaly",
+  "register": "standard",
+  "definition": "Covered with small flat plates.",
+  "note": "From scale plus -y. Fish and snakes are covered with them.",
+  "hints": [
+   "A lizard's skin.",
+   "What a fish's skin is covered in."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "scamp",
+  "register": "standard",
+  "definition": "A mischievous rascal.",
+  "note": "From Middle Dutch schampen, 'to slip away', via Old French escamper, 'to run away'. It first meant a rogue and is now used affectionately of a naughty child.",
+  "hints": [
+   "A cheeky child.",
+   "A little rascal."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "scare",
+  "register": "standard",
+  "definition": "To frighten; or a fright.",
+  "note": "From Middle English skerren, 'to frighten', from Old Norse. As a noun it names a sudden fright or public alarm.",
+  "hints": [
+   "What a ghost story tries to do.",
+   "A sudden fright."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "scarf",
+  "register": "standard",
+  "definition": "A long strip of cloth worn around the neck.",
+  "note": "Probably from Old Northern French escarpe, 'pilgrim's purse hung from the neck'. It then came to mean cloth worn around the neck.",
+  "hints": [
+   "Worn around the neck in winter.",
+   "Keeps your neck warm."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "scary",
+  "register": "standard",
+  "definition": "Causing fright.",
+  "note": "From scare plus -y. It is the usual word for a horror film.",
+  "hints": [
+   "A horror film is this.",
+   "Makes your heart race on a dark night."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "scent",
+  "register": "standard",
+  "definition": "A smell, especially a pleasant one.",
+  "note": "From Old French sentir, 'to feel or smell', from Latin sentire. Hounds follow a trail by it.",
+  "hints": [
+   "A perfume's fragrance.",
+   "A trail a hound follows."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "scion",
+  "register": "standard",
+  "definition": "A descendant of a notable family; also a cutting for grafting.",
+  "note": "From Old French cion, from a Frankish word meaning 'shoot' or 'twig'. Gardeners graft one onto a rootstock.",
+  "hints": [
+   "A young heir of a famous family.",
+   "A twig grafted onto a tree."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "scoff",
+  "register": "standard",
+  "definition": "To mock someone; or to eat greedily.",
+  "note": "The mocking sense is from Middle English, probably of North Germanic origin. The eating sense is a separate British slang word.",
+  "hints": [
+   "What a rude person does to a poor idea.",
+   "British slang for wolfing food down."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "scold",
+  "register": "standard",
+  "definition": "To tell someone off angrily.",
+  "note": "From Middle English scolde, first recorded around the twelfth or thirteenth century. It was once a noun for a quarrelsome person.",
+  "hints": [
+   "What an angry parent does.",
+   "A telling-off for a child who misbehaved."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "scone",
+  "register": "standard",
+  "definition": "A small baked quick bread eaten with jam and cream.",
+  "note": "Originally Scots, possibly from a Dutch or Low German word for 'fine bread'. It is the centre of cream tea.",
+  "hints": [
+   "Eaten with clotted cream and jam.",
+   "Part of an English afternoon tea."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "scoop",
+  "register": "standard",
+  "definition": "A tool for lifting loose material; also an exclusive news story.",
+  "note": "From Middle Dutch schope, 'bucket for bailing water'. In journalism it is a story that a rival lacks.",
+  "hints": [
+   "What you use to serve ice cream.",
+   "A reporter's exclusive news story."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "scope",
+  "register": "standard",
+  "definition": "The extent of something; or an aiming device.",
+  "note": "From Italian scopo, 'aim', from Greek skopos, 'target'. It is also a short form of words like microscope.",
+  "hints": [
+   "How wide a project reaches.",
+   "A sight on a rifle."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "scorn",
+  "register": "standard",
+  "definition": "Deep contempt for someone or something.",
+  "note": "From Old French escharnir, 'to mock'. To scorn something is to treat it as beneath you.",
+  "hints": [
+   "A curl of the lip showing contempt.",
+   "What you may feel for a bad idea."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "scour",
+  "register": "standard",
+  "definition": "To scrub hard; or to search thoroughly.",
+  "note": "From Middle Dutch scuren, 'to polish'. The search sense comes from rough, hurried movement over an area.",
+  "hints": [
+   "What you do to a burnt pan.",
+   "What a detective does to a crime scene."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "scout",
+  "register": "standard",
+  "definition": "Someone sent ahead to gather information.",
+  "note": "From Old French escoute, 'listening', from Latin auscultare, 'to listen'. It is also a young member of a youth movement.",
+  "hints": [
+   "A soldier sent ahead of an army.",
+   "A talent-spotter at a football match."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "scowl",
+  "register": "standard",
+  "definition": "To frown angrily.",
+  "note": "From Middle English scowlen, probably of North Germanic origin. It is used for dark, unfriendly looks.",
+  "hints": [
+   "The face of a grumpy person.",
+   "A dark, angry frown."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "scram",
+  "register": "slang",
+  "definition": "To go away quickly.",
+  "note": "Possibly a clipping of scramble, or from German schramm. It is commonly shouted at someone unwelcome.",
+  "hints": [
+   "What you tell a stray cat.",
+   "What you shout to shoo away a pest."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "scrap",
+  "register": "standard",
+  "definition": "A small piece left over; or to discard.",
+  "note": "From Old Norse skrap, 'trifles'. It also means a minor fight, in British speech.",
+  "hints": [
+   "A bit of leftover paper.",
+   "A bit of metal bound for the junkyard."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "scree",
+  "register": "standard",
+  "definition": "A slope of loose stones on a hillside.",
+  "note": "Probably from Old Norse skridha, 'landslide'. Climbers find it tiring because it slides underfoot.",
+  "hints": [
+   "Stones sliding on a mountain.",
+   "Loose rock that slips under a climber."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "screw",
+  "register": "standard",
+  "definition": "A threaded metal fastener you twist in.",
+  "note": "From Old French escroue, 'nut'. It is driven in with a turn.",
+  "hints": [
+   "What you drive with a driver.",
+   "A threaded fastener for wood."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "scrub",
+  "register": "standard",
+  "definition": "To rub hard to clean; or low bushes.",
+  "note": "From Old English scrybb, a variant of shrub. The cleaning verb is separate.",
+  "hints": [
+   "What you do to a dirty floor.",
+   "The low bushes of a dry plain."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "scrum",
+  "register": "standard",
+  "definition": "A tight huddle of players or people.",
+  "note": "A shortening of scrummage, a variant of scrimmage. Rugby players push against each other in one.",
+  "hints": [
+   "Packed forwards pushing in rugby.",
+   "A crush of reporters around a politician."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "scuba",
+  "register": "standard",
+  "definition": "Underwater breathing gear.",
+  "note": "An acronym for 'self-contained underwater breathing apparatus'. It lets a diver breathe without a hose to the surface.",
+  "hints": [
+   "What a diver wears to breathe.",
+   "Gear with an air tank."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "sedan",
+  "register": "standard",
+  "definition": "A closed car with a separate trunk.",
+  "note": "The word first meant a covered chair carried by two men, from 1634. The car body style borrowed it.",
+  "hints": [
+   "A four-door family car.",
+   "A chair carried by two porters."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "seedy",
+  "register": "standard",
+  "definition": "Shabby and a little disreputable.",
+  "note": "From seed plus -y. The shabby sense dates to the 1700s and referred to worn-out appearance.",
+  "hints": [
+   "A rundown bar in a bad district.",
+   "A squalid-looking hotel."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "segue",
+  "register": "standard",
+  "definition": "To move smoothly from one thing to another.",
+  "note": "From Italian segue, 'it follows', a musical direction. It now describes smooth transitions in talk.",
+  "hints": [
+   "A smooth shift between topics.",
+   "Moving from one song to the next without a pause."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "seize",
+  "register": "standard",
+  "definition": "To grab or take by force.",
+  "note": "From Old French seisir, 'to take possession'. It is also used for grabbing a chance, as in 'seize the day'.",
+  "hints": [
+   "What a customs officer does to contraband.",
+   "To grab hold of a chance."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "sense",
+  "register": "standard",
+  "definition": "A way of perceiving, such as sight or smell; or good judgement.",
+  "note": "From Latin sensus, 'feeling'. Humans have five of them, by tradition.",
+  "hints": [
+   "Sight and smell are two of the five.",
+   "A word for good judgement."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "sepia",
+  "register": "standard",
+  "definition": "A reddish-brown colour of old photographs.",
+  "note": "From Latin sepia, 'cuttlefish', whose ink gave the pigment. Old prints have this tint.",
+  "hints": [
+   "The tint of a faded old photograph.",
+   "A pigment from a sea creature's ink."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "serif",
+  "register": "standard",
+  "definition": "A small stroke at the end of a letter.",
+  "note": "From earlier ceriph, of obscure origin. Times New Roman has them; Arial does not.",
+  "hints": [
+   "A feature of Times New Roman.",
+   "A typeface style with tiny feet."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "serum",
+  "register": "standard",
+  "definition": "The clear fluid part of blood; or a treatment made from it.",
+  "note": "From Latin serum, 'whey'. It is now also a cosmetic liquid.",
+  "hints": [
+   "A clear fluid from blood.",
+   "A face treatment in a small dropper bottle."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "serve",
+  "register": "standard",
+  "definition": "To work for someone; or to put food on a plate.",
+  "note": "From Old French servir, from Latin servire, 'to be a slave'. Tennis players do it to start a point.",
+  "hints": [
+   "What a waiter does with food.",
+   "What you do to open a game of tennis."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "setup",
+  "register": "standard",
+  "definition": "The way something is arranged or organised; or a trick arranged in advance.",
+  "note": "A noun made from the verb phrase 'set up'. It names an arrangement of equipment, or a plot arranged to frame someone.",
+  "hints": [
+   "How a desk and monitors are arranged.",
+   "A rigged situation meant to trap someone."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "seven",
+  "register": "standard",
+  "definition": "The number after six.",
+  "note": "From Old English seofon, shared by nearly all Indo-European languages. It was long regarded as a lucky number.",
+  "hints": [
+   "One more than six.",
+   "The number of days in a week."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "sever",
+  "register": "standard",
+  "definition": "To cut apart; to end a connection.",
+  "note": "From Old French sevrer, from Latin separare, 'to separate'. It is a doublet of separate.",
+  "hints": [
+   "What a surgeon or a quarrel can do to a tie.",
+   "To cut off completely."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "sewer",
+  "register": "standard",
+  "definition": "An underground channel that carries away waste water.",
+  "note": "From Anglo-Norman sewere, 'water course', from Old French. It is the sort of place where alligators are said to live in urban legend.",
+  "hints": [
+   "Below the street, carrying waste away.",
+   "Where city drainage ends up."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "shack",
+  "register": "standard",
+  "definition": "A small, crude hut.",
+  "note": "Its origin is unknown; some scholars suggest Mexican Spanish jacal, from Nahuatl. It is a roughly built shelter.",
+  "hints": [
+   "A rickety hut by the shore.",
+   "Like a cabin that needs repair."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "shade",
+  "register": "standard",
+  "definition": "A dark area out of the sun; or a variety of a colour.",
+  "note": "From Old English sceadu. It also names a lampshade and a small variation of a colour.",
+  "hints": [
+   "A cool spot under a tree.",
+   "Dark green or light green, as a variation."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "shady",
+  "register": "standard",
+  "definition": "Giving shade; or suspicious and dishonest.",
+  "note": "Built from shade plus -y. A shady deal is one done out of sight.",
+  "hints": [
+   "A park bench under a big tree.",
+   "A dodgy business deal."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "shaft",
+  "register": "standard",
+  "definition": "A long narrow rod or passage.",
+  "note": "From Old English sceaft, 'pole' or 'spear shaft'. It is also a vertical passage in a mine or lift.",
+  "hints": [
+   "The long body of an arrow.",
+   "A narrow vertical passage in a mine."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "shake",
+  "register": "standard",
+  "definition": "To move quickly to and fro.",
+  "note": "From Old English scacan, 'to shake'. It also names a drink made from milk and ice cream.",
+  "hints": [
+   "What you do to a snow globe.",
+   "What a dog does after a bath."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "shaky",
+  "register": "standard",
+  "definition": "Trembling, or not firm.",
+  "note": "Built from shake plus -y. A shaky voice or a shaky argument both lack steadiness.",
+  "hints": [
+   "A voice that wavers when nervous.",
+   "An argument that might not hold."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "shale",
+  "register": "standard",
+  "definition": "A soft, finely layered rock.",
+  "note": "From Old English sceal, 'shell' or 'husk'. It splits into thin flakes and is a source of oil and gas.",
+  "hints": [
+   "A rock that splits in thin layers.",
+   "A soft rock that gas is extracted from."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "shall",
+  "register": "standard",
+  "definition": "A helping verb for the future or duty.",
+  "note": "From Old English sceal, 'I must'. The earlier sense of obligation survives in 'thou shalt not'.",
+  "hints": [
+   "Used with I and we in formal futures.",
+   "An old word of obligation in commandments."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "shame",
+  "register": "standard",
+  "definition": "A painful feeling of having done something wrong.",
+  "note": "From Old English scamu, 'shame' or 'disgrace'. It is also used for a pity, as in 'what a pity'.",
+  "hints": [
+   "What a blush may show.",
+   "The feeling after doing something embarrassing."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "shank",
+  "register": "standard",
+  "definition": "The part of the leg between knee and ankle.",
+  "note": "From Old English sceanca, 'leg'. It also names the shaft of a tool and, in prison slang, a homemade blade.",
+  "hints": [
+   "A cut of lamb from the lower leg.",
+   "The long part of a tool between handle and tip."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "shape",
+  "register": "standard",
+  "definition": "The outer form of something.",
+  "note": "From Old English gesceap and sceap, meaning 'creation' or 'form'. It also means condition, as in 'in good ___'.",
+  "hints": [
+   "A circle or a square.",
+   "Fitness, as in 'in good form'."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "shard",
+  "register": "standard",
+  "definition": "A broken fragment, usually of glass or pottery.",
+  "note": "From Old English sceard, 'a gap' or 'broken piece'. Archaeologists find pottery ones.",
+  "hints": [
+   "A sliver of broken pottery.",
+   "A sharp fragment of broken glass."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "share",
+  "register": "standard",
+  "definition": "A portion; or to give a part to others.",
+  "note": "From Old English scearu, 'a cut' or 'division'. It also names a unit of ownership in a company.",
+  "hints": [
+   "A slice of the pie.",
+   "A unit of stock in a company."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "shark",
+  "register": "standard",
+  "definition": "A large predatory sea fish; or a cunning swindler.",
+  "note": "From Middle English, first recorded in 1442 for the fish. Its origin is uncertain. A card shark is a swindler at cards.",
+  "hints": [
+   "A big fish with a dorsal fin.",
+   "A cunning card-player who cheats."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "sharp",
+  "register": "standard",
+  "definition": "Having a fine cutting edge; or clever.",
+  "note": "From Old English scearp, 'cutting'. It is also a musical note raised a half step.",
+  "hints": [
+   "What a knife must be to cut well.",
+   "A music note raised a half step."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "shave",
+  "register": "standard",
+  "definition": "To cut hair off the skin with a razor.",
+  "note": "From Old English scafan, 'to scrape'. A narrow miss is a 'close one'.",
+  "hints": [
+   "What you do with foam and a blade.",
+   "Done to a beard each morning."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "shear",
+  "register": "standard",
+  "definition": "To cut off wool from a sheep.",
+  "note": "From Old English sciran, 'to cut'. Sheep farmers do it each spring.",
+  "hints": [
+   "What a farmer does to a flock in summer.",
+   "To clip a fleece."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "sheen",
+  "register": "standard",
+  "definition": "A gentle shine on a surface.",
+  "note": "From Old English sciene, 'beautiful' or 'bright'. The adjective became a noun for a glossy brightness.",
+  "hints": [
+   "The glow on polished wood.",
+   "A soft glossy shimmer."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "sheep",
+  "register": "standard",
+  "definition": "A woolly farm animal.",
+  "note": "From Old English sceap. The plural is the same as the singular.",
+  "hints": [
+   "What a shepherd tends.",
+   "A word whose plural looks identical."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "sheer",
+  "register": "standard",
+  "definition": "Complete; or very thin.",
+  "note": "From Old English scire, 'bright' or 'clear'. It describes pure, unmixed things and also near-transparent cloth.",
+  "hints": [
+   "A very thin curtain.",
+   "A cliff that drops straight down."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "sheet",
+  "register": "standard",
+  "definition": "A flat piece of cloth, paper or metal.",
+  "note": "From Old English sciete, 'cloth'. A bed has one, and so does a printer tray.",
+  "hints": [
+   "Linen on a bed.",
+   "A page in a printer tray."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "shell",
+  "register": "standard",
+  "definition": "A hard outer covering.",
+  "note": "From Old English sciell. Eggs, nuts and snails all have one.",
+  "hints": [
+   "The covering of an egg or a snail.",
+   "A seaside find for a collector."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "shift",
+  "register": "standard",
+  "definition": "To move or change position; or a period of work.",
+  "note": "From Old English sciftan, 'to divide' or 'arrange'. It also names a work period, as in 'the night ___'.",
+  "hints": [
+   "A change of position.",
+   "The hours someone works at a factory."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "shine",
+  "register": "standard",
+  "definition": "To give out light.",
+  "note": "From Old English scinan, 'to shine'. Shoes and the sun do it.",
+  "hints": [
+   "What the sun does.",
+   "What polished shoes do."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "shiny",
+  "register": "standard",
+  "definition": "Bright and reflecting light.",
+  "note": "From shine plus -y. New coins are this way.",
+  "hints": [
+   "New coins and polished shoes.",
+   "What a polished car looks like."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "shirk",
+  "register": "standard",
+  "definition": "To avoid a duty.",
+  "note": "First recorded around 1633, possibly linked to the verb shark. It describes dodging work.",
+  "hints": [
+   "What a lazy worker may do with chores.",
+   "To avoid a responsibility."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "shirt",
+  "register": "standard",
+  "definition": "A garment for the upper body, with sleeves and a collar.",
+  "note": "From Old English scyrte, from a Germanic root meaning 'short'. It is a cousin of skirt.",
+  "hints": [
+   "Worn with a tie.",
+   "Buttoned up the front."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "shoal",
+  "register": "standard",
+  "definition": "A group of fish; or a shallow area of sea.",
+  "note": "The fish sense is from Middle Dutch scole, 'troop'; the shallow-water sense is from Old English sceald, 'shallow'. The two words sound alike by accident.",
+  "hints": [
+   "Fish swimming together.",
+   "A sandbank near a coast."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "shock",
+  "register": "standard",
+  "definition": "A sudden upsetting surprise.",
+  "note": "From Middle French choquer and Middle Dutch schokken, 'to jolt'. It also means an electric jolt.",
+  "hints": [
+   "What bad news can be.",
+   "What an electric jolt delivers."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "shoot",
+  "register": "standard",
+  "definition": "To fire a weapon; or a new plant growth.",
+  "note": "From Old English sceotan. It also covers filming a movie and a young plant sprout.",
+  "hints": [
+   "What an archer does with an arrow.",
+   "A new plant growth."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "shore",
+  "register": "standard",
+  "definition": "The land at the edge of a sea or lake.",
+  "note": "From Middle English schore, perhaps from a Germanic word for a cliff. The beach lies on it.",
+  "hints": [
+   "Where waves meet the land.",
+   "A coast in a sailor's view."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "shorn",
+  "register": "standard",
+  "definition": "Cut off; having had hair or wool clipped.",
+  "note": "The old past participle of shear, from Old English scoren. Sheep farmers cut their wool in spring.",
+  "hints": [
+   "A sheep after its spring cut.",
+   "Having lost one's locks."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "short",
+  "register": "standard",
+  "definition": "Not long or not tall.",
+  "note": "From Old English sceort, from a Germanic root. It is cousin to skirt and shirt.",
+  "hints": [
+   "The opposite of tall.",
+   "A kind of trousers worn in summer."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "shout",
+  "register": "standard",
+  "definition": "To call out loudly.",
+  "note": "From Middle English shouten, of uncertain origin. In Britain a 'shout' is also a round of drinks.",
+  "hints": [
+   "What a fan does in a stadium.",
+   "To yell across a field."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "shove",
+  "register": "standard",
+  "definition": "To push roughly.",
+  "note": "From Old English scufan, 'to push'. It is a rougher form of a push.",
+  "hints": [
+   "What you do in a crowded lift.",
+   "A rough push."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "showy",
+  "register": "standard",
+  "definition": "Flashy and attention-seeking.",
+  "note": "From show plus -y. A showy outfit is meant to be noticed.",
+  "hints": [
+   "A peacock's feathers might be called this.",
+   "A loud, bright outfit."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "shrew",
+  "register": "standard",
+  "definition": "A tiny mouse-like animal; or a nagging woman.",
+  "note": "From Old English screawa, 'shrew'. Shakespeare's play about taming one is a comedy.",
+  "hints": [
+   "A tiny insect-eating mammal.",
+   "The Shakespeare play about one being tamed."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "shrub",
+  "register": "standard",
+  "definition": "A woody plant smaller than a tree.",
+  "note": "From Old English scrybb, 'bushy plant'. It has several stems, unlike a tree.",
+  "hints": [
+   "Smaller than a tree, bigger than a flower.",
+   "A bush in the garden."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "shrug",
+  "register": "standard",
+  "definition": "To raise the shoulders to show doubt or indifference.",
+  "note": "From Middle English schruggen, probably from a Scandinavian word. A shrug can say 'I don't know'.",
+  "hints": [
+   "A gesture meaning 'who cares'.",
+   "Raising both shoulders in doubt."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "shuck",
+  "register": "standard",
+  "definition": "To remove a husk or shell.",
+  "note": "Its origin is unknown. It is what you do to corn and oysters.",
+  "hints": [
+   "What you do to an ear of corn.",
+   "What you do to an oyster."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "shunt",
+  "register": "standard",
+  "definition": "To push aside or move elsewhere.",
+  "note": "From Middle English schonten, 'to jerk or swerve'. A train is shunted onto another track.",
+  "hints": [
+   "A train moved onto a side track.",
+   "Moving someone out of the way."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "shush",
+  "register": "standard",
+  "definition": "To tell someone to be quiet.",
+  "note": "Imitative of the hissing sound used to quiet someone. It resembles hush.",
+  "hints": [
+   "What a librarian does.",
+   "The sound of a finger to the lips."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "shyly",
+  "register": "standard",
+  "definition": "In a timid, bashful way.",
+  "note": "Built from shy plus -ly. Shy comes from Old English sceoh, 'timid'.",
+  "hints": [
+   "How a child waves hello.",
+   "A way of smiling that avoids eyes."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "siege",
+  "register": "standard",
+  "definition": "A long attack in which a place is surrounded.",
+  "note": "From Old French sege, 'seat', from Latin sedere, 'to sit'. Besiegers sit down outside.",
+  "hints": [
+   "An army camped around a castle.",
+   "Troy endured a famous one."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
  }
 ]
