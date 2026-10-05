@@ -3,7 +3,7 @@
   "word": "aback",
   "register": "standard",
   "definition": "Taken by surprise; startled.",
-  "note": "Old English onbæc meant 'to the back'. 'Taken aback' was first a sailing term, for a ship whose sails were suddenly pressed back against the mast.",
+  "note": "Old English onb\u00e6c meant 'to the back'. 'Taken aback' was first a sailing term, for a ship whose sails were suddenly pressed back against the mast.",
   "hints": [
    "Usually comes after 'taken'.",
    "How a sudden surprise leaves you."
@@ -159,7 +159,7 @@
   "word": "acorn",
   "register": "standard",
   "definition": "The nut of the oak tree.",
-  "note": "From Old English æcern, originally any wild fruit. The spelling bent towards 'oak' and 'corn' later.",
+  "note": "From Old English \u00e6cern, originally any wild fruit. The spelling bent towards 'oak' and 'corn' later.",
   "hints": [
    "Squirrels bury these.",
    "Great oaks are said to grow from it."
@@ -375,7 +375,7 @@
   "word": "after",
   "register": "standard",
   "definition": "Later than; following.",
-  "note": "From Old English æfter. 'Aftermath' first meant a second crop of grass mown after the first.",
+  "note": "From Old English \u00e6fter. 'Aftermath' first meant a second crop of grass mown after the first.",
   "hints": [
    "The opposite of before.",
    "Comes later in time."
@@ -483,7 +483,7 @@
   "word": "agree",
   "register": "standard",
   "definition": "To share an opinion.",
-  "note": "From Old French a gré, 'to one's liking', from Latin gratum, 'pleasing'.",
+  "note": "From Old French a gr\u00e9, 'to one's liking', from Latin gratum, 'pleasing'.",
   "hints": [
    "What two people do when they see eye to eye.",
    "Nodding usually signals it."
@@ -1095,7 +1095,7 @@
   "word": "apple",
   "register": "standard",
   "definition": "A round fruit with crisp flesh.",
-  "note": "Old English æppel meant any fruit. The fruit in Eden is never named as an apple.",
+  "note": "Old English \u00e6ppel meant any fruit. The fruit in Eden is never named as an apple.",
   "hints": [
    "Keeps the doctor away.",
    "Newton watched one fall."
@@ -1479,7 +1479,7 @@
   "word": "aware",
   "register": "standard",
   "definition": "Knowing about something.",
-  "note": "From Old English gewær, 'watchful'. Wary shares the root.",
+  "note": "From Old English gew\u00e6r, 'watchful'. Wary shares the root.",
   "hints": [
    "Conscious of something.",
    "Related to wary."
@@ -1623,7 +1623,7 @@
   "word": "baker",
   "register": "standard",
   "definition": "Someone who makes bread and cakes.",
-  "note": "From Old English bæcere. A baker's dozen is thirteen, an extra loaf against short weight.",
+  "note": "From Old English b\u00e6cere. A baker's dozen is thirteen, an extra loaf against short weight.",
   "hints": [
    "Works at dawn with ovens.",
    "Their dozen is thirteen."
@@ -1767,7 +1767,7 @@
   "word": "bathe",
   "register": "standard",
   "definition": "To wash in water, or swim.",
-  "note": "From Old English baþian. Sunbathing borrowed it for lying in light.",
+  "note": "From Old English ba\u00feian. Sunbathing borrowed it for lying in light.",
   "hints": [
    "To soak in water.",
    "Sunlight can do it to a room."
@@ -1779,7 +1779,7 @@
   "word": "baton",
   "register": "standard",
   "definition": "A short stick used by a conductor, relay runner or officer.",
-  "note": "From French bâton, 'stick'. Passing the baton means handing over responsibility.",
+  "note": "From French b\u00e2ton, 'stick'. Passing the baton means handing over responsibility.",
   "hints": [
    "Relay runners pass it.",
    "A conductor waves it."
@@ -1827,7 +1827,7 @@
   "word": "beach",
   "register": "standard",
   "definition": "A sandy or pebbly shore.",
-  "note": "From Old English bæce, 'stream'. It came to mean the shingle by the water, then the whole shore.",
+  "note": "From Old English b\u00e6ce, 'stream'. It came to mean the shingle by the water, then the whole shore.",
   "hints": [
    "Where sandcastles get built.",
    "Sand, towels and waves."
@@ -2019,7 +2019,7 @@
   "word": "beret",
   "register": "standard",
   "definition": "A soft, round, flat cap.",
-  "note": "From French béret, from a Gascon word for cap.",
+  "note": "From French b\u00e9ret, from a Gascon word for cap.",
   "hints": [
    "Classic headwear for French painters.",
    "A soft flat hat."
@@ -2223,7 +2223,7 @@
   "word": "black",
   "register": "standard",
   "definition": "The darkest colour.",
-  "note": "From Old English blæc. Old English blac, 'pale, shining', was a different word.",
+  "note": "From Old English bl\u00e6c. Old English blac, 'pale, shining', was a different word.",
   "hints": [
    "Night's colour.",
    "The colour of soot."
@@ -2235,7 +2235,7 @@
   "word": "blade",
   "register": "standard",
   "definition": "The cutting edge of a knife or tool.",
-  "note": "From Old English blæd, 'leaf'. A blade of grass kept the older sense.",
+  "note": "From Old English bl\u00e6d, 'leaf'. A blade of grass kept the older sense.",
   "hints": [
    "A knife's sharp part.",
    "A single leaf of grass."
@@ -2295,7 +2295,7 @@
   "word": "blast",
   "register": "standard",
   "definition": "An explosion or strong gust.",
-  "note": "From Old English blæst, 'blowing'. As slang, a great time.",
+  "note": "From Old English bl\u00e6st, 'blowing'. As slang, a great time.",
   "hints": [
    "A loud explosion.",
    "A really fun time."
@@ -2307,7 +2307,7 @@
   "word": "blaze",
   "register": "standard",
   "definition": "A large, fierce fire.",
-  "note": "From Old English blæse, 'torch'. To blaze a trail meant marking trees by cutting away bark.",
+  "note": "From Old English bl\u00e6se, 'torch'. To blaze a trail meant marking trees by cutting away bark.",
   "hints": [
    "A raging fire.",
    "To mark a new trail."
@@ -2331,7 +2331,7 @@
   "word": "bleat",
   "register": "standard",
   "definition": "The cry of a sheep or goat.",
-  "note": "From Old English blætan, imitating the sound.",
+  "note": "From Old English bl\u00e6tan, imitating the sound.",
   "hints": [
    "What a lamb does.",
    "To complain in a whiny voice."
@@ -2523,7 +2523,7 @@
   "word": "blush",
   "register": "standard",
   "definition": "To turn red in the face from embarrassment.",
-  "note": "From Middle English blusshen, from Old English blysċan, 'to be red, to shine'. A glance or glow of red once described a sudden look as well.",
+  "note": "From Middle English blusshen, from Old English blys\u010ban, 'to be red, to shine'. A glance or glow of red once described a sudden look as well.",
   "hints": [
    "Compliments might make you do it.",
    "Also a pink cosmetic for the cheeks."
@@ -2775,7 +2775,7 @@
   "word": "brass",
   "register": "standard",
   "definition": "A yellow alloy of copper and zinc; also trumpets and trombones.",
-  "note": "From Old English bræs, of uncertain origin. Instruments made of the metal came to be a section of an orchestra.",
+  "note": "From Old English br\u00e6s, of uncertain origin. Instruments made of the metal came to be a section of an orchestra.",
   "hints": [
    "Trumpets and trombones belong to this section.",
    "Doorknobs are often made of it."
@@ -4119,7 +4119,7 @@
   "word": "clean",
   "register": "standard",
   "definition": "Free from dirt.",
-  "note": "From Old English clæne, meaning pure or clear. It once described moral purity too.",
+  "note": "From Old English cl\u00e6ne, meaning pure or clear. It once described moral purity too.",
   "hints": [
    "What you make a room before guests arrive.",
    "The opposite of dirty."
@@ -8091,7 +8091,7 @@
   "word": "genie",
   "register": "standard",
   "definition": "A magical spirit who grants wishes.",
-  "note": "From French génie, which was matched to the Arabic jinn. English picked it up through translations of the Arabian Nights.",
+  "note": "From French g\u00e9nie, which was matched to the Arabic jinn. English picked it up through translations of the Arabian Nights.",
   "hints": [
    "Lives in a lamp in fairy tales.",
    "Often grants three wishes."
@@ -10443,7 +10443,7 @@
   "word": "lemur",
   "register": "standard",
   "definition": "A long-tailed primate native to Madagascar.",
-  "note": "From Latin lemures, spirits of the dead, a name chosen by Linnaeus in 1754, likely for their ghostly eyes.",
+  "note": "From Latin lemures, Roman spirits of the dead. Linnaeus chose the name for animals that come out at night.",
   "hints": [
    "Ring-tailed ones live in Madagascar.",
    "A primate with a banded tail."
@@ -10611,7 +10611,7 @@
   "word": "livid",
   "register": "standard",
   "definition": "Furiously angry, or a bruised bluish colour.",
-  "note": "From Latin lividus, bluish or leaden. Anger was linked to the colour of a bruise.",
+  "note": "From Latin lividus, 'bluish, leaden', the colour of a bruise. 'Livid with rage' described a face gone dark, and the anger outlived the colour.",
   "hints": [
    "Furious enough to turn colour.",
    "A very angry parent."
@@ -10791,7 +10791,7 @@
   "word": "lumen",
   "register": "standard",
   "definition": "A unit measuring the amount of light from a source.",
-  "note": "From Latin lumen, light. It was adopted as a unit in 1894 by André Blondel.",
+  "note": "From Latin lumen, light. It was adopted as a unit in 1894 by Andr\u00e9 Blondel.",
   "hints": [
    "Printed on a lightbulb box.",
    "A measure of brightness."
