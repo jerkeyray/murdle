@@ -15634,5 +15634,1181 @@
   ],
   "difficulty": "familiar",
   "connection": ""
+ },
+ {
+  "word": "quick",
+  "register": "standard",
+  "definition": "Fast; taking little time.",
+  "note": "From Old English cwic, which meant 'alive'. The old sense survives in 'the quick and the dead' and in 'quicksand'.",
+  "hints": [
+   "Opposite of slow.",
+   "Once meant 'alive' in Old English."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "quiet",
+  "register": "standard",
+  "definition": "Making little or no noise.",
+  "note": "From Old French quiet, from Latin quietus, 'at rest'. It is related to the word quit.",
+  "hints": [
+   "What a library asks for.",
+   "What a room is when everyone is silent."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "quill",
+  "register": "standard",
+  "definition": "A large feather, or a pen made from one.",
+  "note": "First recorded in the early fifteenth century for a reed fragment and a feather shaft. Porcupines also have these sharp spines.",
+  "hints": [
+   "A pen dipped in ink, long ago.",
+   "A spine on a porcupine."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "quilt",
+  "register": "standard",
+  "definition": "A padded bed covering stitched in layers.",
+  "note": "From Old French cuilte, from Latin culcita, 'mattress'. Patchwork ones are sewn from scraps.",
+  "hints": [
+   "A patchwork bed covering.",
+   "Grandma may have sewn one."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "quirk",
+  "register": "standard",
+  "definition": "A peculiar habit or twist of character.",
+  "note": "First recorded in the 1540s, of uncertain origin. It is possibly from an old Norse word for a bend or angle.",
+  "hints": [
+   "A small oddity of someone's character.",
+   "A habit that makes a person unique."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "quite",
+  "register": "standard",
+  "definition": "Fairly, or completely.",
+  "note": "From Middle English quite, from Old French quite, 'free' or 'clear', from Latin quietus. It once meant 'completely'.",
+  "hints": [
+   "A word that can mean fairly or entirely.",
+   "As in 'it's ___ cold'."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "quoth",
+  "register": "standard",
+  "definition": "An old word meaning 'said'.",
+  "note": "From Old English cwæth, the past tense of cwethan, 'to say'. The raven in Poe's poem is famously 'quoth' nevermore.",
+  "hints": [
+   "An old past tense of say.",
+   "Poe's raven did it."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "rabbi",
+  "register": "standard",
+  "definition": "A Jewish teacher and religious leader.",
+  "note": "From Hebrew, meaning 'my master', and later passed into Greek and Latin. It was a title of respect for scholars.",
+  "hints": [
+   "Leads a synagogue.",
+   "A title meaning 'my master' in Hebrew."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "rabid",
+  "register": "standard",
+  "definition": "Infected with rabies; or fanatical.",
+  "note": "From Latin rabidus, 'raging', from rabies. It is often used of fierce supporters.",
+  "hints": [
+   "How a mad dog might be described.",
+   "Fanatical, as in a very eager fan."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "racer",
+  "register": "standard",
+  "definition": "Someone or something that takes part in races.",
+  "note": "Built from race plus -er. Race itself came from Old Norse ras, 'a running'.",
+  "hints": [
+   "Drives a fast car on a track.",
+   "What a runner is in a sprint."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "radar",
+  "register": "standard",
+  "definition": "A system that finds objects by bouncing radio waves off them.",
+  "note": "An acronym for 'radio detection and ranging'. It was developed in the 1930s and 1940s.",
+  "hints": [
+   "Used by air traffic controllers.",
+   "Something that is 'under' it goes unnoticed."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "radio",
+  "register": "standard",
+  "definition": "A device or system that broadcasts sound by waves.",
+  "note": "Short for radiotelegraphy, with radio- from Latin radius, 'ray'. It carries music and talk.",
+  "hints": [
+   "Plays music in the car.",
+   "A device with a tuning dial."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "rainy",
+  "register": "standard",
+  "definition": "Having a lot of rain.",
+  "note": "From Old English reginig, built from rain plus -y. People save money 'for a ___ day', meaning for hard times.",
+  "hints": [
+   "A day to take an umbrella.",
+   "The sort of weather that fills puddles."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "raise",
+  "register": "standard",
+  "definition": "To lift up or increase.",
+  "note": "From Old Norse reisa, 'to raise'. It is the causative of rise.",
+  "hints": [
+   "What you do with your hand to ask a question.",
+   "To bring up a child or lift a flag."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "rajah",
+  "register": "standard",
+  "definition": "An Indian prince or king.",
+  "note": "From Hindi raja, from Sanskrit rajan, 'king'. It is a relative of the Latin rex.",
+  "hints": [
+   "A ruler in India.",
+   "A prince of old India."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "ramen",
+  "register": "standard",
+  "definition": "Wheat noodles served in broth.",
+  "note": "Borrowed from Japanese, which took it from Chinese la mian, 'pulled noodles'. Instant packets are a cheap staple.",
+  "hints": [
+   "A noodle soup from Japan.",
+   "Instant packets feed students."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "ranch",
+  "register": "standard",
+  "definition": "A large farm for cattle or horses.",
+  "note": "From American Spanish rancho, 'small farm'. It was recorded in English in 1808.",
+  "hints": [
+   "Cowboys work on one.",
+   "Also a creamy salad dressing."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "range",
+  "register": "standard",
+  "definition": "A line of mountains; or the extent of something.",
+  "note": "From Old French rengier, 'to arrange in a row', from renc, 'rank'. It also names a stove and a shooting area.",
+  "hints": [
+   "A line of mountains.",
+   "A big cooker in a kitchen."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "rapid",
+  "register": "standard",
+  "definition": "Very fast.",
+  "note": "From Latin rapidus, 'swift', from rapere, 'to seize'. Rivers have these, in the plural.",
+  "hints": [
+   "White water in a river.",
+   "Very quick in motion."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "raspy",
+  "register": "standard",
+  "definition": "Rough and scratchy in sound.",
+  "note": "From rasp plus -y. A rasp is a coarse file, and by extension a harsh sound.",
+  "hints": [
+   "A voice after shouting all day.",
+   "Hoarse and scratchy."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "ratty",
+  "register": "slang",
+  "definition": "Shabby or run down; or in a bad mood.",
+  "note": "From rat plus -y. It can mean worn-out and rodent-like.",
+  "hints": [
+   "A worn-out old sweater.",
+   "British slang for irritable."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "raven",
+  "register": "standard",
+  "definition": "A large black bird with a deep croak.",
+  "note": "From Old English hraefn. Edgar Allan Poe's famous poem is about one.",
+  "hints": [
+   "A big black bird in a Poe poem.",
+   "A bird kept at the Tower of London."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "rayon",
+  "register": "standard",
+  "definition": "A soft fabric made from cellulose fibre.",
+  "note": "The name was chosen in 1924 in the United States, probably from French for 'ray of light', because of its shine.",
+  "hints": [
+   "A silky cloth made from wood pulp.",
+   "A fabric first made as artificial silk."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "razor",
+  "register": "standard",
+  "definition": "A sharp blade used for shaving.",
+  "note": "From Old French rasour, from raser, 'to scrape'. It is also the name of a thin shell.",
+  "hints": [
+   "What a barber uses.",
+   "Used on a beard."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "reach",
+  "register": "standard",
+  "definition": "To stretch out to touch something; or to arrive at.",
+  "note": "From Old English raecan, 'to stretch out'. It covers extending a hand and getting to a place.",
+  "hints": [
+   "What you do for a top shelf.",
+   "What an arm does to grab something."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "react",
+  "register": "standard",
+  "definition": "To respond to something.",
+  "note": "From re- plus act. In chemistry, substances do it when mixed.",
+  "hints": [
+   "What you do when startled.",
+   "Chemicals do it when mixed."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "ready",
+  "register": "standard",
+  "definition": "Prepared and set to go.",
+  "note": "From Old English raede, 'prepared'. It is the starting word in 'set, go'.",
+  "hints": [
+   "Said before the starting gun.",
+   "The first word in a countdown."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "realm",
+  "register": "standard",
+  "definition": "A kingdom or domain.",
+  "note": "From Old French reaume, of unclear origin, possibly from Latin regalis, 'royal'. It is used for fantasy lands too.",
+  "hints": [
+   "A kingdom in a fairy tale.",
+   "A word for a field of activity."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "rearm",
+  "register": "standard",
+  "definition": "To supply with weapons again.",
+  "note": "From re- plus arm. A rebuilding army or nation does it.",
+  "hints": [
+   "What a disarmed country might do.",
+   "To load up weapons again."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "rebar",
+  "register": "standard",
+  "definition": "Steel rods used to strengthen concrete.",
+  "note": "A blend of 'reinforcing' and 'bar'. It gives concrete the tensile strength it lacks.",
+  "hints": [
+   "Hidden inside concrete.",
+   "Steel bars inside a wall."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "rebel",
+  "register": "standard",
+  "definition": "A person who resists authority.",
+  "note": "From Old French rebelle, from Latin rebellis, 'waging war again'. Teenagers are often called one.",
+  "hints": [
+   "One who defies those in charge.",
+   "The sort who defies a government."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "rebus",
+  "register": "standard",
+  "definition": "A puzzle that uses pictures to stand for words.",
+  "note": "From French, from Latin rebus, 'by things'. A picture of an eye plus a can might spell something.",
+  "hints": [
+   "A picture puzzle.",
+   "A wordless word game."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "recap",
+  "register": "slang",
+  "definition": "A short summary of what happened.",
+  "note": "Short for recapitulation. It is often shown at the start of a TV episode.",
+  "hints": [
+   "A summary at the start of a TV show.",
+   "What an announcer gives of the story so far."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "recur",
+  "register": "standard",
+  "definition": "To happen again.",
+  "note": "From Latin recurrere, 'to run back'. A recurring dream is one you have often.",
+  "hints": [
+   "A dream that repeats.",
+   "Said of events that come around again."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "recut",
+  "register": "standard",
+  "definition": "To cut again.",
+  "note": "From re- plus cut. A film can be this when editors reshape it.",
+  "hints": [
+   "What an editor may do to a film.",
+   "Trimming something a second time."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "reedy",
+  "register": "standard",
+  "definition": "Thin and high in sound; or full of reeds.",
+  "note": "From reed plus -y. Reed instruments can have this tone.",
+  "hints": [
+   "A high, thin tone.",
+   "A marsh grown over with tall grass."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "refer",
+  "register": "standard",
+  "definition": "To mention, or send to another source.",
+  "note": "From Old French referer, from Latin referre, 'to carry back'. It is a doublet of relate.",
+  "hints": [
+   "What a doctor does for a specialist.",
+   "To point to a source."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "refit",
+  "register": "standard",
+  "definition": "To repair or fit out again.",
+  "note": "From re- plus fit. Ships are said to get one in dock.",
+  "hints": [
+   "What a ship gets in a dock.",
+   "A makeover of a vessel."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "regal",
+  "register": "standard",
+  "definition": "Fit for a king or queen.",
+  "note": "From Old French regal, from Latin regalis, from rex, 'king'. A stately posture is called it.",
+  "hints": [
+   "Like a royal.",
+   "Stately, like a monarch."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "rehab",
+  "register": "slang",
+  "definition": "Treatment to recover from addiction or injury.",
+  "note": "A clipping of rehabilitation. It is used for treatment centres.",
+  "hints": [
+   "A place to recover from addiction.",
+   "Treatment after an injury."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "relax",
+  "register": "standard",
+  "definition": "To become calm and less tense.",
+  "note": "From Latin relaxare, 'to loosen', from laxus, 'loose'. It is a command many give to the anxious.",
+  "hints": [
+   "What a spa promises.",
+   "What you do on a sofa."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "relay",
+  "register": "standard",
+  "definition": "A race in which team members pass a baton; or to pass on.",
+  "note": "From Old French relaier, 'to exchange tired animals for fresh'. It first named fresh hounds or horses along a route.",
+  "hints": [
+   "A track race passing a baton.",
+   "To pass a message along."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "relic",
+  "register": "standard",
+  "definition": "An old object that survives from the past.",
+  "note": "From Old French relique, from Latin reliquiae, 'remains'. It also names a saint's remains kept in a church.",
+  "hints": [
+   "An ancient artefact.",
+   "Part of a saint kept in a church."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "renal",
+  "register": "standard",
+  "definition": "Relating to the kidneys.",
+  "note": "From Latin ren, 'kidney'. Doctors use it in terms like 'renal failure'.",
+  "hints": [
+   "A medical adjective for an organ.",
+   "Doctors use it for kidney matters."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "renew",
+  "register": "standard",
+  "definition": "To make new again, or extend.",
+  "note": "From re- plus new. You do it to a library book or a passport.",
+  "hints": [
+   "What you do to a subscription.",
+   "What you do to a library loan."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "repay",
+  "register": "standard",
+  "definition": "To pay back what you owe.",
+  "note": "From Old French repaier, from re- plus paier, 'to pay'. It covers debts and kindnesses.",
+  "hints": [
+   "What you do with a loan.",
+   "Return a favour."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "repel",
+  "register": "standard",
+  "definition": "To drive back or push away.",
+  "note": "From Latin repellere, 'to drive back'. Insect sprays do it to mosquitoes, and magnets of the same pole do it to each other.",
+  "hints": [
+   "What a spray does to mosquitoes.",
+   "Like poles do it to each other."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "rerun",
+  "register": "standard",
+  "definition": "A repeat of a television show.",
+  "note": "From re- plus run. Summer schedules are often full of them.",
+  "hints": [
+   "A repeat broadcast.",
+   "TV in summer is full of them."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "reset",
+  "register": "standard",
+  "definition": "To set back to the starting state.",
+  "note": "From re- plus set. A button on a device often does this.",
+  "hints": [
+   "What a button on a router does.",
+   "To restore a clock to zero."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "resin",
+  "register": "standard",
+  "definition": "A sticky substance from trees, or a synthetic one like it.",
+  "note": "From Greek retine, through Latin and Old French. Amber is fossilised tree resin.",
+  "hints": [
+   "What amber was before it hardened.",
+   "Sticky sap used to make glue and varnish."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "retch",
+  "register": "standard",
+  "definition": "To strain as if about to vomit.",
+  "note": "From Old English hraecan, 'to clear the throat, cough up'. It describes the heaving without the result.",
+  "hints": [
+   "What a bad smell may make you do.",
+   "A dry heave."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "retro",
+  "register": "slang",
+  "definition": "Styled after the past.",
+  "note": "Borrowed from French retro, from Latin retro, 'backwards'. It names fashions that deliberately look old.",
+  "hints": [
+   "A throwback style from decades ago.",
+   "Old-school fashion that is back in style."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "retry",
+  "register": "standard",
+  "definition": "To try again.",
+  "note": "From re- plus try. Software offers a button for it after a failure.",
+  "hints": [
+   "What a failed upload invites.",
+   "What a court may do in a second trial."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "reuse",
+  "register": "standard",
+  "definition": "To use something again.",
+  "note": "From re- plus use. It sits alongside reduce and recycle.",
+  "hints": [
+   "Part of a green slogan, with reduce and recycle.",
+   "Using a bag a second time."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "revel",
+  "register": "standard",
+  "definition": "To take great delight; or a noisy celebration.",
+  "note": "From Old French reveler, 'to be disorderly', from Latin rebellare, 'to rebel'. It is a doublet of rebel.",
+  "hints": [
+   "What partygoers do at a feast.",
+   "To take joy in something."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "revue",
+  "register": "standard",
+  "definition": "A stage show of sketches, songs and dances.",
+  "note": "Borrowed from French revue, literally 'review'. It parodied the events of the year.",
+  "hints": [
+   "A show of comic sketches and songs.",
+   "Often mocks the news of the year."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "rhino",
+  "register": "slang",
+  "definition": "A large horned animal; short for rhinoceros.",
+  "note": "A clipping of rhinoceros, from Greek words for 'nose' and 'horn'. In British slang the word has also meant money.",
+  "hints": [
+   "A thick-skinned horned beast.",
+   "A threatened animal of Africa and Asia."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "rhyme",
+  "register": "standard",
+  "definition": "Words that end in the same sound; or a short verse.",
+  "note": "From Old French rime, with the spelling later influenced by Greek rhythmos. Nursery verses are called it.",
+  "hints": [
+   "Cat and hat do it.",
+   "A nursery verse."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "rider",
+  "register": "standard",
+  "definition": "A person who rides.",
+  "note": "From Old English rideri, 'knight' or 'horseman'. It is also a clause added to a document.",
+  "hints": [
+   "Sits on a horse or a bicycle.",
+   "Someone on a bike or horse."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "ridge",
+  "register": "standard",
+  "definition": "A long narrow raised strip of land.",
+  "note": "From Old English hrycg, 'back' or 'spine'. The word started as the back of an animal.",
+  "hints": [
+   "A narrow crest at the top of a hill.",
+   "The top line of a roof."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "rifle",
+  "register": "standard",
+  "definition": "A long gun fired from the shoulder.",
+  "note": "Short for 'rifled gun', after the spiral grooves in the barrel. As a verb it also means to rummage through.",
+  "hints": [
+   "A hunter's long gun.",
+   "To search roughly through a drawer."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "right",
+  "register": "standard",
+  "definition": "Correct; or the opposite of left.",
+  "note": "From Old English riht, 'straight' or 'just'. It also names a legal entitlement.",
+  "hints": [
+   "Opposite of wrong.",
+   "The side of the body opposite the left."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "rigid",
+  "register": "standard",
+  "definition": "Stiff and not bending.",
+  "note": "From Latin rigidus, from rigere, 'to be stiff'. It also describes inflexible views.",
+  "hints": [
+   "A steel bar is this.",
+   "A strict rule that cannot bend."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "rigor",
+  "register": "standard",
+  "definition": "Strictness; harsh exactness.",
+  "note": "From Latin rigor, 'stiffness', from rigere, 'to be stiff'. It also shows in 'rigor mortis'.",
+  "hints": [
+   "Hard, exact discipline.",
+   "The stiffness after death, in Latin."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "rinse",
+  "register": "standard",
+  "definition": "To wash with clean water.",
+  "note": "From Old French rincier, 'to rinse'. It often removes soap.",
+  "hints": [
+   "What you do after shampooing.",
+   "A quick wash that leaves no soap."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "ripen",
+  "register": "standard",
+  "definition": "To grow ready to eat.",
+  "note": "From ripe plus -en, from Old English ripian. Fruit left in the sun does it.",
+  "hints": [
+   "What a banana does on the counter.",
+   "To become fully mature, as fruit."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "risen",
+  "register": "standard",
+  "definition": "Having gone up; the past participle of rise.",
+  "note": "From Old English risen, past participle of risan. It is the word for dough that has done its job.",
+  "hints": [
+   "What bread dough has done after proving.",
+   "The past participle of a word about going up."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "riser",
+  "register": "standard",
+  "definition": "Something that goes up; or a step on stairs.",
+  "note": "Built from rise plus -er. 'An early riser' is someone who wakes at dawn.",
+  "hints": [
+   "Someone who is up at dawn.",
+   "The upright part of a stair."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "risky",
+  "register": "standard",
+  "definition": "Likely to cause harm or loss.",
+  "note": "From risk plus -y. Risk came into English from French, which took it from Italian risco.",
+  "hints": [
+   "A gamble might be called this.",
+   "Describes a dangerous bet."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "rival",
+  "register": "standard",
+  "definition": "A person or group competing against another.",
+  "note": "From Latin rivalis, 'one who uses the same stream'. Neighbours who shared water were often in dispute.",
+  "hints": [
+   "A competitor for the same prize.",
+   "A business that sells to the same customers."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "river",
+  "register": "standard",
+  "definition": "A large natural stream of water.",
+  "note": "From Old French riviere, from Latin ripa, 'bank'. It flows to the sea.",
+  "hints": [
+   "The Thames or the Nile.",
+   "Water flowing to the sea."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "rivet",
+  "register": "standard",
+  "definition": "A metal pin used to join sheets of metal.",
+  "note": "From Old French rivet, from river, 'to fasten'. It is hammered flat at one end.",
+  "hints": [
+   "Used to build ships and bridges.",
+   "A metal pin on a pair of jeans."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "roach",
+  "register": "slang",
+  "definition": "A cockroach; or a freshwater fish.",
+  "note": "The insect word is short for cockroach, from Spanish cucaracha. The fish is an older, different word from Old French.",
+  "hints": [
+   "A pest in the kitchen.",
+   "A pest that survives anything."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "roast",
+  "register": "standard",
+  "definition": "To cook in an oven; or to mock in good fun.",
+  "note": "From Old French rostir, from a Frankish word. A comedy event named for it features jokes at the guest's expense.",
+  "hints": [
+   "A Sunday dinner meat.",
+   "A comic event of friendly insults."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "robot",
+  "register": "standard",
+  "definition": "A machine that carries out tasks automatically.",
+  "note": "From Czech robota, 'forced labour', used in Karel Capek's 1920 play. It entered English soon after.",
+  "hints": [
+   "A mechanical worker.",
+   "A machine from a Czech play of 1920."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "rocky",
+  "register": "standard",
+  "definition": "Full of rocks; or unsteady.",
+  "note": "From rock plus -y. A relationship or a road can be this.",
+  "hints": [
+   "A road of boulders and stones.",
+   "A shaky start to a project."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "rodeo",
+  "register": "standard",
+  "definition": "A show of cowboy skills like bull riding.",
+  "note": "From Spanish rodeo, from rodear, 'to surround', since it was a cattle roundup. It is now a sport.",
+  "hints": [
+   "A show with bucking broncos.",
+   "Cowboys ride bulls in it."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "roger",
+  "register": "standard",
+  "definition": "Radio word meaning 'message received'.",
+  "note": "In 1940s military radio it stood for the letter R, short for 'received'. It was later replaced by 'romeo' in the spelling alphabet.",
+  "hints": [
+   "What a pilot says to confirm.",
+   "Used in radio chat to say 'got it'."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "roomy",
+  "register": "standard",
+  "definition": "Having plenty of space.",
+  "note": "From room plus -y. Room comes from Old English rum, 'space'.",
+  "hints": [
+   "A big car interior.",
+   "Like a spacious closet."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "roost",
+  "register": "standard",
+  "definition": "A perch where birds rest or sleep.",
+  "note": "From Old English hrost, which meant 'perch' and also the framework of a roof. 'Rule the roost' means to be in charge.",
+  "hints": [
+   "Where chickens sleep.",
+   "A perch where a hen settles for the night."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "rotor",
+  "register": "standard",
+  "definition": "The turning part of a machine.",
+  "note": "From a clipping of rotator, coined by William Kingdon Clifford. A helicopter has blades on one.",
+  "hints": [
+   "The spinning blades on a helicopter.",
+   "The turning part in a motor."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "rouge",
+  "register": "standard",
+  "definition": "A red powder for the cheeks.",
+  "note": "Borrowed from French rouge, from Latin rubeus, 'red'. It means 'red' in French.",
+  "hints": [
+   "Makeup applied for colour in the cheeks.",
+   "French for the colour red."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "rough",
+  "register": "standard",
+  "definition": "Not smooth; or approximate.",
+  "note": "From Old English ruh, 'rough' or 'hairy'. It is spelled with a gh but sounds like f.",
+  "hints": [
+   "Sandpaper has a surface like this.",
+   "Like a draft that is not polished."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "round",
+  "register": "standard",
+  "definition": "Shaped like a circle or ball.",
+  "note": "From Old French rond, from Latin rotundus, 'wheel-shaped'. It also names a turn in a game or a drinks order.",
+  "hints": [
+   "Like a ball or a coin.",
+   "A turn in a boxing match."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "rover",
+  "register": "standard",
+  "definition": "A wanderer; or a vehicle that explores a planet.",
+  "note": "From rove plus -er. Spacecraft that explore planets are named after it.",
+  "hints": [
+   "A vehicle that explores Mars.",
+   "A wanderer who never settles."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "rowdy",
+  "register": "standard",
+  "definition": "Noisy and disorderly.",
+  "note": "Possibly from row, in the sense of 'noisy argument'. It started in the United States for a rough person.",
+  "hints": [
+   "A noisy crowd after a match.",
+   "Loud and out of control."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "rower",
+  "register": "standard",
+  "definition": "A person who pulls oars.",
+  "note": "From row plus -er. Oxford and Cambridge race each other each spring.",
+  "hints": [
+   "Sits in a boat and pulls hard.",
+   "A person in a university boat race."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "royal",
+  "register": "standard",
+  "definition": "Belonging to a king or queen.",
+  "note": "From Old French roial, from Latin regalis, from rex, 'king'. It is a doublet of regal.",
+  "hints": [
+   "A family with a crown.",
+   "A word for a monarch's household."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "ruddy",
+  "register": "standard",
+  "definition": "Healthy reddish in colour.",
+  "note": "From Old English rudu, 'redness', plus -y. In British speech it is also a mild swear word.",
+  "hints": [
+   "A healthy red complexion.",
+   "The glow of a fire on a face."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "rugby",
+  "register": "standard",
+  "definition": "A team sport played with an oval ball.",
+  "note": "Named for Rugby School in Warwickshire, where the game developed in the nineteenth century.",
+  "hints": [
+   "A game of tries and scrums.",
+   "Played with an oval ball."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "ruler",
+  "register": "standard",
+  "definition": "A person who governs; or a straight measuring strip.",
+  "note": "From rule plus -er. A schoolchild has one in a pencil case.",
+  "hints": [
+   "A king or queen, or a strip for drawing straight lines.",
+   "Marked in centimetres."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "rumba",
+  "register": "standard",
+  "definition": "A Cuban ballroom dance with a slow rhythm.",
+  "note": "Borrowed from Spanish rumba, of Cuban origin. It is danced in pairs.",
+  "hints": [
+   "A Latin dance.",
+   "Cuban, and danced in pairs."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "rumor",
+  "register": "standard",
+  "definition": "An unproven story going from person to person.",
+  "note": "An American spelling of rumour, from Latin rumor, 'common talk'. It spreads without proof.",
+  "hints": [
+   "Gossip with no source.",
+   "What spreads in an office without proof."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "rupee",
+  "register": "standard",
+  "definition": "The currency of India and several nearby countries.",
+  "note": "From Hindustani rupiya, a coin introduced by Sher Shah Suri in the sixteenth century. It is also used in Pakistan and Nepal.",
+  "hints": [
+   "Money in India.",
+   "Currency in Nepal and Sri Lanka."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "rural",
+  "register": "standard",
+  "definition": "Relating to the countryside.",
+  "note": "From Latin ruralis, from rus, 'countryside'. It is the opposite of urban.",
+  "hints": [
+   "Opposite of urban.",
+   "Farms and villages."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "sadly",
+  "register": "standard",
+  "definition": "In a sorrowful way; or unfortunately.",
+  "note": "From sad plus -ly. 'Sad' once meant 'full' or 'satisfied' in Old English.",
+  "hints": [
+   "How a person might say goodbye.",
+   "Used to introduce unwelcome news."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "saint",
+  "register": "standard",
+  "definition": "A person recognised by a church as holy.",
+  "note": "From Old English sanct and Old French saint, from Latin sanctus, 'holy'. Churches name many after them.",
+  "hints": [
+   "A holy person with a feast day.",
+   "Patrick and George are two."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "salad",
+  "register": "standard",
+  "definition": "A dish of raw vegetables, often with a dressing.",
+  "note": "From Old French salade, from Latin sal, 'salt', because the greens were once dressed with salt. It reached English around the fifteenth century.",
+  "hints": [
+   "A bowl of greens.",
+   "Lettuce, tomato and cucumber."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
  }
 ]
