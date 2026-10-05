@@ -166,15 +166,24 @@ func (p *Pool) FreshWord(length int, difficulty string, exclude map[string]struc
 	return fresh[rand.IntN(len(fresh))], false, true
 }
 
-// answersFor is every word a Classic game of this shape may deal. Learning
-// leaves everyday answers out without narrowing what a player may guess.
+// answersFor is every word a Classic game of this shape may deal: every pack
+// word plus the Classic bank. Learning leaves everyday answers out without
+// narrowing what a player may guess.
 func (p *Pool) answersFor(length int, difficulty string) []PackWord {
+	fits := func(w PackWord) bool {
+		return len([]rune(w.Word)) == length && (difficulty != "learning" || w.Difficulty != "familiar")
+	}
 	all := []PackWord{}
 	for _, pack := range p.packs {
 		for _, word := range pack.Words {
-			if len([]rune(word.Word)) == length && (difficulty != "learning" || word.Difficulty != "familiar") {
+			if fits(word) {
 				all = append(all, word)
 			}
+		}
+	}
+	for _, word := range p.classic {
+		if fits(word) {
+			all = append(all, word)
 		}
 	}
 	return all

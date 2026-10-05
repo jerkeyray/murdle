@@ -1,0 +1,602 @@
+[
+ {
+  "word": "aback",
+  "register": "standard",
+  "definition": "Taken by surprise; startled.",
+  "note": "Old English onbæc meant 'to the back'. 'Taken aback' was first a sailing term, for a ship whose sails were suddenly pressed back against the mast.",
+  "hints": [
+   "Usually comes after 'taken'.",
+   "How a sudden surprise leaves you."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "abase",
+  "register": "standard",
+  "definition": "To lower someone in rank or dignity.",
+  "note": "From Old French, built from a Latin word for 'low'. To abase yourself is to make yourself small in front of someone.",
+  "hints": [
+   "Grovelling does this to you.",
+   "It lowers rather than raises."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "abate",
+  "register": "standard",
+  "definition": "To become less intense; to die down.",
+  "note": "From Old French abatre, 'to beat down'. Storms, fevers and anger all abate.",
+  "hints": [
+   "What a storm does as it passes.",
+   "The opposite of building up."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "abbey",
+  "register": "standard",
+  "definition": "A building where monks or nuns live and worship.",
+  "note": "From Old French abaie, ultimately from the Aramaic abba, 'father', via the title of the man who ran it.",
+  "hints": [
+   "Monks might live in one.",
+   "Westminster has a famous one."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "abbot",
+  "register": "standard",
+  "definition": "The head of a monastery.",
+  "note": "From Latin abbas, from Aramaic abba, 'father'. The monks' leader was, in name, their father.",
+  "hints": [
+   "Leader of a religious house.",
+   "His title once meant 'father'."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "abhor",
+  "register": "standard",
+  "definition": "To hate something deeply.",
+  "note": "From Latin abhorrere, 'to shrink back in horror', with the same root as horror.",
+  "hints": [
+   "Stronger than mere dislike.",
+   "Shares a root with horror."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "abide",
+  "register": "standard",
+  "definition": "To put up with; to tolerate.",
+  "note": "From Old English abidan, 'to wait'. 'Abode', a place you wait in, comes from the same word.",
+  "hints": [
+   "Often follows 'can't'.",
+   "To tolerate, or to obey a rule."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "abode",
+  "register": "standard",
+  "definition": "A home; the place where someone lives.",
+  "note": "Once meant the act of waiting. A place you stay in came to be named after the staying.",
+  "hints": [
+   "A rather grand word for home.",
+   "Related to a word meaning to stay."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "abort",
+  "register": "standard",
+  "definition": "To stop something before it is finished.",
+  "note": "From Latin aboriri, 'to miscarry', from ab- 'away' and oriri 'to arise'. Missions and computer tasks are aborted too.",
+  "hints": [
+   "Mission control might shout it.",
+   "To call something off part-way."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "about",
+  "register": "standard",
+  "definition": "Concerning; on the subject of.",
+  "note": "Old English onbutan meant 'on the outside of'. Going around something became talking around it.",
+  "hints": [
+   "What a story is said to be.",
+   "Also means roughly, as with numbers."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "above",
+  "register": "standard",
+  "definition": "Higher than; over.",
+  "note": "From Old English abufan, 'on top'. 'Above board' comes from card players keeping their hands visible over the table.",
+  "hints": [
+   "The opposite of below.",
+   "Where the sky is, from the ground."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "abuse",
+  "register": "standard",
+  "definition": "Cruel or improper treatment, or misuse.",
+  "note": "From Latin abusus, 'used up' or 'misused'. It began as a word for wrong use before it meant cruelty.",
+  "hints": [
+   "Misuse of something, or someone.",
+   "Power can be put to this."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "abyss",
+  "register": "standard",
+  "definition": "A seemingly bottomless chasm.",
+  "note": "From Greek abussos, 'bottomless', from a- 'not' and bussos 'depth'.",
+  "hints": [
+   "Nietzsche warned it stares back.",
+   "A drop with no visible floor."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "acorn",
+  "register": "standard",
+  "definition": "The nut of the oak tree.",
+  "note": "From Old English æcern, originally any wild fruit. The spelling bent towards 'oak' and 'corn' later.",
+  "hints": [
+   "Squirrels bury these.",
+   "Great oaks are said to grow from it."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "acrid",
+  "register": "standard",
+  "definition": "Sharp and bitter in smell or taste.",
+  "note": "From Latin acer, 'sharp'. It was shaped to look like 'acid' by people who assumed the two were related.",
+  "hints": [
+   "Smoke can have this quality.",
+   "It catches the back of your throat."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "actor",
+  "register": "standard",
+  "definition": "Someone who performs a role on stage or screen.",
+  "note": "From Latin, 'a doer', from agere 'to do'. In law it once meant the person who brings a case.",
+  "hints": [
+   "Works with scripts and directors.",
+   "Plays someone they are not."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "acute",
+  "register": "standard",
+  "definition": "Severe and sudden; or sharp.",
+  "note": "From Latin acutus, 'sharpened'. An acute angle is a sharp one, and an acute illness strikes quickly.",
+  "hints": [
+   "Describes an angle under ninety degrees.",
+   "Sudden and severe, in medicine."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "adage",
+  "register": "standard",
+  "definition": "An old saying held to be true.",
+  "note": "From Latin adagium, a proverb. 'A stitch in time' is one.",
+  "hints": [
+   "A proverb by another name.",
+   "Old wisdom in a short sentence."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "adapt",
+  "register": "standard",
+  "definition": "To change to suit new conditions.",
+  "note": "From Latin adaptare, 'to fit to'. Darwin's species and novels turned into films both do it.",
+  "hints": [
+   "What species do to survive.",
+   "A book may be this for the screen."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "adept",
+  "register": "standard",
+  "definition": "Very skilled at something.",
+  "note": "From Latin adeptus, 'having attained'. Alchemists used it of anyone who had cracked the secret of gold.",
+  "hints": [
+   "Highly skilled.",
+   "Alchemists claimed the title."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "admin",
+  "register": "slang",
+  "definition": "Administrative work; the paperwork side of things.",
+  "note": "A clipping of administration. On the internet it also names whoever runs a forum or server.",
+  "hints": [
+   "Forms, filing and emails.",
+   "The person who can ban you from a server."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "admit",
+  "register": "standard",
+  "definition": "To confess; or to let someone in.",
+  "note": "From Latin admittere, 'to send to'. A ticket admits you; a guilty person admits fault.",
+  "hints": [
+   "What a ticket does at the door.",
+   "To own up to something."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "adobe",
+  "register": "standard",
+  "definition": "Sun-dried brick made of clay and straw.",
+  "note": "From Spanish, via Arabic, from a Coptic word for brick, which goes back to ancient Egyptian. Few English words are older.",
+  "hints": [
+   "Common building material in the American Southwest.",
+   "Mud brick dried in the sun."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "adopt",
+  "register": "standard",
+  "definition": "To take on as your own.",
+  "note": "From Latin adoptare, 'to choose for oneself', from optare 'to choose'.",
+  "hints": [
+   "Parents may do this with a child.",
+   "You can also do it with an idea."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "adore",
+  "register": "standard",
+  "definition": "To love and admire deeply.",
+  "note": "From Latin adorare, 'to speak to', meaning to pray. It was a word for worship before it was a word for fondness.",
+  "hints": [
+   "Stronger than like.",
+   "Once meant to worship."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "adorn",
+  "register": "standard",
+  "definition": "To decorate or make beautiful.",
+  "note": "From Latin adornare, 'to furnish', the same root as ornate and ornament.",
+  "hints": [
+   "What jewellery does to a person.",
+   "Related to ornament."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "adult",
+  "register": "standard",
+  "definition": "A fully grown person or animal.",
+  "note": "From Latin adultus, 'grown up'. Adolescent comes from the same verb: one is growing, the other has grown.",
+  "hints": [
+   "No longer a child.",
+   "Shares a root with adolescent."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "affix",
+  "register": "standard",
+  "definition": "To attach; or a prefix or suffix.",
+  "note": "From Latin affixus, 'fastened to'. Grammar borrowed it for the bits fastened onto words.",
+  "hints": [
+   "Un- and -ness are examples.",
+   "To stick one thing to another."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "afire",
+  "register": "standard",
+  "definition": "On fire.",
+  "note": "Simply a- 'on' plus fire, like ablaze. It is used about passions as often as buildings.",
+  "hints": [
+   "Burning, in a literary way.",
+   "A heart might be described this way."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "afoot",
+  "register": "standard",
+  "definition": "Happening or being planned.",
+  "note": "Literally 'on foot'. Sherlock Holmes made 'the game is afoot' famous, borrowing it from Shakespeare.",
+  "hints": [
+   "Holmes says the game is this.",
+   "Something is being planned."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "afoul",
+  "register": "standard",
+  "definition": "In conflict with; in trouble with.",
+  "note": "From a- plus foul. Ships ran afoul of each other when their rigging tangled.",
+  "hints": [
+   "Usually followed by 'of the law'.",
+   "Tangled up in trouble."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "after",
+  "register": "standard",
+  "definition": "Later than; following.",
+  "note": "From Old English æfter. 'Aftermath' first meant a second crop of grass mown after the first.",
+  "hints": [
+   "The opposite of before.",
+   "Comes later in time."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "again",
+  "register": "standard",
+  "definition": "Once more.",
+  "note": "From Old English ongean, 'back'. 'Against' grew from the same word.",
+  "hints": [
+   "One more time.",
+   "Encore means roughly this."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "agape",
+  "register": "standard",
+  "definition": "With the mouth wide open in wonder.",
+  "note": "A- plus gape. Its first known use is in Milton's Paradise Lost, in 1667.",
+  "hints": [
+   "Jaw hanging open.",
+   "Milton is credited with it."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "agate",
+  "register": "standard",
+  "definition": "A banded, semi-precious stone.",
+  "note": "From Greek achates, named after the river in Sicily where the stone was found.",
+  "hints": [
+   "Marbles were once made of it.",
+   "A banded gemstone."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "agent",
+  "register": "standard",
+  "definition": "Someone who acts on another's behalf.",
+  "note": "From Latin agens, 'doing'. A secret agent and a chemical agent both make things happen.",
+  "hints": [
+   "Spies and estate brokers are both called this.",
+   "Someone who acts for you."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "agile",
+  "register": "standard",
+  "definition": "Able to move quickly and easily.",
+  "note": "From Latin agilis, 'nimble', from agere 'to drive'. Software teams adopted it in 2001.",
+  "hints": [
+   "Gymnasts and goats are this.",
+   "Quick on your feet."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "aglow",
+  "register": "standard",
+  "definition": "Glowing with light, warmth or happiness.",
+  "note": "A- plus glow, like afire and ablaze. Faces are aglow as often as fires.",
+  "hints": [
+   "Lit up warmly.",
+   "A happy face might be this."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "agony",
+  "register": "standard",
+  "definition": "Extreme physical or mental pain.",
+  "note": "From Greek agonia, 'struggle', from agon, an athletic contest. The pain came from the effort.",
+  "hints": [
+   "Severe suffering.",
+   "Its Greek root meant a contest."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "agora",
+  "register": "standard",
+  "definition": "A public square or market in ancient Greece.",
+  "note": "Greek for 'gathering place'. Agoraphobia is a fear of open, public spaces.",
+  "hints": [
+   "Athenians gathered here.",
+   "Hidden in a word for fearing crowds."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "agree",
+  "register": "standard",
+  "definition": "To share an opinion.",
+  "note": "From Old French a gré, 'to one's liking', from Latin gratum, 'pleasing'.",
+  "hints": [
+   "What two people do when they see eye to eye.",
+   "Nodding usually signals it."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "ahead",
+  "register": "standard",
+  "definition": "In front; in the future.",
+  "note": "A- plus head, probably first a sailor's word for beyond the ship's bow.",
+  "hints": [
+   "Further forward.",
+   "The opposite of behind."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "aisle",
+  "register": "standard",
+  "definition": "A passage between rows of seats or shelves.",
+  "note": "From Old French ele, 'wing', from Latin ala. It meant the side wings of a church before it meant a walkway.",
+  "hints": [
+   "Supermarkets and planes have them.",
+   "Brides walk down one."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "alarm",
+  "register": "standard",
+  "definition": "A warning of danger, or the device that sounds it.",
+  "note": "From Italian all'arme, 'to arms!', the cry raised when an enemy appeared.",
+  "hints": [
+   "It wakes you in the morning.",
+   "Once a call to grab weapons."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "album",
+  "register": "standard",
+  "definition": "A collection of recordings, or a book for photos.",
+  "note": "Latin for a blank white tablet, from albus 'white'. Romans posted public notices on one.",
+  "hints": [
+   "Musicians release these.",
+   "Its Latin root meant white."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "alert",
+  "register": "standard",
+  "definition": "Watchful and ready.",
+  "note": "From Italian all'erta, 'on the lookout', from erta, a high lookout post.",
+  "hints": [
+   "Fully awake and watchful.",
+   "Lifeguards should be this."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "algae",
+  "register": "standard",
+  "definition": "Simple water plants such as seaweed and pond scum.",
+  "note": "Plural of Latin alga, 'seaweed'. They produce much of the oxygen in the air.",
+  "hints": [
+   "Turns a pond green.",
+   "Seaweed belongs here."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "alien",
+  "register": "standard",
+  "definition": "A being from another world; or anything foreign.",
+  "note": "From Latin alienus, 'belonging to another', from alius, 'other'.",
+  "hints": [
+   "Science fiction is full of them.",
+   "From somewhere else entirely."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "align",
+  "register": "standard",
+  "definition": "To bring into a line.",
+  "note": "From French aligner, from Latin linea, 'line'. Text, wheels and stars can all be aligned.",
+  "hints": [
+   "What you do with text in a document.",
+   "To line things up."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "alike",
+  "register": "standard",
+  "definition": "Similar; in the same way.",
+  "note": "From Old English gelic, 'similar', related to the word like.",
+  "hints": [
+   "Twins often look this way.",
+   "Similar to each other."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ }
+]

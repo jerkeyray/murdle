@@ -31,6 +31,7 @@ type Pool struct {
 	dictionary map[string]struct{}
 
 	packs    []Pack
+	classic  []PackWord
 	packByID map[string]Pack
 	wordInfo map[string]PackWord
 	wordPack map[string]string
@@ -44,6 +45,10 @@ type Pool struct {
 // handling.
 func NewPool() *Pool {
 	packs, err := loadPacks()
+	if err != nil {
+		panic("words: " + err.Error())
+	}
+	classic, err := loadClassic()
 	if err != nil {
 		panic("words: " + err.Error())
 	}
@@ -69,8 +74,23 @@ func NewPool() *Pool {
 		}
 	}
 
+	// The Classic bank joins the same lookups, so an entry card, its clues and
+	// the recorded solve all work for it unchanged. A word in both keeps its
+	// pack entry, which is the richer one.
+	bank := make([]PackWord, 0, len(classic))
+	for _, w := range classic {
+		if _, inPack := wordInfo[w.Word]; inPack {
+			continue
+		}
+		bank = append(bank, w)
+		wordInfo[w.Word] = w
+		wordPack[w.Word] = ClassicPackID
+		dictionary[w.Word] = struct{}{}
+	}
+
 	return &Pool{
 		dictionary: dictionary,
+		classic:    bank,
 		packs:      packs,
 		packByID:   packByID,
 		wordInfo:   wordInfo,
