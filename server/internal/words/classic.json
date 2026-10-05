@@ -612,6 +612,18 @@
   "connection": ""
  },
  {
+  "word": "adrift",
+  "register": "standard",
+  "definition": "Floating with no direction or mooring.",
+  "note": "From a- plus drift. It describes a boat that has lost its anchor or power, or a person without purpose.",
+  "hints": [
+   "A lifeboat without oars.",
+   "Someone with no plan after leaving school."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "adult",
   "register": "standard",
   "definition": "A fully grown person or animal.",
@@ -1075,6 +1087,18 @@
   "hints": [
    "A formal way of saying even though.",
    "Introduces a concession."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "albino",
+  "register": "standard",
+  "definition": "A person or animal born without normal colour pigment.",
+  "note": "From Portuguese and Spanish albino, from Latin albus, 'white'. It was first used by Portuguese explorers describing people they saw in Africa.",
+  "hints": [
+   "White fur and pink eyes in a rabbit.",
+   "Moby Dick is a white whale like this."
   ],
   "difficulty": "stretch",
   "connection": ""
@@ -2604,6 +2628,18 @@
   "connection": ""
  },
  {
+  "word": "assent",
+  "register": "standard",
+  "definition": "Agreement or approval; or to agree.",
+  "note": "From Old French assentir, from Latin assentire, 'to agree'. A king gave royal assent to make a bill law.",
+  "hints": [
+   "A monarch gives royal one to a bill.",
+   "A nod of the head."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
   "word": "assert",
   "register": "standard",
   "definition": "To state something firmly and confidently.",
@@ -3108,6 +3144,18 @@
   "connection": ""
  },
  {
+  "word": "averse",
+  "register": "standard",
+  "definition": "Strongly unwilling or opposed.",
+  "note": "From Latin aversus, 'turned away', from avertere. It is almost always followed by 'to'.",
+  "hints": [
+   "Usually followed by 'to', as in someone cautious about taking chances.",
+   "A person who avoids gambles is described as risk-this."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
   "word": "avert",
   "register": "standard",
   "definition": "To turn away; to prevent.",
@@ -3273,6 +3321,18 @@
    "Named after a laundry detergent."
   ],
   "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "azalea",
+  "register": "standard",
+  "definition": "A shrub with showy spring flowers.",
+  "note": "From Greek azaleos, 'dry', because it was said to grow in dry soil.",
+  "hints": [
+   "Blooms bright pink in Japanese gardens.",
+   "A relative of the rhododendron."
+  ],
+  "difficulty": "stretch",
   "connection": ""
  },
  {
@@ -3792,6 +3852,18 @@
   "connection": ""
  },
  {
+  "word": "barter",
+  "register": "standard",
+  "definition": "To trade goods or services without using money.",
+  "note": "From Old French barater, 'to cheat' or exchange. It is how markets worked before coins.",
+  "hints": [
+   "Trading eggs for a haircut.",
+   "How people traded before currency existed."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
   "word": "basal",
   "register": "standard",
   "definition": "Forming the base; fundamental.",
@@ -4017,6 +4089,18 @@
    "Said of a sharp watchful stare, small and bright."
   ],
   "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "beagle",
+  "register": "standard",
+  "definition": "A small hound with floppy ears and a keen nose.",
+  "note": "Of uncertain origin; one suggested source is a French phrase meaning 'open throat'. The Royal Navy ship that carried Darwin had this name.",
+  "hints": [
+   "Snoopy is a cartoon one.",
+   "Used by customs to sniff luggage for food."
+  ],
+  "difficulty": "familiar",
   "connection": ""
  },
  {
@@ -4680,6 +4764,18 @@
   "connection": ""
  },
  {
+  "word": "biceps",
+  "register": "standard",
+  "definition": "The muscle at the front of the upper arm.",
+  "note": "From Latin biceps, 'two-headed', from bis and caput. The muscle starts as two heads at the shoulder.",
+  "hints": [
+   "Flexed to show off strength.",
+   "Bulges when you curl a dumbbell."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "bidder",
   "register": "standard",
   "definition": "A person who offers a price at an auction.",
@@ -4860,6 +4956,18 @@
   "connection": ""
  },
  {
+  "word": "biopic",
+  "register": "standard",
+  "definition": "A film telling the true life story of a person.",
+  "note": "A clipping of biographical picture.",
+  "hints": [
+   "Rami Malek played Freddie Mercury in one.",
+   "Actors often win Oscars for these."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
   "word": "biopsy",
   "register": "standard",
   "definition": "The removal of a small tissue sample to be examined for disease.",
@@ -4929,6 +5037,18 @@
    "Often called a buffalo."
   ],
   "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "bistro",
+  "register": "standard",
+  "definition": "A small, casual restaurant, usually French.",
+  "note": "From French bistro, whose origin is unknown. A popular story says Russian soldiers in Paris in 1814 shouted 'bystro', 'quickly', but historians doubt it.",
+  "hints": [
+   "A Parisian café with small round tables.",
+   "Chalkboard menu and checked tablecloths."
+  ],
+  "difficulty": "familiar",
   "connection": ""
  },
  {
@@ -6441,6 +6561,18 @@
    "Metal of statues and bells."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "brooch",
+  "register": "standard",
+  "definition": "A piece of jewellery fastened to clothing with a pin.",
+  "note": "A variant of broach, from Old French broche, 'pointed tool' or pin.",
+  "hints": [
+   "Worn on a lapel or scarf.",
+   "Grandmother's heirloom, pinned to her coat."
+  ],
+  "difficulty": "stretch",
   "connection": ""
  },
  {
@@ -8239,6 +8371,18 @@
   "hints": [
    "Yoga teachers talk about seven of them, from the spine's base to the crown.",
    "Hindu tradition places them along the spine."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "chalet",
+  "register": "standard",
+  "definition": "A wooden house with a sloping roof, typical of the Alps.",
+  "note": "Borrowed from French chalet, from a Franco-Provencal word for a herdsman's mountain hut.",
+  "hints": [
+   "Where skiers stay in the mountains.",
+   "A holiday cabin with overhanging eaves and carved balconies."
   ],
   "difficulty": "stretch",
   "connection": ""
@@ -10272,6 +10416,30 @@
   "connection": ""
  },
  {
+  "word": "corral",
+  "register": "standard",
+  "definition": "A fenced enclosure for livestock; or to gather people into one place.",
+  "note": "From Spanish corral, a doublet of kraal. In the old West, famous gunfights took place at one.",
+  "hints": [
+   "Horses are kept in one on a ranch.",
+   "The OK one in Tombstone saw a famous gunfight."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "corset",
+  "register": "standard",
+  "definition": "A tight undergarment that shapes the waist.",
+  "note": "From Old French corset, 'little body', from cors. Victorian women laced them tightly.",
+  "hints": [
+   "Held in with stays and laces.",
+   "Scarlett O'Hara had hers pulled tight."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
   "word": "cortex",
   "register": "standard",
   "definition": "The outer layer of the brain or another organ.",
@@ -10759,6 +10927,18 @@
   "hints": [
    "Babies do it before they walk.",
    "A swimming stroke has this name."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "crayon",
+  "register": "standard",
+  "definition": "A coloured wax stick for drawing.",
+  "note": "From French crayon, from craie, 'chalk', from Latin creta.",
+  "hints": [
+   "A child's drawing might use it.",
+   "Comes in a box with a built-in sharpener."
   ],
   "difficulty": "familiar",
   "connection": ""
@@ -11397,6 +11577,18 @@
    "Short for a cup of something warm."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "curate",
+  "register": "standard",
+  "definition": "A junior priest, or to select and arrange items.",
+  "note": "From Medieval Latin curatus, 'one responsible for care'. The verb sense for museum shows came later.",
+  "hints": [
+   "An assistant to a vicar.",
+   "Museum staff do this to an exhibition."
+  ],
+  "difficulty": "stretch",
   "connection": ""
  },
  {
@@ -12276,6 +12468,18 @@
   "connection": ""
  },
  {
+  "word": "deluge",
+  "register": "standard",
+  "definition": "A huge flood, or an overwhelming amount of something.",
+  "note": "From Old French deluge, from Latin diluvium. Noah's flood is called the Deluge.",
+  "hints": [
+   "The Bible's flood was this.",
+   "An inbox flooded with messages."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
   "word": "deluxe",
   "register": "standard",
   "definition": "Luxurious or of superior quality.",
@@ -12561,6 +12765,18 @@
    "Tennessee Williams named a streetcar after this feeling."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "desist",
+  "register": "standard",
+  "definition": "To stop doing something.",
+  "note": "From Latin desistere, 'to leave off'.",
+  "hints": [
+   "Legal letters tell you to cease and do this.",
+   "A police officer's firm command to stop."
+  ],
+  "difficulty": "stretch",
   "connection": ""
  },
  {
@@ -13188,6 +13404,18 @@
   "connection": ""
  },
  {
+  "word": "doable",
+  "register": "standard",
+  "definition": "Possible to do.",
+  "note": "From do plus -able, found in Middle English.",
+  "hints": [
+   "What a manager hopes the deadline is.",
+   "Not too hard, but not trivial."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "doctor",
   "register": "standard",
   "definition": "A person trained to treat illness; also a holder of a doctorate.",
@@ -13404,6 +13632,18 @@
   "connection": ""
  },
  {
+  "word": "dorado",
+  "register": "standard",
+  "definition": "A golden fish also called mahi-mahi.",
+  "note": "From Spanish dorado, 'gilded'. The fish is bright golden-green in the water.",
+  "hints": [
+   "A big game fish with a blunt head and gold-green sides.",
+   "The Spanish name means gilded, and the same word names a lost city of gold."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
   "word": "dorky",
   "register": "slang",
   "definition": "Awkward in an endearing, uncool way.",
@@ -13545,6 +13785,18 @@
    "A round wooden rod."
   ],
   "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "downer",
+  "register": "slang",
+  "definition": "Something depressing; or a drug that slows the body.",
+  "note": "From down plus -er. A downer is a sedative, and also a letdown, the opposite of an upper.",
+  "hints": [
+   "A bit of news that kills the party mood.",
+   "The opposite of an upper."
+  ],
+  "difficulty": "stretch",
   "connection": ""
  },
  {
@@ -13735,6 +13987,18 @@
   "hints": [
    "A grey drizzly November afternoon.",
    "Poe's raven came on a midnight of this sort."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "dredge",
+  "register": "standard",
+  "definition": "To dig up mud from a river bed, or to bring something up from the past.",
+  "note": "From a Middle English word for a drag net. Cooks also dredge fish in flour.",
+  "hints": [
+   "A boat that clears a harbour channel.",
+   "Scooping oysters, or coating chicken in flour."
   ],
   "difficulty": "stretch",
   "connection": ""
@@ -14013,6 +14277,18 @@
    "A bath toy that floats."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "dugout",
+  "register": "standard",
+  "definition": "A boat hollowed from a tree trunk, or a shelter at a baseball field.",
+  "note": "From dug out. Players sit in the baseball kind below ground level.",
+  "hints": [
+   "Where players wait to bat.",
+   "An ancient canoe."
+  ],
+  "difficulty": "stretch",
   "connection": ""
  },
  {
@@ -15264,6 +15540,18 @@
   "connection": ""
  },
  {
+  "word": "errand",
+  "register": "standard",
+  "definition": "A short trip to do a job for someone.",
+  "note": "From Old English aerende, 'message'. The older sense was a message carried by a messenger.",
+  "hints": [
+   "Dropping off a parcel on your way home.",
+   "A boy who runs them for a shopkeeper."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "error",
   "register": "standard",
   "definition": "A mistake.",
@@ -15297,6 +15585,18 @@
    "Houdini's speciality."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "escrow",
+  "register": "standard",
+  "definition": "Money or property held by a neutral party until a deal is complete.",
+  "note": "From Old French escroe, 'scrap of parchment', from a Frankish word for a piece. The scrap was the document held in trust.",
+  "hints": [
+   "House buyers' deposits sit in this account.",
+   "A third party holds the funds until the closing."
+  ],
+  "difficulty": "stretch",
   "connection": ""
  },
  {
@@ -16260,6 +16560,18 @@
   "connection": ""
  },
  {
+  "word": "fedora",
+  "register": "standard",
+  "definition": "A felt hat with a creased crown and a brim.",
+  "note": "Named for Fedora, an 1882 play by Victorien Sardou, whose heroine wore such a hat. It became a male fashion later.",
+  "hints": [
+   "Humphrey Bogart wore one in noir films.",
+   "Indiana Jones wears one."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
   "word": "feeble",
   "register": "standard",
   "definition": "Weak in strength or effect.",
@@ -16425,6 +16737,18 @@
    "The way to get to an island without a bridge."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "fervor",
+  "register": "standard",
+  "definition": "Intense passion or enthusiasm.",
+  "note": "From Latin fervor, 'boiling heat', from fervere, 'to boil'. Fervent has the same origin.",
+  "hints": [
+   "Zeal at a political rally.",
+   "Heat in emotion."
+  ],
+  "difficulty": "stretch",
   "connection": ""
  },
  {
@@ -17268,6 +17592,18 @@
   "connection": ""
  },
  {
+  "word": "flirty",
+  "register": "standard",
+  "definition": "Playfully showing romantic interest.",
+  "note": "From flirt plus -y. Flirt first meant to flick away sharply.",
+  "hints": [
+   "A wink and a smile at a party.",
+   "Playful teasing between two people."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "float",
   "register": "standard",
   "definition": "To rest on top of liquid without sinking.",
@@ -17673,6 +18009,18 @@
    "A way to sign off a letter to someone dear."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "foodie",
+  "register": "slang",
+  "definition": "A person with a keen interest in good food.",
+  "note": "From food plus -ie. It was popularised by The Official Foodie Handbook, published in 1984.",
+  "hints": [
+   "Posts pictures of every dish.",
+   "Queues for a new restaurant opening."
+  ],
+  "difficulty": "stretch",
   "connection": ""
  },
  {
@@ -18631,6 +18979,18 @@
   "hints": [
    "Eight pints in Britain.",
    "What a milk jug may hold."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "gallop",
+  "register": "standard",
+  "definition": "A horse's fastest running pace.",
+  "note": "From Old French galoper, from a Frankish phrase meaning 'to run well'. It is related to leap.",
+  "hints": [
+   "All four hooves leave the ground.",
+   "The Lone Ranger rode off at one."
   ],
   "difficulty": "familiar",
   "connection": ""
@@ -22800,6 +23160,18 @@
   "connection": ""
  },
  {
+  "word": "impala",
+  "register": "standard",
+  "definition": "A graceful African antelope known for its long leaps.",
+  "note": "Borrowed from Zulu impala. The male has lyre-shaped horns.",
+  "hints": [
+   "Lions hunt it on the savannah.",
+   "A Chevrolet car carries its name."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
   "word": "impart",
   "register": "standard",
   "definition": "To pass on knowledge or a quality.",
@@ -24648,6 +25020,18 @@
   "connection": ""
  },
  {
+  "word": "lambda",
+  "register": "standard",
+  "definition": "The eleventh letter of the Greek alphabet, or a symbol for wavelength.",
+  "note": "From Greek lambda, a doublet of Hebrew lamed. Programmers also use it for small anonymous functions.",
+  "hints": [
+   "Appears in physics equations for wavelength.",
+   "A logo for the Half-Life games."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
   "word": "lament",
   "register": "standard",
   "definition": "To express deep sorrow or regret about something; also a song or poem of grief.",
@@ -25531,6 +25915,18 @@
   "hints": [
    "Sued in court by a defamed celebrity.",
    "Slander's written counterpart."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "libido",
+  "register": "standard",
+  "definition": "Sexual desire or drive.",
+  "note": "From Latin libido, 'lust'. Freud adopted it for psychic energy in his theory.",
+  "hints": [
+   "Freud made it famous.",
+   "Doctors blame stress or medication when it drops."
   ],
   "difficulty": "stretch",
   "connection": ""
@@ -27420,6 +27816,18 @@
   "connection": ""
  },
  {
+  "word": "meager",
+  "register": "standard",
+  "definition": "Small in amount or quality.",
+  "note": "From Old French maigre, from Latin macer, 'thin'. The British spelling is meagre.",
+  "hints": [
+   "A scant harvest or a thin wage.",
+   "Describes a portion that does not fill you."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
   "word": "mealy",
   "register": "standard",
   "definition": "Soft, dry and powdery like ground grain; also, pale.",
@@ -28101,6 +28509,18 @@
    "Oil and water refuse to."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "minion",
+  "register": "standard",
+  "definition": "A servant who follows orders from someone powerful.",
+  "note": "From French mignon, 'darling' or favourite. Its sense turned from beloved to servile.",
+  "hints": [
+   "A villain's lackey.",
+   "Yellow ones in a film are devoted to Gru."
+  ],
+  "difficulty": "stretch",
   "connection": ""
  },
  {
@@ -30180,6 +30600,18 @@
   "connection": ""
  },
  {
+  "word": "nutmeg",
+  "register": "standard",
+  "definition": "A spice from the seed of a tropical tree.",
+  "note": "From Middle English notemuge, a partial translation of Latin nux muscata, 'musky nut'.",
+  "hints": [
+   "Grated over eggnog.",
+   "Once so valuable that nations fought over the islands that grew it."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "nutty",
   "register": "standard",
   "definition": "Tasting of nuts; also, informally, crazy.",
@@ -30285,6 +30717,18 @@
    "Secure a permit."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "obtuse",
+  "register": "standard",
+  "definition": "Slow to understand; or, in geometry, an angle over ninety degrees.",
+  "note": "From Latin obtusus, 'blunt', from obtundere, 'to beat'. A dull mind is blunt like the angle.",
+  "hints": [
+   "An angle between a right angle and a straight line.",
+   "Describes someone who misses the obvious hint."
+  ],
+  "difficulty": "stretch",
   "connection": ""
  },
  {
@@ -33996,6 +34440,18 @@
   "connection": ""
  },
  {
+  "word": "priory",
+  "register": "standard",
+  "definition": "A religious house led by a prior or prioress.",
+  "note": "From Anglo-Norman priorie. It ranks below an abbey.",
+  "hints": [
+   "Smaller than an abbey.",
+   "Many English ruins date from Henry VIII's dissolution of these."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
   "word": "prism",
   "register": "standard",
   "definition": "A glass shape that splits light into colours.",
@@ -34392,6 +34848,18 @@
   "connection": ""
  },
  {
+  "word": "pundit",
+  "register": "standard",
+  "definition": "A person who gives expert opinions, especially in the media.",
+  "note": "From Hindi pandit, a learned man, from Sanskrit pandita. In English it came to mean a commentator.",
+  "hints": [
+   "Pops up on news panels after an election.",
+   "Sports ones offer opinions from the studio."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
   "word": "punish",
   "register": "standard",
   "definition": "To penalise for wrongdoing.",
@@ -34401,6 +34869,18 @@
    "Give a penalty."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "punter",
+  "register": "slang",
+  "definition": "A person who places a bet, or in British slang any paying customer.",
+  "note": "From punt plus -er. The betting sense comes from punt, 'to gamble'; the boat and football senses are separate.",
+  "hints": [
+   "Studies the racecard before putting money on a horse.",
+   "In British slang, the ordinary customer of any business."
+  ],
+  "difficulty": "stretch",
   "connection": ""
  },
  {
@@ -34483,6 +34963,18 @@
   "hints": [
    "To clear out what is unwanted.",
    "A political clearing out of rivals."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "purify",
+  "register": "standard",
+  "definition": "To remove impurities from something.",
+  "note": "From Old French purifier, from Latin purus, 'clean'.",
+  "hints": [
+   "What a filter does to water.",
+   "Rituals do it to the soul."
   ],
   "difficulty": "stretch",
   "connection": ""
@@ -37068,6 +37560,18 @@
   "connection": ""
  },
  {
+  "word": "ringer",
+  "register": "standard",
+  "definition": "A bell-ringer, or a substitute who looks like someone else.",
+  "note": "From ring plus -er. A dead ringer is a double, a phrase possibly from horse racing.",
+  "hints": [
+   "Sounds the church bells on Sunday.",
+   "A fake who takes the place of a champion."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
   "word": "rinse",
   "register": "standard",
   "definition": "To wash with clean water.",
@@ -38239,6 +38743,18 @@
   "hints": [
    "What pasta is served with.",
    "Tomato or soy, perhaps."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "saucer",
+  "register": "standard",
+  "definition": "A small dish for a cup, or a flat disc shape.",
+  "note": "From Old French saussier, a dish for sauce. UFOs are often called flying ones.",
+  "hints": [
+   "Sits under a teacup.",
+   "Aliens' vessel in 1950s films."
   ],
   "difficulty": "familiar",
   "connection": ""
@@ -39972,6 +40488,18 @@
   "connection": ""
  },
  {
+  "word": "shiver",
+  "register": "standard",
+  "definition": "To tremble, usually from cold or fear.",
+  "note": "Of uncertain origin; it may be a changed form of an old word for 'chatter'. 'Shiver my timbers' is pirate talk.",
+  "hints": [
+   "What a wet swimmer does on land.",
+   "A ghost story might send one down your spine."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "shoal",
   "register": "standard",
   "definition": "A group of fish; or a shallow area of sea.",
@@ -39991,6 +40519,18 @@
   "hints": [
    "What bad news can be.",
    "What an electric jolt delivers."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "shoddy",
+  "register": "standard",
+  "definition": "Poorly made or low in quality.",
+  "note": "Origin unknown; it may come from an old word for loose stone fragments. In the 1800s shoddy was also cheap cloth made from recycled wool.",
+  "hints": [
+   "A cheaply built house that falls apart.",
+   "Workmanship that cuts corners."
   ],
   "difficulty": "familiar",
   "connection": ""
@@ -40305,6 +40845,18 @@
    "Reapers swung it by hand before machines took over the harvest."
   ],
   "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "sickly",
+  "register": "standard",
+  "definition": "Often ill and weak; or unpleasantly sweet.",
+  "note": "From sick plus -ly. A sickly smell or taste turns the stomach.",
+  "hints": [
+   "A child with weak health.",
+   "Describes cloying syrup."
+  ],
+  "difficulty": "familiar",
   "connection": ""
  },
  {
@@ -40908,6 +41460,18 @@
   "connection": ""
  },
  {
+  "word": "sleazy",
+  "register": "standard",
+  "definition": "Cheap, seedy and morally dubious.",
+  "note": "Origin unclear; it first meant flimsy cloth. The sense of being disreputable grew later.",
+  "hints": [
+   "A dingy bar or a dishonest salesman.",
+   "A politician caught in a scandal."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "sledge",
   "register": "standard",
   "definition": "A vehicle on runners for sliding over snow, or a heavy hammer.",
@@ -41145,6 +41709,18 @@
    "An animal that hangs from branches."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "slough",
+  "register": "standard",
+  "definition": "To shed a layer of skin; or a muddy bog.",
+  "note": "From Middle English slogh, perhaps related to a Germanic word for slipping. The bog sense is a separate old word, said slow.",
+  "hints": [
+   "What a snake does with its old skin.",
+   "In Pilgrim's Progress, Christian struggles through a muddy bog of Despond that shares the word."
+  ],
+  "difficulty": "stretch",
   "connection": ""
  },
  {
@@ -41877,6 +42453,18 @@
    "What a detective does to a case."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "somber",
+  "register": "standard",
+  "definition": "Dark, serious and gloomy in mood.",
+  "note": "From French sombre, 'dark', from Latin sub umbra, 'under shade'. Sombre is the British spelling.",
+  "hints": [
+   "Suits worn at a funeral.",
+   "A tone of mourning."
+  ],
+  "difficulty": "stretch",
   "connection": ""
  },
  {
@@ -43428,6 +44016,18 @@
   "connection": ""
  },
  {
+  "word": "stingy",
+  "register": "standard",
+  "definition": "Unwilling to spend or share.",
+  "note": "Of uncertain origin; perhaps from a dialect form of sting. Scrooge was the classic example.",
+  "hints": [
+   "Scrooge before his night of ghosts.",
+   "Leaves a tiny tip."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "stink",
   "register": "standard",
   "definition": "To give off a strong foul smell.",
@@ -44064,6 +44664,18 @@
   "connection": ""
  },
  {
+  "word": "stuffy",
+  "register": "standard",
+  "definition": "Lacking fresh air, or overly formal.",
+  "note": "From stuff plus -y. A stuffy nose is blocked, and a stuffy person is stiff.",
+  "hints": [
+   "A closed-up room in summer.",
+   "A cold gives you a nose like this."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "stump",
   "register": "standard",
   "definition": "What remains of a cut tree.",
@@ -44131,6 +44743,18 @@
   "hints": [
    "A debonair, polished gentleman.",
    "Charming, like a film spy."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "subdue",
+  "register": "standard",
+  "definition": "To overcome and bring under control.",
+  "note": "From Old French souduire, from Latin subducere. The Latin may have been influenced by subdere, 'to place under'.",
+  "hints": [
+   "A guard might do it to a prisoner.",
+   "What a dimmer does to the lights."
   ],
   "difficulty": "stretch",
   "connection": ""
@@ -44251,6 +44875,18 @@
   "hints": [
    "Experience pain.",
    "Endure something bad."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "suffix",
+  "register": "standard",
+  "definition": "A group of letters added to the end of a word to change its meaning.",
+  "note": "From Latin suffixus, 'fastened underneath', from sub- and figere, 'to fasten'.",
+  "hints": [
+   "-ness and -ing are examples.",
+   "Opposite of a prefix."
   ],
   "difficulty": "familiar",
   "connection": ""
@@ -45264,6 +45900,18 @@
   "connection": ""
  },
  {
+  "word": "tarmac",
+  "register": "standard",
+  "definition": "A road or airfield surface made from tar and stones.",
+  "note": "A clipping of tarmacadam, from tar and macadam, the crushed-stone road named for the Scot John McAdam. It was once a trademark.",
+  "hints": [
+   "Where a plane waits before takeoff.",
+   "Planes taxi across it."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "tarot",
   "register": "standard",
   "definition": "A deck of cards used for fortune-telling.",
@@ -45624,6 +46272,18 @@
   "connection": ""
  },
  {
+  "word": "tensor",
+  "register": "standard",
+  "definition": "A mathematical object that generalises vectors and matrices, or a muscle that tightens a part.",
+  "note": "From New Latin tensor, 'that which stretches'. Einstein's relativity relies on them.",
+  "hints": [
+   "General relativity is written in the maths of this object.",
+   "Google's machine-learning library is named after it, with 'flow'."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
   "word": "tenth",
   "register": "standard",
   "definition": "Number ten in order.",
@@ -45801,6 +46461,18 @@
    "A party's chosen topic for costumes."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "thence",
+  "register": "standard",
+  "definition": "From that place or from that time.",
+  "note": "From Middle English thennes, built on thenne with an adverbial -es ending. It is a close cousin of whence.",
+  "hints": [
+   "Old maps and travel diaries say 'and ___ to Rome'.",
+   "Its question-word twin is whence."
+  ],
+  "difficulty": "challenging",
   "connection": ""
  },
  {
@@ -46224,6 +46896,18 @@
   "connection": ""
  },
  {
+  "word": "thwart",
+  "register": "standard",
+  "definition": "To block someone's plan.",
+  "note": "From Old Norse thvert, 'across'. Something laid across your path stops you.",
+  "hints": [
+   "What a detective does to a robbery.",
+   "A bridge troll tried to do this to billy goats."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
   "word": "thyme",
   "register": "standard",
   "definition": "A small herb used in cooking.",
@@ -46257,6 +46941,18 @@
    "The shinbone."
   ],
   "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "ticker",
+  "register": "standard",
+  "definition": "A device or display showing live information, or slang for the heart.",
+  "note": "From tick plus -er. A stock one printed prices on paper tape; a ticker-tape parade showers confetti.",
+  "hints": [
+   "Stock prices scroll past on a tape or a news channel's bottom strip.",
+   "Slang for the heart in your chest."
+  ],
+  "difficulty": "familiar",
   "connection": ""
  },
  {
@@ -46968,6 +47664,18 @@
   "connection": ""
  },
  {
+  "word": "trashy",
+  "register": "standard",
+  "definition": "Of poor quality or tasteless, like cheap fiction or TV.",
+  "note": "From trash plus -y. Often used for entertainment people enjoy anyway.",
+  "hints": [
+   "A paperback sold at an airport kiosk.",
+   "A reality show you watch as a guilty pleasure."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "trauma",
   "register": "standard",
   "definition": "A serious injury, or a deeply distressing experience.",
@@ -47047,6 +47755,18 @@
   "hints": [
    "Turn up the bass and down this on a stereo.",
    "A boy soprano sings in this range."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "tremor",
+  "register": "standard",
+  "definition": "A small shaking, from the ground or the body.",
+  "note": "From Latin tremor, 'a shaking'; Middle English used it for fright.",
+  "hints": [
+   "Seismologists measure these before a quake.",
+   "A shaky voice or hand."
   ],
   "difficulty": "stretch",
   "connection": ""
@@ -47433,6 +48153,18 @@
    "What you put in a reliable friend."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "trusty",
+  "register": "standard",
+  "definition": "Reliable and dependable.",
+  "note": "From trust plus -y. It often precedes steed or sword.",
+  "hints": [
+   "A faithful old horse in a Western.",
+   "Used of a long-serving knife or car."
+  ],
+  "difficulty": "stretch",
   "connection": ""
  },
  {
@@ -48120,6 +48852,18 @@
   "connection": ""
  },
  {
+  "word": "unholy",
+  "register": "standard",
+  "definition": "Wicked, or outrageously bad.",
+  "note": "From Old English unhalig, 'not holy'. 'An unholy row' uses it for sheer excess.",
+  "hints": [
+   "An alliance between enemies might be called this.",
+   "Horror films have rituals of this kind."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "unify",
   "register": "standard",
   "definition": "To make into one.",
@@ -48273,6 +49017,18 @@
    "A goal not reached."
   ],
   "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "unpack",
+  "register": "standard",
+  "definition": "To take things out of a suitcase or box.",
+  "note": "From un- plus pack. A holiday ends with this chore.",
+  "hints": [
+   "The first job after you get home from a trip.",
+   "Also to analyse an idea in detail."
+  ],
+  "difficulty": "familiar",
   "connection": ""
  },
  {
@@ -48559,6 +49315,18 @@
   "hints": [
    "A big old house with a leaky roof demands plenty of it.",
    "Garden, car or castle, it is the ongoing bill after you buy."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "upland",
+  "register": "standard",
+  "definition": "High ground inland, away from the coast or valleys.",
+  "note": "From Old English upland, which meant the countryside as opposed to town. The adjective grew later.",
+  "hints": [
+   "Sheep graze across moors of this kind.",
+   "Hills and plateaus, the opposite of lowland."
   ],
   "difficulty": "stretch",
   "connection": ""
@@ -50868,6 +51636,18 @@
   "connection": ""
  },
  {
+  "word": "wobbly",
+  "register": "standard",
+  "definition": "Unsteady and shaky.",
+  "note": "From wobble plus -y. Wobble itself imitates the movement.",
+  "hints": [
+   "A table with one short leg.",
+   "A toddler's first steps."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "woken",
   "register": "standard",
   "definition": "Past participle of wake.",
@@ -50964,6 +51744,18 @@
   "connection": ""
  },
  {
+  "word": "woolly",
+  "register": "standard",
+  "definition": "Covered in wool, or vague and unclear.",
+  "note": "From wool plus -y. A woolly argument is as fuzzy as a sheep.",
+  "hints": [
+   "A mammoth is this.",
+   "A jumper in winter, or a hazy argument."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "wordy",
   "register": "standard",
   "definition": "Using too many words.",
@@ -51019,6 +51811,18 @@
   "hints": [
    "Opposite of better.",
    "The comparative of bad."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "worsen",
+  "register": "standard",
+  "definition": "To become or make worse.",
+  "note": "From worse plus -en, in Middle English. Wounds and weather worsen.",
+  "hints": [
+   "What a cold does without rest.",
+   "Said of a storm that intensifies."
   ],
   "difficulty": "familiar",
   "connection": ""
@@ -51103,6 +51907,18 @@
   "hints": [
    "Seaweed thrown on a beach.",
    "A word in the pair 'and ruin'."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "wraith",
+  "register": "standard",
+  "definition": "A ghost, especially one seen just before or after a death.",
+  "note": "First recorded in Scots in 1513, with no certain origin. Tolkien's Ringwraiths are cursed kings.",
+  "hints": [
+   "In Tolkien, the Nazgul are called Ring ones.",
+   "A pale figure from the mist."
   ],
   "difficulty": "stretch",
   "connection": ""
@@ -51259,6 +52075,18 @@
   "hints": [
    "A boorish, loud person.",
    "A cheer of joy."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "yakuza",
+  "register": "standard",
+  "definition": "A member of a Japanese organised crime gang.",
+  "note": "Borrowed from Japanese. The name is often explained as from a losing hand in a card game, though that is folklore.",
+  "hints": [
+   "Known for full-body tattoos and strict codes.",
+   "Japan's equivalent of the mafia."
   ],
   "difficulty": "stretch",
   "connection": ""
