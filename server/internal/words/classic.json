@@ -20902,5 +20902,1193 @@
   ],
   "difficulty": "familiar",
   "connection": ""
+ },
+ {
+  "word": "thief",
+  "register": "standard",
+  "definition": "A person who steals.",
+  "note": "From Old English theof, shared across the Germanic languages. A shoplifter or burglar is one.",
+  "hints": [
+   "A burglar by another name.",
+   "Takes what belongs to someone else."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "thigh",
+  "register": "standard",
+  "definition": "The part of the leg above the knee.",
+  "note": "From Old English theoh. A drumstick on a chicken is the lower part, but this is above.",
+  "hints": [
+   "The upper leg.",
+   "A cut of meat between hip and knee."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "think",
+  "register": "standard",
+  "definition": "To use your mind to reason.",
+  "note": "From Old English thencan. It is related to the word for 'thank', both from an old sense of 'thought'.",
+  "hints": [
+   "What you do before answering.",
+   "What a brain does."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "third",
+  "register": "standard",
+  "definition": "Number three in order.",
+  "note": "From Old English thridda. It follows the second.",
+  "hints": [
+   "The bronze medal place.",
+   "What comes after second."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "thong",
+  "register": "standard",
+  "definition": "A narrow strip of leather; or a sandal held by a strap.",
+  "note": "From Old English thwong, 'strip of leather'. It was used for binding and for whips.",
+  "hints": [
+   "A leather strip for tying.",
+   "A beach sandal held on by a strap."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "thorn",
+  "register": "standard",
+  "definition": "A sharp spike on a plant.",
+  "note": "From Old English thorn. Roses have them.",
+  "hints": [
+   "What a rose has along its stem.",
+   "A prickle on a bush."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "three",
+  "register": "standard",
+  "definition": "The number after two.",
+  "note": "From Old English thri, shared across Indo-European languages. It is a number of many sayings.",
+  "hints": [
+   "One more than two.",
+   "A crowd, they say, when added to two."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "throb",
+  "register": "standard",
+  "definition": "To beat with a strong pulse.",
+  "note": "From Middle English throbben, possibly imitative. A bruised thumb does it.",
+  "hints": [
+   "What a headache does.",
+   "A beat of pain, in time with the heart."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "throw",
+  "register": "standard",
+  "definition": "To hurl through the air.",
+  "note": "From Old English thrawan, 'to twist or turn'. A pitcher does it from a mound.",
+  "hints": [
+   "What a pitcher does with a ball.",
+   "To toss a ball."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "thrum",
+  "register": "standard",
+  "definition": "A low, steady humming sound.",
+  "note": "Imitative of a continuous vibration. A guitar string or an engine can do it.",
+  "hints": [
+   "The sound of a purring engine.",
+   "A low, steady strumming."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "thumb",
+  "register": "standard",
+  "definition": "The short, thick digit on the hand.",
+  "note": "From Old English thuma. The word has a silent b, added later in spelling.",
+  "hints": [
+   "What a hitchhiker sticks out.",
+   "The finger that gets an upturn for approval."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "thump",
+  "register": "standard",
+  "definition": "A heavy dull blow or its sound.",
+  "note": "Probably imitative, from the mid sixteenth century. A dropped book makes one.",
+  "hints": [
+   "The sound of a book dropped on a floor.",
+   "A dull knock on a door."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "thyme",
+  "register": "standard",
+  "definition": "A small herb used in cooking.",
+  "note": "From Old French thym, from Greek thymon. It sounds like 'time'.",
+  "hints": [
+   "A herb sounding like a clock's word.",
+   "Often paired with parsley and sage."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "tiara",
+  "register": "standard",
+  "definition": "A small jewelled crown.",
+  "note": "From Latin tiara, 'Persian headdress', from Greek. A beauty queen or a bride might wear one.",
+  "hints": [
+   "A jewelled headpiece for a princess.",
+   "What a pageant winner is crowned with."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "tibia",
+  "register": "standard",
+  "definition": "The shin bone.",
+  "note": "From Latin tibia, 'shinbone' or 'flute'. It is the larger bone in the lower leg.",
+  "hints": [
+   "The bone below the knee.",
+   "The shinbone."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "tidal",
+  "register": "standard",
+  "definition": "Relating to the ebb and flow of the sea.",
+  "note": "From tide plus -al. A wave of this kind is caused by the moon's pull.",
+  "hints": [
+   "Water that comes and goes twice a day.",
+   "A wave named for the ocean's rise and fall."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "tiger",
+  "register": "standard",
+  "definition": "A large cat with orange fur and black stripes.",
+  "note": "From Greek tigris, through Latin and Old French. It is native to Asia.",
+  "hints": [
+   "A striped big cat.",
+   "What Tony the Frosted Flakes mascot is."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "tight",
+  "register": "standard",
+  "definition": "Firmly fixed; not loose.",
+  "note": "From Middle English tight, a variant of thight, 'dense'. A rope or a schedule can be this.",
+  "hints": [
+   "A rope pulled firm.",
+   "A close-fitting pair of jeans."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "tilde",
+  "register": "standard",
+  "definition": "The wavy line over a letter, as in n with a wave.",
+  "note": "From Spanish tilde, from Latin titulus, 'inscription'. It marks Spanish letters and Portuguese vowels.",
+  "hints": [
+   "A wavy mark over a letter.",
+   "The squiggle on a Spanish n."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "timer",
+  "register": "standard",
+  "definition": "A device that counts down time.",
+  "note": "From time plus -er. Ovens and eggs often need one.",
+  "hints": [
+   "What you set when baking.",
+   "A kitchen device that rings."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "timid",
+  "register": "standard",
+  "definition": "Shy and lacking confidence.",
+  "note": "From Latin timidus, from timere, 'to fear'. A mouse is a classic example.",
+  "hints": [
+   "Describes a nervous mouse.",
+   "Not bold; easily scared."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "tipsy",
+  "register": "standard",
+  "definition": "Slightly drunk.",
+  "note": "From tips, an old word, plus -y. It describes the unsteady stage before outright drunkenness.",
+  "hints": [
+   "A little unsteady after a glass or two.",
+   "Slightly drunk."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "titan",
+  "register": "standard",
+  "definition": "A giant; or someone of huge power.",
+  "note": "From the Titans of Greek myth, the giants who ruled before the Olympian gods. It now describes a person of great power.",
+  "hints": [
+   "A giant of industry.",
+   "One of the old gods overthrown by Zeus."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "today",
+  "register": "standard",
+  "definition": "This present day.",
+  "note": "From Old English to daege, 'on this day'. It is the opposite of tomorrow or yesterday.",
+  "hints": [
+   "Not yesterday, not tomorrow.",
+   "The current date."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "toddy",
+  "register": "standard",
+  "definition": "A hot sweetened drink with whisky.",
+  "note": "From Hindi tari, the fermented palm sap, brought to Britain through India. The British drink took the name.",
+  "hints": [
+   "A hot drink for a cold.",
+   "Whisky with honey and hot water."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "tonal",
+  "register": "standard",
+  "definition": "Relating to tone or pitch.",
+  "note": "From tone plus -al. It can describe music or the overall mood of a piece.",
+  "hints": [
+   "About the pitch of music.",
+   "How colours or sounds are balanced."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "tonic",
+  "register": "standard",
+  "definition": "A restorative; or fizzy water flavoured with quinine.",
+  "note": "From Greek tonikos, 'of stretching'. Gin is often mixed with it.",
+  "hints": [
+   "What goes with gin.",
+   "A medicine that refreshes."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "tooth",
+  "register": "standard",
+  "definition": "One of the hard white structures in the mouth.",
+  "note": "From Old English toth. A saw has them as well.",
+  "hints": [
+   "What a dentist fills.",
+   "A bit of the cutting edge of a saw."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "topaz",
+  "register": "standard",
+  "definition": "A yellowish gemstone.",
+  "note": "From Old French topace, from Greek topazos. It is the birthstone for November.",
+  "hints": [
+   "A golden-yellow jewel.",
+   "A November birthstone."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "topic",
+  "register": "standard",
+  "definition": "A subject of conversation or writing.",
+  "note": "From Greek topika, 'matters of place', the title of a work by Aristotle. It now means a subject.",
+  "hints": [
+   "The subject of a talk.",
+   "What an essay is about."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "torch",
+  "register": "standard",
+  "definition": "A handheld light; or a burning stick.",
+  "note": "From Old French torche, 'twisted', since the first ones were twisted straw or rope. In British English it also means a flashlight.",
+  "hints": [
+   "What an Olympic runner carries.",
+   "What you use in a power cut."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "torso",
+  "register": "standard",
+  "definition": "The trunk of the body.",
+  "note": "From Italian torso, 'stump', from Latin thyrsus. A statue without limbs is often called this.",
+  "hints": [
+   "A statue with no head or limbs.",
+   "The body between neck and hips."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "torus",
+  "register": "standard",
+  "definition": "A doughnut shape in geometry.",
+  "note": "Latin for 'swelling' or 'cushion'. Mathematically it is a ring made by spinning a circle.",
+  "hints": [
+   "A shape like a ring doughnut.",
+   "A tyre-like geometrical form."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "total",
+  "register": "standard",
+  "definition": "The whole amount; or complete.",
+  "note": "From Medieval Latin totalis, from totus, 'whole'. You reach it by adding.",
+  "hints": [
+   "The sum of all the parts.",
+   "What a bill adds up to."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "totem",
+  "register": "standard",
+  "definition": "A natural object that represents a family or clan.",
+  "note": "Borrowed from Ojibwe, from a word for a clan relative. Totem poles carved by Pacific Northwest peoples display them.",
+  "hints": [
+   "A carved pole with animal faces.",
+   "An emblem of a clan."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "touch",
+  "register": "standard",
+  "definition": "To make contact with the hand.",
+  "note": "From Old French touchier, of Germanic origin. It is also one of the five senses.",
+  "hints": [
+   "One of the five senses.",
+   "What a fingertip does."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "tough",
+  "register": "standard",
+  "definition": "Strong and hard to damage; or difficult.",
+  "note": "From Old English toh, 'tenacious'. Both steak and a hard problem can be this way.",
+  "hints": [
+   "A chewy steak.",
+   "A hard problem to solve."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "towel",
+  "register": "standard",
+  "definition": "A cloth for drying.",
+  "note": "From Old French toaille. You use one after a bath.",
+  "hints": [
+   "What you use after a shower.",
+   "Thrown in to give up in boxing."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "tower",
+  "register": "standard",
+  "definition": "A tall narrow building or structure.",
+  "note": "From Old English torr and Old French tur, from Latin turris. Churches and castles often have them.",
+  "hints": [
+   "The Eiffel one is famous.",
+   "A tall part of a castle."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "toxic",
+  "register": "standard",
+  "definition": "Poisonous.",
+  "note": "From Greek toxikon, 'poison for arrows', from toxon, 'bow'. It now describes harmful chemicals or behaviour.",
+  "hints": [
+   "Describes a poisonous chemical.",
+   "A harmful, bad relationship."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "toxin",
+  "register": "standard",
+  "definition": "A poison made by a living thing.",
+  "note": "From the same Greek root as toxic. Snake venom and bacteria produce them.",
+  "hints": [
+   "A poison made by a snake.",
+   "What bacteria can produce to harm the body."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "trace",
+  "register": "standard",
+  "definition": "A small sign of something; or to follow.",
+  "note": "From Old French trace, 'track'. You can follow one, or draw over a picture.",
+  "hints": [
+   "A tiny amount left behind.",
+   "To copy a drawing through thin paper."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "tract",
+  "register": "standard",
+  "definition": "An area of land; or a short pamphlet.",
+  "note": "From Latin tractus, 'a drawing out'. A digestive passage is called by it too.",
+  "hints": [
+   "A large expanse of land.",
+   "A short religious pamphlet."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "trade",
+  "register": "standard",
+  "definition": "To buy and sell; or a skilled craft.",
+  "note": "From Middle Low German trade, 'track' or 'course'. A carpenter has one, and so does a merchant.",
+  "hints": [
+   "What merchants do.",
+   "A skilled job such as plumbing."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "train",
+  "register": "standard",
+  "definition": "A line of linked railway carriages; or to teach.",
+  "note": "From Old French trainer, 'to drag', from Latin trahere. It also names the long trailing part of a gown.",
+  "hints": [
+   "What runs on rails.",
+   "What a coach does with athletes."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "trait",
+  "register": "standard",
+  "definition": "A distinguishing characteristic.",
+  "note": "From French trait, 'line' or 'feature', from Latin tractus. Eye colour is inherited this way.",
+  "hints": [
+   "Something like generosity or bravery.",
+   "A feature passed in genes."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "tramp",
+  "register": "standard",
+  "definition": "To walk heavily; or a vagabond.",
+  "note": "From Middle Low German trampen, 'to stamp'. It names a wanderer who walks long distances.",
+  "hints": [
+   "A long, heavy walk through mud.",
+   "A wanderer without a home."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "trash",
+  "register": "standard",
+  "definition": "Rubbish.",
+  "note": "From Middle English trasch, probably a dialect word for broken twigs. It is what you put in a bin.",
+  "hints": [
+   "What goes in a bin.",
+   "Waste to be thrown out."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "trawl",
+  "register": "standard",
+  "definition": "To fish by dragging a large net.",
+  "note": "From Dutch tragelen, 'to drag'. It also means to search through a large amount of material.",
+  "hints": [
+   "What a fishing boat does with a big net.",
+   "To search through a mass of records."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "tread",
+  "register": "standard",
+  "definition": "To walk on; or the pattern on a tyre.",
+  "note": "From Old English tredan, 'to step'. A tyre has a grooved one for grip.",
+  "hints": [
+   "What you do carefully on thin ice.",
+   "The grooves on the sole of a boot."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "treat",
+  "register": "standard",
+  "definition": "To behave towards someone; or a special pleasure.",
+  "note": "From Old French tretier, 'to handle', from Latin tractare. It covers medicine, behaviour, and a small gift.",
+  "hints": [
+   "What a child gets at Halloween.",
+   "What a doctor does for an illness."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "trend",
+  "register": "standard",
+  "definition": "A general direction of change.",
+  "note": "From Middle English trenden, 'to roll about'. It now names what is fashionable or on the rise.",
+  "hints": [
+   "What goes viral for a while.",
+   "A line that slopes upward on a graph."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "triad",
+  "register": "standard",
+  "definition": "A group of three.",
+  "note": "From Greek trias, 'three'. In music it is a chord of three notes.",
+  "hints": [
+   "Three things grouped together.",
+   "A chord made of three notes."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "trial",
+  "register": "standard",
+  "definition": "A test; or a legal hearing.",
+  "note": "From Old French trier, 'to try'. A new medicine goes through one, and a defendant faces one.",
+  "hints": [
+   "What a defendant faces in court.",
+   "A test of a new medicine."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "tribe",
+  "register": "standard",
+  "definition": "A social group sharing ancestry and customs.",
+  "note": "From Latin tribus, which originally meant one of three divisions of Rome's early people.",
+  "hints": [
+   "A group with a shared chief and customs.",
+   "A Native community, or an ancient Hebrew clan."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "trice",
+  "register": "standard",
+  "definition": "A very short moment.",
+  "note": "From Middle English trisen, 'to pull sharply'. In the phrase 'in a trice' it means in an instant, as quickly as a tug.",
+  "hints": [
+   "A moment, in the phrase 'in a'.",
+   "A blink of time."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "trick",
+  "register": "standard",
+  "definition": "A cunning act meant to fool someone.",
+  "note": "From Old Northern French trique, 'deceit'. A magician performs them.",
+  "hints": [
+   "What a magician performs.",
+   "A cheeky deceit at Halloween."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "tried",
+  "register": "standard",
+  "definition": "Past tense of try.",
+  "note": "From Middle English, built from try plus -ed. It can also mean tested, as in 'tried and true'.",
+  "hints": [
+   "What you did when you attempted.",
+   "A word that goes with 'true'."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "tripe",
+  "register": "standard",
+  "definition": "The stomach lining of a cow, eaten as food; or nonsense.",
+  "note": "From Old French tripe, 'entrails'. Calling an idea this means it is rubbish.",
+  "hints": [
+   "A Lancashire dish from a cow's stomach.",
+   "A word for nonsense."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "trite",
+  "register": "standard",
+  "definition": "Overused and unoriginal.",
+  "note": "From Latin tritus, 'worn out'. A cliche is this.",
+  "hints": [
+   "A cliche is this.",
+   "A phrase worn out from overuse."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "troop",
+  "register": "standard",
+  "definition": "A group of soldiers; or to move in a group.",
+  "note": "From French troupe, recorded in English since 1545. It can also name a group of scouts or monkeys.",
+  "hints": [
+   "A unit of soldiers.",
+   "A group of monkeys."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "trope",
+  "register": "standard",
+  "definition": "A recurring theme or device.",
+  "note": "From Greek tropos, 'turn'. A familiar figure of speech or storytelling pattern is called one.",
+  "hints": [
+   "A familiar plot device in films.",
+   "A cliche of a genre."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "trout",
+  "register": "standard",
+  "definition": "A freshwater fish related to the salmon.",
+  "note": "From Old English truht. Anglers prize them.",
+  "hints": [
+   "A fish caught by fly fishers.",
+   "Spotted and found in cold streams."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "trove",
+  "register": "standard",
+  "definition": "A valuable collection of things found.",
+  "note": "From Anglo-Norman tresor trouve, 'found treasure'. It is most often used in 'treasure ___'.",
+  "hints": [
+   "A hoard of valuables found.",
+   "A hidden store of valuable things."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "truce",
+  "register": "standard",
+  "definition": "An agreement to stop fighting.",
+  "note": "From Middle English trewes, 'pledges', from Old English treow, 'faith'. Soldiers in 1914 held a famous one at Christmas.",
+  "hints": [
+   "A pause in a war.",
+   "A white flag signals a wish for one."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "truck",
+  "register": "standard",
+  "definition": "A large road vehicle for goods.",
+  "note": "Perhaps from Greek trochos, 'wheel'. It was first a small wheel, then a cart.",
+  "hints": [
+   "A big lorry.",
+   "A vehicle that carries cargo."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "truly",
+  "register": "standard",
+  "definition": "Really; genuinely.",
+  "note": "From Old English treowlice, 'faithfully'. It is used at the end of a letter.",
+  "hints": [
+   "The word before a signature in 'yours ___'.",
+   "Said when you mean it sincerely."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "trump",
+  "register": "standard",
+  "definition": "A winning card suit; or to beat.",
+  "note": "Possibly from French triomphe, 'triumph'. A trump beats the other suits.",
+  "hints": [
+   "A card that beats the rest.",
+   "To outdo a rival's play."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "trunk",
+  "register": "standard",
+  "definition": "The main stem of a tree; or an elephant's nose; or a car's boot.",
+  "note": "From Old French tronc, 'alms box' or 'tree trunk'. Travellers also pack their belongings in a large box of the same name.",
+  "hints": [
+   "An elephant's long nose.",
+   "The back storage area of an American car."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "truss",
+  "register": "standard",
+  "definition": "A framework of beams; or to tie up tightly.",
+  "note": "From Old French trousse, 'bundle'. Bridges and roofs use them, and cooks tie up a bird with string.",
+  "hints": [
+   "A triangle framework in a roof.",
+   "To tie up a chicken before roasting."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "trust",
+  "register": "standard",
+  "definition": "Belief that someone is reliable.",
+  "note": "From Old Norse traust, 'confidence'. It also names a legal arrangement for managing assets.",
+  "hints": [
+   "What a bridge of friendship needs.",
+   "What you put in a reliable friend."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "truth",
+  "register": "standard",
+  "definition": "What is true.",
+  "note": "From Old English triewth, 'faithfulness'. It is related to the word true.",
+  "hints": [
+   "The opposite of a lie.",
+   "What a witness swears to tell."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "tubal",
+  "register": "standard",
+  "definition": "Relating to a tube.",
+  "note": "From tube plus -al. It is a medical word, as in tubes of the body.",
+  "hints": [
+   "A medical word about a duct.",
+   "Describes a passage like a tube in the body."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "tuber",
+  "register": "standard",
+  "definition": "A thick underground stem of a plant, like a potato.",
+  "note": "From Latin tuber, 'swelling'. Potatoes and yams are examples.",
+  "hints": [
+   "A potato is one.",
+   "A fleshy root vegetable."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "tulip",
+  "register": "standard",
+  "definition": "A cup-shaped spring flower.",
+  "note": "From Middle French tulipe, from Turkish tulbent, 'turban', since the flower looks like a turban. The Dutch grew a mania for them in the 1600s.",
+  "hints": [
+   "A flower tied to the Netherlands.",
+   "A spring bulb in many colours."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "tulle",
+  "register": "standard",
+  "definition": "A fine netting used for veils and ballet skirts.",
+  "note": "Named after the French town of Tulle, where it was made. Bridal veils use it.",
+  "hints": [
+   "The airy fabric of a tutu.",
+   "A fine net for a bride's veil."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "tumor",
+  "register": "standard",
+  "definition": "An abnormal lump of tissue.",
+  "note": "From Latin tumor, 'a swelling'. It is the American spelling of tumour.",
+  "hints": [
+   "A medical growth that a scan can show.",
+   "A lump a doctor may remove."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "tunic",
+  "register": "standard",
+  "definition": "A long loose garment worn over the body.",
+  "note": "From Latin tunica. Roman soldiers wore one under their armour.",
+  "hints": [
+   "A Roman soldier's garment.",
+   "A long shirt reaching to the thighs."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "turbo",
+  "register": "standard",
+  "definition": "A turbine; or a booster in an engine.",
+  "note": "Short for turbine or turbocharger, from Latin turbo, 'whirl'. It forces extra air into an engine.",
+  "hints": [
+   "A booster for a car engine.",
+   "A fast speed setting."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "tutor",
+  "register": "standard",
+  "definition": "A private teacher.",
+  "note": "From Latin tutor, 'guardian'. Students hire one for extra help.",
+  "hints": [
+   "Someone hired to help with homework.",
+   "A university teacher guiding a few students."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "twang",
+  "register": "standard",
+  "definition": "A sharp ringing sound; or a nasal accent.",
+  "note": "Imitative of a string being plucked. A banjo string and a country voice both have one.",
+  "hints": [
+   "The sound of a guitar string plucked.",
+   "A nasal accent in a country song."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "tweak",
+  "register": "standard",
+  "definition": "To adjust slightly.",
+  "note": "From Old English twiccian, 'to pluck'. It started as a pinch and became a small adjustment.",
+  "hints": [
+   "A small adjustment.",
+   "What you do to settings."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "tweet",
+  "register": "standard",
+  "definition": "The short chirp of a bird; or a post on a social network.",
+  "note": "Imitative of a bird's call. It also names a short social media post.",
+  "hints": [
+   "A bird's short call.",
+   "A short online post."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "twice",
+  "register": "standard",
+  "definition": "Two times.",
+  "note": "From Old English twiges, from twi, 'two'. It is the adverb for doing something once more.",
+  "hints": [
+   "One more time than once.",
+   "Said of doing it double."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "twine",
+  "register": "standard",
+  "definition": "Strong string made of twisted threads; or to wind.",
+  "note": "From Old English twin, 'double thread'. A gardener ties plants with it.",
+  "hints": [
+   "String for tying a parcel.",
+   "What a vine does round a post."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "twirl",
+  "register": "standard",
+  "definition": "To spin round and round.",
+  "note": "Of Scandinavian origin. A dancer or baton does it.",
+  "hints": [
+   "What a ballerina does.",
+   "A fast spin."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "twist",
+  "register": "standard",
+  "definition": "To turn round; or an unexpected turn in a story.",
+  "note": "From Middle English twist, from Old English, a pair of things. A story or a rope can have one.",
+  "hints": [
+   "What you do to open a jar.",
+   "A surprise at the end of a film."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "twixt",
+  "register": "standard",
+  "definition": "An old word meaning 'between'.",
+  "note": "A shortened form of betwixt, from Old English. It is found in the phrase 'twixt and between'.",
+  "hints": [
+   "An old poetic word for in between.",
+   "A short version of a longer old preposition."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "tying",
+  "register": "standard",
+  "definition": "The act of fastening with a knot.",
+  "note": "From tie plus -ing, from Old English tigan. A shoelace or a knot can be involved.",
+  "hints": [
+   "What you do to shoelaces.",
+   "Fastening with a knot."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "udder",
+  "register": "standard",
+  "definition": "The milk gland of a cow.",
+  "note": "From Old English uder. It hangs below the cow.",
+  "hints": [
+   "What a farmer milks.",
+   "The bag under a cow."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "ulcer",
+  "register": "standard",
+  "definition": "An open sore.",
+  "note": "From Latin ulcus, 'sore'. Stomach ones were once thought to be caused by stress.",
+  "hints": [
+   "A sore in the stomach lining.",
+   "An open sore on the skin."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "ultra",
+  "register": "standard",
+  "definition": "Extreme; beyond the usual.",
+  "note": "From Latin ultra, 'beyond'. It is used as a prefix, as in ultrasound.",
+  "hints": [
+   "A prefix meaning beyond.",
+   "A race longer than a marathon is named with it."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "uncle",
+  "register": "standard",
+  "definition": "A brother of one's parent.",
+  "note": "From Old French oncle, from Latin avunculus, 'little grandfather'. It is a family member on one side.",
+  "hints": [
+   "A parent's brother.",
+   "Said to be what Bob is, in a saying."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "uncut",
+  "register": "standard",
+  "definition": "Not cut; or not edited.",
+  "note": "From un- plus cut. A rough gemstone or a film not trimmed may be it.",
+  "hints": [
+   "A rough diamond.",
+   "A film with nothing removed."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "under",
+  "register": "standard",
+  "definition": "Below or beneath.",
+  "note": "From Old English under. It is the opposite of over.",
+  "hints": [
+   "The opposite of over.",
+   "Found beneath a bed or a bridge."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "undue",
+  "register": "standard",
+  "definition": "Excessive or unwarranted.",
+  "note": "From un- plus due. It describes something beyond what is right.",
+  "hints": [
+   "Beyond what is called for.",
+   "Needless, as in worry."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "unfit",
+  "register": "standard",
+  "definition": "Not suitable; or out of shape.",
+  "note": "From un- plus fit. A person who rarely exercises may be it.",
+  "hints": [
+   "Not up to the standard.",
+   "Out of condition."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "unify",
+  "register": "standard",
+  "definition": "To make into one.",
+  "note": "From Late Latin unificare, 'to make one'. A nation or group can be brought together this way.",
+  "hints": [
+   "What a leader does for a divided country.",
+   "To bring parts into a whole."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "union",
+  "register": "standard",
+  "definition": "A joining together; or a group of workers.",
+  "note": "From Late Latin unio, from unus, 'one'. A marriage is one, and so is a trade body.",
+  "hints": [
+   "A workers' association.",
+   "A marriage, in a formal word."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
  }
 ]
