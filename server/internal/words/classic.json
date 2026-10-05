@@ -2374,5 +2374,2165 @@
   ],
   "difficulty": "familiar",
   "connection": ""
+ },
+ {
+  "word": "bless",
+  "register": "standard",
+  "definition": "To make holy, or to wish someone well.",
+  "note": "From Old English bletsian, 'to consecrate with blood', from an old sense of sprinkling or marking. Over time the word lost the blood and kept the holiness.",
+  "hints": [
+   "What you might say after someone sneezes.",
+   "A priest might do this to a crowd with a raised hand."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "blimp",
+  "register": "standard",
+  "definition": "A large, rounded airship with no rigid frame.",
+  "note": "Historians are unsure of its origin, but a popular theory says it imitates the sound made by thumping the airship's skin.",
+  "hints": [
+   "It floats above stadiums, sometimes carrying a camera.",
+   "Cousin of the zeppelin, but squashier."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "blind",
+  "register": "standard",
+  "definition": "Unable to see.",
+  "note": "From Old English blind, a very old Germanic word. It also came to describe things you cannot see through, as with window shades.",
+  "hints": [
+   "Window coverings that roll or slat are named for it.",
+   "A person who reads with their fingertips, perhaps."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "blink",
+  "register": "standard",
+  "definition": "To close and open your eyes quickly.",
+  "note": "From Middle English blynken, related to an Old English word meaning 'to deceive'. An older sense was a quick glance or gleam of light.",
+  "hints": [
+   "You do it without thinking, thousands of times a day.",
+   "A staring contest is lost when you do this."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "bliss",
+  "register": "standard",
+  "definition": "Perfect happiness.",
+  "note": "From Old English bliss, from a word for joy. It was once spelled blis and tied to the idea of gladness or a blithe spirit.",
+  "hints": [
+   "A feeling beyond mere contentment.",
+   "Ignorance is said to be this."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "blitz",
+  "register": "standard",
+  "definition": "A sudden, overwhelming attack or burst of effort.",
+  "note": "Clipped from German Blitzkrieg, 'lightning war'. The German word for lightning is Blitz, and English borrowed it as a name for fast attacks.",
+  "hints": [
+   "Football teams use one to rush the quarterback.",
+   "London endured a long wartime one of these from the air."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "bloat",
+  "register": "standard",
+  "definition": "To swell up with fluid or gas.",
+  "note": "Perhaps from Middle English blout, 'soft, flexible', from Old Norse. It first meant soft or puffy before it meant swollen.",
+  "hints": [
+   "How you feel after an enormous meal.",
+   "Software with too many unneeded features is said to suffer from it."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "bloke",
+  "register": "slang",
+  "definition": "A man, especially an ordinary one.",
+  "note": "Its origin is unknown; guesses include Celtic borrowings. It is especially common in British, Australian and Irish English.",
+  "hints": [
+   "A very British word for a guy.",
+   "'A decent one', you might say of a friendly fellow."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "blond",
+  "register": "standard",
+  "definition": "Having pale yellow hair.",
+  "note": "Borrowed from French, from Old French blont, which came from a Frankish word for a mixed golden colour. The spelling blond is for male hair; the form with an extra e was for female.",
+  "hints": [
+   "Colour of hair that sunshine might lighten.",
+   "Dark-haired people sometimes dye their hair this way."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "blood",
+  "register": "standard",
+  "definition": "The red liquid pumped around the body by the heart.",
+  "note": "From Old English blod, a very old Germanic word. It also came to stand for family ties, as in 'bad' or 'blue' kinds.",
+  "hints": [
+   "Flows through your veins.",
+   "What you donate in a drive at the hospital."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "blunt",
+  "register": "standard",
+  "definition": "Not sharp; or speaking in a direct, tactless way.",
+  "note": "From Middle English, possibly Old Norse in origin, linked to a verb meaning 'to shut the eyes'. First used of dull edges, later of dull minds and then plain-speaking people.",
+  "hints": [
+   "A knife that cannot cut well is this.",
+   "Honest to the point of rudeness."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "blurt",
+  "register": "standard",
+  "definition": "To say something suddenly, without thinking.",
+  "note": "Possibly imitative of a sudden sound. It has been used for hasty speech for centuries.",
+  "hints": [
+   "A secret often escapes this way.",
+   "Done by someone who can't hold back an answer."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "blush",
+  "register": "standard",
+  "definition": "To turn red in the face from embarrassment.",
+  "note": "From Middle English blusshen, from Old English blysċan, 'to be red, to shine'. A glance or glow of red once described a sudden look as well.",
+  "hints": [
+   "Compliments might make you do it.",
+   "Also a pink cosmetic for the cheeks."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "board",
+  "register": "standard",
+  "definition": "A long flat piece of wood.",
+  "note": "From Old English bord, meaning a plank. It grew into a table, meals ('room and board'), a ship's side, and a group of directors around a table.",
+  "hints": [
+   "What you do to get onto a plane or ship.",
+   "Chess and Monopoly are played on one."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "bongo",
+  "register": "standard",
+  "definition": "One of a pair of small drums played with the hands.",
+  "note": "From Spanish bongo, the name of these drums of Cuban origin. The same word names a striped African antelope.",
+  "hints": [
+   "Played by hand, usually in pairs.",
+   "A beatnik might drum on one."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "bonus",
+  "register": "standard",
+  "definition": "An extra reward on top of what you expected.",
+  "note": "Borrowed from Latin bonus, 'good'. It came to mean a good thing added on, such as extra pay.",
+  "hints": [
+   "Paid at year end if the company did well.",
+   "An extra level in a video game might be called this."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "booby",
+  "register": "standard",
+  "definition": "A silly person; also a tropical seabird.",
+  "note": "From Spanish bobo, 'fool', from Latin balbus, 'stammering'. The seabird was so named because it seemed foolishly tame and easy to catch.",
+  "hints": [
+   "A trap rigged to catch someone off guard has this word before it.",
+   "A bird with blue feet is named for it."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "boost",
+  "register": "standard",
+  "definition": "To push up or increase something.",
+  "note": "Of unknown origin, first recorded in the early 1800s. It started as a push upward for someone climbing.",
+  "hints": [
+   "What a pep talk gives to morale.",
+   "A helping hand to lift you up."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "booth",
+  "register": "standard",
+  "definition": "A small enclosed stall or compartment.",
+  "note": "From a Norse word meaning 'dwelling'. It first meant a temporary shelter of boughs or tents, later a market stall.",
+  "hints": [
+   "A phone one was once a street fixture.",
+   "Where you cast your vote privately."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "booty",
+  "register": "standard",
+  "definition": "Treasure taken as loot.",
+  "note": "From Middle English, from Old French butin and Middle Low German bute, 'share, loot'. Its later slang sense is separate and informal.",
+  "hints": [
+   "What pirates go after.",
+   "Plunder carried off from a defeated enemy."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "booze",
+  "register": "slang",
+  "definition": "Alcoholic drink.",
+  "note": "Originally a Northern English dialect form of bowse, a word for drinking deeply. It has been slang for liquor for centuries.",
+  "hints": [
+   "A bottle shop sells it by the bottle.",
+   "Casual word for what you drink at a party."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "boozy",
+  "register": "slang",
+  "definition": "Drinking a lot of alcohol, or full of it.",
+  "note": "Built from booze plus -y, the adjective ending. It describes people or occasions.",
+  "hints": [
+   "A long and rowdy lunch might be called this.",
+   "A drink with plenty of spirits in it."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "borax",
+  "register": "standard",
+  "definition": "A white mineral salt used in cleaning and glassmaking.",
+  "note": "Through Medieval Latin and Old French from Arabic bawraq, which itself came from Persian. The mineral was traded across the medieval world.",
+  "hints": [
+   "A laundry booster sold in boxes.",
+   "A salt of boric acid found in dry lake beds."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "bosom",
+  "register": "standard",
+  "definition": "The chest, or a person's closest circle.",
+  "note": "From Old English bosm, a very old Germanic word. We hold things close to it, which is how it came to mean one's inner feelings.",
+  "hints": [
+   "A very close pal is called a buddy of this sort.",
+   "A mother holds a baby against hers."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "bossy",
+  "register": "standard",
+  "definition": "Fond of ordering other people around.",
+  "note": "Built from boss, which came from Dutch baas, 'master', plus -y. It is an informal way of saying domineering.",
+  "hints": [
+   "The sort of older sibling who gives all the orders.",
+   "Unwanted attitude on a group project."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "botch",
+  "register": "standard",
+  "definition": "To do something badly or clumsily.",
+  "note": "From Middle English bocchen, 'to mend', of uncertain origin. It first meant to patch up, and mending done carelessly gave us the modern meaning.",
+  "hints": [
+   "A poor repair job is this.",
+   "A word for ruining a task by sloppy work."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "bough",
+  "register": "standard",
+  "definition": "A large branch of a tree.",
+  "note": "From Old English bog, 'shoulder, arm', which shows the branch was compared to a limb of the body. The spelling is a tricky one.",
+  "hints": [
+   "A cradle in the lullaby falls when it breaks.",
+   "Heavy with fruit or snow."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "bowel",
+  "register": "standard",
+  "definition": "The intestine, or the deep inner part of something.",
+  "note": "From Old French, from Latin botellus, 'little sausage'. It also names deep inner parts, as in 'the ___s of the ship'.",
+  "hints": [
+   "Part of the digestive tract below the stomach.",
+   "Doctors screen it for cancer."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "boxer",
+  "register": "standard",
+  "definition": "A person who fights in a ring wearing gloves.",
+  "note": "Simply box plus -er. The dog breed was named for the way it seems to spar with its front paws.",
+  "hints": [
+   "Muhammad Ali was a famous one.",
+   "A breed of dog with a squashed nose and drooping jowls."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "brace",
+  "register": "standard",
+  "definition": "To prepare for something unpleasant; or a support.",
+  "note": "From Old French brace, 'arm', from Latin bracchium. Arms hold things tight, so the word came to mean a support or a prop.",
+  "hints": [
+   "What you do before an impact on a plane.",
+   "Some people wear one on their teeth."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "braid",
+  "register": "standard",
+  "definition": "To weave three strands of hair together.",
+  "note": "From Old English bregdan, which meant sudden movement, pulling or weaving. The sense of interweaving remained.",
+  "hints": [
+   "A hairstyle with three woven strands.",
+   "Also a decorative cord sewn onto uniforms."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "brake",
+  "register": "standard",
+  "definition": "A device that slows or stops a vehicle.",
+  "note": "Of uncertain origin, possibly from a Middle Dutch word for a curb. Many other unrelated things share the spelling.",
+  "hints": [
+   "Press the pedal and the car does this.",
+   "Bicycles have hand levers for it."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "brash",
+  "register": "standard",
+  "definition": "Loud, bold and tactless.",
+  "note": "Of uncertain origin, perhaps from a Scots word for a violent onset or attack.",
+  "hints": [
+   "Not a quiet type at all.",
+   "A young hotshot who talks over everyone."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "brass",
+  "register": "standard",
+  "definition": "A yellow alloy of copper and zinc; also trumpets and trombones.",
+  "note": "From Old English bræs, of uncertain origin. Instruments made of the metal came to be a section of an orchestra.",
+  "hints": [
+   "Trumpets and trombones belong to this section.",
+   "Doorknobs are often made of it."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "brave",
+  "register": "standard",
+  "definition": "Ready to face danger without fear.",
+  "note": "From Middle French, borrowed from Italian bravo. It once meant splendid or fine as well as courageous.",
+  "hints": [
+   "Firefighters are said to be this.",
+   "The opposite of cowardly."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "bravo",
+  "register": "standard",
+  "definition": "A shout of praise for a performance.",
+  "note": "Borrowed from Italian, where it means 'good' or 'skilled'. It shares an origin with the word brave.",
+  "hints": [
+   "Audiences shout it at the end of an opera.",
+   "Also the word for the letter B in the radio alphabet."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "brawl",
+  "register": "standard",
+  "definition": "A noisy fight, usually involving many people.",
+  "note": "From Middle English braulen, 'to clamour or quarrel', of otherwise uncertain origin.",
+  "hints": [
+   "A pub fight often turns into one.",
+   "Messier than a scuffle."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "bread",
+  "register": "standard",
+  "definition": "A baked food made from flour and water.",
+  "note": "From Old English bread, a Germanic word. It once meant a piece or morsel, and loaf was the word for the whole.",
+  "hints": [
+   "A baker's chief product.",
+   "Slice it for toast or a sandwich."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "break",
+  "register": "standard",
+  "definition": "To split into pieces, or to stop for a rest.",
+  "note": "From Old English brecan, a very old Germanic verb. It has also come to mean a pause, a lucky chance and a dawn.",
+  "hints": [
+   "What a dropped plate does.",
+   "A short rest from work."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "breed",
+  "register": "standard",
+  "definition": "To produce young; or a type of animal.",
+  "note": "From Old English bredan, related to brood. A kind of animal came to be named for how it was bred.",
+  "hints": [
+   "A poodle is one type of dog this way.",
+   "Farmers do it with cattle."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "briar",
+  "register": "standard",
+  "definition": "A thorny, tangled shrub such as a wild rose.",
+  "note": "From Old English brer, of unknown further origin. Pipe makers use the wood of a related plant.",
+  "hints": [
+   "Br'er Rabbit was famously thrown into a patch of it.",
+   "A thorny tangle that snags your clothes."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "brick",
+  "register": "standard",
+  "definition": "A hard block of baked clay used for building.",
+  "note": "From Middle Low German and Middle Dutch bricke, originally a broken piece or tile. The word came to mean a whole block.",
+  "hints": [
+   "The house of the second pig was made of it.",
+   "Red blocks stacked with mortar."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "bride",
+  "register": "standard",
+  "definition": "A woman on her wedding day.",
+  "note": "From Old English bryd, a Germanic word that has meant a woman about to marry for well over a thousand years.",
+  "hints": [
+   "Walks down the aisle in white.",
+   "Throws a bouquet after the ceremony."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "brief",
+  "register": "standard",
+  "definition": "Short in time or in words.",
+  "note": "From Latin brevis, 'short', through Old French. A legal summary and a set of lawyer's instructions took the name because they were short documents.",
+  "hints": [
+   "A short summary given before a meeting.",
+   "Underwear style that is cut short."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "brine",
+  "register": "standard",
+  "definition": "Very salty water.",
+  "note": "From Old English brine, a Germanic word for salt water. It later also named the sea itself in poetry.",
+  "hints": [
+   "Pickles are kept in it.",
+   "A cucumber soaks in this to become a pickle."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "bring",
+  "register": "standard",
+  "definition": "To carry something to a place.",
+  "note": "From Old English bringan, a very old Germanic verb meaning to carry or lead toward the speaker.",
+  "hints": [
+   "The opposite of take.",
+   "Fetch something and come back with it."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "brink",
+  "register": "standard",
+  "definition": "The edge of something steep, or the point just before a change.",
+  "note": "From Middle English, from Old Norse, meaning the edge of a hill or slope. We now use it for the edge of dramatic events.",
+  "hints": [
+   "Someone on this of tears is about to cry.",
+   "A cliff has one; so does a crisis."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "briny",
+  "register": "standard",
+  "definition": "Salty, like seawater.",
+  "note": "From brine plus -y. It often describes the taste of oysters or the smell of the sea. Poets also use it as a name for the ocean itself.",
+  "hints": [
+   "What the sea tastes like.",
+   "A pickle or an olive has this flavour."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "broad",
+  "register": "standard",
+  "definition": "Wide, from side to side.",
+  "note": "From Old English brad, a very old Germanic word. It also came to mean general, as in 'in broad terms'.",
+  "hints": [
+   "Shoulders on a swimmer might be this.",
+   "In the daylight, as in 'in ___ daylight'."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "broil",
+  "register": "standard",
+  "definition": "To cook with strong direct heat from above.",
+  "note": "From Middle English, from Old French bruller, 'to burn'. Another sense is a noisy quarrel, from a different word.",
+  "hints": [
+   "Something an American oven can do at its top setting.",
+   "To grill under a hot element."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "brood",
+  "register": "standard",
+  "definition": "To worry or sulk; also a group of young birds.",
+  "note": "From Old English brod, 'breeding, hatching'. The hen sitting over her eggs became a picture of someone sitting and thinking over a problem.",
+  "hints": [
+   "A hen with chicks has one.",
+   "What a moody person does alone."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "broom",
+  "register": "standard",
+  "definition": "A long-handled brush for sweeping.",
+  "note": "From Old English brom, 'brushwood'. The household tool took its name from the twigs of a shrub once used to make it.",
+  "hints": [
+   "A witch rides one in stories.",
+   "Used to sweep the kitchen floor."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "broth",
+  "register": "standard",
+  "definition": "A thin soup made by simmering meat or vegetables in water.",
+  "note": "From Old English broth, from a Germanic word related to brewing. It is the liquid left after boiling food.",
+  "hints": [
+   "Chicken soup starts with it.",
+   "Too many cooks can spoil it, the proverb says."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "brown",
+  "register": "standard",
+  "definition": "The colour of chocolate or soil.",
+  "note": "From Old English brun, a Germanic word. The colour was so named long before it was a name for a bear.",
+  "hints": [
+   "Colour of a typical bear.",
+   "Mix red, yellow and blue and you get this."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "brunt",
+  "register": "standard",
+  "definition": "The worst part of an impact or attack.",
+  "note": "From Middle English, meaning a sudden blow or attack. We still speak of bearing it, as the person who takes the hardest hit.",
+  "hints": [
+   "Usually 'bears' or 'takes' comes before it.",
+   "The heaviest part of a storm or criticism."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "brush",
+  "register": "standard",
+  "definition": "A tool with bristles; or to touch lightly in passing.",
+  "note": "The noun is from Old French and ultimately a word for bristle. A second, separate sense names thick undergrowth.",
+  "hints": [
+   "What you do to your teeth twice a day.",
+   "An artist dips one in paint."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "brute",
+  "register": "standard",
+  "definition": "A cruel, savage person; also an animal.",
+  "note": "From Latin brutus, 'dull, stupid, unfeeling', through French. It first described beasts that lack reason.",
+  "hints": [
+   "'___ force' means strength without cleverness.",
+   "A thuggish bully."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "buddy",
+  "register": "slang",
+  "definition": "A friend or companion.",
+  "note": "First seen about 1788, of uncertain origin. It may be a child's version of brother.",
+  "hints": [
+   "Someone you might go to the gym with.",
+   "Another casual word for pal or mate."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "budge",
+  "register": "standard",
+  "definition": "To move slightly.",
+  "note": "Through Old French bouger, from Latin bullire, 'to boil, bubble'. Movement and bubbling seem to have shared an origin.",
+  "hints": [
+   "A stubborn donkey won't do it.",
+   "Said of a door that is stuck fast."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "buggy",
+  "register": "standard",
+  "definition": "A small light carriage or vehicle; or full of faults.",
+  "note": "Origin unknown for the carriage sense. The adjective means infested with insects or, of software, full of faults.",
+  "hints": [
+   "A baby might be pushed in one.",
+   "Software that crashes often is called this."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "bugle",
+  "register": "standard",
+  "definition": "A small brass horn with no valves.",
+  "note": "From Middle English, from Anglo-Norman bugle, 'young ox'. It was named for the wild ox's horn from which the earliest ones were made.",
+  "hints": [
+   "Soldiers wake to its call.",
+   "Taps is played on one."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "build",
+  "register": "standard",
+  "definition": "To make something by putting parts together.",
+  "note": "From Old English bytlan, 'to build', from a word for a dwelling. It is a very old word for making houses.",
+  "hints": [
+   "Construction workers do it.",
+   "Make a house from bricks, perhaps."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "bulge",
+  "register": "standard",
+  "definition": "A swelling that sticks out.",
+  "note": "Through Old French, from Latin bulga, 'leather bag', itself from a Gaulish word. A bulging bag is a good picture of it.",
+  "hints": [
+   "A stuffed pocket makes one.",
+   "A battle in the Ardennes was named for a famous one."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "bulky",
+  "register": "standard",
+  "definition": "Large and awkward to carry.",
+  "note": "From bulk plus -y. It is used for things that take up a lot of space without being necessarily heavy.",
+  "hints": [
+   "A winter coat might be called this.",
+   "Hard to fit through a door."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "bully",
+  "register": "standard",
+  "definition": "Someone who picks on weaker people.",
+  "note": "In 1530 it was a term of endearment, perhaps from Dutch boel, 'lover, brother'. Over time it changed to mean someone who is a blustering tyrant.",
+  "hints": [
+   "A playground tormentor.",
+   "What you call someone who picks on smaller kids."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "bunch",
+  "register": "standard",
+  "definition": "A group of things clustered together.",
+  "note": "From Middle English bunche, 'hump, swelling', of uncertain origin. It was first a lump before it was a cluster.",
+  "hints": [
+   "Grapes grow in one.",
+   "Flowers tied together make one."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "bunny",
+  "register": "standard",
+  "definition": "A rabbit, especially a young one.",
+  "note": "Formed from a Scottish word, bun, meaning a rabbit's tail, with the -y of affection. It is a pet name.",
+  "hints": [
+   "The Easter one hides eggs.",
+   "A fluffy animal with long ears."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "burly",
+  "register": "standard",
+  "definition": "Large, strong and heavily built.",
+  "note": "From Middle English, where it first meant 'tall, stately'. It slowly shifted from grand to brawny.",
+  "hints": [
+   "A bouncer might be this.",
+   "A lumberjack's typical build."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "burst",
+  "register": "standard",
+  "definition": "To break open suddenly.",
+  "note": "From Old English berstan, a very old Germanic verb. It describes sudden breaking from pressure.",
+  "hints": [
+   "What a balloon does when pricked.",
+   "A pipe in winter might do this."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "bushy",
+  "register": "standard",
+  "definition": "Thick and spreading like a bush.",
+  "note": "From bush plus -y. It is most often used of eyebrows, beards and tails.",
+  "hints": [
+   "A squirrel's tail is described this way.",
+   "Unclipped eyebrows might be this."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "butte",
+  "register": "standard",
+  "definition": "A steep isolated hill with a flat top.",
+  "note": "Borrowed from French, where it means a mound. It is common in the American West, where French trappers named many landforms.",
+  "hints": [
+   "Monument Valley is full of them.",
+   "Smaller than a mesa."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "buyer",
+  "register": "standard",
+  "definition": "A person who purchases something.",
+  "note": "From buy plus -er. It also names a professional who selects goods for a shop.",
+  "hints": [
+   "The opposite of seller.",
+   "'___ beware' warns of a risky purchase."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "bylaw",
+  "register": "standard",
+  "definition": "A rule made by a local authority or organisation.",
+  "note": "From Middle English bilawe, partly from Old Norse byjar-log, 'town law'. The by- originally meant a village.",
+  "hints": [
+   "The council passed one about noisy parties.",
+   "A rule a club or company writes for itself."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "cabal",
+  "register": "standard",
+  "definition": "A small secret group plotting together.",
+  "note": "From French cabale, from Medieval Latin, from Hebrew qabbalah, 'tradition, received teaching'. It took on political meanings in 1600s England.",
+  "hints": [
+   "A hidden group scheming in the shadows.",
+   "Conspirators might form one."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "cabin",
+  "register": "standard",
+  "definition": "A small wooden house, or a room on a ship or plane.",
+  "note": "From Old French cabane, from Medieval Latin capanna, 'hut'. It is the same source as cabana.",
+  "hints": [
+   "Log houses in the woods are called this.",
+   "Where the passengers sit on a plane."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "cable",
+  "register": "standard",
+  "definition": "A thick rope or wire.",
+  "note": "From Old French, from Late Latin capulum, 'rope, halter'. Today it also names a bundle of electrical wire or a TV service.",
+  "hints": [
+   "A bridge may hang from huge steel ones.",
+   "Plug your phone into one to charge."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "cacao",
+  "register": "standard",
+  "definition": "The tree whose seeds are used to make chocolate.",
+  "note": "From Spanish, from Nahuatl cacahuatl. The word cocoa is a variant of the same word.",
+  "hints": [
+   "Chocolate begins as its beans.",
+   "Aztecs prized its seeds as a drink."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "cache",
+  "register": "standard",
+  "definition": "A hidden store of things; or saved data for fast access.",
+  "note": "From French cacher, 'to hide'. French-Canadian trappers used it for hiding places for supplies.",
+  "hints": [
+   "A web browser clears it to free space.",
+   "Squirrels keep one of nuts for winter."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "caddy",
+  "register": "standard",
+  "definition": "A small box for tea; or a golfer's assistant.",
+  "note": "The tea box name comes from kati, a Malay weight, via a pack of tea. The golf helper is a different word, from cadet.",
+  "hints": [
+   "Carries clubs around a golf course.",
+   "A box on a table holding tea bags."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "cadet",
+  "register": "standard",
+  "definition": "A young person training to be an officer.",
+  "note": "From French, from Gascon capdet, 'little head or chief'. It first meant a younger son, who would not inherit the family estate.",
+  "hints": [
+   "Trained at a military academy.",
+   "A trainee officer in uniform."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "cagey",
+  "register": "standard",
+  "definition": "Cautious and unwilling to give information.",
+  "note": "Originally American slang, of unknown origin. Some link it to the guarded behaviour of caged animals.",
+  "hints": [
+   "Asked a direct question, he gave a guarded answer.",
+   "Evasive when pressed for details."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "cairn",
+  "register": "standard",
+  "definition": "A pile of stones used as a marker.",
+  "note": "From Scottish Gaelic carn, from an old Celtic root. They mark graves, paths and mountain summits.",
+  "hints": [
+   "Hikers stack stones to build one.",
+   "A small scottish terrier shares the name."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "camel",
+  "register": "standard",
+  "definition": "A large desert animal with humps.",
+  "note": "Through Old English and Old French from Latin camelus, from Greek, from a Semitic source. The word is related to the Arabic word jamal.",
+  "hints": [
+   "One with two humps is called Bactrian.",
+   "Known for going long without water."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "cameo",
+  "register": "standard",
+  "definition": "A brief appearance by a famous person in a film.",
+  "note": "From Italian cammeo, a carved gem in relief. The film sense is short for 'cameo role', a small part that stands out like a jewel.",
+  "hints": [
+   "Hitchcock did this in his own films.",
+   "Also a carved brooch with a profile on it."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "canal",
+  "register": "standard",
+  "definition": "A man-made waterway.",
+  "note": "From Latin canalis, 'channel, pipe', related to canna, 'reed'. It also names a tube inside the body.",
+  "hints": [
+   "Panama and Suez are famous ones.",
+   "Venice is full of them."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "candy",
+  "register": "standard",
+  "definition": "Sweet food made with sugar.",
+  "note": "From Old French sucre candi, 'candied sugar', from Arabic qandi, which came from a Persian word. The first candy was crystallised sugar.",
+  "hints": [
+   "A trick-or-treater collects it.",
+   "The thing a lollipop is made of."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "canny",
+  "register": "standard",
+  "definition": "Shrewd and careful, especially about money.",
+  "note": "From a Northern English dialect word, from can in the old sense 'to know'. In Scots usage it can mean careful or lucky.",
+  "hints": [
+   "A sharp-witted person with good judgment.",
+   "Good at spotting a bargain."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "canoe",
+  "register": "standard",
+  "definition": "A light, narrow boat moved with paddles.",
+  "note": "Entered English in the 1500s from Spanish canoa, which took it from the Taino word for a dugout boat. It was one of the first Caribbean words Europeans borrowed.",
+  "hints": [
+   "Paddled across a calm lake.",
+   "Kayak's open-topped cousin."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "canon",
+  "register": "standard",
+  "definition": "An accepted body of rules or works.",
+  "note": "From Latin canon, from Greek kanon, 'measuring rod, rule'. A rod for measuring became a standard for judging.",
+  "hints": [
+   "Sacred texts accepted by a church form one.",
+   "The official set of stories in a fictional universe."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "carat",
+  "register": "standard",
+  "definition": "A unit of weight for gemstones.",
+  "note": "From Italian and Arabic qirat, itself from Greek keration, 'carob seed, small weight'. Carob seeds were once used to weigh gems.",
+  "hints": [
+   "A diamond ring is measured in it.",
+   "Gold purity is measured in a related spelling."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "cargo",
+  "register": "standard",
+  "definition": "Goods carried by a ship, plane or truck.",
+  "note": "Borrowed from Spanish cargo, 'load, burden', from cargar, 'to load'. It is a close relative of the word charge.",
+  "hints": [
+   "What a freighter hauls.",
+   "Shipping containers are packed with it."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "caste",
+  "register": "standard",
+  "definition": "A fixed social class one is born into.",
+  "note": "From Portuguese or Spanish casta, 'lineage, breed'. Europeans applied it to the hereditary classes of Indian society.",
+  "hints": [
+   "A rigid hereditary social division.",
+   "Also a word for a class of ants or bees, such as workers."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "catch",
+  "register": "standard",
+  "definition": "To grab something thrown or moving.",
+  "note": "From Old Northern French cachier and Latin captare, 'to chase', a relative of capere, 'to take'. It once meant to chase before it meant to seize.",
+  "hints": [
+   "Mitt in baseball does this to a ball.",
+   "A hidden drawback, as in 'what's the ___?'"
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "cater",
+  "register": "standard",
+  "definition": "To provide food and drink for an event.",
+  "note": "From Middle English catour, a shortened form of acatour, 'buyer', from Old French acater, 'to buy'. A caterer was once simply a buyer of provisions.",
+  "hints": [
+   "What a company does for a wedding reception.",
+   "To supply for a need, as in 'to ___ to every taste'."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "catty",
+  "register": "standard",
+  "definition": "Subtly spiteful.",
+  "note": "From cat plus -y. Cats were long thought of as sly and sharp, so a catty remark has hidden claws.",
+  "hints": [
+   "A remark with a hidden sting.",
+   "Gossip that's spiteful rather than kind."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "caulk",
+  "register": "standard",
+  "definition": "A waterproof filler used to seal gaps.",
+  "note": "From Old Northern French cauquer, from Late Latin calicare, 'to fill with limestone', from calx. Ship builders used it to seal the seams between planks.",
+  "hints": [
+   "Seals the gaps around a bathtub.",
+   "Sold in tubes and squeezed from a gun."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "cause",
+  "register": "standard",
+  "definition": "A thing that makes something happen.",
+  "note": "Borrowed from Old French cause, from Latin causa, 'reason, sake, lawsuit'. It once also meant a legal case.",
+  "hints": [
+   "The opposite of effect.",
+   "What you fight for if you are an activist."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "cavil",
+  "register": "standard",
+  "definition": "To raise petty objections.",
+  "note": "From Old French caviller, from Latin cavillari, 'to jeer, to reason captiously'. It has long meant a nitpicking complaint.",
+  "hints": [
+   "A fussy complaint about something trivial.",
+   "What a nitpicker does over small details."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "cease",
+  "register": "standard",
+  "definition": "To stop.",
+  "note": "From Old French cesser, from Latin cessare, 'to stop, delay'. It is usually seen in formal wording like 'cease and desist'.",
+  "hints": [
+   "What a ___-fire does to the fighting.",
+   "A formal word for stop."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "cedar",
+  "register": "standard",
+  "definition": "A tall evergreen tree with fragrant wood.",
+  "note": "From Latin cedrus, from Greek kedros. The scented wood is used to line chests and closets.",
+  "hints": [
+   "Moths avoid its scent in a wardrobe.",
+   "Lebanon's flag shows one."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "cello",
+  "register": "standard",
+  "definition": "A large stringed instrument played upright between the knees.",
+  "note": "Short for violoncello, Italian for 'little violone', where violone was a kind of big viol. Cello was a clipped form.",
+  "hints": [
+   "Bigger than a violin but smaller than a double bass.",
+   "Played sitting down with a bow."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "chafe",
+  "register": "standard",
+  "definition": "To rub and make sore.",
+  "note": "From Old French chaufer, 'to warm', from Latin calefacere. Rubbing makes heat, and so the meaning shifted from warm to irritate.",
+  "hints": [
+   "What a tight collar does to your neck.",
+   "To be annoyed by restrictions."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "chaff",
+  "register": "standard",
+  "definition": "The husks separated from grain.",
+  "note": "From Old English ceaf, a Germanic word. 'Separating the wheat from this' means sorting good from worthless.",
+  "hints": [
+   "What's blown away when grain is threshed.",
+   "Worthless stuff set apart from the wheat."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "chain",
+  "register": "standard",
+  "definition": "A series of connected metal links.",
+  "note": "From Old French chaine, from Latin catena. It names a bicycle part, a shop group and a connected series of events.",
+  "hints": [
+   "A bicycle has one that goes around the cogs.",
+   "A set of linked rings, or a group of shops."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "chair",
+  "register": "standard",
+  "definition": "A seat with a back, for one person.",
+  "note": "From Old French chaiere, from Latin cathedra, from Greek kathedra, 'seat'. The same Greek word gave us cathedral.",
+  "hints": [
+   "Sits at the dinner table.",
+   "Also what a person running a meeting is called."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "chalk",
+  "register": "standard",
+  "definition": "A soft white rock or a stick used for writing on boards.",
+  "note": "From Old English cealc, from Latin calx, 'limestone'. The white cliffs of Dover are made of it.",
+  "hints": [
+   "A teacher once used it on a blackboard.",
+   "Rock gymnasts rub on their hands."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "chant",
+  "register": "standard",
+  "definition": "To repeat words rhythmically.",
+  "note": "From Old French chanter, from Latin cantare, 'to sing'. It is a close relative of cant.",
+  "hints": [
+   "What a football crowd does in unison.",
+   "Monks do this in a monotone."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "chaos",
+  "register": "standard",
+  "definition": "Complete disorder.",
+  "note": "From Greek khaos, 'abyss, void'. The Greeks used it for the empty state before the world was ordered.",
+  "hints": [
+   "A kitchen with a dozen cooks and no plan.",
+   "The opposite of order."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "charm",
+  "register": "standard",
+  "definition": "The power to delight others; or a magic spell.",
+  "note": "From Old French charme, from Latin carmen, 'song, incantation'. Spells were sung before they were attractions.",
+  "hints": [
+   "A lucky one hangs on a bracelet.",
+   "'Third time lucky' is said to work like one."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "chase",
+  "register": "standard",
+  "definition": "To run after something in order to catch it.",
+  "note": "From Old French chacier, from Latin captare, a relative of capere, 'to take'. It is a cousin of catch.",
+  "hints": [
+   "A dog does it to a squirrel.",
+   "Cars do it in action movies."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "chasm",
+  "register": "standard",
+  "definition": "A deep gap or crack in the ground.",
+  "note": "From Latin chasma, from Greek khasma, 'abyss, cleft'. It also names a wide gulf between people.",
+  "hints": [
+   "What a bridge is built over.",
+   "A deep gorge in the earth."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "cheap",
+  "register": "standard",
+  "definition": "Low in price.",
+  "note": "From Old English ceap, 'trade, market, value', which is the root of a word for market in many languages. Originally 'good cheap' meant a good bargain.",
+  "hints": [
+   "The opposite of expensive.",
+   "Might also describe poor quality."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "cheat",
+  "register": "standard",
+  "definition": "To break the rules to gain an advantage.",
+  "note": "From Middle English acheten, a variant of escheten, from the legal word escheat, the seizure of property that falls to the crown. Officers who did the seizing had a reputation for dishonesty.",
+  "hints": [
+   "What a student does by copying an exam.",
+   "To win unfairly."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "check",
+  "register": "standard",
+  "definition": "To examine to make sure something is right.",
+  "note": "Ultimately from Persian shah, 'king', via the chess call of 'check' to the king. It then spread to mean stopping or testing.",
+  "hints": [
+   "Said when the king is threatened in chess.",
+   "What you do to an answer before you hand it in."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "cheek",
+  "register": "standard",
+  "definition": "The soft part of the face below the eye.",
+  "note": "From Old English ceace, 'jaw'. Cheeky behaviour was named for the impudent way of making faces.",
+  "hints": [
+   "A kiss on the face lands here.",
+   "A hamster stuffs food into them."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "chess",
+  "register": "standard",
+  "definition": "A board game with kings, queens and pawns.",
+  "note": "From Old French esches, from the plural of eschec, 'check', from Persian shah, 'king'. The name of the game is simply 'kings'.",
+  "hints": [
+   "Played on sixty-four squares.",
+   "The game where you try to checkmate."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "chest",
+  "register": "standard",
+  "definition": "The front of the body between the neck and stomach; or a strong box.",
+  "note": "From Old English cest, 'box, coffin', from Latin cista. The body part was named as the box that holds the heart and lungs.",
+  "hints": [
+   "Pirates buried treasure in one.",
+   "Where your ribs are."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "chick",
+  "register": "standard",
+  "definition": "A baby bird, especially a chicken.",
+  "note": "From Middle English chike, a variant of chiken. The informal word for a young woman came later.",
+  "hints": [
+   "It hatches from an egg.",
+   "Fluffy and yellow in spring."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "chide",
+  "register": "standard",
+  "definition": "To scold mildly.",
+  "note": "From Old English cidan, 'to quarrel, complain'. It carries a gentler, more old-fashioned tone than scold.",
+  "hints": [
+   "A parent might do this to a child who is rude.",
+   "To rebuke gently."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "chief",
+  "register": "standard",
+  "definition": "A leader or head of a group.",
+  "note": "From Old French chef, from Latin caput, 'head'. It is a cousin of the word cap and captain.",
+  "hints": [
+   "The head of a tribe or a fire department.",
+   "Main, as in 'the ___ reason'."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "child",
+  "register": "standard",
+  "definition": "A young human who is not yet an adult.",
+  "note": "From Old English cild, from a Germanic word that may have meant 'womb'. The plural, children, keeps an odd old ending.",
+  "hints": [
+   "A boy or girl.",
+   "Plays in the playground."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "chili",
+  "register": "standard",
+  "definition": "A hot pepper, or a stew made with it.",
+  "note": "Borrowed from Spanish chile, from Nahuatl chilli. The spelling varies, as in chilli or chile.",
+  "hints": [
+   "A spicy pod that makes your mouth burn.",
+   "A stew of beans and meat served in a bowl."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "chime",
+  "register": "standard",
+  "definition": "A bell-like ringing sound.",
+  "note": "From Middle English, possibly from Old French chimbe, 'cymbal', from Latin cymbalum. It first named the cymbal-like sound of bells.",
+  "hints": [
+   "A doorbell might play one.",
+   "To join in, as in 'to ___ in'."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "chirp",
+  "register": "standard",
+  "definition": "A short, sharp bird sound.",
+  "note": "From Middle English, imitative of the sound. It is often used of birds and crickets.",
+  "hints": [
+   "What a cricket does at night.",
+   "A small bird's morning sound."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "chock",
+  "register": "standard",
+  "definition": "A wedge placed to stop something moving.",
+  "note": "From Old Northern French choque, 'block, log'. It is used for wheels, boats and barrels.",
+  "hints": [
+   "Put behind the wheel of a parked aircraft.",
+   "A wedge that stops a wheel rolling."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "choir",
+  "register": "standard",
+  "definition": "A group of singers performing together.",
+  "note": "From Old French quer, from Latin chorus, 'dance, band of singers'. The spelling changed to resemble the Latin.",
+  "hints": [
+   "Sings carols at Christmas.",
+   "Part of a church where singers stand."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "choke",
+  "register": "standard",
+  "definition": "To be unable to breathe because something blocks the throat.",
+  "note": "From Old English aceocian, 'to choke'. It also means to panic and fail under pressure.",
+  "hints": [
+   "What a bite of food might make you do.",
+   "To fail under pressure, like a golfer on the last hole."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "chore",
+  "register": "standard",
+  "definition": "A routine household task.",
+  "note": "From earlier char, Middle English for an odd job or turn, from Old English cierr, 'a turn'. The meaning of a small daily job stuck.",
+  "hints": [
+   "Taking out the rubbish is one.",
+   "Something children are assigned for pocket money."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "chuck",
+  "register": "standard",
+  "definition": "To throw carelessly.",
+  "note": "A variant of chock, meaning a block or lump. As a verb it came to mean toss, and the cut of beef is the same word.",
+  "hints": [
+   "What you do to an old shoe in the bin.",
+   "Part of a drill that holds the bit."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "chump",
+  "register": "standard",
+  "definition": "A fool, or someone easily tricked.",
+  "note": "Of uncertain origin, perhaps a blend of chunk and lump. It first meant a blockhead.",
+  "hints": [
+   "A sucker taken in by a scam.",
+   "'Don't be a ___,' you might tell a friend."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "chunk",
+  "register": "standard",
+  "definition": "A thick, solid piece.",
+  "note": "A variant of chuck, perhaps from chump, with a diminutive ending. It names a thick piece of something.",
+  "hints": [
+   "A big lump of cheese.",
+   "A large portion of your salary."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "chute",
+  "register": "standard",
+  "definition": "A slide or sloping channel.",
+  "note": "Borrowed directly from French chute, 'fall'. It is also a short form of parachute.",
+  "hints": [
+   "A playground slide, or a laundry or rubbish passage.",
+   "A sloping channel for sliding things down."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "cigar",
+  "register": "standard",
+  "definition": "A roll of tobacco leaves for smoking.",
+  "note": "From Spanish cigarro, of uncertain origin. It is often smoked on special occasions.",
+  "hints": [
+   "Handed out in celebration when a baby is born.",
+   "Rolled tobacco that is thicker than a smoke in a paper tube."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "cinch",
+  "register": "standard",
+  "definition": "Something very easy; or a strap on a saddle.",
+  "note": "From Spanish cincha, 'girth, belt', from Latin cingulum. A tightly fastened strap became a sure thing.",
+  "hints": [
+   "A sure thing, or something simple.",
+   "A strap that holds a saddle on a horse."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "circa",
+  "register": "standard",
+  "definition": "Around; approximately, used with dates.",
+  "note": "Borrowed from Latin circa, 'around', related to circus and circle. Historians write it, often as 'c.', before an uncertain date.",
+  "hints": [
+   "Seen before a date on a museum label.",
+   "Abbreviated c. in front of a year."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "civic",
+  "register": "standard",
+  "definition": "Relating to a city or its citizens.",
+  "note": "Borrowed from Latin civicus, 'of a citizen', from civis, 'citizen'. A citizen's duties came to be called civic duties.",
+  "hints": [
+   "Voting is considered a duty of this kind.",
+   "A town hall is a ___ building."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "civil",
+  "register": "standard",
+  "definition": "Polite, or relating to ordinary citizens.",
+  "note": "From Old French and Latin civilis, 'relating to a citizen', from civis. It contrasts with military or religious matters, and with rude behaviour.",
+  "hints": [
+   "What a courteous but cold conversation might be.",
+   "A ___ war is fought between citizens of one country."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "clack",
+  "register": "standard",
+  "definition": "A short, sharp, hard sound.",
+  "note": "From Middle English clacken, imitative of the noise. It is the sound of two hard things repeatedly knocking.",
+  "hints": [
+   "Heels do it on a tile floor.",
+   "Typewriter keys make this noise."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "claim",
+  "register": "standard",
+  "definition": "To say that something is true or yours.",
+  "note": "From Old French clamer, 'to call out', from Latin clamare, 'to cry out'. A claim was once literally a calling out of what you owned.",
+  "hints": [
+   "A miner might stake one.",
+   "An insurance customer files one."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "clamp",
+  "register": "standard",
+  "definition": "A device that grips things tightly together.",
+  "note": "From Middle Dutch clampe, 'hook', from a Germanic root related to clasp. It is a tool for holding.",
+  "hints": [
+   "A carpenter holds two boards together with one.",
+   "A parking wheel lock is also called this."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "clang",
+  "register": "standard",
+  "definition": "A loud ringing metallic sound.",
+  "note": "From about 1570, imitative of the sound. It resembles the German word Klang.",
+  "hints": [
+   "What a dropped pan does on a tile floor.",
+   "A bell strikes it, but harshly."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "clank",
+  "register": "standard",
+  "definition": "A dull heavy metallic sound.",
+  "note": "Imitative of the sound itself. It is lower and heavier than a clang.",
+  "hints": [
+   "Chains drag across the floor with this noise.",
+   "A knight's armour makes it as he walks."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "clash",
+  "register": "standard",
+  "definition": "To crash together noisily, or to conflict.",
+  "note": "Imitative, like crash and smash. It came to mean fights and also colours that do not match.",
+  "hints": [
+   "Two armies meet in one.",
+   "Orange and pink might do this."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "clasp",
+  "register": "standard",
+  "definition": "To grip tightly; or a fastener.",
+  "note": "From Middle English claspe, a metal catch or hook. The noun and the verb have been in use since the 1300s.",
+  "hints": [
+   "A necklace has one at the back.",
+   "To hold hands tightly."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "class",
+  "register": "standard",
+  "definition": "A group of students; or a category or rank.",
+  "note": "From French classe and Latin classis, a division of Roman citizens. It grew to mean any group sorted by rank or type.",
+  "hints": [
+   "Students sit in it at school.",
+   "A social rank, like middle or working."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "clean",
+  "register": "standard",
+  "definition": "Free from dirt.",
+  "note": "From Old English clæne, meaning pure or clear. It once described moral purity too.",
+  "hints": [
+   "What you make a room before guests arrive.",
+   "The opposite of dirty."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "clear",
+  "register": "standard",
+  "definition": "Easy to see through, or easy to understand.",
+  "note": "From Old French cler, from Latin clarus, 'bright, clear'. It describes light, water, and ideas alike.",
+  "hints": [
+   "A window pane that is spotless is this.",
+   "Describes skies with no clouds."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "cleat",
+  "register": "standard",
+  "definition": "A wedge or strip used for gripping or fastening.",
+  "note": "From Middle English clete, meaning a wedge or block. Shoes and boats both have them.",
+  "hints": [
+   "A soccer boot has studs of this kind.",
+   "A sailor ties a rope around one on the dock."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "cleft",
+  "register": "standard",
+  "definition": "A split or crack, such as in a chin.",
+  "note": "From Middle English clift, related to cleave. It names a gap made by splitting.",
+  "hints": [
+   "A dimple in a person's chin is called this.",
+   "'In a ___ stick' means trapped in a split in wood."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "clerk",
+  "register": "standard",
+  "definition": "An office or shop worker who keeps records or serves customers.",
+  "note": "From Old English clerc, from Late Latin clericus, 'priest, learned man'. Churchmen were once the only ones who could write, so clerk meant scribe.",
+  "hints": [
+   "Takes your payment at a hotel desk.",
+   "A shop assistant who rings up sales."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "click",
+  "register": "standard",
+  "definition": "A short, sharp sound; or to press a mouse button.",
+  "note": "Imitative of the sound, first recorded in the 1500s. Computer use gave it a new life.",
+  "hints": [
+   "What a mouse does when pressed.",
+   "The sound a light switch makes."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "cliff",
+  "register": "standard",
+  "definition": "A steep rock face.",
+  "note": "From Old English clif, a Germanic word. It named the seaside rock long before the figurative cliff-edge.",
+  "hints": [
+   "The white ones at Dover look over the sea.",
+   "A dangerous place to stand near the edge."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "climb",
+  "register": "standard",
+  "definition": "To go up using hands and feet.",
+  "note": "From Old English climban, from a Germanic root. The b was once pronounced and is now silent.",
+  "hints": [
+   "What you do on a ladder.",
+   "Mountaineers do this to reach summits."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "cling",
+  "register": "standard",
+  "definition": "To hold on tightly.",
+  "note": "From Old English clingan, 'to adhere, stick together'. It is often used for wet clothes and for people afraid to let go.",
+  "hints": [
+   "A koala does this to a tree.",
+   "Wet fabric might do this to skin."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "clink",
+  "register": "standard",
+  "definition": "A light ringing sound of glass or metal touching.",
+  "note": "From Middle English clinken, imitative of the sound. It is also old slang for prison.",
+  "hints": [
+   "The sound when glasses touch in a toast.",
+   "Coins in a pocket make it."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "clone",
+  "register": "standard",
+  "definition": "An exact genetic copy of an organism.",
+  "note": "Coined in botany in 1903 from Greek klon, 'twig'. Plants grown from cuttings were the first clones.",
+  "hints": [
+   "Dolly the sheep was one.",
+   "An identical copy of something."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "close",
+  "register": "standard",
+  "definition": "To shut.",
+  "note": "From Middle English closen, from Old French clos, from Latin clausus. It is a familiar word with several distinct senses.",
+  "hints": [
+   "What you do to a door.",
+   "Nearby, as in 'a ___ friend'."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "cloud",
+  "register": "standard",
+  "definition": "A visible mass of water droplets in the sky.",
+  "note": "From Old English clud, which meant 'rock, hill'. The mass of rain-bearing vapour was likened to a hill in the sky.",
+  "hints": [
+   "It rains from this when it's grey.",
+   "A fluffy white one drifts overhead."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "clove",
+  "register": "standard",
+  "definition": "A dried flower bud used as a spice; or a segment of garlic.",
+  "note": "From Old French clou de girofle, 'nail of the clove tree', since the bud looks like a small nail.",
+  "hints": [
+   "A bud used to stud a ham.",
+   "One segment of a bulb of garlic."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "clown",
+  "register": "standard",
+  "definition": "A performer in baggy clothes and a red nose.",
+  "note": "From earlier clowne, 'a rustic, a boor', likely from a Scandinavian source. The meaning shifted from a clumsy peasant to a comic performer.",
+  "hints": [
+   "A circus performer with a red nose.",
+   "Someone who acts silly to get laughs."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "cluck",
+  "register": "standard",
+  "definition": "The noise a hen makes.",
+  "note": "From Old English cloccian, imitative of the hen's sound. It can also describe a sound of disapproval.",
+  "hints": [
+   "A mother hen calls her chicks with it.",
+   "What you do with your tongue to show disapproval."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "clump",
+  "register": "standard",
+  "definition": "A tight cluster or lump.",
+  "note": "From Old English clympre, 'lump or mass of metal', from a Germanic root. It describes things bunched together.",
+  "hints": [
+   "Grass growing in a tuft.",
+   "Hair stuck together in a wet mass."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "coach",
+  "register": "standard",
+  "definition": "A trainer; or a large carriage or bus.",
+  "note": "The carriage named for Kocs, a Hungarian town, is a popular theory. It later meant a tutor who carries a student through an exam.",
+  "hints": [
+   "Leads a sports team from the sideline.",
+   "A fancy horse-drawn carriage in a fairy tale."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "coast",
+  "register": "standard",
+  "definition": "The land along the sea.",
+  "note": "From Old French coste, 'rib, side, coast'. The word first meant a side of the body.",
+  "hints": [
+   "Where the land meets the ocean.",
+   "To glide without effort, as a bicycle down a hill."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "cobra",
+  "register": "standard",
+  "definition": "A venomous snake that spreads a hood.",
+  "note": "From Portuguese cobra, from Latin colubra, 'female snake'. It rears up and flattens its neck when threatened.",
+  "hints": [
+   "Snake charmers play to one.",
+   "Rudyard Kipling's Rikki-Tikki-Tavi fights one."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "cocoa",
+  "register": "standard",
+  "definition": "A powder made from cacao seeds; a hot chocolate drink.",
+  "note": "From Spanish cacao, via Nahuatl. Cocoa came from confusing the word with coco, a spelling Johnson's dictionary helped spread.",
+  "hints": [
+   "Hot drink with marshmallows.",
+   "Powder used in baking chocolate cake."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "colon",
+  "register": "standard",
+  "definition": "The punctuation mark that looks like two dots; also part of the bowel.",
+  "note": "From Latin colon and Greek kolon, 'limb, clause'. The mark was named for a member of a sentence, the bowel for a different Greek word.",
+  "hints": [
+   "Written before a list.",
+   "Two dots stacked on top of each other."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "color",
+  "register": "standard",
+  "definition": "The quality of light that makes red, blue and green different.",
+  "note": "From Old French color, from Latin color, 'colour, hue'. Spelled colour in British English.",
+  "hints": [
+   "Red or blue, for example.",
+   "A crayon box is full of them."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "comfy",
+  "register": "slang",
+  "definition": "Cosy and comfortable.",
+  "note": "A shortening of comfortable plus -y, dating to the early 1800s. It is a casual, affectionate word.",
+  "hints": [
+   "How a favourite old sweater feels.",
+   "A cosy armchair is described this way."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "comic",
+  "register": "standard",
+  "definition": "Funny; or a person or book that's funny.",
+  "note": "From Latin comicus, from Greek komikos, 'of comedy', from komos, 'carousal'. It once referred to stage comedy only.",
+  "hints": [
+   "A stand-up performer is called one.",
+   "A cartoon strip in a newspaper."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "comma",
+  "register": "standard",
+  "definition": "A punctuation mark that marks a short pause.",
+  "note": "From Latin comma, from Greek komma, 'piece cut off'. It cuts a sentence into smaller parts.",
+  "hints": [
+   "Looks like a tiny curved tail.",
+   "What separates items in a list."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "conch",
+  "register": "standard",
+  "definition": "A large spiral sea shell.",
+  "note": "From Latin concha, from Greek konkhe, 'shell'. Blowing through one makes a loud horn-like note.",
+  "hints": [
+   "In a famous novel, boys use one to call order.",
+   "Hold it to your ear to hear the sea."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "condo",
+  "register": "slang",
+  "definition": "An apartment you own in a building.",
+  "note": "Short for condominium. The full word describes a building where each unit has a separate owner.",
+  "hints": [
+   "Shortened word for a flat that is bought, not rented.",
+   "Often has a shared pool and gym."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "copse",
+  "register": "standard",
+  "definition": "A small group of trees.",
+  "note": "From coppice, contracted in the 1500s. It first meant a small wood grown to be cut regularly.",
+  "hints": [
+   "A small patch of woodland.",
+   "Smaller than a forest, bigger than a grove."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "coral",
+  "register": "standard",
+  "definition": "The hard, stony skeleton of tiny sea animals.",
+  "note": "From Old French and Latin corallium, from Greek korallion, probably of Semitic origin. Reefs are built by countless tiny animals.",
+  "hints": [
+   "The Great Barrier Reef is made of it.",
+   "A pinkish orange shade as well."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "corny",
+  "register": "standard",
+  "definition": "Cheesy and sentimental.",
+  "note": "Related to corn, the grain. It was slang for something tired and old-fashioned, as in a joke that's past its best.",
+  "hints": [
+   "A dad's pun might get this label.",
+   "A joke so old it makes people groan."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "couch",
+  "register": "standard",
+  "definition": "A sofa.",
+  "note": "From Old French couche, 'bed', from the verb coucher, 'to lay down'. It is a cousin of the Welsh word cwtch.",
+  "hints": [
+   "A 'potato' is someone who lounges on one.",
+   "Where you sit to watch TV."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "cough",
+  "register": "standard",
+  "definition": "To force air out of the lungs with a harsh sound.",
+  "note": "From Middle English coughen, imitative of the sound. The gh was once pronounced as a throat sound.",
+  "hints": [
+   "A common sign of a cold.",
+   "Syrup is meant to soothe it."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "count",
+  "register": "standard",
+  "definition": "To say numbers in order; or a nobleman.",
+  "note": "From Old French conter and Latin computare, 'to reckon together'. The noble title count comes from a different Latin word, comes, 'companion'.",
+  "hints": [
+   "One, two, three.",
+   "Sesame Street's vampire loves to do it."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "coupe",
+  "register": "standard",
+  "definition": "A two-door car with a sloping roof.",
+  "note": "Borrowed from French coupe, 'cut', from a carriage that was cut short. A shallow stemmed dish has the same spelling.",
+  "hints": [
+   "A sporty two-door car.",
+   "A cut-down version of a sedan."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
  }
 ]
