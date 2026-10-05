@@ -37,7 +37,7 @@ test("friends invite, shared turns, retry, pass, persistence and daily reset", a
   await ananya.getByRole("button", { name: "Accept daily game" }).click();
   await expect(ananya).toHaveURL(/\/duos\//);
   const id = ananya.url().split("/").at(-1)!;
-  await adi.getByRole("button", { name: "Close Ananya" }).click();
+  await adi.getByRole("button", { name: "Close Friend" }).click();
   await adi.goto(`/duos/${id}`);
   await yourTurn(adi);
   await expect(ananya.getByText("Waiting for Adi")).toBeVisible();

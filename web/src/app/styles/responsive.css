@@ -666,9 +666,17 @@
 :root:not([data-theme="light"]) { --text-faint: #909090; --mark-absent-text: #b5b5b5; }
 :root[data-theme="light"] { --text-muted: #755363; --text-faint: #795867; --mark-hit: #08725e; --mark-present: #ae285d; }
 :root[data-contrast="cb"] { --mark-hit: #235d91; --mark-present: #e8964f; }
-:root[data-palette="ocean"] { --mark-hit: #5686b3; --mark-hit-text: #f7fbff; --mark-present: #788fc1; --mark-present-text: #f8f8ff; }
-:root[data-palette="violet"] { --mark-hit: #9275aa; --mark-hit-text: #fbf9ff; --mark-present: #b88272; --mark-present-text: #fff9f6; }
-:root[data-contrast="cb"] { --mark-hit: #235d91; --mark-present: #e8964f; }
+/* Alternative board colours. Each pair differs in lightness as well as hue,
+   so "correct" and "misplaced" stay distinct at a glance, and every tile
+   letter clears 4.5:1. Light mode gets deeper shades of the same pair to hold
+   contrast on the paler page. :where() keeps the light rules at the same
+   specificity, so colour-blind mode below still wins over any palette. */
+:root[data-palette="ocean"] { --mark-hit: #1592a6; --mark-hit-text: #021418; --mark-present: #f7a682; --mark-present-text: #2a0d03; }
+:root[data-palette="violet"] { --mark-hit: #9a7bff; --mark-hit-text: #120a2e; --mark-present: #e9b23f; --mark-present-text: #251802; }
+:root[data-palette="ocean"]:where([data-theme="light"]) { --mark-hit: #074b5c; --mark-hit-text: #ffffff; --mark-present: #b5451f; --mark-present-text: #ffffff; }
+:root[data-palette="violet"]:where([data-theme="light"]) { --mark-hit: #5530c4; --mark-hit-text: #ffffff; --mark-present: #9a6a00; --mark-present-text: #ffffff; }
+/* Sets the letter colours too, since a palette may have changed them. */
+:root[data-contrast="cb"] { --mark-hit: #235d91; --mark-hit-text: #f7fbff; --mark-present: #e8964f; --mark-present-text: #1a0e05; }
 :focus-visible { outline: 3px solid var(--mark-present); outline-offset: 3px; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .game-app { max-width: 30rem; min-height: 620px; padding-inline: 14px; }
@@ -841,21 +849,30 @@ summary { cursor: pointer; color: var(--text-muted); padding-block: 8px; min-hei
 .friend-detail-identity { display: flex; align-items: center; gap: 15px; padding: 10px 0 20px; }
 .friend-detail-identity h2 { margin: 0; font: 550 1.7rem var(--font-serif),Georgia,serif; }
 .friend-detail-identity p { margin: 3px 0 0; font-size: .8rem; color: var(--text-muted); }
-.friend-shared-game { padding: 18px 0; margin-bottom: 12px; border-block: 1px solid var(--rule); }
-.friend-shared-game h3 { margin: 5px 0; font: 550 1.5rem var(--font-serif),Georgia,serif; }
-.friend-shared-game p { margin: 0 0 18px; color: var(--text-muted); font-size: .85rem; }
+/* One rule above the state, none below: the dialog's own edge closes it. */
+.friend-shared-game { display: grid; gap: 10px; padding: 18px 0 2px; border-top: 1px solid var(--rule); }
+.friend-shared-game h3 { margin: 0; font: 550 1.5rem var(--font-serif),Georgia,serif; }
+.friend-shared-game p { margin: 0; color: var(--text-muted); font-size: .85rem; }
+.friend-shared-game .friend-state { margin: 0 0 6px; color: var(--text); font-size: .98rem; line-height: 1.5; }
+.friend-shared-game .button { width: 100%; }
+.friend-dialog .friend-secondary { justify-self: center; min-height: 44px; color: var(--text-muted); }
+.friend-dialog .friend-secondary:hover { color: var(--text); }
+.friend-dialog .duo-recent { margin-top: 16px; }
 .duo-recent { padding: 0; list-style: none; margin: 12px 0; }
 .duo-recent li { display: flex; justify-content: space-between; gap: 10px; padding: 9px 0; border-bottom: 1px solid var(--rule); font-size: .75rem; color: var(--text-muted); }
 .duo-recent strong { font-family: var(--font-serif),Georgia,serif; font-size: .95rem; color: var(--text); }
 .duo-recent a { color: var(--text-muted); text-underline-offset: 3px; }
 .end-duo { margin-top: 16px; padding-top: 10px; border-top: 1px solid var(--rule); }
-.duo-members { display: flex; align-items: center; justify-content: center; gap: 14px; padding: 4px 0 10px; flex: none; font-size: .85rem; }
-.duo-member { display: inline-flex; align-items: center; gap: 6px; }
+/* Whose turn it is: two chips, the active one lit and the other quiet. */
+.duo-members { display: flex; align-items: center; justify-content: center; gap: 6px; padding: 2px 0 10px; flex: none; font-size: .85rem; }
+.duo-member { display: inline-flex; align-items: center; gap: 7px; padding: 4px 12px 4px 4px; border: 1px solid transparent; border-radius: 999px; color: var(--text-muted); transition: background .2s, border-color .2s, color .2s; }
+.duo-member[data-current="true"] { border-color: var(--border-strong); background: var(--bg-raised); color: var(--text); }
 .duo-members i { display: inline-grid; place-items: center; border-radius: 50%; width: 24px; height: 24px; font-family: var(--font-serif),Georgia,serif; font-style: normal; border: 1px solid var(--border-strong); }
 .duo-members > span[data-current="true"] i { border-color: var(--mark-hit); color: var(--mark-hit); }
-.duo-pass { min-height: 28px; margin-left: 2px; padding: 3px 7px; border: 1px solid var(--border); border-radius: 999px; background: transparent; color: var(--text-muted); font: 600 .65rem/1 var(--font-sans), system-ui, sans-serif; letter-spacing: .04em; cursor: pointer; }
-.duo-pass:hover { border-color: var(--border-strong); color: var(--text); }
-.duo-pass:disabled { opacity: .45; }
+/* Pass sits where the solo board keeps its hint: left of the bottom row. */
+.duo-app .board-stage .duo-pass { position: absolute; bottom: max(calc(8.333% - 22px), 0px); left: -50px; width: 44px; height: 44px; padding: 0; border-color: var(--border); border-radius: 50%; color: var(--text-muted); font-size: .66rem; font-weight: 650; letter-spacing: .02em; }
+.duo-app .board-stage .duo-pass:hover { border-color: var(--border-strong); color: var(--text); }
+.duo-app .board-stage .duo-pass:disabled { opacity: .45; }
 .duo-app .row { position: relative; }
 .row-author { display: grid; place-items: center; position: absolute; right: calc(100% + 6px); top: 50%; transform: translateY(-50%); font-family: var(--font-serif),Georgia,serif; font-size: .75rem; color: var(--text-muted); }
 .row-author[data-seat="0"], .duo-members [data-seat="0"] i { color: var(--seat-0); }
@@ -901,10 +918,19 @@ summary { cursor: pointer; color: var(--text-muted); padding-block: 8px; min-hei
 .palette-dots { display: flex; gap: 3px; }
 .palette-dots i { width: 9px; height: 9px; border-radius: 50%; background: var(--mark-hit); }
 .palette-dots i + i { background: var(--mark-present); }
-.palette-dots[data-palette="ocean"] i { background: #5686b3; }
-.palette-dots[data-palette="ocean"] i + i { background: #788fc1; }
-.palette-dots[data-palette="violet"] i { background: #9275aa; }
-.palette-dots[data-palette="violet"] i + i { background: #b88272; }
+/* Each preview shows its own colours, whichever palette is active now. */
+.palette-dots[data-palette="classic"] i { background: #2fb894; }
+.palette-dots[data-palette="classic"] i + i { background: #e0568f; }
+:where([data-theme="light"]) .palette-dots[data-palette="classic"] i { background: #08725e; }
+:where([data-theme="light"]) .palette-dots[data-palette="classic"] i + i { background: #ae285d; }
+.palette-dots[data-palette="ocean"] i { background: #1592a6; }
+.palette-dots[data-palette="ocean"] i + i { background: #f7a682; }
+.palette-dots[data-palette="violet"] i { background: #9a7bff; }
+.palette-dots[data-palette="violet"] i + i { background: #e9b23f; }
+:where([data-theme="light"]) .palette-dots[data-palette="ocean"] i { background: #074b5c; }
+:where([data-theme="light"]) .palette-dots[data-palette="ocean"] i + i { background: #b5451f; }
+:where([data-theme="light"]) .palette-dots[data-palette="violet"] i { background: #5530c4; }
+:where([data-theme="light"]) .palette-dots[data-palette="violet"] i + i { background: #9a6a00; }
 .appearance-options, .collection-tabs { display: flex; gap: 4px; padding: 4px; border: 1px solid var(--border); border-radius: 10px; background: var(--bg); }
 .appearance-options button, .collection-tabs button { flex: 1; min-height: 44px; border: 0; border-radius: 6px; background: transparent; color: var(--text-muted); font: inherit; font-size: .9rem; cursor: pointer; }
 .appearance-options button[aria-pressed="true"], .collection-tabs button[aria-pressed="true"] { background: var(--bg-raised); color: var(--text); box-shadow: 0 1px 4px rgb(0 0 0 / .12); }
