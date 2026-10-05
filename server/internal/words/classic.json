@@ -10846,5 +10846,1385 @@
   ],
   "difficulty": "stretch",
   "connection": ""
+ },
+ {
+  "word": "lyric",
+  "register": "standard",
+  "definition": "Relating to poetry that expresses a speaker's own feelings, or the words of a song.",
+  "note": "Via French and Latin from Greek lurikos, 'of the lyre'. Lyric poetry was first the kind sung to a lyre.",
+  "hints": [
+   "Songwriters write these words.",
+   "Poetry of personal feeling, or what the singer sings."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "macaw",
+  "register": "standard",
+  "definition": "A large, brightly coloured parrot from tropical America.",
+  "note": "From Portuguese macau, of unknown origin.",
+  "hints": [
+   "A loud, colourful tropical bird.",
+   "A big parrot with a long tail and a hooked beak."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "macho",
+  "register": "standard",
+  "definition": "Aggressively or showily masculine.",
+  "note": "Borrowed from Spanish macho, 'male', from Latin masculus, which also gave English 'male'.",
+  "hints": [
+   "Describes a man keen to prove his toughness.",
+   "Spanish for male, now a word for swagger."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "madam",
+  "register": "standard",
+  "definition": "A polite way to address a woman.",
+  "note": "From Old French ma dame, 'my lady'. The same word also names a woman who runs a household or a brothel.",
+  "hints": [
+   "How a shop assistant might address a customer.",
+   "Polite counterpart to 'sir'."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "magic",
+  "register": "standard",
+  "definition": "The use of rituals or supposed supernatural forces to make things happen, or a trick that seems to.",
+  "note": "Traced back through Greek to Old Persian, where the root referred to the priests known as magi.",
+  "hints": [
+   "Wizards and stage performers both claim it.",
+   "Abracadabra is a word for summoning it."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "maize",
+  "register": "standard",
+  "definition": "Corn; the cereal plant Zea mays, or its grain.",
+  "note": "Borrowed from Spanish maiz, from Taino, the language of the Caribbean people who grew it.",
+  "hints": [
+   "Another name for corn, used in Britain.",
+   "A golden crop that the Americas gave the world."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "major",
+  "register": "standard",
+  "definition": "Greater in size, importance or rank.",
+  "note": "From Latin maior, 'greater'. Its opposite, minor, comes from Latin minor.",
+  "hints": [
+   "The opposite of minor.",
+   "A military rank above captain, or a main subject at university."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "manga",
+  "register": "standard",
+  "definition": "A Japanese comic or graphic novel.",
+  "note": "Borrowed from Japanese, written with characters meaning roughly 'whimsical' and 'picture'.",
+  "hints": [
+   "Read right to left, often in black and white.",
+   "Japanese comics with large-eyed characters."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "mange",
+  "register": "standard",
+  "definition": "A skin disease of animals caused by mites, leaving them itchy and patchy.",
+  "note": "From Old French manjue, 'itch', from mangier, 'to eat'.",
+  "hints": [
+   "A scruffy stray dog might suffer from it.",
+   "Mites cause this itchy hair-loss condition."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "mango",
+  "register": "standard",
+  "definition": "A sweet, juicy tropical fruit with a large stone.",
+  "note": "Reached English from Portuguese, ultimately from Tamil and Malayalam words for the fruit.",
+  "hints": [
+   "A tropical fruit with orange flesh.",
+   "A summer smoothie flavour that is also a chutney."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "mangy",
+  "register": "standard",
+  "definition": "Scruffy and worn, as if suffering from mange.",
+  "note": "Formed from 'mange' plus -y, and extended from diseased animals to anything shabby.",
+  "hints": [
+   "Describes a patchy, flea-ridden stray.",
+   "Shabby and bald in places."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "mania",
+  "register": "standard",
+  "definition": "An extreme, obsessive enthusiasm, or a state of manic excitement.",
+  "note": "From Greek mania, 'madness', from the verb mainesthai, 'to rage'.",
+  "hints": [
+   "A craze that sweeps a crowd.",
+   "Madness, in Greek; now also a craze."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "manic",
+  "register": "standard",
+  "definition": "Wildly energetic or frantic.",
+  "note": "From Greek mania, 'madness', via the clinical term for the elevated state.",
+  "hints": [
+   "Describes a frenzied burst of activity.",
+   "Often paired with 'depressive' in a diagnosis."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "manor",
+  "register": "standard",
+  "definition": "A large country house with its land, or the estate itself.",
+  "note": "From Old French manoir, 'dwelling', from Latin manere, 'to stay'.",
+  "hints": [
+   "A lord's country estate in medieval England.",
+   "A grand house in the countryside."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "maple",
+  "register": "standard",
+  "definition": "A tree with lobed leaves, known for its syrup and autumn colour.",
+  "note": "From Middle English mapel, the name of the tree.",
+  "hints": [
+   "Canada's flag features its leaf.",
+   "Tree that is tapped for sweet syrup."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "march",
+  "register": "standard",
+  "definition": "To walk in a steady, regular rhythm, as soldiers do.",
+  "note": "From Old French marchier, 'to stride, to trample'.",
+  "hints": [
+   "What soldiers do in step.",
+   "Also the month after February."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "marry",
+  "register": "standard",
+  "definition": "To take someone as a husband or wife.",
+  "note": "From Latin maritare, 'to wed', from maritus, 'husband'.",
+  "hints": [
+   "What happens at a wedding.",
+   "To tie the knot."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "marsh",
+  "register": "standard",
+  "definition": "Low, wet ground with grasses and reeds.",
+  "note": "From Old English mersc, a word for low wet ground.",
+  "hints": [
+   "Wet land where reeds and herons live.",
+   "A boggy lowland, less deep than a swamp."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "mason",
+  "register": "standard",
+  "definition": "A person who builds with stone or brick.",
+  "note": "From Old French ma\u00e7on, from Late Latin, 'bricklayer'. The Freemasons take their name from medieval stoneworkers.",
+  "hints": [
+   "Cuts and lays stone for walls.",
+   "A jar sharing this name is used for preserves."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "mauve",
+  "register": "standard",
+  "definition": "A pale, purplish colour.",
+  "note": "French for 'mallow', the plant with purple flowers. It was also the name of the first synthetic dye, which was this colour.",
+  "hints": [
+   "A pale shade between lilac and violet.",
+   "Named for a flowering plant, via French."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "maxim",
+  "register": "standard",
+  "definition": "A short saying that states a rule or truth.",
+  "note": "From Latin maxima, via French, used for a basic principle or axiom.",
+  "hints": [
+   "A pithy line of advice.",
+   "'Look before you leap' is one."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "mayor",
+  "register": "standard",
+  "definition": "The elected head of a town or city.",
+  "note": "From Old French maire, from Latin maior, 'greater'.",
+  "hints": [
+   "Leads a city council.",
+   "Wears a chain of office on formal occasions."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "medic",
+  "register": "standard",
+  "definition": "A doctor or someone with medical training, such as one serving with soldiers.",
+  "note": "From Latin medicus, 'physician'.",
+  "hints": [
+   "Someone shouts for one on a battlefield.",
+   "Short for a person who treats the wounded."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "melee",
+  "register": "standard",
+  "definition": "A confused, close-quarters fight.",
+  "note": "Borrowed from French melee, from Old French meslee, 'to mix'.",
+  "hints": [
+   "A scrappy brawl in which nobody is in charge.",
+   "A tangled fight with everyone mixed up."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "melon",
+  "register": "standard",
+  "definition": "A large, sweet fruit with juicy flesh and a thick rind.",
+  "note": "From Old French melon, from Late Latin and ultimately Greek melopepon, a word that combined 'apple' and 'gourd'.",
+  "hints": [
+   "Cantaloupe and honeydew are types.",
+   "A big juicy summer fruit eaten in slices."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "mercy",
+  "register": "standard",
+  "definition": "Kindness shown by sparing someone who deserves punishment.",
+  "note": "From Old French merci, from Latin merces, 'wages, price'.",
+  "hints": [
+   "What a judge might show.",
+   "Begged for by a defeated enemy."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "merge",
+  "register": "standard",
+  "definition": "To combine into one.",
+  "note": "Borrowed from Latin mergere, 'to dip, plunge, immerse'.",
+  "hints": [
+   "What two lanes of traffic do.",
+   "Two companies become one."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "merit",
+  "register": "standard",
+  "definition": "The quality of being worthy of praise or reward.",
+  "note": "From Old French merite, from Latin meritum, 'something earned'.",
+  "hints": [
+   "Judged on this rather than favours.",
+   "A school badge might reward it."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "merry",
+  "register": "standard",
+  "definition": "Cheerful and full of fun.",
+  "note": "From Old English myrge, meaning 'pleasing, agreeable'.",
+  "hints": [
+   "A word for festive cheer.",
+   "Christmas greetings include it."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "metal",
+  "register": "standard",
+  "definition": "A hard, shiny, conductive material such as iron or copper.",
+  "note": "From Greek metallon, a word for a mine or quarry, which came to mean what was mined.",
+  "hints": [
+   "Iron and gold are examples.",
+   "Conducts heat and electricity well."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "meter",
+  "register": "standard",
+  "definition": "A device that measures, such as the amount of gas or electricity used.",
+  "note": "From Middle English metere, 'one who measures', related to 'mete out'.",
+  "hints": [
+   "The taxi one runs up the fare.",
+   "Read monthly by the utility company."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "metro",
+  "register": "standard",
+  "definition": "An underground railway system in a city.",
+  "note": "French, clipped from metropolitain, ultimately from Greek words for 'mother' and 'city'. It was first used for the Paris railway.",
+  "hints": [
+   "The Paris one has art nouveau entrances.",
+   "Another name for the subway or tube."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "midge",
+  "register": "standard",
+  "definition": "A tiny biting or swarming fly.",
+  "note": "From Old English mycg, a word for a midge, gnat or mosquito.",
+  "hints": [
+   "Clouds of them plague Scottish summers.",
+   "A small fly that swarms near water."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "mimic",
+  "register": "standard",
+  "definition": "To copy someone's voice or behaviour, or an animal that copies another's appearance.",
+  "note": "From Latin mimicus and Greek mimikos, 'belonging to mimes'.",
+  "hints": [
+   "A parrot is good at this.",
+   "Copy someone's voice, often to tease."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "minor",
+  "register": "standard",
+  "definition": "Smaller or less important, or a person under legal adulthood.",
+  "note": "From Latin minor, 'lesser', which gives the opposite of 'major'.",
+  "hints": [
+   "The opposite of major.",
+   "Someone not yet old enough to vote."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "minus",
+  "register": "standard",
+  "definition": "Less, or the sign for subtraction.",
+  "note": "From Latin minus, the neuter of minor, 'less'.",
+  "hints": [
+   "Takes away rather than adds.",
+   "The short horizontal sign in arithmetic."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "mocha",
+  "register": "standard",
+  "definition": "A coffee flavoured with chocolate.",
+  "note": "Named for Mocha, a Red Sea port in Yemen that was a major coffee marketplace under Ottoman rule.",
+  "hints": [
+   "A coffee shop order with chocolate.",
+   "Named after a port city in Yemen."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "model",
+  "register": "standard",
+  "definition": "A person who displays clothes, or a small copy or representation of something.",
+  "note": "From Latin modus, 'measure', through a diminutive form.",
+  "hints": [
+   "Walks a catwalk wearing the designer's clothes.",
+   "A scaled-down version of a building or plane."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "mogul",
+  "register": "standard",
+  "definition": "A rich and powerful person in some industry.",
+  "note": "Figurative use of Moghul, which meant Mongol and referred to the Mughal Empire of India.",
+  "hints": [
+   "A media tycoon.",
+   "A Hollywood boss, or a bump on a ski slope."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "moist",
+  "register": "standard",
+  "definition": "Slightly wet; damp.",
+  "note": "From Old French moiste. Cake, soil and eyes can all be this.",
+  "hints": [
+   "A good sponge cake is this.",
+   "Between dry and wet."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "money",
+  "register": "standard",
+  "definition": "What people use to buy and sell things.",
+  "note": "From Old French moneie, from Latin Moneta, a title of the goddess Juno, in whose temple Roman coins were made.",
+  "hints": [
+   "Coins and notes.",
+   "A word whose Roman root names a temple of Juno."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "month",
+  "register": "standard",
+  "definition": "One of the twelve parts of a year.",
+  "note": "From Old English monath, related to 'moon', since months followed the moon's phases.",
+  "hints": [
+   "January is one.",
+   "About thirty days."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "moose",
+  "register": "standard",
+  "definition": "The largest deer, with broad flat antlers, found in North America.",
+  "note": "From an Eastern Algonquian word such as Narragansett moos, adopted into English.",
+  "hints": [
+   "Large antlered animal of Canadian forests.",
+   "Named by Algonquian speakers."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "moral",
+  "register": "standard",
+  "definition": "Concerned with right and wrong, or the lesson of a story.",
+  "note": "From Latin moralis, from mos, 'custom, manner'.",
+  "hints": [
+   "Fables end with one.",
+   "Concerned with ethics."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "motel",
+  "register": "standard",
+  "definition": "A roadside hotel for motorists.",
+  "note": "A blend of 'motor' and 'hotel'.",
+  "hints": [
+   "Often found beside a highway.",
+   "Where the motorist sleeps over."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "motif",
+  "register": "standard",
+  "definition": "A recurring theme or pattern in a work of art.",
+  "note": "From French motif, in the sense of 'main idea', and a doublet of 'motive'.",
+  "hints": [
+   "A repeated pattern on wallpaper.",
+   "A theme that keeps returning in a story or song."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "motor",
+  "register": "standard",
+  "definition": "A machine that turns energy into movement.",
+  "note": "From Latin motor, 'mover', from movere, 'to move'.",
+  "hints": [
+   "Powers a car or a fan.",
+   "The thing under the bonnet that makes it go."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "motto",
+  "register": "standard",
+  "definition": "A short phrase that states a guiding principle.",
+  "note": "Borrowed from Italian motto, 'a word, a saying', from Latin muttum, 'a mutter, a grunt'.",
+  "hints": [
+   "Often written under a coat of arms.",
+   "A school's Latin slogan."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "moult",
+  "register": "standard",
+  "definition": "To shed feathers, fur or skin so that new ones can grow.",
+  "note": "From Latin mutare, 'to change', via Old English and Middle English.",
+  "hints": [
+   "What a bird does each year.",
+   "Snakes and birds do it."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "mound",
+  "register": "standard",
+  "definition": "A raised heap of earth or other material.",
+  "note": "From a Middle English word meaning a fence or protection, from Old English mund, 'hand, protection'.",
+  "hints": [
+   "A small hill piled up by hand.",
+   "A baseball pitcher stands on one."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "mouse",
+  "register": "standard",
+  "definition": "A small rodent, or a handheld computer pointing device.",
+  "note": "From Old English mus, the same word as in German Maus.",
+  "hints": [
+   "Cats chase it.",
+   "You click it beside your keyboard."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "mouth",
+  "register": "standard",
+  "definition": "The opening in the face used for eating and speaking, or where a river meets the sea.",
+  "note": "From Old English muth, from a Germanic root.",
+  "hints": [
+   "Where food goes in.",
+   "A river has one where it meets the sea."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "movie",
+  "register": "standard",
+  "definition": "A film shown in cinemas or at home.",
+  "note": "From 'moving picture' plus -ie, attested by 1912 in American English.",
+  "hints": [
+   "Watched with popcorn.",
+   "A short form of 'moving picture'."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "mucus",
+  "register": "standard",
+  "definition": "The slippery fluid made by the lining of the nose and throat.",
+  "note": "Learned borrowing from Latin mucus.",
+  "hints": [
+   "Produced when you have a cold.",
+   "A slimy bodily secretion."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "mulch",
+  "register": "standard",
+  "definition": "A layer of material spread over soil to protect and feed plants.",
+  "note": "Probably from Middle English melsche, 'soft', from an Old English word for 'mellow' or 'honeyed'.",
+  "hints": [
+   "Gardeners spread it around plants.",
+   "Bark chips on a flowerbed."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "mummy",
+  "register": "standard",
+  "definition": "A preserved dead body wrapped in bandages, or a mother.",
+  "note": "From Arabic mumiya, 'embalmed body', itself from a Persian word.",
+  "hints": [
+   "Ancient Egyptians preserved them.",
+   "Horror films show one lurching in bandages."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "munch",
+  "register": "standard",
+  "definition": "To chew noisily and with enjoyment.",
+  "note": "Probably imitative of the sound of chewing, from Middle English monchen.",
+  "hints": [
+   "What you do to crisps.",
+   "Chew loudly on a snack."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "mural",
+  "register": "standard",
+  "definition": "A large painting made directly on a wall.",
+  "note": "From French mural, from Latin murus, 'wall'.",
+  "hints": [
+   "Painted on the side of a building.",
+   "Wall art on a grand scale."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "murky",
+  "register": "standard",
+  "definition": "Dark, cloudy and hard to see through.",
+  "note": "From Middle English mirky, built from 'murk' plus -y.",
+  "hints": [
+   "Describes a swamp's water.",
+   "Cloudy water you cannot see to the bottom of."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "music",
+  "register": "standard",
+  "definition": "Organised sound made for pleasure, using melody and rhythm.",
+  "note": "From Latin musica and Greek mousike, 'art of the Muses'.",
+  "hints": [
+   "Played by an orchestra.",
+   "Named for the nine Greek goddesses of the arts."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "myrrh",
+  "register": "standard",
+  "definition": "A fragrant, bitter resin from certain trees, used in incense and perfume.",
+  "note": "From Greek murra, from a Semitic source; compare Arabic murr, 'bitter'.",
+  "hints": [
+   "One of the gifts of the Magi.",
+   "Brought to the infant Jesus along with gold and frankincense."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "naive",
+  "register": "standard",
+  "definition": "Lacking experience and too ready to trust.",
+  "note": "Borrowed from French naive, the feminine of naif, from Latin nativus, 'native, natural'.",
+  "hints": [
+   "Believing everything you are told.",
+   "Innocent, and easy to fool."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "nasty",
+  "register": "standard",
+  "definition": "Very unpleasant, or spiteful.",
+  "note": "From Middle English nasty, 'unclean, filthy', of obscure origin.",
+  "hints": [
+   "A word for a cruel remark.",
+   "Not nice at all."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "navel",
+  "register": "standard",
+  "definition": "The small scar on the belly where the umbilical cord was attached.",
+  "note": "From Old English nafola, from a Germanic root.",
+  "hints": [
+   "Also called the belly button.",
+   "An orange can be named for this."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "neigh",
+  "register": "standard",
+  "definition": "The long high call of a horse.",
+  "note": "From Old English hnaegan, from a Germanic root meaning 'to neigh'.",
+  "hints": [
+   "The sound a horse makes.",
+   "A stable sound."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "niche",
+  "register": "standard",
+  "definition": "A shallow recess in a wall, or a small specialised area of a market.",
+  "note": "Borrowed from French niche, from Old French nicher, 'to make a nest'.",
+  "hints": [
+   "A spot in the wall for a statue.",
+   "A small market that suits a few buyers well."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "niece",
+  "register": "standard",
+  "definition": "The daughter of your brother or sister.",
+  "note": "From Old French nece, from Late Latin neptia.",
+  "hints": [
+   "Your sibling's daughter.",
+   "Her counterpart is a nephew."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "ninja",
+  "register": "standard",
+  "definition": "A covert warrior of feudal Japan, or anyone stealthy and skilled.",
+  "note": "Borrowed from Japanese, with an underlying sense of 'hidden person'.",
+  "hints": [
+   "Wears black and moves silently.",
+   "A throwing star is its signature weapon."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "noble",
+  "register": "standard",
+  "definition": "Of high birth, or having fine moral qualities.",
+  "note": "From Old French noble, from Latin nobilis, 'known, famous, of high birth'.",
+  "hints": [
+   "A knight or duke has this rank.",
+   "Showing generosity and honour."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "noise",
+  "register": "standard",
+  "definition": "A loud or unpleasant sound.",
+  "note": "From Old French noise, 'dispute, wrangle, strife, noise', of uncertain origin.",
+  "hints": [
+   "What neighbours make at night.",
+   "Sound you would rather not hear."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "nomad",
+  "register": "standard",
+  "definition": "A person who moves from place to place with no fixed home.",
+  "note": "From Greek nomas, 'roaming', used of wandering shepherds in search of pasture.",
+  "hints": [
+   "A herder who follows his animals.",
+   "Lives out of a tent, travelling."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "noose",
+  "register": "standard",
+  "definition": "A loop of rope that tightens when pulled.",
+  "note": "From Middle English nose, 'noose, loop', of unclear origin.",
+  "hints": [
+   "A rope with a sliding knot.",
+   "A hangman's loop."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "notch",
+  "register": "standard",
+  "definition": "A small V-shaped cut, or a step upward in level.",
+  "note": "Recorded since 1577, likely a rebracketing of 'an otch', from Old French ochier, 'to cut a notch'.",
+  "hints": [
+   "Cut into a stick to count days.",
+   "A belt is tightened one of these at a time."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "novel",
+  "register": "standard",
+  "definition": "A long work of fiction, or something new and original.",
+  "note": "From Old French novel, 'new', from Latin novellus, a diminutive of novus.",
+  "hints": [
+   "A book of invented story.",
+   "An idea that has never been tried."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "nylon",
+  "register": "standard",
+  "definition": "A strong, stretchy synthetic fibre.",
+  "note": "Coined by DuPont in 1938, formed from a random syllable plus a common fibre ending.",
+  "hints": [
+   "Used for stockings and ropes.",
+   "The first fully synthetic fibre."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "obese",
+  "register": "standard",
+  "definition": "Extremely overweight in a way that affects health.",
+  "note": "From Latin obesus, 'having eaten away', from ob- plus edere, 'to eat'.",
+  "hints": [
+   "Clinical term for being very overweight.",
+   "A health risk measured by BMI."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "occur",
+  "register": "standard",
+  "definition": "To happen, or to come to mind.",
+  "note": "From Latin occurrere, 'to run to meet'.",
+  "hints": [
+   "What an accident does.",
+   "When an idea does this, it comes to mind."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "ocean",
+  "register": "standard",
+  "definition": "A vast body of salt water covering much of the Earth.",
+  "note": "From Greek Okeanos, the great river believed to circle the world, via Latin and Old French.",
+  "hints": [
+   "The Atlantic and the Pacific are examples.",
+   "Bigger than any sea."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "octet",
+  "register": "standard",
+  "definition": "A group of eight, especially eight musicians.",
+  "note": "From oct-, 'eight', plus the ending -et.",
+  "hints": [
+   "A chamber piece for eight players.",
+   "A group of eight."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "offal",
+  "register": "standard",
+  "definition": "The organs of an animal, such as liver and kidney, used as food.",
+  "note": "From Middle English offal, built from 'off' and 'fall': what falls off in butchering.",
+  "hints": [
+   "Liver and kidneys are examples.",
+   "Butcher's leftovers that some cooks prize."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "offer",
+  "register": "standard",
+  "definition": "To hold out something for someone to accept.",
+  "note": "From Old English offrian, 'to make a sacrifice'.",
+  "hints": [
+   "What a shop does with a discount.",
+   "Put forward for acceptance."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "often",
+  "register": "standard",
+  "definition": "Many times; frequently.",
+  "note": "From Middle English ofte, with an -n added by analogy with 'seldom'.",
+  "hints": [
+   "Its opposite is seldom.",
+   "Happens again and again."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "olive",
+  "register": "standard",
+  "definition": "A small oval fruit eaten or pressed for oil, or a dull green colour.",
+  "note": "From Old French olive, from Latin oliva.",
+  "hints": [
+   "A martini garnish.",
+   "Pressed to make a Mediterranean cooking oil."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "omega",
+  "register": "standard",
+  "definition": "The last letter of the Greek alphabet.",
+  "note": "From Greek o mega, 'great o', to tell it apart from the short omicron.",
+  "hints": [
+   "Opposite of alpha.",
+   "The final letter, meaning the end."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "onion",
+  "register": "standard",
+  "definition": "A round vegetable with layers that makes people cry when cut.",
+  "note": "From Old French oignon, from Latin unio.",
+  "hints": [
+   "Cutting one brings tears.",
+   "A layered bulb with a sharp smell."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "onset",
+  "register": "standard",
+  "definition": "The beginning of something, usually something unwelcome.",
+  "note": "Formed from 'on' plus 'set'.",
+  "hints": [
+   "The start of a fever or a storm.",
+   "The first moment a symptom appears."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "opera",
+  "register": "standard",
+  "definition": "A drama in which the words are sung to an orchestra's accompaniment.",
+  "note": "Borrowed from Italian opera, 'work'. It is a doublet of 'opus'.",
+  "hints": [
+   "Sung in grand theatres, often in Italian.",
+   "A fat lady is said to end it by singing."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "opium",
+  "register": "standard",
+  "definition": "A narcotic drug made from the juice of the poppy.",
+  "note": "From Greek opion, from opos, 'juice'.",
+  "hints": [
+   "Made from a flower's sap.",
+   "Source of morphine and heroin."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "organ",
+  "register": "standard",
+  "definition": "A part of the body with a particular job, or a large keyboard instrument with pipes.",
+  "note": "From Greek organon, 'tool, instrument', via Latin and Old French.",
+  "hints": [
+   "The heart or liver is one.",
+   "A church instrument with pipes and pedals."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "otter",
+  "register": "standard",
+  "definition": "A playful, water-loving mammal with webbed feet and a long body.",
+  "note": "From Old English otor, from a Germanic root that is related to the word 'water'.",
+  "hints": [
+   "It slides down muddy riverbanks.",
+   "Sea ones hold hands while they sleep."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "ounce",
+  "register": "standard",
+  "definition": "A unit of weight equal to one sixteenth of a pound.",
+  "note": "From Latin uncia, a Roman unit that was a twelfth part of something.",
+  "hints": [
+   "A small unit used in cooking and mail.",
+   "Sixteen make a pound."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "ovary",
+  "register": "standard",
+  "definition": "The organ in which eggs are made, or the part of a flower that holds the ovules.",
+  "note": "From New Latin ovarium, from Latin ovum, 'egg'.",
+  "hints": [
+   "Where eggs are produced.",
+   "The base of a flower's pistil."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "overt",
+  "register": "standard",
+  "definition": "Done openly, not hidden.",
+  "note": "From Old French overt, 'open'.",
+  "hints": [
+   "Done in plain sight.",
+   "Hidden actions are its opposite."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "oxide",
+  "register": "standard",
+  "definition": "A compound of oxygen and another element.",
+  "note": "From Greek oxus, 'sharp, acid', the same root that gave 'oxygen'.",
+  "hints": [
+   "Rust is one.",
+   "A chemical made by burning something with air."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "ozone",
+  "register": "standard",
+  "definition": "A form of oxygen with three atoms, found in a protective layer high above the Earth.",
+  "note": "Coined in 1840 by Christian Friedrich Schonbein, from Greek ozon, 'smelling', because of its sharp smell.",
+  "hints": [
+   "A layer high up shields us from ultraviolet rays.",
+   "Its hole over the poles worried the world."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "paddy",
+  "register": "standard",
+  "definition": "A flooded field in which rice grows.",
+  "note": "Borrowed from Malay padi, 'rice plant'.",
+  "hints": [
+   "Rice grows in one.",
+   "A wet field in Asia."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "paint",
+  "register": "standard",
+  "definition": "Coloured liquid that dries to coat a surface.",
+  "note": "From Latin pingere, 'to paint', via Old French.",
+  "hints": [
+   "Applied with a brush or roller.",
+   "An artist mixes it on a palette."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "panel",
+  "register": "standard",
+  "definition": "A flat section of a surface, or a group of people chosen to discuss something.",
+  "note": "From Middle English panel, which could mean a piece of cloth or a list of jurors, from Old French.",
+  "hints": [
+   "A door can have one set in it.",
+   "A group of experts on a show."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "papal",
+  "register": "standard",
+  "definition": "Relating to the pope.",
+  "note": "From Medieval Latin papalis, from papa, 'father'.",
+  "hints": [
+   "Describes a pope's decree.",
+   "A bull issued from Rome."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "parka",
+  "register": "standard",
+  "definition": "A hooded jacket for cold or wet weather.",
+  "note": "Reached English by 1780 through Russian and Aleut, ultimately from a Tundra Nenets word.",
+  "hints": [
+   "A hooded coat for the Arctic.",
+   "A hooded coat with a fur-trimmed edge for the Arctic."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "parry",
+  "register": "standard",
+  "definition": "To ward off an attack or a question.",
+  "note": "From Italian parare, 'to ward off' via French.",
+  "hints": [
+   "A fencer's defensive move.",
+   "Deflect a question without really answering it."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "parse",
+  "register": "standard",
+  "definition": "To break a sentence into its grammatical parts, or to analyse code.",
+  "note": "Probably from Middle English pars, 'parts of speech', from Latin pars, 'part'.",
+  "hints": [
+   "Done to a sentence in a grammar lesson.",
+   "A computer does it to a line of code."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "party",
+  "register": "standard",
+  "definition": "A social gathering, or a group or person involved in something.",
+  "note": "From Old French partie, 'part, side, share'.",
+  "hints": [
+   "Held with music and cake.",
+   "A political group, or a person in a lawsuit."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "pasta",
+  "register": "standard",
+  "definition": "A food made from wheat dough, shaped and boiled.",
+  "note": "Borrowed from Italian pasta, 'paste, dough', from Greek.",
+  "hints": [
+   "Spaghetti is one kind.",
+   "Eaten with sauce, from Italy."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "paste",
+  "register": "standard",
+  "definition": "A soft, sticky mixture, or to stick something with glue.",
+  "note": "From Old French paste, 'dough', from Greek.",
+  "hints": [
+   "A soft, sticky mixture.",
+   "Copy, then do this on a computer."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "patch",
+  "register": "standard",
+  "definition": "A piece used to cover a hole, or a small area.",
+  "note": "From Middle English patche, of uncertain origin.",
+  "hints": [
+   "Sewn on a worn elbow.",
+   "A pirate might wear one over an eye."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "patio",
+  "register": "standard",
+  "definition": "A paved outdoor area beside a house.",
+  "note": "From Spanish patio, 'courtyard', of uncertain origin.",
+  "hints": [
+   "Where a barbecue might be set up.",
+   "A paved spot outside the back door."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "patty",
+  "register": "standard",
+  "definition": "A small flat cake of minced food, such as meat.",
+  "note": "Earlier meant 'small pie', from French pate.",
+  "hints": [
+   "The meaty part of a burger.",
+   "A flat round of ground beef."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "pause",
+  "register": "standard",
+  "definition": "A short stop or rest.",
+  "note": "From Latin pausa, from Greek pausis, 'stopping'.",
+  "hints": [
+   "A button on a video player.",
+   "A brief silence."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "peace",
+  "register": "standard",
+  "definition": "Freedom from war, or a state of calm.",
+  "note": "From Old French pais, from Latin pax.",
+  "hints": [
+   "What a treaty aims for.",
+   "The dove is its symbol."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "peach",
+  "register": "standard",
+  "definition": "A soft, juicy, downy-skinned fruit with a large stone.",
+  "note": "From Latin persicum, 'Persian apple', via Old French peche.",
+  "hints": [
+   "A fuzzy summer fruit.",
+   "Its Latin name points to Persia."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "pearl",
+  "register": "standard",
+  "definition": "A smooth, round gem formed inside an oyster.",
+  "note": "From Old French perle, of uncertain origin.",
+  "hints": [
+   "Found inside an oyster.",
+   "A string of these is a classic necklace."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "pecan",
+  "register": "standard",
+  "definition": "A sweet, buttery nut from an American tree.",
+  "note": "From French pacane, from an Algonquian word.",
+  "hints": [
+   "The nut in a Southern pie.",
+   "Related to the walnut."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "pedal",
+  "register": "standard",
+  "definition": "A foot-operated lever, as on a bicycle or piano.",
+  "note": "From Latin pes, 'foot', via French pedale.",
+  "hints": [
+   "Pushed round by a cyclist.",
+   "A piano has two or three at the bottom."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "penal",
+  "register": "standard",
+  "definition": "Relating to punishment, especially by law.",
+  "note": "From Latin poenalis, from poena, 'punishment'.",
+  "hints": [
+   "Relating to punishment under the law.",
+   "A criminal code or a prison colony may carry this word."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
  }
 ]
