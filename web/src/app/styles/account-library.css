@@ -431,3 +431,129 @@
   right: 1px;
 }
 
+
+/* ---------------------------------------------------------------------------
+   Profile — the words first. No boxes: the name and numbers are type on the
+   page, recent words read like a short glossary, and the remaining
+   destinations are plain rows. Held to a reading width even on a desktop.
+--------------------------------------------------------------------------- */
+.profile { max-width: 34rem; }
+
+.profile-hero { padding: 28px 0 32px; }
+.profile-name {
+  margin: 0;
+  font: 600 clamp(2.6rem, 13vw, 3.6rem)/1 var(--font-serif), Georgia, serif;
+  letter-spacing: -0.025em;
+  overflow-wrap: anywhere;
+}
+.profile-rename {
+  min-height: 36px;
+  margin-top: 6px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text-faint);
+  font: inherit;
+  font-size: 0.85rem;
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.profile-rename:hover { color: var(--text); }
+
+.profile-figures {
+  display: flex;
+  gap: clamp(24px, 9vw, 44px);
+  margin: 26px 0 0;
+}
+/* The number reads first; the label (first in the markup, as a dl needs) sits under it. */
+.profile-figures > div { display: flex; flex-direction: column-reverse; gap: 6px; min-width: 0; }
+.profile-figures dd {
+  margin: 0;
+  font: 600 clamp(2rem, 9vw, 2.4rem)/1 var(--font-serif), Georgia, serif;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.profile-figures dt { color: var(--text-muted); font-size: 0.8rem; }
+
+.profile-nudge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  margin-top: 18px;
+  color: var(--text);
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+.profile-nudge::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--mark-present);
+}
+.profile-nudge:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+.profile-section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--rule);
+}
+.profile-section-head h3 { margin: 0; }
+.profile-section-head a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+.profile-section-head a:hover { color: var(--text); }
+
+.profile-recent ul { margin: 0; padding: 0; list-style: none; }
+.profile-recent li { border-bottom: 1px solid var(--rule); }
+.profile-recent li a {
+  display: grid;
+  grid-template-columns: 6.5rem minmax(0, 1fr);
+  align-items: baseline;
+  gap: 14px;
+  padding: 14px 0;
+  color: inherit;
+  text-decoration: none;
+}
+.profile-recent strong { font: 600 1.2rem/1.2 var(--font-serif), Georgia, serif; }
+.profile-recent li span {
+  overflow: hidden;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.4;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.profile-recent li a:hover strong { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+.profile-empty { margin: 16px 0 0; color: var(--text-muted); line-height: 1.55; }
+.profile-empty a { color: var(--text); text-underline-offset: 3px; }
+
+.profile-links { margin-top: 36px; border-top: 1px solid var(--rule); }
+.profile-links a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 60px;
+  border-bottom: 1px solid var(--rule);
+  color: var(--text);
+  font-size: 1rem;
+  text-decoration: none;
+}
+.profile-links a > span { flex: 1; }
+.profile-links small { color: var(--text-muted); font-size: 0.9rem; font-variant-numeric: tabular-nums; }
+.profile-links .profile-links-alert { color: var(--mark-present); font-weight: 600; }
+.profile-links svg { width: 18px; height: 18px; color: var(--text-faint); }
+.profile-links a:hover svg { color: var(--text); transform: translateX(2px); transition: transform 0.15s ease; }
+
+@media (max-width: 380px) {
+  .profile-recent li a { grid-template-columns: 5.5rem minmax(0, 1fr); }
+}
