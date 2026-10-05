@@ -13,7 +13,9 @@ import { useSyncExternalStore } from "react";
  * whole row of it says "solved" in the game's own grammar rather than inventing
  * a decorative colour that means nothing.
  */
-const WORDS = ["begin", "guess", "solve", "learn", "think", "words", "daily", "vowel"];
+// This is a tiny invitation to the kind of word the game is for, rather than
+// generic interface copy such as “learn” or “begin”.
+const WORDS = ["mirth", "quill", "lumen", "verse", "sable", "brisk", "vivid", "waltz"];
 
 /**
  * Read as an external store rather than computed in render: the server and the

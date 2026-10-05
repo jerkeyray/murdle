@@ -91,11 +91,18 @@ export default function FriendsPage() {
   return <main className="sheet friends-page">
     <Presence />
     <header className="sheet-head"><BackButton href="/" /><h1 className="sheet-title">Friends</h1></header>
-    {!ready ? <Loader /> : !profile ? <>
-      <p className="empty">Sign in to play with friends.</p>
-      <Link className="button button--link" href={`/sign-in?returnTo=${encodeURIComponent(`/friends${code ? `?code=${code}` : ""}`)}`}>Sign in</Link>
-      {error && <p role="alert">{error}</p>}
-    </> : <>
+    {!ready ? <Loader /> : !profile ? <div className="gate-middle friends-gate">
+      {error ? <div className="gate-card">
+        <h2 className="gate-title">Can’t reach friends</h2>
+        <p className="gate-line">Check your connection and try again.</p>
+        <button className="button" onClick={() => { setError(""); setReady(false); void load().catch(() => {}); }}>Try again</button>
+      </div> : <div className="gate-card">
+        <h2 className="gate-title">Play with friends.</h2>
+        <p className="gate-line">Share a daily board with a friend and take turns guessing.</p>
+        <Link className="button button--link" href={`/sign-in?returnTo=${encodeURIComponent(`/friends${code ? `?code=${code}` : ""}`)}`}>Sign in</Link>
+      </div>}
+      {!error && <Link href="/" className="gate-foot">Play without an account</Link>}
+    </div> : <>
       <section className="friend-invite" aria-label="Invite a friend">
         <div className="friend-invite-top">
           <div><span className="label">Your invite code</span><strong>{profile.inviteCode}</strong></div>
@@ -111,7 +118,7 @@ export default function FriendsPage() {
         </form>
       </section>
       {!available && <p className="hint">Shared games are unavailable on this server.</p>}
-      {error && <p className="form-error" role="alert">{error} <button className="text-button" onClick={() => void load().catch(() => {})}>Retry</button></p>}
+      {error && <p className="form-error" role="alert">{error}</p>}
       {notice && <p className="hint" role="status">{notice}</p>}
       {sorted.length === 0 ? <section className="friends-empty">
         <div className="friends-empty-icon"><FriendIcon kind="people" /></div>

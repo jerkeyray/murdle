@@ -56,15 +56,13 @@ export default function ProfilePage() {
   // need, and gating them behind an account would be a poor joke.
   if (signedOut) {
     return (
-      <main className="sheet">
+      <main className="sheet sheet--guest">
         {head}
         <section className="guest-profile">
-          <span className="label">Your collection starts here</span>
-          <h2>Words worth keeping.</h2>
-          <p>Sign in to keep the words you discover, build a daily streak, and play with friends.</p>
-          <ul><li>Every discovered word, in one place</li><li>Save favourites to revisit</li><li>Track your streak and play together</li></ul>
+          <span className="label">Your library</span>
+          <h2>Keep the words you meet.</h2>
+          <p>Sign in to save words and play with friends.</p>
           <Link href="/sign-in?returnTo=%2Fprofile" className="button button--link">Sign in</Link>
-          <Link href="/play" className="text-button">Play a round</Link>
         </section>
       </main>
     );
