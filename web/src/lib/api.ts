@@ -1,3 +1,6 @@
+import type { CollectionPage, Duo, DuoMutation, FriendRecord, HomeSummary, Mark, Profile, Round, Row, Run } from "./contracts";
+export type { Mark, RoundState, Row, Entry, Pack, Run, Round, Profile, HomeSummary, SolveRecord, CollectionPage, FriendRecord, DuoDay, Duo, DuoMutation } from "./contracts";
+
 /**
  * Typed client for the Go game API.
  *
@@ -42,72 +45,6 @@ function localDate(): string {
   return `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
 }
 
-export type Mark = "absent" | "present" | "hit";
-export type RoundState = "playing" | "won" | "lost";
-
-export interface Row {
-  guess: string;
-  marks: Mark[];
-}
-
-/** What the round taught you. Present only once the round is over. */
-export interface Entry {
-  word: string;
-  register: "standard" | "slang";
-  definition: string;
-  note: string;
-  /** IPA, without slashes. Absent until the word has been enriched. */
-  pronunciation?: string;
-  partOfSpeech?: string;
-  /** One-line source chain, e.g. "Anglo-Norman abatre, from Latin battere". The longer story stays in `note`. */
-  origin?: string;
-  example?: string;
-  /** Link to the sentence an example came from, where its licence asks for one. */
-  exampleSource?: string;
-}
-
-/** The theme reveal. Present only on a completed run. */
-export interface Pack {
-  id: string;
-  connections: { word: string; explanation: string }[];
-  title: string;
-  blurb: string;
-}
-
-export interface Run {
-  id: string;
-  mode: "classic" | "themed";
-  wordLength: 5 | 6;
-  /** Words in the run. */
-  length: number;
-  started: number;
-  currentRoundId?: string;
-  completedWords: Round[];
-  newCycle: boolean;
-  finished: number;
-  complete: boolean;
-  points: number;
-  /** Only ever present once the run is complete. */
-  pack?: Pack;
-}
-
-export interface Round {
-  id: string;
-  state: RoundState;
-  wordLength: number;
-  maxRows: number;
-  rows: Row[];
-  hintsUsed: number;
-  hints: { tier: number; text: string }[];
-  /** Row index the board was solved on, or -1. */
-  solvedRow: number;
-  points: number;
-  /** Only ever present once the round has finished. */
-  answer?: string;
-  /** Rides along with `answer`, for the same reason. */
-  entry?: Entry;
-}
-
 /**
  * An error the player caused and can do something about — a short guess, a
  * non-word, a tap out of turn. `code` matches the server's error codes so the
@@ -128,13 +65,28 @@ export class ApiError extends Error {
 async function request<T>(path: string, init?: RequestInit, retry = 0): Promise<T> {
   // Signing in is optional. A token makes the round count towards your
   // history; without one you still get a perfectly good game.
-  const token = await getToken();
+  let token: string | null;
+  try {
+    token = await getToken(init?.signal ?? undefined);
+  } catch (err) {
+    if (init?.signal?.aborted) throw init.signal.reason ?? new DOMException("Request cancelled", "AbortError");
+    if (err instanceof DOMException && err.name === "TimeoutError") {
+      throw new ApiError("timeout", "The request took too long. Please try again.", 0);
+    }
+    throw new ApiError("offline", "Can't reach the game server", 0);
+  }
 
   let res: Response | undefined;
   for (let attempt = 0; attempt <= retry; attempt++) {
+    const controller = new AbortController();
+    const abortFromCaller = () => controller.abort(init?.signal?.reason);
+    if (init?.signal?.aborted) abortFromCaller();
+    else init?.signal?.addEventListener("abort", abortFromCaller, { once: true });
+    const timer = window.setTimeout(() => controller.abort(new DOMException("Request timed out", "TimeoutError")), 20_000);
     try {
       res = await fetch(`${API_URL}${path}`, {
         ...init,
+        signal: controller.signal,
         headers: {
           "Content-Type": "application/json",
           "X-Wordle-Date": localDate(),
@@ -144,8 +96,13 @@ async function request<T>(path: string, init?: RequestInit, retry = 0): Promise<
       });
       break;
     } catch {
+      if (init?.signal?.aborted) throw init.signal.reason ?? new DOMException("Request cancelled", "AbortError");
+      if (controller.signal.aborted) throw new ApiError("timeout", "The request took too long. Please try again.", 0);
       if (attempt === retry) throw new ApiError("offline", "Can't reach the game server", 0);
       await new Promise((resolve) => window.setTimeout(resolve, 300 * (attempt + 1)));
+    } finally {
+      window.clearTimeout(timer);
+      init?.signal?.removeEventListener("abort", abortFromCaller);
     }
   }
 
@@ -171,11 +128,11 @@ async function request<T>(path: string, init?: RequestInit, retry = 0): Promise<
   return res.json() as Promise<T>;
 }
 
-export function createRun(opts: { excludePacks?: string[]; excludeWords?: string[]; mode?: "classic" | "themed"; wordLength?: 5 | 6; difficulty?: "mixed" | "learning" } = {}): Promise<{ round: Round; run: Run }> {
+export function createRun(opts: { requestId: string; excludePacks?: string[]; excludeWords?: string[]; mode?: "classic" | "themed"; wordLength?: 5 | 6; difficulty?: "mixed" | "learning" }): Promise<{ round: Round; run: Run }> {
   return request<{ round: Round; run: Run }>("/api/runs?deal=1", {
     method: "POST",
-    body: JSON.stringify({ excludePacks: opts.excludePacks ?? [], excludeWords: opts.excludeWords ?? [], mode: opts.mode, wordLength: opts.wordLength, difficulty: opts.difficulty }),
-  });
+    body: JSON.stringify({ excludePacks: opts.excludePacks ?? [], excludeWords: opts.excludeWords ?? [], mode: opts.mode, wordLength: opts.wordLength, difficulty: opts.difficulty, requestId: opts.requestId }),
+  }, 2);
 }
 
 export const getRun = (id: string) => request<Run>(`/api/runs/${id}`);
@@ -183,8 +140,13 @@ export const getRun = (id: string) => request<Run>(`/api/runs/${id}`);
 /** Deals the next word of a run. */
 export function startRunRound(
   runId: string,
+  expectedRoundId: string,
+  requestId: string,
 ): Promise<{ round: Round; run: Run }> {
-  return request(`/api/runs/${runId}/rounds`, { method: "POST" });
+  return request(`/api/runs/${runId}/rounds`, {
+    method: "POST",
+    body: JSON.stringify({ expectedRoundId, requestId }),
+  }, 2);
 }
 
 export function getRound(id: string): Promise<Round> {
@@ -243,90 +205,15 @@ export function letterStates(rows: Row[]): Record<string, Mark> {
   return states;
 }
 
-/* --------------------------------------------------------------------------
-   Profile, collection and friends. All require a signed-in player.
-   -------------------------------------------------------------------------- */
-
-export interface Profile {
-  displayName: string;
-  /** True until a nickname has been chosen. */
-  needsName: boolean;
-  seatColor: string;
-  /** Short code a friend types to find you. */
-  inviteCode: string;
-  streak: { current: number; longest: number; playedToday: boolean };
-  wordsLearned: number;
-}
-
-export interface HomeSummary {
-  streak: { current: number; playedToday: boolean };
-}
-
-export interface SolveRecord {
-  word: string;
-  packId: string;
-  solved: boolean;
-  solvedRow: number | null;
-  guesses: number;
-  points: number;
-  playedOn: string;
-  entry?: Entry;
-}
-
-export interface FriendRecord {
-  id: string;
-  displayName: string;
-  status: "pending" | "accepted" | "blocked";
-  /** True when they asked you, which is what decides accept versus waiting. */
-  incoming: boolean;
-  online: boolean;
-  dayStreak: number;
-}
-
-export interface DuoDay {
-  duoId: string;
-  /** The rules, as the server holds them — never a second copy in the UI. */
-  wordLength: number;
-  maxRows: number;
-  date: string;
-  deadline: string;
-  state: "playing" | "won" | "lost" | "expired" | "closed";
-  currentPlayer: string;
-  version: number;
-  rows: (Row & { playerId: string })[];
-  passed: string[];
-  streak: number;
-  answer?: string;
-  entry?: Entry;
-}
-export interface Duo {
-  id: string;
-  friendshipId: string;
-  inviterId: string;
-  viewerId: string;
-  members: { id: string; name: string }[];
-  timezone: string;
-  status: "pending" | "active" | "declined" | "cancelled" | "ended";
-  version: number;
-  today?: DuoDay;
-  recent: DuoDay[];
-}
-export interface DuoMutation {
-  requestId: string;
-  version: number;
-  guess?: string;
-  friendshipId?: string;
-  timezone?: string;
-}
-export const getCapabilities = () => request<{ sharedGames: boolean }>("/api/capabilities");
-export const getDuos = () => request<Duo[]>("/api/me/duos");
-export const getDuo = (id: string, date = "today") => request<Duo>(`/api/duos/${id}/days/${date}`);
-export const heartbeat = () => request<void>("/api/me/presence", { method: "POST" });
+export const getCapabilities = (signal?:AbortSignal) => request<{ sharedGames: boolean }>("/api/capabilities",{signal});
+export const getDuos = (signal?:AbortSignal) => request<Duo[]>("/api/me/duos",{signal});
+export const getDuo = (id: string, date = "today", signal?:AbortSignal) => request<Duo>(`/api/duos/${id}/days/${date}`,{signal});
+export const heartbeat = (signal?:AbortSignal) => request<void>("/api/me/presence", { method: "POST",signal });
 export const inviteDuo = (mutation: DuoMutation) => request<Duo>("/api/me/duos", { method: "POST", body: JSON.stringify(mutation) });
-export const mutateDuo = (id: string, action: "accept" | "decline" | "cancel" | "end" | "guesses" | "pass", mutation: DuoMutation, date?: string) =>
+export const mutateDuo = (id: string, action: "accept" | "decline" | "cancel" | "end" | "next" | "guesses" | "pass", mutation: DuoMutation, date?: string) =>
   request<Duo>(`/api/duos/${id}/${date ? `days/${date}/` : ""}${action}`, { method: "POST", body: JSON.stringify(mutation) });
 
-export const getProfile = () => request<Profile>("/api/me");
+export const getProfile = (signal?:AbortSignal) => request<Profile>("/api/me",{signal});
 export const getHomeSummary = () => request<HomeSummary>("/api/me/home");
 
 export const setDisplayName = (name: string) =>
@@ -334,9 +221,18 @@ export const setDisplayName = (name: string) =>
     method: "POST",
     body: JSON.stringify({ name }),
   });
-export const getSolves = () => request<SolveRecord[]>("/api/me/solves");
-export const getSavedWords = () => request<SolveRecord[]>("/api/me/saved");
-export const getFriends = () => request<FriendRecord[]>("/api/me/friends");
+function collectionQuery(options: {limit?:number;cursor?:string;q?:string;length?:number}) {
+  const params = new URLSearchParams();
+  if (options.limit) params.set("limit",String(options.limit));
+  if (options.cursor) params.set("cursor",options.cursor);
+  if (options.q) params.set("q",options.q);
+  if (options.length) params.set("length",String(options.length));
+  return params.size ? `?${params}` : "";
+}
+export const getSolves = (options: {limit?:number;cursor?:string;q?:string;length?:number} = {}) => request<CollectionPage>(`/api/me/solves${collectionQuery(options)}`);
+export const getSavedWords = (options: {limit?:number;cursor?:string;q?:string;length?:number} = {}) => request<CollectionPage>(`/api/me/saved${collectionQuery(options)}`);
+export const getSavedStatus = (word:string) => request<{saved:boolean}>(`/api/me/saved/status/${encodeURIComponent(word)}`);
+export const getFriends = (signal?:AbortSignal) => request<FriendRecord[]>("/api/me/friends",{signal});
 
 export async function setWordSaved(word: string, saved: boolean): Promise<void> {
   await request<void>(`/api/me/saved/${word}`, {

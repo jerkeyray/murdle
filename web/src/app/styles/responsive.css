@@ -1,0 +1,1095 @@
+/* ---------------------------------------------------------------------------
+   Wider than a phone
+
+   Everything above is laid out for a phone held in one hand. On a laptop that
+   same column stranded at the top of the viewport reads as unfinished, so the
+   wide layouts give the content somewhere to sit.
+--------------------------------------------------------------------------- */
+
+@media (min-width: 760px) {
+  /* The two modes sit side by side instead of stacking, which fills the width
+     and makes the choice read as a pair rather than a list. */
+  .choices {
+    flex-direction: row;
+    gap: 14px;
+  }
+
+  .choice {
+    flex: 1;
+    padding: 22px 24px;
+  }
+
+  .home {
+    max-width: 38rem;
+  }
+
+  /* A sign-in card holds one sentence and one button. At 38rem it stretched
+     into a banner with the text marooned along the top of it. */
+  .gate {
+    max-width: 25rem;
+  }
+
+  .home-middle {
+    padding-bottom: 10vh;
+  }
+
+  .home-mark {
+    font-size: 4.4rem;
+  }
+
+  /* The lexicon is a reading page: wider, and the summary blocks pair up
+     across the top rather than running down a single narrow column. */
+  .sheet {
+    max-width: 46rem;
+    padding-inline: 28px;
+  }
+
+  /* Two columns of entries at this width; the notes stay readable because the
+     column, not the page, sets the measure. `columns` does nothing on a flex
+     container, so the stacked layout's display has to be undone here, and the
+     gap between cards becomes a margin. */
+  .rows--split {
+    display: block;
+    columns: 2;
+    column-gap: 16px;
+  }
+
+  .rows--split > li {
+    break-inside: avoid;
+    margin-bottom: 16px;
+  }
+}
+
+/* A board on a large screen is still a board: it keeps a phone's proportions
+   and sits in the middle, rather than stretching into something nobody can
+   take in at a glance. */
+@media (min-width: 760px) and (min-height: 640px) {
+  .app {
+    max-width: 26rem;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Turning the volume down
+
+   The lexicon was built at a size that suited a page full of words and looked
+   enormous on a page with none. Everything here is smaller and tighter; the
+   content should carry the page, not the furniture around it.
+--------------------------------------------------------------------------- */
+
+.plate {
+  padding: 16px 18px;
+  margin-bottom: 14px;
+}
+
+.plate-name {
+  /* A nickname is capped at sixteen characters, so this no longer has to
+     survive "Aditya Srivastava" wrapping onto two lines. */
+  font-size: clamp(1.6rem, 7vw, 2rem);
+}
+
+.plate-rule {
+  margin: 12px 0 10px;
+}
+
+.plate-code {
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+}
+
+.plate--naming {
+  border-style: solid;
+}
+
+.stats {
+  gap: 7px;
+  margin-bottom: 18px;
+}
+
+.stat {
+  gap: 2px;
+  padding: 11px 12px;
+}
+
+.stat-number {
+  font-size: 1.5rem;
+}
+
+.prefs {
+  margin-bottom: 18px;
+}
+
+.block-head {
+  padding-bottom: 7px;
+  margin-bottom: 9px;
+}
+
+.tabs {
+  margin-bottom: 12px;
+}
+
+.tab {
+  padding: 7px 3px 9px;
+  margin-right: 10px;
+  font-size: 0.64rem;
+}
+
+/* ---------------------------------------------------------------------------
+   Choosing a name
+--------------------------------------------------------------------------- */
+
+.name-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.name-title {
+  margin: 6px 0 0;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(1.5rem, 7vw, 1.9rem);
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.name-line {
+  margin: 0;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.name-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.name-input {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 1.15rem;
+}
+
+.name-foot {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* ---------------------------------------------------------------------------
+   One card instead of four
+
+   The bookplate and three stat boxes were four containers holding, for a new
+   account, one name and three zeroes. They are one card now: who this is, the
+   shelf mark, and the counts along the bottom.
+--------------------------------------------------------------------------- */
+
+.plate {
+  padding: 15px 18px 14px;
+  margin-bottom: 16px;
+}
+
+.plate-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.plate-head .plate-code {
+  font-size: 0.92rem;
+  letter-spacing: 0.18em;
+  color: var(--text-muted);
+}
+
+.plate-name {
+  margin: 2px 0 0;
+  font-size: clamp(1.7rem, 8vw, 2.1rem);
+  line-height: 1.1;
+}
+
+.plate-name-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.name-edit {
+  flex: none;
+  min-height: 40px;
+  padding: 8px 0 8px 12px;
+  border: 0;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.76rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.name-edit:hover {
+  color: var(--text);
+}
+
+.plate-rule {
+  margin: 13px 0 12px;
+}
+
+/* The counts, as a row of three inside the card rather than three cards. */
+.tally {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 0;
+}
+
+.tally-cell {
+  padding-left: 14px;
+  border-left: 1px solid var(--rule);
+}
+
+.tally-cell:first-child {
+  padding-left: 0;
+  border-left: none;
+}
+
+.tally-number {
+  margin: 0;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 1.45rem;
+  font-weight: 600;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: var(--mark-hit);
+}
+
+.tally-cell .label {
+  display: block;
+  margin-top: 3px;
+}
+
+/* The naming form sits where the name does, so the card does not jump when it
+   opens. */
+.plate .name-form {
+  margin-top: 4px;
+}
+
+/* ---------------------------------------------------------------------------
+   Handing the phone over
+
+   Shown when the first player finishes a duel board. It says nothing about the
+   word — not whether it fell quickly, not a letter of it — because the next
+   person is about to guess it blind.
+--------------------------------------------------------------------------- */
+
+.handoff {
+  text-align: center;
+  padding: 6px 0 2px;
+}
+
+.handoff-title {
+  margin: 10px 0 0;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(2rem, 11vw, 2.6rem);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+}
+
+.handoff-line {
+  margin: 10px auto 0;
+  max-width: 22rem;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+/* A handoff covers the board outright.
+   Dimming it is not enough: the next player is about to guess this word, and
+   a blurred grid still shows which positions came back green. */
+.scrim--blind {
+  background: var(--bg);
+  backdrop-filter: none;
+  place-items: center;
+}
+
+.scrim--blind .entry {
+  box-shadow: none;
+}
+
+/* ---------------------------------------------------------------------------
+   The play button
+
+   One thing to do on the home screen. Settings and the lexicon live in the two
+   top corners; nothing else competes with starting a game.
+--------------------------------------------------------------------------- */
+
+.home-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  margin-inline: -9px;
+}
+
+.play {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 26px 24px 24px;
+  border: 1px solid var(--mark-hit);
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--mark-hit) 12%, transparent);
+  color: var(--text);
+  text-decoration: none;
+  transition: transform 0.08s ease, background 0.18s ease;
+}
+
+.play:hover {
+  background: color-mix(in srgb, var(--mark-hit) 18%, transparent);
+}
+
+.play:active {
+  transform: translateY(1px);
+}
+
+.play-word {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(2.2rem, 11vw, 2.8rem);
+  font-weight: 600;
+  line-height: 1;
+}
+
+.play-sub {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+/* ---------------------------------------------------------------------------
+   Home cover
+
+   The opening page behaves like a book cover on a desk: one compact invitation
+   and one small specimen of the game. The generous space belongs around the
+   composition, rather than between unrelated pieces of it.
+--------------------------------------------------------------------------- */
+
+/* 72rem gave the header a 1024px span while the content below it was a 240px
+   ribbon, so the cog and the lexicon ended up 400px from anything they relate
+   to. Narrower, the chrome frames the composition instead of the monitor. */
+.home {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  width: min(100%, 40rem);
+  max-width: none;
+  padding-inline: clamp(20px, 5vw, 40px);
+}
+
+.home-top {
+  min-height: 72px;
+  padding: 14px 0;
+  margin: 0;
+}
+
+/* One centred column, at every width.
+   Two columns put the wordmark on the left and stacked the board and the
+   buttons on the right, so nothing lined up with anything and the eye had to
+   cross the page to get from the name to the thing you press. Stacked, the
+   front door reads top to bottom: whose it is, what it is, how to start. */
+.home-middle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  gap: clamp(26px, 4vh, 44px);
+  padding: clamp(24px, 4vh, 48px) 0 clamp(40px, 7vh, 80px);
+}
+
+.home-intro {
+  text-align: center;
+}
+
+/* The margin used to come from the line underneath. With that gone the mark
+   has to hold its own distance from the buttons, and its 0.84 line box needs
+   the extra to clear the descender on the d. */
+/* The name is the design. At 7vw it was merely a heading on a page of
+   furniture; given the room to run it becomes the thing you are looking at,
+   and everything under it can afford to be quiet. */
+.home-mark {
+  margin: 0;
+  font-size: clamp(4rem, 13vw, 11rem);
+  font-weight: 570;
+  line-height: 0.84;
+  letter-spacing: -0.05em;
+  text-transform: none;
+}
+
+.home-line {
+  margin: 26px 0 34px;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(1.15rem, 1.6vw, 1.4rem);
+  line-height: 1.32;
+  color: var(--text-muted);
+}
+
+/* One button, taking the board's corner rather than a pill: this is a game
+   made of squares and the way in should look like it comes from one. */
+.play {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+  /* The row above and this button are the two shapes under the name, so they
+     take the same measure rather than stacking two different widths. */
+  margin-inline: auto;
+  min-height: 60px;
+  padding: 0 20px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-tile);
+  text-decoration: none;
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+
+/* 15rem is a phone's measure. On a desktop it left the whole composition
+   looking like a screenshot of a phone pasted into the middle of the page. */
+.home-actions {
+  display: grid;
+  width: min(100%, 20rem);
+  gap: 10px;
+  margin: 0 auto;
+}
+
+.play {
+  background: var(--text);
+  color: var(--bg);
+}
+
+.play:hover {
+  background: var(--mark-hit);
+  color: var(--mark-hit-text);
+}
+
+.play-word {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+/* Capped here as well as on the phone layout: at 31rem the wide screen was
+   still showing a full-size board that nobody can play, which is the thing
+   this diagram must not be mistaken for. */
+/* One row, solid, in the colour that already means "right letter, right
+   place" — so a full row of it says "solved" in the game's own grammar rather
+   than being a decorative colour that means nothing. Faded tiles were the
+   problem; this is the cure, and it is one shape instead of eighteen. */
+.home-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  width: min(100%, 20rem);
+  margin-inline: auto;
+}
+
+.home-tile {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-tile);
+  background: transparent;
+  color: transparent;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(1.4rem, 5vw, 2rem);
+  font-weight: 600;
+  line-height: 1;
+  text-transform: uppercase;
+  transition: none;
+}
+
+.home-tile[data-filled] {
+  border-color: var(--mark-hit);
+  background: var(--mark-hit);
+  color: var(--mark-hit-text);
+  animation: home-tile-in 340ms cubic-bezier(0.2, 0.7, 0.3, 1) backwards;
+}
+
+/* Turns over once, on first paint, and is never seen again. */
+@keyframes home-tile-in {
+  from { transform: rotateX(-90deg); }
+  to { transform: rotateX(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-tile[data-filled] { animation: none; }
+}
+
+/* Small, letterspaced, and carrying only what is true. The detail that does
+   the decorating so nothing else has to. */
+.home-meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 8px;
+  min-height: 1.2em;
+  margin: 14px 0 0;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.home-meta b {
+  font-weight: 700;
+  color: var(--mark-hit);
+}
+
+/* Outlined where Begin is filled: a real button on the same measure, not a
+   pale link. Cut, do not fade — the point was to stop it rivalling Begin, not
+   to make it hard to find. */
+.home-friends {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 56px;
+  margin-inline: auto;
+  padding: 0 20px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-tile);
+  color: var(--text);
+  text-decoration: none;
+  transition: border-color 0.18s ease, color 0.18s ease;
+}
+
+.home-friends:hover { border-color: var(--text); }
+
+.home-friends-word {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 550;
+  line-height: 1;
+}
+
+/* The accent earns its place by meaning something: somebody is waiting. */
+.home-friends-status {
+  color: var(--mark-hit);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.home-friends[data-news] { border-color: var(--mark-hit); }
+
+
+@media (max-width: 759px) {
+  .home {
+    padding-inline: 20px;
+  }
+
+  .home-top {
+    min-height: 64px;
+  }
+
+  /* Centred rather than stacked at the top: it left the lower half of the
+     screen empty, and it put Begin further from the thumb than it needed to be. */
+  .home-middle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(20px, 4vh, 40px) 0 max(28px, env(safe-area-inset-bottom));
+  }
+
+  /* One centred column. The intro stretches so the wordmark, both buttons and
+     the board below all measure from the same box rather than each finding its
+     own middle. */
+  .home-middle {
+    align-items: center;
+  }
+
+  .home-intro {
+    align-self: stretch;
+    text-align: center;
+  }
+
+  .play {
+    margin-inline: auto;
+  }
+
+  .home-mark {
+    margin-bottom: 26px;
+    font-size: clamp(3.9rem, 23vw, 6rem);
+  }
+
+  .home-line {
+    margin: 24px 0 30px;
+    font-size: 1.35rem;
+  }
+
+  .home-actions {
+    margin-top: 26px;
+  }
+
+}
+
+@media (max-height: 700px) and (max-width: 759px) {
+  .home-top {
+    min-height: 56px;
+    padding-block: 8px;
+  }
+
+  .home-middle {
+    padding: 16px 0 max(12px, env(safe-area-inset-bottom));
+  }
+
+  .home-line {
+    margin-block: 18px 22px;
+  }
+
+  .home-actions {
+    margin-top: 14px;
+  }
+
+}
+
+/* The run is a page of discoveries; controls remain readable at phone size. */
+:root:not([data-theme="light"]) { --text-faint: #909090; --mark-absent-text: #b5b5b5; }
+:root[data-theme="light"] { --text-muted: #755363; --text-faint: #795867; --mark-hit: #08725e; --mark-present: #ae285d; }
+:root[data-contrast="cb"] { --mark-hit: #235d91; --mark-present: #e8964f; }
+:root[data-palette="ocean"] { --mark-hit: #5686b3; --mark-hit-text: #f7fbff; --mark-present: #788fc1; --mark-present-text: #f8f8ff; }
+:root[data-palette="violet"] { --mark-hit: #9275aa; --mark-hit-text: #fbf9ff; --mark-present: #b88272; --mark-present-text: #fff9f6; }
+:root[data-contrast="cb"] { --mark-hit: #235d91; --mark-present: #e8964f; }
+:focus-visible { outline: 3px solid var(--mark-present); outline-offset: 3px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.game-app { max-width: 30rem; min-height: 620px; padding-inline: 14px; }
+/* The board keeps the gutter; the keyboard spans the full width, which buys
+   every key about 3px and the ten-key top row most of that. */
+@media (max-width: 420px) {
+  .game-app .keyboard { margin-inline: -8px; }
+  .game-app .keyboard-row { gap: 5px; }
+}
+.game-app .topbar { flex: none; }
+.game-app .topbar > :last-child { justify-self: end; }
+.text-button { border: 0; background: none; color: var(--text-muted); font: inherit; font-size: .85rem; cursor: pointer; padding: 10px 5px; text-decoration: none; min-height: 44px; }
+.text-button:hover { color: var(--text); text-decoration: underline; text-underline-offset: 4px; }
+button:disabled { cursor: default; }
+.text-button:disabled { opacity: .55; text-decoration: none; }
+.word-strip { display: flex; gap: 5px; align-items: center; min-height: 46px; flex: none; flex-wrap: wrap; padding-block: 3px 7px; }
+.word-strip button { border: 1px solid var(--border); background: var(--bg-raised); color: var(--text); border-radius: 6px; padding: 7px 8px; min-height: 40px; font-family: var(--font-serif), Georgia, serif; font-size: .9rem; cursor: pointer; }
+/* Solved or merely revealed, as a status dot rather than punctuation: a bare
+   middot after a word reads as a separator with its other half missing. */
+.word-strip button span { margin-left: 5px; font-size: .6em; vertical-align: middle; color: var(--text-faint); }
+.word-strip button span[data-state="won"] { color: var(--mark-hit); }
+.game-app .board-area { container-type: size; min-height: 270px; padding: 6px 0; }
+.game-app .board { width: min(100%, 21rem, calc(100cqh * 5 / 6)); height: auto; max-height: 100%; }
+.game-app:not(.duo-app) .board-area { min-height: 220px; padding: 16px 0 20px; }
+.board-stage { position: relative; width: min(20rem, calc(100% - 88px), calc((100cqh - 12px) * 5 / 6)); }
+.game-app .board-stage .board { width: 100%; max-height: none; }
+.game-app .board-stage .game-hint { position: absolute; top: auto; bottom: max(calc(8.333% - 25px), 0px); left: -48px; width: 36px; height: 36px; border-color: var(--border); border-radius: 50%; color: var(--text-muted); }
+/* Submit, centred under the thumb. */
+.game-app .play-actions {
+  display: flex;
+  justify-content: center;
+  flex: none;
+  margin: 2px 0 max(12px, env(safe-area-inset-bottom));
+}
+.game-app .tile { font-size: clamp(1.15rem, 6cqh, 2rem); }
+.game-tools { display: flex; align-items: center; justify-content: space-between; flex: none; }
+/* Icon only, so the strip under the board carries no prose. The count rides on
+   the corner rather than in a label, the way a notification badge does. */
+.hint-button { position: relative; }
+.hint-button:disabled { opacity: .4; cursor: default; }
+.hint-count { position: absolute; top: 2px; right: 2px; min-width: 14px; height: 14px; padding: 0 3px; border-radius: 999px; background: var(--mark-hit); color: var(--mark-hit-text); font-size: .6rem; font-weight: 700; line-height: 14px; text-align: center; }
+.game-app .keyboard { flex: none; padding: 10px 0 4px; }
+.game-app .key { height: 68px; font-size: 1.25rem; }
+.game-app .key--wide { font-size: .72rem; letter-spacing: .06em; }
+.game-app .keyboard-submit { flex: none; width: min(17rem, 100%); height: 62px; margin: 0; font-size: .82rem; }
+.game-app .keyboard-submit[data-state="incomplete"] { border-color: var(--border-strong); background: var(--bg-raised); color: var(--text-muted); opacity: 1; }
+.game-app .keyboard-submit[data-state="word"] { border-color: var(--mark-hit); background: var(--mark-hit); color: var(--mark-hit-text); }
+.game-app .keyboard-submit[data-state="unknown"] { border-color: var(--border-strong); background: var(--bg-raised); color: var(--text); }
+.finished-actions { display: flex; gap: 10px; padding: 16px 0 max(16px, env(safe-area-inset-bottom)); flex: none; }
+.finished-actions .button { flex: 1; }
+.game-dialog { width: min(28rem, calc(100vw - 24px)); position: fixed; inset: 0; margin: auto; color: var(--text); font-size: .95rem; line-height: 1.55; }
+.game-dialog::backdrop { background: rgb(0 0 0 / .7); backdrop-filter: blur(3px); }
+.game-dialog.clue-dialog { width: min(25rem, calc(100vw - 32px)); max-height: none; padding: 18px 20px 20px; border-color: var(--border-strong); border-radius: 18px; background: var(--bg-raised); box-shadow: 0 22px 64px rgb(0 0 0 / .5); }
+.game-dialog.clue-dialog .dialog-heading { margin-bottom: 14px; }
+.game-dialog.clue-dialog .dialog-close { width: 38px; height: 38px; }
+.game-dialog.entry-dialog { padding: 24px; border-color: var(--border-strong); background: var(--bg-raised); box-shadow: 0 28px 90px rgb(0 0 0 / .55), 0 0 0 1px rgb(255 255 255 / .025) inset; }
+.game-dialog .label { font-size: .72rem; }
+.dialog-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+.dialog-heading .label:focus { outline: none; }
+.dialog-close { flex: none; width: 44px; height: 44px; border: 0; border-radius: 50%; color: var(--text-muted); }
+.dialog-close:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
+.game-dialog.entry-dialog .dialog-heading { margin-bottom: 4px; }
+.game-dialog.entry-dialog .entry-word-row { justify-content: space-between; align-items: center; flex-wrap: nowrap; margin-top: 0; gap: 12px; }
+.game-dialog.entry-dialog .entry-word { margin: 0; padding: 0; font-size: clamp(2.35rem, 10vw, 2.9rem); font-weight: 550; line-height: 1.15; }
+.game-dialog.entry-dialog .entry-definition { max-width: none; margin: 18px 0 0; font-size: 1rem; font-weight: 500; line-height: 1.5; }
+.game-dialog.entry-dialog .entry-note { margin: 10px 0 0; padding: 0; font-family: var(--font-sans), system-ui, sans-serif; font-size: .95rem; line-height: 1.65; }
+.game-dialog.entry-dialog .entry-tools { flex: none; justify-content: flex-end; gap: 8px; margin: 0; padding: 0; border: 0; }
+/* Large enough to hit with a thumb, and filled so they read as buttons. */
+.entry-icon-button { width: 52px; height: 52px; border: 1px solid var(--border); border-radius: 50%; background: color-mix(in srgb, var(--text) 8%, transparent); color: var(--text); }
+.entry-icon-button svg { width: 24px; height: 24px; }
+.entry-icon-button:active { transform: scale(.94); }
+.entry-icon-button[aria-pressed="true"] { color: var(--text); }
+.game-dialog.entry-dialog .entry-actions { margin-top: 16px; }
+.game-dialog.entry-dialog .entry-actions .button { font-size: .95rem; font-weight: 600; letter-spacing: 0; text-transform: none; }
+/* A button closing out a sheet needs air above it: the note explaining why a
+   hint is still locked was sitting flush against this edge, reading as clipped.
+   The note needs the same separation from the line it qualifies. */
+.game-dialog > .button { margin-top: 16px; }
+.game-dialog > .hint { margin-top: 10px; }
+.game-dialog .entry-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.game-dialog .entry-actions .button { flex: 1; min-width: 125px; }
+.button--quiet { background: transparent; color: var(--text); border: 1px solid var(--border-strong); }
+/* The 44px tap target on the summary already supplies the breathing room; the
+   old 18px margins on top of it left each disclosure floating in ~80px of air,
+   so the card read as three unrelated things drifting apart. */
+.word-history { margin-block: 2px; }
+.word-history[open] { margin-block: 8px; }
+summary { cursor: pointer; color: var(--text-muted); padding-block: 8px; min-height: 44px; }
+.word-history .entry-note { font-size: 1rem; padding-top: 6px; }
+.assisted { color: var(--text-muted); font-size: .85rem; }
+.conclusion-title { font-family: var(--font-serif), Georgia, serif; font-size: 2rem; line-height: 1.15; margin: 8px 0 14px; }
+.run-result { font-size: .85rem; color: var(--text-muted); }
+.connection-list { padding-left: 22px; }
+.connection-list li { padding: 8px 0 10px 6px; }
+.connection-list strong { font-family: var(--font-serif), Georgia, serif; font-size: 1.35rem; }
+.connection-list p { color: var(--text-muted); margin: 4px 0; }
+.game-dialog textarea { display: block; box-sizing: border-box; resize: vertical; width: 100%; min-height: 140px; max-height: 45dvh; margin-top: 12px; padding: 12px; border: 1px solid var(--border-strong); border-radius: 8px; color: var(--text); background: var(--bg); font: inherit; font-size: 16px; }
+.hint-panel { display: grid; gap: 16px; }
+.hint-list { margin: 0; padding: 0; list-style: none; }
+.hint-list p { margin: 0; color: var(--text); font: 500 1.05rem/1.5 var(--font-sans), system-ui, sans-serif; }
+.hint-next { display: grid; gap: 14px; }
+.hint-next p, .hint-panel-done { margin: 0; color: var(--text-muted); font-size: .85rem; line-height: 1.45; }
+.hint-next .button { margin: 0; }
+.game-error { width: 100%; max-width: 25rem; padding: 16px; font-size: 1rem; line-height: 1.5; }
+.game-error .gate-card { padding: 24px 22px; }
+.game-error-line { margin: 0 0 18px; color: var(--text-muted); }
+.game-error .gate-foot a { color: var(--text-muted); text-underline-offset: 3px; }
+/* The duo board's errors are still bare rows rather than cards, so whatever
+   follows their message needs its own separation. */
+.game-error > p + a,
+.game-error > p + button { margin-top: 12px; }
+.game-error > a { display: block; color: var(--text-muted); padding: 14px 0; }
+.toast { max-width: calc(100vw - 24px); white-space: normal; text-align: center; font-size: .8rem; letter-spacing: 0; text-transform: none; }
+@media (max-height: 720px) {
+  .game-app .topbar { padding-block: 4px; }
+  .game-app .key { height: 58px; font-size: 1.1rem; }
+  .game-app .board { gap: 5px; }
+  .game-app .row { gap: 5px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tile[data-revealing="true"] { animation-delay: 0ms; }
+}
+.key { position: relative; }
+.key-glyph { display: none; position: absolute; right: 3px; bottom: 2px; font-size: .5rem; line-height: 1; }
+:root[data-contrast="cb"] .key-glyph { display: block; }
+
+/* Friends are the navigation; the board remains the focus of play. */
+/* The quieter of the two: outlined where Continue is filled, same box. */
+.friend-invite { margin-bottom: 24px; padding: 20px; background: var(--bg-raised); border: 1px solid var(--border); border-radius: 18px; }
+.friend-invite-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.friend-invite strong { display: block; color: var(--text); font-family: ui-monospace, monospace; font-size: 1.5rem; letter-spacing: .16em; margin-top: 7px; }
+.friend-invite .label { font-size: .65rem; letter-spacing: .12em; }
+.friend-invite-actions { display: flex; gap: 8px; flex: none; }
+.friend-icon-button { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid var(--border); border-radius: 50%; background: var(--bg); color: var(--text-muted); cursor: pointer; }
+.friend-icon-button svg { width: 19px; height: 19px; }
+.friend-icon-button:hover { color: var(--text); border-color: var(--border-strong); }
+.friend-invite-caption { margin: 16px 0 20px; color: var(--text-muted); font-size: .85rem; line-height: 1.55; }
+.friends-page .code-form { display: block; margin: 0; padding-top: 18px; border-top: 1px solid var(--rule); }
+.friends-page .code-form label { display: block; margin-bottom: 10px; color: var(--text-muted); font-size: .8rem; }
+.friend-code-entry { display: flex; align-items: stretch; gap: 8px; min-width: 0; }
+.friends-page .code-form .input { width: 0; min-width: 0; height: 48px; background: var(--bg); letter-spacing: .1em; }
+.friends-page .code-form .input::placeholder { font-family: var(--font-sans), sans-serif; letter-spacing: 0; text-transform: none; }
+.friend-code-entry .button { flex: none; width: auto; min-width: 64px; height: 48px; padding: 0 16px; font-size: .85rem; letter-spacing: 0; text-transform: none; }
+.friends-empty { display: flex; flex-direction: column; align-items: center; padding: 24px 16px 36px; text-align: center; }
+.friends-empty-icon { display: grid; place-items: center; width: 64px; height: 64px; background: var(--bg-raised); border: 1px solid var(--border); border-radius: 20px; color: var(--text-muted); }
+.friends-empty-icon svg { width: 28px; height: 28px; }
+.friends-empty h2 { margin: 20px 0 8px; font: 550 1.8rem/1.15 var(--font-serif), Georgia, serif; }
+.friends-empty p { margin: 0 0 22px; color: var(--text-muted); font-size: .9rem; line-height: 1.65; }
+.friends-empty .button { display: flex; align-items: center; justify-content: center; gap: 9px; width: auto; min-height: 48px; padding: 0 20px; font-size: .85rem; letter-spacing: 0; text-transform: none; }
+.friends-empty .button svg { width: 18px; height: 18px; }
+.friends-list-heading { display: flex; align-items: center; justify-content: space-between; margin: 28px 0 12px; }
+.friends-list-heading h2 { margin: 0; font: 550 1.3rem var(--font-serif), Georgia, serif; }
+.friends-list-heading > span { color: var(--text-faint); font-size: .8rem; }
+.friend-list { display: grid; gap: 10px; margin: 0 0 26px; list-style: none; padding: 0; }
+.friend-tile { display: grid; grid-template-columns: 46px minmax(0, 1fr) 18px; align-items: center; gap: 4px 14px; width: 100%; min-height: 92px; padding: 16px; text-align: left; color: var(--text); border: 1px solid var(--border); background: var(--bg-raised); cursor: pointer; border-radius: 16px; text-decoration: none; }
+.friend-tile:hover { border-color: var(--border-strong); }
+.friend-tile > .friend-avatar { grid-column: 1; grid-row: 1 / span 2; }
+.friend-tile > .friend-info { grid-column: 2; grid-row: 1; }
+.friend-tile > .friend-game-status { grid-column: 2; grid-row: 2; justify-self: start; }
+.friend-chevron { grid-column: 3; grid-row: 1 / span 2; color: var(--text-faint); }
+.friend-chevron svg { display: block; width: 18px; height: 18px; }
+.friend-avatar { position: relative; display: inline-grid; place-items: center; flex: none; width: 46px; height: 46px; border-radius: 50%; background: color-mix(in srgb,var(--mark-present) 12%,var(--bg-raised)); border: 1px solid var(--border-strong); color: var(--text); font-family: var(--font-serif),Georgia,serif; font-size: 1.4rem; }
+.friend-avatar i { position: absolute; width: 9px; height: 9px; border: 2px solid var(--bg); border-radius: 50%; background: var(--text-faint); right: 0; bottom: 0; }
+.friend-avatar i[data-online="true"] { background: var(--mark-hit); }
+.friend-info { display: flex; flex-direction: column; gap: 4px; min-width: 0; flex: 1; }
+.friend-info strong { overflow-wrap: anywhere; font-family: var(--font-serif),Georgia,serif; font-size: 1.25rem; font-weight: 550; }
+.friend-info > span { color: var(--text-muted); font-size: .75rem; }
+.friend-game-status { color: var(--text-muted); font-size: .72rem; line-height: 1.4; }
+.friend-game-status[data-turn="true"] { color: var(--mark-hit); font-weight: 650; }
+.friend-detail-identity { display: flex; align-items: center; gap: 15px; padding: 10px 0 20px; }
+.friend-detail-identity h2 { margin: 0; font: 550 1.7rem var(--font-serif),Georgia,serif; }
+.friend-detail-identity p { margin: 3px 0 0; font-size: .8rem; color: var(--text-muted); }
+.friend-shared-game { padding: 18px 0; margin-bottom: 12px; border-block: 1px solid var(--rule); }
+.friend-shared-game h3 { margin: 5px 0; font: 550 1.5rem var(--font-serif),Georgia,serif; }
+.friend-shared-game p { margin: 0 0 18px; color: var(--text-muted); font-size: .85rem; }
+.duo-recent { padding: 0; list-style: none; margin: 12px 0; }
+.duo-recent li { display: flex; justify-content: space-between; gap: 10px; padding: 9px 0; border-bottom: 1px solid var(--rule); font-size: .75rem; color: var(--text-muted); }
+.duo-recent strong { font-family: var(--font-serif),Georgia,serif; font-size: .95rem; color: var(--text); }
+.duo-recent a { color: var(--text-muted); text-underline-offset: 3px; }
+.end-duo { margin-top: 16px; padding-top: 10px; border-top: 1px solid var(--rule); }
+.duo-members { display: flex; align-items: center; justify-content: center; gap: 14px; padding: 4px 0 10px; flex: none; font-size: .85rem; }
+.duo-member { display: inline-flex; align-items: center; gap: 6px; }
+.duo-members i { display: inline-grid; place-items: center; border-radius: 50%; width: 24px; height: 24px; font-family: var(--font-serif),Georgia,serif; font-style: normal; border: 1px solid var(--border-strong); }
+.duo-members > span[data-current="true"] i { border-color: var(--mark-hit); color: var(--mark-hit); }
+.duo-pass { min-height: 28px; margin-left: 2px; padding: 3px 7px; border: 1px solid var(--border); border-radius: 999px; background: transparent; color: var(--text-muted); font: 600 .65rem/1 var(--font-sans), system-ui, sans-serif; letter-spacing: .04em; cursor: pointer; }
+.duo-pass:hover { border-color: var(--border-strong); color: var(--text); }
+.duo-pass:disabled { opacity: .45; }
+.duo-app .row { position: relative; }
+.row-author { display: grid; place-items: center; position: absolute; right: calc(100% + 6px); top: 50%; transform: translateY(-50%); font-family: var(--font-serif),Georgia,serif; font-size: .75rem; color: var(--text-muted); }
+.row-author[data-seat="0"], .duo-members [data-seat="0"] i { color: var(--seat-0); }
+.row-author[data-seat="1"], .duo-members [data-seat="1"] i { color: var(--seat-1); }
+.duo-app .board { width: min(calc(100% - 35px),21rem,calc(100cqh * 5 / 6)); }
+.duo-app .game-tools { font-size: .85rem; min-height: 44px; }
+.duo-app .game-tools--action { justify-content: flex-end; }
+.duo-app .play-actions { width: 100%; }
+.duo-app .keyboard-submit { width: 100%; }
+.duo-error { flex: none; font-size: .8rem; color: var(--text-muted); padding-block: 6px; }
+.duo-result { flex: none; padding: 14px 0 20px; }
+.duo-result h2 { margin: 0 0 8px; font: 550 2rem var(--font-serif),Georgia,serif; }
+.duo-result p { font-size: .9rem; margin: 5px 0; }
+.duo-result details p { color: var(--text-muted); }
+.duo-waiting { display: grid; justify-items: center; gap: 6px; padding: 30px 16px max(38px, env(safe-area-inset-bottom)); text-align: center; }
+.duo-waiting p { margin: 0; font: 550 1.35rem/1.2 var(--font-serif), Georgia, serif; }
+.duo-waiting > span:last-child { color: var(--text-muted); font-size: .85rem; }
+@media (max-width: 380px) { .friend-tile { gap: 9px; } .friend-avatar { width: 38px; height: 38px; } .friend-game-status { font-size: .7rem; } }
+
+/* Keep and Share read as one row of quiet actions under an entry. */
+/* Keeping and sharing are actions, not more prose, so a rule above groups them
+   as a toolbar instead of leaving two quiet links adrift under the disclosures. */
+.entry-tools { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; margin-top: 10px; padding-top: 6px; border-top: 1px solid var(--rule); }
+.entry-tools .text-button { display: inline-flex; align-items: center; gap: 7px; }
+
+/* Controls follow the available viewport, including mobile browser chrome. */
+.game-app { min-height: 0; padding-top: env(safe-area-inset-top); }
+.game-app .board-area, .game-app:not(.duo-app) .board-area { min-height: 0; }
+.game-app .board-stage .game-hint { width: 44px; height: 44px; left: -50px; }
+
+.game-heading { text-align: center; }
+.game-heading .wordmark { margin: 0; }
+.nav-labelled { width: auto; min-height: 44px; padding: 8px 12px; gap: 8px; font-size: .85rem; border: 0; }
+.home-mark { margin-bottom: 22px; }
+.help-marks li > span { display: grid; place-items: center; flex: none; width: 44px; height: 44px; border-radius: 6px; font-weight: 650; }
+.appearance-pref { padding: 20px; }
+.appearance-pref .pref-name { margin: 0 0 12px; }
+.appearance-pref .pref-sub { margin: 10px 0 0; display: block; }
+.palette-pref { padding-top: 16px; border-top: 1px solid var(--rule); }
+.palette-options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; padding: 4px; border: 1px solid var(--border); border-radius: 10px; background: var(--bg); }
+.palette-options button { display: flex; align-items: center; justify-content: center; gap: 6px; min-height: 44px; padding: 6px 2px; border: 0; border-radius: 6px; background: transparent; color: var(--text-muted); font: inherit; font-size: .68rem; cursor: pointer; }
+.palette-options button[aria-pressed="true"] { color: var(--text); background: var(--bg-raised); box-shadow: 0 1px 4px rgb(0 0 0 / .12); }
+.palette-dots { display: flex; gap: 3px; }
+.palette-dots i { width: 9px; height: 9px; border-radius: 50%; background: var(--mark-hit); }
+.palette-dots i + i { background: var(--mark-present); }
+.palette-dots[data-palette="ocean"] i { background: #5686b3; }
+.palette-dots[data-palette="ocean"] i + i { background: #788fc1; }
+.palette-dots[data-palette="violet"] i { background: #9275aa; }
+.palette-dots[data-palette="violet"] i + i { background: #b88272; }
+.appearance-options, .collection-tabs { display: flex; gap: 4px; padding: 4px; border: 1px solid var(--border); border-radius: 10px; background: var(--bg); }
+.appearance-options button, .collection-tabs button { flex: 1; min-height: 44px; border: 0; border-radius: 6px; background: transparent; color: var(--text-muted); font: inherit; font-size: .9rem; cursor: pointer; }
+.appearance-options button[aria-pressed="true"], .collection-tabs button[aria-pressed="true"] { background: var(--bg-raised); color: var(--text); box-shadow: 0 1px 4px rgb(0 0 0 / .12); }
+.sheet--guest { display: flex; flex-direction: column; min-height: 100dvh; }
+.guest-profile { display: grid; flex: 1; align-content: center; justify-items: center; width: min(100%, 32rem); margin: 0 auto; padding: 0 0 9vh; text-align: center; }
+.guest-profile h2 { max-width: 12ch; font: 550 clamp(2.25rem, 8vw, 3.25rem)/1.02 var(--font-serif), Georgia, serif; margin: 12px 0; letter-spacing: -.025em; }
+.guest-profile > p { max-width: 25rem; margin: 0 0 28px; color: var(--text-muted); font-size: 1rem; line-height: 1.55; }
+.guest-profile > .button { width: min(100%, 18rem); }
+.profile-summary { margin: 24px 0 12px; padding: 18px; border: 1px solid var(--border); border-radius: 16px; background: var(--bg-raised); }
+.profile-summary-head { display: flex; align-items: start; justify-content: space-between; gap: 16px; }
+.profile-summary-name { margin: 5px 0 0; font: 600 clamp(1.7rem, 8vw, 2.15rem)/1.1 var(--font-serif), Georgia, serif; }
+.profile-edit { min-height: 36px; padding: 0; border: 0; background: transparent; color: var(--text-muted); font: inherit; font-size: .88rem; cursor: pointer; }
+.profile-edit:hover { color: var(--text); }
+.profile-stats { display: grid; grid-template-columns: repeat(3, 1fr); margin: 18px 0 0; padding-top: 14px; border-top: 1px solid var(--rule); }
+.profile-stats > div { min-width: 0; padding-left: 14px; border-left: 1px solid var(--rule); }
+.profile-stats > div:first-child { padding-left: 0; border-left: 0; }
+.profile-stats dt { color: var(--text-faint); font-size: .64rem; font-weight: 650; letter-spacing: .1em; text-transform: uppercase; }
+.profile-stats dd { margin: 4px 0 0; color: var(--mark-hit); font: 600 1.4rem/1 var(--font-serif), Georgia, serif; }
+.profile-stats span { display: block; margin-top: 4px; color: var(--text-faint); font-size: .7rem; }
+.profile-friends { display: grid; grid-template-columns: 40px minmax(0, 1fr) auto 20px; align-items: center; gap: 12px; min-height: 76px; padding: 14px 16px; border: 1px solid var(--border); border-radius: 14px; background: var(--bg-raised); color: var(--text); text-decoration: none; }
+.profile-friends:hover { border-color: var(--border-strong); }
+.profile-friends-icon { display: grid; place-items: center; width: 40px; height: 40px; border: 1px solid var(--border); border-radius: 50%; color: var(--text-muted); }
+.profile-friends-icon svg { width: 20px; height: 20px; }
+.profile-friends .label { display: block; }
+.profile-friends strong { display: block; margin-top: 3px; font-size: .98rem; font-weight: 500; }
+.profile-friends-arrow { width: 20px; height: 20px; color: var(--text-muted); }
+.profile-friends-badge { display: grid; place-items: center; min-width: 22px; height: 22px; padding: 0 5px; border-radius: 50%; background: var(--mark-hit); color: var(--mark-hit-text); font-size: .7rem; }
+
+.profile-destinations { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 12px 0; }
+.profile-destination { display: grid; grid-template-columns: 32px minmax(0, 1fr) 16px; align-items: center; gap: 9px; min-height: 96px; padding: 13px; border: 1px solid var(--border); border-radius: 14px; background: var(--bg-raised); color: var(--text); text-decoration: none; }
+.profile-destination:hover { border-color: var(--border-strong); }
+.profile-destination-icon { display: grid; place-items: center; width: 32px; height: 32px; border: 1px solid var(--border); border-radius: 50%; color: var(--text-muted); font-size: .9rem; }
+.profile-destination .label, .profile-destination strong, .profile-destination small { display: block; }
+.profile-destination strong { margin-top: 3px; font-size: .86rem; font-weight: 550; line-height: 1.2; }
+.profile-destination small { margin-top: 5px; color: var(--text-faint); font-size: .7rem; line-height: 1.2; }
+.profile-destination svg { width: 16px; height: 16px; fill: none; color: var(--text-muted); }
+
+.library-intro { margin: 26px 0 18px; }
+.library-intro h2 { margin: 5px 0 4px; font: 600 clamp(1.8rem, 8vw, 2.4rem)/1.05 var(--font-serif), Georgia, serif; }
+.library-intro p { margin: 0; color: var(--text-muted); font-size: .94rem; line-height: 1.5; }
+.library-tabs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; padding: 4px; border: 1px solid var(--border); border-radius: 11px; background: var(--bg); }
+.library-tabs button, .library-filter button { min-height: 40px; border: 0; border-radius: 7px; background: transparent; color: var(--text-muted); font: inherit; cursor: pointer; }
+.library-tabs button[aria-pressed="true"], .library-filter button[aria-pressed="true"] { background: var(--bg-raised); color: var(--text); box-shadow: 0 1px 4px rgb(0 0 0 / .12); }
+.library-tabs span { margin-left: 3px; color: var(--text-faint); font-size: .75rem; }
+.library-tools { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; margin: 14px 0 0; }
+.library-tools .input { min-width: 0; width: 100%; font-size: 16px; }
+.library-filter { display: flex; gap: 2px; padding: 3px; border: 1px solid var(--border); border-radius: 10px; background: var(--bg); }
+.library-filter button { min-width: 33px; min-height: 38px; padding: 0 8px; font-size: .8rem; }
+.library-count { margin: 12px 0; color: var(--text-faint); font-size: .78rem; }
+.library-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; padding: 0; margin: 0; list-style: none; }
+.library-card { position: relative; display: grid; align-content: start; width: 100%; min-height: 150px; padding: 14px; border: 1px solid var(--border); border-radius: 14px; background: var(--bg-raised); color: var(--text); text-align: left; cursor: pointer; }
+.library-card:hover { border-color: var(--border-strong); }
+.library-card-saved { position: absolute; top: 13px; right: 14px; color: var(--mark-hit); font-size: 1rem; line-height: 1; }
+.library-card strong { margin: 3px 0 10px; font: 600 clamp(1.55rem, 7vw, 2rem)/1 var(--font-serif), Georgia, serif; }
+.library-card > span:last-child { display: -webkit-box; overflow: hidden; color: var(--text-muted); font-size: .8rem; line-height: 1.4; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.library-more { display: block; width: 100%; margin: 16px 0 6px; }
+.library-entry h2 { margin: 6px 0; font: 600 clamp(2.35rem, 13vw, 3.3rem)/.95 var(--font-serif), Georgia, serif; }
+.library-entry-definition { margin: 0 0 20px; color: var(--text-muted); font-size: 1.05rem; line-height: 1.5; }
+.library-entry > div { padding-top: 16px; border-top: 1px solid var(--rule); }
+.library-entry > div p { margin: 7px 0 0; color: var(--text-muted); line-height: 1.65; }
+.library-save { width: 100%; min-height: 46px; margin-top: 20px; border: 1px solid var(--border-strong); border-radius: 10px; background: transparent; color: var(--text); font: inherit; cursor: pointer; }
+.library-save:hover { border-color: var(--text); }
+.word-bank { margin-top: 34px; }
+.word-bank-head h2 { margin: 5px 0 0; font: 600 clamp(1.45rem, 6vw, 1.8rem)/1.15 var(--font-serif), Georgia, serif; }
+.collection-controls { display: flex; margin: 16px 0; }
+.collection-tabs { width: 100%; }
+.collection-tabs button { padding: 8px 12px; }
+.collection-tabs span { font-size: .75rem; margin-left: 4px; color: var(--text-muted); }
+.collection-search .input { width: 100%; font-size: 16px; }
+.collection-count { margin: 8px 0; font-size: .85rem; color: var(--text-muted); }
+.collection-list { display: grid; gap: 12px; padding: 0; margin: 20px 0; list-style: none; }
+.collection-card { overflow: hidden; border: 1px solid var(--border); border-radius: 16px; background: var(--bg-raised); box-shadow: 0 8px 24px rgb(0 0 0 / .08); }
+.collection-word summary { display: grid; grid-template-columns: minmax(0, 1fr) 36px; align-items: center; gap: 8px 12px; padding: 18px; list-style: none; cursor: pointer; }
+.collection-word summary::-webkit-details-marker { display: none; }
+.collection-card-index { grid-column: 1; grid-row: 1; color: var(--text-faint); font-size: .65rem; font-weight: 650; letter-spacing: .12em; }
+.collection-word summary strong { grid-column: 1; grid-row: 2; display: block; margin-top: 2px; font: 600 clamp(1.8rem, 8vw, 2.25rem)/1.1 var(--font-serif), Georgia, serif; color: var(--text); }
+.collection-definition { grid-column: 1; grid-row: 3; display: block; color: var(--text-muted); font-size: .98rem; line-height: 1.5; }
+.collection-story-cue { grid-column: 1; grid-row: 4; display: inline-flex; align-items: center; gap: 7px; margin-top: 5px; color: var(--text-faint); font-size: .78rem; }
+.collection-story-cue::after { content: ""; width: 5px; height: 5px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg) translateY(-2px); transition: transform .15s; }
+.collection-word summary svg { grid-column: 2; grid-row: 1 / span 4; justify-self: center; width: 34px; height: 34px; padding: 8px; border: 1px solid var(--border); border-radius: 50%; color: var(--text-muted); transition: transform .15s, background .15s; }
+.collection-word[open] summary svg { transform: rotate(90deg); }
+.collection-word[open] .collection-story-cue::after { transform: rotate(225deg) translateY(-1px); }
+.collection-note { padding: 0 18px 18px; border-top: 1px solid var(--rule); }
+.collection-note-label { display: block; margin-top: 15px; color: var(--text-faint); font-size: .65rem; font-weight: 650; letter-spacing: .12em; text-transform: uppercase; }
+.collection-note p { margin: 7px 0 0; color: var(--text-muted); font-size: .93rem; line-height: 1.65; }
+.settings-account { margin-top: 32px; }
+.settings-account-card { padding: 16px; border: 1px solid var(--border); border-radius: 14px; background: var(--bg-raised); }
+.settings-account-card > p:first-child { margin: 0 0 14px; color: var(--text-muted); font-size: .9rem; }
+.settings-signout { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; min-height: 48px; padding: 0 14px; border: 1px solid var(--border-strong); border-radius: 9px; background: transparent; color: var(--text); font: inherit; cursor: pointer; }
+.settings-signout:hover { background: var(--bg); border-color: var(--text-muted); }
+.settings-signout:disabled { opacity: .6; cursor: progress; }
+.entry-feedback { color: var(--text-muted); font-size: .85rem; margin: 12px 0 0; }
+.entry-feedback a { display: inline-flex; align-items: center; min-height: 44px; color: var(--text); text-underline-offset: 3px; }
+.name-edit, .link-button, .button--tiny { min-height: 44px; }
+@media (max-width: 600px) {
+  .sheet { padding-bottom: max(24px, env(safe-area-inset-bottom)); }
+  .game-dialog.entry-dialog { inset: auto 0 0; width: 100%; max-width: 100%; margin: 0; padding: 20px 22px 0; max-height: calc(100dvh - 20px - env(safe-area-inset-top)); border-radius: 22px 22px 0 0; border-bottom: 0; }
+  .game-dialog.entry-dialog .entry-actions { position: sticky; bottom: 0; padding: 14px 0 max(18px, env(safe-area-inset-bottom)); margin-top: 8px; background: var(--bg-raised); }
+  .game-dialog.entry-dialog .entry-actions .button { min-height: 52px; }
+}
+@media (max-height: 640px) {
+  .game-app .key { height: 48px; font-size: 1rem; }
+  .game-app .keyboard-submit { height: 48px; }
+  .game-app:not(.duo-app) .board-area { padding-block: 8px; }
+}
+@media (max-height: 420px) {
+  .game-app { height: auto; min-height: 100dvh; }
+  .game-app .board-area { container-type: normal; min-height: 210px; }
+  .board-stage { width: min(160px, calc(100% - 100px)); }
+}
+
+/* Navigation targets stay comfortable without enlarging the letter keys. */
+.icon-button { min-width: 44px; min-height: 44px; }
+.nav-labelled { display: flex; height: auto; }
+
+@media (max-width: 420px) {
+  .collection-tabs button { padding: 8px; font-size: .8rem; }
+  .profile-summary { padding: 16px; }
+  .profile-stats > div { padding-left: 10px; }
+  .profile-stats dt { font-size: .59rem; }
+  .friend-invite { padding: 18px 16px; }
+  .friend-tile { column-gap: 10px; padding: 14px; }
+}
+
+/* Small phones leave very little room once browser chrome and safe areas are
+   accounted for. These rules keep controls in the document flow instead of
+   making a title, code, or second action fight for the last few pixels. */
+@media (max-width: 360px) {
+  .sheet,
+  .gate { padding-inline: 14px; }
+
+  .sheet-head { gap: 8px; align-items: center; }
+  .sheet-title { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 1.4rem; }
+  .sheet-head > .icon-button:last-child { margin-left: auto; }
+
+  .home { padding-inline: 16px; }
+  .home-mark { margin-bottom: 18px; font-size: clamp(3.4rem, 23vw, 5rem); }
+  .mode-picker { gap: 6px; margin-top: 16px; }
+  .mode-picker button { min-height: 82px; padding: 10px; }
+  .mode-picker strong { font-size: .94rem; }
+  .mode-picker span { font-size: .68rem; line-height: 1.3; }
+  .length-picker { margin-bottom: 12px; }
+  .length-picker button { padding-inline: 10px; }
+
+  .gate-card { padding: 22px 18px; }
+  .gate-line { font-size: .88rem; }
+
+  .game-setup-card { padding: 16px; }
+  .game-setting { grid-template-columns: 1fr; gap: 12px; }
+
+  .friend-invite { padding: 16px; }
+  .friend-invite-top { align-items: flex-start; }
+  .friend-invite strong { font-size: 1.25rem; letter-spacing: .12em; }
+  .friend-invite-actions { gap: 5px; }
+  .friend-icon-button { width: 40px; height: 40px; }
+  .friend-code-entry { flex-wrap: wrap; }
+  .friends-page .code-form .input { flex: 1 1 9rem; }
+  .friend-code-entry .button { flex: 1 0 auto; }
+
+  .duo-members { flex-wrap: wrap; gap: 8px 12px; }
+  .duo-members .duo-streak { width: 100%; margin-left: 0; }
+  .duo-recent li { flex-wrap: wrap; }
+
+  .game-dialog.entry-dialog { padding-inline: 18px; }
+  .game-dialog .entry-actions { display: grid; grid-template-columns: 1fr; }
+  .game-dialog .entry-actions .button { min-width: 0; }
+  .finished-actions { display: grid; grid-template-columns: 1fr; gap: 8px; }
+  .finished-actions .button { min-height: 52px; }
+}
+
+/* Pronunciation, part of speech, example and origin: reference detail that
+   sits quieter than the definition it supports. */
+.word-meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; margin: 6px 0 0; color: var(--text-muted); font-size: .92rem; }
+.word-pronunciation { letter-spacing: .01em; }
+.word-pos { font-family: var(--font-serif), Georgia, serif; font-style: italic; }
+.word-extras { display: grid; gap: 8px; margin: 12px 0 0; }
+.word-example { margin: 0; color: var(--text-muted); font-family: var(--font-serif), Georgia, serif; font-style: italic; font-size: .95rem; line-height: 1.5; }
+.word-origin { margin: 0; color: var(--text-muted); font-size: .85rem; line-height: 1.5; }
+.word-origin .label { margin-right: 6px; }
+.game-dialog.entry-dialog .word-extras + .entry-note { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--rule); }
+.library-entry .word-meta { margin: 0 0 12px; }
+.library-entry .word-extras { margin: -8px 0 20px; }
+
+/* The signed-out Friends screen reuses the sign-in gate, under the page's own
+   header. Its Sign in button is a link, so it needs the button's full width. */
+.friends-page:has(> .friends-gate) { display: flex; flex-direction: column; min-height: 100dvh; }
+.friends-gate { width: 100%; padding-bottom: 12dvh; }
+.friends-gate .button { width: 100%; }

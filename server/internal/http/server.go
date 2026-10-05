@@ -2,17 +2,22 @@ package http
 
 import (
 	"context"
+	"crypto/sha256"
+	"encoding/hex"
 	"encoding/json"
 	"errors"
 	"fmt"
 	"io"
 	"log/slog"
 	"net/http"
+	"strings"
 	"time"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 	"github.com/go-chi/cors"
+	"github.com/jackc/pgx/v5"
+	"github.com/jackc/pgx/v5/pgxpool"
 
 	"github.com/jerkeyray/wordle/server/internal/auth"
 	"github.com/jerkeyray/wordle/server/internal/duos"
@@ -30,6 +35,8 @@ type Server struct {
 	duos     *duos.Store
 	verifier *auth.Verifier
 	log      *slog.Logger
+	db       *pgxpool.Pool
+	limits   *rateLimits
 }
 
 // Options are the server's dependencies.
@@ -45,6 +52,7 @@ type Options struct {
 	Players        *players.Store
 	Duos           *duos.Store
 	Verifier       *auth.Verifier
+	DB             *pgxpool.Pool
 }
 
 // NewServer builds the HTTP handler.
@@ -56,13 +64,15 @@ func NewServer(opts Options) http.Handler {
 		duos:     opts.Duos,
 		verifier: opts.Verifier,
 		log:      opts.Log,
+		db:       opts.DB,
+		limits:   newRateLimits(),
 	}
 	allowedOrigins := opts.AllowedOrigins
 
 	r := chi.NewRouter()
 	r.Use(middleware.RequestID)
-	r.Use(middleware.RealIP)
 	r.Use(middleware.Recoverer)
+	r.Use(s.requestLog)
 	r.Use(middleware.Timeout(15 * time.Second))
 	r.Use(cors.Handler(cors.Options{
 		AllowedOrigins:   allowedOrigins,
@@ -79,6 +89,7 @@ func NewServer(opts Options) http.Handler {
 	}
 
 	r.Get("/api/health", s.handleHealth)
+	r.Get("/api/ready", s.handleReady)
 	r.Get("/api/capabilities", func(w http.ResponseWriter, r *http.Request) {
 		writeJSON(w, http.StatusOK, map[string]bool{"sharedGames": s.duos != nil && s.players != nil && s.verifier != nil})
 	})
@@ -91,14 +102,15 @@ func NewServer(opts Options) http.Handler {
 			r.Post("/name", s.handleSetName)
 			r.Get("/solves", s.handleMySolves)
 			r.Get("/saved", s.handleSavedWords)
+			r.Get("/saved/status/{word}", s.handleSavedWordStatus)
 			r.Put("/saved/{word}", s.handleSaveWord)
 			r.Delete("/saved/{word}", s.handleSaveWord)
 			r.Get("/friends", s.handleFriends)
-			r.Post("/friends", s.handleAddFriend)
-			r.Post("/friends/{id}/respond", s.handleRespondFriend)
+			r.With(s.limit("friend", configuredLimit("FRIEND_RATE_LIMIT", 10))).Post("/friends", s.handleAddFriend)
+			r.With(s.limit("friend", configuredLimit("FRIEND_RATE_LIMIT", 10))).Post("/friends/{id}/respond", s.handleRespondFriend)
 			if s.duos != nil {
 				r.Get("/duos", s.handleDuos)
-				r.Post("/duos", s.handleInviteDuo)
+				r.With(s.limit("invite", configuredLimit("INVITE_RATE_LIMIT", 10))).Post("/duos", s.handleInviteDuo)
 				r.Post("/presence", s.handlePresence)
 			}
 		})
@@ -107,14 +119,14 @@ func NewServer(opts Options) http.Handler {
 		r.Route("/api/duos/{id}", func(r chi.Router) {
 			r.Use(auth.Require)
 			r.Get("/", s.handleDuo)
-			r.Post("/{action}", s.handleDuoAction)
+			r.With(s.limitDuoInvitation()).Post("/{action}", s.handleDuoAction)
 			r.Get("/days/{date}", s.handleDuoDay)
 			r.Post("/days/{date}/{action}", s.handleDuoAction)
 		})
 	}
 
 	r.Route("/api/runs", func(r chi.Router) {
-		r.Post("/", s.handleCreateRun)
+		r.With(s.limit("game", configuredLimit("GAME_CREATE_RATE_LIMIT", 120))).Post("/", s.handleCreateRun)
 		r.Get("/{id}", s.handleGetRun)
 		r.Post("/{id}/rounds", s.handleStartRunRound)
 	})
@@ -125,6 +137,18 @@ func NewServer(opts Options) http.Handler {
 	})
 
 	return r
+}
+
+func (s *Server) handleReady(w http.ResponseWriter, r *http.Request) {
+	if s.db != nil {
+		ctx, cancel := context.WithTimeout(r.Context(), 2*time.Second)
+		defer cancel()
+		if err := s.db.Ping(ctx); err != nil {
+			writeError(w, http.StatusServiceUnavailable, "not_ready", "database unavailable")
+			return
+		}
+	}
+	writeJSON(w, http.StatusOK, map[string]string{"status": "ready"})
 }
 
 func (s *Server) handleHealth(w http.ResponseWriter, _ *http.Request) {
@@ -163,14 +187,29 @@ type createRunRequest struct {
 	Mode         string   `json:"mode"`
 	WordLength   int      `json:"wordLength"`
 	Difficulty   string   `json:"difficulty"`
+	RequestID    string   `json:"requestId"`
 }
 
 func (s *Server) handleCreateRun(w http.ResponseWriter, r *http.Request) {
+	if userID, signedIn := auth.UserID(r.Context()); signedIn && s.players != nil {
+		if _, err := s.players.Ensure(r.Context(), userID); err != nil {
+			s.log.Error("resolving player before run creation", "err", err)
+			writeError(w, http.StatusInternalServerError, "identity_unavailable", "could not start the run")
+			return
+		}
+	}
 	var req createRunRequest
 	if err := decodeJSON(w, r, &req); err != nil {
 		writeError(w, http.StatusBadRequest, "invalid_body", err.Error())
 		return
 	}
+	if req.RequestID != "" && !validRequestID(req.RequestID) {
+		writeError(w, http.StatusBadRequest, "invalid_request_id", "request IDs must be 1 to 128 characters")
+		return
+	}
+	createFingerprintRequest := req
+	createFingerprintRequest.RequestID = ""
+	fingerprint := mutationFingerprint("create_run", createFingerprintRequest)
 
 	exclude := make(map[string]struct{}, len(req.ExcludePacks))
 	for _, id := range req.ExcludePacks {
@@ -228,6 +267,34 @@ func (s *Server) handleCreateRun(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	run.NewCycle = newCycle
+	// The production store combines these writes in one database transaction.
+	if r.URL.Query().Get("deal") == "1" {
+		if req.RequestID != "" {
+			if atomic, ok := s.rounds.(interface {
+				CreateRunWithFirstRoundRequest(context.Context, *game.Run, string, string, string) (*game.Run, *game.Round, error)
+			}); ok {
+				started, round, err := atomic.CreateRunWithFirstRoundRequest(r.Context(), run, store.NewID(), req.RequestID, fingerprint)
+				if err != nil {
+					s.writeGameError(w, err)
+					return
+				}
+				writeJSON(w, http.StatusCreated, runRoundResponse{Round: s.roundView(round), Run: newRunView(started, s.pool)})
+				return
+			}
+		}
+		if atomic, ok := s.rounds.(interface {
+			CreateRunWithFirstRound(context.Context, *game.Run, string) (*game.Run, *game.Round, error)
+		}); ok {
+			started, round, err := atomic.CreateRunWithFirstRound(r.Context(), run, store.NewID())
+			if err != nil {
+				s.log.Error("creating run and first round", "err", err)
+				writeError(w, http.StatusInternalServerError, "create_failed", "could not start the run")
+				return
+			}
+			writeJSON(w, http.StatusCreated, runRoundResponse{Round: s.roundView(round), Run: newRunView(started, s.pool)})
+			return
+		}
+	}
 	if err := s.rounds.CreateRun(r.Context(), run); err != nil {
 		s.log.Error("storing run", "err", err)
 		writeError(w, http.StatusInternalServerError, "create_failed", "could not start the run")
@@ -306,7 +373,37 @@ type runRoundResponse struct {
 }
 
 func (s *Server) handleStartRunRound(w http.ResponseWriter, r *http.Request) {
-	run, round, err := s.startRunRound(r.Context(), chi.URLParam(r, "id"))
+	var req struct {
+		ExpectedRoundID string `json:"expectedRoundId"`
+		RequestID       string `json:"requestId"`
+	}
+	if err := decodeJSON(w, r, &req); err != nil {
+		writeError(w, http.StatusBadRequest, "invalid_body", err.Error())
+		return
+	}
+	if req.RequestID != "" && !validRequestID(req.RequestID) {
+		writeError(w, http.StatusBadRequest, "invalid_request_id", "request IDs must be 1 to 128 characters")
+		return
+	}
+	var run *game.Run
+	var round *game.Round
+	var err error
+	if req.RequestID != "" {
+		runID := chi.URLParam(r, "id")
+		fingerprint := mutationFingerprint("next_round", struct {
+			RunID           string `json:"runId"`
+			ExpectedRoundID string `json:"expectedRoundId"`
+		}{runID, req.ExpectedRoundID})
+		if atomic, ok := s.rounds.(interface {
+			StartRunRoundRequest(context.Context, string, string, string, string, string) (*game.Run, *game.Round, error)
+		}); ok {
+			run, round, err = atomic.StartRunRoundRequest(r.Context(), runID, store.NewID(), req.ExpectedRoundID, req.RequestID, fingerprint)
+		} else {
+			run, round, err = s.startRunRound(r.Context(), chi.URLParam(r, "id"))
+		}
+	} else {
+		run, round, err = s.startRunRound(r.Context(), chi.URLParam(r, "id"))
+	}
 	if err != nil {
 		s.writeGameError(w, err)
 		return
@@ -320,6 +417,11 @@ func (s *Server) handleStartRunRound(w http.ResponseWriter, r *http.Request) {
 
 func (s *Server) startRunRound(ctx context.Context, runID string) (*game.Run, *game.Round, error) {
 	roundID := store.NewID()
+	if atomic, ok := s.rounds.(interface {
+		StartRunRound(context.Context, string, string) (*game.Run, *game.Round, error)
+	}); ok {
+		return atomic.StartRunRound(ctx, runID, roundID)
+	}
 	var answer string
 	run, err := s.rounds.UpdateRun(ctx, runID, func(run *game.Run) error {
 		var err error
@@ -353,28 +455,144 @@ type guessRequest struct {
 	RequestID string `json:"requestId"`
 }
 
+func validRequestID(id string) bool { return len(id) > 0 && len(id) <= 128 }
+
+func mutationFingerprint(operation string, payload any) string {
+	data, _ := json.Marshal(struct {
+		Operation string `json:"operation"`
+		Payload   any    `json:"payload"`
+	}{operation, payload})
+	sum := sha256.Sum256(data)
+	return hex.EncodeToString(sum[:])
+}
+
+func guessFingerprint(guess string) string {
+	sum := sha256.Sum256([]byte(strings.ToLower(strings.TrimSpace(guess))))
+	return hex.EncodeToString(sum[:])
+}
+
 func (s *Server) handleGuess(w http.ResponseWriter, r *http.Request) {
 	var req guessRequest
 	if err := decodeJSON(w, r, &req); err != nil {
 		writeError(w, http.StatusBadRequest, "invalid_body", err.Error())
 		return
 	}
+	if req.RequestID == "" || len(req.RequestID) > 128 {
+		writeError(w, http.StatusBadRequest, "invalid_request_id", "a request ID is required")
+		return
+	}
+	fingerprint := guessFingerprint(req.Guess)
+	if atomic, ok := s.rounds.(interface {
+		UpdateRoundAndRun(context.Context, string, func(*game.Round, *game.Run, pgx.Tx) error) (*game.Round, *game.Run, error)
+	}); ok {
+		var player *players.Player
+		if userID, signedIn := auth.UserID(r.Context()); signedIn && s.players != nil {
+			p, err := s.players.Ensure(r.Context(), userID)
+			if err != nil {
+				s.log.Error("resolving player before guess", "err", err)
+				writeError(w, http.StatusInternalServerError, "identity_unavailable", "could not save this move")
+				return
+			}
+			player = &p
+		}
+		round, run, err := atomic.UpdateRoundAndRun(r.Context(), chi.URLParam(r, "id"), func(round *game.Round, run *game.Run, tx pgx.Tx) error {
+			if round.RequestIDs[req.RequestID] {
+				if old := round.RequestFingerprints[req.RequestID]; old != "" && old != fingerprint {
+					return game.ErrRequestReused
+				}
+			} else {
+				if err := round.Guess(req.Guess, s.pool.IsWord); err != nil {
+					return err
+				}
+				if req.RequestID != "" {
+					if round.RequestIDs == nil {
+						round.RequestIDs = map[string]bool{}
+					}
+					round.RequestIDs[req.RequestID] = true
+					if round.RequestFingerprints == nil {
+						round.RequestFingerprints = map[string]string{}
+					}
+					round.RequestFingerprints[req.RequestID] = fingerprint
+				}
+			}
+			if round.State != game.StatePlaying && player != nil {
+				if err := s.players.RecordSolveTx(r.Context(), tx, player.ID, s.solveRecord(r, round)); err != nil {
+					return err
+				}
+			}
+			return nil
+		})
+		if err != nil {
+			s.writeGameError(w, err)
+			return
+		}
+		writeJSON(w, http.StatusOK, runRoundResponse{Round: s.roundView(round), Run: newRunView(run, s.pool)})
+		return
+	}
+	if atomic, ok := s.rounds.(interface {
+		UpdateRoundAndRunMemory(context.Context, string, func(*game.Round, *game.Run) error) (*game.Round, *game.Run, error)
+	}); ok {
+		var justFinished bool
+		round, run, err := atomic.UpdateRoundAndRunMemory(r.Context(), chi.URLParam(r, "id"), func(round *game.Round, run *game.Run) error {
+			if round.RequestIDs[req.RequestID] {
+				if old := round.RequestFingerprints[req.RequestID]; old != "" && old != fingerprint {
+					return game.ErrRequestReused
+				}
+				return nil
+			}
+			before := round.State
+			if err := round.Guess(req.Guess, s.pool.IsWord); err != nil {
+				return err
+			}
+			if round.RequestIDs == nil {
+				round.RequestIDs = map[string]bool{}
+			}
+			if round.RequestFingerprints == nil {
+				round.RequestFingerprints = map[string]string{}
+			}
+			round.RequestIDs[req.RequestID] = true
+			round.RequestFingerprints[req.RequestID] = fingerprint
+			justFinished = before == game.StatePlaying && round.State != game.StatePlaying
+			if justFinished && run != nil {
+				run.RecordRound(round)
+			}
+			return nil
+		})
+		if err != nil {
+			s.writeGameError(w, err)
+			return
+		}
+		if justFinished {
+			s.recordSolve(r, round)
+		}
+		if round.State == game.StatePlaying {
+			writeJSON(w, http.StatusOK, s.roundView(round))
+		} else {
+			writeJSON(w, http.StatusOK, runRoundResponse{Round: s.roundView(round), Run: newRunView(run, s.pool)})
+		}
+		return
+	}
 
 	var justFinished bool
 	round, err := s.rounds.Update(r.Context(), chi.URLParam(r, "id"), func(round *game.Round) error {
-		if req.RequestID != "" && round.RequestIDs[req.RequestID] {
+		if round.RequestIDs[req.RequestID] {
+			if old := round.RequestFingerprints[req.RequestID]; old != "" && old != fingerprint {
+				return game.ErrRequestReused
+			}
 			return nil
 		}
 		before := round.State
 		if err := round.Guess(req.Guess, s.pool.IsWord); err != nil {
 			return err
 		}
-		if req.RequestID != "" {
-			if round.RequestIDs == nil {
-				round.RequestIDs = make(map[string]bool)
-			}
-			round.RequestIDs[req.RequestID] = true
+		if round.RequestIDs == nil {
+			round.RequestIDs = make(map[string]bool)
 		}
+		if round.RequestFingerprints == nil {
+			round.RequestFingerprints = map[string]string{}
+		}
+		round.RequestIDs[req.RequestID] = true
+		round.RequestFingerprints[req.RequestID] = fingerprint
 		justFinished = before == game.StatePlaying && round.State != game.StatePlaying
 		return nil
 	})
@@ -471,19 +689,24 @@ func (s *Server) recordSolve(r *http.Request, round *game.Round) {
 		return
 	}
 
+	err := s.players.RecordSolve(r.Context(), p.ID, s.solveRecord(r, round))
+	if err != nil {
+		s.log.Error("recording solve", "player", p.ID, "word", round.Reveal(), "err", err)
+	}
+}
+
+func (s *Server) solveRecord(r *http.Request, round *game.Round) players.Solve {
 	answer := round.Reveal()
 	packID := ""
 	if round.Mode == "" || round.Mode == "themed" {
 		packID, _ = s.pool.PackIDFor(answer)
 	}
-
 	var solvedRow *int
 	if round.State == game.StateWon {
 		row := round.SolvedRow
 		solvedRow = &row
 	}
-
-	err := s.players.RecordSolve(r.Context(), p.ID, players.Solve{
+	return players.Solve{
 		Word:      answer,
 		PackID:    packID,
 		Solved:    round.State == game.StateWon,
@@ -492,9 +715,6 @@ func (s *Server) recordSolve(r *http.Request, round *game.Round) {
 		HintsUsed: round.HintsUsed,
 		Points:    round.Points(),
 		PlayedOn:  localDate(r),
-	})
-	if err != nil {
-		s.log.Error("recording solve", "player", p.ID, "word", answer, "err", err)
 	}
 }
 
@@ -508,6 +728,8 @@ func (s *Server) writeGameError(w http.ResponseWriter, err error) {
 		writeError(w, http.StatusNotFound, "run_not_found", "no such run")
 	case errors.Is(err, game.ErrRunComplete):
 		writeError(w, http.StatusConflict, "run_complete", "this run is finished")
+	case errors.Is(err, game.ErrStaleRun):
+		writeError(w, http.StatusConflict, "stale_run", "the run has advanced; reload the current word")
 	case errors.Is(err, game.ErrRoundInPlay):
 		writeError(w, http.StatusConflict, "round_in_play", "finish the current word first")
 	case errors.Is(err, game.ErrRoundOver):
@@ -519,7 +741,9 @@ func (s *Server) writeGameError(w http.ResponseWriter, err error) {
 	case errors.Is(err, game.ErrHintLocked):
 		writeError(w, http.StatusConflict, "hint_locked", fmt.Sprintf("a clue unlocks after %d guesses", game.HintUnlocksAfter(1)))
 	case errors.Is(err, game.ErrInvalidHint):
-		writeError(w, http.StatusUnprocessableEntity, "invalid_hint", "choose hint 1 or 2")
+		writeError(w, http.StatusUnprocessableEntity, "invalid_hint", "that clue is unavailable")
+	case errors.Is(err, game.ErrRequestReused):
+		writeError(w, http.StatusConflict, "request_reused", "this request ID was already used for a different guess")
 	case errors.Is(err, game.ErrNoHintsLeft):
 		writeError(w, http.StatusConflict, "no_hints_left", "you have used every hint")
 	default:

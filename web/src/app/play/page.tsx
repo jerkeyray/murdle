@@ -46,6 +46,12 @@ function PlayScreen() {
   </section>;
   if (!round || !run) return <main className="loading">{error || <Loader label="Setting the type" />}</main>;
 
+  const advance = () => {
+    setPanel(null);setSelected(null);setDismissedRound(round.id);
+    if (run.mode === "themed" && !run.complete) void game.nextWord();
+    else void game.newRun();
+  };
+
   const finished = game.finished;
   const activeEntry = selected ?? (finished && dismissedRound !== round.id ? round : null);
   const hintsUsed = round.hintsUsed;
@@ -78,7 +84,7 @@ function PlayScreen() {
     <div className="sr-only" role="status" aria-live="polite">{game.revealingRow === null && round.rows.length > 0 ? round.rows.at(-1)?.guess.split("").map((letter, i) => `${letter}: ${MARK_LABEL[round.rows.at(-1)!.marks[i]]}`).join("; ") : ""}</div>
     {finished ? <div className="finished-actions">
       <button className="button button--quiet" onClick={() => setSelected(round)}>Word entry</button>
-      <button className="button" disabled={game.busy} onClick={run.mode === "themed" && run.complete ? openConclusion : newRun}>{run.mode === "themed" && run.complete ? "Uncover the connection" : "Next word"}</button>
+      <button className="button" disabled={game.busy} onClick={run.mode === "themed" && run.complete ? openConclusion : advance}>{run.mode === "themed" && run.complete ? "Uncover the connection" : "Next word"}</button>
     </div> : <>
       <Keyboard letterStates={game.letterStates} onKey={game.typeLetter} onBackspace={game.backspace} disabled={game.inputDisabled} />
       {/* Centred rather than stretched edge to edge, so the thing you press on
@@ -89,7 +95,7 @@ function PlayScreen() {
     </>}
     {game.message && <div className="toast" role="status">{game.message}</div>}
     {error && <Dialog title="Game interrupted" onClose={() => { void game.retry(); }}>{error}</Dialog>}
-    {!game.error && !panel && activeEntry && <Entry key={activeEntry.id} round={activeEntry} onClose={() => { setSelected(null); setDismissedRound(round.id); }} action={activeEntry.id === round.id ? (run.mode === "themed" && run.complete ? openConclusion : newRun) : undefined} actionLabel={run.mode === "themed" && run.complete ? "Uncover the connection" : "Next word"} busy={game.busy} />}
+    {!game.error && !panel && activeEntry && <Entry key={activeEntry.id} round={activeEntry} onClose={() => { setSelected(null); setDismissedRound(round.id); }} action={activeEntry.id === round.id ? (run.mode === "themed" && run.complete ? openConclusion : advance) : undefined} actionLabel={run.mode === "themed" && run.complete ? "Uncover the connection" : "Next word"} busy={game.busy} />}
     {!game.error && panel === "hints" && <Dialog title="Clue" onClose={() => setPanel(null)} className="clue-dialog">
       <section className="hint-panel">
         {round.hints.length > 0 && <ol className="hint-list">{round.hints.slice(0, 1).map((hint) => <li key={hint.tier}><p>{hint.text}</p></li>)}</ol>}

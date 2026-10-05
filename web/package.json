@@ -12,7 +12,7 @@
     "packs:review": "node scripts/review-packs.mjs",
     "packs:check": "node scripts/check-packs.mjs",
     "answers:queue:check": "node scripts/check-answer-queue.mjs",
-    "test:content": "node --test scripts/packs-lib.test.mjs scripts/wiktionary-lib.test.mjs scripts/tatoeba-lib.test.mjs scripts/respell.test.mjs",
+    "test:content": "node --test scripts/packs-lib.test.mjs scripts/wiktionary-lib.test.mjs scripts/tatoeba-lib.test.mjs scripts/respell.test.mjs scripts/draft.test.mjs",
     "entries:enrich": "node scripts/enrich-entries.mjs --source wiktionary && node scripts/enrich-entries.mjs --source wordnet && node scripts/enrich-entries.mjs --source tatoeba",
     "entries:report": "node scripts/enrich-entries.mjs --report",
     "test:e2e": "playwright test"

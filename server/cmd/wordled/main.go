@@ -103,12 +103,12 @@ func run(log *slog.Logger) error {
 	var rounds store.Store
 	if conn != nil {
 		pg := store.NewPostgres(conn, roundTTL)
-		go pg.Reap(ctx, time.Hour)
+		go pg.Reap(ctx, time.Hour, func(err error) { log.Error("database cleanup failed", "err", err) })
 		rounds = pg
 		log.Info("game state in postgres", "ttl", roundTTL)
 	} else {
 		mem := store.NewMemory(roundTTL)
-		go mem.Reap(ctx, 10*time.Minute)
+		go mem.Reap(ctx, 10*time.Minute, nil)
 		rounds = mem
 		log.Warn("game state in memory — runs are lost on restart and cannot be shared between instances")
 	}
@@ -121,6 +121,7 @@ func run(log *slog.Logger) error {
 		Players:        playerStore,
 		Duos:           duoStore,
 		Verifier:       verifier,
+		DB:             conn,
 	})
 
 	srv := &http.Server{

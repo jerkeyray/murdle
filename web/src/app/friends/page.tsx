@@ -33,16 +33,17 @@ export default function FriendsPage() {
   const pending = useRef<{ key: string; mutation: DuoMutation } | null>(null);
   const initialized = useRef(false);
 
-  const load = useCallback(async () => {
+  const load = useCallback(async (signal?:AbortSignal) => {
     try {
-      const capability = await getCapabilities();
+      const capability = await getCapabilities(signal);
       if (!initialized.current) { setCode(new URLSearchParams(window.location.search).get("code")?.slice(0, 6).toUpperCase() ?? ""); initialized.current = true; }
       setAvailable(capability.sharedGames);
-      const p = await getProfile();
+      const p = await getProfile(signal);
       if (p.needsName) { router.replace(`/profile?returnTo=${encodeURIComponent(window.location.pathname + window.location.search)}`); return; }
-      const [f, d] = await Promise.all([getFriends(), capability.sharedGames ? getDuos() : Promise.resolve([])]);
+      const [f, d] = await Promise.all([getFriends(signal), capability.sharedGames ? getDuos(signal) : Promise.resolve([])]);
       setProfile(p); setFriends(f); setDuos(d); setReady(true);
     } catch (e) {
+      if(signal?.aborted)return;
       setReady(true);
       if (e instanceof ApiError && e.status === 401) { setProfile(null); setFriends([]); setDuos([]); setSelected(null); }
       if (!(e instanceof ApiError && e.status === 401)) setError(e instanceof Error ? e.message : "Could not load friends");
@@ -142,7 +143,7 @@ export default function FriendsPage() {
             {ending ? <div className="end-duo"><p>End this daily game? Your friendship and past results stay.</p><button className="button button--quiet" disabled={busy} onClick={() => void act("end")}>End daily game</button><button className="text-button" onClick={() => setEnding(false)}>Keep playing</button></div> : <button className="text-button" onClick={() => setEnding(true)}>End daily game</button>}
           </> : duo?.status === "pending" ? <div className="friend-shared-game"><h3>{duoStatus(duo)}</h3>{duo.inviterId === duo.viewerId ? <button className="button button--quiet" disabled={busy} onClick={() => void act("cancel")}>Cancel invitation</button> : <div className="entry-actions"><button className="button" disabled={busy} onClick={() => void act("accept")}>Accept daily game</button><button className="text-button" disabled={busy} onClick={() => void act("decline")}>Decline</button></div>}</div>
             : <button className="button" disabled={busy || !available} onClick={() => void act("invite")}>Play together</button>}
-          {!!duo?.recent.length && <ul className="duo-recent" aria-label="Recent pair results">{duo.recent.map(day => <li key={`${day.duoId}:${day.date}`}><Link href={`/duos/${day.duoId}?date=${day.date}`}>{day.date}</Link><strong>{day.answer}</strong><span>{day.state === "won" ? `${day.rows.length}/6` : "Missed"}</span></li>)}</ul>}
+          {!!duo?.recent.length && <ul className="duo-recent" aria-label="Recent pair results">{duo.recent.map(day => <li key={`${day.duoId}:${day.board}`}><Link href={`/duos/${day.duoId}?date=${day.board}`}>{day.seq ? `${day.date} · game ${day.seq + 1}` : day.date}</Link><strong>{day.answer}</strong><span>{day.state === "won" ? `${day.rows.length}/6` : "Missed"}</span></li>)}</ul>}
         </> : friend.incoming ? <div className="entry-actions">{[true, false].map(accept => <button className="button button--quiet" key={String(accept)} disabled={busy} onClick={async () => { setBusy(true); try { await respondToFriend(friend.id, accept); await load(); setSelected(null); } catch (e) { setError(e instanceof Error ? e.message : "Could not respond"); } finally { setBusy(false); } }}>{accept ? "Accept friend" : "Decline"}</button>)}</div> : <p className="hint">Friend request sent.</p>}
         {error && <p className="form-error" role="alert">{error}</p>}
       </Dialog>}

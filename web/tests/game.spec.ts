@@ -2,18 +2,19 @@ import { test, expect, type Page } from "@playwright/test";
 import { readFileSync } from "node:fs";
 
 const packs = JSON.parse(readFileSync("../server/internal/words/packs.json", "utf8")) as { id: string; title: string; words: { word: string; hints: string[] }[] }[];
-const API = "http://localhost:8082";
+const API = process.env.PW_API_URL ?? "http://localhost:8082";
 
 async function setup(page: Page, index = 0) {
   await page.route("**/api/auth/token", route => route.fulfill({ status: 401, body: "{}", contentType: "application/json" }));
-  await page.route("http://localhost:8080/**", async route => {
-    const response = await route.fetch({ url: route.request().url().replace("http://localhost:8080", API) });
+  await page.route(`${API}/**`, async route => {
+    const response = await route.fetch();
     await route.fulfill({ response });
   });
   await page.addInitScript(({ exclude }) => {
     // Only seed a fresh browser context, never overwrite a completed cycle on reload.
     if (!localStorage.getItem("test-seeded")) {
       localStorage.setItem("wordle.packs", JSON.stringify(exclude));
+      localStorage.setItem("wordle.mode", JSON.stringify({ mode: "themed", wordLength: 5, difficulty: "mixed" }));
       localStorage.setItem("test-seeded", "1");
     }
   }, { exclude: packs.filter((_, i) => i !== index).map(p => p.id) });
@@ -37,32 +38,30 @@ test("accessible modal, keyboard, hints, restoration, conclusion", async ({ page
   await setup(page);
   await page.goto("/play");
   await expectWord(page, 1);
-  await page.getByRole("button", { name: "Hint", exact: true }).click();
-  await expect(page.getByRole("dialog", { name: "A small nudge", exact: true })).toBeVisible();
-  await expect(page.getByRole("button", { name: "Reveal context" })).toBeDisabled();
+  await page.getByRole("button", { name: "Clue", exact: true }).click();
+  await expect(page.getByRole("dialog", { name: "Clue", exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Reveal clue" })).toBeDisabled();
   await page.keyboard.press("Escape");
-  await expect(page.getByRole("button", { name: "Hint", exact: true })).toBeFocused();
+  await expect(page.getByRole("button", { name: "Clue", exact: true })).toBeFocused();
   await guess(page, "adieu");
   await expect(page.locator(".row").first().locator('[data-mark]')).toHaveCount(5);
   await guess(page, "stone");
   await expect(page.locator(".row").nth(1).locator('[data-mark]')).toHaveCount(5);
   // The first hint waits for three accepted guesses.
-  await page.getByRole("button", { name: "Hint", exact: true }).click();
-  await expect(page.getByRole("button", { name: "Reveal context" })).toBeDisabled();
+  await page.getByRole("button", { name: "Clue", exact: true }).click();
+  await expect(page.getByRole("button", { name: "Reveal clue" })).toBeDisabled();
   await page.keyboard.press("Escape");
   await guess(page, "crane");
   await expect(page.locator(".row").nth(2).locator('[data-mark]')).toHaveCount(5);
-  await page.getByRole("button", { name: "Hint", exact: true }).click();
-  await page.getByRole("button", { name: "Reveal context" }).click();
+  await page.getByRole("button", { name: "Clue", exact: true }).click();
+  await page.getByRole("button", { name: "Reveal clue" }).click();
   await expect(page.getByText(packs[0].words[0].hints[0], { exact: true })).toBeVisible();
-  await expect(page.getByRole("button", { name: "Reveal association" })).toBeDisabled();
   await page.keyboard.press("Escape");
   await page.reload();
-  await expect(page.getByRole("button", { name: "Hint · 1 of 2 used" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Clue used" })).toBeVisible();
   await solve(page, packs[0].words[0].word);
-  await expect(page.getByText("Assisted · 1 hint", { exact: true })).toBeVisible();
-  await page.getByRole("button", { name: "Back to board", exact: true }).click();
-  await page.getByRole("button", { name: "Next word", exact: true }).click();
+  // The entry dialog's action advances the existing themed run.
+  await page.getByRole("dialog", { name: "Word entry" }).getByRole("button", { name: "Next word", exact: true }).click();
   await expectWord(page, 2);
   await expect(page.locator('.tile[data-state="filled"]')).toHaveCount(0);
   await page.reload();
@@ -107,14 +106,14 @@ test("a lost guess response restores the accepted row before retrying", async ({
   await setup(page); await page.goto("/play");
   await expectWord(page, 1);
   await page.route("**/api/rounds/*/guesses", async route => {
-    await route.fetch({ url: route.request().url().replace("http://localhost:8080", API) });
+    await route.fetch();
     await route.abort("failed");
   }, { times: 1 });
   await guess(page, "adieu");
-  await expect(page.getByRole("dialog", { name: "Game interrupted", exact: true })).toBeVisible();
-  await page.getByRole("button", { name: "Retry", exact: true }).click();
-  await expect(page.getByRole("dialog")).toHaveCount(0);
+  // The client retries the same request ID after the response is lost. The
+  // accepted row appears once, with the next row still empty.
   await expect(page.locator(".row").first().locator('[data-mark]')).toHaveCount(5);
+  await expect(page.locator(".row").nth(1).locator('[data-mark]')).toHaveCount(0);
   await expect(page.locator(".row").nth(1).locator('[data-mark]')).toHaveCount(0);
 });
 
@@ -133,28 +132,27 @@ test("light, dark, colour-blind, short mobile and desktop layouts", async ({ pag
   }
 });
 
-test("lost words remain in the strip and both hints survive restoration", async ({ page }) => {
+test("lost words remain in the strip and the optional clue survives restoration", async ({ page }) => {
   await setup(page); await page.goto("/play");
   await expectWord(page, 1);
-  // Five accepted guesses: the second hint unlocks at 2*tier + 1.
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 3; i++) {
     await guess(page, "adieu");
     await expect(page.locator(".row").nth(i).locator('[data-mark]')).toHaveCount(5);
   }
-  await page.getByRole("button", { name: "Hint", exact: true }).click();
-  await page.getByRole("button", { name: "Reveal context" }).click();
-  await page.getByRole("button", { name: "Reveal association" }).click();
-  await expect(page.locator(".hint-list li")).toHaveCount(2);
+  await page.getByRole("button", { name: "Clue", exact: true }).click();
+  await page.getByRole("button", { name: "Reveal clue" }).click();
+  await expect(page.locator(".hint-list li")).toHaveCount(1);
   await page.keyboard.press("Escape");
   await page.reload();
-  await expect(page.getByRole("button", { name: "Hint · 2 of 2 used" })).toBeVisible();
-  await guess(page, "adieu");
-  await expect(page.getByText("Out of guesses", { exact: true })).toBeVisible();
-  await page.getByRole("button", { name: "Next word", exact: true }).last().click();
-  await page.getByRole("button", { name: "Read voice, revealed", exact: true }).click();
-  await expect(page.getByText("Assisted · 2 hints", { exact: true })).toBeVisible();
-  await page.getByText("Inspect finished board", { exact: true }).click();
-  await expect(page.locator("dialog .row [data-mark]")).toHaveCount(30);
+  await expect(page.getByRole("button", { name: "Clue used" })).toBeVisible();
+  for (let i = 3; i < 6; i++) await guess(page, "adieu");
+  await expect(page.getByRole("dialog", { name: "Word entry", exact: true })).toBeVisible();
+  const runId = await page.evaluate(() => localStorage.getItem("wordle.active.themed.5.mixed"));
+  expect(runId).toBeTruthy();
+  const run = await page.request.get(`${API}/api/runs/${runId}`).then(r => r.json()) as { completedWords: { state: string; hintsUsed: number }[] };
+  expect(run.completedWords[0]).toMatchObject({ state: "lost", hintsUsed: 1 });
+  await page.getByRole("dialog", { name: "Word entry" }).getByRole("button", { name: "Next word", exact: true }).click();
+  await expectWord(page, 2);
 });
 
 test("play remains usable with storage blocked", async ({ page }) => {
@@ -175,6 +173,7 @@ test("legacy browser data moves into the Wordle namespace", async ({ page }) => 
     localStorage.setItem(old + "theme", "light");
     localStorage.setItem(old + "contrast", "cb");
     localStorage.setItem(old + "active", "legacyrun");
+    localStorage.setItem(old + "mode", JSON.stringify({ mode: "themed", wordLength: 5, difficulty: "mixed" }));
   });
   await page.goto("/");
   await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
@@ -184,17 +183,41 @@ test("legacy browser data moves into the Wordle namespace", async ({ page }) => 
     .toBe("legacyrun");
 });
 
-test("a lost next-word response resumes the already dealt word", async ({ page }) => {
+test("a lost run-creation response reuses the request ID and payload", async ({ page }) => {
+  await setup(page);
+  const requests: { requestId: string; body: string }[] = [];
+  await page.route("**/api/runs?deal=1", async route => {
+    const body = route.request().postData() ?? "";
+    requests.push({ requestId: JSON.parse(body).requestId, body });
+    const response = await route.fetch();
+    if (requests.length === 1) await route.abort("failed");
+    else await route.fulfill({ response });
+  });
+  await page.goto("/play");
+  await expectWord(page, 1);
+  expect(requests.length).toBeGreaterThanOrEqual(2);
+  expect(new Set(requests.map(request => request.requestId)).size).toBe(1);
+  expect(new Set(requests.map(request => request.body)).size).toBe(1);
+});
+
+test("a lost next-word response retries its receipt without dealing twice", async ({ page }) => {
   await setup(page); await page.goto("/play");
   await expectWord(page, 1);
   await solve(page, packs[0].words[0].word);
+  const requests: { requestId: string; body: string }[] = [];
   await page.route("**/api/runs/*/rounds", async route => {
-    await route.fetch({ url: route.request().url().replace("http://localhost:8080", API) });
-    await route.abort("failed");
-  }, { times: 1 });
+    const body = route.request().postData() ?? "";
+    requests.push({ requestId: JSON.parse(body).requestId, body });
+    const response = await route.fetch();
+    if (requests.length === 1) await route.abort("failed");
+    else await route.fulfill({ response });
+  });
   await page.getByRole("button", { name: "Next word", exact: true }).last().click();
-  await page.getByRole("button", { name: "Retry", exact: true }).click();
   await expectWord(page, 2);
+  expect(requests.length).toBeGreaterThanOrEqual(2);
+  expect(new Set(requests.map(request => request.requestId)).size).toBe(1);
+  expect(new Set(requests.map(request => request.body)).size).toBe(1);
+  expect(JSON.parse(requests[0].body).expectedRoundId).toBeTruthy();
   await solve(page, packs[0].words[1].word);
 });
 

@@ -15,8 +15,8 @@ import { useVisiblePolling } from "@/lib/useVisiblePolling";
 export function FriendsEntry() {
   const [turns, setTurns] = useState(0);
   const [invites, setInvites] = useState(0);
-  const load = useCallback(async () => {
-    const duos = await getDuos();
+  const load = useCallback(async (signal:AbortSignal) => {
+    const duos = await getDuos(signal);
     setTurns(duos.filter(d => d.today?.state === "playing" && d.today.currentPlayer === d.viewerId).length);
     setInvites(duos.filter(d => d.status === "pending" && d.inviterId !== d.viewerId).length);
   }, []);

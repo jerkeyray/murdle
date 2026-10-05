@@ -2,8 +2,9 @@
 
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { ApiError, createRun, getRound, getRun, letterStates, startRunRound, submitGuess, revealHint, type Round, type Run } from "./api";
-import { ACTIVE_KEY, activeRunFor, type GameConfig, playedPacks, playedWords, rememberRun, writeLocal } from "./session";
+import { activeRunFor, clearActiveRunFor, clearPendingNextRoundRequestFor, clearPendingRunRequestFor, pendingNextRoundRequestFor, pendingRunRequestFor, type GameConfig, playedPacks, playedWords, rememberRun } from "./session";
 import { lettersPhrase } from "./letters";
+import { deleteLetter, typeInto } from "./draft";
 import { dictionaryReady, isKnownWord, loadDictionary, serverDictionaryReady, subscribeDictionary } from "./dictionary";
 
 /** How the Enter key presents itself. */
@@ -12,9 +13,16 @@ export type EnterState = "idle" | "incomplete" | "unknown" | "word";
 const REVEAL_MS = 4 * 200 + 540;
 type Deal = { round: Round; run: Run };
 
+async function dealNextRound(runID: string, expectedRoundID: string): Promise<Deal> {
+  const requestID = pendingNextRoundRequestFor(runID, expectedRoundID);
+  const deal = await startRunRound(runID, expectedRoundID, requestID);
+  clearPendingNextRoundRequestFor(runID, expectedRoundID);
+  return deal;
+}
+
 async function restore(id: string): Promise<Deal> {
   const run = await getRun(id);
-  if (!run.currentRoundId) return startRunRound(id);
+  if (!run.currentRoundId) return dealNextRound(id, "");
   // Completed boards are retained with the run even if their individual TTL elapsed.
   const round = run.completedWords.find((r) => r.id === run.currentRoundId) ?? await getRound(run.currentRoundId);
   return { run, round };
@@ -23,7 +31,10 @@ async function restore(id: string): Promise<Deal> {
 // Remembering early would let a prefetch from the home page flip its button
 // from Begin to Continue while you were looking at it.
 function begin(config: GameConfig): Promise<Deal> {
-  return createRun({ excludePacks: config.mode === "themed" ? playedPacks() : [], excludeWords: config.mode === "classic" ? playedWords() : [], ...config });
+  const payload = { excludePacks: config.mode === "themed" ? playedPacks() : [], excludeWords: config.mode === "classic" ? playedWords() : [], ...config };
+  const pending = pendingRunRequestFor(config, payload);
+  return createRun({ requestId: pending.requestId, ...pending.payload })
+    .then((deal) => { clearPendingRunRequestFor(config); return deal; });
 }
 
 function open(config: GameConfig): Promise<Deal> {
@@ -69,6 +80,9 @@ export function useGame(config: GameConfig = { mode: "themed", wordLength: 5, di
   // Empty strings retain a player's chosen tile positions. That means they can
   // work through a word from the middle without letters shifting left.
   const [draft, setDraft] = useState<string[]>([]);
+  // Mirrors the draft so two quick key presses in a row both see the first.
+  const draftRef = useRef<string[]>([]);
+  useEffect(() => { draftRef.current = draft; }, [draft]);
   const [draftCursor, setDraftCursor] = useState(0);
   const draftCursorRef = useRef(0);
   const [busy, setBusy] = useState(false);
@@ -104,8 +118,8 @@ export function useGame(config: GameConfig = { mode: "themed", wordLength: 5, di
       // are in the database now and the window is a month.
       ? "That run is no longer available. Unfinished games are kept for a month."
       : err instanceof ApiError ? err.message : "Could not reach the game. Please try again.");
-    if (missing) writeLocal(ACTIVE_KEY, null);
-  }, []);
+    if (missing) clearActiveRunFor({ mode, wordLength, difficulty });
+  }, [mode, wordLength, difficulty]);
 
   // Off the critical path: the board does not wait on it, and the Enter key
   // simply has no opinion until it lands.
@@ -138,9 +152,12 @@ export function useGame(config: GameConfig = { mode: "themed", wordLength: 5, di
     if (!run) return begin({ mode, wordLength, difficulty });
     // Recover a response lost after the next word was already dealt.
     const current = await getRun(run.id);
-    if (current.currentRoundId !== round?.id || current.complete) return restore(run.id);
-    return startRunRound(run.id);
-  }), [perform, run, round?.id, mode, wordLength, difficulty]);
+    if (current.currentRoundId !== round?.id || current.complete) {
+      if (round?.id) clearPendingNextRoundRequestFor(run.id, round.id);
+      return restore(run.id);
+    }
+    return dealNextRound(run.id, current.currentRoundId ?? "");
+  }), [perform, run, round, mode, wordLength, difficulty]);
 
   const playable = !!round && round.state === "playing" && !busy && !error && revealingRow === null;
 
@@ -160,28 +177,22 @@ export function useGame(config: GameConfig = { mode: "themed", wordLength: 5, di
         ? "unknown"
         : "word";
   const typeLetter = useCallback((letter: string) => {
-    const position = draftCursorRef.current;
-    if (!playable || !round || position >= round.wordLength) return;
-    setDraft((current) => {
-      const next = Array.from({ length: round.wordLength }, (_, index) => current[index] ?? "");
-      next[position] = letter;
-      return next;
-    });
-    const nextPosition = Math.min(position + 1, round.wordLength);
-    draftCursorRef.current = nextPosition;
-    setDraftCursor(nextPosition);
+    if (!playable || !round) return;
+    const typed = typeInto(draftRef.current, draftCursorRef.current, letter, round.wordLength);
+    if (!typed) return;
+    draftRef.current = typed.draft;
+    setDraft(typed.draft);
+    draftCursorRef.current = typed.cursor;
+    setDraftCursor(typed.cursor);
   }, [playable, round]);
   const backspace = useCallback(() => {
-    const cursor = draftCursorRef.current;
-    if (!playable || !round || cursor === 0) return;
-    const position = Math.min(cursor, round.wordLength) - 1;
-    setDraft((current) => {
-      const next = Array.from({ length: round.wordLength }, (_, index) => current[index] ?? "");
-      next[position] = "";
-      return next;
-    });
-    draftCursorRef.current = position;
-    setDraftCursor(position);
+    if (!playable || !round) return;
+    const deleted = deleteLetter(draftRef.current, draftCursorRef.current, round.wordLength);
+    if (!deleted) return;
+    draftRef.current = deleted.draft;
+    setDraft(deleted.draft);
+    draftCursorRef.current = deleted.cursor;
+    setDraftCursor(deleted.cursor);
   }, [playable, round]);
   const selectDraftTile = useCallback((index: number) => {
     if (playable && round && index >= 0 && index < round.wordLength) {

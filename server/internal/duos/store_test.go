@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
+	"github.com/jerkeyray/wordle/server/internal/game"
 	"github.com/jerkeyray/wordle/server/internal/testdb"
 	"github.com/jerkeyray/wordle/server/internal/words"
 	"strings"
@@ -271,7 +272,10 @@ func TestPostgresExpiryAndExhaustion(t *testing.T) {
 	seen := map[string]bool{d.Today.hiddenAnswer: true, firstAnswer: true}
 	poolSize := 0
 	for _, pack := range s.words.Packs() {
-		poolSize += len(pack.Words)
+		// Shared boards only deal five-letter words.
+		if pack.WordLength() == game.WordLength {
+			poolSize += len(pack.Words)
+		}
 	}
 	for i := 0; i < poolSize-2; i++ {
 		*now = now.Add(24 * time.Hour)

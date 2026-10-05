@@ -75,17 +75,6 @@ func Migrate(ctx context.Context, pool *pgxpool.Pool) ([]string, error) {
 
 	var applied []string
 	for _, name := range names {
-		var exists bool
-		err := pool.QueryRow(ctx,
-			`select exists (select 1 from schema_migrations where name = $1)`, name,
-		).Scan(&exists)
-		if err != nil {
-			return nil, fmt.Errorf("checking %s: %w", name, err)
-		}
-		if exists {
-			continue
-		}
-
 		sql, err := migrations.ReadFile("migrations/" + name)
 		if err != nil {
 			return nil, err
@@ -94,6 +83,19 @@ func Migrate(ctx context.Context, pool *pgxpool.Pool) ([]string, error) {
 		tx, err := pool.Begin(ctx)
 		if err != nil {
 			return nil, err
+		}
+		if _, err := tx.Exec(ctx, `select pg_advisory_xact_lock(731940261)`); err != nil {
+			_ = tx.Rollback(ctx)
+			return nil, fmt.Errorf("locking migrations: %w", err)
+		}
+		var exists bool
+		if err := tx.QueryRow(ctx, `select exists(select 1 from schema_migrations where name=$1)`, name).Scan(&exists); err != nil {
+			_ = tx.Rollback(ctx)
+			return nil, fmt.Errorf("checking %s: %w", name, err)
+		}
+		if exists {
+			_ = tx.Rollback(ctx)
+			continue
 		}
 		if _, err := tx.Exec(ctx, string(sql)); err != nil {
 			_ = tx.Rollback(ctx)

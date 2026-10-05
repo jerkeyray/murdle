@@ -55,17 +55,18 @@ func (s *Store) load(ctx context.Context, tx pgx.Tx, id, player string) (*Duo, e
 	d.Members = []Member{{low, ln}, {high, hn}}
 	return d, nil
 }
-func (s *Store) day(ctx context.Context, tx pgx.Tx, id, date string) (*Day, error) {
+func (s *Store) day(ctx context.Context, tx pgx.Tx, id, date string, seq int) (*Day, error) {
 	d := &Day{DuoID: id, WordLength: game.WordLength, MaxRows: game.MaxRows, Rows: []Guess{}, Passed: []string{}}
 	var entry []byte
-	err := tx.QueryRow(ctx, `select day::text,deadline,state,current_player,version,answer,entry from duo_days where duo_id=$1 and day=$2`, id, date).Scan(&d.Date, &d.Deadline, &d.State, &d.CurrentPlayer, &d.Version, &d.hiddenAnswer, &entry)
+	err := tx.QueryRow(ctx, `select day::text,seq,deadline,state,current_player,version,answer,entry from duo_days where duo_id=$1 and day=$2 and seq=$3`, id, date, seq).Scan(&d.Date, &d.Seq, &d.Deadline, &d.State, &d.CurrentPlayer, &d.Version, &d.hiddenAnswer, &entry)
 	if err != nil {
 		return nil, err
 	}
+	d.Board = boardKey(d.Date, d.Seq)
 	if err = json.Unmarshal(entry, &d.hiddenEntry); err != nil {
 		return nil, err
 	}
-	rows, err := tx.Query(ctx, `select guess,marks,player_id from duo_guesses where duo_id=$1 and day=$2 order by row_index`, id, date)
+	rows, err := tx.Query(ctx, `select guess,marks,player_id from duo_guesses where duo_id=$1 and day=$2 and seq=$3 order by row_index`, id, date, seq)
 	if err != nil {
 		return nil, err
 	}
@@ -87,7 +88,7 @@ func (s *Store) day(ctx context.Context, tx pgx.Tx, id, date string) (*Day, erro
 	if err != nil {
 		return nil, err
 	}
-	rows, err = tx.Query(ctx, `select player_id from duo_passes where duo_id=$1 and day=$2 order by player_id`, id, date)
+	rows, err = tx.Query(ctx, `select player_id from duo_passes where duo_id=$1 and day=$2 and seq=$3 order by player_id`, id, date, seq)
 	if err != nil {
 		return nil, err
 	}
@@ -107,6 +108,61 @@ func (s *Store) day(ctx context.Context, tx pgx.Tx, id, date string) (*Day, erro
 	d.reveal()
 	return d, nil
 }
+
+// addBoard creates one board for a day: it picks a word the pair has not had
+// this cycle (starting a new cycle once every word has been used) and deals
+// the opening turn. Used for a day's first board and for each "next word".
+func (s *Store) addBoard(ctx context.Context, tx pgx.Tx, d *Duo, day string, deadline time.Time, seq int) error {
+	cycle := 0
+	err := tx.QueryRow(ctx, `select coalesce(max(cycle),0) from duo_days where duo_id=$1`, d.ID).Scan(&cycle)
+	if err != nil {
+		return err
+	}
+	seen := map[string]bool{}
+	rows, e := tx.Query(ctx, `select answer from duo_days where duo_id=$1 and cycle=$2`, d.ID, cycle)
+	if e != nil {
+		return e
+	}
+	for rows.Next() {
+		var w string
+		if e = rows.Scan(&w); e != nil {
+			rows.Close()
+			return e
+		}
+		seen[w] = true
+	}
+	e = rows.Err()
+	rows.Close()
+	if e != nil {
+		return e
+	}
+	candidates := []words.PackWord{}
+	all := []words.PackWord{}
+	for _, p := range s.words.Packs() {
+		// Shared boards take five-letter guesses only, so a six-letter answer
+		// from one of the six-letter packs could never be solved.
+		if p.WordLength() != game.WordLength {
+			continue
+		}
+		for _, w := range p.Words {
+			all = append(all, w)
+			if !seen[w.Word] {
+				candidates = append(candidates, w)
+			}
+		}
+	}
+	if len(candidates) == 0 {
+		cycle++
+		candidates = all
+	}
+	if len(candidates) == 0 {
+		return fail("unavailable", "No daily words available")
+	}
+	w := candidates[rand.IntN(len(candidates))]
+	entry, _ := json.Marshal(Entry{Word: w.Word, Register: string(w.Register), Definition: w.Definition, Note: w.Note, Pronunciation: w.Pronunciation, PartOfSpeech: w.PartOfSpeech, Origin: w.Origin, Example: w.Example, ExampleSource: w.ExampleSource})
+	_, err = tx.Exec(ctx, `insert into duo_days (duo_id,day,seq,deadline,answer,entry,cycle,state,current_player) values($1,$2,$3,$4,$5,$6,$7,'playing',$8)`, d.ID, day, seq, deadline, w.Word, entry, cycle, openingPlayer(d.StartedOn, day, seq, d.Members))
+	return err
+}
 func (s *Store) populate(ctx context.Context, tx pgx.Tx, d *Duo) error {
 	now := s.Now()
 	today, deadline, err := dateAt(now, d.Timezone)
@@ -124,50 +180,7 @@ func (s *Store) populate(ctx context.Context, tx pgx.Tx, d *Duo) error {
 			return err
 		}
 		if !exists {
-			cycle := 0
-			err = tx.QueryRow(ctx, `select coalesce(max(cycle),0) from duo_days where duo_id=$1`, d.ID).Scan(&cycle)
-			if err != nil {
-				return err
-			}
-			seen := map[string]bool{}
-			rows, e := tx.Query(ctx, `select answer from duo_days where duo_id=$1 and cycle=$2`, d.ID, cycle)
-			if e != nil {
-				return e
-			}
-			for rows.Next() {
-				var w string
-				if e = rows.Scan(&w); e != nil {
-					rows.Close()
-					return e
-				}
-				seen[w] = true
-			}
-			e = rows.Err()
-			rows.Close()
-			if e != nil {
-				return e
-			}
-			candidates := []words.PackWord{}
-			all := []words.PackWord{}
-			for _, p := range s.words.Packs() {
-				for _, w := range p.Words {
-					all = append(all, w)
-					if !seen[w.Word] {
-						candidates = append(candidates, w)
-					}
-				}
-			}
-			if len(candidates) == 0 {
-				cycle++
-				candidates = all
-			}
-			if len(candidates) == 0 {
-				return fail("unavailable", "No daily words available")
-			}
-			w := candidates[rand.IntN(len(candidates))]
-			entry, _ := json.Marshal(Entry{Word: w.Word, Register: string(w.Register), Definition: w.Definition, Note: w.Note, Pronunciation: w.Pronunciation, PartOfSpeech: w.PartOfSpeech, Origin: w.Origin, Example: w.Example, ExampleSource: w.ExampleSource})
-			_, err = tx.Exec(ctx, `insert into duo_days (duo_id,day,deadline,answer,entry,cycle,state,current_player) values($1,$2,$3,$4,$5,$6,'playing',$7)`, d.ID, today, deadline, w.Word, entry, cycle, starter(d.StartedOn, today, d.Members))
-			if err != nil {
+			if err = s.addBoard(ctx, tx, d, today, deadline, 0); err != nil {
 				return err
 			}
 		}
@@ -176,18 +189,29 @@ func (s *Store) populate(ctx context.Context, tx pgx.Tx, d *Duo) error {
 	// game and starting a fresh one with the same friend used to leave a zeroed
 	// streak sitting beside a history that plainly showed the run continuing.
 	// Where two duos covered the same date the newer one wins, hence the guard.
+	//
+	// A day can hold several boards, and the streak counts days: a day is "won"
+	// if any of its boards was, so an extra game that is lost never undoes a
+	// win. Otherwise the day takes the state of its latest board.
 	states := map[string]string{}
-	rows, err := tx.Query(ctx, `select b.day::text,b.state from duo_days b join duos p on p.id=b.duo_id where p.friendship_id=$1 order by b.day desc,p.created_at desc`, d.FriendshipID)
+	owner := map[string]string{}
+	rows, err := tx.Query(ctx, `select b.day::text,b.state,b.duo_id from duo_days b join duos p on p.id=b.duo_id where p.friendship_id=$1 order by b.day desc,p.created_at desc,b.seq desc`, d.FriendshipID)
 	if err != nil {
 		return err
 	}
 	for rows.Next() {
-		var date, state string
-		if err = rows.Scan(&date, &state); err != nil {
+		var date, state, duo string
+		if err = rows.Scan(&date, &state, &duo); err != nil {
 			rows.Close()
 			return err
 		}
-		if _, seen := states[date]; !seen {
+		if _, seen := owner[date]; !seen {
+			owner[date] = duo
+		}
+		if owner[date] != duo {
+			continue
+		}
+		if _, seen := states[date]; !seen || state == "won" {
 			states[date] = state
 		}
 	}
@@ -197,21 +221,29 @@ func (s *Store) populate(ctx context.Context, tx pgx.Tx, d *Duo) error {
 		return err
 	}
 	if d.Status == "active" {
-		d.Today, err = s.day(ctx, tx, d.ID, today)
+		var latest int
+		err = tx.QueryRow(ctx, `select coalesce(max(seq),0) from duo_days where duo_id=$1 and day=$2`, d.ID, today).Scan(&latest)
+		if err != nil {
+			return err
+		}
+		d.Today, err = s.day(ctx, tx, d.ID, today, latest)
 		if err != nil {
 			return err
 		}
 		d.Today.Streak = streak(states, today)
 	}
-	type historical struct{ id, date string }
+	type historical struct {
+		id, date string
+		seq      int
+	}
 	dates := []historical{}
-	rows, err = tx.Query(ctx, `select b.duo_id,b.day::text from duo_days b join duos p on p.id=b.duo_id where p.friendship_id=$1 and b.state <> 'playing' order by b.day desc,p.created_at desc limit 7`, d.FriendshipID)
+	rows, err = tx.Query(ctx, `select b.duo_id,b.day::text,b.seq from duo_days b join duos p on p.id=b.duo_id where p.friendship_id=$1 and b.state <> 'playing' order by b.day desc,p.created_at desc,b.seq desc limit 7`, d.FriendshipID)
 	if err != nil {
 		return err
 	}
 	for rows.Next() {
 		var h historical
-		if err = rows.Scan(&h.id, &h.date); err != nil {
+		if err = rows.Scan(&h.id, &h.date, &h.seq); err != nil {
 			rows.Close()
 			return err
 		}
@@ -223,7 +255,7 @@ func (s *Store) populate(ctx context.Context, tx pgx.Tx, d *Duo) error {
 		return err
 	}
 	for _, h := range dates {
-		r, e := s.day(ctx, tx, h.id, h.date)
+		r, e := s.day(ctx, tx, h.id, h.date, h.seq)
 		if e != nil {
 			return e
 		}
@@ -388,7 +420,7 @@ func (s *Store) Mutate(ctx context.Context, player, id, date, action string, m M
 	if boardAction && d.Today != nil {
 		currentVersion = d.Today.Version
 	}
-	if action != "invite" && m.Version != currentVersion {
+	if action != "invite" && action != "next" && m.Version != currentVersion {
 		if err = tx.Commit(ctx); err != nil {
 			return nil, err
 		}
@@ -431,9 +463,29 @@ func (s *Store) Mutate(ctx context.Context, player, id, date, action string, m M
 				return nil, err
 			}
 		}
+	case "next":
+		// Starts another board today. Either friend may, once the latest board
+		// is finished. If the other friend got there first the latest board is
+		// already a fresh one, and this is a no-op that returns it, so two taps
+		// at once land both players on the same game.
+		b := d.Today
+		if d.Status != "active" || b == nil {
+			return nil, fail("invalid_action", "This daily game is not active")
+		}
+		if b.State == "won" || b.State == "lost" {
+			today, deadline, derr := dateAt(s.Now(), d.Timezone)
+			if derr != nil {
+				return nil, derr
+			}
+			if err = s.addBoard(ctx, tx, d, today, deadline, b.Seq+1); err != nil {
+				return nil, err
+			}
+		} else if b.State != "playing" {
+			return nil, fail("invalid_action", "Today's board has closed")
+		}
 	case "guess", "pass":
 		b := d.Today
-		if d.Status != "active" || b == nil || date != b.Date || b.State != "playing" {
+		if d.Status != "active" || b == nil || date != b.Board || b.State != "playing" {
 			if err = tx.Commit(ctx); err != nil {
 				return nil, err
 			}
@@ -450,10 +502,10 @@ func (s *Store) Mutate(ctx context.Context, player, id, date, action string, m M
 		if action == "pass" {
 			for _, p := range b.Passed {
 				if p == player {
-					return nil, fail("pass_used", "You already passed today")
+					return nil, fail("pass_used", "You already passed on this board")
 				}
 			}
-			_, err = tx.Exec(ctx, `insert into duo_passes(duo_id,day,player_id) values($1,$2,$3)`, d.ID, date, player)
+			_, err = tx.Exec(ctx, `insert into duo_passes(duo_id,day,seq,player_id) values($1,$2,$3,$4)`, d.ID, b.Date, b.Seq, player)
 		} else {
 			guess := strings.ToLower(strings.TrimSpace(m.Guess))
 			if len(guess) != game.WordLength {
@@ -468,7 +520,7 @@ func (s *Store) Mutate(ctx context.Context, player, id, date, action string, m M
 				wireMarks[i] = mark.String()
 			}
 			markJSON, _ := json.Marshal(wireMarks)
-			_, err = tx.Exec(ctx, `insert into duo_guesses(duo_id,day,row_index,player_id,guess,marks) values($1,$2,$3,$4,$5,$6)`, d.ID, date, len(b.Rows), player, guess, markJSON)
+			_, err = tx.Exec(ctx, `insert into duo_guesses(duo_id,day,seq,row_index,player_id,guess,marks) values($1,$2,$3,$4,$5,$6,$7)`, d.ID, b.Date, b.Seq, len(b.Rows), player, guess, markJSON)
 			if game.Solved(marks) {
 				state = "won"
 			} else if len(b.Rows)+1 >= game.MaxRows {
@@ -478,7 +530,7 @@ func (s *Store) Mutate(ctx context.Context, player, id, date, action string, m M
 		if err != nil {
 			return nil, err
 		}
-		_, err = tx.Exec(ctx, `update duo_days set current_player=$3,state=$4,version=version+1 where duo_id=$1 and day=$2`, d.ID, date, other, state)
+		_, err = tx.Exec(ctx, `update duo_days set current_player=$4,state=$5,version=version+1 where duo_id=$1 and day=$2 and seq=$3`, d.ID, b.Date, b.Seq, other, state)
 		if err != nil {
 			return nil, err
 		}
@@ -533,11 +585,11 @@ func (s *Store) Board(ctx context.Context, id, date, player string) (*Duo, error
 	if err != nil {
 		return nil, err
 	}
-	if date == "today" || d.Today != nil && date == d.Today.Date {
+	if date == "today" || d.Today != nil && date == d.Today.Board {
 		return d, nil
 	}
 	for _, day := range d.Recent {
-		if day.Date == date && day.DuoID == id {
+		if day.Board == date && day.DuoID == id {
 			d.Today = &day
 			return d, nil
 		}

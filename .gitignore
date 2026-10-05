@@ -22,3 +22,5 @@ AGENTS.md
 .next/
 out/
 dist/
+
+.next-playwright/

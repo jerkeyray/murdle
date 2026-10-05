@@ -1,0 +1,433 @@
+/* ---------------------------------------------------------------------------
+   Bookplate
+
+   Whose collection this is. The invite code is presented as a shelf mark,
+   because that is what it does: it is how someone else finds your shelf.
+--------------------------------------------------------------------------- */
+
+.plate {
+  padding: 20px;
+  margin-bottom: 18px;
+  border: 1px solid var(--border-strong);
+  border-radius: 14px;
+  background: var(--bg-raised);
+  /* A second hairline inside the border, the way a bookplate is printed. */
+  box-shadow: inset 0 0 0 1px var(--bg-raised), inset 0 0 0 2px var(--rule);
+}
+
+.plate--empty {
+  opacity: 0.75;
+}
+
+.plate-ex {
+  font-family: var(--font-serif), Georgia, serif;
+  font-style: italic;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  color: var(--text-faint);
+}
+
+.plate-name {
+  margin: 4px 0 0;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(1.9rem, 10vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+}
+
+.plate-rule {
+  height: 1px;
+  margin: 16px 0 12px;
+  background: var(--rule);
+}
+
+.plate-foot {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.plate-code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+}
+
+.prefs {
+  margin-bottom: 22px;
+}
+
+.game-setup {
+  margin-bottom: 30px;
+}
+
+.game-setup-card {
+  padding: 0 16px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--bg-raised);
+}
+
+.game-setting {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(10rem, .9fr);
+  gap: 16px;
+  align-items: center;
+  padding: 16px 0;
+}
+
+.game-setting + .game-setting {
+  border-top: 1px solid var(--rule);
+}
+
+.game-setting h2 {
+  margin: 0;
+  font: 550 1rem/1.2 var(--font-sans), system-ui, sans-serif;
+}
+
+.game-setting p {
+  margin: 6px 0 0;
+  color: var(--text-muted);
+  font-size: .78rem;
+  line-height: 1.45;
+}
+
+.game-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg);
+}
+
+.game-options button {
+  min-height: 40px;
+  padding: 0 8px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-muted);
+  font: inherit;
+  font-size: .8rem;
+  cursor: pointer;
+}
+
+.game-options button[aria-pressed="true"] {
+  background: var(--bg-raised);
+  color: var(--text);
+  box-shadow: 0 1px 4px rgb(0 0 0 / .12);
+}
+
+.block-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 9px;
+  margin-bottom: 11px;
+  border-bottom: 1px solid var(--rule);
+}
+
+/* ---------------------------------------------------------------------------
+   Preferences
+--------------------------------------------------------------------------- */
+
+/* Boxed, so the page has an object with a bottom edge. Left as bare rows the
+   two settings trailed off into two thirds of an empty screen and read as the
+   top of a page that had failed to load the rest of itself. */
+.prefs-card {
+  padding: 4px 16px 16px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--bg-raised);
+}
+
+.pref {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  width: 100%;
+  padding: 13px 0;
+  border: none;
+  border-bottom: 1px solid var(--rule);
+  background: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.prefs-card .pref:first-of-type { padding-top: 10px; }
+
+.pref-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.pref-name {
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.pref-sub {
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: var(--text-faint);
+}
+
+.switch {
+  flex: none;
+  position: relative;
+  width: 42px;
+  height: 24px;
+  border-radius: 999px;
+  background: var(--border-strong);
+  transition: background 0.18s ease;
+}
+
+.switch::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--bg-raised);
+  transition: transform 0.18s cubic-bezier(0.3, 1.3, 0.6, 1);
+}
+
+.pref[aria-pressed="true"] .switch {
+  background: var(--mark-hit);
+}
+
+.pref[aria-pressed="true"] .switch::after {
+  transform: translateX(18px);
+}
+
+/* Shows what the setting actually does, rather than describing it. The caption
+   is what keeps three unexplained squares from reading as leftover debris, and
+   it doubles as the legend the board itself deliberately does without. */
+.pref-sample {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 16px;
+}
+
+.pref-sample-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--text-faint);
+}
+
+.pref-sample-tiles {
+  display: flex;
+  gap: 5px;
+}
+
+.pref-tile {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.pref-tile[data-mark="hit"] {
+  background: var(--mark-hit);
+  color: var(--mark-hit-text);
+}
+
+.pref-tile[data-mark="present"] {
+  background: var(--mark-present);
+  color: var(--mark-present-text);
+}
+
+.pref-tile[data-mark="absent"] {
+  background: var(--mark-absent);
+  color: var(--mark-absent-text);
+}
+
+/* Specimen numbering on collected words. */
+.entry-no {
+  margin-right: 9px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--text-faint);
+}
+
+/* ---------------------------------------------------------------------------
+   The way in, from the home screen
+--------------------------------------------------------------------------- */
+
+.lexicon {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  width: 100%;
+  padding: 14px 18px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--bg-raised);
+  color: var(--text);
+  text-decoration: none;
+  transition: border-color 0.18s ease;
+}
+
+.lexicon:hover {
+  border-color: var(--border-strong);
+}
+
+.lexicon-icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  color: var(--text-muted);
+}
+
+.lexicon-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.lexicon-title {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 1.02rem;
+  font-weight: 600;
+}
+
+.lexicon-sub {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* A streak that has not been played today is the one thing worth nagging
+   about, because it is the only one with a deadline. */
+.lexicon-flag {
+  flex: none;
+  margin-left: auto;
+  min-width: 26px;
+  height: 26px;
+  padding: 0 7px;
+  border-radius: 999px;
+  background: var(--mark-present);
+  color: var(--mark-present-text);
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 26px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------------------------------------------------------------------------
+   Corrections to spacing and the empty states
+--------------------------------------------------------------------------- */
+
+/* Preferences follow a list or a button, and had nothing between them: the
+   sign-in button sat flush against the "how it looks" rule. */
+.prefs {
+  margin-top: 30px;
+}
+
+/* An unfilled bookplate rather than a sentence announcing that nobody is
+   here. The blank line is the invitation. */
+.plate--empty {
+  opacity: 1;
+  border-style: dashed;
+}
+
+.plate-blank {
+  height: 1px;
+  margin: 26px 0 6px;
+  background: repeating-linear-gradient(
+    to right,
+    var(--border-strong) 0 6px,
+    transparent 6px 11px
+  );
+}
+
+/* The badge counts a streak that today has not fed yet. */
+.profile-button {
+  position: relative;
+  overflow: visible;
+}
+
+.profile-badge {
+  position: absolute;
+  top: -1px;
+  right: -2px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: 999px;
+  border: 2px solid var(--bg);
+  background: var(--mark-present);
+  color: var(--mark-present-text);
+  font-size: 0.55rem;
+  font-weight: 700;
+  line-height: 13px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+/* The home screen's choices sat high with the footer gone. */
+.home-middle {
+  padding-bottom: 14vh;
+}
+
+/* ---------------------------------------------------------------------------
+   Header controls
+
+   Back and the lexicon are the same size and shape in opposite corners, so a
+   screen reads as balanced rather than as content with a stray word above it.
+--------------------------------------------------------------------------- */
+
+.icon-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+}
+
+.sheet-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  /* Pull the button back by its own padding so the icon lines up with the
+     text below it rather than sitting inset from everything. */
+  margin-left: -9px;
+  padding: 6px 0 16px;
+}
+
+/* The cog sits where it sits everywhere else: in the top bar, opposite the way
+   back. Mirrored inset so it lines up with the right edge of the content. */
+.sheet-head > .icon-button:last-child {
+  margin-left: auto;
+  margin-right: -9px;
+}
+
+.sheet-title {
+  font-size: 1.3rem;
+}
+
+.profile-badge {
+  top: 1px;
+  right: 1px;
+}
+

@@ -5,6 +5,7 @@ const PACKS_KEY = "wordle.packs";
 // Classic answers already played, for players with no account to hold them.
 const WORDS_KEY = "wordle.words";
 const LEGACY_PREFIX = ["mur", "dle."].join("");
+const pendingMemory = new Map<string, string>();
 
 export function readLocal(key: string): string | null {
   try {
@@ -39,6 +40,57 @@ export function activeRunFor(config: GameConfig): string | null {
   // restore that one only for the old mixed setting.
   const id = readLocal(configKey(config)) ?? (config.mode === "themed" && config.wordLength === 5 && config.difficulty === "mixed" ? readLocal(ACTIVE_KEY) : null);
   return id && /^[a-z0-9]+$/.test(id) ? id : null;
+}
+export function clearActiveRunFor(config: GameConfig) {
+  writeLocal(configKey(config), null);
+  if (config.mode === "themed" && config.wordLength === 5 && config.difficulty === "mixed") writeLocal(ACTIVE_KEY, null);
+}
+function pendingCreateKey(config: GameConfig) {
+  return `wordle.pending.create.${config.mode}.${config.wordLength}.${config.difficulty}`;
+}
+function pendingNextKey(runID: string, expectedRoundID: string) {
+  return `wordle.pending.next.${runID}.${expectedRoundID || "initial"}`;
+}
+export function pendingRunRequestFor(config: GameConfig, payload: { excludePacks: string[]; excludeWords: string[] } & GameConfig) {
+  const key = pendingCreateKey(config);
+  try {
+    const inMemory = pendingMemory.get(key);
+    if (inMemory) return JSON.parse(inMemory) as { requestId: string; payload: typeof payload };
+    const raw = readLocal(key);
+    if (raw) {
+      const pending = JSON.parse(raw) as { requestId?: string; payload?: typeof payload };
+      if (pending.requestId && /^[0-9a-f-]{36}$/i.test(pending.requestId) && pending.payload) {
+        pendingMemory.set(key, JSON.stringify(pending));
+        return pending as { requestId: string; payload: typeof payload };
+      }
+    }
+  } catch { /* replace malformed local state with a fresh request */ }
+  const pending = { requestId: crypto.randomUUID(), payload };
+  pendingMemory.set(key, JSON.stringify(pending));
+  writeLocal(key, JSON.stringify(pending));
+  return pending;
+}
+export function clearPendingRunRequestFor(config: GameConfig) {
+  const key = pendingCreateKey(config);
+  pendingMemory.delete(key);
+  writeLocal(key, null);
+}
+function requestIDFor(key: string): string {
+  const existing = pendingMemory.get(key) ?? readLocal(key);
+  if (existing && /^[0-9a-f-]{36}$/i.test(existing)) {
+    pendingMemory.set(key, existing);
+    return existing;
+  }
+  const id = crypto.randomUUID();
+  pendingMemory.set(key, id);
+  writeLocal(key, id);
+  return id;
+}
+export function pendingNextRoundRequestFor(runID: string, expectedRoundID: string) { return requestIDFor(pendingNextKey(runID, expectedRoundID)); }
+export function clearPendingNextRoundRequestFor(runID: string, expectedRoundID: string) {
+  const key = pendingNextKey(runID, expectedRoundID);
+  pendingMemory.delete(key);
+  writeLocal(key, null);
 }
 export function playedPacks(): string[] {
   try {

@@ -33,8 +33,11 @@ const LIFETIME_MS = 4 * 60 * 1000;
 // sign-in in another tab taking a couple of minutes to be noticed here.
 const SIGNED_OUT_MS = 2 * 60 * 1000;
 
-export function getToken(): Promise<string | null> {
+export function getToken(signal?: AbortSignal): Promise<string | null> {
   if (cached && Date.now() < cached.until) return Promise.resolve(cached.token);
+  // A poller's cancellation must not cancel the shared token exchange used by
+  // unrelated callers, so cancellable callers use their own bounded request.
+  if (signal) return fetchToken(signal);
   if (inFlight) return inFlight;
 
   inFlight = fetchToken().finally(() => {
@@ -43,9 +46,11 @@ export function getToken(): Promise<string | null> {
   return inFlight;
 }
 
-async function fetchToken(): Promise<string | null> {
+async function fetchToken(signal?: AbortSignal): Promise<string | null> {
   try {
-    const res = await fetch("/api/auth/token", { credentials: "include" });
+    const timeout = AbortSignal.timeout(20_000);
+    const requestSignal = signal ? AbortSignal.any([signal, timeout]) : timeout;
+    const res = await fetch("/api/auth/token", { credentials: "include", signal: requestSignal });
     if (res.status === 401) {
       cached = { token: null, until: Date.now() + SIGNED_OUT_MS };
       return null;
@@ -65,8 +70,10 @@ async function fetchToken(): Promise<string | null> {
 
     cached = { token: body.token, until: Date.now() + LIFETIME_MS };
     return body.token;
-  } catch {
+  } catch (err) {
     cached = null;
+    if (signal?.aborted) throw signal.reason ?? new DOMException("Request cancelled", "AbortError");
+    if (err instanceof DOMException && err.name === "TimeoutError") throw err;
     return null;
   }
 }

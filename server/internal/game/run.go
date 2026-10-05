@@ -9,6 +9,7 @@ import (
 var (
 	ErrRunComplete   = errors.New("run is already complete")
 	ErrRoundInPlay   = errors.New("the current round is not finished")
+	ErrStaleRun      = errors.New("the run advanced since this request was created")
 	ErrRunNotFound   = errors.New("run not found")
 	ErrEmptyWordList = errors.New("a run needs at least one word")
 )

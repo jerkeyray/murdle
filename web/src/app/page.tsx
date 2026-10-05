@@ -22,6 +22,7 @@ const serverSession = () => null;
 
 export default function Home() {
   const [config, setConfig] = useState<GameConfig>({ mode: "classic", wordLength: 5, difficulty: "mixed" });
+  const [configLoaded, setConfigLoaded] = useState(false);
   const savedRun = useSyncExternalStore(subscribeSession, () => activeRunFor(config), serverSession);
   const [homeSummary, setHomeSummary] = useState<HomeSummary | null>(null);
   const fetchHomeSummary = useCallback(() => getHomeSummary(), []);
@@ -44,15 +45,18 @@ export default function Home() {
       const saved = JSON.parse(readLocal("wordle.mode") ?? "null") as GameConfig | null;
       if (saved && (saved.mode === "classic" || saved.mode === "themed") && (saved.wordLength === 5 || saved.wordLength === 6)) {
         effective = { ...saved, difficulty: saved.difficulty === "learning" ? "learning" : "mixed" };
-        startTransition(() => setConfig(effective));
       }
     } catch { /* Start with Classic 5 when storage is unavailable or stale. */ }
     // Deal the game now, for the settings Begin will actually open with, so the
     // round trip happens while you are looking at this page rather than after
     // you have tapped.
     prefetchGame(effective);
+    startTransition(() => {
+      setConfig(effective);
+      setConfigLoaded(true);
+    });
   }, []);
-  useEffect(() => { writeLocal("wordle.mode", JSON.stringify(config)); }, [config]);
+  useEffect(() => { if (configLoaded) writeLocal("wordle.mode", JSON.stringify(config)); }, [config, configLoaded]);
 
   return (
     <main className="home">

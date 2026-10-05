@@ -38,6 +38,23 @@ Go verifies those tokens against the frontend JWKS. Both services use the
 same Postgres database when configured; Go migrations leave Better Auth's
 tables alone. Google sign-in stays hidden until configured.
 
+Solo account history and streak activity use additive migration
+`0006_player_activity_days.sql`. The API applies pending migrations under a
+PostgreSQL advisory lock at startup. Deploy the API migration before switching
+traffic to code that writes activity days, then release the matching web and API
+versions together. The migration backfills every distinct date still recorded
+in `solves`; dates erased when an older replay overwrote a result cannot be
+reconstructed. Once activity-day writes begin, restoring an older API would
+stop recording those dates correctly.
+
+`/api/health` is a liveness check. `/api/ready` performs a bounded database ping
+when PostgreSQL is configured. In-memory mode remains ready without a database.
+Game creation is limited to 120 requests per minute per API instance by default;
+friend and Duo invitations are limited to 10 per minute per authenticated player.
+These in-memory limits are configurable with `GAME_CREATE_RATE_LIMIT`,
+`FRIEND_RATE_LIMIT`, and `INVITE_RATE_LIMIT`, and are not coordinated across
+instances.
+
 Production configuration:
 
 | Variable | Service | Example |
@@ -204,3 +221,14 @@ Environment variables, all on the one project:
 `NEXT_PUBLIC_API_URL` should be **absent**. If it is set to a host that does not
 exist, the site renders and then fails the moment someone presses Play, which
 reads as the app being broken rather than a setting being wrong.
+
+## Operational limits
+
+`/api/health` reports process liveness. `/api/ready` also checks PostgreSQL
+when configured and is the Fly health-check endpoint. API logs include request
+ID, route, status, and duration; request bodies, guesses, and answers are not
+logged. In-memory rate limits default to 120 game creations per minute per
+instance and 10 friend/duo invitations per minute per signed-in player. Override
+with `GAME_CREATE_RATE_LIMIT`, `FRIEND_RATE_LIMIT`, and `INVITE_RATE_LIMIT`.
+Limits are per API instance and reset with that process; they are an abuse
+speed bump rather than a shared quota.

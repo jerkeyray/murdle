@@ -55,3 +55,57 @@ func TestPostgresPackWordCounts(t *testing.T) {
 		t.Fatalf("leaked another player's packs: %v", other)
 	}
 }
+
+func TestReplayKeepsEveryActivityDayAndBestWordResult(t *testing.T) {
+	store := New(testdb.Open(t))
+	ctx := context.Background()
+	first := time.Date(2026, 10, 1, 0, 0, 0, 0, time.UTC)
+	second := first.AddDate(0, 0, 1)
+	row := 2
+	if err := store.RecordSolve(ctx, testdb.A, Solve{Word: "voice", PackID: "theme", Solved: true, SolvedRow: &row, Guesses: 3, HintsUsed: 2, Points: 4, PlayedOn: first}); err != nil {
+		t.Fatal(err)
+	}
+	betterRow := 1
+	if err := store.RecordSolve(ctx, testdb.A, Solve{Word: "voice", PackID: "theme", Solved: true, SolvedRow: &betterRow, Guesses: 2, HintsUsed: 1, Points: 5, PlayedOn: second}); err != nil {
+		t.Fatal(err)
+	}
+	bestRow := 0
+	if err := store.RecordSolve(ctx, testdb.A, Solve{Word: "voice", PackID: "theme", Solved: true, SolvedRow: &bestRow, Guesses: 1, HintsUsed: 0, Points: 5, PlayedOn: second}); err != nil {
+		t.Fatal(err)
+	}
+	third := second.AddDate(0, 0, 1)
+	if err := store.RecordSolve(ctx, testdb.A, Solve{Word: "voice", PackID: "theme", Solved: false, Guesses: 6, Points: 0, PlayedOn: third}); err != nil {
+		t.Fatal(err)
+	}
+	collection, err := store.Solves(ctx, testdb.A, 10)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(collection) != 1 || !collection[0].Solved || collection[0].Points != 5 || collection[0].SolvedRow == nil || *collection[0].SolvedRow != bestRow || collection[0].HintsUsed != 0 || !collection[0].PlayedOn.Equal(third) {
+		t.Fatalf("best result/latest date = %+v", collection)
+	}
+	streak, err := store.Streak(ctx, testdb.A, second)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if streak.Current != 2 || streak.Longest != 2 || !streak.PlayedToday {
+		t.Fatalf("activity days lost on replay: %+v", streak)
+	}
+	page, total, err := store.SolvePage(ctx, testdb.A, 1, 0, 5, []string{"voice"})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if total != 1 || len(page) != 1 || page[0].Word != "voice" {
+		t.Fatalf("filtered page = %+v, total %d", page, total)
+	}
+	if err := store.SaveWord(ctx, testdb.A, "voice"); err != nil {
+		t.Fatal(err)
+	}
+	saved, number, err := store.SavedWordPage(ctx, testdb.A, 24, 0, 5, []string{"voice"})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if number != 1 || len(saved) != 1 || saved[0] != "voice" {
+		t.Fatalf("saved page = %v, total %d", saved, number)
+	}
+}

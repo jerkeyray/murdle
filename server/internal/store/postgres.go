@@ -39,19 +39,20 @@ func NewPostgres(pool *pgxpool.Pool, ttl time.Duration) *Postgres {
 // accident. Writing the mapping out here means persistence can see the answer
 // without the game package ever offering it to anything else.
 type roundRecord struct {
-	ID         string            `json:"id"`
-	RunID      string            `json:"runId"`
-	Mode       string            `json:"mode,omitempty"`
-	Answer     string            `json:"answer"`
-	WordLength int               `json:"wordLength,omitempty"`
-	Rows       []game.Row        `json:"rows"`
-	HintsUsed  int               `json:"hintsUsed"`
-	SolvedRow  int               `json:"solvedRow"`
-	State      game.State        `json:"state"`
-	Hints      []game.HintReveal `json:"hints"`
-	RequestIDs map[string]bool   `json:"requestIds,omitempty"`
-	CreatedAt  time.Time         `json:"createdAt"`
-	UpdatedAt  time.Time         `json:"updatedAt"`
+	ID                  string            `json:"id"`
+	RunID               string            `json:"runId"`
+	Mode                string            `json:"mode,omitempty"`
+	Answer              string            `json:"answer"`
+	WordLength          int               `json:"wordLength,omitempty"`
+	Rows                []game.Row        `json:"rows"`
+	HintsUsed           int               `json:"hintsUsed"`
+	SolvedRow           int               `json:"solvedRow"`
+	State               game.State        `json:"state"`
+	Hints               []game.HintReveal `json:"hints"`
+	RequestIDs          map[string]bool   `json:"requestIds,omitempty"`
+	RequestFingerprints map[string]string `json:"requestFingerprints,omitempty"`
+	CreatedAt           time.Time         `json:"createdAt"`
+	UpdatedAt           time.Time         `json:"updatedAt"`
 }
 
 type runRecord struct {
@@ -73,7 +74,7 @@ func newRoundRecord(r *game.Round) roundRecord {
 	return roundRecord{
 		ID: r.ID, RunID: r.RunID, Mode: r.Mode, Answer: r.Answer(), WordLength: r.WordLength, Rows: r.Rows,
 		HintsUsed: r.HintsUsed, SolvedRow: r.SolvedRow, State: r.State,
-		Hints: r.Hints, RequestIDs: r.RequestIDs, CreatedAt: r.CreatedAt, UpdatedAt: r.UpdatedAt,
+		Hints: r.Hints, RequestIDs: r.RequestIDs, RequestFingerprints: r.RequestFingerprints, CreatedAt: r.CreatedAt, UpdatedAt: r.UpdatedAt,
 	}
 }
 
@@ -97,6 +98,9 @@ func (rec roundRecord) round() *game.Round {
 	}
 	if rec.RequestIDs != nil {
 		r.RequestIDs = rec.RequestIDs
+	}
+	if rec.RequestFingerprints != nil {
+		r.RequestFingerprints = rec.RequestFingerprints
 	}
 	return r
 }
@@ -231,6 +235,200 @@ func (p *Postgres) CreateRun(ctx context.Context, r *game.Run) error {
 	return p.put(ctx, "game_runs", r.ID, newRunRecord(r))
 }
 
+// CreateRunWithFirstRound commits a new run and its first board together.
+func (p *Postgres) CreateRunWithFirstRound(ctx context.Context, run *game.Run, roundID string) (*game.Run, *game.Round, error) {
+	return p.CreateRunWithFirstRoundRequest(ctx, run, roundID, "", "")
+}
+
+// CreateRunWithFirstRoundRequest commits the run, its first board, and an
+// idempotency receipt as one unit.
+func (p *Postgres) CreateRunWithFirstRoundRequest(ctx context.Context, run *game.Run, roundID, requestID, fingerprint string) (*game.Run, *game.Round, error) {
+	tx, err := p.pool.Begin(ctx)
+	if err != nil {
+		return nil, nil, err
+	}
+	defer tx.Rollback(ctx)
+	if requestID != "" {
+		if err := lockSoloRequest(ctx, tx, requestID); err != nil {
+			return nil, nil, err
+		}
+		if oldRun, oldRound, err := loadSoloReceipt(ctx, tx, requestID, "create_run", fingerprint); err != nil || oldRun != nil {
+			if err != nil {
+				return nil, nil, err
+			}
+			if err := tx.Commit(ctx); err != nil {
+				return nil, nil, err
+			}
+			return oldRun, oldRound, nil
+		}
+	}
+	staged := cloneRun(run)
+	answer, err := staged.StartRound(roundID)
+	if err != nil {
+		return nil, nil, err
+	}
+	round := game.NewRound(roundID, answer)
+	round.RunID, round.Mode = staged.ID, staged.Mode
+	data, err := json.Marshal(newRunRecord(staged))
+	if err != nil {
+		return nil, nil, err
+	}
+	if _, err = tx.Exec(ctx, `insert into game_runs(id,data,updated_at) values($1,$2,now())`, staged.ID, data); err != nil {
+		return nil, nil, err
+	}
+	roundData, err := json.Marshal(newRoundRecord(round))
+	if err != nil {
+		return nil, nil, err
+	}
+	if _, err = tx.Exec(ctx, `insert into game_rounds(id,data,updated_at) values($1,$2,now())`, round.ID, roundData); err != nil {
+		return nil, nil, err
+	}
+	if requestID != "" {
+		if err = saveSoloReceipt(ctx, tx, requestID, "create_run", fingerprint, staged.ID, data, roundData); err != nil {
+			return nil, nil, err
+		}
+	}
+	if err = tx.Commit(ctx); err != nil {
+		return nil, nil, err
+	}
+	return staged, round, nil
+}
+
+// StartRunRound advances a run and creates its board in one transaction.
+func (p *Postgres) StartRunRound(ctx context.Context, runID, roundID string) (*game.Run, *game.Round, error) {
+	return p.startRunRound(ctx, runID, roundID, "", "", "", false)
+}
+
+// StartRunRoundRequest validates the caller's expected current board and
+// commits an idempotent next-board receipt with the run and board update.
+func (p *Postgres) StartRunRoundRequest(ctx context.Context, runID, roundID, expectedRoundID, requestID, fingerprint string) (*game.Run, *game.Round, error) {
+	return p.startRunRound(ctx, runID, roundID, expectedRoundID, requestID, fingerprint, true)
+}
+
+func (p *Postgres) startRunRound(ctx context.Context, runID, roundID, expectedRoundID, requestID, fingerprint string, enforceExpected bool) (*game.Run, *game.Round, error) {
+	tx, err := p.pool.Begin(ctx)
+	if err != nil {
+		return nil, nil, err
+	}
+	defer tx.Rollback(ctx)
+	if requestID != "" {
+		if err := lockSoloRequest(ctx, tx, requestID); err != nil {
+			return nil, nil, err
+		}
+		if oldRun, oldRound, err := loadSoloReceipt(ctx, tx, requestID, "next_round", fingerprint); err != nil || oldRun != nil {
+			if err != nil {
+				return nil, nil, err
+			}
+			if err := tx.Commit(ctx); err != nil {
+				return nil, nil, err
+			}
+			return oldRun, oldRound, nil
+		}
+	}
+	var rec runRecord
+	if err = p.fetch(ctx, tx, "game_runs", runID, true, &rec); err != nil {
+		if errors.Is(err, pgx.ErrNoRows) {
+			return nil, nil, game.ErrRunNotFound
+		}
+		return nil, nil, err
+	}
+	run := rec.run()
+	currentRoundID := ""
+	if len(run.RoundIDs) > 0 {
+		currentRoundID = run.RoundIDs[len(run.RoundIDs)-1]
+	}
+	if enforceExpected && expectedRoundID != currentRoundID {
+		return nil, nil, game.ErrStaleRun
+	}
+	answer, err := run.StartRound(roundID)
+	if err != nil {
+		return nil, nil, err
+	}
+	round := game.NewRound(roundID, answer)
+	round.RunID, round.Mode = runID, run.Mode
+	runData, err := json.Marshal(newRunRecord(run))
+	if err != nil {
+		return nil, nil, err
+	}
+	roundData, err := json.Marshal(newRoundRecord(round))
+	if err != nil {
+		return nil, nil, err
+	}
+	if _, err = tx.Exec(ctx, `update game_runs set data=$2,updated_at=now() where id=$1`, runID, runData); err != nil {
+		return nil, nil, err
+	}
+	if _, err = tx.Exec(ctx, `insert into game_rounds(id,data,updated_at) values($1,$2,now())`, roundID, roundData); err != nil {
+		return nil, nil, err
+	}
+	if requestID != "" {
+		if err = saveSoloReceipt(ctx, tx, requestID, "next_round", fingerprint, run.ID, runData, roundData); err != nil {
+			return nil, nil, err
+		}
+	}
+	if err = tx.Commit(ctx); err != nil {
+		return nil, nil, err
+	}
+	return run, round, nil
+}
+
+// UpdateRoundAndRun commits a guess and its completed run snapshot atomically.
+func (p *Postgres) UpdateRoundAndRun(ctx context.Context, roundID string, fn func(*game.Round, *game.Run, pgx.Tx) error) (*game.Round, *game.Run, error) {
+	var initial roundRecord
+	if err := p.fetch(ctx, nil, "game_rounds", roundID, false, &initial); err != nil {
+		if errors.Is(err, pgx.ErrNoRows) {
+			return nil, nil, game.ErrRoundNotFound
+		}
+		return nil, nil, err
+	}
+	if initial.RunID == "" {
+		return nil, nil, game.ErrRunNotFound
+	}
+	tx, err := p.pool.Begin(ctx)
+	if err != nil {
+		return nil, nil, err
+	}
+	defer tx.Rollback(ctx)
+	var rr runRecord
+	if err = p.fetch(ctx, tx, "game_runs", initial.RunID, true, &rr); err != nil {
+		if errors.Is(err, pgx.ErrNoRows) {
+			return nil, nil, game.ErrRunNotFound
+		}
+		return nil, nil, err
+	}
+	var br roundRecord
+	if err = p.fetch(ctx, tx, "game_rounds", roundID, true, &br); err != nil {
+		if errors.Is(err, pgx.ErrNoRows) {
+			return nil, nil, game.ErrRoundNotFound
+		}
+		return nil, nil, err
+	}
+	round, run := br.round(), rr.run()
+	if err = fn(round, run, tx); err != nil {
+		return nil, nil, err
+	}
+	if round.State != game.StatePlaying {
+		run.RecordRound(round)
+	}
+	runData, err := json.Marshal(newRunRecord(run))
+	if err != nil {
+		return nil, nil, err
+	}
+	roundData, err := json.Marshal(newRoundRecord(round))
+	if err != nil {
+		return nil, nil, err
+	}
+	if _, err = tx.Exec(ctx, `update game_rounds set data=$2,updated_at=now() where id=$1`, roundID, roundData); err != nil {
+		return nil, nil, err
+	}
+	if _, err = tx.Exec(ctx, `update game_runs set data=$2,updated_at=now() where id=$1`, run.ID, runData); err != nil {
+		return nil, nil, err
+	}
+	if err = tx.Commit(ctx); err != nil {
+		return nil, nil, err
+	}
+	return round, run, nil
+}
+
 func (p *Postgres) GetRun(ctx context.Context, id string) (*game.Run, error) {
 	var rec runRecord
 	if err := p.fetch(ctx, nil, "game_runs", id, false, &rec); err != nil {
@@ -273,8 +471,42 @@ func (p *Postgres) UpdateRun(ctx context.Context, id string, fn func(*game.Run) 
 	return run, tx.Commit(ctx)
 }
 
+func lockSoloRequest(ctx context.Context, tx pgx.Tx, requestID string) error {
+	_, err := tx.Exec(ctx, `select pg_advisory_xact_lock(hashtextextended($1, 0))`, "solo:"+requestID)
+	return err
+}
+
+func loadSoloReceipt(ctx context.Context, tx pgx.Tx, requestID, operation, fingerprint string) (*game.Run, *game.Round, error) {
+	var oldOperation, oldFingerprint string
+	var runData, roundData []byte
+	err := tx.QueryRow(ctx, `select operation, fingerprint, run_data, round_data from solo_request_receipts where request_id=$1`, requestID).Scan(&oldOperation, &oldFingerprint, &runData, &roundData)
+	if errors.Is(err, pgx.ErrNoRows) {
+		return nil, nil, nil
+	}
+	if err != nil {
+		return nil, nil, err
+	}
+	if oldOperation != operation || oldFingerprint != fingerprint {
+		return nil, nil, game.ErrRequestReused
+	}
+	var rr runRecord
+	var br roundRecord
+	if err := json.Unmarshal(runData, &rr); err != nil {
+		return nil, nil, err
+	}
+	if err := json.Unmarshal(roundData, &br); err != nil {
+		return nil, nil, err
+	}
+	return rr.run(), br.round(), nil
+}
+
+func saveSoloReceipt(ctx context.Context, tx pgx.Tx, requestID, operation, fingerprint, runID string, runData, roundData []byte) error {
+	_, err := tx.Exec(ctx, `insert into solo_request_receipts(request_id,operation,fingerprint,run_id,run_data,round_data) values($1,$2,$3,$4,$5,$6)`, requestID, operation, fingerprint, runID, runData, roundData)
+	return err
+}
+
 // Reap deletes records past the ttl until ctx is cancelled.
-func (p *Postgres) Reap(ctx context.Context, every time.Duration) {
+func (p *Postgres) Reap(ctx context.Context, every time.Duration, onError func(error)) {
 	if p.ttl <= 0 {
 		return
 	}
@@ -290,8 +522,13 @@ func (p *Postgres) Reap(ctx context.Context, every time.Duration) {
 			for _, table := range []string{"game_rounds", "game_runs"} {
 				if _, err := p.pool.Exec(ctx,
 					`delete from `+table+` where updated_at <= $1`, cutoff); err != nil && ctx.Err() == nil {
-					return
+					if onError != nil {
+						onError(fmt.Errorf("reaping %s: %w", table, err))
+					}
 				}
+			}
+			if _, err := p.pool.Exec(ctx, `delete from solo_request_receipts r where not exists (select 1 from game_runs g where g.id=r.run_id)`); err != nil && ctx.Err() == nil && onError != nil {
+				onError(fmt.Errorf("reaping solo_request_receipts: %w", err))
 			}
 		}
 	}

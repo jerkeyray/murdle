@@ -1,0 +1,264 @@
+@import "tailwindcss";
+
+/* ===========================================================================
+   WORDLE — editorial letterpress
+
+   The premise of the game is words worth knowing, so the interface is built
+   to feel like a specimen page from a well-made dictionary rather than a game
+   app: warm ink and paper instead of cold slate, a serif doing real work,
+   hairline rules, small-caps labels, and a little grain so it reads as printed
+   rather than rendered.
+
+   Everything is tokenised. Dark is "ink", light is "paper", and the
+   colour-blind variant only ever overrides the two mark hues.
+=========================================================================== */
+
+:root {
+  /* Neutral charcoal surfaces with gray borders and white type. */
+  --bg: #101010;
+  --bg-raised: #1b1b1b;
+  --border: #333333;
+  --border-strong: #505050;
+  --rule: #292929;
+
+  --text: #f2f2f2;
+  --text-muted: #ababab;
+  --text-faint: #909090;
+
+  /* Green is the right spot and rose is in-the-word.
+     
+     Not the other way round, however much the palette would prefer it. Green
+     means "correct" to anyone who has played a word game, and an earlier pass
+     had it on the wrong-spot mark — the board read backwards at a glance. The
+     feedback keeps its color against the neutral dark surfaces. */
+  --mark-hit: #2fb894;
+  --mark-hit-text: #04201a;
+  --mark-present: #e0568f;
+  --mark-present-text: #1a0a12;
+  --mark-absent: #303030;
+  --mark-absent-text: #b5b5b5;
+
+  --key-bg: #242424;
+  --key-border: #363636;
+  --key-text: #eeeeee;
+
+  /* Player identity for the shared board in Phase 2. Rose and violet, so the
+     two of you are told apart by hue as well as by name. */
+  --seat-0: #f08cb0;
+  --seat-1: #ab9ae8;
+
+  --grain-opacity: 0.038;
+  --glow: rgb(255 255 255 / 0.025);
+
+  --radius-tile: 7px;
+  --radius-key: 7px;
+  --radius-card: 14px;
+
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  /* Blush paper. */
+  --bg: #fcf0f4;
+  --bg-raised: #fffafc;
+  --border: #eed7df;
+  --border-strong: #d4afbe;
+  --rule: #f1dce3;
+
+  --text: #2a1620;
+  --text-muted: #8b6575;
+  --text-faint: #b08e9c;
+
+  --mark-hit: #12907a;
+  --mark-hit-text: #f1fbf8;
+  --mark-present: #c2356f;
+  --mark-present-text: #fff5f9;
+  /* Absent has to recede — it is the state that means "stop thinking about
+     this letter". A saturated mid-tone fights the two marks that actually
+     carry information, so this is a pale mauve with muted type on it rather
+     than the usual dark tile with white letters. */
+  --mark-absent: #dcccd2;
+  --mark-absent-text: #6f5b65;
+
+  --key-bg: #f4e2e8;
+  --key-border: #e7d1da;
+  --key-text: #2a1620;
+
+  --seat-0: #c43f78;
+  --seat-1: #6b5ac0;
+
+  --grain-opacity: 0.045;
+  --glow: rgb(220 90 150 / 0.07);
+
+  color-scheme: light;
+}
+
+:root[data-contrast="cb"] {
+  --mark-hit: #3d82c4;
+  --mark-present: #d1762c;
+  --mark-hit-text: #f7fbff;
+  --mark-present-text: #1a0e05;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  position: relative;
+  min-height: 100dvh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overscroll-behavior: none;
+}
+
+/* A warm pool of light behind the board. Subtle enough that you would only
+   notice it by its absence, but it stops the dark theme reading as a void. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    120% 65% at 50% 34%,
+    var(--glow) 0%,
+    transparent 72%
+  );
+}
+
+/* Paper grain. Rendered once as an inline SVG turbulence and tiled, so it
+   costs nothing and survives any zoom level. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: var(--grain-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+button {
+  touch-action: manipulation;
+  font-family: inherit;
+  color: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Small caps labels. Used for every piece of chrome text in the app, so
+   ordinary UI copy never competes with the words themselves. */
+.label {
+  font-size: 0.64rem;
+  font-weight: 600;
+  letter-spacing: 0.19em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ---------------------------------------------------------------------------
+   Frame
+--------------------------------------------------------------------------- */
+
+.app {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  max-width: 30rem;
+  margin: 0 auto;
+  padding: 0 18px;
+}
+
+.topbar {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 14px 0 10px;
+}
+
+/* The specimen number sits opposite the controls and balances the wordmark.
+   It is a real count — how many words this device has played — not decoration. */
+.specimen {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 0.78rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+  color: var(--text-faint);
+  justify-self: start;
+}
+
+.wordmark {
+  margin: 0;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 1.12rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-indent: 0.3em; /* offset the trailing letter-space so it optically centres */
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.topbar-actions {
+  display: flex;
+  gap: 2px;
+  justify-self: end;
+}
+
+/* Bordered and at full text colour. Muted and borderless, a thin-stroked cog
+   alone in a corner read as an ornament — people looked straight past it. The
+   outline is what says "this is a control you can press". */
+.icon-button {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  transition: color 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+}
+
+.icon-button:hover,
+.icon-button[aria-pressed="true"] {
+  background: var(--bg-raised);
+  border-color: var(--text);
+  color: var(--text);
+}
+
+/* Hairline rules bracket the board the way rules bracket a column of type. */
+.rule {
+  height: 1px;
+  background: var(--rule);
+  flex: none;
+}
+
+.board-area {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  min-height: 0;
+  padding: 10px 0;
+}
+

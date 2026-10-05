@@ -30,6 +30,13 @@ func newTestServer(t *testing.T) http.Handler {
 // do sends a request and returns the recorder plus the decoded body.
 func do(t *testing.T, h http.Handler, method, path string, body any) (*httptest.ResponseRecorder, map[string]any) {
 	t.Helper()
+	if method == http.MethodPost && strings.Contains(path, "/guesses") {
+		if request, ok := body.(map[string]any); ok {
+			if request["requestId"] == nil {
+				request["requestId"] = store.NewID()
+			}
+		}
+	}
 
 	var reader io.Reader
 	if body != nil {
@@ -116,6 +123,10 @@ func TestGuessRetryDoesNotConsumeAnotherRow(t *testing.T) {
 	_, restored := do(t, h, http.MethodPost, "/api/rounds/"+id+"/guesses", body)
 	if got := len(restored["rows"].([]any)); got != 1 {
 		t.Fatalf("retry rows = %d, want 1", got)
+	}
+	rec, body := do(t, h, http.MethodPost, "/api/rounds/"+id+"/guesses", map[string]any{"guess": "adieu", "requestId": "lost-response"})
+	if rec.Code != http.StatusConflict || body["code"] != "request_reused" {
+		t.Fatalf("reused request id: %d %v", rec.Code, body)
 	}
 }
 
@@ -222,7 +233,7 @@ func TestHintsAreAuthoredLockedAndRestored(t *testing.T) {
 	}
 	// Rejected guesses never count towards a tier; only accepted rows do.
 	rows := 0
-	for tier := 1; tier <= 2; tier++ {
+	for tier := 1; tier <= 1; tier++ {
 		for i := 0; i < 2; i++ {
 			do(t, h, http.MethodPost, path+"/guesses", map[string]any{"guess": "zzzzz"})
 		}
@@ -254,7 +265,11 @@ func TestHintsAreAuthoredLockedAndRestored(t *testing.T) {
 			t.Fatal("did not restore only requested hints")
 		}
 	}
-	for i := 0; i < 2; i++ {
+	rec, body = do(t, h, http.MethodPost, path+"/hints", map[string]any{"tier": 2})
+	if rec.Code != 422 || body["code"] != "invalid_hint" {
+		t.Fatalf("second tier: %d %v", rec.Code, body)
+	}
+	for i := 0; i < 3; i++ {
 		do(t, h, http.MethodPost, path+"/guesses", map[string]any{"guess": "adieu"})
 	}
 	rec, body = do(t, h, http.MethodPost, path+"/hints", map[string]any{"tier": 1})
@@ -267,7 +282,7 @@ func TestHintsAreAuthoredLockedAndRestored(t *testing.T) {
 		t.Fatal("missing safe run restoration")
 	}
 	word := completed[0].(map[string]any)
-	if word["answer"] == nil || word["state"] != "lost" || word["hintsUsed"] != float64(2) {
+	if word["answer"] == nil || word["state"] != "lost" || word["hintsUsed"] != float64(1) {
 		t.Fatalf("lost word not retained: %v", word)
 	}
 }
@@ -347,5 +362,21 @@ func assertNoPack(t *testing.T, rec *httptest.ResponseRecorder, what string) {
 	}
 	if strings.Contains(rec.Body.String(), `"pack"`) {
 		t.Fatalf("%s revealed the theme early: %s", what, rec.Body.String())
+	}
+}
+
+func TestCollectionPageWireShapeIncludesEmptyCursor(t *testing.T) {
+	body, err := json.Marshal(collectionPageView{Items: []solveView{}, Total: 0})
+	if err != nil {
+		t.Fatal(err)
+	}
+	var got map[string]json.RawMessage
+	if err := json.Unmarshal(body, &got); err != nil {
+		t.Fatal(err)
+	}
+	for _, key := range []string{"items", "total", "nextCursor"} {
+		if _, ok := got[key]; !ok {
+			t.Fatalf("collection response omitted %q: %s", key, body)
+		}
 	}
 }

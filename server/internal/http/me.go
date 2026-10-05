@@ -3,6 +3,7 @@ package http
 import (
 	"errors"
 	"net/http"
+	"strconv"
 	"strings"
 
 	"github.com/go-chi/chi/v5"
@@ -50,6 +51,74 @@ type solveView struct {
 	Entry     *entryView `json:"entry,omitempty"`
 }
 
+type collectionPageView struct {
+	Items      []solveView `json:"items"`
+	Total      int         `json:"total"`
+	NextCursor string      `json:"nextCursor"`
+}
+
+func nextCursor(offset, limit, total int) string {
+	if offset+limit >= total {
+		return ""
+	}
+	return strconv.Itoa(offset + limit)
+}
+
+func invalidCollectionQuery(err error) bool {
+	return err != nil && (err.Error() == "invalid limit" || err.Error() == "invalid cursor" || err.Error() == "invalid length")
+}
+
+func (s *Server) collectionPage(r *http.Request, playerID string, saved bool) ([]players.Solve, int, int, int, error) {
+	limit := 24
+	if raw := r.URL.Query().Get("limit"); raw != "" {
+		n, err := strconv.Atoi(raw)
+		if err != nil || n < 1 {
+			return nil, 0, 0, 0, errors.New("invalid limit")
+		}
+		if n > 100 {
+			n = 100
+		}
+		limit = n
+	}
+	offset := 0
+	if raw := r.URL.Query().Get("cursor"); raw != "" {
+		n, err := strconv.Atoi(raw)
+		if err != nil || n < 0 {
+			return nil, 0, 0, 0, errors.New("invalid cursor")
+		}
+		offset = n
+	}
+	length := 0
+	if raw := r.URL.Query().Get("length"); raw != "" && raw != "all" {
+		n, err := strconv.Atoi(raw)
+		if err != nil || (n != 5 && n != 6) {
+			return nil, 0, 0, 0, errors.New("invalid length")
+		}
+		length = n
+	}
+	query := strings.TrimSpace(r.URL.Query().Get("q"))
+	var matches []string
+	if query != "" {
+		matches = s.pool.WordsMatching(query, length)
+		if matches == nil {
+			matches = []string{}
+		}
+	}
+	if saved {
+		words, total, err := s.players.SavedWordPage(r.Context(), playerID, limit, offset, length, matches)
+		if err != nil {
+			return nil, 0, 0, 0, err
+		}
+		out := make([]players.Solve, 0, len(words))
+		for _, word := range words {
+			out = append(out, players.Solve{Word: word})
+		}
+		return out, total, offset, limit, nil
+	}
+	items, total, err := s.players.SolvePage(r.Context(), playerID, limit, offset, length, matches)
+	return items, total, offset, limit, err
+}
+
 type friendView struct {
 	ID          string `json:"id"`
 	DisplayName string `json:"displayName"`
@@ -88,7 +157,7 @@ func (s *Server) handleMe(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	solves, err := s.players.Solves(r.Context(), p.ID, 500)
+	wordsLearned, err := s.players.SolveCount(r.Context(), p.ID)
 	if err != nil {
 		s.log.Error("reading solves", "err", err)
 		writeError(w, http.StatusInternalServerError, "internal", "could not read your history")
@@ -102,7 +171,7 @@ func (s *Server) handleMe(w http.ResponseWriter, r *http.Request) {
 	v.Streak.Current = streak.Current
 	v.Streak.Longest = streak.Longest
 	v.Streak.PlayedToday = streak.PlayedToday
-	v.WordsLearned = len(solves)
+	v.WordsLearned = wordsLearned
 
 	writeJSON(w, http.StatusOK, v)
 }
@@ -166,8 +235,12 @@ func (s *Server) handleMySolves(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	solves, err := s.players.Solves(r.Context(), p.ID, 500)
+	solves, total, offset, limit, err := s.collectionPage(r, p.ID, false)
 	if err != nil {
+		if invalidCollectionQuery(err) {
+			writeError(w, http.StatusBadRequest, "invalid_query", err.Error())
+			return
+		}
 		s.log.Error("reading solves", "err", err)
 		writeError(w, http.StatusInternalServerError, "internal", "could not read your history")
 		return
@@ -193,7 +266,7 @@ func (s *Server) handleMySolves(w http.ResponseWriter, r *http.Request) {
 		out = append(out, view)
 	}
 
-	writeJSON(w, http.StatusOK, out)
+	writeJSON(w, http.StatusOK, collectionPageView{Items: out, Total: total, NextCursor: nextCursor(offset, limit, total)})
 }
 
 func (s *Server) handleSavedWords(w http.ResponseWriter, r *http.Request) {
@@ -203,8 +276,12 @@ func (s *Server) handleSavedWords(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	saved, err := s.players.SavedWords(r.Context(), p.ID)
+	saved, total, offset, limit, err := s.collectionPage(r, p.ID, true)
 	if err != nil {
+		if invalidCollectionQuery(err) {
+			writeError(w, http.StatusBadRequest, "invalid_query", err.Error())
+			return
+		}
 		s.log.Error("reading saved words", "err", err)
 		writeError(w, http.StatusInternalServerError, "internal", "could not read your saved words")
 		return
@@ -212,18 +289,18 @@ func (s *Server) handleSavedWords(w http.ResponseWriter, r *http.Request) {
 
 	out := make([]solveView, 0, len(saved))
 	for _, word := range saved {
-		view := solveView{Word: word}
-		if id, found := s.pool.PackIDFor(word); found {
+		view := solveView{Word: word.Word}
+		if id, found := s.pool.PackIDFor(word.Word); found {
 			view.PackID = id
 		}
-		if info, found := s.pool.WordInfo(word); found {
+		if info, found := s.pool.WordInfo(word.Word); found {
 			entry := newEntryView(info)
 			view.Entry = &entry
 		}
 		out = append(out, view)
 	}
 
-	writeJSON(w, http.StatusOK, out)
+	writeJSON(w, http.StatusOK, collectionPageView{Items: out, Total: total, NextCursor: nextCursor(offset, limit, total)})
 }
 
 func (s *Server) handleSaveWord(w http.ResponseWriter, r *http.Request) {
@@ -253,6 +330,21 @@ func (s *Server) handleSaveWord(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.WriteHeader(http.StatusNoContent)
+}
+
+func (s *Server) handleSavedWordStatus(w http.ResponseWriter, r *http.Request) {
+	p, ok := s.player(r)
+	if !ok {
+		writeError(w, http.StatusUnauthorized, "unauthorized", "sign in to do that")
+		return
+	}
+	saved, err := s.players.IsWordSaved(r.Context(), p.ID, strings.ToLower(chi.URLParam(r, "word")))
+	if err != nil {
+		s.log.Error("checking saved word", "err", err)
+		writeError(w, http.StatusInternalServerError, "internal", "could not read saved status")
+		return
+	}
+	writeJSON(w, http.StatusOK, map[string]bool{"saved": saved})
 }
 
 func (s *Server) handleFriends(w http.ResponseWriter, r *http.Request) {

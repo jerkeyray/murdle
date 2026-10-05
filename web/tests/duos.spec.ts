@@ -10,6 +10,11 @@ async function asPlayer(context: BrowserContext, user: string) {
     await route.fulfill({ response });
   });
 }
+// Whose turn it is shows as the highlighted name chip, and as a waiting note for the other friend.
+const yourTurn = (page: Page) => expect(page.locator(".duo-member[data-current='true']")).toContainText("You");
+// The pair's streak lives on the friend detail now, not on the board; read it from the API.
+const streakOf = async (page: Page, user: string, id: string) =>
+  (await page.request.get(`${API}/api/duos/${id}`, { headers: { Authorization: `Bearer fixture-${user}` } }).then(r => r.json()) as { today: { streak: number } }).today.streak;
 async function guess(page: Page, word: string) {
   await page.locator("h1").click();
   await page.keyboard.type(word);
@@ -17,7 +22,7 @@ async function guess(page: Page, word: string) {
 }
 
 test("friends invite, shared turns, retry, pass, persistence and daily reset", async ({ browser }) => {
-  test.setTimeout(60_000);
+  test.setTimeout(120_000);
   const a = await browser.newContext({ viewport: { width: 390, height: 844 }, reducedMotion: "reduce" });
   const b = await browser.newContext({ viewport: { width: 1280, height: 900 }, reducedMotion: "reduce" });
   await asPlayer(a, "adi"); await asPlayer(b, "ananya");
@@ -34,38 +39,57 @@ test("friends invite, shared turns, retry, pass, persistence and daily reset", a
   const id = ananya.url().split("/").at(-1)!;
   await adi.getByRole("button", { name: "Close Ananya" }).click();
   await adi.goto(`/duos/${id}`);
-  await expect(adi.getByText("Your turn", { exact: true })).toBeVisible();
-  await expect(ananya.getByText("Adi’s turn", { exact: true })).toBeVisible();
+  await yourTurn(adi);
+  await expect(ananya.getByText("Waiting for Adi")).toBeVisible();
   // Lose the response after the server commits, then retry the identical request.
   await adi.route("**/api/duos/*/days/*/guesses", async route => {
     await route.fetch({ url: route.request().url().replace("http://localhost:8080", API!) });
     await route.abort("failed");
   }, { times: 1 });
   await guess(adi, "adieu");
-  await expect(adi.getByRole("button", { name: "Retry move" })).toBeVisible();
-  await adi.getByRole("button", { name: "Retry move" }).click();
+  // The move reached the server even though its response did not. Nothing to
+  // retry by hand: the next refresh finds it and settles the local record.
+  await adi.reload();
   await expect(adi.locator(".row [data-mark]")).toHaveCount(5);
   await expect(ananya.locator(".row [data-mark]")).toHaveCount(5);
-  await expect(ananya.getByText("Your turn", { exact: true })).toBeVisible();
-  await ananya.getByRole("button", { name: "Pass turn" }).click();
-  await expect(adi.getByText("Your turn", { exact: true })).toBeVisible();
+  await yourTurn(ananya);
+  await ananya.getByRole("button", { name: "Pass", exact: true }).click();
+  await yourTurn(adi);
   await adi.locator("h1").click(); await adi.keyboard.type("sto");
   await adi.reload(); await expect(adi.locator('.tile[data-state="filled"]')).toHaveCount(3);
   await adi.request.post(API! + "/test/restart");
   await adi.reload(); await ananya.reload();
   await expect(adi.locator(".row [data-mark]")).toHaveCount(5);
   await expect(adi.locator('.tile[data-state="filled"]')).toHaveCount(3);
-  await expect(adi.getByText("Your turn", { exact: true })).toBeVisible();
+  await yourTurn(adi);
   const answer = await adi.request.get(`${API}/test/answer?id=${id}`, { headers: { Authorization: "Bearer fixture-adi" } }).then(r => r.json()) as { answer: string };
   await adi.locator("h1").click(); for (let i = 0; i < 3; i++) await adi.keyboard.press("Backspace");
   await guess(adi, answer.answer);
   await expect(adi.getByText("Solved together", { exact: true })).toBeVisible();
   await expect(adi.locator('.row').nth(1).locator('[data-mark="hit"]')).toHaveCount(5);
   await expect(ananya.getByText("Solved together", { exact: true })).toBeVisible();
-  await expect(adi.locator(".duo-streak")).toHaveText("1 day");
+  expect(await streakOf(adi, "adi", id)).toBe(1);
   await adi.screenshot({ path: "test-results/shared-board-mobile.png" });
-  await adi.goto("/friends"); await adi.getByRole("button", { name: /Ananya/ }).click();
-  await expect(adi.locator(".duo-recent")).toContainText(answer.answer);
+  // Finishing a board does not end the day: either friend can start the next
+  // word, and the other lands on the same new board.
+  await expect(adi.getByRole("button", { name: "Next word" })).toBeVisible();
+  await expect(ananya.getByRole("button", { name: "Next word" })).toBeVisible();
+  await ananya.getByRole("button", { name: "Next word" }).click();
+  await expect(ananya.locator(".row [data-mark]")).toHaveCount(0);
+  await expect(ananya.getByRole("button", { name: "Next word" })).toHaveCount(0);
+  await adi.reload(); // A solved board polls slowly; a phone picked up would refresh on focus.
+  await expect(adi.locator(".row [data-mark]")).toHaveCount(0);
+  await expect(adi.getByRole("button", { name: "Next word" })).toHaveCount(0);
+  const second = await adi.request.get(`${API}/test/answer?id=${id}`, { headers: { Authorization: "Bearer fixture-adi" } }).then(r => r.json()) as { answer: string };
+  expect(second.answer).not.toBe(answer.answer);
+  // The opener alternates, so Ananya starts the second board.
+  await yourTurn(ananya);
+  await guess(ananya, second.answer);
+  await expect(ananya.getByText("Solved together", { exact: true })).toBeVisible();
+  await expect(ananya.getByRole("button", { name: "Next word" })).toBeVisible();
+  expect(await streakOf(ananya, "ananya", id)).toBe(1); // two wins in a day is still one day
+  await adi.goto("/friends");
+  await expect(adi.getByRole("link", { name: /Ananya/ })).toContainText("Solved");
   await adi.screenshot({ path: "test-results/friend-detail-mobile.png" });
   await ananya.screenshot({ path: "test-results/shared-board-desktop.png" });
   await ananya.request.get(API! + "/test/advance?seconds=86400");
@@ -76,12 +100,17 @@ test("friends invite, shared turns, retry, pass, persistence and daily reset", a
   await expect(ananya.getByRole("button", { name: "Today’s word" })).toBeVisible({ timeout: 35_000 });
   await ananya.getByRole("button", { name: "Today’s word" }).click();
   await expect(ananya.locator(".row [data-mark]")).toHaveCount(0);
-  await expect(ananya.locator(".duo-streak")).toHaveText("1 day");
-  await adi.getByRole("button", { name: "End daily game", exact: true }).click();
-  await expect(adi.getByText("End this daily game? Your friendship and past results stay.")).toBeVisible();
-  await adi.getByRole("button", { name: "End daily game", exact: true }).click();
+  expect(await streakOf(ananya, "ananya", id)).toBe(1);
+  // The friends list opens an active game straight to its board, so ending it
+  // goes through the API; the ended pair then shows its history in the dialog.
+  const live = await adi.request.get(`${API}/api/duos/${id}`, { headers: { Authorization: "Bearer fixture-adi" } }).then(r => r.json()) as { version: number };
+  expect((await adi.request.post(`${API}/api/duos/${id}/end`, { headers: { Authorization: "Bearer fixture-adi" }, data: { requestId: crypto.randomUUID(), version: live.version } })).status()).toBe(200);
+  await adi.goto("/friends"); await adi.getByRole("button", { name: /Ananya/ }).click();
   await expect(adi.getByRole("button", { name: "Play together", exact: true })).toBeVisible();
   await expect(adi.locator(".duo-recent")).toContainText(answer.answer);
+  await expect(adi.locator(".duo-recent")).toContainText(second.answer);
+  // Both of the first day's boards are listed, each with its own link.
+  await expect(adi.locator(".duo-recent a", { hasText: "game 2" })).toHaveCount(1);
   // History remains readable after ending the partnership.
   await adi.locator(".duo-recent a").last().click();
   await expect(adi.getByText("Solved together", { exact: true })).toBeVisible();
@@ -98,11 +127,9 @@ test("friends invite, shared turns, retry, pass, persistence and daily reset", a
   const mine = await api.get(API! + "/api/me/duos", { headers: { Authorization: "Bearer fixture-adi" } }).then(r => r.json()) as { id: string }[];
   expect(mine).toHaveLength(2);
   await adi.goto("/friends");
-  await expect(adi.getByRole("button", { name: /Outsider/ })).toBeVisible();
+  await expect(adi.getByRole("link", { name: /Outsider/ })).toBeVisible();
   await expect(adi.getByRole("button", { name: /Ananya/ })).toBeVisible();
-  await adi.getByRole("button", { name: /Outsider/ }).click();
-  await expect(adi.getByRole("dialog")).not.toContainText(answer.answer);
-  await adi.getByRole("button", { name: "Close Outsider" }).click();
+  await expect(adi.getByRole("link", { name: /Outsider/ })).not.toContainText(answer.answer);
   await adi.screenshot({ path: "test-results/friends-lobby-mobile.png" });
   await adi.goto(`/duos/${invitation.id}`);
   for (const [width, height, theme, contrast] of [[320,640,"light",""], [390,844,"dark","cb"], [1280,900,"light","cb"]] as const) {

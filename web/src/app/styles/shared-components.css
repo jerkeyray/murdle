@@ -1,0 +1,296 @@
+/* ---------------------------------------------------------------------------
+   Board
+--------------------------------------------------------------------------- */
+
+.board {
+  display: grid;
+  grid-template-rows: repeat(var(--rows), 1fr);
+  gap: 7px;
+  /* Width drives the size and the aspect ratio derives the height. Sizing from
+     the height is circular here: the board is the only thing in its grid area,
+     so a percentage height and a percentage max-width resolve against each
+     other and the clamp never applies. max-height keeps a short phone honest. */
+  width: min(100%, 21rem);
+  max-height: 100%;
+  aspect-ratio: 5 / 6;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(var(--cols), 1fr);
+  gap: 7px;
+}
+
+.row[data-shake="true"] {
+  animation: shake 0.45s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
+
+@keyframes shake {
+  10%, 90% { transform: translateX(-2px); }
+  20%, 80% { transform: translateX(4px); }
+  30%, 50%, 70% { transform: translateX(-7px); }
+  40%, 60% { transform: translateX(7px); }
+}
+
+/* ---------------------------------------------------------------------------
+   Tiles — letterpress blocks
+
+   Serif letterforms on the board are the most distinctive choice here. They
+   are what makes it read as type rather than as UI, and they tie the board to
+   the dictionary entry at the end of the round.
+--------------------------------------------------------------------------- */
+
+.tile {
+  position: relative;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-tile);
+  background: transparent;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(1.45rem, 7.4vw, 2rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  user-select: none;
+  transform-style: preserve-3d;
+  transition: border-color 0.16s ease;
+}
+
+button.tile {
+  width: 100%;
+  padding: 0;
+  appearance: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.tile[data-selected="true"] {
+  border-color: var(--text);
+  box-shadow: inset 0 0 0 1px var(--text);
+}
+
+button.tile:focus-visible {
+  outline: 2px solid var(--mark-hit);
+  outline-offset: 2px;
+}
+
+.tile[data-state="filled"] {
+  border-color: var(--border-strong);
+  animation: press 0.13s cubic-bezier(0.3, 1.4, 0.5, 1);
+}
+
+/* A letter being set: a small press rather than a bounce. */
+@keyframes press {
+  0% { transform: scale(1); }
+  45% { transform: scale(1.07); }
+  100% { transform: scale(1); }
+}
+
+/* Settled tiles. The inset highlight along the top edge is what sells them as
+   pressed blocks of colour rather than flat rectangles. */
+.tile[data-mark] {
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.1),
+    inset 0 -1px 0 rgb(0 0 0 / 0.12);
+}
+
+.tile[data-mark="hit"] {
+  background: var(--mark-hit);
+  border-color: var(--mark-hit);
+  color: var(--mark-hit-text);
+}
+
+.tile[data-mark="present"] {
+  background: var(--mark-present);
+  border-color: var(--mark-present);
+  color: var(--mark-present-text);
+}
+
+.tile[data-mark="absent"] {
+  background: var(--mark-absent);
+  border-color: var(--mark-absent);
+  color: var(--mark-absent-text);
+}
+
+.tile[data-revealing="true"] {
+  animation: reveal 0.54s cubic-bezier(0.5, 0, 0.3, 1) forwards;
+  animation-delay: calc(var(--reveal-index) * 0.2s);
+  background: transparent;
+  border-color: var(--border-strong);
+  color: var(--text);
+}
+
+/* The colour lands at the midpoint of the flip, while the tile is edge-on, so
+   the letter appears to turn over onto its result. Border width rides along
+   with it so the hollow state resolves at the same instant as the fill. */
+@keyframes reveal {
+  0% {
+    transform: rotateX(0deg);
+    background: transparent;
+    border-color: var(--border-strong);
+    color: var(--text);
+  }
+  49% {
+    transform: rotateX(90deg);
+    background: transparent;
+    border-color: var(--border-strong);
+    color: var(--text);
+  }
+  50% {
+    transform: rotateX(90deg);
+    background: var(--tile-bg);
+    border-color: var(--tile-bg);
+    color: var(--tile-text);
+  }
+  88% {
+    transform: rotateX(-7deg);
+  }
+  100% {
+    transform: rotateX(0deg);
+    background: var(--tile-bg);
+    border-color: var(--tile-bg);
+    color: var(--tile-text);
+  }
+}
+
+/* Colour-blind mode adds a mark glyph, so the three states are distinguishable
+   with no colour perception at all. */
+.tile-glyph {
+  display: none;
+  position: absolute;
+  top: 3px;
+  right: 5px;
+  font-family: var(--font-sans), sans-serif;
+  font-size: 0.56rem;
+  line-height: 1;
+  opacity: 0.8;
+}
+
+:root[data-contrast="cb"] .tile[data-mark="hit"] .tile-glyph,
+:root[data-contrast="cb"] .tile[data-mark="present"] .tile-glyph {
+  display: block;
+}
+
+/* ---------------------------------------------------------------------------
+   Keyboard
+--------------------------------------------------------------------------- */
+
+.keyboard {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px 0 max(12px, env(safe-area-inset-bottom));
+}
+
+.keyboard-row {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+}
+
+.key {
+  flex: 1;
+  min-width: 0;
+  height: 62px;
+  border: 1px solid var(--key-border);
+  border-radius: var(--radius-key);
+  background: var(--key-bg);
+  color: var(--key-text);
+  font-size: 1.15rem;
+  font-weight: 550;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  cursor: pointer;
+  /* The three that matter on a phone. Without manipulation the browser holds
+     every tap back ~300ms waiting to see if it is a double-tap zoom, which is
+     exactly the lag that makes typing feel heavy. The other two stop a quick
+     run of taps selecting letters or leaving grey flashes behind. */
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.07s ease, opacity 0.18s ease, background 0.18s ease,
+    border-color 0.18s ease, color 0.18s ease;
+}
+
+.key:active {
+  transform: translateY(1px) scale(0.97);
+}
+
+.key:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.key--wide {
+  flex: 1.7;
+  font-family: var(--font-sans), sans-serif;
+  font-size: 0.68rem;
+  font-weight: 650;
+  letter-spacing: 0.14em;
+}
+
+/* Enter answers the question "is this a word?" before you press it.
+   incomplete — nothing to send yet, so it is the one state that is disabled.
+   unknown    — the local list does not have it. Still pressable: the server is
+                the authority, and a stale local copy must never cost a move.
+   word       — recognised, and lit so the thumb knows where to go. */
+.key--enter[data-state="word"] {
+  background: var(--mark-hit);
+  border-color: var(--mark-hit);
+  color: var(--mark-hit-text);
+}
+
+.key--enter[data-state="unknown"] {
+  border-color: var(--key-border);
+  color: var(--text-faint);
+}
+
+.key--enter[data-state="incomplete"]:disabled {
+  opacity: 0.35;
+}
+
+.key[data-mark="hit"] {
+  background: var(--mark-hit);
+  border-color: var(--mark-hit);
+  color: var(--mark-hit-text);
+}
+
+.key[data-mark="present"] {
+  background: var(--mark-present);
+  border-color: var(--mark-present);
+  color: var(--mark-present-text);
+}
+
+.key[data-mark="absent"] {
+  background: color-mix(in srgb, var(--key-bg) 72%, var(--text));
+  border-color: color-mix(in srgb, var(--key-border) 55%, var(--text-muted));
+  color: var(--text);
+}
+
+.key-spacer {
+  flex: 0.5;
+}
+
+/* ---------------------------------------------------------------------------
+   Toast
+--------------------------------------------------------------------------- */
+
+.toast {
+  position: fixed;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 40;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: var(--text);
+  color: var(--bg);
+  font-size: 0.66rem;
+  font-weight: 650;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  pointer-events: none;
+}
+

@@ -23,6 +23,7 @@ var (
 	ErrNoHintsLeft   = errors.New("no hints left")
 	ErrHintLocked    = errors.New("hint is not unlocked")
 	ErrInvalidHint   = errors.New("invalid hint tier")
+	ErrRequestReused = errors.New("request id reused with a different payload")
 	ErrRoundNotFound = errors.New("round not found")
 )
 
@@ -60,23 +61,25 @@ type Round struct {
 	// RequestIDs makes a lost response safe to retry without consuming another
 	// row. It is persisted with the round because mobile networks routinely
 	// drop a response after the server has already accepted the guess.
-	RequestIDs map[string]bool
+	RequestIDs          map[string]bool
+	RequestFingerprints map[string]string
 }
 
 // NewRound starts a round on the given answer.
 func NewRound(id, answer string) *Round {
 	now := time.Now().UTC()
 	return &Round{
-		ID:         id,
-		WordLength: len([]rune(answer)),
-		Rows:       make([]Row, 0, MaxRows),
-		SolvedRow:  -1,
-		State:      StatePlaying,
-		CreatedAt:  now,
-		UpdatedAt:  now,
-		answer:     strings.ToLower(answer),
-		Hints:      make([]HintReveal, 0, 2),
-		RequestIDs: make(map[string]bool),
+		ID:                  id,
+		WordLength:          len([]rune(answer)),
+		Rows:                make([]Row, 0, MaxRows),
+		SolvedRow:           -1,
+		State:               StatePlaying,
+		CreatedAt:           now,
+		UpdatedAt:           now,
+		answer:              strings.ToLower(answer),
+		Hints:               make([]HintReveal, 0, 2),
+		RequestIDs:          make(map[string]bool),
+		RequestFingerprints: make(map[string]string),
 	}
 }
 

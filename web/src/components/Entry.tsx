@@ -1,14 +1,17 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ApiError, getSavedWords, setWordSaved, type Round } from "@/lib/api";
+import { useRouter } from "next/navigation";
+import { ApiError, getSavedStatus, setWordSaved, type Round } from "@/lib/api";
 import { shareRound } from "@/lib/shareCard";
 import { Dialog } from "./Dialog";
 import { WordExtras, WordMeta } from "./WordFacts";
+import { safeReturnTo } from "@/lib/returnTo";
 
 export function Entry({ round, onClose, action, actionLabel, busy = false }: {
   round: Round; onClose: () => void; action?: () => void; actionLabel?: string; busy?: boolean;
 }) {
+  const router = useRouter();
   const [needsSignIn, setNeedsSignIn] = useState(false);
   const [kept, setKept] = useState(false);
   const [saving, setSaving] = useState(false);
@@ -17,17 +20,18 @@ export function Entry({ round, onClose, action, actionLabel, busy = false }: {
   const [shareLabel, setShareLabel] = useState("");
   useEffect(() => {
     let cancelled = false;
-    getSavedWords().then((words) => {
-      if (!cancelled) setKept(words.some((word) => word.word === round.answer));
+    getSavedStatus(round.answer ?? "").then((status) => {
+      if (!cancelled) setKept(status.saved);
     }).catch((err) => { if (!cancelled && err instanceof ApiError && err.status === 401) setNeedsSignIn(true); });
     return () => { cancelled = true; };
   }, [round.answer]);
   async function toggleKeep() {
     if (!round.answer || saving) return;
-    if (needsSignIn) { window.location.assign("/sign-in?returnTo=%2Fplay"); return; }
+    const signIn = () => router.push(`/sign-in?returnTo=${encodeURIComponent(safeReturnTo(window.location.pathname + window.location.search))}`);
+    if (needsSignIn) { signIn(); return; }
     setSaving(true); setKeepError(""); setShareLabel("");
     try { await setWordSaved(round.answer, !kept); setKept(!kept); }
-    catch (err) { if (err instanceof ApiError && err.status === 401) { setNeedsSignIn(true); window.location.assign("/sign-in?returnTo=%2Fplay"); } else setKeepError("Could not save this word. Please try again."); }
+    catch (err) { if (err instanceof ApiError && err.status === 401) { setNeedsSignIn(true); signIn(); } else setKeepError("Could not save this word. Please try again."); }
     finally { setSaving(false); }
   }
   async function onShare() {

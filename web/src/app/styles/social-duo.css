@@ -1,0 +1,128 @@
+/* ---------------------------------------------------------------------------
+   Google
+--------------------------------------------------------------------------- */
+
+.google {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  width: 100%;
+  height: 52px;
+  border: 1px solid var(--border-strong);
+  border-radius: 12px;
+  background: var(--bg-raised);
+  color: var(--text);
+  font-size: 0.95rem;
+  font-weight: 550;
+  cursor: pointer;
+  transition: border-color 0.18s ease, transform 0.07s ease;
+}
+
+.google:hover {
+  border-color: var(--text-faint);
+}
+
+.google:active {
+  transform: translateY(1px);
+}
+
+.google:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.hint {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--text-faint);
+}
+
+.hint a {
+  color: var(--text-muted);
+  text-underline-offset: 3px;
+}
+
+/* ---------------------------------------------------------------------------
+   The gate
+
+   A short screen, so it is composed around its middle rather than stacked
+   against the top of an empty page.
+--------------------------------------------------------------------------- */
+
+.gate {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  max-width: 30rem;
+  margin: 0 auto;
+  padding: 0 20px max(20px, env(safe-area-inset-bottom));
+}
+
+.gate-nav {
+  padding: 12px 0;
+  margin-left: -9px;
+}
+
+.gate-middle {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 7dvh;
+}
+
+/* The screen needs to say whose it is. Without a mark the card floats in an
+   empty field with only a back arrow for company, which is what made this
+   read as an unfinished page rather than a front door. */
+/* Said plainly. Boxed in a dashed outline it read as a broken element waiting
+   for something to load rather than as the answer to "can I sign in?". */
+.gate-unavailable {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--text-faint);
+}
+
+.gate-card {
+  width: 100%;
+  padding: 0;
+  text-align: center;
+}
+
+.gate-title {
+  margin: 0;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(2rem, 9vw, 2.65rem);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+}
+
+.gate-line {
+  max-width: 27rem;
+  margin: 14px auto 26px;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+.gate-hint,
+.gate-error {
+  margin: 0;
+}
+
+.gate-foot {
+  display: inline-flex;
+  width: fit-content;
+  min-height: 44px;
+  align-items: center;
+  margin: 20px auto 0;
+  color: var(--text-muted);
+  font-size: .9rem;
+  text-underline-offset: 4px;
+}
+

@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"math/rand/v2"
 	"regexp"
+	"sort"
 	"strings"
 )
 
@@ -101,6 +102,25 @@ func (p *Pool) Pack(id string) (Pack, bool) {
 func (p *Pool) WordInfo(word string) (PackWord, bool) {
 	w, ok := p.wordInfo[word]
 	return w, ok
+}
+
+// WordsMatching searches the embedded teaching text, including the answer itself.
+func (p *Pool) WordsMatching(query string, length int) []string {
+	query = strings.ToLower(strings.TrimSpace(query))
+	if query == "" {
+		return nil
+	}
+	var found []string
+	for word, info := range p.wordInfo {
+		if length != 0 && len([]rune(word)) != length {
+			continue
+		}
+		if strings.Contains(strings.ToLower(word+" "+info.Definition+" "+info.Note), query) {
+			found = append(found, word)
+		}
+	}
+	sort.Strings(found)
+	return found
 }
 
 // PackIDFor returns the pack an answer belongs to.

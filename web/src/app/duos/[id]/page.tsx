@@ -6,6 +6,7 @@ import { ApiError, getDuo, letterStates, mutateDuo, type Duo, type DuoMutation }
 import { useVisiblePolling } from "@/lib/useVisiblePolling";
 import { readLocal, writeLocal } from "@/lib/session";
 import { lettersPhrase } from "@/lib/letters";
+import { deleteLetter, typeInto } from "@/lib/draft";
 import { Board, MARK_LABEL } from "@/components/Board";
 import { Keyboard } from "@/components/Keyboard";
 import { BackButton } from "@/components/BackButton";
@@ -14,7 +15,10 @@ import { WordExtras, WordMeta } from "@/components/WordFacts";
 import { dictionaryReady, isKnownWord, loadDictionary, serverDictionaryReady, subscribeDictionary } from "@/lib/dictionary";
 import type { EnterState } from "@/lib/useGame";
 
-type Pending = { action: "guesses" | "pass"; date: string; mutation: DuoMutation };
+// `board` is how the board is addressed ("2026-10-05", then "2026-10-05.1").
+// Retry records written before boards had a sequence carry only `date`, which
+// is the same string for a day's first board.
+type Pending = { action: "guesses" | "pass"; board?: string; date?: string; mutation: DuoMutation };
 export default function DuoPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
   const [duo, setDuo] = useState<Duo | null>(null);
@@ -27,19 +31,25 @@ export default function DuoPage({ params }: { params: Promise<{ id: string }> })
   const [signedOut, setSignedOut] = useState(false);
   const [closedDate, setClosedDate] = useState<string | null>(null);
   const dayKey = useRef("");
+  const current = useRef<{ date: string; seq: number } | null>(null);
   const pending = useRef<Pending | null>(null);
   const lock = useRef(false);
   const accept = useCallback((d: Duo) => {
-    const key = `wordle.duo.${d.viewerId}.${id}.${d.today?.date}`;
-    const priorDate = dayKey.current.split(".").at(-1);
-    if (priorDate && d.today && /^\d{4}-\d{2}-\d{2}$/.test(priorDate) && d.today.date < priorDate) return;
+    const key = `wordle.duo.${d.viewerId}.${id}.${d.today?.board}`;
+    const prior = current.current;
+    // A slow response must never put an earlier board back over a newer one.
+    if (prior && d.today && (d.today.date < prior.date || d.today.date === prior.date && d.today.seq < prior.seq)) return;
     if (dayKey.current !== key) {
-      if (dayKey.current) setClosedDate(dayKey.current.split(".").at(-1)!);
+      // A new day closes the one you were playing. A new board on the same day
+      // is the next word, started by either friend, and just replaces the
+      // finished one.
+      if (prior && d.today && d.today.date !== prior.date) setClosedDate(prior.date);
       dayKey.current = key;
+      current.current = d.today ? { date: d.today.date, seq: d.today.seq } : null;
       setDraft((readLocal(key) ?? "").replace(/[^a-z]/g, "").slice(0, d.today?.wordLength ?? 0).split(""));
       setDraftCursor(0);
       pending.current = null;
-      try { const value = JSON.parse(readLocal(key + ".pending") ?? "null") as Pending | null; if (value && value.date === d.today?.date) pending.current = value; } catch { /* Ignore incomplete local state. */ }
+      try { const value = JSON.parse(readLocal(key + ".pending") ?? "null") as Pending | null; if (value && (value.board ?? value.date) === d.today?.board) pending.current = value; } catch { /* Ignore incomplete local state. */ }
       setHasPending(!!pending.current);
     }
     // A mutation can reach the server even when its response does not reach
@@ -50,17 +60,21 @@ export default function DuoPage({ params }: { params: Promise<{ id: string }> })
         ? d.today.rows.some(row => row.playerId === d.viewerId && row.guess === pending.current?.mutation.guess)
         : d.today.passed.includes(d.viewerId);
       if (settled) {
+        const spentGuess = pending.current.action === "guesses";
         pending.current = null;
         writeLocal(dayKey.current + ".pending", null);
         setHasPending(false);
+        // The guess was played, so the word still sitting in the draft row is spent.
+        if (spentGuess) { setDraft([]); setDraftCursor(0); writeLocal(dayKey.current, null); }
       }
     }
-    setDuo(previous => previous?.today && d.today && (previous.today.date > d.today.date || previous.today.date === d.today.date && previous.today.version > d.today.version) ? previous : d);
+    setDuo(previous => previous?.today && d.today && (previous.today.date > d.today.date || previous.today.date === d.today.date && (previous.today.seq > d.today.seq || previous.today.seq === d.today.seq && previous.today.version > d.today.version)) ? previous : d);
     setReconnecting(false); setSignedOut(false);
   }, [id]);
-  const load = useCallback(async () => {
-    try { accept(await getDuo(id, new URLSearchParams(window.location.search).get("date") ?? "today")); }
+  const load = useCallback(async (signal?:AbortSignal) => {
+    try { accept(await getDuo(id, new URLSearchParams(window.location.search).get("date") ?? "today",signal)); }
     catch (e) {
+      if(signal?.aborted)return;
       setReconnecting(true);
       if (e instanceof ApiError && e.status === 401) setSignedOut(true);
       if (e instanceof ApiError && (e.status === 404 || e.status === 422)) setError(e.message);
@@ -95,20 +109,18 @@ export default function DuoPage({ params }: { params: Promise<{ id: string }> })
         : "word";
   const updateDraft = useCallback((next: string[]) => { setDraft(next); if (dayKey.current) writeLocal(dayKey.current, next.join("")); }, []);
   const type = useCallback((letter: string) => {
-    const position = draftCursor;
-    if (!enabled || position >= wordLength) return;
-    const next = Array.from({ length: wordLength }, (_, index) => draft[index] ?? "");
-    next[position] = letter.toLowerCase();
-    updateDraft(next);
-    setDraftCursor(Math.min(position + 1, wordLength));
+    if (!enabled) return;
+    const typed = typeInto(draft, draftCursor, letter, wordLength);
+    if (!typed) return;
+    updateDraft(typed.draft);
+    setDraftCursor(typed.cursor);
   }, [enabled, updateDraft, draft, draftCursor, wordLength]);
   const backspace = useCallback(() => {
-    if (!enabled || draftCursor === 0) return;
-    const position = Math.min(draftCursor, wordLength) - 1;
-    const next = Array.from({ length: wordLength }, (_, index) => draft[index] ?? "");
-    next[position] = "";
-    updateDraft(next);
-    setDraftCursor(position);
+    if (!enabled) return;
+    const deleted = deleteLetter(draft, draftCursor, wordLength);
+    if (!deleted) return;
+    updateDraft(deleted.draft);
+    setDraftCursor(deleted.cursor);
   }, [enabled, updateDraft, draft, draftCursor, wordLength]);
   const selectDraftTile = useCallback((index: number) => {
     if (enabled && index >= 0 && index < wordLength) setDraftCursor(index);
@@ -123,13 +135,13 @@ export default function DuoPage({ params }: { params: Promise<{ id: string }> })
       if (!pending.current) {
         const latest = await getDuo(id);
         accept(latest);
-        if (!latest.today || latest.today.date !== duo.today.date || latest.today.version !== duo.today.version || latest.today.currentPlayer !== latest.viewerId || latest.today.state !== "playing") { setError("The board changed. Review it before playing."); return; }
-        pending.current = { action, date: latest.today.date, mutation: { requestId: crypto.randomUUID(), version: latest.today.version, ...(action === "guesses" ? { guess: draftWord } : {}) } };
+        if (!latest.today || latest.today.board !== duo.today.board || latest.today.version !== duo.today.version || latest.today.currentPlayer !== latest.viewerId || latest.today.state !== "playing") { setError("The board changed. Review it before playing."); return; }
+        pending.current = { action, board: latest.today.board, mutation: { requestId: crypto.randomUUID(), version: latest.today.version, ...(action === "guesses" ? { guess: draftWord } : {}) } };
         writeLocal(dayKey.current + ".pending", JSON.stringify(pending.current));
         setHasPending(true);
       }
       const request = pending.current;
-      const result = await mutateDuo(id, request.action, request.mutation, request.date);
+      const result = await mutateDuo(id, request.action, request.mutation, request.board ?? request.date);
       pending.current = null; writeLocal(dayKey.current + ".pending", null);
       setHasPending(false);
       if (request.action === "guesses") { updateDraft([]); setDraftCursor(0); }
@@ -140,6 +152,20 @@ export default function DuoPage({ params }: { params: Promise<{ id: string }> })
       setError(e instanceof Error ? e.message : "Could not submit. Your move will be checked automatically.");
     } finally { lock.current = false; setBusy(false); }
   }, [duo, yourTurn, draftComplete, draftWord, id, accept, load, updateDraft]);
+  // Starts another board today. Either friend can, once the last one is over.
+  // If the other friend already did, the server hands back that board instead
+  // of making a third, so a double tap lands everyone on the same game.
+  const startNext = useCallback(async () => {
+    if (lock.current || !duo) return;
+    lock.current = true; setBusy(true); setError("");
+    try {
+      const result = await mutateDuo(id, "next", { requestId: crypto.randomUUID(), version: duo.version });
+      accept(result);
+    } catch (e) {
+      if (e instanceof ApiError && e.current) accept(e.current);
+      setError(e instanceof Error ? e.message : "Could not start the next word. Try again.");
+    } finally { lock.current = false; setBusy(false); }
+  }, [duo, id, accept]);
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.ctrlKey || e.metaKey || e.altKey || e.target instanceof HTMLElement && e.target.closest("input,textarea,[contenteditable],dialog")) return;
@@ -164,7 +190,7 @@ export default function DuoPage({ params }: { params: Promise<{ id: string }> })
       <div className="sr-only" role="status" aria-live="polite">{day.rows.at(-1)?.guess.split("").map((letter, i) => `${letter}: ${MARK_LABEL[day.rows.at(-1)!.marks[i]]}`).join("; ")}</div>
       {day.state !== "playing" ? <div className="game-tools"><span role="status">{reconnecting ? "Reconnecting…" : status}</span></div> : null}
       {error && <div className="duo-error" role="alert">{error}</div>}
-      {closedDate ? <section className="duo-result"><p>{closedDate} has finished.</p><button className="button" onClick={() => { setClosedDate(null); updateDraft([]); setDraftCursor(0); }}>Today’s word</button></section> : day.state === "playing" ? yourTurn ? <><div className="rule" /><Keyboard letterStates={letterStates(day.rows)} onKey={type} onBackspace={backspace} disabled={!enabled} /><div className="play-actions"><button className="button keyboard-submit" data-state={enterState} disabled={!enabled || enterState === "incomplete"} onClick={() => void submit()}>Submit</button></div></> : <section className="duo-waiting" role="status"><span className="label">Shared board</span><p>Waiting for {other?.name || "your friend"}</p><span>You’ll take the next turn.</span></section> : <section className="duo-result"><h2>{day.answer}</h2><WordMeta entry={day.entry} /><p>{day.entry?.definition}</p><WordExtras entry={day.entry} />{day.entry?.note && <details><summary>Read more</summary><p>{day.entry.note}</p></details>}</section>}
+      {closedDate ? <section className="duo-result"><p>{closedDate} has finished.</p><button className="button" onClick={() => { setClosedDate(null); updateDraft([]); setDraftCursor(0); }}>Today’s word</button></section> : day.state === "playing" ? yourTurn ? <><div className="rule" /><Keyboard letterStates={letterStates(day.rows)} onKey={type} onBackspace={backspace} disabled={!enabled} /><div className="play-actions"><button className="button keyboard-submit" data-state={enterState} disabled={!enabled || enterState === "incomplete"} onClick={() => void submit()}>Submit</button></div></> : <section className="duo-waiting" role="status"><span className="label">Shared board</span><p>Waiting for {other?.name || "your friend"}</p><span>You’ll take the next turn.</span></section> : <section className="duo-result"><h2>{day.answer}</h2><WordMeta entry={day.entry} /><p>{day.entry?.definition}</p><WordExtras entry={day.entry} />{day.entry?.note && <details><summary>Read more</summary><p>{day.entry.note}</p></details>}{(day.state === "won" || day.state === "lost") && duo.status === "active" && !new URLSearchParams(window.location.search).has("date") && <button className="button" disabled={busy} onClick={() => void startNext()}>{busy ? "Starting…" : "Next word"}</button>}</section>}
     </>}
   </main>;
 }

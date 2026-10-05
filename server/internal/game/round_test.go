@@ -98,14 +98,8 @@ func TestAuthoredHints(t *testing.T) {
 	if err != nil || first != again || r.HintsUsed != 1 {
 		t.Fatalf("retry consumed a hint: %+v %v", r, err)
 	}
-	if _, err := r.UseHint(2, clues); err != ErrHintLocked {
-		t.Fatalf("second unlocked early: %v", err)
-	}
-	for i := len(r.Rows); i < HintUnlocksAfter(2); i++ {
-		_ = r.Guess("crane", alwaysWord)
-	}
-	if _, err := r.UseHint(2, clues); err != nil {
-		t.Fatal(err)
+	if _, err := r.UseHint(2, clues); err != ErrInvalidHint {
+		t.Fatalf("second tier should be disabled: %v", err)
 	}
 	if _, err := r.UseHint(3, clues); err != ErrInvalidHint {
 		t.Fatalf("extra tier: %v", err)
@@ -132,7 +126,7 @@ func TestHintsRequireFirstTierAndAcceptedGuesses(t *testing.T) {
 	for i := 0; i < 4; i++ {
 		_ = r.Guess("crane", alwaysWord)
 	}
-	if _, err := r.UseHint(2, clues); err != ErrHintLocked {
-		t.Fatal("skipped the first hint")
+	if _, err := r.UseHint(2, clues); err != ErrInvalidHint {
+		t.Fatal("second tier should be disabled")
 	}
 }

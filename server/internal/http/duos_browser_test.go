@@ -142,7 +142,7 @@ func serveDuoFixture(t *testing.T) {
 			return
 		case "/test/answer":
 			var answer string
-			err := pool.QueryRow(r.Context(), `select answer from duo_days join duos on duos.id=duo_days.duo_id join players on players.user_id=$2 where duo_id=$1 and players.id in (low_id,high_id) order by day desc limit 1`, r.URL.Query().Get("id"), user).Scan(&answer)
+			err := pool.QueryRow(r.Context(), `select answer from duo_days join duos on duos.id=duo_days.duo_id join players on players.user_id=$2 where duo_id=$1 and players.id in (low_id,high_id) order by day desc, seq desc limit 1`, r.URL.Query().Get("id"), user).Scan(&answer)
 			if err != nil {
 				http.Error(w, "not found", 404)
 				return

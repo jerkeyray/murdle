@@ -1,6 +1,8 @@
 package duos
 
 import (
+	"strconv"
+	"strings"
 	"time"
 	_ "time/tzdata" // Daily boundaries must work even in images without zoneinfo files.
 )
@@ -30,9 +32,14 @@ type Day struct {
 	DuoID string `json:"duoId"`
 	// WordLength and MaxRows ship the rules to the client so the board and the
 	// draft cap follow the server instead of keeping their own copy.
-	WordLength    int       `json:"wordLength"`
-	MaxRows       int       `json:"maxRows"`
-	Date          string    `json:"date"`
+	WordLength int    `json:"wordLength"`
+	MaxRows    int    `json:"maxRows"`
+	Date       string `json:"date"`
+	// Seq numbers the boards within a day: 0 is the first, and each "next word"
+	// adds one. Board is the key a client uses to address it ("2026-10-05",
+	// then "2026-10-05.1"), so a day's first board keeps its plain date.
+	Seq           int       `json:"seq"`
+	Board         string    `json:"board"`
 	Deadline      time.Time `json:"deadline"`
 	State         string    `json:"state"`
 	CurrentPlayer string    `json:"currentPlayer"`
@@ -92,6 +99,44 @@ func starter(start, day string, members []Member) string {
 	}
 	days := int(b.Sub(a).Hours() / 24)
 	return members[((days%len(members))+len(members))%len(members)].ID
+}
+
+// boardKey and parseBoard convert between a board's address and its (date, seq).
+func boardKey(date string, seq int) string {
+	if seq == 0 {
+		return date
+	}
+	return date + "." + strconv.Itoa(seq)
+}
+func parseBoard(key string) (string, int, bool) {
+	date, rest, hasSeq := strings.Cut(key, ".")
+	if _, err := time.Parse("2006-01-02", date); err != nil {
+		return "", 0, false
+	}
+	if !hasSeq {
+		return date, 0, true
+	}
+	seq, err := strconv.Atoi(rest)
+	if err != nil || seq < 1 || strconv.Itoa(seq) != rest {
+		return "", 0, false
+	}
+	return date, seq, true
+}
+
+// openingPlayer is who guesses first on a board: the day's starter for its
+// first board, then the other friend for the next, and so on, so the opening
+// turn alternates between games as well as between days.
+func openingPlayer(start, day string, seq int, members []Member) string {
+	first := starter(start, day, members)
+	if seq%2 == 0 {
+		return first
+	}
+	for _, m := range members {
+		if m.ID != first {
+			return m.ID
+		}
+	}
+	return first
 }
 func streak(states map[string]string, today string) int {
 	t, _ := time.Parse("2006-01-02", today)

@@ -176,17 +176,33 @@ func (s *Store) SetDisplayName(ctx context.Context, playerID, name string) (stri
 // A word is listed once per player: replaying one that came round again keeps
 // the better result rather than adding a duplicate to the collection.
 func (s *Store) RecordSolve(ctx context.Context, playerID string, sv Solve) error {
-	_, err := s.pool.Exec(ctx, `
+	tx, err := s.pool.Begin(ctx)
+	if err != nil {
+		return fmt.Errorf("starting solve transaction: %w", err)
+	}
+	defer tx.Rollback(ctx)
+	if err := s.RecordSolveTx(ctx, tx, playerID, sv); err != nil {
+		return err
+	}
+	return tx.Commit(ctx)
+}
+
+// RecordSolveTx records activity and the best collection result in a caller's transaction.
+func (s *Store) RecordSolveTx(ctx context.Context, tx pgx.Tx, playerID string, sv Solve) error {
+	if _, err := tx.Exec(ctx, `insert into player_activity_days(player_id, played_on) values($1,$2) on conflict do nothing`, playerID, sv.PlayedOn); err != nil {
+		return fmt.Errorf("recording activity day: %w", err)
+	}
+	_, err := tx.Exec(ctx, `
 		insert into solves
 			(player_id, word, pack_id, solved, solved_row, guesses, hints_used, points, played_on)
 		values ($1, $2, $3, $4, $5, $6, $7, $8, $9)
 		on conflict (player_id, word) do update set
 			solved     = solves.solved or excluded.solved,
-			solved_row = least(
-				coalesce(solves.solved_row, excluded.solved_row),
-				coalesce(excluded.solved_row, solves.solved_row)),
-			points     = greatest(solves.points, excluded.points),
-			played_on  = excluded.played_on`,
+			solved_row = case when (excluded.solved and not solves.solved) or (excluded.solved = solves.solved and (excluded.points > solves.points or (excluded.points = solves.points and excluded.hints_used < solves.hints_used))) then excluded.solved_row else solves.solved_row end,
+			guesses    = case when (excluded.solved and not solves.solved) or (excluded.solved = solves.solved and (excluded.points > solves.points or (excluded.points = solves.points and excluded.hints_used < solves.hints_used))) then excluded.guesses else solves.guesses end,
+			hints_used = case when (excluded.solved and not solves.solved) or (excluded.solved = solves.solved and (excluded.points > solves.points or (excluded.points = solves.points and excluded.hints_used < solves.hints_used))) then excluded.hints_used else solves.hints_used end,
+			points     = case when (excluded.solved and not solves.solved) or (excluded.solved = solves.solved and (excluded.points > solves.points or (excluded.points = solves.points and excluded.hints_used < solves.hints_used))) then excluded.points else solves.points end,
+			played_on  = greatest(solves.played_on, excluded.played_on)`,
 		playerID, sv.Word, sv.PackID, sv.Solved, sv.SolvedRow,
 		sv.Guesses, sv.HintsUsed, sv.Points, sv.PlayedOn)
 	if err != nil {
@@ -217,6 +233,62 @@ func (s *Store) Solves(ctx context.Context, playerID string, limit int) ([]Solve
 		out = append(out, sv)
 	}
 	return out, rows.Err()
+}
+
+// SolvePage returns a stable page and the total matching collection size.
+func (s *Store) SolvePage(ctx context.Context, playerID string, limit, offset, length int, words []string) ([]Solve, int, error) {
+	var total int
+	if err := s.pool.QueryRow(ctx, `select count(*) from solves where player_id=$1 and ($2=0 or char_length(word)=$2) and ($3::text[] is null or word=any($3))`, playerID, length, words).Scan(&total); err != nil {
+		return nil, 0, fmt.Errorf("counting solves: %w", err)
+	}
+	rows, err := s.pool.Query(ctx, `select word,pack_id,solved,solved_row,guesses,hints_used,points,played_on from solves where player_id=$1 and ($2=0 or char_length(word)=$2) and ($3::text[] is null or word=any($3)) order by played_on desc,word limit $4 offset $5`, playerID, length, words, limit, offset)
+	if err != nil {
+		return nil, 0, fmt.Errorf("listing solve page: %w", err)
+	}
+	defer rows.Close()
+	var out []Solve
+	for rows.Next() {
+		var sv Solve
+		if err := rows.Scan(&sv.Word, &sv.PackID, &sv.Solved, &sv.SolvedRow, &sv.Guesses, &sv.HintsUsed, &sv.Points, &sv.PlayedOn); err != nil {
+			return nil, 0, err
+		}
+		out = append(out, sv)
+	}
+	return out, total, rows.Err()
+}
+
+// SavedWordPage lists matching saved words in stable order.
+func (s *Store) SavedWordPage(ctx context.Context, playerID string, limit, offset, length int, words []string) ([]string, int, error) {
+	var total int
+	q := `select count(*) from saved_words where player_id=$1 and ($2=0 or char_length(word)=$2) and ($3::text[] is null or word=any($3))`
+	if err := s.pool.QueryRow(ctx, q, playerID, length, words).Scan(&total); err != nil {
+		return nil, 0, fmt.Errorf("counting saved words: %w", err)
+	}
+	rows, err := s.pool.Query(ctx, `select word from saved_words where player_id=$1 and ($2=0 or char_length(word)=$2) and ($3::text[] is null or word=any($3)) order by saved_at desc,word limit $4 offset $5`, playerID, length, words, limit, offset)
+	if err != nil {
+		return nil, 0, fmt.Errorf("listing saved words: %w", err)
+	}
+	defer rows.Close()
+	var out []string
+	for rows.Next() {
+		var word string
+		if err := rows.Scan(&word); err != nil {
+			return nil, 0, err
+		}
+		out = append(out, word)
+	}
+	return out, total, rows.Err()
+}
+
+func (s *Store) SolveCount(ctx context.Context, playerID string) (int, error) {
+	var count int
+	err := s.pool.QueryRow(ctx, `select count(*) from solves where player_id=$1`, playerID).Scan(&count)
+	return count, err
+}
+func (s *Store) IsWordSaved(ctx context.Context, playerID, word string) (bool, error) {
+	var saved bool
+	err := s.pool.QueryRow(ctx, `select exists(select 1 from saved_words where player_id=$1 and word=$2)`, playerID, word).Scan(&saved)
+	return saved, err
 }
 
 // PlayedWords is every word the player has finished, on any device.
@@ -274,7 +346,7 @@ func (s *Store) PackWordCounts(ctx context.Context, playerID string) (map[string
 // is never large enough for it to matter.
 func (s *Store) Streak(ctx context.Context, playerID string, today time.Time) (Streak, error) {
 	rows, err := s.pool.Query(ctx, `
-		select distinct played_on from solves
+		select played_on from player_activity_days
 		where player_id = $1 order by played_on desc`, playerID)
 	if err != nil {
 		return Streak{}, fmt.Errorf("reading play days: %w", err)
