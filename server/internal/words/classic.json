@@ -18538,5 +18538,1181 @@
   ],
   "difficulty": "familiar",
   "connection": ""
+ },
+ {
+  "word": "smelt",
+  "register": "standard",
+  "definition": "To melt ore to extract metal; also a small silvery fish.",
+  "note": "From Middle Low German smelten, 'to melt', and it is also the past tense of smell. The fish is a separate word in the same spelling.",
+  "hints": [
+   "What a furnace does to ore.",
+   "A small fish in the same family as a salmon."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "smile",
+  "register": "standard",
+  "definition": "To turn up the corners of the mouth in pleasure.",
+  "note": "From Middle English smilen, probably from Middle Low German. It is a common show of happiness.",
+  "hints": [
+   "What a joke or a greeting often brings.",
+   "A happy curve of the mouth."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "smirk",
+  "register": "standard",
+  "definition": "A self-satisfied, half-hidden smile.",
+  "note": "From Old English smearcian, 'to smile'. It suggests smugness rather than warmth.",
+  "hints": [
+   "A smug grin after winning.",
+   "The expression of someone who knows a secret."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "smite",
+  "register": "standard",
+  "definition": "To strike hard; to punish severely.",
+  "note": "From Old English smitan, 'to smear or daub'; the sense of striking came later. It appears in the Bible when God punishes.",
+  "hints": [
+   "What a god or a hero might do to an enemy.",
+   "An old word for a heavy blow."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "smith",
+  "register": "standard",
+  "definition": "A person who works metal; also a common surname.",
+  "note": "From Old English smith, 'craftsman'. It survives in blacksmith and goldsmith.",
+  "hints": [
+   "The one who shapes iron on an anvil.",
+   "The most common surname in England."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "smock",
+  "register": "standard",
+  "definition": "A loose garment worn over clothes to protect them.",
+  "note": "From Old English smocc, 'a garment slipped into'. Painters and children wear them.",
+  "hints": [
+   "What a painter wears over clothes.",
+   "A loose protective shirt."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "smoke",
+  "register": "standard",
+  "definition": "The cloud given off by something burning.",
+  "note": "From Old English smoca. It rises from chimneys and campfires.",
+  "hints": [
+   "What billows from a chimney.",
+   "Where there is this, there may be fire."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "smoky",
+  "register": "standard",
+  "definition": "Filled with smoke, or tasting of it.",
+  "note": "From smoke plus -y. Smoky bacon and whisky carry this flavour.",
+  "hints": [
+   "A bar in the days before indoor bans.",
+   "A flavour of barbecue sauce or whisky."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "snack",
+  "register": "standard",
+  "definition": "A small bit of food eaten between meals.",
+  "note": "From Middle Dutch snacken, 'to snap at'. It is lighter than a meal.",
+  "hints": [
+   "Crisps or fruit between meals.",
+   "What you grab when you are peckish."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "snail",
+  "register": "standard",
+  "definition": "A slow animal with a spiral shell.",
+  "note": "From Old English snegel. It carries its home on its back.",
+  "hints": [
+   "A slow animal with a house on its back.",
+   "A creature that leaves a slimy trail."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "snake",
+  "register": "standard",
+  "definition": "A long limbless reptile.",
+  "note": "From Old English snaca. A person who betrays is also called one.",
+  "hints": [
+   "A long, legless reptile that hisses.",
+   "A traitor, in a rude sense."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "snaky",
+  "register": "standard",
+  "definition": "Twisting like a snake; or sly.",
+  "note": "From snake plus -y. A winding road can be this.",
+  "hints": [
+   "A winding mountain road.",
+   "Twisting and treacherous."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "snare",
+  "register": "standard",
+  "definition": "A trap; also a type of drum.",
+  "note": "From Old English sneare, 'noose'. The drum takes its name from the wires stretched across the head.",
+  "hints": [
+   "What a hunter sets with a loop of wire.",
+   "A drum with a rattling sound."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "snarl",
+  "register": "standard",
+  "definition": "To growl angrily; or a tangle.",
+  "note": "The tangle is from Middle English snarlen, 'to trap', built on the word snare. The growl is a separate word.",
+  "hints": [
+   "A dog baring its teeth.",
+   "A tangle in your hair."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "sneak",
+  "register": "standard",
+  "definition": "To move quietly and secretly.",
+  "note": "From Old English snican, 'to creep or crawl'. A sneak preview is an early secret showing.",
+  "hints": [
+   "What a burglar does through a house.",
+   "An early look at a film."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "sneer",
+  "register": "standard",
+  "definition": "To show scorn by curling the lip.",
+  "note": "From Middle English sneren, 'to mock'. It is a scornful expression.",
+  "hints": [
+   "A curled lip of scorn.",
+   "A look of contempt at a poor effort."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "snide",
+  "register": "standard",
+  "definition": "Mockingly critical in a sly way.",
+  "note": "Probably from a dialect word meaning 'sharp' or 'cutting'. A snide remark is a cheap shot.",
+  "hints": [
+   "A sly, nasty comment.",
+   "A cheap jab from the back row."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "sniff",
+  "register": "standard",
+  "definition": "To breathe in through the nose in short, audible breaths.",
+  "note": "From Middle English sniffen, imitative of the sound. A cold or a smell can make you do it.",
+  "hints": [
+   "What a dog does at a lamp post.",
+   "What a person with a cold does."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "snipe",
+  "register": "standard",
+  "definition": "To shoot from hiding; also a wading bird.",
+  "note": "From Old Norse snipa, the bird. Hunters who shot the elusive bird were 'snipers', and the verb followed.",
+  "hints": [
+   "A hidden shooter's act.",
+   "A long-billed bird of the marsh."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "snoop",
+  "register": "standard",
+  "definition": "To pry into other people's affairs.",
+  "note": "From Dutch snoepen, 'to eat in secret'. It now suggests prying.",
+  "hints": [
+   "What a nosy neighbour does at a window.",
+   "To spy on a private matter."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "snort",
+  "register": "standard",
+  "definition": "A loud rough breath through the nose.",
+  "note": "From Middle English snorten, earlier fnorten. Pigs and bulls do it, and so do amused people.",
+  "hints": [
+   "A pig's noise.",
+   "What a stifled laugh may turn into."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "snout",
+  "register": "standard",
+  "definition": "The long nose of an animal such as a pig.",
+  "note": "From Middle English snute. Pigs root in the ground with one.",
+  "hints": [
+   "A pig's nose.",
+   "A part of a crocodile's face."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "snuff",
+  "register": "standard",
+  "definition": "To put out a candle; or powdered tobacco.",
+  "note": "The tobacco sense is from Middle Dutch snuffen, 'to sniff'. A candle is put out by pinching its wick.",
+  "hints": [
+   "What you do to a flame.",
+   "Ground tobacco taken through the nose."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "soapy",
+  "register": "standard",
+  "definition": "Covered in or like soap.",
+  "note": "From soap plus -y. Bath water, bubbles and dishes may be this.",
+  "hints": [
+   "Water full of bubbles.",
+   "How hands feel before the tap."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "soggy",
+  "register": "standard",
+  "definition": "Wet and heavy.",
+  "note": "From dialect sog, 'soaked', plus -y. Neglected cereal and sandwiches often end up so.",
+  "hints": [
+   "Cereal left in milk too long.",
+   "A sandwich left in the rain."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "solar",
+  "register": "standard",
+  "definition": "Relating to the sun.",
+  "note": "From Latin solaris, from sol, 'sun'. Panels turn sunlight into power.",
+  "hints": [
+   "Panels on a roof turn sunlight into electricity.",
+   "Our system is named for this star."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "solid",
+  "register": "standard",
+  "definition": "Firm and not liquid or gas.",
+  "note": "From Latin solidus, 'firm'. Ice is one, but steam is not.",
+  "hints": [
+   "What ice is, compared with water.",
+   "A state of matter that holds its shape."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "solve",
+  "register": "standard",
+  "definition": "To find the answer to a problem.",
+  "note": "From Latin solvere, 'to loosen or untie'. A mystery or puzzle can be settled by it.",
+  "hints": [
+   "What you do with a puzzle.",
+   "What a detective does to a case."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "sonar",
+  "register": "standard",
+  "definition": "A way of finding objects underwater using sound.",
+  "note": "An acronym for 'sound navigation and ranging'. Submarines and fishing boats rely on it.",
+  "hints": [
+   "A submarine's ping.",
+   "How a ship finds the seabed."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "sonic",
+  "register": "standard",
+  "definition": "Relating to sound.",
+  "note": "From Latin sonus, 'sound'. A sonic boom is made by an aircraft passing the speed of sound.",
+  "hints": [
+   "A boom from a fast jet.",
+   "Having to do with noise."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "sooth",
+  "register": "standard",
+  "definition": "An old word for truth.",
+  "note": "From Old English soth, 'true'. It survives in 'forsooth' and in 'soothsayer', one who tells the truth of the future.",
+  "hints": [
+   "An archaic word for truth.",
+   "A person who foretells the future was named for it, with 'sayer'."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "sooty",
+  "register": "standard",
+  "definition": "Covered in soot.",
+  "note": "From soot plus -y. A chimney sweep would be this.",
+  "hints": [
+   "A chimney sweep's face.",
+   "A black smudge from a fire."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "sorry",
+  "register": "standard",
+  "definition": "Feeling regret; or poor and pitiful.",
+  "note": "From Old English sarig, 'sore' or 'grieved', related to sore. It is not related to sorrow.",
+  "hints": [
+   "What you say after stepping on a toe.",
+   "A word that begins an apology."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "sound",
+  "register": "standard",
+  "definition": "Noise; also healthy or reliable.",
+  "note": "The noise sense is from Latin sonus. The healthy sense comes from Old English gesund, 'healthy'.",
+  "hints": [
+   "What an ear picks up.",
+   "As in 'safe and ___', in good shape."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "south",
+  "register": "standard",
+  "definition": "The direction opposite north.",
+  "note": "From Old English suth. It is the way to Antarctica from the equator.",
+  "hints": [
+   "Opposite of north.",
+   "The way swallows go in winter."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "sower",
+  "register": "standard",
+  "definition": "A person who scatters seed.",
+  "note": "From Old English sawere, built from sow plus -er. A famous parable features one.",
+  "hints": [
+   "A farmer scattering grain.",
+   "The farmer in a famous parable."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "space",
+  "register": "standard",
+  "definition": "The area beyond Earth; or an empty area.",
+  "note": "From Old French espace, from Latin spatium. It can also be a gap between words.",
+  "hints": [
+   "Where the stars are.",
+   "The gap between words on a page."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "spade",
+  "register": "standard",
+  "definition": "A digging tool with a flat blade; also a card suit.",
+  "note": "From Old English spadu. The card suit is a different word, from Italian spada, 'sword'.",
+  "hints": [
+   "What a gardener uses to dig.",
+   "A black card suit."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "spasm",
+  "register": "standard",
+  "definition": "A sudden involuntary muscle contraction.",
+  "note": "From Greek spasmos, from spaein, 'to draw or pull'. It also means a sudden burst of activity.",
+  "hints": [
+   "A twitch in a muscle.",
+   "A sudden painful clench."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "speak",
+  "register": "standard",
+  "definition": "To talk.",
+  "note": "From Old English specan, probably an altered form of an older word sprecan. It is what you do with your voice.",
+  "hints": [
+   "What you do to give a talk.",
+   "What a person does at a podium."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "spear",
+  "register": "standard",
+  "definition": "A long pointed weapon for thrusting or throwing.",
+  "note": "From Old English spere. Hunters and soldiers carried them for thousands of years.",
+  "hints": [
+   "A weapon thrown by hunters.",
+   "A long shaft with a sharp point."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "speck",
+  "register": "standard",
+  "definition": "A tiny spot.",
+  "note": "From Old English specca, 'small spot'. Dust leaves one.",
+  "hints": [
+   "A tiny dot of dust.",
+   "A dot barely visible on a window."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "speed",
+  "register": "standard",
+  "definition": "How fast something moves.",
+  "note": "From Old English sped, which meant 'success' or 'prosperity'. 'Godspeed' wished a traveller good luck.",
+  "hints": [
+   "What a gauge on a dashboard shows.",
+   "How fast a car goes."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "spell",
+  "register": "standard",
+  "definition": "A magic formula; or a short period of time.",
+  "note": "From Old English spel, 'story' or 'speech'. A word spoken with power became a charm.",
+  "hints": [
+   "What a wizard casts.",
+   "A short stretch of weather."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "spelt",
+  "register": "standard",
+  "definition": "An ancient grain; or past tense of spell.",
+  "note": "The grain is from Old English spelt, a kind of wheat. The past tense form is a British spelling of spelled.",
+  "hints": [
+   "An old variety of wheat.",
+   "The British past of a word about letters."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "spend",
+  "register": "standard",
+  "definition": "To pay out money; or to pass time.",
+  "note": "From Old English, partly from Latin expendere, 'to weigh out'. You can do it with money or hours.",
+  "hints": [
+   "What a shopper does.",
+   "What you do with a holiday week."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "spice",
+  "register": "standard",
+  "definition": "A strong flavouring from a plant.",
+  "note": "From Old French espice, from Latin species, 'kind'. Pepper and cinnamon are famous ones.",
+  "hints": [
+   "Pepper and cinnamon.",
+   "What makes a curry hot."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "spicy",
+  "register": "standard",
+  "definition": "Hot with flavourings.",
+  "note": "From spice plus -y. Chilli peppers make food this way.",
+  "hints": [
+   "A hot curry.",
+   "A food with a kick."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "spiel",
+  "register": "slang",
+  "definition": "A long, practiced sales speech.",
+  "note": "Borrowed from German Spiel, 'game' or 'play', perhaps via Yiddish. It describes a patter delivered with practice.",
+  "hints": [
+   "A salesperson's patter.",
+   "A well-rehearsed pitch."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "spike",
+  "register": "standard",
+  "definition": "A sharp pointed piece of metal; or a sudden sharp rise.",
+  "note": "From Old Norse spik, 'nail'. Sprinters wear shoes with them, and a graph can show a sudden one.",
+  "hints": [
+   "What a runner wears on shoes for grip.",
+   "A sudden jump on a chart."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "spiky",
+  "register": "standard",
+  "definition": "Covered with sharp points.",
+  "note": "From spike plus -y. Hedgehogs and punk hair are this.",
+  "hints": [
+   "A hedgehog's coat.",
+   "Hair styled with gel."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "spill",
+  "register": "standard",
+  "definition": "To let liquid fall out by accident.",
+  "note": "From Old English spillan, 'to destroy or waste'. The word shifted from killing to wasting to letting fall.",
+  "hints": [
+   "What you do to a cup of tea.",
+   "Something to avoid crying over, in a proverb."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "spilt",
+  "register": "standard",
+  "definition": "Poured out accidentally; the past form of spill.",
+  "note": "The past form of spill. A proverb warns not to cry over milk in this state.",
+  "hints": [
+   "The state of milk in a proverb about regret.",
+   "A British past form of a word about accidents with drinks."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "spiny",
+  "register": "standard",
+  "definition": "Covered in sharp spines.",
+  "note": "From spine plus -y. Cacti and sea urchins are this.",
+  "hints": [
+   "A cactus or an urchin.",
+   "Prickly all over."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "spire",
+  "register": "standard",
+  "definition": "A tall pointed tower on a church.",
+  "note": "From Old English spir, 'stalk' or 'shoot'. A church steeple reaches skyward like one.",
+  "hints": [
+   "The pointed top of a church tower.",
+   "Salisbury's is famously tall."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "splat",
+  "register": "standard",
+  "definition": "The sound of a soft thing hitting a flat surface.",
+  "note": "Imitative, related to an older verb meaning to spread flat. It is the noise of a tomato landing.",
+  "hints": [
+   "A tomato hitting the floor.",
+   "A wet slap of a dropped pie."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "split",
+  "register": "standard",
+  "definition": "To divide; or to break along a line.",
+  "note": "From Middle Dutch splitten, recorded since about 1567. You can do it to a log, a bill, or a banana dessert.",
+  "hints": [
+   "What you do to a bill among friends.",
+   "What an axe does to a log."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "spoil",
+  "register": "standard",
+  "definition": "To ruin; or to pamper.",
+  "note": "From Latin spolium, 'plunder'. Food goes off, and children can be overindulged by it.",
+  "hints": [
+   "What happens to milk left out.",
+   "What you do to a grandchild with sweets."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "spoke",
+  "register": "standard",
+  "definition": "Past of speak; also a rod in a wheel.",
+  "note": "The verb is the past tense of speak. The wheel part is from Old English spaca, a different word.",
+  "hints": [
+   "Joins the hub of a bicycle wheel to the rim.",
+   "What a person did at a podium."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "spoof",
+  "register": "slang",
+  "definition": "A light-hearted parody; or a trick.",
+  "note": "Coined in 1884 by the English comedian Arthur Roberts as the name of a card game of trickery. It then came to mean a hoax.",
+  "hints": [
+   "A comic imitation of a film.",
+   "A hoax played for laughs."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "spook",
+  "register": "standard",
+  "definition": "A ghost; or to frighten.",
+  "note": "Borrowed from Dutch spook, 'ghost'. It can also name a secret agent.",
+  "hints": [
+   "What a ghost story might feature.",
+   "To startle a horse."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "spore",
+  "register": "standard",
+  "definition": "A tiny reproductive cell of a fungus or plant.",
+  "note": "From Greek spora, 'seed'. Mushrooms and ferns release them.",
+  "hints": [
+   "What a mushroom scatters to reproduce.",
+   "A tiny seed-like particle from a fern."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "sport",
+  "register": "standard",
+  "definition": "A competitive physical activity.",
+  "note": "Short for disport, from Old French, 'to amuse oneself'. It originally meant any pastime.",
+  "hints": [
+   "Football or tennis.",
+   "What the Olympics celebrates."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "spout",
+  "register": "standard",
+  "definition": "A tube from which liquid pours.",
+  "note": "From Middle English spouten, from Middle Dutch. A kettle has one, and so does a whale.",
+  "hints": [
+   "The part of a teapot for pouring.",
+   "What a whale blows through its blowhole."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "spray",
+  "register": "standard",
+  "definition": "A fine mist of liquid.",
+  "note": "From Middle Dutch spraeyen, 'to sprinkle'. It also names a bunch of flowers.",
+  "hints": [
+   "What an aerosol can does.",
+   "A cluster of flowers in a bouquet."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "spree",
+  "register": "standard",
+  "definition": "A short period of unrestrained activity, especially shopping.",
+  "note": "Of uncertain origin; it was first recorded in the early nineteenth century. It suggests wild abandon.",
+  "hints": [
+   "A shopping binge.",
+   "An outing of reckless indulgence."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "sprig",
+  "register": "standard",
+  "definition": "A small twig or shoot.",
+  "note": "From Middle English sprigge, of uncertain origin. A cook adds a small one of parsley.",
+  "hints": [
+   "A small piece of parsley.",
+   "A little twig used to garnish a dish."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "spurt",
+  "register": "standard",
+  "definition": "To gush out suddenly; or a short burst of effort.",
+  "note": "From earlier spirt, 'to sprout'. A runner makes one to overtake near the finish.",
+  "hints": [
+   "What water does from a cut hose.",
+   "A final dash near the finish line."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "squad",
+  "register": "standard",
+  "definition": "A small group working together.",
+  "note": "From French escouade, from Spanish escuadra, 'square'. It first named a troop drawn up in a square.",
+  "hints": [
+   "A football team's group of players.",
+   "A group of soldiers or police."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "squat",
+  "register": "standard",
+  "definition": "To crouch low; or short and wide.",
+  "note": "From Old French esquatir, 'to crush or flatten'. It also names a gym exercise and settling in an empty building.",
+  "hints": [
+   "A deep knee bend at the gym.",
+   "What a short, stocky shape is called."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "squib",
+  "register": "standard",
+  "definition": "A small firework that fizzes; or a short satire.",
+  "note": "Possibly imitative of a small explosion. A damp one fizzles without going off, which gave the word its sense of a weak joke.",
+  "hints": [
+   "A firework that fizzles.",
+   "A short, witty satirical piece."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "stack",
+  "register": "standard",
+  "definition": "A tidy pile.",
+  "note": "From Old Norse stakkr, 'haystack'. Pancakes and plates are piled in them.",
+  "hints": [
+   "A pile of pancakes.",
+   "A tall pile of books."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "staff",
+  "register": "standard",
+  "definition": "The employees of a business; or a long stick.",
+  "note": "From Old English staef, 'stick' or 'letter'. It also names the lines on which music is written.",
+  "hints": [
+   "The workers at a shop.",
+   "A stick used by a wizard."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "staid",
+  "register": "standard",
+  "definition": "Serious, steady and rather dull.",
+  "note": "An old spelling of 'stayed', the past participle of stay. It describes someone settled in their ways.",
+  "hints": [
+   "A sober, conventional person.",
+   "The opposite of wild."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "stair",
+  "register": "standard",
+  "definition": "A step in a flight.",
+  "note": "From Old English staeger, 'step', from a word meaning 'to climb'. You go up a flight of them.",
+  "hints": [
+   "One step in a flight.",
+   "What you climb in a house."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "stale",
+  "register": "standard",
+  "definition": "No longer fresh.",
+  "note": "From Old French estale, 'in place', as in standing too long. Bread and jokes both go this way.",
+  "hints": [
+   "Bread left out for days.",
+   "A joke told too many times."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "stalk",
+  "register": "standard",
+  "definition": "The stem of a plant; or to follow someone secretly.",
+  "note": "From Middle English stalke, of uncertain earlier origin. The following sense is a different word, from Old English.",
+  "hints": [
+   "The stem of celery.",
+   "What a predator does to its prey."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "stall",
+  "register": "standard",
+  "definition": "A market table; or to delay.",
+  "note": "From Old English steall, 'standing place'. A car engine can do it, and so can a speaker buying time.",
+  "hints": [
+   "A table in a market.",
+   "What an engine does when it cuts out."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "stand",
+  "register": "standard",
+  "definition": "To be upright on your feet.",
+  "note": "From Old English standan. It also names a stall, a position, or a platform.",
+  "hints": [
+   "What you do when the anthem plays.",
+   "A position taken on an issue."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "stank",
+  "register": "standard",
+  "definition": "Past tense of stink.",
+  "note": "From Old English stanc, the past of stincan, 'to smell'. It describes a foul smell.",
+  "hints": [
+   "What rotten eggs did in the fridge.",
+   "A past form of a word about foul smells."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "stare",
+  "register": "standard",
+  "definition": "To look fixedly.",
+  "note": "From Old English starian, 'to gaze'. It is considered rude when done at strangers.",
+  "hints": [
+   "What you do at an eclipse you should not look at.",
+   "To gaze rudely."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "stark",
+  "register": "standard",
+  "definition": "Severe or plain; or complete.",
+  "note": "From Old English stearc, 'stiff' or 'strong'. A bare room or a sharp contrast can be this.",
+  "hints": [
+   "A bare white room.",
+   "An obvious, harsh contrast."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "start",
+  "register": "standard",
+  "definition": "To begin.",
+  "note": "From Old English styrtan, 'to leap up'. A sudden jump gave the word its sense of beginning.",
+  "hints": [
+   "What you do at the line of a race.",
+   "The opposite of finish."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "stash",
+  "register": "slang",
+  "definition": "A hidden supply.",
+  "note": "Of unknown origin. It may blend 'stow' and 'cache'. People keep one of treats or cash.",
+  "hints": [
+   "A hidden hoard of sweets.",
+   "A secret store."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "state",
+  "register": "standard",
+  "definition": "A condition; or a country's government and territory.",
+  "note": "From Latin status, 'condition'. It can also mean to say something formally.",
+  "hints": [
+   "What a nation is called politically.",
+   "The condition something is in."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "stave",
+  "register": "standard",
+  "definition": "A narrow strip of wood; or to fend off.",
+  "note": "A back-formation from staves, the plural of staff. 'Stave off' means to hold danger at a distance.",
+  "hints": [
+   "A strip of wood in a barrel.",
+   "To keep hunger or danger away for a while."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "stead",
+  "register": "standard",
+  "definition": "The place or role of another.",
+  "note": "From Old English stede, 'place'. It survives in 'in his stead' and in 'homestead'.",
+  "hints": [
+   "A word in an old phrase about taking another's place.",
+   "The tail end of the word for a farm and its buildings."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "steak",
+  "register": "standard",
+  "definition": "A thick slice of meat.",
+  "note": "From Old Norse steik, 'roast on a stick'. Beef is the best known.",
+  "hints": [
+   "A thick cut of beef on a plate.",
+   "What a grill sizzles."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "steal",
+  "register": "standard",
+  "definition": "To take something that is not yours.",
+  "note": "From Old English stelan. In baseball, a runner can do it to a base.",
+  "hints": [
+   "What a thief does.",
+   "What a runner does to a base."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "steam",
+  "register": "standard",
+  "definition": "Hot water vapour.",
+  "note": "From Old English steam, 'vapour'. Engines once ran on it.",
+  "hints": [
+   "What rises from a kettle.",
+   "What drove old trains."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "steel",
+  "register": "standard",
+  "definition": "A strong alloy of iron.",
+  "note": "From Old English stiele. It builds bridges and skyscrapers.",
+  "hints": [
+   "A strong alloy for bridges.",
+   "Iron mixed with carbon."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "steep",
+  "register": "standard",
+  "definition": "Rising sharply; or to soak in a liquid.",
+  "note": "From Old English steap, 'high' or 'lofty'. Tea leaves are soaked, and a high price is also called it.",
+  "hints": [
+   "A hill hard to climb.",
+   "What tea does in a pot."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "steer",
+  "register": "standard",
+  "definition": "To guide a vehicle; or a young bull.",
+  "note": "From Old English steoran, 'to guide'. The animal sense is separate, from Old English steor.",
+  "hints": [
+   "What you do with a wheel.",
+   "A young bull raised for beef."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "stein",
+  "register": "standard",
+  "definition": "A large beer mug.",
+  "note": "From German Stein, 'stone', short for stoneware jug. It is associated with Oktoberfest.",
+  "hints": [
+   "Raised at Oktoberfest.",
+   "A mug for beer."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "stern",
+  "register": "standard",
+  "definition": "Strict and severe; or the back of a ship.",
+  "note": "The strict sense is from Old English styrne. The ship sense is a separate word, from Old Norse.",
+  "hints": [
+   "A teacher who allows no nonsense.",
+   "The rear of a boat."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "stick",
+  "register": "standard",
+  "definition": "A thin piece of wood; or to attach.",
+  "note": "From Old English sticca, 'twig'. As a verb, it describes glue doing its work.",
+  "hints": [
+   "A twig from a tree.",
+   "What glue does."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "stiff",
+  "register": "standard",
+  "definition": "Rigid and hard to bend.",
+  "note": "From Old English stif. A neck after a long drive can be so.",
+  "hints": [
+   "How your neck feels after a long drive.",
+   "Not flexible."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "still",
+  "register": "standard",
+  "definition": "Not moving; or even so.",
+  "note": "From Old English stille, 'quiet' or 'motionless'. It is also a distilling apparatus.",
+  "hints": [
+   "Motionless, like a pond.",
+   "A word meaning 'nevertheless'."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
  }
 ]
