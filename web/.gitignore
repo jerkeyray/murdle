@@ -44,3 +44,6 @@ next-env.d.ts
 /test-results/
 /playwright-report/
 .env*.local
+scripts/data/wiktionary.jsonl
+scripts/data/enrich-review.json
+scripts/data/tatoeba.tsv

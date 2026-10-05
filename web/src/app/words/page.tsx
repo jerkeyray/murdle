@@ -6,6 +6,7 @@ import { ApiError, getSavedWords, getSolves, setWordSaved, type SolveRecord } fr
 import { BackButton } from "@/components/BackButton";
 import { Dialog } from "@/components/Dialog";
 import { Loader } from "@/components/Loader";
+import { WordExtras, WordMeta } from "@/components/WordFacts";
 
 type Shelf = "all" | "saved";
 const PAGE_SIZE = 12;
@@ -99,7 +100,7 @@ export default function WordsPage() {
       {error && solves.length > 0 && <p className="form-error" role="alert">{error}</p>}
     </>}
     {selected && <Dialog title={selected.word} onClose={() => setSelected(null)}>
-      <article className="library-entry"><span className="label">{selected.word.length} letters</span><h2>{selected.word}</h2><p className="library-entry-definition">{selected.entry?.definition ?? "A word from your completed board."}</p>
+      <article className="library-entry"><span className="label">{selected.word.length} letters</span><h2>{selected.word}</h2><WordMeta entry={selected.entry} /><p className="library-entry-definition">{selected.entry?.definition ?? "A word from your completed board."}</p><WordExtras entry={selected.entry} />
         <div><span className="label">Word story</span><p>{selected.entry?.note ?? "No word note is available yet."}</p></div>
         <button className="library-save" onClick={() => void toggleSaved()} disabled={saving}>{saving ? "Saving…" : isSaved ? "Remove from saved" : "Save this word"}</button>
       </article>

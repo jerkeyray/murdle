@@ -66,6 +66,9 @@ importers:
       word-list:
         specifier: ^4.1.0
         version: 4.1.0
+      wordnet-db:
+        specifier: 3.1.14
+        version: 3.1.14
 
 packages:
 
@@ -2340,6 +2343,10 @@ packages:
   word-wrap@1.2.5:
     resolution: {integrity: sha512-BN22B5eaMMI9UMtjrGd5g5eCYPpCPDUy0FJXbYsaT5zYxjFOckS53SQDE3pWkVoWpHXVb3BrYcEN4Twa55B5cA==}
     engines: {node: '>=0.10.0'}
+
+  wordnet-db@3.1.14:
+    resolution: {integrity: sha512-zVyFsvE+mq9MCmwXUWHIcpfbrHHClZWZiVOzKSxNJruIcFn2RbY55zkhiAMMxM8zCVSmtNiViq8FsAZSFpMYag==}
+    engines: {node: '>=0.6.0'}
 
   xtend@4.0.2:
     resolution: {integrity: sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==}
@@ -4761,6 +4768,8 @@ snapshots:
   word-list@4.1.0: {}
 
   word-wrap@1.2.5: {}
+
+  wordnet-db@3.1.14: {}
 
   xtend@4.0.2: {}
 

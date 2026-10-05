@@ -20,6 +20,12 @@ type entryView struct {
 	Register   string `json:"register"`
 	Definition string `json:"definition"`
 	Note       string `json:"note"`
+
+	Pronunciation string `json:"pronunciation,omitempty"`
+	PartOfSpeech  string `json:"partOfSpeech,omitempty"`
+	Origin        string `json:"origin,omitempty"`
+	Example       string `json:"example,omitempty"`
+	ExampleSource string `json:"exampleSource,omitempty"`
 }
 
 // packView is the theme reveal. It exists only on a completed run — the whole
@@ -144,5 +150,11 @@ func newEntryView(w words.PackWord) entryView {
 		Register:   string(w.Register),
 		Definition: w.Definition,
 		Note:       w.Note,
+
+		Pronunciation: w.Pronunciation,
+		PartOfSpeech:  w.PartOfSpeech,
+		Origin:        w.Origin,
+		Example:       w.Example,
+		ExampleSource: w.ExampleSource,
 	}
 }

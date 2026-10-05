@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { ApiError, getSavedWords, setWordSaved, type Round } from "@/lib/api";
 import { shareRound } from "@/lib/shareCard";
 import { Dialog } from "./Dialog";
+import { WordExtras, WordMeta } from "./WordFacts";
 
 export function Entry({ round, onClose, action, actionLabel, busy = false }: {
   round: Round; onClose: () => void; action?: () => void; actionLabel?: string; busy?: boolean;
@@ -50,20 +51,22 @@ export function Entry({ round, onClose, action, actionLabel, busy = false }: {
         <h2 className="entry-word">{round.answer}</h2>
         <div className="entry-tools">
           <button className="icon-button entry-icon-button" disabled={saving} onClick={toggleKeep} aria-pressed={kept} aria-label={kept ? "Remove from saved words" : needsSignIn ? "Sign in to save this word" : "Save this word"} title={kept ? "Remove from saved words" : needsSignIn ? "Sign in to save this word" : "Save this word"}>
-            <svg width="19" height="19" viewBox="0 0 24 24" aria-hidden fill={kept ? "currentColor" : "none"} stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden fill={kept ? "currentColor" : "none"} stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
               <path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.8L6 21V4.75Z" />
             </svg>
           </button>
           <button className="icon-button entry-icon-button" disabled={sharing} onClick={onShare} aria-label={sharing ? "Creating share image" : shareLabel || "Share this word"} title={sharing ? "Creating share image" : shareLabel || "Share this word"}>
-            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
               <path d="M12 15V3m0 0L8 7m4-4 4 4" /><path d="M4 14v5a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-5" />
             </svg>
           </button>
 
         </div>
       </div>
+      <WordMeta entry={round.entry} />
       {round.entry && <>
         <p className="entry-definition">{round.entry.definition}</p>
+        <WordExtras entry={round.entry} />
         <p className="entry-note">{round.entry.note}</p>
       </>}
       {shareLabel && <p className="entry-feedback" role="status">{shareLabel}</p>}

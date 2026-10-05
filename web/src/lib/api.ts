@@ -56,6 +56,14 @@ export interface Entry {
   register: "standard" | "slang";
   definition: string;
   note: string;
+  /** IPA, without slashes. Absent until the word has been enriched. */
+  pronunciation?: string;
+  partOfSpeech?: string;
+  /** One-line source chain, e.g. "Anglo-Norman abatre, from Latin battere". The longer story stays in `note`. */
+  origin?: string;
+  example?: string;
+  /** Link to the sentence an example came from, where its licence asks for one. */
+  exampleSource?: string;
 }
 
 /** The theme reveal. Present only on a completed run. */

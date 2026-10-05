@@ -165,7 +165,7 @@ func (s *Store) populate(ctx context.Context, tx pgx.Tx, d *Duo) error {
 				return fail("unavailable", "No daily words available")
 			}
 			w := candidates[rand.IntN(len(candidates))]
-			entry, _ := json.Marshal(Entry{w.Word, string(w.Register), w.Definition, w.Note})
+			entry, _ := json.Marshal(Entry{Word: w.Word, Register: string(w.Register), Definition: w.Definition, Note: w.Note, Pronunciation: w.Pronunciation, PartOfSpeech: w.PartOfSpeech, Origin: w.Origin, Example: w.Example, ExampleSource: w.ExampleSource})
 			_, err = tx.Exec(ctx, `insert into duo_days (duo_id,day,deadline,answer,entry,cycle,state,current_player) values($1,$2,$3,$4,$5,$6,'playing',$7)`, d.ID, today, deadline, w.Word, entry, cycle, starter(d.StartedOn, today, d.Members))
 			if err != nil {
 				return err

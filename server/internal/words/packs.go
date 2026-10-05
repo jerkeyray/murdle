@@ -28,10 +28,23 @@ type PackWord struct {
 	// Note is the part worth reading — where the word came from, or what it
 	// used to mean. It is what makes the round end in something other than
 	// "you got it".
-	Note       string   `json:"note"`
-	Hints      []string `json:"hints"`
-	Difficulty string   `json:"difficulty"`
-	Connection string   `json:"connection"`
+	Note string `json:"note"`
+	// The fields below come from Wiktionary, WordNet and Tatoeba (see
+	// web/scripts/enrich-entries.mjs) and are optional: a word without them
+	// renders exactly as before.
+	// Pronunciation is IPA without slashes, PartOfSpeech is a lowercase label,
+	// Origin is a one-line source chain such as "Anglo-Norman abatre, from
+	// Latin battere", and Example is one sentence that uses the word.
+	Pronunciation string `json:"pronunciation,omitempty"`
+	PartOfSpeech  string `json:"partOfSpeech,omitempty"`
+	Origin        string `json:"origin,omitempty"`
+	Example       string `json:"example,omitempty"`
+	// ExampleSource links the sentence an example was taken from, when its
+	// licence asks for attribution (Tatoeba, CC BY).
+	ExampleSource string   `json:"exampleSource,omitempty"`
+	Hints         []string `json:"hints"`
+	Difficulty    string   `json:"difficulty"`
+	Connection    string   `json:"connection"`
 }
 
 // Pack is a themed run: several words that secretly belong together.
@@ -273,6 +286,9 @@ func validatePacks(packs []Pack) error {
 		for _, w := range pack.Words {
 			if !wordPattern.MatchString(w.Word) || len(w.Word) != length || words[w.Word] || len(w.Hints) != 2 || strings.TrimSpace(w.Connection) == "" || strings.TrimSpace(w.Definition) == "" || strings.TrimSpace(w.Note) == "" {
 				return fmt.Errorf("incomplete word: %s", w.Word)
+			}
+			if problem := validateEnrichment(w); problem != "" {
+				return fmt.Errorf("%s %s", w.Word, problem)
 			}
 			words[w.Word] = true
 			if w.Difficulty != "familiar" && w.Difficulty != "stretch" && w.Difficulty != "challenging" {

@@ -14,6 +14,12 @@ type Entry struct {
 	Register   string `json:"register"`
 	Definition string `json:"definition"`
 	Note       string `json:"note"`
+
+	Pronunciation string `json:"pronunciation,omitempty"`
+	PartOfSpeech  string `json:"partOfSpeech,omitempty"`
+	Origin        string `json:"origin,omitempty"`
+	Example       string `json:"example,omitempty"`
+	ExampleSource string `json:"exampleSource,omitempty"`
 }
 type Guess struct {
 	Guess    string   `json:"guess"`

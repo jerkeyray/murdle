@@ -2714,8 +2714,11 @@ button:disabled { cursor: default; }
 .game-dialog.entry-dialog .entry-word { margin: 0; padding: 0; font-size: clamp(2.35rem, 10vw, 2.9rem); font-weight: 550; line-height: 1.15; }
 .game-dialog.entry-dialog .entry-definition { max-width: none; margin: 18px 0 0; font-size: 1rem; font-weight: 500; line-height: 1.5; }
 .game-dialog.entry-dialog .entry-note { margin: 10px 0 0; padding: 0; font-family: var(--font-sans), system-ui, sans-serif; font-size: .95rem; line-height: 1.65; }
-.game-dialog.entry-dialog .entry-tools { flex: none; justify-content: flex-end; gap: 2px; margin: 0; padding: 0; border: 0; }
-.entry-icon-button { width: 44px; height: 44px; border: 0; border-radius: 50%; color: var(--text-muted); }
+.game-dialog.entry-dialog .entry-tools { flex: none; justify-content: flex-end; gap: 8px; margin: 0; padding: 0; border: 0; }
+/* Large enough to hit with a thumb, and filled so they read as buttons. */
+.entry-icon-button { width: 52px; height: 52px; border: 1px solid var(--border); border-radius: 50%; background: color-mix(in srgb, var(--text) 8%, transparent); color: var(--text); }
+.entry-icon-button svg { width: 24px; height: 24px; }
+.entry-icon-button:active { transform: scale(.94); }
 .entry-icon-button[aria-pressed="true"] { color: var(--text); }
 .game-dialog.entry-dialog .entry-actions { margin-top: 16px; }
 .game-dialog.entry-dialog .entry-actions .button { font-size: .95rem; font-weight: 600; letter-spacing: 0; text-transform: none; }
@@ -2829,6 +2832,9 @@ summary { cursor: pointer; color: var(--text-muted); padding-block: 8px; min-hei
 .duo-member { display: inline-flex; align-items: center; gap: 6px; }
 .duo-members i { display: inline-grid; place-items: center; border-radius: 50%; width: 24px; height: 24px; font-family: var(--font-serif),Georgia,serif; font-style: normal; border: 1px solid var(--border-strong); }
 .duo-members > span[data-current="true"] i { border-color: var(--mark-hit); color: var(--mark-hit); }
+.duo-pass { min-height: 28px; margin-left: 2px; padding: 3px 7px; border: 1px solid var(--border); border-radius: 999px; background: transparent; color: var(--text-muted); font: 600 .65rem/1 var(--font-sans), system-ui, sans-serif; letter-spacing: .04em; cursor: pointer; }
+.duo-pass:hover { border-color: var(--border-strong); color: var(--text); }
+.duo-pass:disabled { opacity: .45; }
 .duo-app .row { position: relative; }
 .row-author { display: grid; place-items: center; position: absolute; right: calc(100% + 6px); top: 50%; transform: translateY(-50%); font-family: var(--font-serif),Georgia,serif; font-size: .75rem; color: var(--text-muted); }
 .row-author[data-seat="0"], .duo-members [data-seat="0"] i { color: var(--seat-0); }
@@ -2836,6 +2842,8 @@ summary { cursor: pointer; color: var(--text-muted); padding-block: 8px; min-hei
 .duo-app .board { width: min(calc(100% - 35px),21rem,calc(100cqh * 5 / 6)); }
 .duo-app .game-tools { font-size: .85rem; min-height: 44px; }
 .duo-app .game-tools--action { justify-content: flex-end; }
+.duo-app .play-actions { width: 100%; }
+.duo-app .keyboard-submit { width: 100%; }
 .duo-error { flex: none; font-size: .8rem; color: var(--text-muted); padding-block: 6px; }
 .duo-result { flex: none; padding: 14px 0 20px; }
 .duo-result h2 { margin: 0 0 8px; font: 550 2rem var(--font-serif),Georgia,serif; }
@@ -2879,12 +2887,11 @@ summary { cursor: pointer; color: var(--text-muted); padding-block: 8px; min-hei
 .appearance-options, .collection-tabs { display: flex; gap: 4px; padding: 4px; border: 1px solid var(--border); border-radius: 10px; background: var(--bg); }
 .appearance-options button, .collection-tabs button { flex: 1; min-height: 44px; border: 0; border-radius: 6px; background: transparent; color: var(--text-muted); font: inherit; font-size: .9rem; cursor: pointer; }
 .appearance-options button[aria-pressed="true"], .collection-tabs button[aria-pressed="true"] { background: var(--bg-raised); color: var(--text); box-shadow: 0 1px 4px rgb(0 0 0 / .12); }
-.guest-profile { margin: 32px 0; }
-.guest-profile h2 { font: 550 2.6rem/1.12 var(--font-serif), Georgia, serif; margin: 16px 0; }
-.guest-profile > p { color: var(--text-muted); font-size: 1rem; line-height: 1.65; }
-.guest-profile ul { padding: 0; list-style: none; margin: 28px 0; color: var(--text-muted); font-size: .95rem; }
-.guest-profile li { padding: 12px 0; border-bottom: 1px solid var(--rule); }
-.guest-profile > .text-button { display: block; text-align: center; margin-top: 8px; }
+.sheet--guest { display: flex; flex-direction: column; min-height: 100dvh; }
+.guest-profile { display: grid; flex: 1; align-content: center; justify-items: center; width: min(100%, 32rem); margin: 0 auto; padding: 0 0 9vh; text-align: center; }
+.guest-profile h2 { max-width: 12ch; font: 550 clamp(2.25rem, 8vw, 3.25rem)/1.02 var(--font-serif), Georgia, serif; margin: 12px 0; letter-spacing: -.025em; }
+.guest-profile > p { max-width: 25rem; margin: 0 0 28px; color: var(--text-muted); font-size: 1rem; line-height: 1.55; }
+.guest-profile > .button { width: min(100%, 18rem); }
 .profile-summary { margin: 24px 0 12px; padding: 18px; border: 1px solid var(--border); border-radius: 16px; background: var(--bg-raised); }
 .profile-summary-head { display: flex; align-items: start; justify-content: space-between; gap: 16px; }
 .profile-summary-name { margin: 5px 0 0; font: 600 clamp(1.7rem, 8vw, 2.15rem)/1.1 var(--font-serif), Georgia, serif; }
@@ -3046,3 +3053,22 @@ summary { cursor: pointer; color: var(--text-muted); padding-block: 8px; min-hei
   .finished-actions { display: grid; grid-template-columns: 1fr; gap: 8px; }
   .finished-actions .button { min-height: 52px; }
 }
+
+/* Pronunciation, part of speech, example and origin: reference detail that
+   sits quieter than the definition it supports. */
+.word-meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; margin: 6px 0 0; color: var(--text-muted); font-size: .92rem; }
+.word-pronunciation { letter-spacing: .01em; }
+.word-pos { font-family: var(--font-serif), Georgia, serif; font-style: italic; }
+.word-extras { display: grid; gap: 8px; margin: 12px 0 0; }
+.word-example { margin: 0; color: var(--text-muted); font-family: var(--font-serif), Georgia, serif; font-style: italic; font-size: .95rem; line-height: 1.5; }
+.word-origin { margin: 0; color: var(--text-muted); font-size: .85rem; line-height: 1.5; }
+.word-origin .label { margin-right: 6px; }
+.game-dialog.entry-dialog .word-extras + .entry-note { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--rule); }
+.library-entry .word-meta { margin: 0 0 12px; }
+.library-entry .word-extras { margin: -8px 0 20px; }
+
+/* The signed-out Friends screen reuses the sign-in gate, under the page's own
+   header. Its Sign in button is a link, so it needs the button's full width. */
+.friends-page:has(> .friends-gate) { display: flex; flex-direction: column; min-height: 100dvh; }
+.friends-gate { width: 100%; padding-bottom: 12dvh; }
+.friends-gate .button { width: 100%; }
