@@ -22090,5 +22090,1145 @@
   ],
   "difficulty": "familiar",
   "connection": ""
+ },
+ {
+  "word": "unite",
+  "register": "standard",
+  "definition": "To join together as one.",
+  "note": "From Latin unire, 'to make one', from unus, 'one'. Countries and teams do it.",
+  "hints": [
+   "What a common cause does to people.",
+   "To bring separate things together."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "unity",
+  "register": "standard",
+  "definition": "The state of being as one.",
+  "note": "From Old French unite, from Latin unitas, 'oneness'. It is what a team strives for.",
+  "hints": [
+   "Agreement and togetherness.",
+   "What 'strength in numbers' relies on."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "unlit",
+  "register": "standard",
+  "definition": "Not lit.",
+  "note": "From un- plus lit. A dark path or a fire never lit is this.",
+  "hints": [
+   "A dark street at night.",
+   "A candle before the match."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "unmet",
+  "register": "standard",
+  "definition": "Not fulfilled or not yet encountered.",
+  "note": "From un- plus met. Needs and conditions can be this.",
+  "hints": [
+   "A condition that has not been satisfied.",
+   "A goal not reached."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "unset",
+  "register": "standard",
+  "definition": "Not fixed or not yet placed.",
+  "note": "From un- plus set. Jelly that has not firmed up is this.",
+  "hints": [
+   "Jelly that is still runny.",
+   "A gem not yet put in a ring."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "untie",
+  "register": "standard",
+  "definition": "To loosen a knot.",
+  "note": "From Middle English untien, from un- plus tie. A shoelace or a rope can be loosened this way.",
+  "hints": [
+   "What you do to a shoelace.",
+   "To free a rope from its knot."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "until",
+  "register": "standard",
+  "definition": "Up to the time of.",
+  "note": "From Middle English until, probably a northern variant built from Old Norse und, 'up to'. It marks a limit in time.",
+  "hints": [
+   "A word marking an end point in time.",
+   "Up to the moment when."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "unwed",
+  "register": "standard",
+  "definition": "Not married.",
+  "note": "From un- plus wed. It is a bit formal for single.",
+  "hints": [
+   "Not yet married.",
+   "Said of an unmarried person."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "unzip",
+  "register": "standard",
+  "definition": "To open a fastener with teeth.",
+  "note": "From un- plus zip. A jacket or a file can be this way opened.",
+  "hints": [
+   "What you do to a jacket.",
+   "To open a compressed computer file."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "upper",
+  "register": "standard",
+  "definition": "Higher in position.",
+  "note": "From Middle English, the comparative of up. It is the opposite of lower.",
+  "hints": [
+   "Opposite of lower.",
+   "The top deck of a bus."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "upset",
+  "register": "standard",
+  "definition": "To disturb or overturn; or unhappy.",
+  "note": "From Middle English upsetten, 'to set up'. A stomach, a cart and a person can all be this.",
+  "hints": [
+   "A tipped glass of water.",
+   "Distressed after bad news."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "urban",
+  "register": "standard",
+  "definition": "Relating to a city.",
+  "note": "From Latin urbanus, from urbs, 'city'. It is the opposite of rural.",
+  "hints": [
+   "Opposite of rural.",
+   "Of a big town."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "urine",
+  "register": "standard",
+  "definition": "Liquid waste from the kidneys.",
+  "note": "From Latin urina. A medical sample for a test is often of it.",
+  "hints": [
+   "A sample a doctor may test.",
+   "Waste water made by the kidneys."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "usage",
+  "register": "standard",
+  "definition": "The way something is used.",
+  "note": "From Old French usage, from user, 'to use'. A dictionary records it.",
+  "hints": [
+   "How a word is commonly employed.",
+   "The amount of data or power consumed."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "usher",
+  "register": "standard",
+  "definition": "A person who shows people to their seats.",
+  "note": "From Old French ussier, 'doorkeeper', from Latin ostiarius. It also means to guide someone in.",
+  "hints": [
+   "Works at a wedding or cinema.",
+   "To guide in, as to show guests in."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "usual",
+  "register": "standard",
+  "definition": "Normal; as expected.",
+  "note": "From Latin usualis, 'of use'. It is what happens most of the time.",
+  "hints": [
+   "The standard order at a cafe.",
+   "What is customary."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "usurp",
+  "register": "standard",
+  "definition": "To seize power wrongfully.",
+  "note": "From Latin usurpare, 'to take over'. A rebel might do it to a throne.",
+  "hints": [
+   "What a pretender does to a king.",
+   "To take a throne with no right."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "utile",
+  "register": "standard",
+  "definition": "Useful.",
+  "note": "From Latin utilis, 'useful'. It is an old, learned word.",
+  "hints": [
+   "An old word for useful.",
+   "A cousin of the word utility."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "utter",
+  "register": "standard",
+  "definition": "To say aloud; or complete.",
+  "note": "From Middle English utteren, 'to speak out', and as an adjective, 'outermost'. 'Utter nonsense' is total nonsense.",
+  "hints": [
+   "To say a word aloud.",
+   "Total, as in nonsense."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "valet",
+  "register": "standard",
+  "definition": "A person who parks cars or attends to a man's clothes.",
+  "note": "From Old French vaslet, 'young man'. It now describes a car-parking service.",
+  "hints": [
+   "Takes your car at the hotel door.",
+   "A gentleman's personal servant."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "valor",
+  "register": "standard",
+  "definition": "Great courage, especially in battle.",
+  "note": "The American spelling of valour, from Latin valere, 'to be strong'. It is awarded in medals.",
+  "hints": [
+   "Bravery on the battlefield.",
+   "What a medal may honour."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "value",
+  "register": "standard",
+  "definition": "How much something is worth.",
+  "note": "From Old French value, 'worth'. It can be money or principles.",
+  "hints": [
+   "What a price shows.",
+   "What you hold dear."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "valve",
+  "register": "standard",
+  "definition": "A device that controls the flow of liquid or gas.",
+  "note": "From Latin valva, 'leaf of a door'. The heart has four.",
+  "hints": [
+   "A tap-like part in a pipe.",
+   "A part of the heart that controls flow."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "vapid",
+  "register": "standard",
+  "definition": "Dull and lacking interest.",
+  "note": "From Latin vapidus, 'flat' or 'stale', used of wine. Conversation can be this way.",
+  "hints": [
+   "A dull conversation.",
+   "Lacking spark."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "vapor",
+  "register": "standard",
+  "definition": "A mist or gas from a liquid.",
+  "note": "The American spelling of vapour, from Latin vapor, 'steam'. It rises from a kettle.",
+  "hints": [
+   "What rises from a hot bath.",
+   "The gas form of a liquid."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "vault",
+  "register": "standard",
+  "definition": "An arched ceiling; or a strong room; or to leap.",
+  "note": "From Old French volte, 'turned'. It names a bank room, a church ceiling, and a pole jump.",
+  "hints": [
+   "A bank's secure room.",
+   "To leap over using a pole."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "vaunt",
+  "register": "standard",
+  "definition": "To boast.",
+  "note": "From Old French vanter, from Latin vanus, 'vain'. It survives in 'much vaunted'.",
+  "hints": [
+   "To brag about something.",
+   "What a boastful person does with achievements."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "vegan",
+  "register": "standard",
+  "definition": "Someone who avoids all animal products.",
+  "note": "Coined in 1944 from the first and last letters of vegetarian. It excludes dairy and eggs.",
+  "hints": [
+   "Eats no meat, dairy or eggs.",
+   "Stricter than a vegetarian."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "venue",
+  "register": "standard",
+  "definition": "The place where an event happens.",
+  "note": "From Old French venue, 'a coming'. A concert is held at one.",
+  "hints": [
+   "Where a concert is held.",
+   "A place booked for a wedding."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "verge",
+  "register": "standard",
+  "definition": "The edge of something; or to be close to.",
+  "note": "From Old French verge, 'rod'. It also names the grass at the road's edge.",
+  "hints": [
+   "The grass at a road's edge.",
+   "Close to tears, on the brink."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "verve",
+  "register": "standard",
+  "definition": "Energy and enthusiasm.",
+  "note": "From French verve, 'caprice' or 'rapture'. A performer can play with it.",
+  "hints": [
+   "Liveliness in a performance.",
+   "A burst of spirited energy."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "vicar",
+  "register": "standard",
+  "definition": "A parish priest in the Church of England.",
+  "note": "From Old French vicaire, from Latin vicarius, 'substitute'. He stood in for a bishop or rector.",
+  "hints": [
+   "A priest in an English village.",
+   "A church leader in a parish."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "video",
+  "register": "standard",
+  "definition": "A recording of moving images.",
+  "note": "From Latin video, 'I see'. It also names a recorded film.",
+  "hints": [
+   "What a camera records.",
+   "A clip on a phone."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "villa",
+  "register": "standard",
+  "definition": "A large house in the country or by the sea.",
+  "note": "From Latin villa, 'country house'. Holiday ones are rented abroad.",
+  "hints": [
+   "A holiday home in the sun.",
+   "A Roman country house."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "viola",
+  "register": "standard",
+  "definition": "A stringed instrument slightly larger than a violin.",
+  "note": "From Italian viola, from a Latin word for fiddle. It is played under the chin.",
+  "hints": [
+   "An instrument a bit bigger than a violin.",
+   "A flower, a cousin of the pansy."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "viper",
+  "register": "standard",
+  "definition": "A venomous snake.",
+  "note": "From Latin vipera, 'snake that gives birth to live young'. An adder is one.",
+  "hints": [
+   "A poisonous snake.",
+   "The adder is a British one."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "viral",
+  "register": "standard",
+  "definition": "Relating to a virus; or spreading quickly online.",
+  "note": "From virus plus -al. A video can be called it if shared widely.",
+  "hints": [
+   "A video shared by millions.",
+   "Caused by a germ."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "virus",
+  "register": "standard",
+  "definition": "A tiny infectious agent; or a harmful computer program.",
+  "note": "From Latin virus, 'poison'. It is smaller than bacteria.",
+  "hints": [
+   "A cause of colds and flu.",
+   "Harmful code on a computer."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "visit",
+  "register": "standard",
+  "definition": "To go and see someone.",
+  "note": "From Latin visitare, 'to go to see'. You can pay one to a friend or a museum.",
+  "hints": [
+   "What you do to see a friend.",
+   "A trip to a place."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "visor",
+  "register": "standard",
+  "definition": "A front part of a helmet or cap that shades the eyes.",
+  "note": "From Anglo-Norman viser, from Old French vis, 'face'. A knight's one lifted to show the face.",
+  "hints": [
+   "A knight's face guard.",
+   "A cap's brim that shades the eyes."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "vista",
+  "register": "standard",
+  "definition": "A long view, especially a scenic one.",
+  "note": "From Italian vista, 'sight'. A mountain top offers one.",
+  "hints": [
+   "A scenic outlook.",
+   "A wide view over a valley."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "vital",
+  "register": "standard",
+  "definition": "Essential; or full of life.",
+  "note": "From Latin vitalis, from vita, 'life'. Vital signs show life.",
+  "hints": [
+   "Essential for life.",
+   "Pulse and breathing are called this sign."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "vivid",
+  "register": "standard",
+  "definition": "Bright and clear.",
+  "note": "From Latin vividus, 'lively'. A dream or a colour can be this.",
+  "hints": [
+   "A bright colour.",
+   "A memory so clear it feels real."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "vixen",
+  "register": "standard",
+  "definition": "A female fox.",
+  "note": "From Old English fyxen, 'she-fox'. It is also an old insult for a bad-tempered woman.",
+  "hints": [
+   "A she-fox in the wild.",
+   "A reindeer in the Christmas song."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "vocal",
+  "register": "standard",
+  "definition": "Relating to the voice; or speaking out.",
+  "note": "From Latin vocalis, from vox, 'voice'. A singer has them, and a campaigner can be this.",
+  "hints": [
+   "A singer's part of a song.",
+   "Someone who speaks out loudly."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "vodka",
+  "register": "standard",
+  "definition": "A clear strong spirit, usually from grain or potato.",
+  "note": "From Russian vodka, a diminutive of voda, 'water'. It means 'little water'.",
+  "hints": [
+   "A clear spirit from Russia.",
+   "Used in a Moscow mule."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "vomit",
+  "register": "standard",
+  "definition": "To throw up the contents of the stomach.",
+  "note": "From Latin vomere. It is a medical and a plain word.",
+  "hints": [
+   "What seasickness may cause.",
+   "What a queasy stomach may lead to."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "voter",
+  "register": "standard",
+  "definition": "A person who casts a ballot.",
+  "note": "From vote plus -er. In many countries you must register to be one.",
+  "hints": [
+   "Someone at the polls.",
+   "Casts a ballot in an election."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "vouch",
+  "register": "standard",
+  "definition": "To confirm that someone or something is reliable.",
+  "note": "From Middle English vouchen, 'to summon as a witness', from Old French. A friend can do it for your character.",
+  "hints": [
+   "What a reference does for a job seeker.",
+   "To speak up for someone's honesty."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "vowel",
+  "register": "standard",
+  "definition": "A speech sound made without blocking the breath; or the letter for it.",
+  "note": "From Old French vouel, from Latin vocalis, 'sounding'. In English they are a, e, i, o and u.",
+  "hints": [
+   "A, E, I, O or U.",
+   "What a consonant is not."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "vying",
+  "register": "standard",
+  "definition": "Competing for something.",
+  "note": "The present participle of vie, from Old French envier, 'to challenge'. Rivals are said to be doing it for a prize.",
+  "hints": [
+   "Two rivals competing for a title.",
+   "Competing eagerly for first place."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "wacky",
+  "register": "slang",
+  "definition": "Funny in a crazy way.",
+  "note": "From whack plus -y. It describes zany people and ideas.",
+  "hints": [
+   "A zany, eccentric idea.",
+   "Like a comedy full of bizarre antics."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "wafer",
+  "register": "standard",
+  "definition": "A thin crisp biscuit; or a thin disc of bread used in communion.",
+  "note": "From Anglo-Norman wafre, from a Germanic word for 'honeycomb', because of the pattern. Ice cream is often served between them.",
+  "hints": [
+   "A thin crisp biscuit for ice cream.",
+   "A thin disc of bread in church."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "wagon",
+  "register": "standard",
+  "definition": "A four-wheeled cart for goods.",
+  "note": "Borrowed from Dutch wagen. Settlers crossed America in covered ones.",
+  "hints": [
+   "What settlers rode across the prairie.",
+   "A child's pull-along toy cart."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "waist",
+  "register": "standard",
+  "definition": "The narrow part of the body between ribs and hips.",
+  "note": "From Middle English wast, probably from Old English. A belt goes round it.",
+  "hints": [
+   "Where a belt sits.",
+   "The narrow part of an hourglass figure."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "waive",
+  "register": "standard",
+  "definition": "To give up a right or a claim.",
+  "note": "From Middle English weyven, 'to abandon'. A bank might do it to a fee.",
+  "hints": [
+   "What a landlord may do to a late fee.",
+   "To choose not to enforce a rule."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "waltz",
+  "register": "standard",
+  "definition": "A ballroom dance in three-beat time.",
+  "note": "From German Walzer, from walzen, 'to roll or turn'. Vienna made it famous.",
+  "hints": [
+   "A ballroom dance with a one-two-three beat.",
+   "Strauss wrote famous ones."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "warty",
+  "register": "standard",
+  "definition": "Covered in small hard growths.",
+  "note": "From wart plus -y. A toad's skin is this way.",
+  "hints": [
+   "A toad's skin.",
+   "Lumpy and rough."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "waste",
+  "register": "standard",
+  "definition": "To use carelessly; or rubbish.",
+  "note": "From Old French guast, from Latin vastus, 'empty'. It names both throwing things away and what is thrown away.",
+  "hints": [
+   "What you do with money you squander.",
+   "Rubbish thrown out."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "watch",
+  "register": "standard",
+  "definition": "To look at carefully; or a timepiece on the wrist.",
+  "note": "From Old English waecce, 'wakefulness'. A guard keeps one at night.",
+  "hints": [
+   "What you wear on your wrist.",
+   "What a lifeguard does at the beach."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "water",
+  "register": "standard",
+  "definition": "The clear liquid that falls as rain.",
+  "note": "From Old English waeter. Rivers, rain and oceans are made of it.",
+  "hints": [
+   "What you drink when thirsty.",
+   "A chemical made of hydrogen and oxygen."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "waver",
+  "register": "standard",
+  "definition": "To be unsteady or unsure.",
+  "note": "From Middle English waveren, 'to move unsteadily'. A flame or a decision can do it.",
+  "hints": [
+   "What a voice does when nervous.",
+   "To be torn between choices."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "waxen",
+  "register": "standard",
+  "definition": "Made of wax; or pale like wax.",
+  "note": "From Old English weaxen, 'of wax'. A pale face may be called it.",
+  "hints": [
+   "A pale, smooth face like a candle.",
+   "Made of the stuff candles are formed from."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "weave",
+  "register": "standard",
+  "definition": "To make cloth by crossing threads.",
+  "note": "From Old English wefan. A loom is used.",
+  "hints": [
+   "What a loom does.",
+   "What a spider does with a web."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "wedge",
+  "register": "standard",
+  "definition": "A tapering piece of material used to split or hold.",
+  "note": "From Old English wecg. A door may be held open by one.",
+  "hints": [
+   "What keeps a door open.",
+   "A piece of cheese cut like a triangle."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "weedy",
+  "register": "standard",
+  "definition": "Full of weeds; or thin and weak.",
+  "note": "From weed plus -y. A neglected garden is this way.",
+  "hints": [
+   "An overgrown flowerbed.",
+   "A puny, thin person."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "weigh",
+  "register": "standard",
+  "definition": "To find how heavy something is.",
+  "note": "From Old English wegan, 'to carry or lift'. A scale does it.",
+  "hints": [
+   "What a scale does.",
+   "To consider options before choosing."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "weird",
+  "register": "standard",
+  "definition": "Strange or unusual.",
+  "note": "From Old English wyrd, 'fate'. The word first meant destiny, then something uncanny.",
+  "hints": [
+   "Odd and unsettling.",
+   "Once meant fate in Old English."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "whack",
+  "register": "slang",
+  "definition": "To hit sharply.",
+  "note": "Uncertain in origin; it is probably imitative of the sound of a blow. 'Out of whack' means out of order.",
+  "hints": [
+   "A hard blow with a stick.",
+   "The sound of a bat hitting a ball."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "whale",
+  "register": "standard",
+  "definition": "A huge sea mammal.",
+  "note": "From Old English hwael. Blue ones are the largest animals ever.",
+  "hints": [
+   "The largest animal in the sea.",
+   "A mammal that sings in the ocean."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "wharf",
+  "register": "standard",
+  "definition": "A structure where ships dock.",
+  "note": "From Old English hwearf, 'bank' or 'shore'. Boats load and unload at one.",
+  "hints": [
+   "A place for ships to tie up.",
+   "A landing stage beside the water."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "wheat",
+  "register": "standard",
+  "definition": "A cereal grain from which flour is made.",
+  "note": "From Old English haete, probably related to white. Bread is baked from it.",
+  "hints": [
+   "What bread is made from.",
+   "A golden field crop."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "wheel",
+  "register": "standard",
+  "definition": "A round part that turns on an axle.",
+  "note": "From Old English hweol. Bicycles and cars roll on them.",
+  "hints": [
+   "A round part on a bicycle.",
+   "What you turn to steer a ship."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "whelp",
+  "register": "standard",
+  "definition": "A puppy; or a cheeky young man.",
+  "note": "From Old English hwelp. Dogs and wolves have them.",
+  "hints": [
+   "A baby dog or wolf.",
+   "A rude word for a young upstart."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "where",
+  "register": "standard",
+  "definition": "At what place.",
+  "note": "From Old English hwaer. It starts a question about location.",
+  "hints": [
+   "A question about a location.",
+   "What a map answers."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "which",
+  "register": "standard",
+  "definition": "What one of several.",
+  "note": "From Old English hwylc, 'of what kind'. It asks a choice.",
+  "hints": [
+   "A question word for choosing.",
+   "A word to pick between two."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "whiff",
+  "register": "standard",
+  "definition": "A faint smell.",
+  "note": "Imitative, first recorded for a puff of air. A bit of perfume or smoke is one.",
+  "hints": [
+   "A hint of cooking in the air.",
+   "A faint trace of perfume."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "while",
+  "register": "standard",
+  "definition": "A period of time; or during the time that.",
+  "note": "From Old English hwil, 'time'. It can also mean 'although'.",
+  "hints": [
+   "A short period of time.",
+   "A word meaning 'although' or 'during'."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "whine",
+  "register": "standard",
+  "definition": "To complain in a high, drawn-out tone.",
+  "note": "From Old English hwinan, 'to whistle through the air'. A dog or a child may do it.",
+  "hints": [
+   "What a puppy does at the door.",
+   "A child's long complaint."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "whiny",
+  "register": "standard",
+  "definition": "Complaining in a fretful tone.",
+  "note": "From whine plus -y. It describes a child who keeps grumbling.",
+  "hints": [
+   "A child grumbling in the back of a car.",
+   "Constantly moaning."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "whirl",
+  "register": "standard",
+  "definition": "To spin rapidly.",
+  "note": "From Middle English whirlen, from a Scandinavian word. A dancer or a tornado can do it.",
+  "hints": [
+   "What a dancer does.",
+   "A spinning motion."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "white",
+  "register": "standard",
+  "definition": "The colour of snow or milk.",
+  "note": "From Old English hwit. It is the colour of clean paper.",
+  "hints": [
+   "The colour of fresh snow.",
+   "The opposite of black."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "whole",
+  "register": "standard",
+  "definition": "Complete; not divided.",
+  "note": "From Old English hal, 'healthy', also source of hale and heal. A loaf or a number may be this.",
+  "hints": [
+   "Every bit of it, not in parts.",
+   "The opposite of a fraction."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "whoop",
+  "register": "standard",
+  "definition": "A loud cry of joy.",
+  "note": "From Middle English whopen, imitative. It is a sound of excitement.",
+  "hints": [
+   "A shout of excitement.",
+   "What a crowd gives at a win."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "whose",
+  "register": "standard",
+  "definition": "Of which person.",
+  "note": "From Old English hwaes, the genitive of who. It asks about ownership.",
+  "hints": [
+   "A word asking who owns it.",
+   "The possessive of who."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "widen",
+  "register": "standard",
+  "definition": "To make or become wider.",
+  "note": "From wide plus -en. A road or a gap can be this way.",
+  "hints": [
+   "What a road project does.",
+   "What your eyes do in surprise."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "widow",
+  "register": "standard",
+  "definition": "A woman whose husband has died.",
+  "note": "From Old English widuwe. It is the same word in many Indo-European languages.",
+  "hints": [
+   "A woman who has lost her husband.",
+   "A spider with a famous black name."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "width",
+  "register": "standard",
+  "definition": "How wide something is.",
+  "note": "From wide plus -th, on the pattern of length. A ruler can measure it.",
+  "hints": [
+   "Side to side measure.",
+   "What a door's frame has."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "wield",
+  "register": "standard",
+  "definition": "To hold and use a tool or weapon.",
+  "note": "From Old English wealdan, 'to rule'. A king can do it to power, and a knight to a sword.",
+  "hints": [
+   "What a knight does with a sword.",
+   "To exercise power over others."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "wight",
+  "register": "standard",
+  "definition": "An old word for a living creature.",
+  "note": "From Old English wiht, 'creature'. It also names ghostly beings in fantasy.",
+  "hints": [
+   "An archaic word for a being.",
+   "A ghostly figure in fantasy."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "wimpy",
+  "register": "slang",
+  "definition": "Weak or cowardly.",
+  "note": "From wimp, of uncertain origin, plus -y. It describes feeble people or things.",
+  "hints": [
+   "The opposite of brave.",
+   "A weak, timid manner."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "wince",
+  "register": "standard",
+  "definition": "To flinch in pain.",
+  "note": "From Anglo-Norman wincier, 'to bend aside'. A sharp pain makes you do it.",
+  "hints": [
+   "What you do at a sharp pain.",
+   "To flinch at a sudden sting."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "winch",
+  "register": "standard",
+  "definition": "A machine that hauls with a drum and cable.",
+  "note": "From Old English wince, 'reel'. A tow truck often has one.",
+  "hints": [
+   "A tow truck's cable drum.",
+   "A crank for hauling a heavy load."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "windy",
+  "register": "standard",
+  "definition": "With a lot of wind.",
+  "note": "From Old English windig, built from wind plus -y. A kite flies best on such a day.",
+  "hints": [
+   "A day for flying a kite.",
+   "Chicago is nicknamed the city of this."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "wispy",
+  "register": "standard",
+  "definition": "Thin and light, like a wisp.",
+  "note": "From wisp plus -y. Hair or cloud can be this.",
+  "hints": [
+   "Fine, thin hair.",
+   "A cloud thin and light."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
  }
 ]
