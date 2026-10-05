@@ -19714,5 +19714,1193 @@
   ],
   "difficulty": "familiar",
   "connection": ""
+ },
+ {
+  "word": "stilt",
+  "register": "standard",
+  "definition": "A tall pole with a footrest for walking high off the ground; or a post holding up a building.",
+  "note": "From Middle English stilte. Circus performers walk on them, and some houses stand over water on them.",
+  "hints": [
+   "What a circus performer walks on to look tall.",
+   "A post that raises a house above a flood."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "sting",
+  "register": "standard",
+  "definition": "To pierce skin with a sharp point, as a bee does; or a police trap.",
+  "note": "From Old English sting, 'a piercing'. A sting can also mean a police operation to catch criminals.",
+  "hints": [
+   "What a bee or a nettle does.",
+   "A police trick to catch a crook."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "stink",
+  "register": "standard",
+  "definition": "To give off a strong foul smell.",
+  "note": "From Old English stincan, which originally meant just 'to smell', pleasant or not. Only later did it turn bad.",
+  "hints": [
+   "What rotten eggs do.",
+   "A bad smell."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "stint",
+  "register": "standard",
+  "definition": "A fixed period of work.",
+  "note": "From Old English styntan, 'to make blunt', which led to the sense of limiting. You may do a stint abroad.",
+  "hints": [
+   "A short spell in a job.",
+   "A spell on duty, like a tour."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "stock",
+  "register": "standard",
+  "definition": "A supply of goods; or a share in a company; or a flavoured broth.",
+  "note": "From Old English stocc, 'tree trunk' or 'post'. It has many senses, from shop inventory to soup base.",
+  "hints": [
+   "Goods on a shop's shelves.",
+   "Soup is built on a good one."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "stoic",
+  "register": "standard",
+  "definition": "A person who endures pain without complaint.",
+  "note": "From Greek Stoikos, after the Painted Porch in Athens where the philosophers taught. They preached calm acceptance of fate.",
+  "hints": [
+   "Someone who bears hardship without complaint.",
+   "A philosopher like Marcus Aurelius."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "stoke",
+  "register": "standard",
+  "definition": "To tend a fire by adding fuel.",
+  "note": "From Middle Dutch stoken, 'to poke'. You can also stir up feelings with it.",
+  "hints": [
+   "What you do to a furnace with coal.",
+   "To fuel a fire or an argument."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "stole",
+  "register": "standard",
+  "definition": "Past tense of steal; also a long wrap worn over the shoulders.",
+  "note": "The past tense is from Old English stal. The garment is from Latin stola, a different word.",
+  "hints": [
+   "What the thief did to the jewels.",
+   "A fur wrap for a lady's shoulders."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "stomp",
+  "register": "standard",
+  "definition": "To step down heavily.",
+  "note": "A variant of stamp, first recorded in 1803. A foot pounding the floor does it.",
+  "hints": [
+   "What an angry child does.",
+   "A heavy walk that shakes the floor."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "stone",
+  "register": "standard",
+  "definition": "A hard piece of rock.",
+  "note": "From Old English stan. It is also a British unit of weight, fourteen pounds.",
+  "hints": [
+   "A pebble on a beach.",
+   "A British measure of weight."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "stony",
+  "register": "standard",
+  "definition": "Full of rocks; or cold and unfeeling.",
+  "note": "From stone plus -y. A stare can be this way as can a field.",
+  "hints": [
+   "A field full of rocks.",
+   "An unfriendly, cold silence."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "stool",
+  "register": "standard",
+  "definition": "A seat with no back.",
+  "note": "From Old English stol, 'seat' or 'throne'. A bar often has high ones.",
+  "hints": [
+   "A seat in a bar.",
+   "What a milkmaid sat on."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "stoop",
+  "register": "standard",
+  "definition": "To bend forward and down; also the steps at a building's front door.",
+  "note": "The verb is from Old English stupian. The porch sense is American, from Dutch stoep.",
+  "hints": [
+   "What you do to pick up a coin.",
+   "The steps at a New York brownstone."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "store",
+  "register": "standard",
+  "definition": "A place where goods are sold; or to put away for later.",
+  "note": "From Old French estorer, 'to build or furnish'. It is both a shop and a verb for saving.",
+  "hints": [
+   "Where you buy groceries.",
+   "What a squirrel does with nuts."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "stork",
+  "register": "standard",
+  "definition": "A large wading bird with long legs and bill.",
+  "note": "From Old English storc. Folklore says it brings babies.",
+  "hints": [
+   "A bird said to deliver babies.",
+   "A tall bird nesting on chimney tops."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "storm",
+  "register": "standard",
+  "definition": "A violent disturbance of the weather.",
+  "note": "From Old English storm. It describes wind, rain, snow and thunder.",
+  "hints": [
+   "Thunder and lightning.",
+   "A hurricane or a blizzard."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "story",
+  "register": "standard",
+  "definition": "A tale told for entertainment; or a floor of a building.",
+  "note": "From Old French estoire, from Latin historia, the same source as history. The meaning of a floor in a building is a separate sense of uncertain origin.",
+  "hints": [
+   "A tale before bedtime.",
+   "One level of a skyscraper."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "stove",
+  "register": "standard",
+  "definition": "A device for cooking or heating.",
+  "note": "From Middle Dutch stove, 'heated room'. It first meant a hot room before the cooking sense.",
+  "hints": [
+   "A cooker with burners.",
+   "What you boil a pot on."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "strap",
+  "register": "standard",
+  "definition": "A narrow band of leather or cloth.",
+  "note": "From strop, a variant of an old word for a loop on a harness. It holds a watch or a bag.",
+  "hints": [
+   "What holds a watch on your wrist.",
+   "A band that holds a rucksack on a shoulder."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "straw",
+  "register": "standard",
+  "definition": "Dried stalks of grain; or a thin tube for drinking.",
+  "note": "From Old English streaw. The tube was first made of actual stalks.",
+  "hints": [
+   "What a scarecrow is stuffed with.",
+   "What you sip a milkshake through."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "stray",
+  "register": "standard",
+  "definition": "To wander off; or a lost animal.",
+  "note": "From Old French estraier, 'to roam'. A lost dog or cat is called one.",
+  "hints": [
+   "A lost cat without a home.",
+   "A dog roaming without an owner."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "strip",
+  "register": "standard",
+  "definition": "A long narrow piece; or to remove clothing or covering.",
+  "note": "From Middle Low German strippe, 'strap', of uncertain origin. It names a comic page, an airfield, and the act of undressing.",
+  "hints": [
+   "A long, thin piece of paper.",
+   "A runway for aircraft."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "strut",
+  "register": "standard",
+  "definition": "To walk proudly; or a supporting bar.",
+  "note": "From Middle English strouten, 'to bulge'. A peacock does it. The bar sense is related.",
+  "hints": [
+   "A peacock's walk.",
+   "A brace in a roof."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "stuck",
+  "register": "standard",
+  "definition": "Unable to move or progress.",
+  "note": "The past tense of stick, from Old English stician. A cork can be this, and so can a crossword solver.",
+  "hints": [
+   "What a car may be in mud.",
+   "How a puzzler feels without ideas."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "study",
+  "register": "standard",
+  "definition": "To learn about a subject.",
+  "note": "From Old French estudier, from Latin studium, 'zeal'. It also names a room for reading.",
+  "hints": [
+   "What a student does before an exam.",
+   "A room with a desk and books."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "stuff",
+  "register": "standard",
+  "definition": "Things or material; or to fill tightly.",
+  "note": "From Old French estoffe, 'material'. It also means to cram a turkey with a filling.",
+  "hints": [
+   "Odds and ends.",
+   "What you do to a turkey before roasting."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "stump",
+  "register": "standard",
+  "definition": "What remains of a cut tree.",
+  "note": "From Middle English stumpe. A politician's campaign speech is a 'stump speech'.",
+  "hints": [
+   "What is left of a felled tree.",
+   "A short, thick remainder of something."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "stunt",
+  "register": "standard",
+  "definition": "A daring feat; or to hold back growth.",
+  "note": "Its origin is unknown. It first appeared in American slang in the late nineteenth century for a feat of skill. A separate verb sense means to hold back growth.",
+  "hints": [
+   "A dangerous move in a film.",
+   "What a lack of food can do to growth."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "style",
+  "register": "standard",
+  "definition": "A manner of doing things; or fashion.",
+  "note": "From Latin stilus, 'pointed writing tool'. The writing tool gave its name to a way of writing, and then to any manner.",
+  "hints": [
+   "How someone dresses or writes.",
+   "A fashionable quality."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "suave",
+  "register": "standard",
+  "definition": "Smooth and charming in manner.",
+  "note": "From Latin suavis, 'sweet'. It is a doublet of sweet.",
+  "hints": [
+   "A debonair, polished gentleman.",
+   "Charming, like a film spy."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "sugar",
+  "register": "standard",
+  "definition": "A sweet crystalline food.",
+  "note": "Ultimately from Sanskrit sarkara, 'gravel' or 'grit', through Arabic and Italian. Cane and beets are the main sources.",
+  "hints": [
+   "What goes in tea.",
+   "A sweet crystal from cane."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "suite",
+  "register": "standard",
+  "definition": "A set of rooms; or a set of musical pieces.",
+  "note": "From French suite, 'following'. It is a doublet of suit.",
+  "hints": [
+   "A fancy hotel room set.",
+   "A set of musical movements."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "sulky",
+  "register": "standard",
+  "definition": "Silent and moody after being upset.",
+  "note": "From sulk plus -y. A sulky is also a light cart for harness racing that seats just one rider.",
+  "hints": [
+   "A child quietly pouting.",
+   "A one-seat racing cart."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "sully",
+  "register": "standard",
+  "definition": "To stain or spoil.",
+  "note": "From Old English sylian, 'to soil'. It is most often used of reputations.",
+  "hints": [
+   "What a scandal does to a good name.",
+   "To tarnish something clean."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "sumac",
+  "register": "standard",
+  "definition": "A shrub, and the tangy red spice made from its berries.",
+  "note": "From Middle English sumac, from Arabic summaq, from a word meaning 'red'. It is used in Middle Eastern cooking.",
+  "hints": [
+   "A tangy red spice.",
+   "A shrub whose leaves turn red in autumn."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "sunny",
+  "register": "standard",
+  "definition": "Bright with sunshine.",
+  "note": "From Old English sunnig, built from sun plus -y. It also describes a cheerful nature.",
+  "hints": [
+   "A clear, bright day.",
+   "A cheerful disposition."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "super",
+  "register": "standard",
+  "definition": "Excellent; or above and beyond.",
+  "note": "From Latin super, 'above'. It is used as a prefix and on its own as slang.",
+  "hints": [
+   "A slangy word for great.",
+   "The word before 'man' for a flying hero."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "surly",
+  "register": "standard",
+  "definition": "Rude and bad-tempered.",
+  "note": "A sixteenth-century alteration of sirly, 'lordly', from sir plus -ly. It once meant haughty before it meant gruff.",
+  "hints": [
+   "A grumpy waiter.",
+   "Unfriendly and short-tempered."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "sushi",
+  "register": "standard",
+  "definition": "A Japanese dish of vinegared rice with fish or other toppings.",
+  "note": "Borrowed from Japanese. The word originally referred to the sourness of the rice.",
+  "hints": [
+   "Raw fish on rice.",
+   "Rolled with seaweed and eaten with soy sauce."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "swami",
+  "register": "standard",
+  "definition": "A Hindu religious teacher.",
+  "note": "From Hindi svami, from Sanskrit svamin, 'master' or 'lord'. It is used as a title of respect.",
+  "hints": [
+   "A Hindu teacher.",
+   "A title meaning 'master'."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "swamp",
+  "register": "standard",
+  "definition": "Wet, spongy land with trees.",
+  "note": "Early records from 1624 are from North America, with uncertain earlier roots. Alligators live in them.",
+  "hints": [
+   "Wet land where alligators live.",
+   "A soggy, muddy marsh."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "swarm",
+  "register": "standard",
+  "definition": "A large flying or moving group of insects.",
+  "note": "From Old English swearm. Bees and locusts do it, and so do crowds.",
+  "hints": [
+   "Bees leaving a hive.",
+   "A large crowd moving together."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "swash",
+  "register": "standard",
+  "definition": "The rush of water up a beach after a wave breaks.",
+  "note": "Of Scandinavian origin; compare Swedish and Norwegian dialect words for splashing. It is the opposite of backwash.",
+  "hints": [
+   "Water running up a beach.",
+   "Where the surf spreads out on the sand."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "swath",
+  "register": "standard",
+  "definition": "A broad strip or sweep.",
+  "note": "From Old English swaeth, 'track'. A farmer cuts a wide one with a scythe.",
+  "hints": [
+   "A wide strip of cut grass.",
+   "A broad band of land."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "swear",
+  "register": "standard",
+  "definition": "To make a solemn promise; or to use rude words.",
+  "note": "From Old English swerian, 'to take an oath'. Both senses grew from the idea of invoking something sacred.",
+  "hints": [
+   "What a witness does in court.",
+   "To curse when angry."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "sweep",
+  "register": "standard",
+  "definition": "To clean with a brush; or a long arc.",
+  "note": "From Middle English swepen. It also names a chimney cleaner and a clean win in a series.",
+  "hints": [
+   "What you do to a floor with a broom.",
+   "A win of every game in a series."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "sweet",
+  "register": "standard",
+  "definition": "Tasting like sugar; or pleasant and kind.",
+  "note": "From Old English swete. It also names a candy in British speech.",
+  "hints": [
+   "What honey tastes like.",
+   "A kind, endearing nature."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "swell",
+  "register": "standard",
+  "definition": "To grow larger; or a rolling wave.",
+  "note": "From Old English swellan. An ankle can do it, and so can the ocean.",
+  "hints": [
+   "What a sprained ankle does.",
+   "A long wave out at sea."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "swept",
+  "register": "standard",
+  "definition": "Past tense of sweep.",
+  "note": "The past tense of sweep, from Middle English swepen. It describes a floor cleared with a broom, or someone carried away.",
+  "hints": [
+   "What a broom did to the floor.",
+   "How a romantic hero treats someone off their feet."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "swift",
+  "register": "standard",
+  "definition": "Fast; or a type of bird.",
+  "note": "From Old English swift, 'quick'. The bird is named for its fast, darting flight.",
+  "hints": [
+   "Quick and rapid.",
+   "A fast bird with sickle-shaped wings."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "swill",
+  "register": "standard",
+  "definition": "Liquid kitchen scraps fed to pigs; or to drink greedily.",
+  "note": "From Old English swillan, 'to wash'. It also means cheap, poor-quality drink.",
+  "hints": [
+   "What a farmer pours into the pig trough.",
+   "To gulp down drink in large amounts."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "swine",
+  "register": "standard",
+  "definition": "A pig; or a contemptible person.",
+  "note": "From Old English swin. It is an old plural-looking word that is also singular.",
+  "hints": [
+   "An old word for hogs.",
+   "A rude name for an awful person."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "swing",
+  "register": "standard",
+  "definition": "To move back and forth; or a seat on ropes.",
+  "note": "From Old English swingan, 'to beat or whip'. It also names a playground seat and a jazz style.",
+  "hints": [
+   "A seat on chains at the playground.",
+   "What a golfer does with a club."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "swirl",
+  "register": "standard",
+  "definition": "To twist round and round.",
+  "note": "From Middle English swirlen, probably from a Scandinavian word. Water in a drain does it.",
+  "hints": [
+   "What milk does when stirred into tea.",
+   "The spiral of water in a plughole."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "swish",
+  "register": "standard",
+  "definition": "A soft rustling sound; or smart and fashionable.",
+  "note": "Imitative of a sound like a brush or a skirt. In British slang it means stylish.",
+  "hints": [
+   "The sound of a basketball through the net.",
+   "A silk skirt's soft rustle."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "swoop",
+  "register": "standard",
+  "definition": "To dive down suddenly.",
+  "note": "From Old English swapan, 'to sweep'. Eagles do it onto prey.",
+  "hints": [
+   "What a hawk does to catch a mouse.",
+   "A sudden dive from above."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "sword",
+  "register": "standard",
+  "definition": "A long blade for fighting.",
+  "note": "From Old English sweord. Knights carried them.",
+  "hints": [
+   "A knight's weapon.",
+   "A long blade with a hilt."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "sworn",
+  "register": "standard",
+  "definition": "Declared under oath.",
+  "note": "The past participle of swear, from Old English sworen. An enemy may be one of these.",
+  "hints": [
+   "What a witness's statement is.",
+   "Bound by an oath, as an enemy."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "synod",
+  "register": "standard",
+  "definition": "A church council.",
+  "note": "From Greek sunodos, 'meeting', from sun, 'together', and hodos, 'way'. It is a gathering of church leaders.",
+  "hints": [
+   "A gathering of bishops.",
+   "A formal church meeting."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "syrup",
+  "register": "standard",
+  "definition": "A thick sweet liquid.",
+  "note": "From Old French sirop, from Arabic sharab, 'drink'. Pancakes are often poured with maple.",
+  "hints": [
+   "What goes on pancakes.",
+   "Maple is a sweet tree one."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "tabby",
+  "register": "standard",
+  "definition": "A cat with striped or mottled fur.",
+  "note": "From French tabis, 'striped silk', named from a district in Baghdad where it was made. The cat took the name from the pattern.",
+  "hints": [
+   "A striped house cat.",
+   "A cat with dark swirls on grey fur."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "table",
+  "register": "standard",
+  "definition": "A piece of furniture with a flat top.",
+  "note": "From Latin tabula, 'board'. It is also a grid of data.",
+  "hints": [
+   "Where you eat dinner.",
+   "A grid of rows and columns."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "taboo",
+  "register": "standard",
+  "definition": "Something forbidden by social custom.",
+  "note": "Borrowed from Tongan tapu, 'sacred' or 'prohibited'. Captain Cook introduced it to English in the 1770s.",
+  "hints": [
+   "A subject you do not raise at dinner.",
+   "A word from the Pacific meaning forbidden."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "tacky",
+  "register": "standard",
+  "definition": "Sticky; or cheap and in poor taste.",
+  "note": "From tack plus -y. Wet paint is the first kind.",
+  "hints": [
+   "Wet glue or paint.",
+   "A garish, cheap decoration."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "taffy",
+  "register": "standard",
+  "definition": "A chewy candy.",
+  "note": "Probably related to tafia, a kind of rum. It is pulled until it is soft.",
+  "hints": [
+   "A sweet pulled at the seaside.",
+   "A candy that sticks to your teeth."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "taint",
+  "register": "standard",
+  "definition": "To spoil or contaminate.",
+  "note": "From Old French teint, 'dyed', through the idea of tinging with something. A scandal may do it to a name.",
+  "hints": [
+   "What a scandal does to a reputation.",
+   "Rotten food has this kind of spoil."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "taken",
+  "register": "standard",
+  "definition": "The past participle of take; also in a romantic relationship.",
+  "note": "From Old Norse tekinn. It can mean seized, or, in casual speech, no longer single.",
+  "hints": [
+   "What a seat is if someone else is in it.",
+   "Describes someone who has a partner."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "taker",
+  "register": "standard",
+  "definition": "One who accepts or grabs something.",
+  "note": "From take plus -er. It is the opposite of a giver.",
+  "hints": [
+   "Opposite of a giver.",
+   "Someone who accepts the bet."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "tally",
+  "register": "standard",
+  "definition": "A running count.",
+  "note": "From Latin talea, 'stick', for the notched stick used to keep records. Votes are counted by it.",
+  "hints": [
+   "A running count of votes.",
+   "To add up scores."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "talon",
+  "register": "standard",
+  "definition": "A sharp claw of a bird of prey.",
+  "note": "From Old French talon, 'heel'. Eagles grip with them.",
+  "hints": [
+   "An eagle's claw.",
+   "What an owl grips a mouse with."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "tamer",
+  "register": "standard",
+  "definition": "A person who trains wild animals.",
+  "note": "From tame plus -er. A circus lion one is a familiar figure.",
+  "hints": [
+   "Someone in a circus who trains lions.",
+   "A person who calms wild creatures."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "tango",
+  "register": "standard",
+  "definition": "A passionate dance from Argentina; or the letter T in radio code.",
+  "note": "Borrowed from Rioplatense Spanish. The dance began in Buenos Aires in the late nineteenth century.",
+  "hints": [
+   "A dance of sharp steps and close hold.",
+   "The word for T in the spelling alphabet."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "tangy",
+  "register": "standard",
+  "definition": "Sharp and zesty in flavour.",
+  "note": "From tang plus -y. Lemon and vinegar are this way.",
+  "hints": [
+   "A sharp, citrus flavour.",
+   "Describes yoghurt or barbecue sauce."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "taper",
+  "register": "standard",
+  "definition": "To narrow to a point; or a thin candle.",
+  "note": "From Old English tapor, 'candle', of uncertain origin. Candles narrow towards the top.",
+  "hints": [
+   "A thin candle.",
+   "To grow gradually narrower."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "tapir",
+  "register": "standard",
+  "definition": "A pig-like animal with a short trunk.",
+  "note": "From Tupi tapi'ira, through French. It lives in forests of South America and Asia.",
+  "hints": [
+   "A hoofed animal with a flexible snout.",
+   "A relative of the rhinoceros and horse."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "tarot",
+  "register": "standard",
+  "definition": "A deck of cards used for fortune-telling.",
+  "note": "From French tarot, from Italian tarocchi. The deck was first used for a card game.",
+  "hints": [
+   "Cards read by a fortune teller.",
+   "A deck with 'The Fool' and 'The Tower'."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "taste",
+  "register": "standard",
+  "definition": "The sense of flavour; or to try food.",
+  "note": "From Old French taster, 'to touch or try'. It is the sense used by the tongue.",
+  "hints": [
+   "What a chef samples.",
+   "What the tongue does."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "tasty",
+  "register": "standard",
+  "definition": "Pleasant to eat.",
+  "note": "From taste plus -y. It is a casual word for delicious.",
+  "hints": [
+   "Delicious, in a casual word.",
+   "Another word for yummy."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "tatty",
+  "register": "slang",
+  "definition": "Worn out and shabby.",
+  "note": "A British word of uncertain origin, in use since the 1500s; it may be linked to tatters. A different, dialect word clips potato.",
+  "hints": [
+   "A scruffy old coat.",
+   "Faded and frayed."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "tawny",
+  "register": "standard",
+  "definition": "Yellowish-brown in colour.",
+  "note": "From Old French tane, 'tanned'. A kind of owl shares the name.",
+  "hints": [
+   "A lion's coat colour.",
+   "A brown owl is named after it."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "teach",
+  "register": "standard",
+  "definition": "To pass on knowledge.",
+  "note": "From Old English taecan, 'to show'. It is what a professor does.",
+  "hints": [
+   "What a professor does.",
+   "To instruct a class."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "teary",
+  "register": "standard",
+  "definition": "Filled with tears.",
+  "note": "From tear plus -y. A farewell may leave you so.",
+  "hints": [
+   "Eyes at a sad goodbye.",
+   "About to cry."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "tease",
+  "register": "standard",
+  "definition": "To mock playfully; or to comb out fibres.",
+  "note": "From Old English taesan, 'to pluck apart'. A friend does it with gentle jokes.",
+  "hints": [
+   "What siblings do to one another.",
+   "To make fun lightly."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "teeth",
+  "register": "standard",
+  "definition": "The plural of tooth.",
+  "note": "From Old English teth, an irregular plural. Dentists look after them.",
+  "hints": [
+   "Brushed twice a day.",
+   "What a dentist inspects."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "tenet",
+  "register": "standard",
+  "definition": "A principle that a group believes.",
+  "note": "Latin for 'he holds'. A core belief is something held.",
+  "hints": [
+   "A guiding principle.",
+   "A core belief of a faith."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "tenor",
+  "register": "standard",
+  "definition": "A high male singing voice; or the general sense of something.",
+  "note": "From Old French tenour, from Latin tenere, 'to hold'. In music it held the main melody in early choral works.",
+  "hints": [
+   "A singer like Pavarotti.",
+   "The overall tone of a speech."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "tense",
+  "register": "standard",
+  "definition": "Stretched tight; or the form of a verb showing time.",
+  "note": "The grammar sense is from Latin tempus, 'time'. The tight sense is from Latin tensus, 'stretched'.",
+  "hints": [
+   "What nerves feel before an exam.",
+   "Past, present or future."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "tenth",
+  "register": "standard",
+  "definition": "Number ten in order.",
+  "note": "From Middle English tenth. Old English used teotha, which gave 'tithe'.",
+  "hints": [
+   "The one after the ninth.",
+   "One part in ten."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "tepid",
+  "register": "standard",
+  "definition": "Barely warm.",
+  "note": "From Latin tepidus, 'lukewarm'. A bath left too long gets this way.",
+  "hints": [
+   "Water that has cooled down.",
+   "An unenthusiastic reception."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "terra",
+  "register": "standard",
+  "definition": "Earth or land, in Latin.",
+  "note": "Borrowed from Latin terra, 'earth'. It shows up in words like terrace and terrain.",
+  "hints": [
+   "A Latin word for soil.",
+   "Think of the 'firma' that follows it."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "terse",
+  "register": "standard",
+  "definition": "Brief and abrupt.",
+  "note": "From Latin tersus, 'wiped clean', used of neat and polished style. It now suggests curtness.",
+  "hints": [
+   "A one-word reply.",
+   "A short, curt message."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "testy",
+  "register": "standard",
+  "definition": "Easily annoyed.",
+  "note": "From Old French testu, 'headstrong', from teste, 'head'. Someone who is short of sleep may be this way.",
+  "hints": [
+   "Short-tempered and snappish.",
+   "Describes someone about to snap."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "thank",
+  "register": "standard",
+  "definition": "To show gratitude.",
+  "note": "From Old English thancian. It is related to the word think, from the idea of a thought of kindness.",
+  "hints": [
+   "What you say after a gift.",
+   "To express appreciation."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "theft",
+  "register": "standard",
+  "definition": "The act of stealing.",
+  "note": "From Old English thiefth, related to thief. It is a crime of taking someone's property.",
+  "hints": [
+   "What a burglar commits.",
+   "A crime against property."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "their",
+  "register": "standard",
+  "definition": "Belonging to them.",
+  "note": "From Old Norse their(r)a. It replaced the older English word hira.",
+  "hints": [
+   "A word for what belongs to more than one person.",
+   "Often confused with a place word."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "theme",
+  "register": "standard",
+  "definition": "The main subject or idea.",
+  "note": "From Old French teme, from Greek thema, 'something laid down'. A story, a party or a piece of music has one.",
+  "hints": [
+   "The central idea of a story.",
+   "A party's chosen topic for costumes."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "there",
+  "register": "standard",
+  "definition": "In or at that place.",
+  "note": "From Old English thaer. It is the opposite of here.",
+  "hints": [
+   "The opposite of here.",
+   "A word that points to a place."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "theta",
+  "register": "standard",
+  "definition": "The eighth letter of the Greek alphabet.",
+  "note": "From Greek theta. Mathematicians use it for an angle.",
+  "hints": [
+   "A Greek letter used for angles.",
+   "Written with a horizontal bar in an oval."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "thick",
+  "register": "standard",
+  "definition": "Having great depth; or dense.",
+  "note": "From Old English thicce. Soup and fog can be this way.",
+  "hints": [
+   "Opposite of thin.",
+   "A fog you can barely see through."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
  }
 ]
