@@ -1798,5 +1798,581 @@
   ],
   "difficulty": "familiar",
   "connection": ""
+ },
+ {
+  "word": "bawdy",
+  "register": "standard",
+  "definition": "Humorously rude about sex.",
+  "note": "From bawd, an old word for a brothel keeper. Shakespeare's comedies are full of bawdy jokes.",
+  "hints": [
+   "Like a saucy seaside postcard.",
+   "Rude in a cheerful way."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "bayou",
+  "register": "standard",
+  "definition": "A slow, marshy creek in the southern United States.",
+  "note": "From Louisiana French, from Choctaw bayuk, 'creek'.",
+  "hints": [
+   "Louisiana is full of them.",
+   "Alligators drift through one."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "beach",
+  "register": "standard",
+  "definition": "A sandy or pebbly shore.",
+  "note": "From Old English bæce, 'stream'. It came to mean the shingle by the water, then the whole shore.",
+  "hints": [
+   "Where sandcastles get built.",
+   "Sand, towels and waves."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "beady",
+  "register": "standard",
+  "definition": "Small, round and gleaming, like beads.",
+  "note": "Bead plus -y. 'Keeping a beady eye' on something means watching it closely.",
+  "hints": [
+   "Describes a suspicious bird's eyes.",
+   "Watching closely: a ... eye."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "beard",
+  "register": "standard",
+  "definition": "Hair growing on the chin and cheeks.",
+  "note": "From Old English beard. To beard someone once meant to confront them face to face.",
+  "hints": [
+   "Grows on a chin.",
+   "Santa has a white one."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "beast",
+  "register": "standard",
+  "definition": "A large wild animal; or a brutal person.",
+  "note": "From Latin bestia, 'animal'. Bestial and beastly share it.",
+  "hints": [
+   "Beauty's companion.",
+   "A wild creature."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "beech",
+  "register": "standard",
+  "definition": "A tree with smooth grey bark.",
+  "note": "From Old English bece. Book may share an ancient root, perhaps from runes carved on beech tablets.",
+  "hints": [
+   "A smooth-barked tree.",
+   "Its wood may have given us book."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "beefy",
+  "register": "standard",
+  "definition": "Muscular and solid.",
+  "note": "Beef plus -y. It moved from meat to muscle to anything robust.",
+  "hints": [
+   "A bodybuilder looks this way.",
+   "Bulky and strong."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "befit",
+  "register": "standard",
+  "definition": "To be suitable for.",
+  "note": "Be- plus fit. 'As befits a king' means as is proper for one.",
+  "hints": [
+   "Suitable to someone's status.",
+   "Often 'as ... a queen'."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "beget",
+  "register": "standard",
+  "definition": "To father a child; or to cause.",
+  "note": "From Old English begietan, 'to get'. Biblical family lists are long chains of it.",
+  "hints": [
+   "Violence is said to do this to violence.",
+   "Old word for fathering."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "begin",
+  "register": "standard",
+  "definition": "To start.",
+  "note": "From Old English beginnan, of uncertain deeper origin.",
+  "hints": [
+   "Opposite of finish.",
+   "What you do at the start."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "being",
+  "register": "standard",
+  "definition": "A living creature; or existence.",
+  "note": "Formed from be plus -ing around the 1300s.",
+  "hints": [
+   "Humans and aliens are both these.",
+   "Existence itself."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "belch",
+  "register": "standard",
+  "definition": "To let gas out from the stomach noisily.",
+  "note": "From Old English bealcian, an imitation of the sound.",
+  "hints": [
+   "A burp, more loudly.",
+   "Chimneys do it with smoke too."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "belie",
+  "register": "standard",
+  "definition": "To give a false impression of.",
+  "note": "Old English belecgan, 'to surround', later 'to tell lies about'.",
+  "hints": [
+   "A calm face may do this to nerves.",
+   "To disguise or contradict."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "belle",
+  "register": "standard",
+  "definition": "A beautiful woman, especially the most admired at a party.",
+  "note": "French for 'beautiful'. 'The belle of the ball' is the night's star.",
+  "hints": [
+   "Of the ball, traditionally.",
+   "French for beautiful."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "belly",
+  "register": "standard",
+  "definition": "The stomach area of the body.",
+  "note": "From Old English belg, 'bag'. Bellows shares the root.",
+  "hints": [
+   "A certain kind of dancer moves it.",
+   "Related to bellows."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "below",
+  "register": "standard",
+  "definition": "Lower than; under.",
+  "note": "Be- plus low. Sailors go below to leave the deck.",
+  "hints": [
+   "The opposite of above.",
+   "Under something."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "bench",
+  "register": "standard",
+  "definition": "A long seat for several people.",
+  "note": "From Old English benc. Judges sit on one, so 'the bench' means judges.",
+  "hints": [
+   "Parks are full of them.",
+   "Players wait on it during a match."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "beret",
+  "register": "standard",
+  "definition": "A soft, round, flat cap.",
+  "note": "From French béret, from a Gascon word for cap.",
+  "hints": [
+   "Classic headwear for French painters.",
+   "A soft flat hat."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "berry",
+  "register": "standard",
+  "definition": "A small, juicy fruit.",
+  "note": "From Old English berie. Botanists count bananas as berries and strawberries as not.",
+  "hints": [
+   "Bananas count as one, botanically.",
+   "Small, juicy and often red."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "berth",
+  "register": "standard",
+  "definition": "A bed on a ship or train; or a ship's mooring place.",
+  "note": "Possibly from bear, as in the room needed to steer clear. 'Give a wide berth' means keep away.",
+  "hints": [
+   "Give someone a wide one.",
+   "A bunk on a ship."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "beset",
+  "register": "standard",
+  "definition": "To trouble persistently.",
+  "note": "From Old English besettan, 'to surround'. A city could be beset by enemies.",
+  "hints": [
+   "Troubles do it from all sides.",
+   "Plagued by problems."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "betel",
+  "register": "standard",
+  "definition": "A leaf or nut chewed as a stimulant in South and Southeast Asia.",
+  "note": "From Portuguese, from Malayalam vettila. Chewing it stains the teeth red.",
+  "hints": [
+   "Chewed across South Asia.",
+   "Stains the mouth red."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "bevel",
+  "register": "standard",
+  "definition": "A sloping edge.",
+  "note": "From Old French baivel, from bayer, 'to gape'. Mirrors often have them.",
+  "hints": [
+   "A slanted edge on glass.",
+   "Mirrors are often given one."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "bezel",
+  "register": "standard",
+  "definition": "The ring holding the glass of a watch or a gem.",
+  "note": "From French biseau, 'sloping edge'.",
+  "hints": [
+   "Frames a watch face.",
+   "Holds a gemstone in place."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "bible",
+  "register": "standard",
+  "definition": "An authoritative book on a subject.",
+  "note": "From Greek biblia, 'books'. 'The angler's bible' borrows the idea of the definitive text.",
+  "hints": [
+   "A must-have reference book.",
+   "Its Greek root means books."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "bicep",
+  "register": "slang",
+  "definition": "The muscle at the front of the upper arm.",
+  "note": "From Latin biceps, 'two-headed', for its two attachment points. Bicep is a modern back-formation.",
+  "hints": [
+   "Flexed to show strength.",
+   "Its Latin root meant two-headed."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "biddy",
+  "register": "slang",
+  "definition": "A fussy or gossipy old woman.",
+  "note": "From Biddy, a pet form of Bridget. It became slang for any older woman.",
+  "hints": [
+   "An old busybody.",
+   "From a pet form of Bridget."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "bigot",
+  "register": "standard",
+  "definition": "An intolerant person with fixed prejudices.",
+  "note": "From French bigot. A popular story traces it to Normans swearing 'bi God', but nobody is sure.",
+  "hints": [
+   "Intolerant of others' views.",
+   "Narrow-minded to a fault."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "bilge",
+  "register": "standard",
+  "definition": "The bottom of a ship's hull; or nonsense.",
+  "note": "Probably a variant of bulge. The water that collects there is foul, hence nonsense.",
+  "hints": [
+   "Dirty water at the bottom of a ship.",
+   "Rubbish talk."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "bingo",
+  "register": "standard",
+  "definition": "A game of chance played with numbered cards.",
+  "note": "Probably from bing, a ringing sound. It is also shouted when something works out.",
+  "hints": [
+   "Two little ducks, twenty-two.",
+   "Shouted when you win."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "biome",
+  "register": "standard",
+  "definition": "A large natural community, such as desert or rainforest.",
+  "note": "Bio- plus -ome, coined by ecologists in 1916.",
+  "hints": [
+   "The tundra is one.",
+   "A large ecological community."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "birth",
+  "register": "standard",
+  "definition": "The start of life.",
+  "note": "From Old Norse byrth. Bear, as in to carry a child, shares the root.",
+  "hints": [
+   "Celebrated each year afterward.",
+   "The start of a life."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "bison",
+  "register": "standard",
+  "definition": "A large wild ox with a shaggy mane.",
+  "note": "From Latin bison, a Germanic word for wild ox.",
+  "hints": [
+   "Roamed the great plains.",
+   "Often called a buffalo."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "bitty",
+  "register": "slang",
+  "definition": "Made up of small, unconnected bits.",
+  "note": "Bit plus -y. Itty-bitty adds a rhyme for extra smallness.",
+  "hints": [
+   "Disjointed, in fragments.",
+   "Itty plus it means tiny."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "black",
+  "register": "standard",
+  "definition": "The darkest colour.",
+  "note": "From Old English blæc. Old English blac, 'pale, shining', was a different word.",
+  "hints": [
+   "Night's colour.",
+   "The colour of soot."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "blade",
+  "register": "standard",
+  "definition": "The cutting edge of a knife or tool.",
+  "note": "From Old English blæd, 'leaf'. A blade of grass kept the older sense.",
+  "hints": [
+   "A knife's sharp part.",
+   "A single leaf of grass."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "blame",
+  "register": "standard",
+  "definition": "Responsibility for a fault.",
+  "note": "From Old French blasmer, from the same Latin as blaspheme.",
+  "hints": [
+   "What you place on someone.",
+   "Related to blaspheme."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "bland",
+  "register": "standard",
+  "definition": "Lacking flavour or interest.",
+  "note": "From Latin blandus, 'smooth, flattering'. It moved from soothing to dull.",
+  "hints": [
+   "Unseasoned food.",
+   "Unremarkable."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "blank",
+  "register": "standard",
+  "definition": "Empty; with nothing written.",
+  "note": "From French blanc, 'white'. A blank page was a white one.",
+  "hints": [
+   "A form left unfilled.",
+   "Its French root meant white."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "blare",
+  "register": "standard",
+  "definition": "To make a loud harsh sound.",
+  "note": "From Middle English bleren, 'to wail', imitating the noise.",
+  "hints": [
+   "What car horns do.",
+   "Music played far too loud."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "blast",
+  "register": "standard",
+  "definition": "An explosion or strong gust.",
+  "note": "From Old English blæst, 'blowing'. As slang, a great time.",
+  "hints": [
+   "A loud explosion.",
+   "A really fun time."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "blaze",
+  "register": "standard",
+  "definition": "A large, fierce fire.",
+  "note": "From Old English blæse, 'torch'. To blaze a trail meant marking trees by cutting away bark.",
+  "hints": [
+   "A raging fire.",
+   "To mark a new trail."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "bleak",
+  "register": "standard",
+  "definition": "Cold, bare and depressing.",
+  "note": "From Old Norse bleikr, 'pale'. Bleach shares the root.",
+  "hints": [
+   "A grey winter moor.",
+   "Related to bleach."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "bleat",
+  "register": "standard",
+  "definition": "The cry of a sheep or goat.",
+  "note": "From Old English blætan, imitating the sound.",
+  "hints": [
+   "What a lamb does.",
+   "To complain in a whiny voice."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "bleed",
+  "register": "standard",
+  "definition": "To lose blood.",
+  "note": "From Old English bledan, from blod, 'blood'.",
+  "hints": [
+   "What a cut does.",
+   "Colours can do it in the wash."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "bleep",
+  "register": "standard",
+  "definition": "A short high electronic sound.",
+  "note": "Imitative. TV used it to cover swear words.",
+  "hints": [
+   "Censors put it over swearing.",
+   "A short beep."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "blend",
+  "register": "standard",
+  "definition": "To mix together.",
+  "note": "From Old Norse blanda, 'to mix'. Blond may share the root.",
+  "hints": [
+   "What a smoothie maker does.",
+   "A mixture of coffees."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
  }
 ]
