@@ -6598,5 +6598,1469 @@
   ],
   "difficulty": "familiar",
   "connection": ""
+ },
+ {
+  "word": "essay",
+  "register": "standard",
+  "definition": "A short piece of writing on a topic.",
+  "note": "From Middle French essai, 'a trial or attempt', a meaning the writer Montaigne gave it in the 1500s. An essay was originally an attempt to work out your thoughts.",
+  "hints": [
+   "Students write one for homework.",
+   "A short piece of nonfiction prose."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "ester",
+  "register": "standard",
+  "definition": "A kind of chemical compound often with a fruity smell.",
+  "note": "The name was coined in German, likely as a contraction of a word for vinegar ether. Many fruit flavours are esters.",
+  "hints": [
+   "Chemistry class compound behind fruity smells.",
+   "Formed from an acid and an alcohol."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "ether",
+  "register": "standard",
+  "definition": "A clear volatile liquid once used as an anaesthetic; or the upper sky.",
+  "note": "From Greek aither, 'upper air, bright sky'. Ancient thinkers pictured it as the pure air of the heavens.",
+  "hints": [
+   "Old surgeons used it to put patients to sleep.",
+   "Something broadcast 'over the ___' goes through the air."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "ethic",
+  "register": "standard",
+  "definition": "A moral principle that guides behaviour.",
+  "note": "From Late Latin ethicus, from Greek ethikos, 'moral'. Its plural gives the field of moral philosophy.",
+  "hints": [
+   "A strong work one is a personal value.",
+   "A moral rule about right and wrong."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "ethos",
+  "register": "standard",
+  "definition": "The spirit or values of a community or culture.",
+  "note": "From Greek ethos, 'character, custom, habit'. Aristotle used it for a speaker's character as a way of persuading.",
+  "hints": [
+   "A company's guiding values.",
+   "The characteristic spirit of a culture."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "etude",
+  "register": "standard",
+  "definition": "A short piece of music for practising a skill.",
+  "note": "Borrowed from French etude, 'study', in the 1830s. Chopin and Liszt wrote famous ones.",
+  "hints": [
+   "Pianists practise one to improve technique.",
+   "French for 'study'."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "event",
+  "register": "standard",
+  "definition": "Something that happens, especially a planned occasion.",
+  "note": "From Latin eventus, 'an occurrence', from evenire, 'to happen, come out'. It is related to the word venture.",
+  "hints": [
+   "A concert or a wedding.",
+   "Anything that takes place at a particular time."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "evict",
+  "register": "standard",
+  "definition": "To force someone to leave their home.",
+  "note": "From Latin evictus, 'conquered completely', the same word as evince. In law it meant to recover property by judgment.",
+  "hints": [
+   "What a landlord may do if the rent isn't paid.",
+   "To throw tenants out for not paying."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "evoke",
+  "register": "standard",
+  "definition": "To bring a memory or feeling to mind.",
+  "note": "From French evoquer and Latin evocare, 'to call out'. It is related to voice.",
+  "hints": [
+   "A smell that takes you back to childhood.",
+   "To call up a feeling, as music can."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "exact",
+  "register": "standard",
+  "definition": "Precisely correct.",
+  "note": "From Latin exactus, 'perfected, measured', from exigere, 'to demand, measure'. It is used of measurements and times.",
+  "hints": [
+   "The ___ amount of change needed.",
+   "Not approximate."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "exalt",
+  "register": "standard",
+  "definition": "To praise highly or raise in rank.",
+  "note": "From Old French exalter and Latin exaltare, 'to raise up'. It is an elevated word for lifting up.",
+  "hints": [
+   "What worshippers do to their god.",
+   "To lift someone to a higher position."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "excel",
+  "register": "standard",
+  "definition": "To be outstanding at something.",
+  "note": "From Latin excellere, 'to rise, surpass', built from ex-, 'out' and a root meaning to be high. Spreadsheets borrowed the name.",
+  "hints": [
+   "To be better than the rest.",
+   "What a top student does in class."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "exile",
+  "register": "standard",
+  "definition": "Forced absence from your home country.",
+  "note": "From Old French exil and Latin exilium, from exul, 'banished person'. Napoleon was sent to Elba and later St Helena.",
+  "hints": [
+   "What happens to a banished ruler.",
+   "Napoleon spent his last years in it."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "exist",
+  "register": "standard",
+  "definition": "To be real, to have being.",
+  "note": "From French exister and Latin existere, 'to stand forth', from ex- and sistere, 'to set, place'. To exist is to stand out into being.",
+  "hints": [
+   "Dragons are said not to.",
+   "To be alive or real."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "expel",
+  "register": "standard",
+  "definition": "To force out.",
+  "note": "From Latin expellere, 'to drive out', from ex- and pellere, 'to drive'. Schools and bodies do it.",
+  "hints": [
+   "A school can do it to a student who misbehaves.",
+   "To drive away or throw out, as a diplomat."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "extol",
+  "register": "standard",
+  "definition": "To praise enthusiastically.",
+  "note": "From Latin extollere, 'to lift up, raise high'. It is a more formal way of praising.",
+  "hints": [
+   "To sing someone's virtues.",
+   "To praise someone highly."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "exult",
+  "register": "standard",
+  "definition": "To rejoice greatly, especially in triumph.",
+  "note": "From Middle French exulter and Latin exsultare, 'to leap up', from salire, 'to jump'. It's a joy that makes you leap.",
+  "hints": [
+   "What a winning team does on the pitch.",
+   "To rejoice in victory."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "fable",
+  "register": "standard",
+  "definition": "A short story with animals that teaches a lesson.",
+  "note": "From Old French fable and Latin fabula, 'story', from fari, 'to speak'. Aesop is the best-known author of them.",
+  "hints": [
+   "The tortoise and the hare is one.",
+   "A story with a moral at the end."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "facet",
+  "register": "standard",
+  "definition": "One of the flat faces of a cut gem; or an aspect.",
+  "note": "From French facette, 'little face', a diminutive of face. A cut gem sparkles through many small faces.",
+  "hints": [
+   "A diamond cutter polishes each one.",
+   "One side of a complex issue."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "faint",
+  "register": "standard",
+  "definition": "Weak or barely noticeable; or to pass out briefly.",
+  "note": "From Old French faint, 'feigned, sluggish', from feindre, 'to feign'. A faint sound is feeble, and a swoon is a failure of strength.",
+  "hints": [
+   "A sound you can barely hear.",
+   "To pass out for a moment from heat."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "fairy",
+  "register": "standard",
+  "definition": "A tiny magical creature with wings.",
+  "note": "From Old French faerie, 'enchantment', from fae, 'fairy', from Latin fata, 'the fates'. It first named the land of fays, then its inhabitants.",
+  "hints": [
+   "Tinker Bell is one.",
+   "Visits under your pillow to collect a tooth."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "faith",
+  "register": "standard",
+  "definition": "Strong trust or belief.",
+  "note": "From Old French feid and Latin fides, 'trust, belief'. It is related to the word fidelity.",
+  "hints": [
+   "'Leap of ___' means trusting without proof.",
+   "Religion or deep trust in a person."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "false",
+  "register": "standard",
+  "definition": "Not true or not real.",
+  "note": "From Old English fals and Latin falsus, 'deceived, mistaken'. It names things untrue or fake.",
+  "hints": [
+   "The opposite of true.",
+   "What a lie is."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "fancy",
+  "register": "standard",
+  "definition": "Elaborate or high-class; or to like.",
+  "note": "A contraction of fantasy, from Greek phantasia. It first meant the imagination, then a liking, then something elaborate.",
+  "hints": [
+   "A formal restaurant might be this.",
+   "Decorated or showy."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "farce",
+  "register": "standard",
+  "definition": "A comedy full of ridiculous situations.",
+  "note": "From French farce, 'stuffing', a cooking term. Comic interludes were 'stuffed' into serious religious plays.",
+  "hints": [
+   "A silly play with slamming doors and mistaken identities.",
+   "A ridiculous situation."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "fatal",
+  "register": "standard",
+  "definition": "Causing death.",
+  "note": "From Middle French fatal, from Latin fatalis, 'of fate'. Something fated could not be escaped.",
+  "hints": [
+   "A ___ error is one that ends everything.",
+   "A disease that kills."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "fault",
+  "register": "standard",
+  "definition": "Blame; or a defect.",
+  "note": "From Old French faute, from Vulgar Latin fallita, 'shortcoming', related to fail. A fault is a failing.",
+  "hints": [
+   "'It's not my ___' is a common excuse.",
+   "A crack in the earth where earthquakes happen."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "fauna",
+  "register": "standard",
+  "definition": "The animals of a region or period.",
+  "note": "From New Latin, from Fauna, a Roman goddess and sister of Faunus, god of forests. Linnaeus adopted it as a counterpart to flora.",
+  "hints": [
+   "Flora's partner when describing an ecosystem.",
+   "All the animals of a place."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "favor",
+  "register": "standard",
+  "definition": "A kind act for someone.",
+  "note": "From Old French favor and Latin favor, from favere, 'to be kind'. 'Ask a ___' means to request a kindness.",
+  "hints": [
+   "Doing someone a good turn.",
+   "Something you ask a friend to do for you."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "feast",
+  "register": "standard",
+  "definition": "A large, special meal.",
+  "note": "From Old French feste and Latin festa, 'holiday'. It is a cousin of fiesta and festival.",
+  "hints": [
+   "A banquet to celebrate.",
+   "Thanksgiving dinner."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "femur",
+  "register": "standard",
+  "definition": "The thigh bone.",
+  "note": "Borrowed directly from Latin femur, 'thigh'. It is the longest and strongest bone in the body.",
+  "hints": [
+   "Between hip and knee.",
+   "The longest bone in your body."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "fence",
+  "register": "standard",
+  "definition": "A barrier around land.",
+  "note": "Short for defence, from Old French defens. It also names sword fighting and a person who sells stolen goods.",
+  "hints": [
+   "Made of wooden posts around a garden.",
+   "Sword fighting takes this name."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "ferry",
+  "register": "standard",
+  "definition": "A boat that carries people across water.",
+  "note": "From Old English ferian, 'to carry'. The verb came first, before the boat service.",
+  "hints": [
+   "Crosses a river with cars and passengers.",
+   "The way to get to an island without a bridge."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "fetch",
+  "register": "standard",
+  "definition": "To go and bring back.",
+  "note": "From Middle English fecchen, 'to get and bring back'. A dog does it with a stick.",
+  "hints": [
+   "What you tell a dog to do with a ball.",
+   "To go and bring back something."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "fetid",
+  "register": "standard",
+  "definition": "Smelling very bad.",
+  "note": "From Latin fetidus, from fetere, 'to stink'. It is a literary word for a foul odour.",
+  "hints": [
+   "A swamp can have this smell.",
+   "Rotten, like old rubbish."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "fetus",
+  "register": "standard",
+  "definition": "An unborn baby in the later stages of pregnancy.",
+  "note": "A learned borrowing from Latin fetus, 'offspring'. It is a doublet of fawn.",
+  "hints": [
+   "An unborn child.",
+   "What a doctor sees on a pregnancy scan."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "fever",
+  "register": "standard",
+  "definition": "A body temperature higher than normal.",
+  "note": "From Old English fefer and Latin febris, 'fever'. It is a common sign of illness.",
+  "hints": [
+   "A sign you may have a cold.",
+   "A thermometer shows it."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "fewer",
+  "register": "standard",
+  "definition": "A smaller number of.",
+  "note": "From few plus -er. The old rule says fewer goes with things you can count.",
+  "hints": [
+   "Used with countable things like apples.",
+   "A grammar pedant corrects 'less'."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "fiber",
+  "register": "standard",
+  "definition": "A thin thread of material; or roughage in food.",
+  "note": "From French fibre, from Latin fibra. It also describes nutrients that help digestion.",
+  "hints": [
+   "Whole grains are rich in it.",
+   "A thin strand, as in cloth or nerves."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "ficus",
+  "register": "standard",
+  "definition": "A plant in the fig family, often grown indoors.",
+  "note": "Borrowed from Latin ficus, 'fig'. Houseplants like the rubber tree are of this genus.",
+  "hints": [
+   "A potted rubber plant.",
+   "In the same genus as the fig."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "field",
+  "register": "standard",
+  "definition": "An open area of land, often with crops or sports.",
+  "note": "From Old English feld, 'open country'. It is a very old Germanic word.",
+  "hints": [
+   "Cows graze in it.",
+   "Where a football game is played."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "fiend",
+  "register": "standard",
+  "definition": "An evil spirit; or a wicked person.",
+  "note": "From Old English feond, 'enemy'. It is related to the word foe's older forms.",
+  "hints": [
+   "A demon in a horror story.",
+   "A wicked person; also an obsessive addict, as in 'sweet-toothed ___'."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "fiery",
+  "register": "standard",
+  "definition": "Burning, or full of passion.",
+  "note": "From Middle English fyry, from fyr, 'fire', plus -y. It describes flames or tempers.",
+  "hints": [
+   "Describes a hot-headed temper.",
+   "Red like flames."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "fight",
+  "register": "standard",
+  "definition": "To struggle against someone with force.",
+  "note": "From Old English feohtan, 'to fight, combat', a very old Germanic word. It covers punches, wars and campaigns alike.",
+  "hints": [
+   "Boxers do it in a ring.",
+   "A pillow one is a playful kind."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "filly",
+  "register": "standard",
+  "definition": "A young female horse.",
+  "note": "From Old Norse fylja, related to foal. It names a horse that has not yet reached full age.",
+  "hints": [
+   "A young mare, not yet grown.",
+   "The female of a foal."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "filth",
+  "register": "standard",
+  "definition": "Disgusting dirt.",
+  "note": "From Old English fylth, from foul plus -th. It is the noun for the quality of being foul.",
+  "hints": [
+   "What a garbage heap is covered in.",
+   "Dirt of the most revolting kind."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "final",
+  "register": "standard",
+  "definition": "Coming at the end.",
+  "note": "From Old French final and Latin finalis, 'of the end', from finis, 'end'. It is the last of a series.",
+  "hints": [
+   "The last match of a tournament.",
+   "The exam at the end of a term."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "finch",
+  "register": "standard",
+  "definition": "A small seed-eating songbird.",
+  "note": "From Old English finc, a Germanic word thought to imitate the bird's call. Darwin studied those on the Galapagos.",
+  "hints": [
+   "Darwin made them famous in the Galapagos.",
+   "A small, colourful songbird."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "fishy",
+  "register": "standard",
+  "definition": "Smelling of fish; or suspicious.",
+  "note": "From fish plus -y. The sense of suspicious comes from the smell of something gone off.",
+  "hints": [
+   "A poor alibi may seem this.",
+   "Describes a story that doesn't add up."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "fizzy",
+  "register": "standard",
+  "definition": "Full of bubbles.",
+  "note": "From fizz plus -y. The word imitates the sound of bubbles escaping.",
+  "hints": [
+   "A cola is described this way.",
+   "Sparkling water is this."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "fjord",
+  "register": "standard",
+  "definition": "A long, narrow sea inlet between steep cliffs.",
+  "note": "From Norwegian fjord, from Old Norse fjordr, related to ford. Norway is famous for them.",
+  "hints": [
+   "Norway's coast is full of them.",
+   "A deep water channel cut by a glacier."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "flail",
+  "register": "standard",
+  "definition": "To wave one's arms wildly.",
+  "note": "From Middle English flayle, a tool for threshing grain, from Old English fligel. A flailing arm swings like that tool.",
+  "hints": [
+   "What you do with your arms when you slip.",
+   "A farm tool once used to beat the grain."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "flair",
+  "register": "standard",
+  "definition": "A natural talent or stylish ability.",
+  "note": "From Old French flair, 'scent', from flairier, 'to smell'. A flair was first a nose for something.",
+  "hints": [
+   "Style or a knack for doing things well.",
+   "A chef with a natural gift for presentation."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "flaky",
+  "register": "standard",
+  "definition": "Breaking off in thin pieces; or unreliable.",
+  "note": "From flake plus -y. The sense of unreliable is informal and describes someone who cancels plans.",
+  "hints": [
+   "A pastry like a croissant is this.",
+   "A friend who cancels at the last minute."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "flame",
+  "register": "standard",
+  "definition": "The visible, glowing part of a fire.",
+  "note": "From Old French flamme, from Latin flamma. It also names an old sweetheart.",
+  "hints": [
+   "Flickers from a candle.",
+   "What a match lights."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "flank",
+  "register": "standard",
+  "definition": "The side of an animal or army.",
+  "note": "From Old French flanc, probably of Frankish origin. A flank steak is cut from the side of the animal.",
+  "hints": [
+   "An army tries to attack the enemy's.",
+   "The side of a horse's body."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "flash",
+  "register": "standard",
+  "definition": "A sudden brief burst of light.",
+  "note": "Partly from Middle English flasshen, 'to sprinkle, splash', likely imitative. It also means a very short time.",
+  "hints": [
+   "A camera makes one in the dark.",
+   "Lightning does it in a storm."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "flask",
+  "register": "standard",
+  "definition": "A narrow-necked bottle.",
+  "note": "From Old English flasce and Medieval Latin flasco, 'bottle'. It names a lab vessel and a pocket bottle.",
+  "hints": [
+   "A scientist heats one over a flame.",
+   "A small metal bottle for a hot drink."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "fleck",
+  "register": "standard",
+  "definition": "A tiny spot or mark.",
+  "note": "From Old Norse flekkr, 'spot'. It is often used for specks of paint or colour.",
+  "hints": [
+   "A tiny speck of paint on a shirt.",
+   "A small spot of colour."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "fleet",
+  "register": "standard",
+  "definition": "A group of ships or vehicles; or swift.",
+  "note": "From Old English fleot, 'ship', related to float. The adjective sense, 'swift', has a separate Norse origin.",
+  "hints": [
+   "A navy's ships all together.",
+   "A taxi company's cars."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "flesh",
+  "register": "standard",
+  "definition": "The soft part of a body.",
+  "note": "From Old English flaesc, a Germanic word. It is the soft tissue covering the bones.",
+  "hints": [
+   "The part of a fruit you eat.",
+   "What lies between skin and bone."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "flick",
+  "register": "standard",
+  "definition": "A quick light movement or touch.",
+  "note": "From Middle English flykke, 'a light blow'. It is imitative, like a snap of the fingers.",
+  "hints": [
+   "What you do to a switch.",
+   "A film is also called one."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "fling",
+  "register": "standard",
+  "definition": "To throw something carelessly; or a brief affair.",
+  "note": "From Middle English fling, from a Norse source. Another sense is a brief romance.",
+  "hints": [
+   "To toss a hat in the air.",
+   "A short and carefree romance."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "flint",
+  "register": "standard",
+  "definition": "A hard grey stone that makes sparks when struck.",
+  "note": "From Old English flint, a Germanic word. Early fire-lighters and guns used it.",
+  "hints": [
+   "Early people struck it with steel to make a spark.",
+   "A stone used with a firestarter."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "float",
+  "register": "standard",
+  "definition": "To rest on top of liquid without sinking.",
+  "note": "From Old English flotian, 'to float'. It is related to fleet.",
+  "hints": [
+   "What a cork does in water.",
+   "A parade vehicle is called this."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "flock",
+  "register": "standard",
+  "definition": "A group of birds or sheep.",
+  "note": "From Old English flocc, 'group of people or animals'. It was once used for people as well.",
+  "hints": [
+   "Sheep gather in one.",
+   "Birds fly in one."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "flood",
+  "register": "standard",
+  "definition": "An overflow of water onto land.",
+  "note": "From Old English flod, related to flow. It also means any overwhelming amount.",
+  "hints": [
+   "Noah's story features a great one.",
+   "What heavy rain may cause by a river."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "floor",
+  "register": "standard",
+  "definition": "The surface you walk on indoors.",
+  "note": "From Old English flor, 'floor, pavement, deck'. It also names the level of a building.",
+  "hints": [
+   "Opposite of ceiling.",
+   "A level in a tall building."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "flora",
+  "register": "standard",
+  "definition": "The plants of a region.",
+  "note": "From Latin Flora, a Roman goddess of flowers. It is the plant counterpart of fauna.",
+  "hints": [
+   "Fauna's plant-loving partner.",
+   "All the plants of a place."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "floss",
+  "register": "standard",
+  "definition": "A thread used to clean between teeth.",
+  "note": "Of unclear origin, perhaps from French floche, 'tuft of wool'. It also names soft silk fibre.",
+  "hints": [
+   "Dentists tell you to use it daily.",
+   "Candy spun from sugar is named for it."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "flour",
+  "register": "standard",
+  "definition": "Ground grain, used for baking.",
+  "note": "The same word as flower, because flour was 'the flower', or finest part, of the meal. The spellings only separated in the 1800s.",
+  "hints": [
+   "What bread is baked from.",
+   "Wheat is ground into it."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "flout",
+  "register": "standard",
+  "definition": "To openly disregard a rule.",
+  "note": "Perhaps from Middle English flouten, 'to play the flute', hence to mock. It is often mixed up with flaunt.",
+  "hints": [
+   "A driver may do this to a speed limit.",
+   "To show contempt for a law."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "fluff",
+  "register": "standard",
+  "definition": "Soft light material like down.",
+  "note": "From earlier floow, 'down, nap, lint', from West Flemish. It also means a minor mistake or trivial content.",
+  "hints": [
+   "What a pillow is stuffed with.",
+   "A cat's loose hair on a sofa."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "fluid",
+  "register": "standard",
+  "definition": "A substance that flows.",
+  "note": "From Latin fluidus, from fluere, 'to flow'. It covers liquids and gases.",
+  "hints": [
+   "Water or air is this.",
+   "Neither a solid nor held in a fixed shape."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "flume",
+  "register": "standard",
+  "definition": "A narrow channel carrying water.",
+  "note": "From Old French flum and Latin flumen, 'river', from fluere, 'to flow'. Water parks borrowed it for rides.",
+  "hints": [
+   "A log ride at a theme park goes down one.",
+   "A man-made channel for carrying water."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "flunk",
+  "register": "slang",
+  "definition": "To fail an exam or class.",
+  "note": "Of uncertain origin, perhaps related to funk or flinch. It is American student slang from the 1800s.",
+  "hints": [
+   "What a student does with a bad grade.",
+   "The opposite of pass."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "flush",
+  "register": "standard",
+  "definition": "To turn red; or to clean with rushing water.",
+  "note": "Of uncertain origin; one sense is to startle birds from cover. Flush also means level, or having plenty of money.",
+  "hints": [
+   "What you do to a toilet.",
+   "Your face does this when you blush."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "flute",
+  "register": "standard",
+  "definition": "A woodwind played by blowing across a hole.",
+  "note": "From Old French flaute, of uncertain origin. Champagne is served in a tall glass of the same name.",
+  "hints": [
+   "The Pied Piper played one.",
+   "A slim wind instrument."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "focal",
+  "register": "standard",
+  "definition": "Relating to a point of attention.",
+  "note": "From focus plus -al, borrowed from New Latin. It's used for the main point.",
+  "hints": [
+   "A ___ point is the centre of attention.",
+   "Describing the main point of a camera lens."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "focus",
+  "register": "standard",
+  "definition": "The point of attention or clarity.",
+  "note": "From Latin focus, 'hearth, fireplace', related to fuel. Kepler used it for the point where light converges.",
+  "hints": [
+   "What you adjust on a camera.",
+   "To concentrate on one thing."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "foggy",
+  "register": "standard",
+  "definition": "Covered in thick mist; or vague.",
+  "note": "From fog plus -y, originally meaning 'covered in long grass or marshy'. Foggy now describes mist or confused thoughts.",
+  "hints": [
+   "A morning when you can barely see ahead.",
+   "How your memory feels when you're tired."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "foist",
+  "register": "standard",
+  "definition": "To pass off something unwanted on someone.",
+  "note": "Probably from old Dutch vuisten, 'to take in the hand', from vuist, 'fist'.",
+  "hints": [
+   "A seller might do this with a worthless item.",
+   "To force an unwanted thing on someone sneakily."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "folly",
+  "register": "standard",
+  "definition": "A foolish act or idea.",
+  "note": "From Old French folie, 'madness', from fol, 'mad'. It also names a decorative building with no use.",
+  "hints": [
+   "A rash plan that was bound to fail.",
+   "A tower built just for show on an estate."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "foray",
+  "register": "standard",
+  "definition": "A short, bold venture into new territory.",
+  "note": "From Middle English forrayen, 'to pillage', from a word for a raider. It began as a military raid.",
+  "hints": [
+   "A raid into enemy land.",
+   "A first try at a new field, like a chef's into baking."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "force",
+  "register": "standard",
+  "definition": "Strength or power.",
+  "note": "From Old French force and Late Latin fortia, from Latin fortis, 'strong'. It also names a push or pull in physics.",
+  "hints": [
+   "What Jedi use in Star Wars.",
+   "A push or pull that moves an object."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "forgo",
+  "register": "standard",
+  "definition": "To do without something.",
+  "note": "From Middle English forgon, 'to pass up', from Old English forgan. The for- is the same as in forbid.",
+  "hints": [
+   "To skip dessert, for example.",
+   "To give up a pleasure."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "forte",
+  "register": "standard",
+  "definition": "Something someone does especially well.",
+  "note": "From French fort, 'strong', influenced by Italian forte, from Latin fortis. In music, it means to play loudly.",
+  "hints": [
+   "Cooking is her ___, you might say.",
+   "A musical direction meaning loud."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "forth",
+  "register": "standard",
+  "definition": "Onward or outward.",
+  "note": "From Old English forth, 'forward'. It appears in 'back and ___' and in old phrases like 'go ___ and multiply'.",
+  "hints": [
+   "What goes with 'back and' in a phrase.",
+   "The word in 'set ___' on a journey."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "forty",
+  "register": "standard",
+  "definition": "The number after thirty-nine.",
+  "note": "From Old English feowertig, 'four tens'. It is built from four and the old word -tig meaning tens.",
+  "hints": [
+   "Twice twenty.",
+   "Ali Baba had that many thieves."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "forum",
+  "register": "standard",
+  "definition": "A place or meeting for public discussion.",
+  "note": "From Latin forum, 'marketplace, public place'. The Roman Forum was the heart of the city. It is also an online discussion board.",
+  "hints": [
+   "A place for open discussion online.",
+   "The central square of ancient Rome."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "foyer",
+  "register": "standard",
+  "definition": "An entrance hall in a building.",
+  "note": "Borrowed from French foyer, 'hearth', from Latin focus. In French it first meant the fireplace room where actors warmed up.",
+  "hints": [
+   "The room just inside the front door.",
+   "Where a theatre audience gathers at interval."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "frail",
+  "register": "standard",
+  "definition": "Weak and easily hurt.",
+  "note": "From Old French fraile, from Latin fragilis, 'breakable'. It is a cousin of fragile.",
+  "hints": [
+   "An elderly person who needs assistance.",
+   "Easily broken or damaged."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "frame",
+  "register": "standard",
+  "definition": "A structure that holds something in place.",
+  "note": "From Old English framian, 'to be helpful, profit'. The Middle English sense was to construct or put together.",
+  "hints": [
+   "What a picture hangs in.",
+   "A bed's supporting structure."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "fraud",
+  "register": "standard",
+  "definition": "Deliberate trickery for gain.",
+  "note": "From Old French fraude and Latin fraus, 'deceit, injury'. It has been recorded since 1345.",
+  "hints": [
+   "Selling a fake painting as real is this.",
+   "A crime of lying to get money."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "freak",
+  "register": "standard",
+  "definition": "Something very unusual.",
+  "note": "Of uncertain origin; it may come from a Germanic word meaning quick or bold. It first meant a sudden whim.",
+  "hints": [
+   "A ___ storm hits without warning.",
+   "An unusual accident."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "fresh",
+  "register": "standard",
+  "definition": "New or not stale.",
+  "note": "From Old English fersc, 'fresh, pure, sweet'. It once described water as well as food.",
+  "hints": [
+   "Bread straight from the oven.",
+   "The opposite of stale."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "frill",
+  "register": "standard",
+  "definition": "A decorative gathered edge of fabric.",
+  "note": "Of uncertain origin. 'No-___s' means a plain service without extras.",
+  "hints": [
+   "A pleated edge on a dress.",
+   "An unnecessary extra."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "frisk",
+  "register": "standard",
+  "definition": "To search someone by patting down.",
+  "note": "From Middle French frisque, 'lively, merry'. A frisky animal skips about, and then to pat someone's clothes was added.",
+  "hints": [
+   "What a security guard may do to you.",
+   "To skip about playfully, as a puppy does."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "frond",
+  "register": "standard",
+  "definition": "The leaf of a fern or palm.",
+  "note": "Borrowed from Latin frons, 'leafy branch'. It is usually seen with ferns and palms.",
+  "hints": [
+   "What a palm tree waves.",
+   "A large feathery leaf."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "front",
+  "register": "standard",
+  "definition": "The forward-facing part.",
+  "note": "From Old French front and Latin frons, 'forehead'. The face of something was its forehead.",
+  "hints": [
+   "The opposite of back.",
+   "Where a battle line is drawn."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "froth",
+  "register": "standard",
+  "definition": "A mass of small bubbles.",
+  "note": "From Old Norse frodha, 'froth, foam'. It is also used for trivial matters.",
+  "hints": [
+   "The top of a cappuccino.",
+   "Sea foam on a wave."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "frown",
+  "register": "standard",
+  "definition": "To wrinkle your brow in displeasure.",
+  "note": "From Middle English frounen, 'to frown', with an old sense of a threatening look. The opposite of a smile.",
+  "hints": [
+   "The opposite of a smile.",
+   "What your face does when you're annoyed."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "fruit",
+  "register": "standard",
+  "definition": "The sweet seed-bearing part of a plant.",
+  "note": "From Latin fructus, 'enjoyment, produce'. It also means a result, as in the fruits of labour.",
+  "hints": [
+   "An apple or a pear.",
+   "What a tree produces."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "fudge",
+  "register": "standard",
+  "definition": "A soft, sweet candy; or to avoid being exact.",
+  "note": "Probably a variant of fadge, 'to fit together'. The verb means to bend facts and the candy sense came from mixing.",
+  "hints": [
+   "Chocolate treat sold in slabs.",
+   "To fake or bend the truth."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "fugue",
+  "register": "standard",
+  "definition": "A piece of music in which voices chase each other.",
+  "note": "From Italian fuga, 'flight', from Latin fugere, 'to flee'. The voices seem to flee and pursue one another.",
+  "hints": [
+   "Bach wrote famous ones.",
+   "A state of amnesia where someone wanders off."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "funky",
+  "register": "slang",
+  "definition": "Stylishly offbeat; or smelly.",
+  "note": "From funk plus -y. Funk once meant a strong smell, then a style of music with a heavy groove.",
+  "hints": [
+   "Describes music with a heavy bass groove.",
+   "Eccentric and cool."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "funny",
+  "register": "standard",
+  "definition": "Amusing; or strange.",
+  "note": "From fun plus -y. It describes jokes, but also something odd, as in 'a funny smell'.",
+  "hints": [
+   "What a good joke is.",
+   "Odd, as in 'that's ___ - the door was open'."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "furor",
+  "register": "standard",
+  "definition": "A wave of public outrage or excitement.",
+  "note": "From Latin furor, 'rage, madness', from furere, 'to rage'. It is related to the word fury.",
+  "hints": [
+   "The public outcry over a scandal.",
+   "A burst of uproar."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "furry",
+  "register": "standard",
+  "definition": "Covered with soft hair.",
+  "note": "From fur plus -y. It describes animals and toys.",
+  "hints": [
+   "A teddy bear is.",
+   "Soft and covered in fur."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "fussy",
+  "register": "standard",
+  "definition": "Hard to please or too concerned with small details.",
+  "note": "From fuss plus -y. It describes babies who cry and people who care too much about details.",
+  "hints": [
+   "A child who won't eat vegetables.",
+   "Too particular about tiny details."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "fuzzy",
+  "register": "standard",
+  "definition": "Covered with soft short fibres; or unclear.",
+  "note": "Of uncertain origin; it may be from fuzz plus -y, or the other way around. It also describes a blurry picture.",
+  "hints": [
+   "A peach's skin is this way.",
+   "A blurry photo is this."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "gaffe",
+  "register": "standard",
+  "definition": "An embarrassing mistake in public.",
+  "note": "Borrowed from French gaffe, 'blunder', and a doublet of gaff. Politicians dread making one.",
+  "hints": [
+   "Calling someone by the wrong name, perhaps.",
+   "A social blunder."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "gamer",
+  "register": "standard",
+  "definition": "A person who plays games, especially video games.",
+  "note": "From game plus -er. The word now mostly means a video game enthusiast.",
+  "hints": [
+   "Someone with a headset and a console.",
+   "A person with high scores."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "gamma",
+  "register": "standard",
+  "definition": "The third letter of the Greek alphabet.",
+  "note": "Borrowed from Greek gamma. In science it names rays of high energy.",
+  "hints": [
+   "Comes after alpha and beta.",
+   "A type of ray emitted by radioactive material."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "gamut",
+  "register": "standard",
+  "definition": "The complete range of something.",
+  "note": "From gamma ut, a medieval note name that meant the lowest note of the scale. It grew to mean the whole range.",
+  "hints": [
+   "'To run the ___' is to experience everything from one end to the other.",
+   "The full range of notes in a scale."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "gassy",
+  "register": "standard",
+  "definition": "Full of gas.",
+  "note": "From gas plus -y. It describes a fizzy drink or a bloated stomach.",
+  "hints": [
+   "A can of soda that's been shaken.",
+   "Bloated after beans."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "gaudy",
+  "register": "standard",
+  "definition": "Flashy and tasteless.",
+  "note": "From Middle English gaudi, from a word for an ornament or trinket.",
+  "hints": [
+   "A very bright, over-decorated outfit.",
+   "Too flashy for good taste."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "gauge",
+  "register": "standard",
+  "definition": "An instrument for measuring.",
+  "note": "From Anglo-Norman and Old Northern French gauger, 'to measure'. To gauge is also to estimate someone's mood.",
+  "hints": [
+   "A fuel one shows how much is left.",
+   "To estimate how people feel."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "gaunt",
+  "register": "standard",
+  "definition": "Thin and haggard.",
+  "note": "From Middle English gaunt, 'lean, slender', of uncertain origin. It's used for people who look drawn and hungry.",
+  "hints": [
+   "A face worn from illness.",
+   "Looking bony and tired."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "gauze",
+  "register": "standard",
+  "definition": "A thin, see-through fabric.",
+  "note": "From French gaze, from Arabic qazz, 'silk'. It is used in bandages and curtains.",
+  "hints": [
+   "A bandage wrapped over a cut.",
+   "A very light, open-weave cotton."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "gavel",
+  "register": "standard",
+  "definition": "A small mallet used by a judge or chair.",
+  "note": "From the Old English gafol, 'tribute, rent', for one sense; the mallet's own origin is uncertain. Auctioneers use one too.",
+  "hints": [
+   "A judge bangs one to call order.",
+   "An auctioneer uses it to close a sale."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "gawky",
+  "register": "standard",
+  "definition": "Awkward and clumsy in movement.",
+  "note": "From gawk plus -y. A gawky teenager hasn't yet grown into their limbs.",
+  "hints": [
+   "A teenager who has grown too quickly.",
+   "All elbows and knees."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
  }
 ]
