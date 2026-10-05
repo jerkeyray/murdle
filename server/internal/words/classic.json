@@ -264,6 +264,18 @@
   "connection": ""
  },
  {
+  "word": "accuse",
+  "register": "standard",
+  "definition": "To say someone has done wrong.",
+  "note": "From Latin accusare, 'to call to account'.",
+  "hints": [
+   "Charge with a crime.",
+   "Blame for a fault."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "acorn",
   "register": "standard",
   "definition": "The nut of the oak tree.",
@@ -2388,6 +2400,18 @@
   "connection": ""
  },
  {
+  "word": "auburn",
+  "register": "standard",
+  "definition": "A reddish-brown colour, especially of hair.",
+  "note": "From Old French auborne, 'blond', from Latin alburnus, 'whitish', and later confused with brown.",
+  "hints": [
+   "Hair colour between red and brown.",
+   "Originally meant a pale shade."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "audit",
   "register": "standard",
   "definition": "An official check of accounts.",
@@ -2529,6 +2553,18 @@
    "Nautical word to halt."
   ],
   "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "avatar",
+  "register": "standard",
+  "definition": "An online character that represents you; or a Hindu deity in bodily form.",
+  "note": "From Sanskrit avatara, 'descent'.",
+  "hints": [
+   "A profile picture in a game.",
+   "Vishnu has ten."
+  ],
+  "difficulty": "familiar",
   "connection": ""
  },
  {
@@ -2745,6 +2781,18 @@
    "Sizzling slices of pork."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "badass",
+  "register": "slang",
+  "definition": "A tough or impressive person, in slang.",
+  "note": "From bad plus ass, American slang from the mid-1900s.",
+  "hints": [
+   "A hero in an action film.",
+   "Cool and tough."
+  ],
+  "difficulty": "stretch",
   "connection": ""
  },
  {
@@ -3744,6 +3792,18 @@
   "connection": ""
  },
  {
+  "word": "beware",
+  "register": "standard",
+  "definition": "To be on guard.",
+  "note": "From be plus ware, an old word for careful.",
+  "hints": [
+   "Sign at a dog's gate.",
+   "Warning to take care."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "beyond",
   "register": "standard",
   "definition": "On the far side of; past.",
@@ -3871,6 +3931,18 @@
   "hints": [
    "Wears a leather jacket and rides a motorbike.",
    "A cyclist who takes to the road."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "bikini",
+  "register": "standard",
+  "definition": "A two-piece swimsuit.",
+  "note": "Named for Bikini Atoll, where atomic tests took place in 1946, as the design was said to be explosive.",
+  "hints": [
+   "Worn at the beach.",
+   "Named after a Pacific atoll."
   ],
   "difficulty": "familiar",
   "connection": ""
@@ -4435,6 +4507,18 @@
   "hints": [
    "A fake coin.",
    "A sham claim."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "boiler",
+  "register": "standard",
+  "definition": "A device that heats water for a building.",
+  "note": "From boil plus -er.",
+  "hints": [
+   "Heats a house's radiators.",
+   "Part of a steam engine."
   ],
   "difficulty": "familiar",
   "connection": ""
@@ -5491,6 +5575,18 @@
   "hints": [
    "A playground tormentor.",
    "What you call someone who picks on smaller kids."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "bumper",
+  "register": "standard",
+  "definition": "A guard on a car's front or back; or unusually large.",
+  "note": "From bump plus -er.",
+  "hints": [
+   "Shields a car in a collision.",
+   "A record-breaking harvest."
   ],
   "difficulty": "familiar",
   "connection": ""
@@ -7260,6 +7356,18 @@
   "connection": ""
  },
  {
+  "word": "classy",
+  "register": "standard",
+  "definition": "Stylish and elegant.",
+  "note": "From class plus -y.",
+  "hints": [
+   "Refined taste.",
+   "Sophisticated in a quiet way."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "clause",
   "register": "standard",
   "definition": "A group of words with a subject and verb, or a section of a contract.",
@@ -7963,6 +8071,18 @@
   "hints": [
    "A chat between friends.",
    "A talk you have in text messages."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "convoy",
+  "register": "standard",
+  "definition": "A group of vehicles or ships travelling together.",
+  "note": "From Old French convoier, 'to accompany'.",
+  "hints": [
+   "Lorries moving as a unit.",
+   "Escorted supply ships in a war."
   ],
   "difficulty": "familiar",
   "connection": ""
@@ -9060,6 +9180,18 @@
   "connection": ""
  },
  {
+  "word": "cutter",
+  "register": "standard",
+  "definition": "A tool or person that cuts; or a small fast boat.",
+  "note": "From cut plus -er.",
+  "hints": [
+   "Pastry shape tool.",
+   "A coast guard vessel."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "cyber",
   "register": "standard",
   "definition": "Relating to computers, networks or the internet.",
@@ -9600,6 +9732,18 @@
   "connection": ""
  },
  {
+  "word": "deluxe",
+  "register": "standard",
+  "definition": "Luxurious or of superior quality.",
+  "note": "From French de luxe, 'of luxury'.",
+  "hints": [
+   "A top version of a product.",
+   "A fancier edition."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "delve",
   "register": "standard",
   "definition": "To dig deeply, or to search thoroughly.",
@@ -9691,6 +9835,18 @@
   "hints": [
    "What an outcome does on the weather.",
    "Rely on someone's help."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "deploy",
+  "register": "standard",
+  "definition": "To spread out for action.",
+  "note": "From French deployer, 'to unfold'.",
+  "hints": [
+   "Send troops into position.",
+   "Release software to users."
   ],
   "difficulty": "familiar",
   "connection": ""
@@ -9907,6 +10063,18 @@
   "hints": [
    "Opposite of agree or match.",
    "Two opinions that do not match."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "digest",
+  "register": "standard",
+  "definition": "To break down food, or a summary.",
+  "note": "From Latin digerere, 'to separate'.",
+  "hints": [
+   "What your stomach does.",
+   "A shortened version of a magazine."
   ],
   "difficulty": "familiar",
   "connection": ""
@@ -11292,6 +11460,18 @@
   "connection": ""
  },
  {
+  "word": "eldest",
+  "register": "standard",
+  "definition": "The oldest of a group of siblings.",
+  "note": "From Old English eldest, superlative of eald.",
+  "hints": [
+   "First-born child.",
+   "Oldest child."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "elect",
   "register": "standard",
   "definition": "To choose by voting.",
@@ -12151,6 +12331,18 @@
   "hints": [
    "Dragons are said not to.",
    "To be alive or real."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "exodus",
+  "register": "standard",
+  "definition": "A mass departure.",
+  "note": "From Greek exodos, 'a going out'.",
+  "hints": [
+   "Moses led one.",
+   "A sudden mass leaving."
   ],
   "difficulty": "familiar",
   "connection": ""
@@ -14820,6 +15012,18 @@
   "connection": ""
  },
  {
+  "word": "genome",
+  "register": "standard",
+  "definition": "An organism's complete set of genes.",
+  "note": "A blend of gene and chromosome.",
+  "hints": [
+   "Sequenced in a famous project.",
+   "DNA's whole instruction book."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "genre",
   "register": "standard",
   "definition": "A category of art, music or writing with shared style.",
@@ -14889,6 +15093,18 @@
    "Title taken by some Ottoman rulers."
   ],
   "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "ghetto",
+  "register": "standard",
+  "definition": "A district where a minority group lives, originally for Jews in European cities.",
+  "note": "From Italian ghetto, the name of the Venetian quarter for Jews, first established in 1516.",
+  "hints": [
+   "A historic walled area in Venice.",
+   "Area where a group is confined or concentrated."
+  ],
+  "difficulty": "stretch",
   "connection": ""
  },
  {
@@ -15624,6 +15840,18 @@
   "connection": ""
  },
  {
+  "word": "gravel",
+  "register": "standard",
+  "definition": "Small stones used for paths.",
+  "note": "From Old French gravele, 'small gravel'.",
+  "hints": [
+   "Crunches underfoot on a drive.",
+   "Pebbles laid on a path."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "gravy",
   "register": "standard",
   "definition": "A sauce made from the juices of cooked meat.",
@@ -15643,6 +15871,18 @@
   "hints": [
    "What cows do in a field.",
    "A scrape on the knee after a fall."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "grease",
+  "register": "standard",
+  "definition": "Soft animal fat or an oily lubricant.",
+  "note": "From Old French craisse, from Latin crassus, 'thick'.",
+  "hints": [
+   "Applied to a squeaky wheel.",
+   "Slippery oil in a frying pan."
   ],
   "difficulty": "familiar",
   "connection": ""
@@ -17136,6 +17376,18 @@
   "connection": ""
  },
  {
+  "word": "hourly",
+  "register": "standard",
+  "definition": "Happening every hour.",
+  "note": "From hour plus -ly.",
+  "hints": [
+   "Bells that chime at each one.",
+   "A wage paid per hour."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "house",
   "register": "standard",
   "definition": "A building where people live.",
@@ -17361,6 +17613,18 @@
    "Began as a short form of housewife."
   ],
   "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "hustle",
+  "register": "standard",
+  "definition": "To push or hurry; or to work hard to earn money.",
+  "note": "From Dutch husselen, 'to shake'.",
+  "hints": [
+   "Bustle through a crowd.",
+   "A side job to earn extra cash."
+  ],
+  "difficulty": "familiar",
   "connection": ""
  },
  {
@@ -18427,6 +18691,18 @@
   "hints": [
    "A giant-sized pack.",
    "A big jet plane."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "jumper",
+  "register": "standard",
+  "definition": "A sweater in Britain, or a person or animal that jumps.",
+  "note": "From jump plus -er, or from an old word for a loose jacket.",
+  "hints": [
+   "Woollen top.",
+   "A horse in a show."
   ],
   "difficulty": "familiar",
   "connection": ""
@@ -19920,6 +20196,18 @@
   "connection": ""
  },
  {
+  "word": "litter",
+  "register": "standard",
+  "definition": "Rubbish dropped in public, or a group of newborn animals.",
+  "note": "From Old French litiere, 'bed', from Latin lectus.",
+  "hints": [
+   "Cats have it.",
+   "Rubbish on a street."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "little",
   "register": "standard",
   "definition": "Small in size or amount.",
@@ -20637,6 +20925,18 @@
    "Rock so hot that it flows."
   ],
   "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "magnet",
+  "register": "standard",
+  "definition": "An object that attracts iron and some other metals.",
+  "note": "From Greek Magnetis lithos, 'stone of Magnesia', a region where it was found.",
+  "hints": [
+   "Sticks to a fridge door.",
+   "Pulls iron filings towards it."
+  ],
+  "difficulty": "familiar",
   "connection": ""
  },
  {
@@ -23076,6 +23376,18 @@
   "connection": ""
  },
  {
+  "word": "ninety",
+  "register": "standard",
+  "definition": "The number after eighty-nine.",
+  "note": "From Old English hundnigontig.",
+  "hints": [
+   "Nine tens added up.",
+   "Ten less than a century."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "ninja",
   "register": "standard",
   "definition": "A covert warrior of feudal Japan, or anyone stealthy and skilled.",
@@ -23275,6 +23587,18 @@
   "hints": [
    "See and take note.",
    "A sign pinned to a board."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "notify",
+  "register": "standard",
+  "definition": "To inform someone formally.",
+  "note": "From Latin notificare, 'to make known'.",
+  "hints": [
+   "Send word of a change.",
+   "Tell someone officially."
   ],
   "difficulty": "familiar",
   "connection": ""
@@ -23815,6 +24139,18 @@
   "hints": [
    "One of several things you may select.",
    "A menu item you could pick."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "oracle",
+  "register": "standard",
+  "definition": "A priest who gave wise advice from gods, or a source of wisdom.",
+  "note": "From Latin oraculum, from orare, 'to speak'.",
+  "hints": [
+   "The one at Delphi.",
+   "A wise source consulted."
   ],
   "difficulty": "familiar",
   "connection": ""
@@ -24576,6 +24912,18 @@
   "connection": ""
  },
  {
+  "word": "patron",
+  "register": "standard",
+  "definition": "A supporter or regular customer.",
+  "note": "From Latin patronus, 'protector', from pater, 'father'.",
+  "hints": [
+   "Gives money to the arts.",
+   "A regular at a pub."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "patty",
   "register": "standard",
   "definition": "A small flat cake of minced food, such as meat.",
@@ -24945,6 +25293,18 @@
    "A small cake, in 'four'."
   ],
   "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "petrol",
+  "register": "standard",
+  "definition": "Fuel for cars, in Britain.",
+  "note": "From French petrole, from Latin petroleum, 'rock oil'.",
+  "hints": [
+   "Filled at a pump.",
+   "What Americans call gas."
+  ],
+  "difficulty": "familiar",
   "connection": ""
  },
  {
@@ -26844,6 +27204,18 @@
   "connection": ""
  },
  {
+  "word": "quartz",
+  "register": "standard",
+  "definition": "A hard crystalline mineral.",
+  "note": "From German Quarz, of unclear origin.",
+  "hints": [
+   "Clear stone in watches.",
+   "A common crystal."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "quash",
   "register": "standard",
   "definition": "To put an end to; to annul.",
@@ -27744,6 +28116,18 @@
   "connection": ""
  },
  {
+  "word": "regain",
+  "register": "standard",
+  "definition": "To get back something lost.",
+  "note": "From re- plus gain.",
+  "hints": [
+   "Win back control.",
+   "Recover your strength."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "regal",
   "register": "standard",
   "definition": "Fit for a king or queen.",
@@ -28351,6 +28735,18 @@
   "hints": [
    "A film critic writes one.",
    "Look over once more."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "revolt",
+  "register": "standard",
+  "definition": "To rise up against authority, or to disgust.",
+  "note": "From French revolter, from Italian rivoltare, 'to turn around'.",
+  "hints": [
+   "Peasants rising against a ruler.",
+   "What rotten food does to your stomach."
   ],
   "difficulty": "familiar",
   "connection": ""
@@ -29112,6 +29508,18 @@
   "connection": ""
  },
  {
+  "word": "saddle",
+  "register": "standard",
+  "definition": "A seat on a horse or bicycle.",
+  "note": "From Old English sadol.",
+  "hints": [
+   "Placed on a horse's back.",
+   "A bike seat."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "sadly",
   "register": "standard",
   "definition": "In a sorrowful way; or unfortunately.",
@@ -29239,6 +29647,18 @@
   "hints": [
    "A dip to go with tortilla chips.",
    "A Latin dance with quick steps."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "salute",
+  "register": "standard",
+  "definition": "A greeting or gesture of respect.",
+  "note": "From Latin salutare, 'to greet'.",
+  "hints": [
+   "Soldiers do it.",
+   "Raise a hand to your brow."
   ],
   "difficulty": "familiar",
   "connection": ""
@@ -30864,6 +31284,30 @@
   "connection": ""
  },
  {
+  "word": "shrine",
+  "register": "standard",
+  "definition": "A holy place or a memorial.",
+  "note": "From Old English scrin, from Latin scrinium, 'chest for papers'.",
+  "hints": [
+   "Pilgrims visit one.",
+   "Place devoted to a saint."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "shrink",
+  "register": "standard",
+  "definition": "To become smaller; or a slang word for a psychiatrist.",
+  "note": "From Old English scrincan.",
+  "hints": [
+   "Wool does it in a hot wash.",
+   "A therapist, informally."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "shrub",
   "register": "standard",
   "definition": "A woody plant smaller than a tree.",
@@ -31548,6 +31992,18 @@
   "connection": ""
  },
  {
+  "word": "slogan",
+  "register": "standard",
+  "definition": "A catchy phrase used in advertising or politics.",
+  "note": "From Scottish Gaelic sluagh-ghairm, 'army cry'.",
+  "hints": [
+   "Used on posters.",
+   "A war cry that became a marketing tool."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "sloop",
   "register": "standard",
   "definition": "A single-masted sailing boat.",
@@ -31992,6 +32448,18 @@
   "connection": ""
  },
  {
+  "word": "sniper",
+  "register": "standard",
+  "definition": "A shooter who fires from a hidden spot.",
+  "note": "From snipe, a bird hard to hit, so hunters of snipe were skilled marksmen.",
+  "hints": [
+   "A long-range marksman.",
+   "Hunter of a wading bird gave it its name."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "snook",
   "register": "standard",
   "definition": "A game fish of warm Atlantic waters; also cocking a snook at someone.",
@@ -32229,6 +32697,18 @@
    "A black smudge from a fire."
   ],
   "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "sorrow",
+  "register": "standard",
+  "definition": "Deep sadness.",
+  "note": "From Old English sorg.",
+  "hints": [
+   "Grief after a loss.",
+   "A feeling of great sadness."
+  ],
+  "difficulty": "familiar",
   "connection": ""
  },
  {
@@ -33804,6 +34284,18 @@
   "connection": ""
  },
  {
+  "word": "strive",
+  "register": "standard",
+  "definition": "To try very hard.",
+  "note": "From Old French estriver, 'to quarrel'.",
+  "hints": [
+   "Make a great effort.",
+   "Work towards a goal."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "stroke",
   "register": "standard",
   "definition": "A hit, a caress, or a sudden loss of blood to the brain.",
@@ -34680,6 +35172,18 @@
   "connection": ""
  },
  {
+  "word": "tactic",
+  "register": "standard",
+  "definition": "A planned action to reach a goal.",
+  "note": "From Greek taktika, 'matters of arrangement'.",
+  "hints": [
+   "Part of a strategy.",
+   "A chess manoeuvre."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "taffy",
   "register": "standard",
   "definition": "A chewy candy.",
@@ -35544,6 +36048,30 @@
   "connection": ""
  },
  {
+  "word": "thrill",
+  "register": "standard",
+  "definition": "A sudden wave of excitement.",
+  "note": "From Old English thyrlian, 'to pierce'.",
+  "hints": [
+   "What a roller-coaster gives.",
+   "Excite greatly."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "thrive",
+  "register": "standard",
+  "definition": "To grow strongly and do well.",
+  "note": "From Old Norse thrifask, 'to grasp for oneself'.",
+  "hints": [
+   "Plants do it in sunshine.",
+   "Flourish and prosper."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "throat",
   "register": "standard",
   "definition": "The passage at the front of the neck.",
@@ -36367,6 +36895,18 @@
   "hints": [
    "Signed by two countries.",
    "Versailles was one."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "trench",
+  "register": "standard",
+  "definition": "A long narrow ditch.",
+  "note": "From Old French trenchier, 'to cut'.",
+  "hints": [
+   "Soldiers in the First World War lived in them.",
+   "Ditch dug in the ground."
   ],
   "difficulty": "familiar",
   "connection": ""
@@ -37308,6 +37848,18 @@
   "connection": ""
  },
  {
+  "word": "unpaid",
+  "register": "standard",
+  "definition": "Not yet paid for, or done without wages.",
+  "note": "From un- plus paid.",
+  "hints": [
+   "A bill left outstanding.",
+   "Work done for free."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "unset",
   "register": "standard",
   "definition": "Not fixed or not yet placed.",
@@ -37435,6 +37987,18 @@
   "hints": [
    "The good part.",
    "Opposite of downside."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "upward",
+  "register": "standard",
+  "definition": "Toward a higher place.",
+  "note": "From Old English upweard.",
+  "hints": [
+   "Heading to the sky.",
+   "Opposite of downward."
   ],
   "difficulty": "familiar",
   "connection": ""
@@ -38985,6 +39549,18 @@
    "Pilots and soldiers say it to confirm."
   ],
   "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "wildly",
+  "register": "standard",
+  "definition": "In an uncontrolled way, or extremely.",
+  "note": "From wild plus -ly.",
+  "hints": [
+   "Without restraint.",
+   "Crazily, without any control."
+  ],
+  "difficulty": "familiar",
   "connection": ""
  },
  {
