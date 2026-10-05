@@ -240,6 +240,18 @@
   "connection": ""
  },
  {
+  "word": "adieu",
+  "register": "standard",
+  "definition": "A French farewell used in English.",
+  "note": "From Old French a Dieu, 'to God'. It was a goodbye entrusting someone to God's care.",
+  "hints": [
+   "A literary way to say goodbye.",
+   "A French farewell."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
   "word": "admin",
   "register": "slang",
   "definition": "Administrative work; the paperwork side of things.",
@@ -321,6 +333,18 @@
    "Shares a root with adolescent."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "aegis",
+  "register": "standard",
+  "definition": "Protection or sponsorship.",
+  "note": "From Greek aigis, the shield of Zeus and Athena. 'Under the aegis of' means under the protection of.",
+  "hints": [
+   "The shield of a Greek god.",
+   "Protection, in a formal phrase."
+  ],
+  "difficulty": "stretch",
   "connection": ""
  },
  {
@@ -549,6 +573,18 @@
    "Its Latin root meant white."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "alder",
+  "register": "standard",
+  "definition": "A tree that grows in wet ground.",
+  "note": "From Old English alor. It is in the birch family and has small cones.",
+  "hints": [
+   "A tree of wet riverbanks.",
+   "A relative of the birch."
+  ],
+  "difficulty": "stretch",
   "connection": ""
  },
  {
@@ -1212,6 +1248,18 @@
   "connection": ""
  },
  {
+  "word": "argon",
+  "register": "standard",
+  "definition": "An inert gas that makes up about one percent of air.",
+  "note": "From Greek argos, 'idle', because it hardly reacts. It fills light bulbs.",
+  "hints": [
+   "A gas that fills a bulb.",
+   "A noble gas in the air."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
   "word": "argue",
   "register": "standard",
   "definition": "To disagree with words.",
@@ -1632,6 +1680,18 @@
   "connection": ""
  },
  {
+  "word": "babel",
+  "register": "standard",
+  "definition": "A confusion of many voices.",
+  "note": "From the Tower of Babel in the Bible, where people suddenly spoke many languages. It means a noisy muddle.",
+  "hints": [
+   "A confusing mix of tongues.",
+   "A biblical tower where languages were scrambled."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
   "word": "bacon",
   "register": "standard",
   "definition": "Cured meat from the back and sides of a pig.",
@@ -1771,6 +1831,18 @@
   "hints": [
    "Media or oil tycoons are called this.",
    "The lowest rank of peer."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "barre",
+  "register": "standard",
+  "definition": "The handrail dancers hold while exercising.",
+  "note": "Borrowed from French barre, 'bar'. Ballet dancers warm up at it.",
+  "hints": [
+   "A rail dancers hold to warm up.",
+   "Where ballet students stretch."
   ],
   "difficulty": "stretch",
   "connection": ""
@@ -1941,6 +2013,18 @@
    "A wild creature."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "bebop",
+  "register": "standard",
+  "definition": "A fast, complex style of jazz from the 1940s.",
+  "note": "Imitative of the sound of its rhythm. Charlie Parker and Dizzy Gillespie shaped it.",
+  "hints": [
+   "Fast, tricky jazz of the 1940s.",
+   "Charlie Parker's style of jazz."
+  ],
+  "difficulty": "stretch",
   "connection": ""
  },
  {
@@ -2143,6 +2227,18 @@
   "hints": [
    "Give someone a wide one.",
    "A bunk on a ship."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "beryl",
+  "register": "standard",
+  "definition": "A hard mineral that includes emerald and aquamarine.",
+  "note": "From Greek beryllos. Emeralds and aquamarines are gem varieties.",
+  "hints": [
+   "The mineral behind emerald.",
+   "A stone that may be green or blue."
   ],
   "difficulty": "stretch",
   "connection": ""
@@ -2688,6 +2784,18 @@
   "connection": ""
  },
  {
+  "word": "bogey",
+  "register": "standard",
+  "definition": "An evil spirit; or one stroke over par in golf.",
+  "note": "Probably related to bogle, a Scottish word for a goblin. The golf term comes from a song about a Colonel Bogey.",
+  "hints": [
+   "What a child may fear in the dark.",
+   "A golf score one over par."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
   "word": "bogus",
   "register": "standard",
   "definition": "Fake; not genuine.",
@@ -2820,6 +2928,18 @@
   "connection": ""
  },
  {
+  "word": "boron",
+  "register": "standard",
+  "definition": "A chemical element with the symbol B.",
+  "note": "From borax plus carbon. It is used in glass and detergent.",
+  "hints": [
+   "An element in laundry products.",
+   "Element number five."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
   "word": "bosom",
   "register": "standard",
   "definition": "The chest, or a person's closest circle.",
@@ -2892,6 +3012,18 @@
   "connection": ""
  },
  {
+  "word": "bower",
+  "register": "standard",
+  "definition": "A leafy shelter; or a lady's chamber in a castle.",
+  "note": "From Old English bur, 'dwelling'. A pergola covered in vines can be called it.",
+  "hints": [
+   "A shady arbour in a garden.",
+   "A private room in a medieval castle."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
   "word": "boxer",
   "register": "standard",
   "definition": "A person who fights in a ring wearing gloves.",
@@ -2937,6 +3069,18 @@
    "Bicycles have hand levers for it."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "brant",
+  "register": "standard",
+  "definition": "A small dark goose that breeds in the Arctic.",
+  "note": "Probably from a Scandinavian word. It winters on the coast.",
+  "hints": [
+   "A small dark wild goose.",
+   "A sea goose in winter."
+  ],
+  "difficulty": "challenging",
   "connection": ""
  },
  {
@@ -3576,6 +3720,18 @@
   "connection": ""
  },
  {
+  "word": "cadre",
+  "register": "standard",
+  "definition": "A small group of trained people; or a framework.",
+  "note": "From French cadre, 'frame', from Italian quadro. It names the core group of an organisation.",
+  "hints": [
+   "A core group of party activists.",
+   "The nucleus of an army."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
   "word": "cagey",
   "register": "standard",
   "definition": "Cautious and unwilling to give information.",
@@ -3696,6 +3852,18 @@
   "connection": ""
  },
  {
+  "word": "carer",
+  "register": "standard",
+  "definition": "A person who looks after someone ill or old.",
+  "note": "From care plus -er. In Britain it names a person who looks after a family member.",
+  "hints": [
+   "Someone who looks after an elderly parent.",
+   "A person who looks after someone unwell."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "cargo",
   "register": "standard",
   "definition": "Goods carried by a ship, plane or truck.",
@@ -3813,6 +3981,18 @@
    "Lebanon's flag shows one."
   ],
   "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "celeb",
+  "register": "slang",
+  "definition": "A famous person.",
+  "note": "A clipping of celebrity. It is used in magazines and on social media.",
+  "hints": [
+   "A famous face in a magazine.",
+   "Someone on a red carpet."
+  ],
+  "difficulty": "familiar",
   "connection": ""
  },
  {
@@ -4044,6 +4224,18 @@
   "connection": ""
  },
  {
+  "word": "chewy",
+  "register": "standard",
+  "definition": "Needing a lot of chewing.",
+  "note": "From chew plus -y. Toffee and tough steak are this way.",
+  "hints": [
+   "Toffee and gummy sweets.",
+   "A tough steak."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "chick",
   "register": "standard",
   "definition": "A baby bird, especially a chicken.",
@@ -4111,6 +4303,18 @@
   "hints": [
    "A doorbell might play one.",
    "To join in, as in 'to ___ in'."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "chino",
+  "register": "standard",
+  "definition": "A twill cotton fabric; or trousers made from it.",
+  "note": "From American Spanish chino, 'toasted'. The trousers are casual and hard-wearing.",
+  "hints": [
+   "Smart-casual trousers of cotton twill.",
+   "A khaki-coloured trouser."
   ],
   "difficulty": "stretch",
   "connection": ""
@@ -4800,6 +5004,18 @@
   "connection": ""
  },
  {
+  "word": "convo",
+  "register": "slang",
+  "definition": "A casual word for conversation.",
+  "note": "A clipping of conversation, from Latin conversari, 'to live with'. It is used in text.",
+  "hints": [
+   "A chat between friends.",
+   "A talk you have in text messages."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "copse",
   "register": "standard",
   "definition": "A small group of trees.",
@@ -4833,6 +5049,18 @@
    "Pushed through a fruit to remove its middle."
   ],
   "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "corgi",
+  "register": "standard",
+  "definition": "A short-legged Welsh herding dog.",
+  "note": "From Welsh cor, 'dwarf', plus ci, 'dog'. The Queen kept many.",
+  "hints": [
+   "A short-legged dog of the British royal family.",
+   "A herding dog with a fox-like face."
+  ],
+  "difficulty": "familiar",
   "connection": ""
  },
  {
@@ -6192,6 +6420,18 @@
   "connection": ""
  },
  {
+  "word": "doggo",
+  "register": "slang",
+  "definition": "A cute word for a dog.",
+  "note": "From dog plus -o. It is internet slang, and 'lie doggo' is an older phrase for staying hidden.",
+  "hints": [
+   "An affectionate word for a pet dog online.",
+   "A word used in funny captions of pets."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "doggy",
   "register": "slang",
   "definition": "A little dog; or about dogs.",
@@ -6864,6 +7104,18 @@
   "connection": ""
  },
  {
+  "word": "eaves",
+  "register": "standard",
+  "definition": "The overhanging edge of a roof.",
+  "note": "From Old English efes, 'edge'. Birds often nest under them.",
+  "hints": [
+   "The part of a roof that hangs over the wall.",
+   "Where swallows build nests."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
   "word": "ebony",
   "register": "standard",
   "definition": "A hard, dark black wood.",
@@ -6871,6 +7123,18 @@
   "hints": [
    "Piano keys were once made from it.",
    "A very dark colour, like polished wood."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "edema",
+  "register": "standard",
+  "definition": "Swelling caused by fluid trapped in body tissue.",
+  "note": "From Greek oidema, 'a swelling'. Ankles can swell with it.",
+  "hints": [
+   "Swollen ankles after a long flight.",
+   "A medical word for puffiness."
   ],
   "difficulty": "stretch",
   "connection": ""
@@ -7471,6 +7735,18 @@
   "hints": [
    "Dragons are said not to.",
    "To be alive or real."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "expat",
+  "register": "slang",
+  "definition": "A person living outside their home country.",
+  "note": "A clipping of expatriate, from Latin ex, 'out', and patria, 'homeland'. It is used for workers abroad.",
+  "hints": [
+   "A Briton living in Spain.",
+   "A worker living overseas."
   ],
   "difficulty": "familiar",
   "connection": ""
@@ -8820,6 +9096,18 @@
   "connection": ""
  },
  {
+  "word": "fryer",
+  "register": "standard",
+  "definition": "A pot or machine used for deep-frying.",
+  "note": "From fry plus -er. An air one cooks with hot air instead of oil.",
+  "hints": [
+   "A kitchen appliance for chips.",
+   "Where the chips cook in oil."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "fudge",
   "register": "standard",
   "definition": "A soft, sweet candy; or to avoid being exact.",
@@ -8949,6 +9237,18 @@
    "A chatterbox."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "gable",
+  "register": "standard",
+  "definition": "The triangular wall at the end of a pitched roof.",
+  "note": "From Old Norse gafl. Many old houses show one at the front.",
+  "hints": [
+   "The triangle under a sloped roof.",
+   "The end wall of a cottage under the ridge."
+  ],
+  "difficulty": "stretch",
   "connection": ""
  },
  {
@@ -10212,6 +10512,18 @@
   "connection": ""
  },
  {
+  "word": "haiku",
+  "register": "standard",
+  "definition": "A short Japanese poem of three lines.",
+  "note": "From Japanese haiku. The traditional form has five, seven and five syllables.",
+  "hints": [
+   "A three-line poem of 5-7-5.",
+   "A short poem about nature."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "hairy",
   "register": "standard",
   "definition": "Covered with hair; also risky.",
@@ -10500,6 +10812,18 @@
   "connection": ""
  },
  {
+  "word": "henna",
+  "register": "standard",
+  "definition": "A reddish dye from a shrub, used for skin and hair.",
+  "note": "From Arabic hinna. It is used to paint temporary designs on hands.",
+  "hints": [
+   "A red-brown plant dye for hands.",
+   "Painted on a bride's hands."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "heron",
   "register": "standard",
   "definition": "A tall wading bird with a long neck and sharp bill.",
@@ -10507,6 +10831,18 @@
   "hints": [
    "Stands motionless in shallow water.",
    "Hunts fish with a quick stab."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "hertz",
+  "register": "standard",
+  "definition": "The unit of frequency.",
+  "note": "Named after the German physicist Heinrich Hertz. One equals one cycle per second.",
+  "hints": [
+   "A unit used for radio and sound frequency.",
+   "What a refresh rate on a screen is measured in."
   ],
   "difficulty": "stretch",
   "connection": ""
@@ -11208,6 +11544,18 @@
   "connection": ""
  },
  {
+  "word": "inset",
+  "register": "standard",
+  "definition": "To put in as an addition; or a small picture within a larger one.",
+  "note": "From in plus set. A map often has one in a corner.",
+  "hints": [
+   "A small map inside a bigger map.",
+   "A small panel set into a larger surface."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "inter",
   "register": "standard",
   "definition": "To bury a dead body.",
@@ -11515,6 +11863,18 @@
   "hints": [
    "One of twelve in a trial.",
    "Listens to evidence in court."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "kanji",
+  "register": "standard",
+  "definition": "Chinese characters used in Japanese writing.",
+  "note": "From Japanese kanji, 'Han characters'. It is used alongside two syllabic scripts.",
+  "hints": [
+   "A character borrowed from China into Japan.",
+   "Part of the Japanese writing system."
   ],
   "difficulty": "stretch",
   "connection": ""
@@ -11844,6 +12204,18 @@
   "connection": ""
  },
  {
+  "word": "largo",
+  "register": "standard",
+  "definition": "A very slow musical pace.",
+  "note": "From Italian largo, 'broad'. It is slower than andante.",
+  "hints": [
+   "A direction for a slow tune.",
+   "A musical marking, slower than walking pace."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
   "word": "larva",
   "register": "standard",
   "definition": "The early, wormlike stage of an insect.",
@@ -11959,6 +12331,18 @@
   "hints": [
    "A cake has several.",
    "Onions have many."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "layup",
+  "register": "standard",
+  "definition": "An easy basketball shot taken close to the hoop.",
+  "note": "From lay plus up. The player banks or lays the ball up off the backboard.",
+  "hints": [
+   "A close shot in basketball.",
+   "An easy shot near the basket."
   ],
   "difficulty": "familiar",
   "connection": ""
@@ -12468,6 +12852,18 @@
   "connection": ""
  },
  {
+  "word": "loner",
+  "register": "standard",
+  "definition": "A person who prefers to be alone.",
+  "note": "From lone plus -er. It describes someone who avoids company.",
+  "hints": [
+   "A solitary type.",
+   "Someone who avoids parties."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "loopy",
   "register": "slang",
   "definition": "Silly or a bit crazy.",
@@ -12537,6 +12933,18 @@
    "A yoga pose is named after it."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "lough",
+  "register": "standard",
+  "definition": "An Irish lake or sea inlet.",
+  "note": "From Irish loch. It is pronounced like the Scottish word 'loch'.",
+  "hints": [
+   "An Irish lake.",
+   "A cousin of the Scottish loch."
+  ],
+  "difficulty": "challenging",
   "connection": ""
  },
  {
@@ -12669,6 +13077,18 @@
    "An exercise stepping forward on one leg."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "lupin",
+  "register": "standard",
+  "definition": "A tall garden flower with spikes of blooms.",
+  "note": "From Latin lupinus, from lupus, 'wolf'. Its seeds are also eaten.",
+  "hints": [
+   "A tall spiky garden flower.",
+   "A plant whose beans are eaten in the Mediterranean."
+  ],
+  "difficulty": "stretch",
   "connection": ""
  },
  {
@@ -13051,6 +13471,18 @@
   "hints": [
    "A pale shade between lilac and violet.",
    "Named for a flowering plant, via French."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "maven",
+  "register": "standard",
+  "definition": "An expert or enthusiast in a field.",
+  "note": "From Yiddish meyvn, from Hebrew, meaning 'one who understands'. A food or wine one knows the subject well.",
+  "hints": [
+   "A wine expert, for instance.",
+   "Someone who knows a subject inside out."
   ],
   "difficulty": "stretch",
   "connection": ""
@@ -13596,6 +14028,18 @@
   "connection": ""
  },
  {
+  "word": "moray",
+  "register": "standard",
+  "definition": "A large eel that lurks in reef crevices.",
+  "note": "From Portuguese moreia, from Latin muraena. It has sharp teeth.",
+  "hints": [
+   "A fierce eel in a coral reef.",
+   "A sea creature that hides in rocky holes."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
   "word": "morph",
   "register": "standard",
   "definition": "To change shape smoothly; also a unit of linguistic form.",
@@ -13812,6 +14256,18 @@
   "connection": ""
  },
  {
+  "word": "mufti",
+  "register": "standard",
+  "definition": "Plain clothes worn by someone who normally wears a uniform.",
+  "note": "From Arabic mufti, a Muslim legal scholar. British officers used it for civilian dress.",
+  "hints": [
+   "What a soldier wears off-duty.",
+   "A day when a school wears no uniform."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
   "word": "mulch",
   "register": "standard",
   "definition": "A layer of material spread over soil to protect and feed plants.",
@@ -13932,6 +14388,18 @@
   "connection": ""
  },
  {
+  "word": "nacho",
+  "register": "standard",
+  "definition": "A tortilla chip topped with cheese.",
+  "note": "A back-formation from nachos, from a Mexican restaurant waiter's nickname. It is a snack food.",
+  "hints": [
+   "A tortilla chip with cheese.",
+   "Eaten at the cinema with dip."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "naive",
   "register": "standard",
   "definition": "Lacking experience and too ready to trust.",
@@ -13963,6 +14431,18 @@
   "hints": [
    "Looks after the kids while parents work.",
    "Mary Poppins was one."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "nappy",
+  "register": "standard",
+  "definition": "A baby's absorbent undergarment.",
+  "note": "A shortened form of napkin plus -y. The word is common in British English.",
+  "hints": [
+   "What a baby wears under clothes.",
+   "A British word for a baby's diaper."
   ],
   "difficulty": "familiar",
   "connection": ""
@@ -16656,6 +17136,18 @@
   "connection": ""
  },
  {
+  "word": "radon",
+  "register": "standard",
+  "definition": "A radioactive gas given off by rocks.",
+  "note": "From radium, since it comes from the decay of that element. It can build up in basements.",
+  "hints": [
+   "A gas that seeps into basements.",
+   "A colourless radioactive gas."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
   "word": "rainy",
   "register": "standard",
   "definition": "Having a lot of rain.",
@@ -16953,6 +17445,18 @@
    "A marsh grown over with tall grass."
   ],
   "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "reeve",
+  "register": "standard",
+  "definition": "A medieval official; or the head of a township.",
+  "note": "From Old English gerefa, 'steward'. The sheriff was a shire-reeve.",
+  "hints": [
+   "A medieval steward.",
+   "The first part of the word sheriff came from its shire."
+  ],
+  "difficulty": "challenging",
   "connection": ""
  },
  {
@@ -17472,6 +17976,18 @@
   "connection": ""
  },
  {
+  "word": "rondo",
+  "register": "standard",
+  "definition": "A piece of music where the main theme keeps returning.",
+  "note": "From Italian rondo, 'round', related to rondeau. Classical composers used it for finales.",
+  "hints": [
+   "A piece in which a theme returns.",
+   "A lively form often ending a sonata."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
   "word": "roomy",
   "register": "standard",
   "definition": "Having plenty of space.",
@@ -17664,6 +18180,18 @@
   "connection": ""
  },
  {
+  "word": "runny",
+  "register": "standard",
+  "definition": "Flowing easily; or dripping.",
+  "note": "From run plus -y. A nose or an egg yolk may be this way.",
+  "hints": [
+   "A cold gives you a nose like this.",
+   "A soft egg yolk."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "rupee",
   "register": "standard",
   "definition": "The currency of India and several nearby countries.",
@@ -17685,6 +18213,30 @@
    "Farms and villages."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "sable",
+  "register": "standard",
+  "definition": "A small dark-furred animal; or the colour black in heraldry.",
+  "note": "From Old French sable, from a Slavic word for the animal. Its fur was prized.",
+  "hints": [
+   "A weasel-like animal valued for its coat.",
+   "The black colour in a coat of arms."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "sabre",
+  "register": "standard",
+  "definition": "A curved cavalry sword.",
+  "note": "From French sabre, from Hungarian szablya. It is also a fencing weapon.",
+  "hints": [
+   "A sword used by horsemen.",
+   "A fencing weapon with a curved blade."
+  ],
+  "difficulty": "stretch",
   "connection": ""
  },
  {
@@ -18264,6 +18816,18 @@
   "connection": ""
  },
  {
+  "word": "senna",
+  "register": "standard",
+  "definition": "A plant whose leaves are used as a laxative.",
+  "note": "From Arabic sana, a plant. Its pods and leaves have long been used in medicine.",
+  "hints": [
+   "A herb used in traditional medicine.",
+   "A plant from the cassia family."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
   "word": "sense",
   "register": "standard",
   "definition": "A way of perceiving, such as sight or smell; or good judgement.",
@@ -18321,6 +18885,18 @@
    "What you do to open a game of tennis."
   ],
   "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "servo",
+  "register": "slang",
+  "definition": "A motor that adjusts a mechanism.",
+  "note": "A clipping of servomotor, from Latin servus, 'servant'. It moves robot arms.",
+  "hints": [
+   "A small motor in a robot arm.",
+   "A part that controls a model plane's flaps."
+  ],
+  "difficulty": "stretch",
   "connection": ""
  },
  {
@@ -21204,6 +21780,30 @@
   "connection": ""
  },
  {
+  "word": "sutra",
+  "register": "standard",
+  "definition": "A short scripture or aphorism in Indian tradition.",
+  "note": "From Sanskrit sutra, 'thread'. The Kama one is famous, as are Buddhist ones.",
+  "hints": [
+   "A short text in an Indian tradition.",
+   "Literally a thread in Sanskrit."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "swain",
+  "register": "standard",
+  "definition": "An old word for a young man, especially a country suitor.",
+  "note": "From Old Norse sveinn, 'boy' or 'servant'. A poet might call a lover this.",
+  "hints": [
+   "A country lover in a poem.",
+   "An old poetic term for a suitor."
+  ],
+  "difficulty": "challenging",
+  "connection": ""
+ },
+ {
   "word": "swami",
   "register": "standard",
   "definition": "A Hindu religious teacher.",
@@ -21624,6 +22224,18 @@
   "connection": ""
  },
  {
+  "word": "tapas",
+  "register": "standard",
+  "definition": "Small Spanish snacks or starters.",
+  "note": "From Spanish tapa, 'lid', since slices of bread were once placed on top of drinks. Diners share several at a bar.",
+  "hints": [
+   "Little plates in a Spanish bar.",
+   "Patatas bravas and olives."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "taper",
   "register": "standard",
   "definition": "To narrow to a point; or a thin candle.",
@@ -21739,6 +22351,18 @@
   "hints": [
    "What siblings do to one another.",
    "To make fun lightly."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
+  "word": "teeny",
+  "register": "slang",
+  "definition": "Very small.",
+  "note": "An alteration of tiny, with a childish feel. It is an informal word.",
+  "hints": [
+   "A very small amount.",
+   "Tinier than small."
   ],
   "difficulty": "familiar",
   "connection": ""
@@ -21883,6 +22507,18 @@
   "hints": [
    "Short-tempered and snappish.",
    "Describes someone about to snap."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "thane",
+  "register": "standard",
+  "definition": "A noble in early England or Scotland.",
+  "note": "From Old English thegn, 'servant' or 'warrior'. Macbeth was one.",
+  "hints": [
+   "A title in Shakespeare's Scottish play.",
+   "A lord of old Scotland."
   ],
   "difficulty": "stretch",
   "connection": ""
@@ -22236,6 +22872,18 @@
   "connection": ""
  },
  {
+  "word": "tinge",
+  "register": "standard",
+  "definition": "A slight touch of colour or feeling.",
+  "note": "From Latin tingere, 'to dye'. A hint of sadness or colour is this.",
+  "hints": [
+   "A hint of colour.",
+   "A slight touch of sadness."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
   "word": "tipsy",
   "register": "standard",
   "definition": "Slightly drunk.",
@@ -22305,6 +22953,18 @@
    "How colours or sounds are balanced."
   ],
   "difficulty": "challenging",
+  "connection": ""
+ },
+ {
+  "word": "toner",
+  "register": "standard",
+  "definition": "Powder used in a printer; or a skin lotion.",
+  "note": "From tone plus -er. A cartridge holds the first, and a bottle holds the second.",
+  "hints": [
+   "What a laser printer uses up.",
+   "A lotion after cleansing."
+  ],
+  "difficulty": "familiar",
   "connection": ""
  },
  {
@@ -22941,6 +23601,18 @@
    "A lump a doctor may remove."
   ],
   "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "tuner",
+  "register": "standard",
+  "definition": "A person or device that tunes an instrument or radio.",
+  "note": "From tune plus -er. A piano technician is one.",
+  "hints": [
+   "A technician for a piano.",
+   "The dial on an old radio."
+  ],
+  "difficulty": "familiar",
   "connection": ""
  },
  {
@@ -24432,6 +25104,18 @@
   "connection": ""
  },
  {
+  "word": "wonky",
+  "register": "slang",
+  "definition": "Crooked or unsteady.",
+  "note": "From a dialect word, possibly an alteration of an old word for 'shaky'. A table with uneven legs is this.",
+  "hints": [
+   "A table with an uneven leg.",
+   "A crooked picture frame."
+  ],
+  "difficulty": "familiar",
+  "connection": ""
+ },
+ {
   "word": "woody",
   "register": "standard",
   "definition": "Like or made of wood.",
@@ -24655,6 +25339,18 @@
   "hints": [
    "With a twisted, dry smile.",
    "How an ironic comment is delivered."
+  ],
+  "difficulty": "stretch",
+  "connection": ""
+ },
+ {
+  "word": "xenon",
+  "register": "standard",
+  "definition": "A heavy, colourless gas used in lamps.",
+  "note": "From Greek xenos, 'strange', because it was found as a rare gas. Some car headlights use it.",
+  "hints": [
+   "A gas in bright headlights.",
+   "A noble gas named for strangeness."
   ],
   "difficulty": "stretch",
   "connection": ""
