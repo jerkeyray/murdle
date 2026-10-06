@@ -14,7 +14,7 @@ func (s *Server) duoError(w http.ResponseWriter, err error) {
 		switch e.Code {
 		case "not_found":
 			status = http.StatusNotFound
-		case "stale", "not_your_turn", "round_over", "pass_used", "invalid_action", "request_reused":
+		case "stale", "not_your_turn", "round_over", "pass_used", "hint_locked", "invalid_action", "request_reused":
 			status = http.StatusConflict
 		}
 		writeJSON(w, status, map[string]any{"code": e.Code, "message": e.Message, "current": e.Current})
@@ -75,7 +75,7 @@ func (s *Server) handleInviteDuo(w http.ResponseWriter, r *http.Request) { s.mut
 func (s *Server) handleDuoAction(w http.ResponseWriter, r *http.Request) {
 	action := chi.URLParam(r, "action")
 	date := chi.URLParam(r, "date")
-	if date != "" && action != "guesses" && action != "pass" || date == "" && action != "accept" && action != "decline" && action != "cancel" && action != "end" && action != "next" {
+	if date != "" && action != "guesses" && action != "pass" && action != "hint" || date == "" && action != "accept" && action != "decline" && action != "cancel" && action != "end" && action != "next" {
 		writeError(w, 404, "not_found", "Action not found")
 		return
 	}

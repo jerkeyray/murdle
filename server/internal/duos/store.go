@@ -58,13 +58,17 @@ func (s *Store) load(ctx context.Context, tx pgx.Tx, id, player string) (*Duo, e
 func (s *Store) day(ctx context.Context, tx pgx.Tx, id, date string, seq int) (*Day, error) {
 	d := &Day{DuoID: id, WordLength: game.WordLength, MaxRows: game.MaxRows, Rows: []Guess{}, Passed: []string{}}
 	var entry []byte
-	err := tx.QueryRow(ctx, `select day::text,seq,deadline,state,current_player,version,answer,entry from duo_days where duo_id=$1 and day=$2 and seq=$3`, id, date, seq).Scan(&d.Date, &d.Seq, &d.Deadline, &d.State, &d.CurrentPlayer, &d.Version, &d.hiddenAnswer, &entry)
+	var hint *string
+	err := tx.QueryRow(ctx, `select day::text,seq,deadline,state,current_player,version,answer,entry,hint from duo_days where duo_id=$1 and day=$2 and seq=$3`, id, date, seq).Scan(&d.Date, &d.Seq, &d.Deadline, &d.State, &d.CurrentPlayer, &d.Version, &d.hiddenAnswer, &entry, &hint)
 	if err != nil {
 		return nil, err
 	}
 	d.Board = boardKey(d.Date, d.Seq)
 	if err = json.Unmarshal(entry, &d.hiddenEntry); err != nil {
 		return nil, err
+	}
+	if hint != nil {
+		d.Hint = &HintReveal{Tier: 1, Text: *hint}
 	}
 	rows, err := tx.Query(ctx, `select guess,marks,player_id from duo_guesses where duo_id=$1 and day=$2 and seq=$3 order by row_index`, id, date, seq)
 	if err != nil {
@@ -415,7 +419,7 @@ func (s *Store) Mutate(ctx context.Context, player, id, date, action string, m M
 	if err = s.populate(ctx, tx, d); err != nil {
 		return nil, err
 	}
-	boardAction := action == "guess" || action == "pass"
+	boardAction := action == "guess" || action == "pass" || action == "hint"
 	currentVersion := d.Version
 	if boardAction && d.Today != nil {
 		currentVersion = d.Today.Version
@@ -483,7 +487,7 @@ func (s *Store) Mutate(ctx context.Context, player, id, date, action string, m M
 		} else if b.State != "playing" {
 			return nil, fail("invalid_action", "Today's board has closed")
 		}
-	case "guess", "pass":
+	case "guess", "pass", "hint":
 		b := d.Today
 		if d.Status != "active" || b == nil || date != b.Board || b.State != "playing" {
 			if err = tx.Commit(ctx); err != nil {
@@ -491,48 +495,64 @@ func (s *Store) Mutate(ctx context.Context, player, id, date, action string, m M
 			}
 			return nil, &Error{"round_over", "This board has closed.", d}
 		}
-		if b.CurrentPlayer != player {
+		if action != "hint" && b.CurrentPlayer != player {
 			return nil, fail("not_your_turn", "It is your friend's turn")
 		}
-		other := d.Members[0].ID
-		if other == player {
-			other = d.Members[1].ID
-		}
-		state := b.State
-		if action == "pass" {
-			for _, p := range b.Passed {
-				if p == player {
-					return nil, fail("pass_used", "You already passed on this board")
+		if action == "hint" {
+			if b.Hint == nil {
+				if len(b.Rows) < game.HintUnlocksAfter(1) {
+					return nil, fail("hint_locked", "A clue unlocks after three accepted guesses")
+				}
+				info, ok := s.words.WordInfo(b.hiddenAnswer)
+				if !ok || len(info.Hints) == 0 {
+					return nil, fail("invalid_action", "A clue is unavailable for this word")
+				}
+				_, err = tx.Exec(ctx, `update duo_days set hint=$4,version=version+1 where duo_id=$1 and day=$2 and seq=$3 and hint is null`, d.ID, b.Date, b.Seq, info.Hints[0])
+				if err != nil {
+					return nil, err
 				}
 			}
-			_, err = tx.Exec(ctx, `insert into duo_passes(duo_id,day,seq,player_id) values($1,$2,$3,$4)`, d.ID, b.Date, b.Seq, player)
 		} else {
-			guess := strings.ToLower(strings.TrimSpace(m.Guess))
-			if len(guess) != game.WordLength {
-				return nil, fail("wrong_length", "Enter "+game.LengthWord()+" letters")
+			other := d.Members[0].ID
+			if other == player {
+				other = d.Members[1].ID
 			}
-			if !s.words.IsWord(guess) {
-				return nil, fail("not_a_word", "Not in the word list")
+			state := b.State
+			if action == "pass" {
+				for _, p := range b.Passed {
+					if p == player {
+						return nil, fail("pass_used", "You already passed on this board")
+					}
+				}
+				_, err = tx.Exec(ctx, `insert into duo_passes(duo_id,day,seq,player_id) values($1,$2,$3,$4)`, d.ID, b.Date, b.Seq, player)
+			} else {
+				guess := strings.ToLower(strings.TrimSpace(m.Guess))
+				if len(guess) != game.WordLength {
+					return nil, fail("wrong_length", "Enter "+game.LengthWord()+" letters")
+				}
+				if !s.words.IsWord(guess) {
+					return nil, fail("not_a_word", "Not in the word list")
+				}
+				marks := game.MarkGuess(guess, b.hiddenAnswer)
+				wireMarks := make([]string, len(marks))
+				for i, mark := range marks {
+					wireMarks[i] = mark.String()
+				}
+				markJSON, _ := json.Marshal(wireMarks)
+				_, err = tx.Exec(ctx, `insert into duo_guesses(duo_id,day,seq,row_index,player_id,guess,marks) values($1,$2,$3,$4,$5,$6,$7)`, d.ID, b.Date, b.Seq, len(b.Rows), player, guess, markJSON)
+				if game.Solved(marks) {
+					state = "won"
+				} else if len(b.Rows)+1 >= game.MaxRows {
+					state = "lost"
+				}
 			}
-			marks := game.MarkGuess(guess, b.hiddenAnswer)
-			wireMarks := make([]string, len(marks))
-			for i, mark := range marks {
-				wireMarks[i] = mark.String()
+			if err != nil {
+				return nil, err
 			}
-			markJSON, _ := json.Marshal(wireMarks)
-			_, err = tx.Exec(ctx, `insert into duo_guesses(duo_id,day,seq,row_index,player_id,guess,marks) values($1,$2,$3,$4,$5,$6,$7)`, d.ID, b.Date, b.Seq, len(b.Rows), player, guess, markJSON)
-			if game.Solved(marks) {
-				state = "won"
-			} else if len(b.Rows)+1 >= game.MaxRows {
-				state = "lost"
+			_, err = tx.Exec(ctx, `update duo_days set current_player=$4,state=$5,version=version+1 where duo_id=$1 and day=$2 and seq=$3`, d.ID, b.Date, b.Seq, other, state)
+			if err != nil {
+				return nil, err
 			}
-		}
-		if err != nil {
-			return nil, err
-		}
-		_, err = tx.Exec(ctx, `update duo_days set current_player=$4,state=$5,version=version+1 where duo_id=$1 and day=$2 and seq=$3`, d.ID, b.Date, b.Seq, other, state)
-		if err != nil {
-			return nil, err
 		}
 	default:
 		return nil, fail("invalid_action", "Unknown action")

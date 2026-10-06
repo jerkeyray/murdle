@@ -18,7 +18,7 @@ import type { EnterState } from "@/lib/useGame";
 // `board` is how the board is addressed ("2026-10-05", then "2026-10-05.1").
 // Retry records written before boards had a sequence carry only `date`, which
 // is the same string for a day's first board.
-type Pending = { action: "guesses" | "pass"; board?: string; date?: string; mutation: DuoMutation };
+type Pending = { action: "guesses" | "pass" | "hint"; board?: string; date?: string; mutation: DuoMutation };
 export default function DuoPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
   const [duo, setDuo] = useState<Duo | null>(null);
@@ -58,7 +58,9 @@ export default function DuoPage({ params }: { params: Promise<{ id: string }> })
     if (pending.current && d.today) {
       const settled = pending.current.action === "guesses"
         ? d.today.rows.some(row => row.playerId === d.viewerId && row.guess === pending.current?.mutation.guess)
-        : d.today.passed.includes(d.viewerId);
+        : pending.current.action === "pass"
+          ? d.today.passed.includes(d.viewerId)
+          : !!d.today.hint;
       if (settled) {
         const spentGuess = pending.current.action === "guesses";
         pending.current = null;
@@ -126,16 +128,16 @@ export default function DuoPage({ params }: { params: Promise<{ id: string }> })
     if (enabled && index >= 0 && index < wordLength) setDraftCursor(index);
   }, [enabled, wordLength]);
 
-  const submit = useCallback(async (action: "guesses" | "pass" = "guesses") => {
+  const submit = useCallback(async (action: "guesses" | "pass" | "hint" = "guesses") => {
     if (lock.current || !duo?.today) return;
-    if (!pending.current && !yourTurn) return;
+    if (!pending.current && action !== "hint" && !yourTurn) return;
     if (!pending.current && action === "guesses" && !draftComplete) { setError(`Enter ${lettersPhrase(duo.today.wordLength)}`); return; }
     lock.current = true; setBusy(true); setError("");
     try {
       if (!pending.current) {
         const latest = await getDuo(id);
         accept(latest);
-        if (!latest.today || latest.today.board !== duo.today.board || latest.today.version !== duo.today.version || latest.today.currentPlayer !== latest.viewerId || latest.today.state !== "playing") { setError("The board changed. Review it before playing."); return; }
+        if (!latest.today || latest.today.board !== duo.today.board || latest.today.version !== duo.today.version || action !== "hint" && latest.today.currentPlayer !== latest.viewerId || latest.today.state !== "playing") { setError("The board changed. Review it before playing."); return; }
         pending.current = { action, board: latest.today.board, mutation: { requestId: crypto.randomUUID(), version: latest.today.version, ...(action === "guesses" ? { guess: draftWord } : {}) } };
         writeLocal(dayKey.current + ".pending", JSON.stringify(pending.current));
         setHasPending(true);
@@ -186,7 +188,8 @@ export default function DuoPage({ params }: { params: Promise<{ id: string }> })
         return <span className="duo-member" key={m.id} data-seat={seat} data-current={active} aria-current={active ? "step" : undefined}><i aria-hidden>{m.name.slice(0, 1).toUpperCase()}</i><span>{m.id === duo.viewerId ? "You" : m.name}</span></span>;
       })}</div>
       <div className="rule" />
-      <div className="board-area"><div className="board-stage"><Board rows={day.rows} authors={day.rows.map(r => duo.members.find(m => m.id === r.playerId)?.name || "Friend")} authorSeats={day.rows.map(r => duo.members.findIndex(m => m.id === r.playerId))} draft={draft} wordLength={day.wordLength} maxRows={day.maxRows} revealingRow={null} shake={false} onDraftTileSelect={yourTurn ? selectDraftTile : undefined} draftCursor={draftCursor} />{yourTurn && !day.passed.includes(duo.viewerId) && !closedDate && <button className="icon-button duo-pass" disabled={busy || hasPending} onClick={() => void submit("pass")} aria-label="Pass this turn to your friend" title="Pass this turn to your friend. Once per board.">Pass</button>}</div></div>
+      <div className="board-area"><div className="board-stage"><Board rows={day.rows} authors={day.rows.map(r => duo.members.find(m => m.id === r.playerId)?.name || "Friend")} authorSeats={day.rows.map(r => duo.members.findIndex(m => m.id === r.playerId))} draft={draft} wordLength={day.wordLength} maxRows={day.maxRows} revealingRow={null} shake={false} onDraftTileSelect={yourTurn ? selectDraftTile : undefined} draftCursor={draftCursor} />{yourTurn && !day.passed.includes(duo.viewerId) && !closedDate && <button className="icon-button duo-pass" disabled={busy || hasPending} onClick={() => void submit("pass")} aria-label="Pass this turn to your friend" title="Pass this turn to your friend. Once per board.">Pass</button>}{day.state === "playing" && day.rows.length >= 3 && !day.hint && !closedDate && <button className="icon-button duo-hint" disabled={busy || hasPending} onClick={() => void submit("hint")} aria-label="Reveal a shared hint" title="Reveal one shared hint. It does not use a turn.">Hint</button>}</div></div>
+      {day.hint && <aside className="duo-hint-reveal" aria-label="Shared hint"><span className="label">Shared hint</span><p>{day.hint.text}</p></aside>}
       <div className="sr-only" role="status" aria-live="polite">{day.rows.at(-1)?.guess.split("").map((letter, i) => `${letter}: ${MARK_LABEL[day.rows.at(-1)!.marks[i]]}`).join("; ")}</div>
       {day.state !== "playing" ? <div className="game-tools"><span role="status">{reconnecting ? "Reconnecting…" : status}</span></div> : null}
       {error && <div className="duo-error" role="alert">{error}</div>}

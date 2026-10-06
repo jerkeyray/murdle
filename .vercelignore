@@ -1,0 +1,16 @@
+# Local credentials and environment files
+**/.env
+**/.env.*
+**/.env.example
+
+# Local configuration, generated browser output, and build caches
+.claude/
+**/test-results/
+**/playwright-report/
+**/.next-playwright/
+**/.next/
+**/node_modules/
+**/tsconfig.tsbuildinfo
+
+# Offline enrichment corpora are used by tooling, not the deployed app
+web/scripts/data/

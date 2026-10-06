@@ -95,10 +95,12 @@ choose **Play together**. They accept a separate daily-game invitation.
 Several friendships can each have their own word and streak.
 
 Shared boards have six alternating guesses, one optional pass per person, and
-no hints. They reset at midnight in the inviter's timezone. A solve extends the
-pair's streak; a missed or lost day breaks it. The starting player rotates by
-calendar date. Ending a partnership keeps its results and friendship; starting
-another requires another accepted invitation and resets the shared streak.
+one shared authored hint that either player can reveal after three accepted
+guesses without using a turn. They reset at midnight in the inviter's timezone.
+A solve extends the pair's streak; a missed or lost day breaks it. The starting
+player rotates by calendar date. Ending a partnership keeps its results and
+friendship; starting another requires another accepted invitation and resets
+the shared streak.
 
 PostgreSQL stores partnerships, board/entry snapshots, guesses, passes, and
 retry receipts. Shared games survive API restarts. Every move checks membership,

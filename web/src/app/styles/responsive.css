@@ -474,6 +474,25 @@
   color: var(--mark-hit-text);
 }
 
+/* Keep the home action clear while letting the green specimen row carry the
+   page's accent. */
+.home-actions .play {
+  background: var(--bg-raised);
+  color: var(--text);
+  border-color: var(--border-strong);
+}
+
+.home-actions .play:hover {
+  background: var(--bg-raised);
+  color: var(--text);
+  border-color: var(--text-muted);
+}
+
+.home-actions .play:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 3px;
+}
+
 .play-word {
   font-family: var(--font-serif), Georgia, serif;
   font-size: 1.3rem;
@@ -873,6 +892,11 @@ summary { cursor: pointer; color: var(--text-muted); padding-block: 8px; min-hei
 .duo-app .board-stage .duo-pass { position: absolute; bottom: max(calc(8.333% - 22px), 0px); left: -50px; width: 44px; height: 44px; padding: 0; border-color: var(--border); border-radius: 50%; color: var(--text-muted); font-size: .66rem; font-weight: 650; letter-spacing: .02em; }
 .duo-app .board-stage .duo-pass:hover { border-color: var(--border-strong); color: var(--text); }
 .duo-app .board-stage .duo-pass:disabled { opacity: .45; }
+.duo-app .board-stage .duo-hint { position: absolute; top: 8px; right: -50px; width: 44px; height: 44px; padding: 0; border-color: var(--border); border-radius: 50%; color: var(--text-muted); font-size: .66rem; font-weight: 650; letter-spacing: .02em; }
+.duo-app .board-stage .duo-hint:hover { border-color: var(--border-strong); color: var(--text); }
+.duo-app .board-stage .duo-hint:disabled { opacity: .45; }
+.duo-hint-reveal { flex: none; width: min(100%, 21rem); margin: 12px auto; padding: 12px 14px; border: 1px solid var(--border); border-radius: var(--radius-card); background: var(--bg-raised); }
+.duo-hint-reveal p { margin: 5px 0 0; color: var(--text); font-size: .9rem; line-height: 1.45; }
 .duo-app .row { position: relative; }
 .row-author { display: grid; place-items: center; position: absolute; right: calc(100% + 6px); top: 50%; transform: translateY(-50%); font-family: var(--font-serif),Georgia,serif; font-size: .75rem; color: var(--text-muted); }
 .row-author[data-seat="0"], .duo-members [data-seat="0"] i { color: var(--seat-0); }

@@ -37,16 +37,19 @@ test("friends invite, shared turns, retry, pass, persistence and daily reset", a
   await ananya.getByRole("button", { name: "Accept daily game" }).click();
   await expect(ananya).toHaveURL(/\/duos\//);
   const id = ananya.url().split("/").at(-1)!;
+  const answer = await adi.request.get(`${API}/test/answer?id=${id}`, { headers: { Authorization: "Bearer fixture-adi" } }).then(r => r.json()) as { answer: string };
+  const wrongGuesses = ["adieu", "stone", "crane", "slate", "house", "light", "money"].filter(word => word !== answer.answer);
   await adi.getByRole("button", { name: "Close Friend" }).click();
   await adi.goto(`/duos/${id}`);
   await yourTurn(adi);
+  await expect(adi.getByRole("button", { name: "Reveal a shared hint" })).toHaveCount(0);
   await expect(ananya.getByText("Waiting for Adi")).toBeVisible();
   // Lose the response after the server commits, then retry the identical request.
   await adi.route("**/api/duos/*/days/*/guesses", async route => {
     await route.fetch({ url: route.request().url().replace("http://localhost:8080", API!) });
     await route.abort("failed");
   }, { times: 1 });
-  await guess(adi, "adieu");
+  await guess(adi, wrongGuesses[0]);
   // The move reached the server even though its response did not. Nothing to
   // retry by hand: the next refresh finds it and settles the local record.
   await adi.reload();
@@ -62,7 +65,23 @@ test("friends invite, shared turns, retry, pass, persistence and daily reset", a
   await expect(adi.locator(".row [data-mark]")).toHaveCount(5);
   await expect(adi.locator('.tile[data-state="filled"]')).toHaveCount(3);
   await yourTurn(adi);
-  const answer = await adi.request.get(`${API}/test/answer?id=${id}`, { headers: { Authorization: "Bearer fixture-adi" } }).then(r => r.json()) as { answer: string };
+  for (let i = 0; i < 3; i++) await adi.keyboard.press("Backspace");
+  await guess(adi, wrongGuesses[1]);
+  await yourTurn(ananya);
+  await guess(ananya, wrongGuesses[2]);
+  await expect(ananya.getByRole("button", { name: "Reveal a shared hint" })).toBeVisible();
+  const turnBeforeHint = await ananya.request.get(`${API}/api/duos/${id}`, { headers: { Authorization: "Bearer fixture-ananya" } }).then(r => r.json()) as { today: { currentPlayer: string; version: number } };
+  await ananya.route("**/api/duos/*/days/*/hint", async route => {
+    await route.fetch({ url: route.request().url().replace("http://localhost:8080", API!) });
+    await route.abort("failed");
+  }, { times: 1 });
+  await ananya.getByRole("button", { name: "Reveal a shared hint" }).click();
+  await expect(ananya.getByLabel("Shared hint")).toBeVisible();
+  await adi.reload();
+  await expect(adi.getByLabel("Shared hint")).toBeVisible();
+  const turnAfterHint = await adi.request.get(`${API}/api/duos/${id}`, { headers: { Authorization: "Bearer fixture-adi" } }).then(r => r.json()) as { today: { currentPlayer: string; version: number } };
+  expect(turnAfterHint.today.currentPlayer).toBe(turnBeforeHint.today.currentPlayer);
+  expect(turnAfterHint.today.version).toBe(turnBeforeHint.today.version + 1);
   await adi.locator("h1").click(); for (let i = 0; i < 3; i++) await adi.keyboard.press("Backspace");
   await guess(adi, answer.answer);
   await expect(adi.getByText("Solved together", { exact: true })).toBeVisible();

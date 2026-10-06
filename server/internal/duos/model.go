@@ -28,6 +28,10 @@ type Guess struct {
 	Marks    []string `json:"marks"`
 	PlayerID string   `json:"playerId"`
 }
+type HintReveal struct {
+	Tier int    `json:"tier"`
+	Text string `json:"text"`
+}
 type Day struct {
 	DuoID string `json:"duoId"`
 	// WordLength and MaxRows ship the rules to the client so the board and the
@@ -38,17 +42,18 @@ type Day struct {
 	// Seq numbers the boards within a day: 0 is the first, and each "next word"
 	// adds one. Board is the key a client uses to address it ("2026-10-05",
 	// then "2026-10-05.1"), so a day's first board keeps its plain date.
-	Seq           int       `json:"seq"`
-	Board         string    `json:"board"`
-	Deadline      time.Time `json:"deadline"`
-	State         string    `json:"state"`
-	CurrentPlayer string    `json:"currentPlayer"`
-	Version       int       `json:"version"`
-	Rows          []Guess   `json:"rows"`
-	Passed        []string  `json:"passed"`
-	Streak        int       `json:"streak"`
-	Answer        string    `json:"answer,omitempty"`
-	Entry         *Entry    `json:"entry,omitempty"`
+	Seq           int         `json:"seq"`
+	Board         string      `json:"board"`
+	Deadline      time.Time   `json:"deadline"`
+	State         string      `json:"state"`
+	CurrentPlayer string      `json:"currentPlayer"`
+	Version       int         `json:"version"`
+	Rows          []Guess     `json:"rows"`
+	Passed        []string    `json:"passed"`
+	Hint          *HintReveal `json:"hint,omitempty"`
+	Streak        int         `json:"streak"`
+	Answer        string      `json:"answer,omitempty"`
+	Entry         *Entry      `json:"entry,omitempty"`
 	hiddenAnswer  string
 	hiddenEntry   Entry
 }

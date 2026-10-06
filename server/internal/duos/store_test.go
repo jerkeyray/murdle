@@ -115,6 +115,100 @@ func TestPostgresMovesAndRestoration(t *testing.T) {
 		t.Fatal("created a playable missed date")
 	}
 }
+
+func TestPostgresSharedHintUnlocksAndDoesNotUseTurn(t *testing.T) {
+	s, d, _ := fixture(t)
+	ctx := context.Background()
+	day := d.Today.Board
+	_, err := s.Mutate(ctx, testdb.A, d.ID, day, "guess", Mutation{RequestID: testdb.ID(), Version: d.Today.Version, Guess: "zzzzz"})
+	requireCode(t, err, "not_a_word")
+	d, err = s.Mutate(ctx, testdb.A, d.ID, day, "pass", Mutation{RequestID: testdb.ID(), Version: d.Today.Version})
+	if err != nil {
+		t.Fatal(err)
+	}
+	_, err = s.Mutate(ctx, testdb.B, d.ID, day, "hint", Mutation{RequestID: testdb.ID(), Version: d.Today.Version})
+	requireCode(t, err, "hint_locked")
+
+	for i := 0; i < 3; i++ {
+		player := d.Today.CurrentPlayer
+		guess := "adieu"
+		if guess == d.Today.hiddenAnswer {
+			guess = "stone"
+		}
+		d, err = s.Mutate(ctx, player, d.ID, day, "guess", Mutation{RequestID: testdb.ID(), Version: d.Today.Version, Guess: guess})
+		if err != nil {
+			t.Fatal(err)
+		}
+	}
+	turnBefore := d.Today.CurrentPlayer
+	rowsBefore := len(d.Today.Rows)
+	info, ok := s.words.WordInfo(d.Today.hiddenAnswer)
+	if !ok || len(info.Hints) == 0 {
+		t.Fatal("answer has no authored hint")
+	}
+	mutation := Mutation{RequestID: testdb.ID(), Version: d.Today.Version}
+	// The player who is not up can reveal the clue for the pair.
+	notCurrent := testdb.A
+	if notCurrent == turnBefore {
+		notCurrent = testdb.B
+	}
+	d, err = s.Mutate(ctx, notCurrent, d.ID, day, "hint", mutation)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if d.Today.Hint == nil || d.Today.Hint.Tier != 1 || d.Today.Hint.Text != info.Hints[0] || d.Today.CurrentPlayer != turnBefore || len(d.Today.Rows) != rowsBefore {
+		t.Fatal("hint was not shared without consuming a turn or guess")
+	}
+	if d.Today.Answer != "" || d.Today.Entry != nil {
+		t.Fatal("revealing a hint exposed the answer")
+	}
+	dayJSON, _ := json.Marshal(d.Today)
+	var publicDay map[string]json.RawMessage
+	if err := json.Unmarshal(dayJSON, &publicDay); err != nil || publicDay["answer"] != nil || publicDay["entry"] != nil {
+		t.Fatal("active board response leaked the answer or entry")
+	}
+	retry, err := s.Mutate(ctx, notCurrent, d.ID, day, "hint", mutation)
+	if err != nil || retry.Today.Hint == nil || retry.Today.Hint.Text != info.Hints[0] || len(retry.Today.Rows) != rowsBefore {
+		t.Fatal("hint retry was not idempotent", err)
+	}
+	restarted := New(s.db, words.NewPool())
+	restarted.Now = s.Now
+	restored, err := restarted.Get(ctx, d.ID, testdb.B)
+	if err != nil || restored.Today.Hint == nil || restored.Today.Hint.Text != info.Hints[0] || restored.Today.Answer != "" {
+		t.Fatal("hint did not persist safely", err)
+	}
+	_, err = s.Mutate(ctx, testdb.A, d.ID, day, "hint", Mutation{RequestID: testdb.ID(), Version: restored.Today.Version})
+	if err != nil {
+		t.Fatal("a repeated hint request should return the shared clue", err)
+	}
+	var wg sync.WaitGroup
+	errs := make(chan error, 2)
+	for _, player := range []string{testdb.A, testdb.B} {
+		wg.Add(1)
+		go func(player string) {
+			defer wg.Done()
+			result, e := s.Mutate(ctx, player, d.ID, day, "hint", Mutation{RequestID: testdb.ID(), Version: d.Today.Version})
+			if e == nil && (result.Today.Hint == nil || result.Today.Hint.Text != info.Hints[0]) {
+				e = errors.New("concurrent hint request returned a different clue")
+			}
+			errs <- e
+		}(player)
+	}
+	wg.Wait()
+	close(errs)
+	for e := range errs {
+		if e != nil {
+			t.Fatal("concurrent hint retry failed", e)
+		}
+	}
+	answer := d.Today.hiddenAnswer
+	d, err = s.Mutate(ctx, d.Today.CurrentPlayer, d.ID, day, "guess", Mutation{RequestID: testdb.ID(), Version: d.Today.Version, Guess: answer})
+	if err != nil || d.Today.State != "won" {
+		t.Fatal("could not close hinted board", err)
+	}
+	_, err = s.Mutate(ctx, testdb.A, d.ID, day, "hint", Mutation{RequestID: testdb.ID(), Version: d.Today.Version})
+	requireCode(t, err, "round_over")
+}
 func TestPostgresRaces(t *testing.T) {
 	s, d, _ := fixture(t)
 	ctx := context.Background()

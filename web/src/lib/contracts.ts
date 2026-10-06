@@ -123,6 +123,8 @@ export interface DuoDay {
   version: number;
   rows: (Row & { playerId: string })[];
   passed: string[];
+  /** One shared authored clue, revealed after three accepted guesses. */
+  hint?: { tier: 1; text: string };
   streak: number;
   answer?: string;
   entry?: Entry;

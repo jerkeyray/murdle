@@ -210,7 +210,7 @@ export const getDuos = (signal?:AbortSignal) => request<Duo[]>("/api/me/duos",{s
 export const getDuo = (id: string, date = "today", signal?:AbortSignal) => request<Duo>(`/api/duos/${id}/days/${date}`,{signal});
 export const heartbeat = (signal?:AbortSignal) => request<void>("/api/me/presence", { method: "POST",signal });
 export const inviteDuo = (mutation: DuoMutation) => request<Duo>("/api/me/duos", { method: "POST", body: JSON.stringify(mutation) });
-export const mutateDuo = (id: string, action: "accept" | "decline" | "cancel" | "end" | "next" | "guesses" | "pass", mutation: DuoMutation, date?: string) =>
+export const mutateDuo = (id: string, action: "accept" | "decline" | "cancel" | "end" | "next" | "guesses" | "pass" | "hint", mutation: DuoMutation, date?: string) =>
   request<Duo>(`/api/duos/${id}/${date ? `days/${date}/` : ""}${action}`, { method: "POST", body: JSON.stringify(mutation) });
 
 export const getProfile = (signal?:AbortSignal) => request<Profile>("/api/me",{signal});
