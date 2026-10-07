@@ -94,8 +94,8 @@ test("friends invite, shared turns, retry, pass, persistence and daily reset", a
     await route.abort("failed");
   }, { times: 1 });
   await ananya.getByRole("button", { name: "Reveal a shared hint" }).click();
-  await expect(ananya.getByLabel("Shared hint")).toBeVisible();
-  await expect(adi.getByLabel("Shared hint")).toBeVisible({timeout: 8_000});
+  await expect(ananya.getByLabel("Shared hint", { exact: true })).toBeVisible();
+  await expect(adi.getByLabel("Shared hint", { exact: true })).toBeVisible({timeout: 8_000});
   const turnAfterHint = await adi.request.get(`${API}/api/duos/${id}`, { headers: { Authorization: "Bearer fixture-adi" } }).then(r => r.json()) as { today: { currentPlayer: string; version: number } };
   expect(turnAfterHint.today.currentPlayer).toBe(turnBeforeHint.today.currentPlayer);
   expect(turnAfterHint.today.version).toBe(turnBeforeHint.today.version + 1);
