@@ -79,7 +79,8 @@ test("friends invite, shared turns, retry, pass, persistence and daily reset", a
     }
   }, {times: 2});
   await guess(adi, wrongGuesses[0]);
-  await expect(adi.getByRole("alert")).toBeVisible();
+  // Next's route announcer is also role="alert" but stays empty.
+  await expect(adi.getByRole("alert").filter({hasText: /\S/})).toBeVisible();
   await adi.reload();
   await expect(adi.locator(".row [data-mark]")).toHaveCount(10);
   expect(retryIDs).toHaveLength(2);
