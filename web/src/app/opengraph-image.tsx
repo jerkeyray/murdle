@@ -2,25 +2,46 @@ import { ImageResponse } from "next/og";
 
 // Default (Node) runtime: Vercel Services cannot deploy Edge functions, and
 // with no dynamic inputs this image is rendered once at build time anyway.
-export const alt = "Wordle word game";
+export const alt = "Wordle";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default function OpenGraphImage() {
-  const tiles = ["W", "O", "R", "D", "L"];
+const WORDMARK = "Wordle";
+
+/**
+ * Fetches just the glyphs of the wordmark in Fraunces, the site's serif. The
+ * legacy user agent makes Google Fonts serve woff, which Satori can read (it
+ * cannot read woff2). If the fetch fails the card falls back to the default
+ * font rather than failing the build.
+ */
+async function loadFraunces(): Promise<ArrayBuffer | null> {
+  try {
+    const css = await fetch(
+      `https://fonts.googleapis.com/css2?family=Fraunces:wght@600&text=${encodeURIComponent(WORDMARK)}`,
+      { headers: { "User-Agent": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/534.30 (KHTML, like Gecko) Safari/534.30" } },
+    ).then((res) => res.text());
+    const url = css.match(/src: url\((.+?)\) format\('(?:woff|truetype|opentype)'\)/)?.[1];
+    if (!url) return null;
+    return await fetch(url).then((res) => res.arrayBuffer());
+  } catch {
+    return null;
+  }
+}
+
+// The four squares of the app icon (see icon.svg), without its backdrop.
+const TILES = ["#2fb894", "#3a2b34", "#3a2b34", "#e0568f"];
+
+export default async function OpenGraphImage() {
+  const fraunces = await loadFraunces();
   return new ImageResponse(
     (
-      <div style={{ background: "#171717", color: "#f5f3f1", display: "flex", height: "100%", width: "100%", padding: "68px 76px", flexDirection: "column", justifyContent: "space-between" }}>
-        <div style={{ display: "flex", color: "#a9a5a7", fontSize: 23, fontWeight: 700, letterSpacing: 7 }}>WORDLE</div>
-        <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
-          <div style={{ display: "flex", fontFamily: "Georgia", fontSize: 72, fontWeight: 700, letterSpacing: -3 }}>Words worth keeping.</div>
-          <div style={{ display: "flex", color: "#b8b4b6", fontSize: 30 }}>Solve, save words, and uncover the connection.</div>
+      <div style={{ background: "#000", display: "flex", height: "100%", width: "100%", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 56 }}>
+        <div style={{ display: "flex", flexWrap: "wrap", width: 176, gap: 16 }}>
+          {TILES.map((color, index) => <div key={index} style={{ background: color, borderRadius: 14, height: 80, width: 80 }} />)}
         </div>
-        <div style={{ display: "flex", gap: 14 }}>
-          {tiles.map((tile, index) => <div key={tile} style={{ alignItems: "center", background: index === 1 ? "#df4f8d" : index === 3 ? "#2fb894" : "#292929", borderRadius: 12, display: "flex", fontFamily: "Georgia", fontSize: 38, height: 72, justifyContent: "center", width: 72 }}>{tile}</div>)}
-        </div>
+        <div style={{ display: "flex", color: "#f5f3f1", fontSize: 88, fontWeight: 600, letterSpacing: -2 }}>{WORDMARK}</div>
       </div>
     ),
-    size,
+    fraunces ? { ...size, fonts: [{ name: "Fraunces", data: fraunces, weight: 600, style: "normal" }] } : size,
   );
 }
