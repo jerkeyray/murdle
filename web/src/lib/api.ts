@@ -10,6 +10,7 @@ export type { Mark, RoundState, Row, Entry, Pack, Run, Round, Profile, HomeSumma
  * the browser, which is exactly what we are avoiding.
  */
 
+import { waitForSignal } from "./cancellation";
 import { clearToken, getToken } from "@/lib/token";
 
 /**
@@ -205,13 +206,24 @@ export function letterStates(rows: Row[]): Record<string, Mark> {
   return states;
 }
 
-export const getCapabilities = (signal?:AbortSignal) => request<{ sharedGames: boolean }>("/api/capabilities",{signal});
+let capabilities: { value: {sharedGames: boolean}; until: number } | null = null;
+let capabilitiesFlight: Promise<{sharedGames: boolean}> | null = null;
+export async function getCapabilities(signal?: AbortSignal): Promise<{sharedGames: boolean}> {
+  if (signal?.aborted) throw signal.reason;
+  if (capabilities && Date.now() < capabilities.until) return capabilities.value;
+  const flight = capabilitiesFlight ??= request<{sharedGames: boolean}>("/api/capabilities").then(value => {
+    capabilities = {value, until: Date.now() + 60_000};
+    return value;
+  }).finally(() => { capabilitiesFlight = null; });
+  return waitForSignal(flight, signal);
+}
 export const getDuos = (signal?:AbortSignal) => request<Duo[]>("/api/me/duos",{signal});
+export const getDuoHistory = (id: string, signal?: AbortSignal) => request<Duo>(`/api/duos/${id}`, {signal});
 export const getDuo = (id: string, date = "today", signal?:AbortSignal) => request<Duo>(`/api/duos/${id}/days/${date}`,{signal});
 export const heartbeat = (signal?:AbortSignal) => request<void>("/api/me/presence", { method: "POST",signal });
 export const inviteDuo = (mutation: DuoMutation) => request<Duo>("/api/me/duos", { method: "POST", body: JSON.stringify(mutation) });
-export const mutateDuo = (id: string, action: "accept" | "decline" | "cancel" | "end" | "next" | "guesses" | "pass" | "hint", mutation: DuoMutation, date?: string) =>
-  request<Duo>(`/api/duos/${id}/${date ? `days/${date}/` : ""}${action}`, { method: "POST", body: JSON.stringify(mutation) });
+export const mutateDuo = (id: string, action: "accept" | "decline" | "cancel" | "end" | "next" | "guesses" | "pass" | "hint", mutation: DuoMutation, date?: string, signal?: AbortSignal) =>
+  request<Duo>(`/api/duos/${id}/${date ? `days/${date}/` : ""}${action}`, { method: "POST", body: JSON.stringify(mutation), signal });
 
 export const getProfile = (signal?:AbortSignal) => request<Profile>("/api/me",{signal});
 export const getHomeSummary = () => request<HomeSummary>("/api/me/home");

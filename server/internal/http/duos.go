@@ -24,9 +24,8 @@ func (s *Server) duoError(w http.ResponseWriter, err error) {
 	writeError(w, http.StatusInternalServerError, "internal", "Could not update the daily game")
 }
 func (s *Server) handleDuos(w http.ResponseWriter, r *http.Request) {
-	p, ok := s.player(r)
+	p, ok := s.requirePlayer(w, r)
 	if !ok {
-		writeError(w, 401, "unauthorized", "Sign in to play together")
 		return
 	}
 	out, err := s.duos.List(r.Context(), p.ID)
@@ -37,21 +36,22 @@ func (s *Server) handleDuos(w http.ResponseWriter, r *http.Request) {
 	writeJSON(w, 200, out)
 }
 func (s *Server) handlePresence(w http.ResponseWriter, r *http.Request) {
-	p, ok := s.player(r)
+	p, ok := s.requirePlayer(w, r)
 	if !ok {
-		writeError(w, 401, "unauthorized", "Sign in to play together")
 		return
 	}
-	s.duos.Heartbeat(p.ID)
+	if err := s.duos.Heartbeat(r.Context(), p.ID); err != nil {
+		s.duoError(w, err)
+		return
+	}
 	w.WriteHeader(204)
 }
 func (s *Server) handleDuo(w http.ResponseWriter, r *http.Request) {
-	p, ok := s.player(r)
+	p, ok := s.requirePlayer(w, r)
 	if !ok {
-		writeError(w, 401, "unauthorized", "Sign in to play together")
 		return
 	}
-	out, err := s.duos.Board(r.Context(), chi.URLParam(r, "id"), "today", p.ID)
+	out, err := s.duos.Get(r.Context(), chi.URLParam(r, "id"), p.ID)
 	if err != nil {
 		s.duoError(w, err)
 		return
@@ -59,9 +59,8 @@ func (s *Server) handleDuo(w http.ResponseWriter, r *http.Request) {
 	writeJSON(w, 200, out)
 }
 func (s *Server) handleDuoDay(w http.ResponseWriter, r *http.Request) {
-	p, ok := s.player(r)
+	p, ok := s.requirePlayer(w, r)
 	if !ok {
-		writeError(w, 401, "unauthorized", "Sign in to play together")
 		return
 	}
 	out, err := s.duos.Board(r.Context(), chi.URLParam(r, "id"), chi.URLParam(r, "date"), p.ID)
@@ -85,9 +84,8 @@ func (s *Server) handleDuoAction(w http.ResponseWriter, r *http.Request) {
 	s.mutateDuo(w, r, action)
 }
 func (s *Server) mutateDuo(w http.ResponseWriter, r *http.Request, action string) {
-	p, ok := s.player(r)
+	p, ok := s.requirePlayer(w, r)
 	if !ok {
-		writeError(w, 401, "unauthorized", "Sign in to play together")
 		return
 	}
 	var body struct {

@@ -268,3 +268,29 @@ test("enter reflects whether the typed word is real, without ever blocking a gue
   await expect(enter).toHaveAttribute("data-state", "word");
   await expect(enter).toBeEnabled();
 });
+
+test("configuration changes cannot publish an earlier opening response", async ({ page }) => {
+  await setup(page);
+  let release!: () => void;
+  let started!: () => void;
+  const held = new Promise<void>(resolve => { release = resolve; });
+  const opening = new Promise<void>(resolve => { started = resolve; });
+  await page.route(`${API}/api/runs?deal=1`, async route => {
+    const payload = route.request().postDataJSON() as {wordLength: number};
+    const response = await route.fetch();
+    if (payload.wordLength === 5) { started(); await held; }
+    await route.fulfill({response});
+  });
+  try {
+    await page.goto("/play?mode=classic&length=5");
+    await opening;
+    await page.evaluate(() => window.history.pushState(null, "", "/play?mode=classic&length=6"));
+    await expect(page.locator(".row").first().locator(".tile")).toHaveCount(6);
+    const runID = await page.evaluate(() => localStorage.getItem("wordle.active.classic.6.mixed"));
+    expect(runID).toBeTruthy();
+    release();
+    await expect(page.locator(".row").first().locator(".tile")).toHaveCount(6);
+    expect(await page.evaluate(() => localStorage.getItem("wordle.active.classic.6.mixed"))).toBe(runID);
+    expect(await page.evaluate(() => localStorage.getItem("wordle.active.classic.5.mixed"))).toBeNull();
+  } finally { release(); }
+});

@@ -143,10 +143,30 @@ func (s *Server) player(r *http.Request) (players.Player, bool) {
 	return p, true
 }
 
+// requirePlayer writes the appropriate response so database failures cannot
+// masquerade as sign-out or cause clients to discard uncertain mutations.
+func (s *Server) requirePlayer(w http.ResponseWriter, r *http.Request) (players.Player, bool) {
+	user, ok := auth.UserID(r.Context())
+	if !ok || s.players == nil {
+		writeError(w, http.StatusUnauthorized, "unauthorized", "Sign in to do that")
+		return players.Player{}, false
+	}
+	p, err := s.players.Ensure(r.Context(), user)
+	if errors.Is(err, players.ErrNotFound) {
+		writeError(w, http.StatusUnauthorized, "unauthorized", "Sign in to do that")
+		return players.Player{}, false
+	}
+	if err != nil {
+		s.log.Error("resolving player", "err", err)
+		writeError(w, http.StatusServiceUnavailable, "service_unavailable", "Could not load your account. Please try again.")
+		return players.Player{}, false
+	}
+	return p, true
+}
+
 func (s *Server) handleMe(w http.ResponseWriter, r *http.Request) {
-	p, ok := s.player(r)
+	p, ok := s.requirePlayer(w, r)
 	if !ok {
-		writeError(w, http.StatusUnauthorized, "unauthorized", "sign in to do that")
 		return
 	}
 
@@ -177,9 +197,8 @@ func (s *Server) handleMe(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) handleHome(w http.ResponseWriter, r *http.Request) {
-	p, ok := s.player(r)
+	p, ok := s.requirePlayer(w, r)
 	if !ok {
-		writeError(w, http.StatusUnauthorized, "unauthorized", "sign in to do that")
 		return
 	}
 
@@ -201,9 +220,8 @@ type setNameRequest struct {
 }
 
 func (s *Server) handleSetName(w http.ResponseWriter, r *http.Request) {
-	p, ok := s.player(r)
+	p, ok := s.requirePlayer(w, r)
 	if !ok {
-		writeError(w, http.StatusUnauthorized, "unauthorized", "sign in to do that")
 		return
 	}
 
@@ -229,9 +247,8 @@ func (s *Server) handleSetName(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) handleMySolves(w http.ResponseWriter, r *http.Request) {
-	p, ok := s.player(r)
+	p, ok := s.requirePlayer(w, r)
 	if !ok {
-		writeError(w, http.StatusUnauthorized, "unauthorized", "sign in to do that")
 		return
 	}
 
@@ -270,9 +287,8 @@ func (s *Server) handleMySolves(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) handleSavedWords(w http.ResponseWriter, r *http.Request) {
-	p, ok := s.player(r)
+	p, ok := s.requirePlayer(w, r)
 	if !ok {
-		writeError(w, http.StatusUnauthorized, "unauthorized", "sign in to do that")
 		return
 	}
 
@@ -304,9 +320,8 @@ func (s *Server) handleSavedWords(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) handleSaveWord(w http.ResponseWriter, r *http.Request) {
-	p, ok := s.player(r)
+	p, ok := s.requirePlayer(w, r)
 	if !ok {
-		writeError(w, http.StatusUnauthorized, "unauthorized", "sign in to do that")
 		return
 	}
 
@@ -333,9 +348,8 @@ func (s *Server) handleSaveWord(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) handleSavedWordStatus(w http.ResponseWriter, r *http.Request) {
-	p, ok := s.player(r)
+	p, ok := s.requirePlayer(w, r)
 	if !ok {
-		writeError(w, http.StatusUnauthorized, "unauthorized", "sign in to do that")
 		return
 	}
 	saved, err := s.players.IsWordSaved(r.Context(), p.ID, strings.ToLower(chi.URLParam(r, "word")))
@@ -348,9 +362,8 @@ func (s *Server) handleSavedWordStatus(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) handleFriends(w http.ResponseWriter, r *http.Request) {
-	p, ok := s.player(r)
+	p, ok := s.requirePlayer(w, r)
 	if !ok {
-		writeError(w, http.StatusUnauthorized, "unauthorized", "sign in to do that")
 		return
 	}
 
@@ -361,20 +374,34 @@ func (s *Server) handleFriends(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	ids := []string{}
+	for _, f := range friends {
+		if f.Status == "accepted" {
+			ids = append(ids, f.PlayerID)
+		}
+	}
+	onlinePlayers := map[string]bool{}
+	if s.duos != nil {
+		onlinePlayers, err = s.duos.OnlinePlayers(r.Context(), ids)
+		if err != nil {
+			writeError(w, 500, "internal", "Could not read your friends")
+			return
+		}
+	}
+	currentStreaks, err := s.players.CurrentStreaks(r.Context(), ids, localDate(r))
+	if err != nil {
+		writeError(w, 500, "internal", "Could not read your friends")
+		return
+	}
 	out := make([]friendView, 0, len(friends))
 	for _, f := range friends {
 		var online bool
 		var dayStreak int
 		if f.Status == "accepted" {
 			if s.duos != nil {
-				online = s.duos.Online(f.PlayerID)
+				online = onlinePlayers[f.PlayerID]
 			}
-			streak, err := s.players.Streak(r.Context(), f.PlayerID, localDate(r))
-			if err != nil {
-				writeError(w, 500, "internal", "Could not read your friends")
-				return
-			}
-			dayStreak = streak.Current
+			dayStreak = currentStreaks[f.PlayerID]
 		}
 		out = append(out, friendView{
 			ID:          f.FriendshipID,
@@ -394,9 +421,8 @@ type addFriendRequest struct {
 }
 
 func (s *Server) handleAddFriend(w http.ResponseWriter, r *http.Request) {
-	p, ok := s.player(r)
+	p, ok := s.requirePlayer(w, r)
 	if !ok {
-		writeError(w, http.StatusUnauthorized, "unauthorized", "sign in to do that")
 		return
 	}
 
@@ -433,9 +459,8 @@ type respondFriendRequest struct {
 }
 
 func (s *Server) handleRespondFriend(w http.ResponseWriter, r *http.Request) {
-	p, ok := s.player(r)
+	p, ok := s.requirePlayer(w, r)
 	if !ok {
-		writeError(w, http.StatusUnauthorized, "unauthorized", "sign in to do that")
 		return
 	}
 

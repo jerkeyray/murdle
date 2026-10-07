@@ -7,7 +7,7 @@
 .claude/
 **/test-results/
 **/playwright-report/
-**/.next-playwright/
+**/.next-playwright*/
 **/.next/
 **/node_modules/
 **/tsconfig.tsbuildinfo

@@ -95,7 +95,7 @@ export function useGame(config: GameConfig = { mode: "themed", wordLength: 5, di
   const [revealingRow, setRevealingRow] = useState<number | null>(null);
   const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
   const mounted = useRef(false);
-  const opening = useRef<Promise<Deal> | null>(null);
+  const opening = useRef<{key: string; deal: Promise<Deal>} | null>(null);
 
   const later = useCallback((fn: () => void, ms: number) => {
     const id = setTimeout(() => { if (mounted.current) fn(); }, ms);
@@ -129,8 +129,9 @@ export function useGame(config: GameConfig = { mode: "themed", wordLength: 5, di
     mounted.current = true;
     let cancelled = false;
     const config = { mode, wordLength, difficulty };
-    opening.current ??= takePrefetched(config) ?? open(config);
-    opening.current.then((dealt) => { if (!cancelled) accept(dealt); }).catch((err: unknown) => {
+    const key = keyOf(config);
+    if (opening.current?.key !== key) opening.current = {key, deal: takePrefetched(config) ?? open(config)};
+    opening.current.deal.then((dealt) => { if (!cancelled) accept(dealt); }).catch((err: unknown) => {
       if (!cancelled) { opening.current = null; fail(err); }
     });
     const pending = timers.current;

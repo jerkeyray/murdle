@@ -8,7 +8,6 @@ import (
 	"errors"
 	"math/rand/v2"
 	"strings"
-	"sync"
 	"time"
 
 	"github.com/jackc/pgx/v5"
@@ -18,34 +17,51 @@ import (
 )
 
 type Store struct {
-	db       *pgxpool.Pool
-	words    *words.Pool
-	Now      func() time.Time
-	presence sync.Map
+	db    *pgxpool.Pool
+	words *words.Pool
+	Now   func() time.Time
 }
 
 func New(db *pgxpool.Pool, pool *words.Pool) *Store {
 	return &Store{db: db, words: pool, Now: time.Now}
 }
-func (s *Store) Heartbeat(player string) {
-	now := s.Now()
-	s.presence.Store(player, now)
-	s.presence.Range(func(k, v any) bool {
-		if now.Sub(v.(time.Time)) >= 90*time.Second {
-			s.presence.Delete(k)
-		}
-		return true
-	})
+
+// Presence is shared across API instances. Throttle writes while keeping the
+// timestamp recent enough for the 90-second online window.
+func (s *Store) Heartbeat(ctx context.Context, player string) error {
+	_, err := s.db.Exec(ctx, `insert into player_presence(player_id,last_seen) values($1,$2)
+ on conflict(player_id) do update set last_seen=excluded.last_seen
+ where player_presence.last_seen <= excluded.last_seen - interval '20 seconds'`, player, s.Now())
+	return err
 }
-func (s *Store) Online(player string) bool {
-	t, ok := s.presence.Load(player)
-	return ok && s.Now().Sub(t.(time.Time)) < 90*time.Second
+func (s *Store) OnlinePlayers(ctx context.Context, players []string) (map[string]bool, error) {
+	out := map[string]bool{}
+	if len(players) == 0 {
+		return out, nil
+	}
+	rows, err := s.db.Query(ctx, `select player_id::text from player_presence where player_id=any($1::uuid[]) and last_seen > $2`, players, s.Now().Add(-90*time.Second))
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	for rows.Next() {
+		var id string
+		if err = rows.Scan(&id); err != nil {
+			return nil, err
+		}
+		out[id] = true
+	}
+	return out, rows.Err()
 }
 
-func (s *Store) load(ctx context.Context, tx pgx.Tx, id, player string) (*Duo, error) {
+func (s *Store) load(ctx context.Context, tx pgx.Tx, id, player string, locked bool) (*Duo, error) {
 	d := &Duo{ViewerID: player, Members: []Member{}, Recent: []Day{}}
 	var low, high, ln, hn string
-	err := tx.QueryRow(ctx, `select d.id,d.friendship_id,d.inviter_id,d.low_id,d.high_id,d.timezone,d.status,d.version,coalesce(d.started_on::text,''),l.display_name,h.display_name from duos d join players l on l.id=d.low_id join players h on h.id=d.high_id where d.id=$1 and $2 in (d.low_id,d.high_id) for update of d`, id, player).Scan(&d.ID, &d.FriendshipID, &d.InviterID, &low, &high, &d.Timezone, &d.Status, &d.Version, &d.StartedOn, &ln, &hn)
+	query := `select d.id,d.friendship_id,d.inviter_id,d.low_id,d.high_id,d.timezone,d.status,d.version,coalesce(d.started_on::text,''),l.display_name,h.display_name from duos d join players l on l.id=d.low_id join players h on h.id=d.high_id where d.id=$1 and $2 in (d.low_id,d.high_id)`
+	if locked {
+		query += " for update of d"
+	}
+	err := tx.QueryRow(ctx, query, id, player).Scan(&d.ID, &d.FriendshipID, &d.InviterID, &low, &high, &d.Timezone, &d.Status, &d.Version, &d.StartedOn, &ln, &hn)
 	if errors.Is(err, pgx.ErrNoRows) {
 		return nil, fail("not_found", "Daily game not found")
 	}
@@ -55,62 +71,38 @@ func (s *Store) load(ctx context.Context, tx pgx.Tx, id, player string) (*Duo, e
 	d.Members = []Member{{low, ln}, {high, hn}}
 	return d, nil
 }
-func (s *Store) day(ctx context.Context, tx pgx.Tx, id, date string, seq int) (*Day, error) {
-	d := &Day{DuoID: id, WordLength: game.WordLength, MaxRows: game.MaxRows, Rows: []Guess{}, Passed: []string{}}
-	var entry []byte
+
+// Aggregate each board in one statement. Correlated aggregates use the board
+// primary keys and avoid multiplying guesses by passes in a joined result.
+const boardColumns = `b.duo_id::text,b.day::text,b.seq,b.deadline,b.state,b.current_player::text,b.version,b.answer,b.entry,b.hint,
+ coalesce((select jsonb_agg(jsonb_build_object('guess',g.guess,'marks',g.marks,'playerId',g.player_id) order by g.row_index) from duo_guesses g where (g.duo_id,g.day,g.seq)=(b.duo_id,b.day,b.seq)), '[]'::jsonb),
+ coalesce((select jsonb_agg(p.player_id order by p.player_id) from duo_passes p where (p.duo_id,p.day,p.seq)=(b.duo_id,b.day,b.seq)), '[]'::jsonb)`
+
+func scanDay(row pgx.Row) (*Day, error) {
+	d := &Day{WordLength: game.WordLength, MaxRows: game.MaxRows}
+	var entry, guesses, passes []byte
 	var hint *string
-	err := tx.QueryRow(ctx, `select day::text,seq,deadline,state,current_player,version,answer,entry,hint from duo_days where duo_id=$1 and day=$2 and seq=$3`, id, date, seq).Scan(&d.Date, &d.Seq, &d.Deadline, &d.State, &d.CurrentPlayer, &d.Version, &d.hiddenAnswer, &entry, &hint)
+	err := row.Scan(&d.DuoID, &d.Date, &d.Seq, &d.Deadline, &d.State, &d.CurrentPlayer, &d.Version, &d.hiddenAnswer, &entry, &hint, &guesses, &passes)
 	if err != nil {
 		return nil, err
 	}
-	d.Board = boardKey(d.Date, d.Seq)
-	if err = json.Unmarshal(entry, &d.hiddenEntry); err != nil {
-		return nil, err
+	for _, part := range []struct {
+		data []byte
+		dest any
+	}{{entry, &d.hiddenEntry}, {guesses, &d.Rows}, {passes, &d.Passed}} {
+		if err = json.Unmarshal(part.data, part.dest); err != nil {
+			return nil, err
+		}
 	}
+	d.Board = boardKey(d.Date, d.Seq)
 	if hint != nil {
 		d.Hint = &HintReveal{Tier: 1, Text: *hint}
 	}
-	rows, err := tx.Query(ctx, `select guess,marks,player_id from duo_guesses where duo_id=$1 and day=$2 and seq=$3 order by row_index`, id, date, seq)
-	if err != nil {
-		return nil, err
-	}
-	for rows.Next() {
-		var g Guess
-		var marks []byte
-		if err = rows.Scan(&g.Guess, &marks, &g.PlayerID); err != nil {
-			rows.Close()
-			return nil, err
-		}
-		if err = json.Unmarshal(marks, &g.Marks); err != nil {
-			rows.Close()
-			return nil, err
-		}
-		d.Rows = append(d.Rows, g)
-	}
-	err = rows.Err()
-	rows.Close()
-	if err != nil {
-		return nil, err
-	}
-	rows, err = tx.Query(ctx, `select player_id from duo_passes where duo_id=$1 and day=$2 and seq=$3 order by player_id`, id, date, seq)
-	if err != nil {
-		return nil, err
-	}
-	for rows.Next() {
-		var p string
-		if err = rows.Scan(&p); err != nil {
-			rows.Close()
-			return nil, err
-		}
-		d.Passed = append(d.Passed, p)
-	}
-	err = rows.Err()
-	rows.Close()
-	if err != nil {
-		return nil, err
-	}
 	d.reveal()
 	return d, nil
+}
+func (s *Store) day(ctx context.Context, tx pgx.Tx, id, date string, seq int) (*Day, error) {
+	return scanDay(tx.QueryRow(ctx, `select `+boardColumns+` from duo_days b where b.duo_id=$1 and b.day=$2 and b.seq=$3`, id, date, seq))
 }
 
 // addBoard creates one board for a day: it picks a word the pair has not had
@@ -167,7 +159,7 @@ func (s *Store) addBoard(ctx context.Context, tx pgx.Tx, d *Duo, day string, dea
 	_, err = tx.Exec(ctx, `insert into duo_days (duo_id,day,seq,deadline,answer,entry,cycle,state,current_player) values($1,$2,$3,$4,$5,$6,$7,'playing',$8)`, d.ID, day, seq, deadline, w.Word, entry, cycle, openingPlayer(d.StartedOn, day, seq, d.Members))
 	return err
 }
-func (s *Store) populate(ctx context.Context, tx pgx.Tx, d *Duo) error {
+func (s *Store) ensureBoard(ctx context.Context, tx pgx.Tx, d *Duo) error {
 	now := s.Now()
 	today, deadline, err := dateAt(now, d.Timezone)
 	if err != nil {
@@ -188,6 +180,34 @@ func (s *Store) populate(ctx context.Context, tx pgx.Tx, d *Duo) error {
 				return err
 			}
 		}
+	}
+	return nil
+}
+
+func (s *Store) populate(ctx context.Context, tx pgx.Tx, d *Duo, history bool) error {
+	today, _, err := dateAt(s.Now(), d.Timezone)
+	if err != nil {
+		return err
+	}
+	return s.populateOn(ctx, tx, d, history, today)
+}
+
+func (s *Store) populateOn(ctx context.Context, tx pgx.Tx, d *Duo, history bool, today string) error {
+	d.Today = nil
+	d.Recent = []Day{}
+	if d.Status == "active" {
+		var err error
+		d.Today, err = scanDay(tx.QueryRow(ctx, `select `+boardColumns+` from duo_days b where b.duo_id=$1 and b.day=$2 order by b.seq desc limit 1`, d.ID, today))
+		if err != nil {
+			return err
+		}
+		d.Today.Streak, err = s.currentStreak(ctx, tx, d.FriendshipID, today)
+		if err != nil {
+			return err
+		}
+	}
+	if !history {
+		return nil
 	}
 	// Scoped to the friendship, not this duo, because Recent is: ending a daily
 	// game and starting a fresh one with the same friend used to leave a zeroed
@@ -224,83 +244,116 @@ func (s *Store) populate(ctx context.Context, tx pgx.Tx, d *Duo) error {
 	if err != nil {
 		return err
 	}
-	if d.Status == "active" {
-		var latest int
-		err = tx.QueryRow(ctx, `select coalesce(max(seq),0) from duo_days where duo_id=$1 and day=$2`, d.ID, today).Scan(&latest)
-		if err != nil {
-			return err
-		}
-		d.Today, err = s.day(ctx, tx, d.ID, today, latest)
-		if err != nil {
-			return err
-		}
-		d.Today.Streak = streak(states, today)
-	}
-	type historical struct {
-		id, date string
-		seq      int
-	}
-	dates := []historical{}
-	rows, err = tx.Query(ctx, `select b.duo_id,b.day::text,b.seq from duo_days b join duos p on p.id=b.duo_id where p.friendship_id=$1 and b.state <> 'playing' order by b.day desc,p.created_at desc,b.seq desc limit 7`, d.FriendshipID)
+	rows, err = tx.Query(ctx, `select `+boardColumns+` from duo_days b join duos p on p.id=b.duo_id where p.friendship_id=$1 and b.state <> 'playing' order by b.day desc,p.created_at desc,b.seq desc limit 7`, d.FriendshipID)
 	if err != nil {
 		return err
 	}
+	defer rows.Close()
 	for rows.Next() {
-		var h historical
-		if err = rows.Scan(&h.id, &h.date, &h.seq); err != nil {
-			rows.Close()
-			return err
-		}
-		dates = append(dates, h)
-	}
-	err = rows.Err()
-	rows.Close()
-	if err != nil {
-		return err
-	}
-	for _, h := range dates {
-		r, e := s.day(ctx, tx, h.id, h.date, h.seq)
+		r, e := scanDay(rows)
 		if e != nil {
 			return e
 		}
-		r.Streak = streak(states, h.date)
+		r.Streak = streak(states, r.Date)
 		d.Recent = append(d.Recent, *r)
 	}
-	return nil
+	return rows.Err()
 }
 
-// get reads and freshens one duo inside a transaction the caller owns. Both
-// Get and List go through it so a listing does not open — and lock — one
-// transaction per duo.
-func (s *Store) get(ctx context.Context, tx pgx.Tx, id, player string) (*Duo, error) {
-	d, err := s.load(ctx, tx, id, player)
+// dayState reads only one calendar day, belonging to the latest partnership
+// that played that day. A later loss on the same day cannot undo a win.
+const dayState = `(select case when bool_or(b.state='won') then 'won' else (array_agg(b.state order by b.seq desc))[1] end
+ from duo_days b where b.day=c.day and b.duo_id=(select p.id from duos p join duo_days x on x.duo_id=p.id and x.day=c.day where p.friendship_id=$1 order by p.created_at desc,p.id desc limit 1))`
+
+func (s *Store) currentStreak(ctx context.Context, tx pgx.Tx, friendship, today string) (int, error) {
+	var n int
+	err := tx.QueryRow(ctx, `with recursive chain(day,state) as (
+ select c.day,`+dayState+` from (select $2::date as day) c
+ union all
+ select c.day,`+dayState+` from chain prev cross join lateral (select prev.day-1 as day) c
+ where prev.state='won' or (prev.day=$2::date and (prev.state='playing' or prev.state is null))
+ ) select count(*) filter(where state='won') from chain`, friendship, today).Scan(&n)
+	return n, err
+}
+
+// Routine reads use a consistent, read-only snapshot. Only rollover or missing
+// boards take a write lock, in a separate short transaction.
+func (s *Store) read(ctx context.Context, id, player, date string, history bool) (*Duo, error) {
+	for attempt := 0; attempt < 3; attempt++ {
+		tx, err := s.db.BeginTx(ctx, pgx.TxOptions{IsoLevel: pgx.RepeatableRead, AccessMode: pgx.ReadOnly})
+		if err != nil {
+			return nil, err
+		}
+		d, err := s.load(ctx, tx, id, player, false)
+		if err != nil {
+			_ = tx.Rollback(ctx)
+			return nil, err
+		}
+		now := s.Now()
+		today, _, err := dateAt(now, d.Timezone)
+		if err != nil {
+			_ = tx.Rollback(ctx)
+			return nil, err
+		}
+		var stale bool
+		err = tx.QueryRow(ctx, `select exists(select 1 from duo_days where duo_id=$1 and state='playing' and deadline <= $3) or ($4 and not exists(select 1 from duo_days where duo_id=$1 and day=$2))`, id, today, now, d.Status == "active").Scan(&stale)
+		if err != nil {
+			_ = tx.Rollback(ctx)
+			return nil, err
+		}
+		if stale {
+			_ = tx.Rollback(ctx)
+			if err = s.refresh(ctx, id, player); err != nil {
+				return nil, err
+			}
+			continue
+		}
+		err = s.populateOn(ctx, tx, d, history, today)
+		if err == nil && date != "today" && (d.Today == nil || d.Today.Board != date) {
+			day, seq, ok := parseBoard(date)
+			if !ok {
+				err = fail("not_found", "Board not found")
+			} else {
+				d.Today, err = s.day(ctx, tx, id, day, seq)
+				if errors.Is(err, pgx.ErrNoRows) {
+					err = fail("not_found", "Board not found")
+				}
+				if err == nil {
+					d.Today.Streak, err = s.currentStreak(ctx, tx, d.FriendshipID, day)
+				}
+			}
+		}
+		if err != nil {
+			_ = tx.Rollback(ctx)
+			return nil, err
+		}
+		return d, tx.Commit(ctx)
+	}
+	return nil, errors.New("board changed repeatedly during refresh")
+}
+func (s *Store) refresh(ctx context.Context, id, player string) error {
+	tx, err := s.db.Begin(ctx)
 	if err != nil {
-		return nil, err
+		return err
 	}
-	if err = s.populate(ctx, tx, d); err != nil {
-		return nil, err
+	defer tx.Rollback(ctx)
+	d, err := s.load(ctx, tx, id, player, true)
+	if err != nil {
+		return err
 	}
-	return d, nil
+	if err = s.ensureBoard(ctx, tx, d); err != nil {
+		return err
+	}
+	return tx.Commit(ctx)
 }
 func (s *Store) Get(ctx context.Context, id, player string) (*Duo, error) {
-	tx, err := s.db.Begin(ctx)
-	if err != nil {
-		return nil, err
+	if !uuid(id) {
+		return nil, fail("not_found", "Daily game not found")
 	}
-	defer tx.Rollback(ctx)
-	d, err := s.get(ctx, tx, id, player)
-	if err != nil {
-		return nil, err
-	}
-	return d, tx.Commit(ctx)
+	return s.read(ctx, id, player, "today", true)
 }
 func (s *Store) List(ctx context.Context, player string) ([]*Duo, error) {
-	tx, err := s.db.Begin(ctx)
-	if err != nil {
-		return nil, err
-	}
-	defer tx.Rollback(ctx)
-	rows, err := tx.Query(ctx, `select distinct on (friendship_id) id from duos where $1 in (low_id,high_id) order by friendship_id,case when status in ('active','pending') then 0 else 1 end,created_at desc`, player)
+	rows, err := s.db.Query(ctx, `select distinct on(friendship_id) id::text from duos where $1 in(low_id,high_id) order by friendship_id,case when status in('active','pending') then 0 else 1 end,created_at desc`, player)
 	if err != nil {
 		return nil, err
 	}
@@ -320,13 +373,13 @@ func (s *Store) List(ctx context.Context, player string) ([]*Duo, error) {
 	}
 	out := []*Duo{}
 	for _, id := range ids {
-		d, e := s.get(ctx, tx, id, player)
+		d, e := s.read(ctx, id, player, "today", false)
 		if e != nil {
 			return nil, e
 		}
 		out = append(out, d)
 	}
-	return out, tx.Commit(ctx)
+	return out, nil
 }
 
 type Mutation struct {
@@ -368,7 +421,7 @@ func (s *Store) Mutate(ctx context.Context, player, id, date, action string, m M
 		if !uuid(id) {
 			return nil, fail("not_found", "Daily game not found")
 		}
-		d, err = s.load(ctx, tx, id, player)
+		d, err = s.load(ctx, tx, id, player, true)
 		if err != nil {
 			return nil, err
 		}
@@ -404,9 +457,9 @@ func (s *Store) Mutate(ctx context.Context, player, id, date, action string, m M
 			if err != nil {
 				return nil, err
 			}
-			d, err = s.load(ctx, tx, id, player)
+			d, err = s.load(ctx, tx, id, player, true)
 		} else if err == nil {
-			d, err = s.load(ctx, tx, id, player)
+			d, err = s.load(ctx, tx, id, player, true)
 			if err == nil && d.Status == "pending" && d.InviterID != player {
 				action = "accept"
 				m.Version = d.Version
@@ -416,10 +469,14 @@ func (s *Store) Mutate(ctx context.Context, player, id, date, action string, m M
 			return nil, err
 		}
 	}
-	if err = s.populate(ctx, tx, d); err != nil {
+	if err = s.ensureBoard(ctx, tx, d); err != nil {
+		return nil, err
+	}
+	if err = s.populate(ctx, tx, d, false); err != nil {
 		return nil, err
 	}
 	boardAction := action == "guess" || action == "pass" || action == "hint"
+	includeHistory := !boardAction
 	currentVersion := d.Version
 	if boardAction && d.Today != nil {
 		currentVersion = d.Today.Version
@@ -549,6 +606,7 @@ func (s *Store) Mutate(ctx context.Context, player, id, date, action string, m M
 			if err != nil {
 				return nil, err
 			}
+			includeHistory = state != "playing"
 			_, err = tx.Exec(ctx, `update duo_days set current_player=$4,state=$5,version=version+1 where duo_id=$1 and day=$2 and seq=$3`, d.ID, b.Date, b.Seq, other, state)
 			if err != nil {
 				return nil, err
@@ -557,11 +615,14 @@ func (s *Store) Mutate(ctx context.Context, player, id, date, action string, m M
 	default:
 		return nil, fail("invalid_action", "Unknown action")
 	}
-	d, err = s.load(ctx, tx, d.ID, player)
+	d, err = s.load(ctx, tx, d.ID, player, true)
 	if err != nil {
 		return nil, err
 	}
-	if err = s.populate(ctx, tx, d); err != nil {
+	if err = s.ensureBoard(ctx, tx, d); err != nil {
+		return nil, err
+	}
+	if err = s.populate(ctx, tx, d, includeHistory); err != nil {
 		return nil, err
 	}
 	response, err := json.Marshal(d)
@@ -601,18 +662,5 @@ func (s *Store) Board(ctx context.Context, id, date, player string) (*Duo, error
 	if !uuid(id) {
 		return nil, fail("not_found", "Daily game not found")
 	}
-	d, err := s.Get(ctx, id, player)
-	if err != nil {
-		return nil, err
-	}
-	if date == "today" || d.Today != nil && date == d.Today.Board {
-		return d, nil
-	}
-	for _, day := range d.Recent {
-		if day.Board == date && day.DuoID == id {
-			d.Today = &day
-			return d, nil
-		}
-	}
-	return nil, fail("not_found", "Board not found")
+	return s.read(ctx, id, player, date, false)
 }

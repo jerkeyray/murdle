@@ -151,7 +151,8 @@ establish editorial fairness. See [content review](docs/content-review.md) for
 the initial audit and player-test checklist.
 
 Ship reviewed content, server, and client together. Restarting the API loads
-the embedded content and expires existing in-memory runs.
+the embedded content. PostgreSQL-backed games survive API restarts; games in
+optional in-memory mode do not.
 
 ## Verification
 
@@ -234,3 +235,37 @@ instance and 10 friend/duo invitations per minute per signed-in player. Override
 with `GAME_CREATE_RATE_LIMIT`, `FRIEND_RATE_LIMIT`, and `INVITE_RATE_LIMIT`.
 Limits are per API instance and reset with that process; they are an abuse
 speed bump rather than a shared quota.
+
+## Multiplayer performance and recovery
+
+Routine `/api/duos/:id/days/:board` reads use a consistent read-only snapshot.
+The current-board path executes four SQL statements (excluding transaction
+begin/commit and account lookup), regardless of how many past boards exist.
+Only expiry or daily board creation takes the duo write lock. Guesses and
+passes are aggregated by board; current pair streaks walk consecutive dates
+rather than transferring the entire history on every poll.
+
+`/api/me/duos` returns summaries with an empty `recent` array. The Friends dialog
+loads its seven recent results through `/api/duos/:id` when opened. Historical
+board links read the requested board directly, including results older than
+those seven. Successful moves use the mutation response directly; they do not
+make a preflight or follow-up GET. An uncertain guess, pass, or hint is retried
+with its persisted request ID and payload, including after refresh. Matching a
+previous guess is not considered a receipt. Authentication, timeout, rate-limit,
+and server failures retain the pending mutation.
+
+Visible active pairs refresh every three seconds in both seats, including after
+completion, so shared hints, next words, and daily rollover reach both players.
+Hidden tabs pause, failures back off, and requests from obsolete subscriptions
+cannot update the board. Presence heartbeats continue on duo boards and use
+shared PostgreSQL timestamps, with writes throttled to once per 20 seconds and
+an online window of 90 seconds. Friend presence and solo streak summaries are
+queried in batches.
+
+Apply additive migration `0009_multiplayer_reads_presence.sql` before activating
+the updated API, and release the matching client with it. Older clients that
+expect `recent` in the friends listing must be updated. No hosting changes or
+persistent-event infrastructure are required. PostgreSQL-backed tests require
+`TEST_DATABASE_URL`; tests use isolated schemas and never modify its public
+schema. `PW_WEB_PORT`, `PW_API_PORT`, and `PW_NEXT_DIST_DIR` can isolate browser
+fixtures from other development servers and builds.

@@ -13,17 +13,22 @@ import { ProfileButton } from "@/components/ProfileButton";
 import { useGame } from "@/lib/useGame";
 import type { Round } from "@/lib/api";
 import { Loader } from "@/components/Loader";
+import type { GameConfig } from "@/lib/session";
 
 export default function PlayPage() {
-  return <Suspense fallback={<main className="loading"><Loader label="Setting the type" /></main>}><PlayScreen /></Suspense>;
+  return <Suspense fallback={<main className="loading"><Loader label="Setting the type" /></main>}><ConfiguredPlayScreen /></Suspense>;
 }
 
-function PlayScreen() {
+function ConfiguredPlayScreen() {
   const search = useSearchParams();
   const mode = search.get("mode") === "classic" ? "classic" : "themed";
   const wordLength = search.get("length") === "6" ? 6 : 5;
   const difficulty = search.get("difficulty") === "learning" ? "learning" : "mixed";
-  const game = useGame({ mode, wordLength, difficulty });
+  return <PlayScreen key={`${mode}:${wordLength}:${difficulty}`} config={{mode, wordLength, difficulty}} />;
+}
+
+function PlayScreen({config}: {config: GameConfig}) {
+  const game = useGame(config);
   const { round, run } = game;
   const [dismissedRound, setDismissedRound] = useState<string | null>(null);
   const [selected, setSelected] = useState<Round | null>(null);

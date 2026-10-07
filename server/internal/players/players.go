@@ -347,7 +347,7 @@ func (s *Store) PackWordCounts(ctx context.Context, playerID string) (map[string
 func (s *Store) Streak(ctx context.Context, playerID string, today time.Time) (Streak, error) {
 	rows, err := s.pool.Query(ctx, `
 		select played_on from player_activity_days
-		where player_id = $1 order by played_on desc`, playerID)
+		where player_id = $1 and played_on <= $2 order by played_on desc`, playerID, day(today))
 	if err != nil {
 		return Streak{}, fmt.Errorf("reading play days: %w", err)
 	}
@@ -450,6 +450,36 @@ func (s *Store) SavedWords(ctx context.Context, playerID string) ([]string, erro
 			return nil, err
 		}
 		out = append(out, w)
+	}
+	return out, rows.Err()
+}
+
+// CurrentStreaks batches friend summaries and walks only each current streak.
+// Activity after the requested calendar date is excluded, like Streak.
+func (s *Store) CurrentStreaks(ctx context.Context, ids []string, today time.Time) (map[string]int, error) {
+	out := map[string]int{}
+	if len(ids) == 0 {
+		return out, nil
+	}
+	rows, err := s.pool.Query(ctx, `with recursive days(player_id,played_on) as (
+ select p.id,d.played_on from unnest($1::uuid[]) p(id)
+ cross join lateral (select played_on from player_activity_days where player_id=p.id and played_on <= $2::date order by played_on desc limit 1) d
+ where d.played_on in($2::date,$2::date-1)
+ union all
+ select d.player_id,d.played_on-1 from days d
+ where exists(select 1 from player_activity_days a where a.player_id=d.player_id and a.played_on=d.played_on-1)
+ ) select player_id::text,count(*) from days group by player_id`, ids, day(today))
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	for rows.Next() {
+		var id string
+		var n int
+		if err = rows.Scan(&id, &n); err != nil {
+			return nil, err
+		}
+		out[id] = n
 	}
 	return out, rows.Err()
 }

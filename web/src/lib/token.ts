@@ -11,6 +11,8 @@
  * security property of an httpOnly session — that a script cannot read it —
  * for saving a request every few minutes.
  */
+import { waitForSignal } from "./cancellation";
+
 let cached: { token: string | null; until: number } | null = null;
 
 /**
@@ -34,16 +36,13 @@ const LIFETIME_MS = 4 * 60 * 1000;
 const SIGNED_OUT_MS = 2 * 60 * 1000;
 
 export function getToken(signal?: AbortSignal): Promise<string | null> {
+  if (signal?.aborted) return Promise.reject(signal.reason);
   if (cached && Date.now() < cached.until) return Promise.resolve(cached.token);
-  // A poller's cancellation must not cancel the shared token exchange used by
-  // unrelated callers, so cancellable callers use their own bounded request.
-  if (signal) return fetchToken(signal);
-  if (inFlight) return inFlight;
-
-  inFlight = fetchToken().finally(() => {
-    inFlight = null;
-  });
-  return inFlight;
+  if (!inFlight) {
+    const flight = fetchToken().finally(() => { if (inFlight === flight) inFlight = null; });
+    inFlight = flight;
+  }
+  return waitForSignal(inFlight, signal);
 }
 
 async function fetchToken(signal?: AbortSignal): Promise<string | null> {
@@ -59,7 +58,7 @@ async function fetchToken(signal?: AbortSignal): Promise<string | null> {
     // remembered: a blip must not leave someone signed out for two minutes.
     if (!res.ok) {
       cached = null;
-      return null;
+      throw new Error("Could not load the session");
     }
 
     const body = (await res.json()) as { token?: string };
@@ -74,7 +73,7 @@ async function fetchToken(signal?: AbortSignal): Promise<string | null> {
     cached = null;
     if (signal?.aborted) throw signal.reason ?? new DOMException("Request cancelled", "AbortError");
     if (err instanceof DOMException && err.name === "TimeoutError") throw err;
-    return null;
+    throw err;
   }
 }
 

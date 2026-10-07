@@ -4,11 +4,14 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
+	"github.com/jackc/pgx/v5"
+	"github.com/jackc/pgx/v5/pgxpool"
 	"github.com/jerkeyray/wordle/server/internal/game"
 	"github.com/jerkeyray/wordle/server/internal/testdb"
 	"github.com/jerkeyray/wordle/server/internal/words"
 	"strings"
 	"sync"
+	"sync/atomic"
 	"testing"
 	"time"
 )
@@ -395,12 +398,169 @@ func TestPostgresExpiryAndExhaustion(t *testing.T) {
 	if len(d.Recent) != 7 {
 		t.Fatal("recent limit not enforced")
 	}
-	s.Heartbeat(testdb.A)
-	if !s.Online(testdb.A) {
+	if err := s.Heartbeat(ctx, testdb.A); err != nil {
+		t.Fatal(err)
+	}
+	online, err := s.OnlinePlayers(ctx, []string{testdb.A})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !online[testdb.A] {
 		t.Fatal("heartbeat missing")
 	}
 	*now = now.Add(90 * time.Second)
-	if s.Online(testdb.A) {
+	online, err = s.OnlinePlayers(ctx, []string{testdb.A})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if online[testdb.A] {
 		t.Fatal("presence did not expire")
 	}
+}
+
+func TestPostgresBoardAndListReadWithoutWriteLock(t *testing.T) {
+	s, d, _ := fixture(t)
+	ctx := context.Background()
+	tx, err := s.db.Begin(ctx)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer tx.Rollback(ctx)
+	if _, err = tx.Exec(ctx, `select id from duos where id=$1 for update`, d.ID); err != nil {
+		t.Fatal(err)
+	}
+	// A normal board poll and friends summary must finish while another
+	// transaction owns the mutation lock. This also guards against hidden writes.
+	readCtx, cancel := context.WithTimeout(ctx, time.Second)
+	defer cancel()
+	board, err := s.Board(readCtx, d.ID, "today", testdb.A)
+	if err != nil {
+		t.Fatal("board read waited for the write lock", err)
+	}
+	if board.Today.Answer != "" || board.Today.Entry != nil || len(board.Recent) != 0 {
+		t.Fatal("unsafe or oversized board snapshot")
+	}
+	list, err := s.List(readCtx, testdb.A)
+	if err != nil || len(list) != 1 || len(list[0].Recent) != 0 {
+		t.Fatal("summary read waited for the write lock or loaded history", err)
+	}
+}
+
+func TestPostgresPresenceSharedBetweenInstances(t *testing.T) {
+	s, _, now := fixture(t)
+	ctx := context.Background()
+	other := New(s.db, words.NewPool())
+	other.Now = s.Now
+	if err := s.Heartbeat(ctx, testdb.A); err != nil {
+		t.Fatal(err)
+	}
+	online, err := other.OnlinePlayers(ctx, []string{testdb.A, testdb.B})
+	if err != nil || !online[testdb.A] || online[testdb.B] {
+		t.Fatal("presence not shared", online, err)
+	}
+	*now = now.Add(10 * time.Second)
+	if err = s.Heartbeat(ctx, testdb.A); err != nil {
+		t.Fatal(err)
+	}
+	var last time.Time
+	if err = s.db.QueryRow(ctx, `select last_seen from player_presence where player_id=$1`, testdb.A).Scan(&last); err != nil {
+		t.Fatal(err)
+	}
+	if !last.Equal(now.Add(-10 * time.Second)) {
+		t.Fatal("heartbeat was not throttled")
+	}
+	*now = now.Add(80 * time.Second)
+	online, err = other.OnlinePlayers(ctx, []string{testdb.A})
+	if err != nil || online[testdb.A] {
+		t.Fatal("presence failed to expire", err)
+	}
+	if err = s.Heartbeat(ctx, testdb.A); err != nil {
+		t.Fatal(err)
+	}
+	online, err = other.OnlinePlayers(ctx, []string{testdb.A})
+	if err != nil || !online[testdb.A] {
+		t.Fatal("presence failed to reconnect", err)
+	}
+}
+
+type queryCount struct{ count atomic.Int64 }
+
+func (q *queryCount) TraceQueryStart(ctx context.Context, _ *pgx.Conn, _ pgx.TraceQueryStartData) context.Context {
+	q.count.Add(1)
+	return ctx
+}
+func (q *queryCount) TraceQueryEnd(context.Context, *pgx.Conn, pgx.TraceQueryEndData) {}
+
+func TestPostgresPollingCostIndependentOfHistory(t *testing.T) {
+	s, d, now := fixture(t)
+	ctx := context.Background()
+	counter := &queryCount{}
+	cfg := s.db.Config().Copy()
+	cfg.ConnConfig.Tracer = counter
+	pool, err := pgxpool.NewWithConfig(ctx, cfg)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer pool.Close()
+	reader := New(pool, s.words)
+	reader.Now = s.Now
+	for history := 0; history <= 10; history++ {
+		if history > 0 {
+			*now = now.Add(24 * time.Hour)
+			if _, err = s.Get(ctx, d.ID, testdb.A); err != nil {
+				t.Fatal(err)
+			}
+		}
+		counter.count.Store(0)
+		snapshot, err := reader.Board(ctx, d.ID, "today", testdb.A)
+		if err != nil {
+			t.Fatal(err)
+		}
+		// Four application queries plus BEGIN/COMMIT. History must not increase
+		// network trips, and an active poll must not include past answers.
+		if n := counter.count.Load(); n != 6 {
+			t.Fatalf("%d historical days: got %d statements, want 6", history, n)
+		}
+		if len(snapshot.Recent) != 0 || snapshot.Today.Answer != "" || snapshot.Today.Entry != nil {
+			t.Fatal("poll exposed history or answer")
+		}
+	}
+	// A bookmarked result stays readable after it drops out of Recent's seven.
+	past, err := reader.Board(ctx, d.ID, d.Today.Board, testdb.A)
+	if err != nil || past.Today.State != "expired" || past.Today.Answer == "" {
+		t.Fatal("older history is unreadable", err)
+	}
+}
+
+func TestPostgresReadUsesOneCalendarDate(t *testing.T) {
+	s, d, _ := fixture(t)
+	before := d.Today.Deadline.Add(-time.Nanosecond)
+	after := d.Today.Deadline.Add(time.Second)
+	calls := 0
+	s.Now = func() time.Time {
+		calls++
+		if calls <= 2 {
+			return before
+		}
+		return after
+	}
+	got, err := s.Board(context.Background(), d.ID, "today", testdb.A)
+	if err != nil {
+		t.Fatal("read crossing midnight failed", err)
+	}
+	if got.Today.Date != d.Today.Date || got.Today.State != "playing" || calls != 1 {
+		t.Fatalf("read mixed calendar dates: %+v, clock reads %d", got.Today, calls)
+	}
+	s.Now = func() time.Time { return after }
+	got, err = s.Board(context.Background(), d.ID, "today", testdb.A)
+	if err != nil || got.Today.Date == d.Today.Date {
+		t.Fatal("next read failed to roll over", err)
+	}
+}
+
+func TestGetRejectsMalformedID(t *testing.T) {
+	// Validation must happen before opening a database transaction.
+	s := New(nil, nil)
+	_, err := s.Get(context.Background(), "invalid-id", testdb.A)
+	requireCode(t, err, "not_found")
 }

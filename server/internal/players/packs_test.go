@@ -109,3 +109,30 @@ func TestReplayKeepsEveryActivityDayAndBestWordResult(t *testing.T) {
 		t.Fatalf("saved page = %v, total %d", saved, number)
 	}
 }
+
+func TestPostgresCurrentStreaksMatchesProfiles(t *testing.T) {
+	store := New(testdb.Open(t))
+	ctx := context.Background()
+	today := time.Date(2026, 10, 6, 0, 0, 0, 0, time.UTC)
+	for _, entry := range []struct {
+		id     string
+		offset int
+	}{{testdb.A, 0}, {testdb.A, -1}, {testdb.A, -2}, {testdb.A, -4}, {testdb.A, 1}, {testdb.B, -1}, {testdb.B, -2}} {
+		if _, err := store.pool.Exec(ctx, `insert into player_activity_days(player_id,played_on) values($1,$2)`, entry.id, today.AddDate(0, 0, entry.offset)); err != nil {
+			t.Fatal(err)
+		}
+	}
+	currents, err := store.CurrentStreaks(ctx, []string{testdb.A, testdb.B, testdb.C}, today)
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, id := range []string{testdb.A, testdb.B, testdb.C} {
+		profile, err := store.Streak(ctx, id, today)
+		if err != nil || currents[id] != profile.Current {
+			t.Fatalf("%s summary %d profile %+v err %v", id, currents[id], profile, err)
+		}
+	}
+	if currents[testdb.A] != 3 || currents[testdb.B] != 2 || currents[testdb.C] != 0 {
+		t.Fatal(currents)
+	}
+}

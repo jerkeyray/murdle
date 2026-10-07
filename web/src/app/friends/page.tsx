@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { addFriend, ApiError, getCapabilities, getDuos, getFriends, getProfile, inviteDuo, mutateDuo, respondToFriend, type Duo, type DuoMutation, type FriendRecord, type Profile } from "@/lib/api";
+import { addFriend, ApiError, getCapabilities, getDuoHistory, getDuos, getFriends, getProfile, inviteDuo, mutateDuo, respondToFriend, type Duo, type DuoMutation, type FriendRecord, type Profile } from "@/lib/api";
 import { BackButton } from "@/components/BackButton";
 import { Dialog } from "@/components/Dialog";
 import { useVisiblePolling } from "@/lib/useVisiblePolling";
@@ -35,12 +35,13 @@ export default function FriendsPage() {
 
   const load = useCallback(async (signal?:AbortSignal) => {
     try {
-      const capability = await getCapabilities(signal);
       if (!initialized.current) { setCode(new URLSearchParams(window.location.search).get("code")?.slice(0, 6).toUpperCase() ?? ""); initialized.current = true; }
+      const [capability, p] = await Promise.all([getCapabilities(signal), getProfile(signal)]);
+      if (signal?.aborted) return;
       setAvailable(capability.sharedGames);
-      const p = await getProfile(signal);
       if (p.needsName) { router.replace(`/profile?returnTo=${encodeURIComponent(window.location.pathname + window.location.search)}`); return; }
       const [f, d] = await Promise.all([getFriends(signal), capability.sharedGames ? getDuos(signal) : Promise.resolve([])]);
+      if (signal?.aborted) return;
       setProfile(p); setFriends(f); setDuos(d); setReady(true);
     } catch (e) {
       if(signal?.aborted)return;
@@ -52,7 +53,20 @@ export default function FriendsPage() {
   }, [router]);
   useVisiblePolling(load, 30_000);
   const friend = friends.find(f => f.id === selected);
-  const duo = duos.find(d => d.friendshipId === selected);
+  const summary = duos.find(d => d.friendshipId === selected);
+  const [history, setHistory] = useState<Duo | null>(null);
+  const duo = history && summary && history.id === summary.id ? {...summary, recent: history.recent} : summary;
+  const historyID = summary?.id;
+  useEffect(() => {
+    if (!historyID) return;
+    const controller = new AbortController();
+    void getDuoHistory(historyID, controller.signal).then(d => {
+      if (!controller.signal.aborted) setHistory(d);
+    }).catch(e => {
+      if (!controller.signal.aborted) setError(e instanceof Error ? e.message : "Could not load pair results");
+    });
+    return () => controller.abort();
+  }, [historyID, summary?.version]);
   const sorted = [...friends].sort((a, b) => {
     const rank = (f: FriendRecord) => { const d = duos.find(d => d.friendshipId === f.id); return duoStatus(d) === "Your turn" ? 0 : d?.status === "active" || d?.status === "pending" ? 1 : 2; };
     return rank(a) - rank(b) || a.displayName.localeCompare(b.displayName);
@@ -90,7 +104,7 @@ export default function FriendsPage() {
   }
 
   return <main className="sheet friends-page">
-    <Presence />
+    <Presence enabled={available && !!profile} />
     <header className="sheet-head"><BackButton href="/" /><h1 className="sheet-title">Friends</h1></header>
     {!ready ? <Loader /> : !profile ? <div className="gate-middle friends-gate">
       {error ? <div className="gate-card">

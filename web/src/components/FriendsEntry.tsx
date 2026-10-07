@@ -17,21 +17,26 @@ export function FriendsEntry() {
   const [invites, setInvites] = useState(0);
   const load = useCallback(async (signal:AbortSignal) => {
     const duos = await getDuos(signal);
+    if (signal.aborted) return;
     setTurns(duos.filter(d => d.today?.state === "playing" && d.today.currentPlayer === d.viewerId).length);
     setInvites(duos.filter(d => d.status === "pending" && d.inviterId !== d.viewerId).length);
   }, []);
   useVisiblePolling(load, 30_000);
-  const waiting = turns || invites;
-  const status = turns
-    ? `${turns} waiting on you`
-    : invites
-      ? `${invites} ${invites === 1 ? "invitation" : "invitations"}`
-      : null;
+  const notificationCount = turns + invites;
+  const notificationLabel = [
+    turns ? `${turns} ${turns === 1 ? "turn" : "turns"} waiting on you` : null,
+    invites ? `${invites} ${invites === 1 ? "invitation" : "invitations"}` : null,
+  ].filter(Boolean).join(", ");
 
   return (
-    <Link className="home-friends" href="/friends" data-news={waiting ? true : undefined}>
+    <Link
+      className="home-friends"
+      href="/friends"
+      data-news={notificationCount ? true : undefined}
+      aria-label={notificationCount ? `Friends, ${notificationLabel}` : undefined}
+    >
       <span className="home-friends-word">Friends</span>
-      {status && <span className="home-friends-status">{status}</span>}
+      {notificationCount > 0 && <span className="home-friends-badge" aria-hidden="true">{notificationCount > 99 ? "99+" : notificationCount}</span>}
     </Link>
   );
 }

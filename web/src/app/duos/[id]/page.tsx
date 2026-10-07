@@ -13,6 +13,7 @@ import { BackButton } from "@/components/BackButton";
 import { Loader } from "@/components/Loader";
 import { WordExtras, WordMeta } from "@/components/WordFacts";
 import { dictionaryReady, isKnownWord, loadDictionary, serverDictionaryReady, subscribeDictionary } from "@/lib/dictionary";
+import { Presence } from "@/components/Presence";
 import type { EnterState } from "@/lib/useGame";
 
 // `board` is how the board is addressed ("2026-10-05", then "2026-10-05.1").
@@ -21,6 +22,10 @@ import type { EnterState } from "@/lib/useGame";
 type Pending = { action: "guesses" | "pass" | "hint"; board?: string; date?: string; mutation: DuoMutation };
 export default function DuoPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
+  return <DuoBoard key={id} id={id} />;
+}
+
+function DuoBoard({id}: {id: string}) {
   const [duo, setDuo] = useState<Duo | null>(null);
   const [draft, setDraft] = useState<string[]>([]);
   const [draftCursor, setDraftCursor] = useState(0);
@@ -34,7 +39,19 @@ export default function DuoPage({ params }: { params: Promise<{ id: string }> })
   const current = useRef<{ date: string; seq: number } | null>(null);
   const pending = useRef<Pending | null>(null);
   const lock = useRef(false);
+  const snapshot = useRef<Duo | null>(null);
+  const lifetime = useRef<AbortController | null>(null);
+  useEffect(() => {
+    const controller = new AbortController();
+    lifetime.current = controller;
+    return () => controller.abort();
+  }, []);
   const accept = useCallback((d: Duo) => {
+    const previous = snapshot.current;
+    if (previous && (d.version < previous.version || previous.today && d.today &&
+      (d.today.date < previous.today.date || d.today.date === previous.today.date &&
+      (d.today.seq < previous.today.seq || d.today.seq === previous.today.seq && d.today.version < previous.today.version)))) return;
+    snapshot.current = d;
     const key = `wordle.duo.${d.viewerId}.${id}.${d.today?.board}`;
     const prior = current.current;
     // A slow response must never put an earlier board back over a newer one.
@@ -52,49 +69,61 @@ export default function DuoPage({ params }: { params: Promise<{ id: string }> })
       try { const value = JSON.parse(readLocal(key + ".pending") ?? "null") as Pending | null; if (value && (value.board ?? value.date) === d.today?.board) pending.current = value; } catch { /* Ignore incomplete local state. */ }
       setHasPending(!!pending.current);
     }
-    // A mutation can reach the server even when its response does not reach
-    // the browser. The next ordinary refresh confirms it and clears the local
-    // retry record, so a player never has to reason about a "Retry move" UI.
-    if (pending.current && d.today) {
-      const settled = pending.current.action === "guesses"
-        ? d.today.rows.some(row => row.playerId === d.viewerId && row.guess === pending.current?.mutation.guess)
-        : pending.current.action === "pass"
-          ? d.today.passed.includes(d.viewerId)
-          : !!d.today.hint;
-      if (settled) {
-        const spentGuess = pending.current.action === "guesses";
-        pending.current = null;
-        writeLocal(dayKey.current + ".pending", null);
-        setHasPending(false);
-        // The guess was played, so the word still sitting in the draft row is spent.
-        if (spentGuess) { setDraft([]); setDraftCursor(0); writeLocal(dayKey.current, null); }
-      }
-    }
-    setDuo(previous => previous?.today && d.today && (previous.today.date > d.today.date || previous.today.date === d.today.date && (previous.today.seq > d.today.seq || previous.today.seq === d.today.seq && previous.today.version > d.today.version)) ? previous : d);
+    setDuo(d);
     setReconnecting(false); setSignedOut(false);
   }, [id]);
+  const clearPending = useCallback((request: Pending, spentGuess: boolean) => {
+    if (pending.current !== request) return;
+    pending.current = null;
+    writeLocal(dayKey.current + ".pending", null);
+    setHasPending(false);
+    if (spentGuess) { setDraft([]); setDraftCursor(0); writeLocal(dayKey.current, null); }
+  }, []);
+  const sendPending = useCallback(async (signal: AbortSignal | undefined = lifetime.current?.signal) => {
+    const request = pending.current;
+    if (!request) return;
+    try {
+      const result = await mutateDuo(id, request.action, request.mutation, request.board ?? request.date, signal);
+      if (signal?.aborted) return;
+      clearPending(request, request.action === "guesses");
+      accept(result);
+      setError("");
+    } catch (e) {
+      if (signal?.aborted) throw e;
+      // Auth, rate-limit and timeout errors leave the outcome unresolved.
+      if (e instanceof ApiError && e.status > 0 && e.status < 500 && ![401, 408, 429].includes(e.status)) {
+        clearPending(request, false);
+        if (e.current) accept(e.current);
+      }
+      if (e instanceof ApiError && e.status === 401) setSignedOut(true);
+      throw e;
+    }
+  }, [id, accept, clearPending]);
   const load = useCallback(async (signal?:AbortSignal) => {
-    try { accept(await getDuo(id, new URLSearchParams(window.location.search).get("date") ?? "today",signal)); }
-    catch (e) {
+    try {
+      const latest = await getDuo(id, new URLSearchParams(window.location.search).get("date") ?? "today", signal);
+      if (signal?.aborted) return;
+      accept(latest);
+      // Resend the exact persisted mutation: its receipt is authoritative even
+      // if an identical guess already appeared in an earlier row.
+      if (pending.current && !lock.current) {
+        lock.current = true;
+        try { await sendPending(signal); } finally { lock.current = false; }
+      }
+    } catch (e) {
       if(signal?.aborted)return;
       setReconnecting(true);
       if (e instanceof ApiError && e.status === 401) setSignedOut(true);
       if (e instanceof ApiError && (e.status === 404 || e.status === 422)) setError(e.message);
       throw e;
     }
-  }, [id, accept]);
+  }, [id, accept, sendPending]);
   const day = duo?.today;
   const wordLength = day?.wordLength ?? 0;
   const yourTurn = day?.state === "playing" && day.currentPlayer === duo?.viewerId && duo?.status === "active";
-  // Waiting on your friend is the one case worth polling quickly: their guess
-  // should land on your board while you are both looking at it. On your own
-  // turn, or once the day is done, the only things that can still change are
-  // the deadline and the duo itself, and every poll costs a locking write
-  // transaction — so a board left open on a desk backs off instead of billing
-  // for a move that cannot arrive. Focus, reconnect and visibility changes
-  // refresh immediately either way.
-  const waiting = day?.state === "playing" && duo?.status === "active" && !yourTurn;
-  useVisiblePolling(load, waiting ? 3_000 : 30_000);
+  // Either friend can reveal a hint or start the next board, so both seats
+  // refresh promptly. Hidden tabs and failures still pause/back off.
+  useVisiblePolling(load, duo?.status === "active" || hasPending ? 3_000 : 30_000);
   useEffect(() => { loadDictionary(); }, []);
   const enabled = !!yourTurn && !busy && !signedOut && !closedDate && !hasPending;
   // The same Enter treatment as the solo board. Unknown words still submit;
@@ -135,25 +164,15 @@ export default function DuoPage({ params }: { params: Promise<{ id: string }> })
     lock.current = true; setBusy(true); setError("");
     try {
       if (!pending.current) {
-        const latest = await getDuo(id);
-        accept(latest);
-        if (!latest.today || latest.today.board !== duo.today.board || latest.today.version !== duo.today.version || action !== "hint" && latest.today.currentPlayer !== latest.viewerId || latest.today.state !== "playing") { setError("The board changed. Review it before playing."); return; }
-        pending.current = { action, board: latest.today.board, mutation: { requestId: crypto.randomUUID(), version: latest.today.version, ...(action === "guesses" ? { guess: draftWord } : {}) } };
+        pending.current = { action, board: duo.today.board, mutation: { requestId: crypto.randomUUID(), version: duo.today.version, ...(action === "guesses" ? { guess: draftWord } : {}) } };
         writeLocal(dayKey.current + ".pending", JSON.stringify(pending.current));
         setHasPending(true);
       }
-      const request = pending.current;
-      const result = await mutateDuo(id, request.action, request.mutation, request.board ?? request.date);
-      pending.current = null; writeLocal(dayKey.current + ".pending", null);
-      setHasPending(false);
-      if (request.action === "guesses") { updateDraft([]); setDraftCursor(0); }
-      accept(result);
-      await load();
+      await sendPending();
     } catch (e) {
-      if (e instanceof ApiError && e.status > 0 && e.status < 500) { pending.current = null; setHasPending(false); writeLocal(dayKey.current + ".pending", null); if (e.current) accept(e.current); }
       setError(e instanceof Error ? e.message : "Could not submit. Your move will be checked automatically.");
     } finally { lock.current = false; setBusy(false); }
-  }, [duo, yourTurn, draftComplete, draftWord, id, accept, load, updateDraft]);
+  }, [duo, yourTurn, draftComplete, draftWord, sendPending]);
   // Starts another board today. Either friend can, once the last one is over.
   // If the other friend already did, the server hands back that board instead
   // of making a third, so a double tap lands everyone on the same game.
@@ -181,6 +200,7 @@ export default function DuoPage({ params }: { params: Promise<{ id: string }> })
   const status = day?.state === "won" ? "Solved together" : day?.state === "lost" ? "Out of guesses" : day?.state === "expired" ? "Day finished" : day?.state === "closed" || duo?.status === "ended" ? "Daily game ended" : yourTurn ? "Your turn" : `${other?.name || "Friend"}’s turn`;
 
   return <main className="app game-app duo-app">
+    <Presence enabled={!!duo && !signedOut} />
     <header className="topbar"><BackButton href="/friends" /><h1 className="wordmark">Wordle</h1><span aria-hidden="true" /></header>
     {signedOut ? <section className="game-error"><p>Sign in to open your shared board.</p><Link className="button button--link" href={`/sign-in?returnTo=${encodeURIComponent(`/duos/${id}`)}`}>Sign in</Link></section> : !duo ? <section className="game-error">{error ? <p role="status">{error}</p> : <Loader label={reconnecting ? "Reconnecting" : "Loading"} />}</section> : !day ? <section className="game-error"><p>{duo.status === "pending" ? "This invitation is waiting for acceptance." : "This daily game has ended."}</p></section> : <>
       <div className="duo-members">{duo.members.map((m, seat) => {
