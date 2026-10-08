@@ -22,12 +22,15 @@ const DIFFICULTIES = [
 export default function AboutPage() {
   const [stats, setStats] = useState<WordStats | null>(null);
   const [failed, setFailed] = useState(false);
+  const [attempt, setAttempt] = useState(0);
 
   useEffect(() => {
     let cancelled = false;
-    getWordStats().then((s) => { if (!cancelled) setStats(s); }).catch(() => { if (!cancelled) setFailed(true); });
+    getWordStats()
+      .then((s) => { if (!cancelled) { setStats(s); setFailed(false); } })
+      .catch(() => { if (!cancelled) setFailed(true); });
     return () => { cancelled = true; };
-  }, []);
+  }, [attempt]);
 
   return (
     <main className="sheet about">
@@ -36,8 +39,11 @@ export default function AboutPage() {
         <h1 className="sheet-title">About the words</h1>
       </header>
 
-      {failed && <p className="form-error" role="alert">The word figures could not be loaded just now.</p>}
-      {!stats && !failed && <p className="about-quiet" role="status">Counting…</p>}
+      {failed && <div className="about-card about-failed" role="alert">
+        <p>The word figures could not be loaded just now.</p>
+        <button className="button button--quiet" onClick={() => { setFailed(false); setAttempt((n) => n + 1); }}>Try again</button>
+      </div>}
+      {!stats && !failed && <p className="about-quiet about-loading" role="status">Counting…</p>}
 
       {stats && <>
         <section className="about-hero" aria-label="Totals">
