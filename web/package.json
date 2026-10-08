@@ -9,6 +9,7 @@
     "lint": "eslint",
     "dictionary": "node scripts/build-dictionary.mjs && node scripts/build-client-dictionary.mjs",
     "hints:review": "node scripts/review-hints.mjs",
+    "bank:stats": "node scripts/bank-stats.mjs",
     "test:content": "node --test scripts/bank-lib.test.mjs scripts/wiktionary-lib.test.mjs scripts/tatoeba-lib.test.mjs scripts/respell.test.mjs scripts/draft.test.mjs",
     "entries:enrich": "node scripts/enrich-entries.mjs --source wiktionary && node scripts/enrich-entries.mjs --source wordnet && node scripts/enrich-entries.mjs --source tatoeba",
     "entries:report": "node scripts/enrich-entries.mjs --report",

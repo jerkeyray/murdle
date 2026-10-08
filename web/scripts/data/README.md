@@ -12,7 +12,8 @@ origin and example fields that `scripts/enrich-entries.mjs` adds to
 Wiktionary content is licensed under
 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). The fields
 taken from it carry the same licence and need attribution wherever they are
-shown; the app credits Wiktionary on the word entry.
+shown. The README credits it; the app does not yet show a credit on the word
+entry.
 
 WordNet 3.1 comes from the `wordnet-db` package and needs no download. It
 fills part of speech and examples where Wiktionary could not. WordNet is
