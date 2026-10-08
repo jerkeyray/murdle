@@ -178,19 +178,20 @@ func (s *Server) roundView(round *game.Round) roundView {
 }
 
 type createRunRequest struct {
-	// ExcludePacks are themes already played, so a new run picks a fresh one.
-	// Signed-out players have nowhere else to keep this, so the client sends
-	// its local list; a signed-in player's real history is read from the
-	// database and merged in, because local storage does not follow anyone to
-	// a new phone.
+	// ExcludePacks is ignored. Themed packs are gone, but a tab opened before
+	// the change still sends it.
 	ExcludePacks []string `json:"excludePacks"`
-	// ExcludeWords does the same for Classic: answers already played, sent by
-	// a signed-out client and merged with the database for a signed-in one.
+	// ExcludeWords are answers already played. A signed-out client has nowhere
+	// else to keep them, so it sends its local list; a signed-in player's real
+	// history is read from the database and merged in, because local storage
+	// does not follow anyone to a new phone.
 	ExcludeWords []string `json:"excludeWords"`
-	Mode         string   `json:"mode"`
-	WordLength   int      `json:"wordLength"`
-	Difficulty   string   `json:"difficulty"`
-	RequestID    string   `json:"requestId"`
+	// Mode is ignored for the same reason as ExcludePacks: every game is
+	// Classic now.
+	Mode       string `json:"mode"`
+	WordLength int    `json:"wordLength"`
+	Difficulty string `json:"difficulty"`
+	RequestID  string `json:"requestId"`
 }
 
 func (s *Server) handleCreateRun(w http.ResponseWriter, r *http.Request) {
@@ -214,22 +215,12 @@ func (s *Server) handleCreateRun(w http.ResponseWriter, r *http.Request) {
 	createFingerprintRequest.RequestID = ""
 	fingerprint := mutationFingerprint("create_run", createFingerprintRequest)
 
-	exclude := make(map[string]struct{}, len(req.ExcludePacks))
-	for _, id := range req.ExcludePacks {
-		exclude[id] = struct{}{}
-	}
-	s.excludePlayedPacks(r, exclude)
-
-	mode := req.Mode
-	if mode == "" {
-		mode = "themed"
-	}
 	length := req.WordLength
 	if length == 0 {
 		length = game.WordLength
 	}
-	if (mode != "classic" && mode != "themed") || (length != 5 && length != 6) {
-		writeError(w, http.StatusBadRequest, "invalid_mode", "choose classic or themed, with five or six letters")
+	if length != 5 && length != 6 {
+		writeError(w, http.StatusBadRequest, "invalid_mode", "choose five or six letters")
 		return
 	}
 	difficulty := req.Difficulty
@@ -240,30 +231,17 @@ func (s *Server) handleCreateRun(w http.ResponseWriter, r *http.Request) {
 		writeError(w, http.StatusBadRequest, "invalid_difficulty", "choose mixed or learning vocabulary")
 		return
 	}
-	var wordsToPlay []string
-	packID := ""
-	newCycle := false
-	if mode == "themed" {
-		pack, ok := s.pool.RandomPackForLength(exclude, length)
-		if !ok {
-			writeError(w, http.StatusInternalServerError, "no_packs", "no themed packs are loaded for that length")
-			return
-		}
-		packID, wordsToPlay, newCycle = pack.ID, pack.WordList(), s.pool.ExhaustedForLength(exclude, length)
-	} else {
-		seen := make(map[string]struct{}, len(req.ExcludeWords))
-		for _, w := range req.ExcludeWords {
-			seen[w] = struct{}{}
-		}
-		s.excludePlayedWords(r, seen)
-		word, cycled, ok := s.pool.FreshWord(length, difficulty, seen)
-		if !ok {
-			writeError(w, http.StatusInternalServerError, "no_words", "no words are loaded for that length")
-			return
-		}
-		wordsToPlay, newCycle = []string{word.Word}, cycled
+	seen := make(map[string]struct{}, len(req.ExcludeWords))
+	for _, w := range req.ExcludeWords {
+		seen[w] = struct{}{}
 	}
-	run, err := game.NewRunWithMode(store.NewID(), mode, packID, wordsToPlay)
+	s.excludePlayedWords(r, seen)
+	word, newCycle, ok := s.pool.FreshWord(length, difficulty, seen)
+	if !ok {
+		writeError(w, http.StatusInternalServerError, "no_words", "no words are loaded for that length")
+		return
+	}
+	run, err := game.NewRun(store.NewID(), []string{word.Word})
 	if err != nil {
 		s.log.Error("creating run", "err", err)
 		writeError(w, http.StatusInternalServerError, "create_failed", "could not start the run")
@@ -320,31 +298,8 @@ func (s *Server) handleCreateRun(w http.ResponseWriter, r *http.Request) {
 	writeJSON(w, http.StatusCreated, newRunView(run, s.pool))
 }
 
-// excludePlayedPacks adds the themes a signed-in player has finished.
-//
-// A pack counts as played only once every one of its words is recorded, which
-// matches what the client does: abandoning a run halfway should let that theme
-// come round again. Failures here are logged and ignored — not knowing your
-// history is a reason to risk a repeat, never a reason to refuse a game.
-func (s *Server) excludePlayedPacks(r *http.Request, exclude map[string]struct{}) {
-	p, ok := s.player(r)
-	if !ok {
-		return
-	}
-	counts, err := s.players.PackWordCounts(r.Context(), p.ID)
-	if err != nil {
-		s.log.Error("reading played packs", "player", p.ID, "err", err)
-		return
-	}
-	for id, played := range counts {
-		if pack, ok := s.pool.Pack(id); ok && played >= len(pack.Words) {
-			exclude[id] = struct{}{}
-		}
-	}
-}
-
 // excludePlayedWords adds every word a signed-in player has finished, so a
-// Classic game never repeats one across devices. As with packs, a failed
+// Classic game never repeats one across devices. A failed
 // lookup risks a repeat rather than refusing a game.
 func (s *Server) excludePlayedWords(r *http.Request, exclude map[string]struct{}) {
 	p, ok := s.player(r)
@@ -700,10 +655,7 @@ func (s *Server) recordSolve(r *http.Request, round *game.Round) {
 
 func (s *Server) solveRecord(r *http.Request, round *game.Round) players.Solve {
 	answer := round.Reveal()
-	packID := ""
-	if round.Mode == "" || round.Mode == "themed" {
-		packID, _ = s.pool.PackIDFor(answer)
-	}
+	packID, _ := s.pool.PackIDFor(answer)
 	var solvedRow *int
 	if round.State == game.StateWon {
 		row := round.SolvedRow

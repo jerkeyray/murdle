@@ -29,7 +29,7 @@ install:
 test:
 	cd server && go test ./...
 	cd web && pnpm exec tsc --noEmit && pnpm exec eslint src tests playwright.config.ts --max-warnings=0
-	cd web && pnpm packs:check && pnpm test:content
+	cd web && pnpm test:content
 
 # For when something is still holding a port.
 stop:

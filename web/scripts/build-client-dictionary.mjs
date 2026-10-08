@@ -3,7 +3,7 @@
  * player whether a word counts before they submit it.
  *
  * Built from the Go server's own files rather than from the corpus, because
- * the server's effective dictionary is dictionary.txt plus every pack word:
+ * the server's effective dictionary is dictionary.txt plus every answer:
  * slang often predates the corpora, and a word the game deals has to be
  * typeable. Generating from anything else would let the two lists disagree.
  *
@@ -23,13 +23,13 @@ const OUT = path.join(here, "..", "public", "dictionary.txt");
 
 const dictionary = await readFile(path.join(WORDS_DIR, "dictionary.txt"), "utf8");
 const dictionaryExtra = await readFile(path.join(WORDS_DIR, "dictionary_extra.txt"), "utf8");
-const packs = JSON.parse(await readFile(path.join(WORDS_DIR, "packs.json"), "utf8"));
+const bank = JSON.parse(await readFile(path.join(WORDS_DIR, "classic.json"), "utf8"));
 
 const words = [
   ...new Set([
     ...dictionary.split("\n").map((w) => w.trim()).filter(Boolean),
     ...dictionaryExtra.split("\n").map((w) => w.trim()).filter(Boolean),
-    ...packs.flatMap((p) => p.words.map((w) => w.word)),
+    ...bank.map((w) => w.word),
   ]),
 ].sort();
 

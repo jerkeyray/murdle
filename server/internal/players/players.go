@@ -291,11 +291,17 @@ func (s *Store) IsWordSaved(ctx context.Context, playerID, word string) (bool, e
 	return saved, err
 }
 
-// PlayedWords is every word the player has finished, on any device.
+// PlayedWords is every word the player has finished, on any device, including
+// answers revealed on a shared duo board, so Classic does not deal a word a
+// friend has already spent with them.
 //
-// solves is unique on (player, word), so this is already one row per word.
+// union removes the overlap, so this is one row per word.
 func (s *Store) PlayedWords(ctx context.Context, playerID string) ([]string, error) {
-	rows, err := s.pool.Query(ctx, `select word from solves where player_id = $1`, playerID)
+	rows, err := s.pool.Query(ctx, `
+		select word from solves where player_id = $1
+		union
+		select dd.answer from duo_days dd join duos d on d.id = dd.duo_id
+		where $1 in (d.low_id, d.high_id) and dd.state <> 'playing'`, playerID)
 	if err != nil {
 		return nil, fmt.Errorf("listing played words: %w", err)
 	}
@@ -307,34 +313,6 @@ func (s *Store) PlayedWords(ctx context.Context, playerID string) ([]string, err
 			return nil, err
 		}
 		out = append(out, w)
-	}
-	return out, rows.Err()
-}
-
-// PackWordCounts is how many distinct words the player has recorded from each
-// pack, keyed by pack ID.
-//
-// This is what lets a run skip themes you have already finished no matter which
-// device you are on. The client keeps its own list in local storage for players
-// who never sign in, but that list does not survive a new phone or a cleared
-// browser, and it was the only thing selection consulted.
-func (s *Store) PackWordCounts(ctx context.Context, playerID string) (map[string]int, error) {
-	rows, err := s.pool.Query(ctx, `
-		select pack_id, count(distinct word) from solves
-		where player_id = $1 group by pack_id`, playerID)
-	if err != nil {
-		return nil, fmt.Errorf("counting played packs: %w", err)
-	}
-	defer rows.Close()
-
-	out := map[string]int{}
-	for rows.Next() {
-		var id string
-		var n int
-		if err := rows.Scan(&id, &n); err != nil {
-			return nil, err
-		}
-		out[id] = n
 	}
 	return out, rows.Err()
 }

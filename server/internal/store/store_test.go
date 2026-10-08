@@ -52,7 +52,7 @@ func TestExpiryAndCompletedRunSnapshot(t *testing.T) {
 	if _, err := store.Get(ctx, "round"); err != game.ErrRoundNotFound {
 		t.Fatal("expired round survived")
 	}
-	run, _ := game.NewRun("run", "pack", []string{"salve"})
+	run, _ := game.NewRun("run", []string{"salve"})
 	_, _ = run.StartRound("round")
 	_ = round.Guess("salve", func(string) bool { return true })
 	run.RecordRound(round)
@@ -94,7 +94,7 @@ func TestMemoryUpdateFailureRollsBack(t *testing.T) {
 func TestMemoryRunAndRoundDealIsAtomicAndOnlyAdvancesOnce(t *testing.T) {
 	ctx := context.Background()
 	s := NewMemory(time.Hour)
-	run, err := game.NewRunWithMode("run", "themed", "pack", []string{"adieu", "crane"})
+	run, err := game.NewRun("run", []string{"adieu", "crane"})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -136,7 +136,7 @@ func TestMemoryRunAndRoundDealIsAtomicAndOnlyAdvancesOnce(t *testing.T) {
 func TestMemorySoloRunReceiptsReplayAndBindPayload(t *testing.T) {
 	ctx := context.Background()
 	s := NewMemory(time.Hour)
-	run, err := game.NewRunWithMode("first-id", "themed", "theme", []string{"crane", "salve"})
+	run, err := game.NewRun("first-id", []string{"crane", "salve"})
 	if err != nil {
 		t.Fatal(err)
 	}

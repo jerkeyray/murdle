@@ -6,19 +6,7 @@ import { BackButton } from "@/components/BackButton";
 import { Preferences } from "@/components/Preferences";
 import { clearToken } from "@/lib/token";
 import { signOut, useSession } from "@/lib/auth-client";
-import { readLocal, type GameConfig, writeLocal } from "@/lib/session";
-
-const DEFAULT_GAME_CONFIG: GameConfig = { mode: "classic", wordLength: 5, difficulty: "mixed" };
-
-function savedGameConfig(): GameConfig {
-  try {
-    const saved = JSON.parse(readLocal("wordle.mode") ?? "null") as GameConfig | null;
-    if (saved && (saved.mode === "classic" || saved.mode === "themed") && (saved.wordLength === 5 || saved.wordLength === 6)) {
-      return { ...saved, difficulty: saved.difficulty === "learning" ? "learning" : "mixed" };
-    }
-  } catch { /* Classic five-letter play is the default. */ }
-  return DEFAULT_GAME_CONFIG;
-}
+import { savedGameConfig, type GameConfig, writeLocal } from "@/lib/session";
 
 /**
  * Settings, reached by the cog on the home screen.
@@ -64,17 +52,7 @@ export default function SettingsPage() {
         <div className="game-setup-card">
           <div className="game-setting">
             <div>
-              <h2 id="game-setup-title">Game type</h2>
-              <p>Classic is the default.</p>
-            </div>
-            <div className="game-options" role="group" aria-label="Game mode">
-              <button aria-pressed={gameConfig.mode === "classic"} onClick={() => chooseGameConfig({ ...gameConfig, mode: "classic" })}>Classic</button>
-              <button aria-pressed={gameConfig.mode === "themed"} onClick={() => chooseGameConfig({ ...gameConfig, mode: "themed" })}>Themed</button>
-            </div>
-          </div>
-          <div className="game-setting">
-            <div>
-              <h2>Word length</h2>
+              <h2 id="game-setup-title">Word length</h2>
               <p>Choose five or six letters.</p>
             </div>
             <div className="game-options" role="group" aria-label="Word length">
@@ -84,7 +62,7 @@ export default function SettingsPage() {
           <div className="game-setting">
             <div>
               <h2>Answer vocabulary</h2>
-              <p>{gameConfig.mode === "classic" ? "Learning leaves out the most familiar answers." : "Themed sets keep their curated mix of words."}</p>
+              <p>Learning leaves out the most familiar answers.</p>
             </div>
             <div className="game-options" role="group" aria-label="Answer vocabulary">
               <button aria-pressed={gameConfig.difficulty === "mixed"} onClick={() => chooseGameConfig({ ...gameConfig, difficulty: "mixed" })}>Mixed</button>

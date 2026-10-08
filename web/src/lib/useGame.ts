@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { ApiError, createRun, getRound, getRun, letterStates, startRunRound, submitGuess, revealHint, type Round, type Run } from "./api";
-import { activeRunFor, clearActiveRunFor, clearPendingNextRoundRequestFor, clearPendingRunRequestFor, pendingNextRoundRequestFor, pendingRunRequestFor, type GameConfig, playedPacks, playedWords, rememberRun } from "./session";
+import { activeRunFor, clearActiveRunFor, clearPendingNextRoundRequestFor, clearPendingRunRequestFor, pendingNextRoundRequestFor, pendingRunRequestFor, type GameConfig, playedWords, rememberRun } from "./session";
 import { lettersPhrase } from "./letters";
 import { deleteLetter, typeInto } from "./draft";
 import { dictionaryReady, isKnownWord, loadDictionary, serverDictionaryReady, subscribeDictionary } from "./dictionary";
@@ -31,7 +31,7 @@ async function restore(id: string): Promise<Deal> {
 // Remembering early would let a prefetch from the home page flip its button
 // from Begin to Continue while you were looking at it.
 function begin(config: GameConfig): Promise<Deal> {
-  const payload = { excludePacks: config.mode === "themed" ? playedPacks() : [], excludeWords: config.mode === "classic" ? playedWords() : [], ...config };
+  const payload = { excludeWords: playedWords(), ...config };
   const pending = pendingRunRequestFor(config, payload);
   return createRun({ requestId: pending.requestId, ...pending.payload })
     .then((deal) => { clearPendingRunRequestFor(config); return deal; });
@@ -54,7 +54,7 @@ function open(config: GameConfig): Promise<Deal> {
 type Prefetch = { key: string; at: number; deal: Promise<Deal> };
 let prefetched: Prefetch | null = null;
 const PREFETCH_TTL_MS = 5 * 60 * 1000;
-const keyOf = (c: GameConfig) => `${c.mode}:${c.wordLength}:${c.difficulty}`;
+const keyOf = (c: GameConfig) => `${c.wordLength}:${c.difficulty}`;
 
 export function prefetchGame(config: GameConfig): void {
   const key = keyOf(config);
@@ -73,8 +73,8 @@ function takePrefetched(config: GameConfig): Promise<Deal> | null {
   return p.deal;
 }
 
-export function useGame(config: GameConfig = { mode: "themed", wordLength: 5, difficulty: "mixed" }) {
-  const { mode, wordLength, difficulty } = config;
+export function useGame(config: GameConfig = { wordLength: 5, difficulty: "mixed" }) {
+  const { wordLength, difficulty } = config;
   const [run, setRun] = useState<Run | null>(null);
   const [round, setRound] = useState<Round | null>(null);
   // Empty strings retain a player's chosen tile positions. That means they can
@@ -107,8 +107,8 @@ export function useGame(config: GameConfig = { mode: "themed", wordLength: 5, di
   const accept = useCallback((dealt: Deal) => {
     setRun(dealt.run); setRound(dealt.round);
     setDraft([]); draftCursorRef.current = 0; setDraftCursor(0); setRevealingRow(null); setRevealedRows(dealt.round.rows.length);
-    rememberRun(dealt.run, { mode, wordLength, difficulty }); setError(null); setExpired(false);
-  }, [mode, wordLength, difficulty]);
+    rememberRun(dealt.run, { wordLength, difficulty }); setError(null); setExpired(false);
+  }, [wordLength, difficulty]);
   const fail = useCallback((err: unknown) => {
     const missing = err instanceof ApiError && (err.code === "run_not_found" || err.code === "round_not_found");
     setExpired(missing);
@@ -118,8 +118,8 @@ export function useGame(config: GameConfig = { mode: "themed", wordLength: 5, di
       // are in the database now and the window is a month.
       ? "That run is no longer available. Unfinished games are kept for a month."
       : err instanceof ApiError ? err.message : "Could not reach the game. Please try again.");
-    if (missing) clearActiveRunFor({ mode, wordLength, difficulty });
-  }, [mode, wordLength, difficulty]);
+    if (missing) clearActiveRunFor({ wordLength, difficulty });
+  }, [wordLength, difficulty]);
 
   // Off the critical path: the board does not wait on it, and the Enter key
   // simply has no opinion until it lands.
@@ -128,7 +128,7 @@ export function useGame(config: GameConfig = { mode: "themed", wordLength: 5, di
   useEffect(() => {
     mounted.current = true;
     let cancelled = false;
-    const config = { mode, wordLength, difficulty };
+    const config = { wordLength, difficulty };
     const key = keyOf(config);
     if (opening.current?.key !== key) opening.current = {key, deal: takePrefetched(config) ?? open(config)};
     opening.current.deal.then((dealt) => { if (!cancelled) accept(dealt); }).catch((err: unknown) => {
@@ -136,7 +136,7 @@ export function useGame(config: GameConfig = { mode: "themed", wordLength: 5, di
     });
     const pending = timers.current;
     return () => { cancelled = true; mounted.current = false; pending.forEach(clearTimeout); };
-  }, [accept, fail, mode, wordLength, difficulty]);
+  }, [accept, fail, wordLength, difficulty]);
 
   const perform = useCallback(async (action: () => Promise<Deal>) => {
     if (lock.current) return;
@@ -146,11 +146,11 @@ export function useGame(config: GameConfig = { mode: "themed", wordLength: 5, di
     finally { lock.current = false; if (mounted.current) setBusy(false); }
   }, [accept, fail]);
   const retry = useCallback(() => perform(() => {
-    return open({ mode, wordLength, difficulty });
-  }), [perform, mode, wordLength, difficulty]);
-  const newRun = useCallback(() => perform(() => begin({ mode, wordLength, difficulty })), [perform, mode, wordLength, difficulty]);
+    return open({ wordLength, difficulty });
+  }), [perform, wordLength, difficulty]);
+  const newRun = useCallback(() => perform(() => begin({ wordLength, difficulty })), [perform, wordLength, difficulty]);
   const nextWord = useCallback(() => perform(async () => {
-    if (!run) return begin({ mode, wordLength, difficulty });
+    if (!run) return begin({ wordLength, difficulty });
     // Recover a response lost after the next word was already dealt.
     const current = await getRun(run.id);
     if (current.currentRoundId !== round?.id || current.complete) {
@@ -158,7 +158,7 @@ export function useGame(config: GameConfig = { mode: "themed", wordLength: 5, di
       return restore(run.id);
     }
     return dealNextRound(run.id, current.currentRoundId ?? "");
-  }), [perform, run, round, mode, wordLength, difficulty]);
+  }), [perform, run, round, wordLength, difficulty]);
 
   const playable = !!round && round.state === "playing" && !busy && !error && revealingRow === null;
 
@@ -216,14 +216,14 @@ export function useGame(config: GameConfig = { mode: "themed", wordLength: 5, di
       setRevealingRow(reduced ? null : result.round.rows.length - 1);
       const settle = () => {
         setRevealingRow(null); setRevealedRows(result.round.rows.length);
-        if (result.run) { setRun(result.run); rememberRun(result.run, { mode, wordLength, difficulty }); }
+        if (result.run) { setRun(result.run); rememberRun(result.run, { wordLength, difficulty }); }
       };
       if (reduced) settle(); else later(settle, REVEAL_MS);
     } catch (err) {
       if (err instanceof ApiError && ["wrong_length", "not_a_word"].includes(err.code)) reject(err.message);
       else fail(err); // Retry reads server state before accepting another guess.
     } finally { lock.current = false; if (mounted.current) setBusy(false); }
-  }, [playable, round, draftComplete, draftWord, reject, later, fail, mode, wordLength, difficulty]);
+  }, [playable, round, draftComplete, draftWord, reject, later, fail, wordLength, difficulty]);
   const requestHint = useCallback(async () => {
     if (!playable || !round || lock.current) return;
     lock.current = true; setBusy(true);

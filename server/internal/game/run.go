@@ -14,15 +14,15 @@ var (
 	ErrEmptyWordList = errors.New("a run needs at least one word")
 )
 
-// Run is a themed sequence of words played back to back.
-//
-// The words secretly share a theme, withheld until the run ends, so the player
-// is working out the connection as well as the words.
+// Run is a sequence of words played back to back. Runs used to carry several
+// words around a hidden theme; a new run holds one, but old stored runs may
+// hold more, so the type still handles any number.
 type Run struct {
 	ID         string
 	Mode       string
 	WordLength int
-	// PackID identifies the theme. Never serialize this before the run ends.
+	// PackID is the theme of a run saved before themed packs were removed. It
+	// is kept so those rows still load, and is never set on a new run.
 	PackID string
 	Words  []string
 
@@ -40,11 +40,7 @@ type Run struct {
 }
 
 // NewRun starts a run over the given words, in order.
-func NewRun(id, packID string, words []string) (*Run, error) {
-	return NewRunWithMode(id, "themed", packID, words)
-}
-
-func NewRunWithMode(id, mode, packID string, words []string) (*Run, error) {
+func NewRun(id string, words []string) (*Run, error) {
 	if len(words) == 0 {
 		return nil, ErrEmptyWordList
 	}
@@ -52,9 +48,8 @@ func NewRunWithMode(id, mode, packID string, words []string) (*Run, error) {
 	now := time.Now().UTC()
 	return &Run{
 		ID:         id,
-		Mode:       mode,
+		Mode:       "classic",
 		WordLength: len([]rune(words[0])),
-		PackID:     packID,
 		Words:      words,
 		RoundIDs:   make([]string, 0, len(words)),
 		CreatedAt:  now,

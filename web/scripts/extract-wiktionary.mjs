@@ -17,8 +17,7 @@ const WORDS = new URL("../../server/internal/words/", import.meta.url);
 const OUT = new URL("data/wiktionary.jsonl", import.meta.url);
 
 const classic = JSON.parse(await readFile(new URL("classic.json", WORDS), "utf8"));
-const packs = JSON.parse(await readFile(new URL("packs.json", WORDS), "utf8"));
-const wanted = new Set([...classic.map((w) => w.word), ...packs.flatMap((p) => p.words.map((w) => w.word))]);
+const wanted = new Set(classic.map((w) => w.word));
 
 const kept = [];
 let read = 0, bad = 0;

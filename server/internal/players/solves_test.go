@@ -2,59 +2,12 @@ package players
 
 import (
 	"context"
+	"slices"
 	"testing"
 	"time"
 
 	"github.com/jerkeyray/wordle/server/internal/testdb"
 )
-
-// A pack is only finished once every one of its words is recorded, so the
-// counts have to be per pack and must not double-count a word played twice.
-func TestPostgresPackWordCounts(t *testing.T) {
-	store := New(testdb.Open(t))
-	ctx := context.Background()
-	day := time.Date(2026, 10, 3, 0, 0, 0, 0, time.UTC)
-
-	record := func(word, pack string) {
-		t.Helper()
-		if err := store.RecordSolve(ctx, testdb.A, Solve{
-			Word: word, PackID: pack, Solved: true, Guesses: 3, Points: 4, PlayedOn: day,
-		}); err != nil {
-			t.Fatal(err)
-		}
-	}
-
-	for _, w := range []string{"voice", "clout", "edict"} {
-		record(w, "terminally-online")
-	}
-	record("amour", "soft-landing")
-	// The same word again must not inflate its pack: solves is unique on
-	// (player, word), so this is an upsert rather than a second row.
-	record("voice", "terminally-online")
-
-	counts, err := store.PackWordCounts(ctx, testdb.A)
-	if err != nil {
-		t.Fatal(err)
-	}
-	if counts["terminally-online"] != 3 {
-		t.Fatalf("replayed word changed the count: %d", counts["terminally-online"])
-	}
-	if counts["soft-landing"] != 1 {
-		t.Fatalf("second pack: %d", counts["soft-landing"])
-	}
-	if _, ok := counts["never-played"]; ok {
-		t.Fatal("reported a pack with no solves")
-	}
-
-	// Another player's history is their own.
-	other, err := store.PackWordCounts(ctx, testdb.B)
-	if err != nil {
-		t.Fatal(err)
-	}
-	if len(other) != 0 {
-		t.Fatalf("leaked another player's packs: %v", other)
-	}
-}
 
 func TestReplayKeepsEveryActivityDayAndBestWordResult(t *testing.T) {
 	store := New(testdb.Open(t))
@@ -134,5 +87,35 @@ func TestPostgresCurrentStreaksMatchesProfiles(t *testing.T) {
 	}
 	if currents[testdb.A] != 3 || currents[testdb.B] != 2 || currents[testdb.C] != 0 {
 		t.Fatal(currents)
+	}
+}
+
+// A word revealed on a finished duo board counts as played for both members,
+// so Classic does not deal it again; a board still in play does not.
+func TestPostgresPlayedWordsIncludesFinishedDuoBoards(t *testing.T) {
+	store := New(testdb.Open(t))
+	ctx := context.Background()
+	day := time.Date(2026, 10, 3, 0, 0, 0, 0, time.UTC)
+	if err := store.RecordSolve(ctx, testdb.A, Solve{Word: "voice", PackID: "theme", Solved: true, Guesses: 3, Points: 4, PlayedOn: day}); err != nil {
+		t.Fatal(err)
+	}
+	duo := testdb.ID()
+	if _, err := store.pool.Exec(ctx, `insert into duos(id,friendship_id,inviter_id,low_id,high_id,timezone,status,started_on) values($1,$2,$3,least($3::uuid,$4::uuid),greatest($3::uuid,$4::uuid),'UTC','active',$5)`, duo, testdb.Friendship, testdb.A, testdb.B, day); err != nil {
+		t.Fatal(err)
+	}
+	for i, board := range []struct{ answer, state string }{{"clout", "won"}, {"edict", "playing"}} {
+		if _, err := store.pool.Exec(ctx, `insert into duo_days(duo_id,day,seq,deadline,answer,entry,cycle,state,current_player) values($1,$2,$3,$2::date+interval '1 day',$4,'{}',0,$5,$6)`, duo, day, i, board.answer, board.state, testdb.A); err != nil {
+			t.Fatal(err)
+		}
+	}
+	for id, want := range map[string][]string{testdb.A: {"clout", "voice"}, testdb.B: {"clout"}, testdb.C: nil} {
+		got, err := store.PlayedWords(ctx, id)
+		if err != nil {
+			t.Fatal(err)
+		}
+		slices.Sort(got)
+		if !slices.Equal(got, want) {
+			t.Errorf("%s played %v, want %v", id, got, want)
+		}
 	}
 }

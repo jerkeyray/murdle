@@ -8,7 +8,6 @@ import { BackButton } from "@/components/BackButton";
 import { Keyboard } from "@/components/Keyboard";
 import { Entry } from "@/components/Entry";
 import { Dialog } from "@/components/Dialog";
-import { RunConclusion } from "@/components/RunConclusion";
 import { ProfileButton } from "@/components/ProfileButton";
 import { useGame } from "@/lib/useGame";
 import type { Round } from "@/lib/api";
@@ -21,10 +20,9 @@ export default function PlayPage() {
 
 function ConfiguredPlayScreen() {
   const search = useSearchParams();
-  const mode = search.get("mode") === "classic" ? "classic" : "themed";
   const wordLength = search.get("length") === "6" ? 6 : 5;
   const difficulty = search.get("difficulty") === "learning" ? "learning" : "mixed";
-  return <PlayScreen key={`${mode}:${wordLength}:${difficulty}`} config={{mode, wordLength, difficulty}} />;
+  return <PlayScreen key={`${wordLength}:${difficulty}`} config={{wordLength, difficulty}} />;
 }
 
 function PlayScreen({config}: {config: GameConfig}) {
@@ -32,7 +30,7 @@ function PlayScreen({config}: {config: GameConfig}) {
   const { round, run } = game;
   const [dismissedRound, setDismissedRound] = useState<string | null>(null);
   const [selected, setSelected] = useState<Round | null>(null);
-  const [panel, setPanel] = useState<"hints" | "conclusion" | null>(null);
+  const [panel, setPanel] = useState<"hints" | null>(null);
   const newRun = async () => {
     setPanel(null); setSelected(null);
     if (round) setDismissedRound(round.id);
@@ -53,15 +51,13 @@ function PlayScreen({config}: {config: GameConfig}) {
 
   const advance = () => {
     setPanel(null);setSelected(null);setDismissedRound(round.id);
-    if (run.mode === "themed" && !run.complete) void game.nextWord();
-    else void game.newRun();
+    void game.newRun();
   };
 
   const finished = game.finished;
   const activeEntry = selected ?? (finished && dismissedRound !== round.id ? round : null);
   const hintsUsed = round.hintsUsed;
   const hintAvailable = hintsUsed === 0 && round.rows.length >= 3;
-  const openConclusion = () => { setDismissedRound(round.id); setPanel("conclusion"); };
 
   return <main className="app game-app">
     <header className="topbar">
@@ -89,7 +85,7 @@ function PlayScreen({config}: {config: GameConfig}) {
     <div className="sr-only" role="status" aria-live="polite">{game.revealingRow === null && round.rows.length > 0 ? round.rows.at(-1)?.guess.split("").map((letter, i) => `${letter}: ${MARK_LABEL[round.rows.at(-1)!.marks[i]]}`).join("; ") : ""}</div>
     {finished ? <div className="finished-actions">
       <button className="button button--quiet" onClick={() => setSelected(round)}>Word entry</button>
-      <button className="button" disabled={game.busy} onClick={run.mode === "themed" && run.complete ? openConclusion : advance}>{run.mode === "themed" && run.complete ? "Uncover the connection" : "Next word"}</button>
+      <button className="button" disabled={game.busy} onClick={advance}>Next word</button>
     </div> : <>
       <Keyboard letterStates={game.letterStates} onKey={game.typeLetter} onBackspace={game.backspace} disabled={game.inputDisabled} />
       {/* Centred rather than stretched edge to edge, so the thing you press on
@@ -100,7 +96,7 @@ function PlayScreen({config}: {config: GameConfig}) {
     </>}
     {game.message && <div className="toast" role="status">{game.message}</div>}
     {error && <Dialog title="Game interrupted" onClose={() => { void game.retry(); }}>{error}</Dialog>}
-    {!game.error && !panel && activeEntry && <Entry key={activeEntry.id} round={activeEntry} onClose={() => { setSelected(null); setDismissedRound(round.id); }} action={activeEntry.id === round.id ? (run.mode === "themed" && run.complete ? openConclusion : advance) : undefined} actionLabel={run.mode === "themed" && run.complete ? "Uncover the connection" : "Next word"} busy={game.busy} />}
+    {!game.error && !panel && activeEntry && <Entry key={activeEntry.id} round={activeEntry} onClose={() => { setSelected(null); setDismissedRound(round.id); }} action={activeEntry.id === round.id ? advance : undefined} actionLabel="Next word" busy={game.busy} />}
     {!game.error && panel === "hints" && <Dialog title="Clue" onClose={() => setPanel(null)} className="clue-dialog">
       <section className="hint-panel">
         {round.hints.length > 0 && <ol className="hint-list">{round.hints.slice(0, 1).map((hint) => <li key={hint.tier}><p>{hint.text}</p></li>)}</ol>}
@@ -110,6 +106,5 @@ function PlayScreen({config}: {config: GameConfig}) {
         </div>}
       </section>
     </Dialog>}
-    {!game.error && panel === "conclusion" && <RunConclusion run={run} onClose={() => setPanel(null)} onNewRun={newRun} busy={game.busy} />}
   </main>;
 }

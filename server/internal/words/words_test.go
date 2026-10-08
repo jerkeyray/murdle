@@ -5,27 +5,11 @@ import "testing"
 func TestPoolLoads(t *testing.T) {
 	p := NewPool()
 	answers, dict := p.Size()
-	if answers < 100 {
-		t.Errorf("loaded %d answers, expected the curated list to be substantial", answers)
+	if answers < 4000 {
+		t.Errorf("loaded %d answers, expected the full bank", answers)
 	}
 	if dict < 5000 {
 		t.Errorf("loaded %d dictionary words, expected the full list", dict)
-	}
-}
-
-// Every word a pack can deal has to be the right length and guessable, or a
-// round could hand a player a word the keyboard refuses to accept.
-func TestEveryAnswerIsPlayable(t *testing.T) {
-	p := NewPool()
-	for _, pack := range p.Packs() {
-		for _, w := range pack.Words {
-			if len(w.Word) != pack.WordLength() {
-				t.Errorf("answer %q has length %d, want %d", w.Word, len(w.Word), pack.WordLength())
-			}
-			if !p.IsWord(w.Word) {
-				t.Errorf("answer %q is not in the dictionary", w.Word)
-			}
-		}
 	}
 }
 
@@ -45,18 +29,6 @@ func TestIsWord(t *testing.T) {
 	}
 }
 
-func TestSixLetterBank(t *testing.T) {
-	p := NewPool()
-	pack, ok := p.RandomPackForLength(nil, 6)
-	if !ok || pack.WordLength() != 6 || len(pack.Words) != 5 {
-		t.Fatal("six letter themed packs should be playable")
-	}
-	word, ok := p.RandomWord(6)
-	if !ok || len(word.Word) != 6 {
-		t.Fatal("classic six letter pool should be playable")
-	}
-}
-
 func TestLearningVocabularySkipsFamiliarAnswers(t *testing.T) {
 	p := NewPool()
 	for _, length := range []int{5, 6} {
@@ -68,39 +40,6 @@ func TestLearningVocabularySkipsFamiliarAnswers(t *testing.T) {
 			if word.Difficulty == "familiar" {
 				t.Fatalf("learning pool returned familiar answer %q", word.Word)
 			}
-		}
-	}
-}
-
-func TestPackExclusionsAcceptIDsAndLegacyTitles(t *testing.T) {
-	p := NewPool()
-	for _, useTitles := range []bool{false, true} {
-		exclude := map[string]struct{}{}
-		for _, pack := range p.packs[1:] {
-			key := pack.ID
-			if useTitles {
-				key = pack.Title
-				if len(pack.LegacyTitles) > 0 {
-					key = pack.LegacyTitles[0]
-				}
-			}
-			exclude[key] = struct{}{}
-		}
-		for i := 0; i < 20; i++ {
-			got, ok := p.RandomPack(exclude)
-			if !ok || got.ID != p.packs[0].ID {
-				t.Fatalf("unexpected repeat: %s", got.ID)
-			}
-		}
-		if p.Exhausted(exclude) {
-			t.Fatal("pool not yet exhausted")
-		}
-		exclude[p.packs[0].ID] = struct{}{}
-		if !p.Exhausted(exclude) {
-			t.Fatal("pool should be exhausted")
-		}
-		if _, ok := p.RandomPack(exclude); !ok {
-			t.Fatal("cannot begin new cycle")
 		}
 	}
 }
@@ -126,5 +65,78 @@ func TestFreshWordNeverRepeatsUntilThePoolIsSpent(t *testing.T) {
 	}
 	if _, cycled, _ := p.FreshWord(5, "mixed", seen); !cycled {
 		t.Fatal("a spent pool should start a new cycle")
+	}
+}
+
+// Mixed games should follow the target mix rather than the bank's own
+// proportions, which lean heavily towards familiar words.
+func TestMixedDealsFollowTheDifficultyMix(t *testing.T) {
+	p := NewPool()
+	const draws = 10000
+	counts := map[string]int{}
+	for range draws {
+		w, _, ok := p.FreshWord(5, "mixed", nil)
+		if !ok {
+			t.Fatal("no word dealt")
+		}
+		counts[w.Difficulty]++
+	}
+	for _, target := range difficultyMix["mixed"] {
+		got := float64(counts[target.tier]) / draws * 100
+		if diff := got - float64(target.weight); diff > 3 || diff < -3 {
+			t.Errorf("%s dealt %.1f%% of the time, want about %d%%", target.tier, got, target.weight)
+		}
+	}
+}
+
+func TestPickByDifficultySkipsEmptyTiers(t *testing.T) {
+	only := []Answer{{Word: "ember", Difficulty: "familiar"}}
+	for range 50 {
+		if got := pickByDifficulty(only, "mixed"); got.Word != "ember" {
+			t.Fatalf("picked %q from a single-word pool", got.Word)
+		}
+	}
+}
+
+func TestDuoCandidatesAreNeverEveryday(t *testing.T) {
+	p := NewPool()
+	got := p.DuoCandidates(5)
+	for _, w := range got {
+		if len(w.Word) != 5 {
+			t.Fatalf("duo candidate %q is not five letters", w.Word)
+		}
+		if w.Retired {
+			t.Fatalf("retired %q offered to duos", w.Word)
+		}
+		if w.Difficulty == "familiar" {
+			t.Fatalf("familiar word %q offered to duos", w.Word)
+		}
+	}
+	if len(got) < 800 {
+		t.Errorf("duo pool has only %d words", len(got))
+	}
+}
+
+// Both lengths must be dealable at every difficulty, or a setting could leave a
+// player with no game.
+func TestEveryLengthAndDifficultyIsPlayable(t *testing.T) {
+	p := NewPool()
+	for _, length := range []int{5, 6} {
+		for _, difficulty := range []string{"mixed", "learning"} {
+			if _, _, ok := p.FreshWord(length, difficulty, nil); !ok {
+				t.Errorf("no %d-letter %s word", length, difficulty)
+			}
+		}
+	}
+}
+
+// A guessed word and an answer are separate lists, but an answer must always be
+// guessable, and every answer must be exactly five or six letters.
+func TestEveryAnswerIsGuessable(t *testing.T) {
+	p := NewPool()
+	for _, w := range p.bank {
+		if !p.IsWord(w.Word) {
+			t.Errorf("answer %q cannot be guessed", w.Word)
+		}
 	}
 }

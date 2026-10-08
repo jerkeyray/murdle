@@ -1,6 +1,6 @@
 # Build the API.
 #
-# The word lists and packs are embedded with go:embed, so the final image needs
+# The word lists are embedded with go:embed, so the final image needs
 # nothing but the binary and a CA bundle — the CA bundle because Neon and the
 # JWKS endpoint are both reached over TLS, and scratch has no root certs.
 FROM golang:1.26-alpine AS build

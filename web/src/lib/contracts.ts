@@ -23,17 +23,8 @@ export interface Entry {
   exampleSource?: string;
 }
 
-/** The theme reveal. Present only on a completed run. */
-export interface Pack {
-  id: string;
-  connections: { word: string; explanation: string }[];
-  title: string;
-  blurb: string;
-}
-
 export interface Run {
   id: string;
-  mode: "classic" | "themed";
   wordLength: 5 | 6;
   /** Words in the run. */
   length: number;
@@ -44,8 +35,6 @@ export interface Run {
   finished: number;
   complete: boolean;
   points: number;
-  /** Only ever present once the run is complete. */
-  pack?: Pack;
 }
 
 export interface Round {

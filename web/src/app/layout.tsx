@@ -22,7 +22,7 @@ const serif = Fraunces({
 export const metadata: Metadata = {
   metadataBase: new URL("https://wordle.jerkeyray.com"),
   title: { default: "Wordle", template: "%s · Wordle" },
-  description: "A word game for curious people. Solve, save words, and uncover the connection.",
+  description: "A word game for curious people. Solve, save words, and learn what they mean.",
   applicationName: "Wordle",
   alternates: { canonical: "/" },
   openGraph: {
@@ -30,13 +30,13 @@ export const metadata: Metadata = {
     url: "/",
     siteName: "Wordle",
     title: "Wordle",
-    description: "A word game for curious people. Solve, save words, and uncover the connection.",
+    description: "A word game for curious people. Solve, save words, and learn what they mean.",
     images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Wordle word game" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Wordle",
-    description: "A word game for curious people. Solve, save words, and uncover the connection.",
+    description: "A word game for curious people. Solve, save words, and learn what they mean.",
     images: ["/opengraph-image"],
   },
   appleWebApp: { capable: true, title: "Wordle", statusBarStyle: "black-translucent" },

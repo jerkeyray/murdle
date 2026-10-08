@@ -3,9 +3,8 @@
  *
  * Applies the same rules as validateClassic in the Go server, so a bad entry
  * is reported here, by word, rather than as a startup panic later. Entries for
- * words already in the bank or in a themed pack are skipped, not overwritten:
- * a pack entry is the richer one, and an existing Classic entry may have been
- * edited by hand since it was written.
+ * words already in the bank are skipped, not overwritten: an existing entry may
+ * have been edited by hand since it was written.
  *
  * Run with: node scripts/merge-classic.mjs <batch.json> [...more]
  */
@@ -14,9 +13,8 @@ import { readFile, writeFile } from "node:fs/promises";
 const WORDS = new URL("../../server/internal/words/", import.meta.url);
 const bankPath = new URL("classic.json", WORDS);
 const bank = JSON.parse(await readFile(bankPath, "utf8"));
-const packs = JSON.parse(await readFile(new URL("packs.json", WORDS), "utf8"));
 const dictionary = new Set((await readFile(new URL("dictionary.txt", WORDS), "utf8")).split("\n").filter(Boolean));
-const taken = new Set([...bank.map((w) => w.word), ...packs.flatMap((p) => p.words.map((w) => w.word))]);
+const taken = new Set(bank.map((w) => w.word));
 
 function problems(w) {
   const out = [];

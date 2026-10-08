@@ -8,24 +8,19 @@
     "start": "next start",
     "lint": "eslint",
     "dictionary": "node scripts/build-dictionary.mjs && node scripts/build-client-dictionary.mjs",
-    "packs:generate": "node scripts/generate-packs.mjs",
-    "packs:review": "node scripts/review-packs.mjs",
-    "packs:check": "node scripts/check-packs.mjs",
-    "answers:queue:check": "node scripts/check-answer-queue.mjs",
-    "test:content": "node --test scripts/packs-lib.test.mjs scripts/wiktionary-lib.test.mjs scripts/tatoeba-lib.test.mjs scripts/respell.test.mjs scripts/draft.test.mjs",
+    "hints:review": "node scripts/review-hints.mjs",
+    "test:content": "node --test scripts/bank-lib.test.mjs scripts/wiktionary-lib.test.mjs scripts/tatoeba-lib.test.mjs scripts/respell.test.mjs scripts/draft.test.mjs",
     "entries:enrich": "node scripts/enrich-entries.mjs --source wiktionary && node scripts/enrich-entries.mjs --source wordnet && node scripts/enrich-entries.mjs --source tatoeba",
     "entries:report": "node scripts/enrich-entries.mjs --report",
     "test:e2e": "playwright test"
   },
   "dependencies": {
-    "ai": "^7.0.124",
     "better-auth": "^1.7.6",
     "motion": "^13.4.6",
     "next": "16.3.8",
     "pg": "^8.23.1",
     "react": "19.2.8",
-    "react-dom": "19.2.8",
-    "zod": "^4.6.5"
+    "react-dom": "19.2.8"
   },
   "devDependencies": {
     "@playwright/test": "^1.63.0",

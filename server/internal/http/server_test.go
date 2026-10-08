@@ -305,53 +305,39 @@ func TestRunRefusesOverlappingRounds(t *testing.T) {
 	}
 }
 
-// The theme is the payoff for the whole run, so it must not appear until the
-// last word falls.
-func TestThemeDoesNotLeakUntilTheRunIsComplete(t *testing.T) {
+// Every new run is one Classic word: a themed run's several words are gone, and
+// no response should still carry a theme.
+func TestNewRunIsOneClassicWord(t *testing.T) {
 	h := newTestServer(t)
 
 	rec, run := do(t, h, http.MethodPost, "/api/runs", nil)
 	assertNoPack(t, rec, "create run response")
-
+	if run["length"] != float64(1) || run["mode"] != "classic" {
+		t.Fatalf("run = %v, want one classic word", run)
+	}
 	runID := run["id"].(string)
-	length := int(run["length"].(float64))
 
-	for i := 0; i < length; i++ {
-		rec, dealt := do(t, h, http.MethodPost, "/api/runs/"+runID+"/rounds", nil)
-		assertNoPack(t, rec, "deal response")
-		id := dealt["round"].(map[string]any)["id"].(string)
-
-		var last *httptest.ResponseRecorder
-		for g := 0; g < 6; g++ {
-			r, body := do(t, h, http.MethodPost, "/api/rounds/"+id+"/guesses",
-				map[string]any{"guess": "crane"})
-			last = r
-			state := body
-			if nested, ok := body["round"].(map[string]any); ok {
-				state = nested
-			}
-			if state["state"] != "playing" {
-				break
-			}
-		}
-
-		if i < length-1 {
-			assertNoPack(t, last, "mid-run guess response")
-			rec, _ := do(t, h, http.MethodGet, "/api/runs/"+runID, nil)
-			assertNoPack(t, rec, "mid-run run state")
-		}
+	rec, dealt := do(t, h, http.MethodPost, "/api/runs/"+runID+"/rounds", nil)
+	assertNoPack(t, rec, "deal response")
+	id := dealt["round"].(map[string]any)["id"].(string)
+	for g := 0; g < 6; g++ {
+		do(t, h, http.MethodPost, "/api/rounds/"+id+"/guesses", map[string]any{"guess": "crane"})
 	}
 
 	rec, final := do(t, h, http.MethodGet, "/api/runs/"+runID, nil)
+	assertNoPack(t, rec, "finished run")
 	if rec.Code != http.StatusOK || final["complete"] != true {
 		t.Fatalf("run not complete: %d %v", rec.Code, final)
 	}
-	pack, ok := final["pack"].(map[string]any)
-	if !ok {
-		t.Fatalf("completed run did not reveal its pack: %v", final)
-	}
-	if pack["id"] == "" || len(pack["connections"].([]any)) != 5 || pack["title"] == "" || pack["blurb"] == "" {
-		t.Errorf("revealed pack is empty: %v", pack)
+}
+
+// A tab opened before packs were removed still posts the old fields; it must
+// get a Classic game, not an error.
+func TestOldClientsStillGetAGame(t *testing.T) {
+	h := newTestServer(t)
+	rec, run := do(t, h, http.MethodPost, "/api/runs", map[string]any{"mode": "themed", "excludePacks": []string{"x"}})
+	if rec.Code != http.StatusCreated || run["mode"] != "classic" {
+		t.Fatalf("old request got %d %v", rec.Code, run)
 	}
 }
 
@@ -361,7 +347,7 @@ func assertNoPack(t *testing.T, rec *httptest.ResponseRecorder, what string) {
 		return
 	}
 	if strings.Contains(rec.Body.String(), `"pack"`) {
-		t.Fatalf("%s revealed the theme early: %s", what, rec.Body.String())
+		t.Fatalf("%s mentions a pack: %s", what, rec.Body.String())
 	}
 }
 

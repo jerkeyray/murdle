@@ -132,19 +132,14 @@ func (s *Store) addBoard(ctx context.Context, tx pgx.Tx, d *Duo, day string, dea
 	if e != nil {
 		return e
 	}
-	candidates := []words.PackWord{}
-	all := []words.PackWord{}
-	for _, p := range s.words.Packs() {
-		// Shared boards take five-letter guesses only, so a six-letter answer
-		// from one of the six-letter packs could never be solved.
-		if p.WordLength() != game.WordLength {
-			continue
-		}
-		for _, w := range p.Words {
-			all = append(all, w)
-			if !seen[w.Word] {
-				candidates = append(candidates, w)
-			}
+	candidates := []words.Answer{}
+	all := []words.Answer{}
+	// Shared boards take five-letter guesses only, so a six-letter answer
+	// could never be solved.
+	for _, w := range s.words.DuoCandidates(game.WordLength) {
+		all = append(all, w)
+		if !seen[w.Word] {
+			candidates = append(candidates, w)
 		}
 	}
 	if len(candidates) == 0 {

@@ -1,7 +1,6 @@
 import type { Run } from "./api";
 
 export const ACTIVE_KEY = "wordle.active";
-const PACKS_KEY = "wordle.packs";
 // Classic answers already played, for players with no account to hold them.
 const WORDS_KEY = "wordle.words";
 const LEGACY_PREFIX = ["mur", "dle."].join("");
@@ -33,25 +32,24 @@ export function activeRun(): string | null {
   return id && /^[a-z0-9]+$/.test(id) ? id : null;
 }
 export type GameDifficulty = "mixed" | "learning";
-export type GameConfig = { mode: "classic" | "themed"; wordLength: 5 | 6; difficulty: GameDifficulty };
-export function configKey(config: GameConfig) { return `${ACTIVE_KEY}.${config.mode}.${config.wordLength}.${config.difficulty}`; }
+export type GameConfig = { wordLength: 5 | 6; difficulty: GameDifficulty };
+// The "classic" segment is from when games had a mode. Keeping it means a game
+// already in progress still resumes.
+export function configKey(config: GameConfig) { return `${ACTIVE_KEY}.classic.${config.wordLength}.${config.difficulty}`; }
 export function activeRunFor(config: GameConfig): string | null {
-  // Existing themed five-letter games used the unqualified key. Continue to
-  // restore that one only for the old mixed setting.
-  const id = readLocal(configKey(config)) ?? (config.mode === "themed" && config.wordLength === 5 && config.difficulty === "mixed" ? readLocal(ACTIVE_KEY) : null);
+  const id = readLocal(configKey(config));
   return id && /^[a-z0-9]+$/.test(id) ? id : null;
 }
 export function clearActiveRunFor(config: GameConfig) {
   writeLocal(configKey(config), null);
-  if (config.mode === "themed" && config.wordLength === 5 && config.difficulty === "mixed") writeLocal(ACTIVE_KEY, null);
 }
 function pendingCreateKey(config: GameConfig) {
-  return `wordle.pending.create.${config.mode}.${config.wordLength}.${config.difficulty}`;
+  return `wordle.pending.create.classic.${config.wordLength}.${config.difficulty}`;
 }
 function pendingNextKey(runID: string, expectedRoundID: string) {
   return `wordle.pending.next.${runID}.${expectedRoundID || "initial"}`;
 }
-export function pendingRunRequestFor(config: GameConfig, payload: { excludePacks: string[]; excludeWords: string[] } & GameConfig) {
+export function pendingRunRequestFor(config: GameConfig, payload: { excludeWords: string[] } & GameConfig) {
   const key = pendingCreateKey(config);
   try {
     const inMemory = pendingMemory.get(key);
@@ -92,29 +90,44 @@ export function clearPendingNextRoundRequestFor(runID: string, expectedRoundID: 
   pendingMemory.delete(key);
   writeLocal(key, null);
 }
-export function playedPacks(): string[] {
-  try {
-    const value: unknown = JSON.parse(readLocal(PACKS_KEY) ?? "[]");
-    return Array.isArray(value) ? value.filter((x): x is string => typeof x === "string") : [];
-  } catch { return []; }
-}
 export function playedWords(): string[] {
   try {
     const value: unknown = JSON.parse(readLocal(WORDS_KEY) ?? "[]");
     return Array.isArray(value) ? value.filter((x): x is string => typeof x === "string") : [];
   } catch { return []; }
 }
+export const DEFAULT_GAME_CONFIG: GameConfig = { wordLength: 5, difficulty: "mixed" };
+/**
+ * The saved game setup. Older saves also carried a game type; it is ignored,
+ * so someone who chose Themed lands on Classic with their length and
+ * vocabulary intact.
+ */
+export function savedGameConfig(): GameConfig {
+  try {
+    const saved = JSON.parse(readLocal("wordle.mode") ?? "null") as Partial<GameConfig> | null;
+    if (saved && (saved.wordLength === 5 || saved.wordLength === 6)) {
+      return { wordLength: saved.wordLength, difficulty: saved.difficulty === "learning" ? "learning" : "mixed" };
+    }
+  } catch { /* Five letters is the default when storage is unavailable or stale. */ }
+  return DEFAULT_GAME_CONFIG;
+}
+/** Forgets what the removed themed mode left in storage. */
+export function clearRetiredKeys() {
+  try {
+    const stale = [];
+    for (let i = 0; i < window.localStorage.length; i++) {
+      const key = window.localStorage.key(i);
+      if (key && (key === "wordle.packs" || key === ACTIVE_KEY || key.startsWith(`${ACTIVE_KEY}.themed.`) || key.startsWith("wordle.pending.create.themed."))) stale.push(key);
+    }
+    stale.forEach((key) => window.localStorage.removeItem(key));
+  } catch { /* Nothing to clean when storage is blocked. */ }
+}
 export function rememberRun(run: Run, config: GameConfig) {
   writeLocal(configKey(config), run.id);
-  if (config.mode === "themed" && config.wordLength === 5 && config.difficulty === "mixed") writeLocal(ACTIVE_KEY, run.id);
-  if (run.complete && run.pack) {
-    const seen = run.newCycle ? [] : playedPacks();
-    writeLocal(PACKS_KEY, JSON.stringify([...new Set([...seen, run.pack.id])]));
-  }
   // A Classic run is one word; once it is over the answer is known and goes on
   // the list the next deal avoids. A new cycle means the pool was spent, so the
   // list starts again rather than excluding everything forever.
-  if (run.complete && config.mode === "classic") {
+  if (run.complete) {
     const answers = run.completedWords.map((r) => r.answer).filter((a): a is string => !!a);
     const seen = run.newCycle ? [] : playedWords();
     writeLocal(WORDS_KEY, JSON.stringify([...new Set([...seen, ...answers])]));

@@ -144,13 +144,6 @@
   letter-spacing: -0.01em;
 }
 
-.reveal-blurb {
-  margin: 7px 0 0;
-  font-size: 0.85rem;
-  line-height: 1.5;
-  color: var(--text-muted);
-}
-
 .entry-actions {
   margin-top: 20px;
 }
@@ -623,12 +616,6 @@
   text-transform: uppercase;
 }
 
-.mode-picker { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; width: min(100%, 420px); margin: 20px auto 10px; }
-.mode-picker button { min-height: 78px; padding: 12px; border: 1px solid var(--border); border-radius: 14px; background: var(--bg-raised); color: var(--text-muted); text-align: left; cursor: pointer; }
-.mode-picker button.selected { border-color: var(--text); color: var(--text); box-shadow: inset 0 0 0 1px var(--text); }
-.mode-picker strong, .mode-picker span { display: block; }
-.mode-picker strong { font: 550 1.05rem var(--font-serif), Georgia, serif; }
-.mode-picker span { margin-top: 5px; font-size: .72rem; }
 .length-picker { display: flex; justify-content: center; gap: 4px; margin: 0 auto 14px; }
 .length-picker button { min-height: 36px; padding: 0 13px; border: 0; border-radius: 18px; background: transparent; color: var(--text-muted); cursor: pointer; font-size: .78rem; }
 .length-picker button[aria-pressed="true"] { background: var(--bg-raised); color: var(--text); }

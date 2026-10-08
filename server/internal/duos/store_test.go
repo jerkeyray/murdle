@@ -367,13 +367,7 @@ func TestPostgresExpiryAndExhaustion(t *testing.T) {
 		t.Fatal("deadline not enforced", err)
 	}
 	seen := map[string]bool{d.Today.hiddenAnswer: true, firstAnswer: true}
-	poolSize := 0
-	for _, pack := range s.words.Packs() {
-		// Shared boards only deal five-letter words.
-		if pack.WordLength() == game.WordLength {
-			poolSize += len(pack.Words)
-		}
-	}
+	poolSize := len(s.words.DuoCandidates(game.WordLength))
 	for i := 0; i < poolSize-2; i++ {
 		*now = now.Add(24 * time.Hour)
 		d, err = s.Get(ctx, d.ID, testdb.A)

@@ -14,7 +14,7 @@ type rowView struct {
 }
 
 // entryView is what the round taught you. Populated only once the round is
-// over, from the pack the answer belongs to.
+// over, from the bank entry for the answer.
 type entryView struct {
 	Word       string `json:"word"`
 	Register   string `json:"register"`
@@ -26,20 +26,6 @@ type entryView struct {
 	Origin        string `json:"origin,omitempty"`
 	Example       string `json:"example,omitempty"`
 	ExampleSource string `json:"exampleSource,omitempty"`
-}
-
-// packView is the theme reveal. It exists only on a completed run — the whole
-// point of a themed run is that you work the connection out first.
-type connectionView struct {
-	Word        string `json:"word"`
-	Explanation string `json:"explanation"`
-}
-
-type packView struct {
-	ID          string           `json:"id"`
-	Connections []connectionView `json:"connections"`
-	Title       string           `json:"title"`
-	Blurb       string           `json:"blurb"`
 }
 
 // roundView is the whole client-visible state of a round.
@@ -88,10 +74,6 @@ func newRoundView(r *game.Round) roundView {
 }
 
 // runView is the client-visible state of a run.
-//
-// There is deliberately no field for the pack id or title while the run is in
-// progress. Pack is populated from a single guarded branch below, so the theme
-// cannot leak by someone forgetting a check at a call site.
 type runView struct {
 	ID             string      `json:"id"`
 	Mode           string      `json:"mode"`
@@ -104,7 +86,6 @@ type runView struct {
 	Finished       int         `json:"finished"`
 	Complete       bool        `json:"complete"`
 	Points         int         `json:"points"`
-	Pack           *packView   `json:"pack,omitempty"`
 }
 
 func newRunView(r *game.Run, pool *words.Pool) runView {
@@ -132,19 +113,10 @@ func newRunView(r *game.Run, pool *words.Pool) runView {
 		}
 		v.CompletedWords = append(v.CompletedWords, result)
 	}
-	if r.Mode == "themed" && r.Complete() {
-		if pack, ok := pool.Pack(r.PackID); ok {
-			v.Pack = &packView{ID: pack.ID, Title: pack.Title, Blurb: pack.Blurb}
-			for _, word := range pack.Words {
-				v.Pack.Connections = append(v.Pack.Connections, connectionView{word.Word, word.Connection})
-			}
-		}
-	}
-
 	return v
 }
 
-func newEntryView(w words.PackWord) entryView {
+func newEntryView(w words.Answer) entryView {
 	return entryView{
 		Word:       w.Word,
 		Register:   string(w.Register),

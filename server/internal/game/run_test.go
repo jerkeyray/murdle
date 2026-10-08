@@ -4,7 +4,7 @@ import "testing"
 
 func newTestRun(t *testing.T) *Run {
 	t.Helper()
-	run, err := NewRun("run1", "pack1", []string{"clout", "viral", "troll"})
+	run, err := NewRun("run1", []string{"clout", "viral", "troll"})
 	if err != nil {
 		t.Fatalf("NewRun: %v", err)
 	}
@@ -12,7 +12,7 @@ func newTestRun(t *testing.T) *Run {
 }
 
 func TestNewRunRejectsAnEmptyWordList(t *testing.T) {
-	if _, err := NewRun("r", "p", nil); err != ErrEmptyWordList {
+	if _, err := NewRun("r", nil); err != ErrEmptyWordList {
 		t.Errorf("NewRun with no words = %v, want ErrEmptyWordList", err)
 	}
 }

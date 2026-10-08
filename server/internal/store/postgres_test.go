@@ -21,7 +21,7 @@ func TestPostgresRunsCrossInstances(t *testing.T) {
 	first := NewPostgres(db, time.Hour)
 	second := NewPostgres(db, time.Hour)
 
-	run, err := game.NewRun(NewID(), "touch-grass", []string{"feral", "lurks", "grass"})
+	run, err := game.NewRun(NewID(), []string{"feral", "lurks", "grass"})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -33,7 +33,7 @@ func TestPostgresRunsCrossInstances(t *testing.T) {
 	if err != nil {
 		t.Fatalf("a second instance could not see the run: %v", err)
 	}
-	if got.PackID != "touch-grass" || len(got.Words) != 3 {
+	if got.Mode != "classic" || len(got.Words) != 3 {
 		t.Fatalf("round-tripped wrong: %+v", got)
 	}
 
@@ -57,7 +57,7 @@ func TestPostgresRunRoundChangeRollsBackTogether(t *testing.T) {
 	db := testdb.Open(t)
 	ctx := context.Background()
 	s := NewPostgres(db, time.Hour)
-	run, err := game.NewRun(NewID(), "theme", []string{"crane", "salve"})
+	run, err := game.NewRun(NewID(), []string{"crane", "salve"})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -215,7 +215,7 @@ func TestPostgresConcurrentNextRoundDealsOneBoard(t *testing.T) {
 	db := testdb.Open(t)
 	ctx := context.Background()
 	s := NewPostgres(db, time.Hour)
-	run, err := game.NewRunWithMode(NewID(), "themed", "theme", []string{"crane", "salve"})
+	run, err := game.NewRun(NewID(), []string{"crane", "salve"})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -269,7 +269,7 @@ func TestPostgresDuplicateFinalGuessRecordsOneResult(t *testing.T) {
 	db := testdb.Open(t)
 	ctx := context.Background()
 	s := NewPostgres(db, time.Hour)
-	run, err := game.NewRunWithMode(NewID(), "themed", "theme", []string{"crane"})
+	run, err := game.NewRun(NewID(), []string{"crane"})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -310,7 +310,7 @@ func TestPostgresSoloMutationReceiptsAreTransactional(t *testing.T) {
 	db := testdb.Open(t)
 	ctx := context.Background()
 	s := NewPostgres(db, time.Hour)
-	run, err := game.NewRunWithMode(NewID(), "themed", "theme", []string{"crane", "salve"})
+	run, err := game.NewRun(NewID(), []string{"crane", "salve"})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -318,7 +318,7 @@ func TestPostgresSoloMutationReceiptsAreTransactional(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	other, _ := game.NewRunWithMode(NewID(), "themed", "theme", []string{"adieu", "stone"})
+	other, _ := game.NewRun(NewID(), []string{"adieu", "stone"})
 	replayed, replayedFirst, err := s.CreateRunWithFirstRoundRequest(ctx, other, NewID(), "create-receipt", "payload-a")
 	if err != nil {
 		t.Fatal(err)

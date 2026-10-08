@@ -1,6 +1,6 @@
 /**
  * Adds pronunciation, part of speech, origin and an example sentence to the
- * word entries in classic.json and packs.json, from reference data rather
+ * word entries in classic.json, from reference data rather
  * than a model.
  *
  * Only fills fields that are missing, so it is safe to re-run; values
@@ -25,7 +25,6 @@ import { AVOID, forms, loadTatoeba, pickSentence } from "./tatoeba-lib.mjs";
 const WORDS = new URL("../../server/internal/words/", import.meta.url);
 const DATA = new URL("data/", import.meta.url);
 const classicPath = new URL("classic.json", WORDS);
-const packsPath = new URL("packs.json", WORDS);
 const FIELDS = ["pronunciation", "partOfSpeech", "origin", "example"];
 // Written with its field but not counted as one: the Tatoeba page an
 // example came from, which its CC BY licence asks us to link.
@@ -38,8 +37,7 @@ const rejected = new Set(JSON.parse(await readFile(new URL("../example-rejects.j
   .map((r) => `${r.word}\t${r.example}`));
 
 const classic = JSON.parse(await readFile(classicPath, "utf8"));
-const packs = JSON.parse(await readFile(packsPath, "utf8"));
-const entries = [...classic, ...packs.flatMap((p) => p.words)];
+const entries = classic;
 const byWord = new Map(entries.map((w) => [w.word, w]));
 
 // Mirrors validateEnrichment in server/internal/words/classic.go.
@@ -74,27 +72,8 @@ function apply(patch) {
   return { filled, bad };
 }
 
-// packs.json is hand-formatted and inconsistent about short arrays, so it is
-// edited as text: the new fields are inserted after each word's note and
-// nothing else in the file moves. classic.json round-trips through JSON.
 async function save() {
   await writeFile(classicPath, JSON.stringify(classic, null, 1) + "\n");
-  const lines = (await readFile(packsPath, "utf8")).split("\n");
-  for (const pack of packs) {
-    for (const w of pack.words) {
-      if (!WRITTEN.some((f) => w[f])) continue;
-      const at = lines.findIndex((l) => l.trim() === `"word": "${w.word}",`);
-      if (at < 0) continue;
-      const indent = lines[at].match(/^ */)[0];
-      let note = at;
-      while (!lines[note].trim().startsWith('"note":')) note++;
-      // Drop any previously written copies, then write the current ones.
-      let end = note + 1;
-      while (WRITTEN.some((f) => lines[end].trim().startsWith(`"${f}":`))) end++;
-      lines.splice(note + 1, end - note - 1, ...WRITTEN.filter((f) => w[f]).map((f) => `${indent}"${f}": ${JSON.stringify(w[f])},`));
-    }
-  }
-  await writeFile(packsPath, lines.join("\n"));
 }
 
 function report() {

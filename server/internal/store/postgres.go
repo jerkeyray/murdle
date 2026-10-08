@@ -127,7 +127,7 @@ func (rec runRecord) run() *game.Run {
 		r.RoundIDs = []string{}
 	}
 	if r.Mode == "" {
-		r.Mode = "themed"
+		r.Mode = "classic"
 	}
 	if r.WordLength == 0 && len(r.Words) > 0 {
 		r.WordLength = len([]rune(r.Words[0]))

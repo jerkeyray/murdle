@@ -1,5 +1,5 @@
 import type { CollectionPage, Duo, DuoMutation, FriendProfile, PlayInvitation, PlayInviteMutation, FriendRecord, HomeSummary, Mark, Profile, Round, Row, Run } from "./contracts";
-export type { Mark, RoundState, Row, Entry, Pack, Run, Round, Profile, HomeSummary, SolveRecord, CollectionPage, FriendRecord, FriendProfile, PairStats, PlayInvitation, PlayInviteMutation, DuoDay, Duo, DuoMutation } from "./contracts";
+export type { Mark, RoundState, Row, Entry, Run, Round, Profile, HomeSummary, SolveRecord, CollectionPage, FriendRecord, FriendProfile, PairStats, PlayInvitation, PlayInviteMutation, DuoDay, Duo, DuoMutation } from "./contracts";
 
 /**
  * Typed client for the Go game API.
@@ -129,10 +129,10 @@ async function request<T>(path: string, init?: RequestInit, retry = 0): Promise<
   return res.json() as Promise<T>;
 }
 
-export function createRun(opts: { requestId: string; excludePacks?: string[]; excludeWords?: string[]; mode?: "classic" | "themed"; wordLength?: 5 | 6; difficulty?: "mixed" | "learning" }): Promise<{ round: Round; run: Run }> {
+export function createRun(opts: { requestId: string; excludeWords?: string[]; wordLength?: 5 | 6; difficulty?: "mixed" | "learning" }): Promise<{ round: Round; run: Run }> {
   return request<{ round: Round; run: Run }>("/api/runs?deal=1", {
     method: "POST",
-    body: JSON.stringify({ excludePacks: opts.excludePacks ?? [], excludeWords: opts.excludeWords ?? [], mode: opts.mode, wordLength: opts.wordLength, difficulty: opts.difficulty, requestId: opts.requestId }),
+    body: JSON.stringify({ excludeWords: opts.excludeWords ?? [], wordLength: opts.wordLength, difficulty: opts.difficulty, requestId: opts.requestId }),
   }, 2);
 }
 

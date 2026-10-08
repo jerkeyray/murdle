@@ -51,12 +51,12 @@ Google's authorised redirect URI is the web origin followed by
 
 Each word has one optional authored clue, available after three accepted
 guesses. Repeating its request returns the same clue. The API never sends
-unused clues, future answers, or connection metadata during play.
+unused clues or future answers during play.
 
 A solve is worth 6 through 1 points according to its row; a loss earns 0.
 Historical database scores are not recalculated.
 
-The device remembers its active run, private theory, and completed pack IDs.
+The device remembers its active run and the words it has played.
 Restoration reads server state before accepting more input. A lost response
 can therefore be retried without blindly resubmitting a guess. Completed
 boards are kept with the run and can be revisited, including lost boards.
@@ -100,34 +100,30 @@ Routes include `GET/POST /api/me/duos`, `POST /api/me/presence`,
 and `GET /api/duos/{id}/days/{date|today}`. Board mutations are
 `POST /api/duos/{id}/days/{date}/{guesses|pass}` with `requestId` and `version`.
 
-Legacy completion lists containing titles are accepted, including titles from
-before the content revision. New completions store stable IDs. After every
-pack has been seen, the next run begins a fresh exclusion cycle.
-
 ## Content
 
 `server/internal/words/dictionary.txt` is the permissive guess dictionary for
-five- and six-letter guesses. `packs.json` contains reviewed five-letter
-answers; the six-letter editorial bank lives alongside it in Go while its JSON
-pipeline is completed. Every playable answer has a definition, note, authored
-clue, vocabulary difficulty, and (for themed play) connection explanation.
-The answer bank is curated separately from valid guesses.
+five- and six-letter guesses. `classic.json` is the answer bank: every entry
+has a definition, note, two authored clues, a vocabulary difficulty
+(`familiar`, `stretch` or `challenging`) and optionally pronunciation, part of
+speech, origin and an example. An entry marked `retired` is never dealt but
+stays guessable, and keeps its card for solves already recorded. The Go server
+validates the whole bank at startup, so a bad entry fails the build.
+
+Clues are held to rules the validator enforces: no word sharing the answer's
+first four letters, nothing that restates the definition, no clue used for two
+answers, and no talk of letter positions.
 
 ```sh
 cd web
-pnpm packs:check
 pnpm test:content
-pnpm packs:generate                 # requires AI_GATEWAY_API_KEY
-pnpm packs:review
-pnpm packs:review -- --approve <id>
+pnpm hints:review                   # list weak clues; apply edits with --from
+pnpm entries:report                 # pronunciation / origin / example coverage
 ```
 
-Generation writes pending content only. Approval revalidates structure and
-duplicates before promotion. Read the clues alongside earlier answers:
-a sentence can omit the answer and still give it away. Verify factual claims,
-and use usage notes instead of speculative etymology. Automated checks cannot
-establish editorial fairness. See [content review](content-review.md) for
-the initial audit and player-test checklist.
+Read clues alongside the definition: a sentence can omit the answer and still
+give it away. Verify factual claims, and use usage notes instead of speculative
+etymology. Automated checks cannot establish editorial fairness.
 
 Ship reviewed content, server, and client together. Restarting the API loads
 the embedded content. PostgreSQL-backed games survive API restarts; games in
@@ -149,8 +145,8 @@ localhost:8080 API calls to that test server and stub authentication. Stop
 anything already using 8082 before running them. A custom frontend API URL
 requires adapting the test route.
 
-Tests cover ordered pilot runs, hint gates and restoration, the private theory,
-connection reveals, session expiry, lost responses, and responsive themes.
+Tests cover hint gates and restoration, played-word exclusion,
+session expiry, lost responses, and responsive themes.
 Screenshots and failure traces are written to the ignored `web/test-results/`.
 These checks exercise functionality; they do not replace playtesting with people.
 

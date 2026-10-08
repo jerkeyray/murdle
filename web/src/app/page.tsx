@@ -4,7 +4,7 @@ import Link from "next/link";
 import { startTransition, useCallback, useEffect, useState, useSyncExternalStore } from "react";
 import { getHomeSummary, type HomeSummary } from "@/lib/api";
 import { ProfileButton } from "@/components/ProfileButton";
-import { activeRunFor, readLocal, subscribeSession, type GameConfig, writeLocal } from "@/lib/session";
+import { activeRunFor, clearRetiredKeys, DEFAULT_GAME_CONFIG, savedGameConfig, subscribeSession, type GameConfig, writeLocal } from "@/lib/session";
 import { SettingsButton } from "@/components/SettingsButton";
 import { FriendsEntry } from "@/components/FriendsEntry";
 import { HomeRow } from "@/components/HomeRow";
@@ -21,7 +21,7 @@ import { prefetchGame } from "@/lib/useGame";
 const serverSession = () => null;
 
 export default function Home() {
-  const [config, setConfig] = useState<GameConfig>({ mode: "classic", wordLength: 5, difficulty: "mixed" });
+  const [config, setConfig] = useState<GameConfig>(DEFAULT_GAME_CONFIG);
   const [configLoaded, setConfigLoaded] = useState(false);
   const savedRun = useSyncExternalStore(subscribeSession, () => activeRunFor(config), serverSession);
   const [homeSummary, setHomeSummary] = useState<HomeSummary | null>(null);
@@ -40,13 +40,8 @@ export default function Home() {
     };
   }, [fetchHomeSummary]);
   useEffect(() => {
-    let effective: GameConfig = { mode: "classic", wordLength: 5, difficulty: "mixed" };
-    try {
-      const saved = JSON.parse(readLocal("wordle.mode") ?? "null") as GameConfig | null;
-      if (saved && (saved.mode === "classic" || saved.mode === "themed") && (saved.wordLength === 5 || saved.wordLength === 6)) {
-        effective = { ...saved, difficulty: saved.difficulty === "learning" ? "learning" : "mixed" };
-      }
-    } catch { /* Start with Classic 5 when storage is unavailable or stale. */ }
+    clearRetiredKeys();
+    const effective = savedGameConfig();
     // Deal the game now, for the settings Begin will actually open with, so the
     // round trip happens while you are looking at this page rather than after
     // you have tapped.
@@ -78,7 +73,7 @@ export default function Home() {
         </section>
         <HomeRow />
         <div className="home-actions">
-          <Link className="play" href={`/play?mode=${config.mode}&length=${config.wordLength}&difficulty=${config.difficulty}`}>
+          <Link className="play" href={`/play?length=${config.wordLength}&difficulty=${config.difficulty}`}>
             <span className="play-word">
               {savedRun ? "Continue" : "Begin"}
             </span>
