@@ -31,13 +31,23 @@ const google = process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET
     }
   : undefined;
 
+/**
+ * node-postgres already treats require/prefer/verify-ca as verify-full, and
+ * warns on every connection that a future major will weaken them to libpq's
+ * meaning. Asking for verify-full by name keeps today's behaviour and the
+ * quiet log. The Go API reads the same URL through pgx, so the env stays as is.
+ */
+function explicitSSL(url: string | undefined): string | undefined {
+  return url?.replace(/([?&]sslmode=)(?:require|prefer|verify-ca)(?=&|$)/, "$1verify-full");
+}
+
 /** Whether the sign-in screen should offer Google. */
 export const googleEnabled = google !== undefined;
 
 export const auth = betterAuth({
   // The pooled connection: this runs per request, which is exactly what
   // Neon's pooler is for. Migrations use the direct URL instead.
-  database: new Pool({ connectionString: process.env.DATABASE_URL }),
+  database: new Pool({ connectionString: explicitSSL(process.env.DATABASE_URL) }),
 
   secret: process.env.BETTER_AUTH_SECRET,
   baseURL: process.env.BETTER_AUTH_URL ?? "http://localhost:3000",
