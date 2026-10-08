@@ -7,10 +7,13 @@ import (
 	"log/slog"
 	"net/http"
 	"net/http/httptest"
+	"os"
+	"regexp"
 	"strings"
 	"testing"
 	"time"
 
+	"github.com/go-chi/chi/v5"
 	"github.com/jerkeyray/wordle/server/internal/game"
 	"github.com/jerkeyray/wordle/server/internal/store"
 	"github.com/jerkeyray/wordle/server/internal/words"
@@ -381,5 +384,55 @@ func TestWordStatsArePublicAndCacheable(t *testing.T) {
 	}
 	if strings.Contains(rec.Body.String(), `"hints"`) || strings.Contains(rec.Body.String(), `"definition"`) {
 		t.Error("stats must not carry any entry text")
+	}
+}
+
+// Production sends /api traffic to this server by an explicit list in
+// vercel.json, and anything not on it falls through to the web app and 404s.
+// A route added here without a matching rewrite works in every test and nowhere
+// else, so every top-level /api prefix the server mounts has to be listed.
+func TestEveryAPIRouteIsRoutedInProduction(t *testing.T) {
+	raw, err := os.ReadFile("../../../vercel.json")
+	if err != nil {
+		t.Skipf("vercel.json not found: %v", err)
+	}
+	var cfg struct {
+		Rewrites []struct {
+			Source string `json:"source"`
+		} `json:"rewrites"`
+	}
+	if err := json.Unmarshal(raw, &cfg); err != nil {
+		t.Fatal(err)
+	}
+	routed := func(path string) bool {
+		for _, r := range cfg.Rewrites {
+			if r.Source == "/(.*)" {
+				continue
+			}
+			if ok, _ := regexp.MatchString("^"+r.Source+"$", path); ok {
+				return true
+			}
+		}
+		return false
+	}
+	// A real path under each prefix the server mounts, taken from its router.
+	h := newTestServer(t)
+	mux, ok := h.(chi.Router)
+	if !ok {
+		t.Skip("server handler is not a chi router")
+	}
+	err = chi.Walk(mux, func(method, route string, _ http.Handler, _ ...func(http.Handler) http.Handler) error {
+		if !strings.HasPrefix(route, "/api/") || method != http.MethodGet {
+			return nil
+		}
+		path := strings.NewReplacer("/*", "/x", "{id}", "x", "{date}", "x", "{word}", "x").Replace(route)
+		path = regexp.MustCompile(`\{[^}]*\}`).ReplaceAllString(strings.TrimSuffix(path, "/"), "x")
+		if !routed(path) {
+			t.Errorf("%s is served by the API but vercel.json does not route %s to it", route, path)
+		}
+		return nil
+	})
+	if err != nil {
+		t.Fatal(err)
 	}
 }

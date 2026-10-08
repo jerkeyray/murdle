@@ -26,6 +26,8 @@
 
     { "source": "/api/rounds/(.*)", "destination": { "service": "api" } },
 
+    { "source": "/api/words/(.*)", "destination": { "service": "api" } },
+
     { "source": "/(.*)", "destination": { "service": "web" } }
   ]
 }
