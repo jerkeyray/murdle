@@ -1,7 +1,10 @@
 /**
  * Slices candidates.json into batches for drafting.
  *
- *   node scripts/make-batches.mjs --length 6 --tier challenging --count 200 [--size 40]
+ *   node scripts/make-batches.mjs --length 6 --tier challenging --count 200 [--size 40] [--shuffle]
+ *
+ * --shuffle orders by a hash of the word instead of by usage. The rare tier has
+ * no usage to rank by, so without it a batch is just the start of the alphabet.
  *
  * Writes scripts/data/batches/in-<length>-<tier>-<n>.json, each a list of
  * { word, uses, pos } for one drafter to turn into entries. Words that already
@@ -25,9 +28,11 @@ for (const file of await readdir(dir)) {
   if (file.startsWith("in-")) for (const r of JSON.parse(await readFile(new URL(file, dir), "utf8"))) handedOut.add(r.word);
 }
 const bank = new Set(JSON.parse(await readFile(new URL("../../server/internal/words/classic.json", import.meta.url), "utf8")).map((w) => w.word));
-const pool = JSON.parse(await readFile(new URL("data/candidates.json", import.meta.url), "utf8"))
-  .filter((c) => c.length === length && c.tier === tier && !handedOut.has(c.word) && !bank.has(c.word))
-  .slice(0, count);
+const hash = (w) => [...w].reduce((h, ch) => Math.imul(h ^ ch.charCodeAt(0), 16777619) >>> 0, 2166136261);
+let pool = JSON.parse(await readFile(new URL("data/candidates.json", import.meta.url), "utf8"))
+  .filter((c) => c.length === length && c.tier === tier && !handedOut.has(c.word) && !bank.has(c.word));
+if (process.argv.includes("--shuffle")) pool.sort((a, b) => hash(a.word) - hash(b.word));
+pool = pool.slice(0, count);
 
 const existing = (await readdir(dir)).filter((f) => f.startsWith(`in-${length}-${tier}-`)).length;
 for (let i = 0; i * size < pool.length; i++) {
