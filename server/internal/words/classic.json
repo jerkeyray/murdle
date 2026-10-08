@@ -163,7 +163,7 @@
    "Mission control might shout it.",
    "To call something off part-way."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "əˈbɔːt",
   "partOfSpeech": "verb",
   "origin": "Latin abortare",
@@ -236,7 +236,7 @@
    "Describes a stop in the middle of a sentence.",
    "A sudden brake that throws passengers forward."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "əˈbɹʌpt",
   "partOfSpeech": "adjective",
   "origin": "Latin abruptus",
@@ -310,7 +310,7 @@
    "Mentioned in news reports and support-line leaflets.",
    "Might be paired with the word substance, as in drug or alcohol."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "əˈbjuːzə",
   "partOfSpeech": "noun",
   "example": "Abusers often cross the line between respect and disrespect.",
@@ -396,7 +396,7 @@
    "A peace deal between nations.",
    "Harmony between opinions."
   ],
-  "difficulty": "familiar",
+  "difficulty": "stretch",
   "pronunciation": "əˈkɔːd",
   "partOfSpeech": "noun",
   "origin": "Old French acort"
@@ -424,7 +424,7 @@
    "Lemon juice is this.",
    "Litmus paper turns red in this."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "əˈsɪdɪk",
   "partOfSpeech": "adjective",
   "origin": "acid + -ic"
@@ -551,7 +551,7 @@
    "Describes an angle under ninety degrees.",
    "Sudden and severe, in medicine."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "əˈkjuːt",
   "partOfSpeech": "adjective",
   "origin": "Latin acūta"
@@ -893,7 +893,7 @@
    "The shield of a Greek god.",
    "Protection, in a formal phrase."
   ],
-  "difficulty": "stretch",
+  "difficulty": "challenging",
   "pronunciation": "ˈiːdʒɪs",
   "partOfSpeech": "noun",
   "origin": "Latin aegis, from Ancient Greek αἰγῐ́δες"
@@ -1140,7 +1140,7 @@
    "Marbles were once made of it.",
    "A banded gemstone."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "ˈæɡɪt",
   "partOfSpeech": "noun",
   "origin": "Middle French agathe, from Ancient Greek ἀχάτης",
@@ -1272,7 +1272,7 @@
    "Athenians gathered here.",
    "Hidden in a word for fearing crowds."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "ˈæɡəɹə",
   "partOfSpeech": "noun"
  },
@@ -1328,7 +1328,7 @@
    "Casual way to agree.",
    "A shortened okay."
   ],
-  "difficulty": "familiar",
+  "difficulty": "stretch",
   "pronunciation": "ˈaɪt"
  },
  {
@@ -1518,7 +1518,7 @@
    "Usually concerns a disputed event.",
    "A claim about being elsewhere can change an investigation."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "alien",
@@ -2143,7 +2143,7 @@
    "More common in literary writing than casual speech.",
    "A discreet affair might be described with this borrowed word."
   ],
-  "difficulty": "challenging"
+  "difficulty": "stretch"
  },
  {
   "word": "ample",
@@ -2414,7 +2414,7 @@
    "A monk's chronicle written one year at a time.",
    "Grand historians say something is recorded in these, always plural."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "ˈænəlz",
   "partOfSpeech": "noun",
   "origin": "Middle French annales, from Latin annālēs librī"
@@ -2471,7 +2471,7 @@
    "What can happen to a marriage.",
    "Related to null."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "əˈnʌl",
   "partOfSpeech": "verb",
   "origin": "Old French anuller, from Latin annullō",
@@ -2540,7 +2540,7 @@
    "Usually plural: silly capers.",
    "Grotesque old paintings gave it its name."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "ˈæntɪk"
  },
  {
@@ -2568,7 +2568,7 @@
    "A blacksmith's essential.",
    "Cartoon villains drop these."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈænvɪl",
   "partOfSpeech": "noun",
   "origin": "Old English anfilt"
@@ -2657,7 +2657,7 @@
    "Fast, in an old-fashioned way.",
    "Poets say work goes on this way."
   ],
-  "difficulty": "stretch",
+  "difficulty": "challenging",
   "pronunciation": "əˈpeɪs",
   "partOfSpeech": "adverb",
   "origin": "Old French à pas",
@@ -2687,7 +2687,7 @@
    "Low turnout at an election is blamed on voter ___.",
    "A shrug where there should be an opinion."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈæpəθi",
   "partOfSpeech": "noun",
   "origin": "French apathie, from Ancient Greek ἀπάθεια"
@@ -2743,7 +2743,7 @@
    "A tightrope walker crossing a wind-whipped canyon.",
    "She fielded the hostile reporter's question with a relaxed smile."
   ],
-  "difficulty": "stretch"
+  "difficulty": "challenging"
  },
  {
   "word": "apnea",
@@ -2754,7 +2754,7 @@
    "A sleep disorder.",
    "Breathing stops for a while."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "ˈæpniə",
   "partOfSpeech": "noun",
   "origin": "New Latin apnoea, from Ancient Greek ἄπνοια",
@@ -2940,7 +2940,7 @@
    "Can describe a person's commitment.",
    "A cause can inspire the same intensity as a romance."
   ],
-  "difficulty": "challenging"
+  "difficulty": "stretch"
  },
  {
   "word": "arena",
@@ -3283,7 +3283,7 @@
    "A cravat by another name.",
    "Named after a racecourse."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "partOfSpeech": "noun"
  },
  {
@@ -3392,7 +3392,7 @@
    "A tree with quaking leaves.",
    "A tree whose leaves turn gold in a Colorado autumn."
   ],
-  "difficulty": "familiar",
+  "difficulty": "stretch",
   "pronunciation": "ˈæspən",
   "partOfSpeech": "noun",
   "origin": "Old English æspen, from Old English æspe"
@@ -3406,7 +3406,7 @@
    "Old-fashioned buffets once featured glistening moulds of it.",
    "Chefs set a clear, trembling layer of stock to hold garnishes."
   ],
-  "difficulty": "stretch"
+  "difficulty": "challenging"
  },
  {
   "word": "aspire",
@@ -3582,7 +3582,7 @@
    "A flower named for the shape of its petals.",
    "Late-summer bloom with a yellow centre and ray petals."
   ],
-  "difficulty": "stretch",
+  "difficulty": "challenging",
   "pronunciation": "ˈæstə(ɹ)",
   "partOfSpeech": "noun",
   "origin": "Latin astēr, from Ancient Greek ἀστήρ"
@@ -3900,7 +3900,7 @@
    "A corkscrew-shaped boring tool.",
    "Used to drill into wood or ice."
   ],
-  "difficulty": "stretch",
+  "difficulty": "challenging",
   "pronunciation": "ˈɔːɡə(ɹ)",
   "partOfSpeech": "noun",
   "origin": "Old English nafugār"
@@ -3994,7 +3994,7 @@
    "The northern lights.",
    "Named for a Roman dawn goddess."
   ],
-  "difficulty": "familiar",
+  "difficulty": "stretch",
   "pronunciation": "əˈɹɔːɹə",
   "partOfSpeech": "noun",
   "origin": "Latin aurōra"
@@ -4211,7 +4211,7 @@
    "What Sleeping Beauty finally does after a hundred years.",
    "Used for a feeling suddenly stirred within you."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "əˈweɪkən",
   "partOfSpeech": "verb",
   "origin": "Old English awæcnan"
@@ -4297,7 +4297,7 @@
    "Café tables outside often sit under one on sunny days.",
    "Canvas stretched on a frame keeps the sun off a window."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "axial",
@@ -4308,7 +4308,7 @@
    "Along a central line.",
    "The Earth's tilt is this."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "ˈæksɪəl",
   "partOfSpeech": "adjective"
  },
@@ -4416,7 +4416,7 @@
    "A hero in an action film.",
    "Cool and tough."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈbædæs",
   "partOfSpeech": "noun",
   "origin": "bad + ass"
@@ -4570,7 +4570,7 @@
    "Farm machine for hay.",
    "Turns loose straw into blocks."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "partOfSpeech": "noun",
   "example": "Farmer Jones is in straits because his baler is broken down and he's got three fields of hay ready to bale."
  },
@@ -4626,7 +4626,7 @@
    "Something an old colonel might say.",
    "Gentle replacement for a stronger word."
   ],
-  "difficulty": "stretch",
+  "difficulty": "challenging",
   "pronunciation": "ˈbæli",
   "partOfSpeech": "adjective",
   "example": "What a bally (or blinking) nuisance."
@@ -4655,7 +4655,7 @@
    "Wood for model planes.",
    "One of the lightest woods in the world."
   ],
-  "difficulty": "familiar",
+  "difficulty": "stretch",
   "pronunciation": "ˈbɔːlsə",
   "partOfSpeech": "noun",
   "origin": "Spanish balsa"
@@ -4726,7 +4726,7 @@
    "Often paired with words or names.",
    "Pass back and forth, as a rumour might be."
   ],
-  "difficulty": "stretch",
+  "difficulty": "challenging",
   "pronunciation": "ˈbændi",
   "origin": "French bander",
   "partOfSpeech": "verb"
@@ -4740,7 +4740,7 @@
    "A king might do so to a rival.",
    "What Napoleon suffered on Elba."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈbænɪʃ",
   "partOfSpeech": "verb",
   "origin": "Old French baniss-, from Old English bannan",
@@ -4855,7 +4855,7 @@
    "Floats slowly down a canal.",
    "To push rudely into a room."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈbɑːdʒ",
   "partOfSpeech": "noun",
   "origin": "Old French barge, from Egyptian bꜣjrb-bA-A-y:r*Z1-P1"
@@ -4911,7 +4911,7 @@
    "Media or oil tycoons are called this.",
    "The lowest rank of peer."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈbæɹən",
   "partOfSpeech": "noun",
   "origin": "Old French baron, from Latin barōnem"
@@ -4953,7 +4953,7 @@
    "A desert or a bare rock face is this.",
    "Land too poor to grow a crop is described this way."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈbæɹən",
   "partOfSpeech": "adjective",
   "origin": "Anglo-Norman baraigne"
@@ -4981,7 +4981,7 @@
    "Trading eggs for a haircut.",
    "How people traded before currency existed."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈbɑː(ɹ)tə(ɹ)",
   "partOfSpeech": "verb",
   "origin": "Old French barater"
@@ -5033,7 +5033,7 @@
    "Latin for a step or pedestal.",
    "It was a compliment for several centuries."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "basil",
@@ -5072,7 +5072,7 @@
    "Facts form this for an argument.",
    "The grounds for something."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈbeɪsɪs",
   "partOfSpeech": "noun",
   "origin": "Latin basis, from Ancient Greek βάσις",
@@ -5104,7 +5104,7 @@
    "Usually happens more than once during preparation.",
    "A cook returns liquid to the surface as heat does its work."
   ],
-  "difficulty": "challenging"
+  "difficulty": "stretch"
  },
  {
   "word": "batch",
@@ -5170,7 +5170,7 @@
    "Relay runners pass it.",
    "A conductor waves it."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈbætɒn",
   "partOfSpeech": "noun",
   "origin": "French bâton"
@@ -5256,7 +5256,7 @@
    "Istanbul's Grand one has thousands of shops.",
    "Where you haggle over spices and carpets."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "bəˈzɑː(ɹ)",
   "partOfSpeech": "noun",
   "origin": "Middle French bazar, from Persian بازار"
@@ -5350,7 +5350,7 @@
    "Brings a message, a cheque or a coffin.",
    "Appears in 'pall' and 'torch' compounds."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈbɛəɹə",
   "partOfSpeech": "noun",
   "origin": "Old English berere",
@@ -5406,7 +5406,7 @@
    "Australian exclamation of approval.",
    "Short word for something splendid."
   ],
-  "difficulty": "familiar",
+  "difficulty": "stretch",
   "pronunciation": "bjuːt",
   "partOfSpeech": "noun",
   "origin": "clipping of",
@@ -5919,7 +5919,7 @@
    "Lunch box with neat little compartments.",
    "Japanese packed meal."
   ],
-  "difficulty": "familiar",
+  "difficulty": "stretch",
   "pronunciation": "ˈbɛntəʊ",
   "partOfSpeech": "noun"
  },
@@ -5943,7 +5943,7 @@
    "Classic headwear for French painters.",
    "A soft flat hat."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈbɛɹeɪ",
   "partOfSpeech": "noun",
   "origin": "French béret, from Gaulish birrus",
@@ -6001,7 +6001,7 @@
    "The mineral behind emerald.",
    "A stone that may be green or blue."
   ],
-  "difficulty": "stretch",
+  "difficulty": "challenging",
   "pronunciation": "ˈbɛɹəl",
   "partOfSpeech": "noun",
   "origin": "Old French beril, from Prakrit 𑀯𑁂𑀭𑀼𑀮𑀺𑀅"
@@ -6015,7 +6015,7 @@
    "Troubles do it from all sides.",
    "Plagued by problems."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "bɪˈsɛt",
   "partOfSpeech": "verb",
   "origin": "Old English besettan"
@@ -6071,7 +6071,7 @@
    "A colourful fish often kept alone in a bowl.",
    "Siamese fighting fish go by this name."
   ],
-  "difficulty": "stretch",
+  "difficulty": "challenging",
   "pronunciation": "ˈbɛtɑː(ɹ)",
   "partOfSpeech": "noun"
  },
@@ -6097,7 +6097,7 @@
    "A slanted edge on glass.",
    "Mirrors are often given one."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "ˈbɛvəl",
   "partOfSpeech": "noun"
  },
@@ -6156,7 +6156,7 @@
    "A must-have reference book.",
    "Its Greek root means books."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈbaɪbəl",
   "partOfSpeech": "noun",
   "origin": "Ancient Greek βιβλία"
@@ -6270,7 +6270,7 @@
    "Intolerant of others' views.",
    "Narrow-minded to a fault."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈbɪɡət",
   "partOfSpeech": "noun",
   "origin": "French bigot, from Middle English bi God",
@@ -6531,7 +6531,7 @@
    "Roamed the great plains.",
    "Often called a buffalo."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈbaɪsən",
   "partOfSpeech": "noun",
   "origin": "Middle French bison, from Latin bisōn",
@@ -6685,7 +6685,7 @@
    "What car horns do.",
    "Music played far too loud."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "blɛə",
   "partOfSpeech": "verb",
   "origin": "Middle English blaren",
@@ -6758,7 +6758,7 @@
    "A grey winter moor.",
    "Describes an outlook with little hope in it."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "bliːk",
   "partOfSpeech": "adjective",
   "origin": "Middle English bleke",
@@ -6913,7 +6913,7 @@
    "A feeling beyond mere contentment.",
    "Ignorance is said to be this."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "blɪs",
   "partOfSpeech": "noun",
   "origin": "Old English bliss",
@@ -6994,7 +6994,7 @@
    "Colour of hair that sunshine might lighten.",
    "Dark-haired people sometimes dye their hair this way."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "blɒnd",
   "partOfSpeech": "adjective",
   "origin": "Middle French blond m, from Old French blond"
@@ -7106,7 +7106,7 @@
    "Often depends on another person's uncertainty.",
    "Confidence is displayed despite an unconvincing position."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "blunt",
@@ -7159,7 +7159,7 @@
    "A secret often escapes this way.",
    "Done by someone who can't hold back an answer."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈblɜːt",
   "partOfSpeech": "verb",
   "example": "Please think about your reply and don't just blurt out the first thing that comes to mind."
@@ -7268,7 +7268,7 @@
    "Australian slang for someone seen as unsophisticated.",
    "A label from Down Under for an unfashionable person."
   ],
-  "difficulty": "stretch",
+  "difficulty": "challenging",
   "pronunciation": "ˈboʊɡən",
   "partOfSpeech": "noun"
  },
@@ -7563,7 +7563,7 @@
    "A long and rowdy lunch might be called this.",
    "A drink with plenty of spirits in it."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈbuːzi",
   "partOfSpeech": "adjective",
   "example": "His boozy drinking companions."
@@ -7605,7 +7605,7 @@
    "Vast dark forests of spruce and fir stretching toward the Arctic.",
    "Canada's endless conifer belt, home to moose and wolves."
   ],
-  "difficulty": "stretch"
+  "difficulty": "challenging"
  },
  {
   "word": "boring",
@@ -7886,7 +7886,7 @@
    "A shady arbour in a garden.",
    "A private room in a medieval castle."
   ],
-  "difficulty": "stretch",
+  "difficulty": "challenging",
   "partOfSpeech": "noun",
   "origin": "Old English būr"
  },
@@ -7899,7 +7899,7 @@
    "A cricket team's attacking player.",
    "A round hard hat worn in the City of London."
   ],
-  "difficulty": "familiar",
+  "difficulty": "stretch",
   "pronunciation": "ˈbəʊlə",
   "partOfSpeech": "noun",
   "origin": "bowl + -er"
@@ -7913,7 +7913,7 @@
    "A medieval soldier at Agincourt.",
    "The oarsman nearest the front of the boat."
   ],
-  "difficulty": "stretch",
+  "difficulty": "challenging",
   "pronunciation": "ˈbəʊmən",
   "partOfSpeech": "noun",
   "origin": "Middle English boweman"
@@ -8090,7 +8090,7 @@
    "Shouted at an opera singer.",
    "What you call out for a diva."
   ],
-  "difficulty": "stretch",
+  "difficulty": "challenging",
   "pronunciation": "ˈbɹɑvə",
   "origin": "Italian brava"
  },
@@ -8217,7 +8217,7 @@
    "Silver fish caught by anglers.",
    "A deep-bodied river fish."
   ],
-  "difficulty": "stretch",
+  "difficulty": "challenging",
   "pronunciation": "bɹiːm",
   "partOfSpeech": "noun",
   "origin": "Old French breme"
@@ -8459,7 +8459,7 @@
    "Someone on this of tears is about to cry.",
    "A cliff has one; so does a crisis."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈbɹɪŋk",
   "partOfSpeech": "noun",
   "origin": "Middle English brinke"
@@ -8473,7 +8473,7 @@
    "What the sea tastes like.",
    "A pickle or an olive has this flavour."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "ˈbɹaɪni",
   "partOfSpeech": "adjective",
   "origin": "brine"
@@ -8610,7 +8610,7 @@
    "Worn on a lapel or scarf.",
    "Grandmother's heirloom, pinned to her coat."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "bɹəʊtʃ",
   "partOfSpeech": "noun"
  },
@@ -8623,7 +8623,7 @@
    "A hen with chicks has one.",
    "What a moody person does alone."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "bɹuːd",
   "origin": "Old English brōd"
  },
@@ -8708,7 +8708,7 @@
    "Folk name for a brown bear.",
    "A bear in old fables."
   ],
-  "difficulty": "stretch",
+  "difficulty": "challenging",
   "pronunciation": "ˈbɹuːɪn",
   "partOfSpeech": "noun",
   "origin": "Middle Dutch bruun"
@@ -8796,7 +8796,7 @@
    "'___ force' means strength without cleverness.",
    "A thuggish bully."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "bɹuːt",
   "origin": "Middle French brut, from Latin brūtus",
   "partOfSpeech": "noun"
@@ -8938,7 +8938,7 @@
    "A baby might be pushed in one.",
    "Software that crashes often is called this."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈbʌɡi",
   "partOfSpeech": "noun"
  },
@@ -8992,7 +8992,7 @@
    "A stuffed pocket makes one.",
    "A battle in the Ardennes was named for a famous one."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈbʌldʒ",
   "partOfSpeech": "noun",
   "origin": "Old Northern French boulge, from Late Latin bulga",
@@ -9328,7 +9328,7 @@
    "Orchard pickers once filled these measures with apples.",
    "Grain merchants once measured out their trade with a wooden one."
   ],
-  "difficulty": "challenging"
+  "difficulty": "stretch"
  },
  {
   "word": "bushy",
@@ -9491,7 +9491,7 @@
    "Like bees, or like a trending topic.",
    "Humming, or full of hype."
   ],
-  "difficulty": "familiar",
+  "difficulty": "stretch",
   "pronunciation": "ˈbʌzi",
   "partOfSpeech": "adjective"
  },
@@ -9532,7 +9532,7 @@
    "A hidden group scheming in the shadows.",
    "Conspirators might form one."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "kəˈbɑːl",
   "partOfSpeech": "noun",
   "origin": "French cabale, from Hebrew קַבָּלָה"
@@ -9660,7 +9660,7 @@
    "A core group of party activists.",
    "The nucleus of an army."
   ],
-  "difficulty": "stretch",
+  "difficulty": "challenging",
   "pronunciation": "ˈkɑːdə",
   "partOfSpeech": "noun",
   "origin": "French cadre, from Latin quadrum"
@@ -9688,7 +9688,7 @@
    "Think of muddy rivers in the Amazon basin at dusk.",
    "A toothy swamp dweller that can lurk almost motionless in shallow water."
   ],
-  "difficulty": "stretch"
+  "difficulty": "challenging"
  },
  {
   "word": "cairn",
@@ -9761,7 +9761,7 @@
    "A first-year student fumbling through campus orientation.",
    "He still believed every headline and trusted every stranger."
   ],
-  "difficulty": "stretch"
+  "difficulty": "challenging"
  },
  {
   "word": "calmly",
@@ -9869,7 +9869,7 @@
    "Old Batman television series are an example.",
    "Over-the-top in a knowing way."
   ],
-  "difficulty": "familiar",
+  "difficulty": "stretch",
   "pronunciation": "ˈkæmpi",
   "partOfSpeech": "adjective",
   "example": "Stu liked to watch campy B-movie horror flicks from the 1950s, not because they scared him, but because he found them funny."
@@ -10005,7 +10005,7 @@
    "Showy flower in tropical gardens.",
    "Garden plant with banana-like leaves."
   ],
-  "difficulty": "stretch",
+  "difficulty": "challenging",
   "pronunciation": "ˈkænə",
   "partOfSpeech": "noun",
   "origin": "translingual Canna, from Akkadian 𒂵𒉡𒌑𒌝"
@@ -10046,7 +10046,7 @@
    "A sharp-witted person with good judgment.",
    "Good at spotting a bargain."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "ˈkæni",
   "origin": "Old English cunnan",
   "partOfSpeech": "adjective"
@@ -10103,7 +10103,7 @@
    "A chapter of a long epic poem.",
    "Dante divided his Inferno into these."
   ],
-  "difficulty": "stretch",
+  "difficulty": "challenging",
   "pronunciation": "ˈkæntəʊ",
   "partOfSpeech": "noun",
   "origin": "Italian canto"
@@ -10117,7 +10117,7 @@
    "What Zurich and Geneva are part of.",
    "A Swiss state is this."
   ],
-  "difficulty": "stretch",
+  "difficulty": "challenging",
   "pronunciation": "ˈkæntən",
   "partOfSpeech": "noun",
   "origin": "Middle French canton, from Old French canton"
@@ -10131,7 +10131,7 @@
    "Leads the congregation in song at a Jewish service.",
    "The hazzan chants the prayers."
   ],
-  "difficulty": "stretch",
+  "difficulty": "challenging",
   "pronunciation": "ˈkæntɔː(ɹ)",
   "partOfSpeech": "noun",
   "origin": "Latin cantor",
@@ -10305,7 +10305,7 @@
    "Shares a root with car and cargo.",
    "Bearing a weight the rest of the team will not."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "cartel",
@@ -10445,7 +10445,7 @@
    "Office chairs roll on them.",
    "A heavy, bitter oil from the plant was once given as medicine."
   ],
-  "difficulty": "stretch",
+  "difficulty": "challenging",
   "pronunciation": "ˈkɑːstə",
   "partOfSpeech": "noun",
   "origin": "cast + -or"
@@ -10557,7 +10557,7 @@
    "Seals the gaps around a bathtub.",
    "Sold in tubes and squeezed from a gun."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "kɔːk",
   "partOfSpeech": "noun",
   "origin": "Old Northern French cauquer, from Late Latin calicāre"
@@ -10630,7 +10630,7 @@
    "Served on tiny blinis with sour cream.",
    "Russian and Iranian ones from the Caspian are the priciest."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈkæviˌɑɹ",
   "partOfSpeech": "noun",
   "origin": "Middle French caviar, from Venetan caviaro",
@@ -10699,7 +10699,7 @@
    "Moths avoid its scent in a wardrobe.",
    "Lebanon's flag shows one."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈsiːdə",
   "partOfSpeech": "noun",
   "origin": "Old French cedre, from Ancient Greek κέδρος"
@@ -11031,7 +11031,7 @@
    "Encountered among ingredients.",
    "A cook might give its stalks longer in the pan than its leaves."
   ],
-  "difficulty": "challenging"
+  "difficulty": "stretch"
  },
  {
   "word": "charge",
@@ -11074,7 +11074,7 @@
    "It makes a large area legible at a glance.",
    "Sailors consult one before moving through unfamiliar water."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "chary",
@@ -11085,7 +11085,7 @@
    "Pairs naturally with 'of', as in someone reluctant to lend a stranger money.",
    "A shopper who has been overcharged before often hangs back from the next bargain."
   ],
-  "difficulty": "stretch"
+  "difficulty": "challenging"
  },
  {
   "word": "chase",
@@ -11391,7 +11391,7 @@
    "A parent might do this to a child who is rude.",
    "To rebuke gently."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "tʃaɪd",
   "partOfSpeech": "verb",
   "origin": "Old English ċīdan",
@@ -11479,7 +11479,7 @@
    "A doorbell might play one.",
    "To join in, as in 'to ___ in'."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "tʃaɪm",
   "partOfSpeech": "noun",
   "origin": "Old Northern French chimbe, from Latin cymbalum"
@@ -11506,7 +11506,7 @@
    "An English country house sitting room has armchairs draped in bright flowery fabric.",
    "Its glossy surface catches the light, a look you see across cottage-style interiors."
   ],
-  "difficulty": "challenging"
+  "difficulty": "stretch"
  },
  {
   "word": "chips",
@@ -11543,7 +11543,7 @@
    "A mallet may strike its handle.",
    "It removes material in controlled chips."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "chock",
@@ -11754,7 +11754,7 @@
    "What you do to an old shoe in the bin.",
    "Part of a drill that holds the bit."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "tʃʌk",
   "partOfSpeech": "verb",
   "origin": "Picard Old French chuquier, from Middle Dutch schocken"
@@ -11768,7 +11768,7 @@
    "A sucker taken in by a scam.",
    "'Don't be a ___,' you might tell a friend."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "tʃʌmp",
   "partOfSpeech": "noun"
  },
@@ -11841,7 +11841,7 @@
    "Can describe movement or repeated loss.",
    "A company may measure how often customers leave."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "chute",
@@ -11962,7 +11962,7 @@
    "Seen before a date on a museum label.",
    "Abbreviated c. in front of a year."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "ˈsɜːkə",
   "partOfSpeech": "preposition",
   "example": "Julius Caesar visited this area circa 50 BC."
@@ -12069,7 +12069,7 @@
    "What a courteous but cold conversation might be.",
    "A ___ war is fought between citizens of one country."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈsɪvəl",
   "partOfSpeech": "adjective",
   "origin": "Old French civil, from Latin cīvīlis",
@@ -12123,7 +12123,7 @@
    "A carpenter holds two boards together with one.",
    "A parking wheel lock is also called this."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈklæmp",
   "partOfSpeech": "noun",
   "origin": "Middle Dutch clamp"
@@ -12137,7 +12137,7 @@
    "What a dropped pan does on a tile floor.",
    "A bell strikes it, but harshly."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈklæŋ",
   "partOfSpeech": "noun",
   "example": "He could hear the clang of distant bells."
@@ -12151,7 +12151,7 @@
    "Chains drag across the floor with this noise.",
    "A knight's armour makes it as he walks."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "klænk",
   "partOfSpeech": "noun"
  },
@@ -12188,7 +12188,7 @@
    "A necklace has one at the back.",
    "To hold hands tightly."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "klɑːsp",
   "origin": "Old English clyppan",
   "partOfSpeech": "verb"
@@ -12289,7 +12289,7 @@
    "A dimple in a person's chin is called this.",
    "'In a ___ stick' means trapped in a split in wood."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "ˈklɛft",
   "partOfSpeech": "noun",
   "origin": "Old English ġeclyft"
@@ -12498,7 +12498,7 @@
    "The sound when glasses touch in a toast.",
    "Coins in a pocket make it."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "klɪŋk",
   "partOfSpeech": "noun",
   "origin": "Middle English clinken"
@@ -13020,7 +13020,7 @@
    "A lawyer's closing argument that leaves the jury nodding.",
    "Every premise follows neatly, and the conclusion can't be dodged."
   ],
-  "difficulty": "stretch"
+  "difficulty": "challenging"
  },
  {
   "word": "cohort",
@@ -13046,7 +13046,7 @@
    "Why a newborn may cry for hours.",
    "Tummy trouble in infants."
   ],
-  "difficulty": "familiar",
+  "difficulty": "stretch",
   "pronunciation": "ˈkɒlɪk",
   "partOfSpeech": "noun",
   "origin": "French colique, from Ancient Greek κωλικός"
@@ -13074,7 +13074,7 @@
    "Written before a list.",
    "Two dots stacked on top of each other."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈkəʊlən",
   "partOfSpeech": "noun",
   "origin": "Latin cōlon, from Ancient Greek κῶλον"
@@ -13356,7 +13356,7 @@
    "A common item in public health.",
    "Sold in pharmacies for contraception."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈkɒndɒm",
   "partOfSpeech": "noun",
   "example": "They therefore don't concern themselves about using condoms.",
@@ -13441,7 +13441,7 @@
    "Short form of this Latin word turns up in 'pros and cons'.",
    "Latin preposition for 'against'; Reagan-era rebels in Nicaragua took its name."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "ˈkɒntɹə",
   "partOfSpeech": "preposition",
   "origin": "Latin contrā"
@@ -13553,7 +13553,7 @@
    "A craftsman of casks.",
    "Wine and whisky need his work."
   ],
-  "difficulty": "stretch",
+  "difficulty": "challenging",
   "pronunciation": "ˈkuːpə(ɹ)",
   "partOfSpeech": "noun"
  },
@@ -13781,7 +13781,7 @@
    "Held in with stays and laces.",
    "Scarlett O'Hara had hers pulled tight."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈkɔː(ɹ)sɪt",
   "partOfSpeech": "noun",
   "origin": "Old French corset"
@@ -13877,7 +13877,7 @@
    "A tawny predator that hunts deer in the Rockies.",
    "Also slang for an older woman who dates younger men."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈkuːɡə",
   "partOfSpeech": "noun",
   "origin": "French couguar, from Old Tupi sûasuarana",
@@ -14359,7 +14359,7 @@
    "A tasteless remark at a funeral.",
    "Lacking refinement or tact."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "kɹæs",
   "partOfSpeech": "adjective",
   "origin": "Old French cras, from Latin crassus",
@@ -14403,7 +14403,7 @@
    "Worn with a waistcoat at a formal morning event.",
    "A bow of white linen tied under a stiff collar."
   ],
-  "difficulty": "stretch"
+  "difficulty": "challenging"
  },
  {
   "word": "crave",
@@ -14588,7 +14588,7 @@
    "A personal motto or guiding belief.",
    "Latin for 'I believe'."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "ˈkɹidəʊ",
   "partOfSpeech": "noun",
   "origin": "Old French credo, from Latin crēdō"
@@ -14873,7 +14873,7 @@
    "A small Highland farm.",
    "A tiny rented plot of land."
   ],
-  "difficulty": "stretch",
+  "difficulty": "challenging",
   "pronunciation": "kɹɒft",
   "partOfSpeech": "noun",
   "origin": "Old English croft"
@@ -14936,7 +14936,7 @@
    "Describes a manner of performance.",
    "The delivery is intimate and gentle rather than projected across a hall."
   ],
-  "difficulty": "challenging"
+  "difficulty": "stretch"
  },
  {
   "word": "cross",
@@ -14962,7 +14962,7 @@
    "Where a tree trunk divides into branches.",
    "The seam of a pair of trousers."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "kɹɒtʃ",
   "partOfSpeech": "noun",
   "origin": "Middle English croche",
@@ -15036,7 +15036,7 @@
    "Petroleum before refining.",
    "A rough joke in poor taste."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "kɹuːd"
  },
  {
@@ -15176,7 +15176,7 @@
    "Where a child hangs a coat at school.",
    "A little nook in a classroom."
   ],
-  "difficulty": "familiar",
+  "difficulty": "stretch",
   "pronunciation": "kʌbi",
   "partOfSpeech": "noun",
   "origin": "Middle English cub"
@@ -15285,7 +15285,7 @@
    "What a Brit puts the kettle on for.",
    "Short for a cup of something warm."
   ],
-  "difficulty": "familiar",
+  "difficulty": "stretch",
   "pronunciation": "ˈkʌpə",
   "partOfSpeech": "noun",
   "example": "I walked out in the middle of it. Let's go and have a cuppa.",
@@ -15342,7 +15342,7 @@
    "A small, odd collectable in a shop.",
    "An antique trinket on a shelf."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "ˈkjʊəɹiˌəʊ",
   "partOfSpeech": "noun",
   "origin": "Clipping of curiosity",
@@ -15428,7 +15428,7 @@
    "A mountain road with many bends is this.",
    "Winding, with no straight lines."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈkɜːvi",
   "partOfSpeech": "adjective"
  },
@@ -15583,7 +15583,7 @@
    "Expects everyone to be selfish.",
    "Diogenes lived in a barrel and gave his name to the philosophers who shared the label."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈsɪnɪk",
   "partOfSpeech": "noun",
   "origin": "Middle French cynique, from Ancient Greek κυνικός"
@@ -15625,7 +15625,7 @@
    "Famous cartoon duck with this name.",
    "Goofy or scatterbrained."
   ],
-  "difficulty": "familiar",
+  "difficulty": "stretch",
   "pronunciation": "ˈdæfi"
  },
  {
@@ -15736,7 +15736,7 @@
    "Dinner table cloths in a grand dining hall shimmer with woven flowers.",
    "Rose motifs in Victorian sofas are often picked out in this glossy cloth."
   ],
-  "difficulty": "stretch"
+  "difficulty": "challenging"
  },
  {
   "word": "dammit",
@@ -16440,7 +16440,7 @@
    "Blue pottery from a Dutch city.",
    "Tin-glazed ware painted with windmills."
   ],
-  "difficulty": "stretch",
+  "difficulty": "challenging",
   "partOfSpeech": "noun"
  },
  {
@@ -16452,7 +16452,7 @@
    "The Nile ends in one.",
    "A letter of the Greek alphabet shaped like a triangle."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈdɛltə",
   "partOfSpeech": "noun",
   "origin": "Ancient Greek δέλτα",
@@ -16538,7 +16538,7 @@
    "Think of a boss who belittles staff in front of clients.",
    "Think of an insult that leaves its target feeling smaller."
   ],
-  "difficulty": "challenging"
+  "difficulty": "stretch"
  },
  {
   "word": "demise",
@@ -16943,7 +16943,7 @@
    "A guard dog might do this to burglars.",
    "The aim of a 'no entry' sign."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "dɪˈtɜː",
   "partOfSpeech": "verb",
   "origin": "Latin dēterreō",
@@ -16972,7 +16972,7 @@
    "A juice diet, supposedly.",
    "Treatment for someone giving up drink."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈdiːtɒks",
   "partOfSpeech": "noun",
   "origin": "Clipping of detoxification"
@@ -17058,7 +17058,7 @@
    "What you do to a cause that you love.",
    "A person gives their life to a calling in this way."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "dɪˈvəʊt",
   "partOfSpeech": "verb",
   "origin": "Latin dēvōtus, from Latin dēvoveō",
@@ -17073,7 +17073,7 @@
    "A hungry wolf does it to its prey.",
    "A keen reader may do it to a book in one weekend."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "dɪˈvaʊə(ɹ)",
   "partOfSpeech": "verb",
   "origin": "Old French devorer, from Latin dēvorō",
@@ -17268,7 +17268,7 @@
    "A word that sounds old-fashioned and cheerful.",
    "A pickle might be said to be this."
   ],
-  "difficulty": "stretch",
+  "difficulty": "challenging",
   "pronunciation": "ˈdɪli",
   "partOfSpeech": "noun"
  },
@@ -17335,7 +17335,7 @@
    "A wild dog Down Under.",
    "A baby was famously said to have been taken by one."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈdɪŋɡəʊ",
   "partOfSpeech": "noun",
   "origin": "Dharug dingu"
@@ -17349,7 +17349,7 @@
    "A poorly lit and grubby room.",
    "A cheap hotel might be called this."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈdɪndʒi",
   "partOfSpeech": "adjective",
   "origin": "dung + -y"
@@ -17376,7 +17376,7 @@
    "Tiny and cute.",
    "Small enough to be endearing."
   ],
-  "difficulty": "familiar",
+  "difficulty": "stretch",
   "pronunciation": "ˈdɪŋki"
  },
  {
@@ -17403,7 +17403,7 @@
    "A one-way valve for electricity.",
    "LED stands for light-emitting one."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "ˈdaɪəʊd",
   "partOfSpeech": "noun",
   "origin": "Ancient Greek δίοδος"
@@ -17434,7 +17434,7 @@
    "Associated with a solemn occasion.",
    "The audience is more likely to be grieving than dancing."
   ],
-  "difficulty": "challenging"
+  "difficulty": "stretch"
  },
  {
   "word": "dirty",
@@ -17458,7 +17458,7 @@
    "A bomb squad specialist does it to a device.",
    "A sincere smile can do it to an angry person."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "dɪsˈɑː(ɹ)m",
   "partOfSpeech": "verb",
   "origin": "Anglo-Norman desarmer"
@@ -17486,7 +17486,7 @@
    "A rainy, grey Monday.",
    "A performance that earns a terrible score."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈdɪzməl",
   "partOfSpeech": "adjective",
   "origin": "Anglo-Norman dismal, from Medieval Latin diēs malī"
@@ -17500,7 +17500,7 @@
    "The look on your face at seeing a ruined cake.",
    "Said of someone upset by bad news."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "dɪsˈmeɪ",
   "partOfSpeech": "noun",
   "origin": "Old French esmaier"
@@ -17514,7 +17514,7 @@
    "A bitter family feud can end with a formal rejection like this.",
    "Unlike disinheritance, it cuts ties in name as well as in the will."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "dispel",
@@ -17567,7 +17567,7 @@
    "Two small marks in a list mean this.",
    "What you say when you agree with the thing just said."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈdɪtəʊ",
   "partOfSpeech": "noun",
   "origin": "Italian ditto, from Latin dīcō"
@@ -17624,7 +17624,7 @@
    "Road signs tell traffic to follow a different route because of repairs.",
    "A conjuror does it to your attention."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "daɪˈvɜːt",
   "partOfSpeech": "verb",
   "origin": "Old French divertir, from Latin di-",
@@ -17773,7 +17773,7 @@
    "An affectionate word for a pet dog online.",
    "A word used in funny captions of pets."
   ],
-  "difficulty": "familiar",
+  "difficulty": "challenging",
   "pronunciation": "ˈdɒɡəʊ",
   "partOfSpeech": "noun",
   "origin": "dog + -o; in English since the early 21st century"
@@ -17966,7 +17966,7 @@
    "One of the seven dwarfs.",
    "Acting stupid or confused."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈdəʊpi",
   "partOfSpeech": "adjective",
   "example": "Tom often has a dopey expression on his face.",
@@ -18158,7 +18158,7 @@
    "A woodworker uses it to join two boards.",
    "A round wooden rod."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "ˈdaʊəl",
   "partOfSpeech": "noun",
   "origin": "Old French doelle"
@@ -18311,7 +18311,7 @@
    "What you did when the glass was emptied.",
    "A form of a word about glasses and sips."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "dɹæŋk"
  },
  {
@@ -18323,7 +18323,7 @@
    "To hang fabric over a chair.",
    "How a gown falls from the shoulders."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "dɹeɪp",
   "partOfSpeech": "verb",
   "origin": "Old French draper, from Late Latin drappus",
@@ -18437,7 +18437,7 @@
    "What you did last night while sleeping.",
    "A past tense ending in t, like slept and kept."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "dɹɛmt"
  },
  {
@@ -18656,7 +18656,7 @@
    "A dry, understated sense of humour.",
    "Funny in a quietly peculiar way."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "dɹəʊl",
   "partOfSpeech": "adjective",
   "origin": "French drôle, from Old Norse troll",
@@ -18712,7 +18712,7 @@
    "What's skimmed off melted metal.",
    "Rubbish left behind after the good part is taken."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "dɹɒs",
   "partOfSpeech": "noun",
   "origin": "Old English drōs, from Old English drōsna"
@@ -18823,7 +18823,7 @@
    "The land a duke governs.",
    "Prince Charles held the one in Cornwall."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "ˈdʌtʃi",
   "partOfSpeech": "noun",
   "origin": "Anglo-Norman duché, from Latin dux"
@@ -18837,7 +18837,7 @@
    "Everything is just this, said an old-fashioned optimist.",
    "A bath toy that floats."
   ],
-  "difficulty": "familiar",
+  "difficulty": "stretch",
   "pronunciation": "ˈdʌki",
   "partOfSpeech": "adjective",
   "example": "Farnesworth smiled contentedly as he read the stock ticker; all was ducky on Wall Street."
@@ -18851,7 +18851,7 @@
    "Seagrass meadows in warm shallow coastal water are its dining room.",
    "Its slow, sea-grazing life once inspired tales of mermaids."
   ],
-  "difficulty": "stretch"
+  "difficulty": "challenging"
  },
  {
   "word": "dugout",
@@ -18938,7 +18938,7 @@
    "Wore a pointed cap in the corner of a classroom.",
    "A slow learner."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "dʌns",
   "partOfSpeech": "noun",
   "example": "Who usually sits on the dunce's seat?",
@@ -18992,7 +18992,7 @@
    "Think of a kidnapper's ransom note demanding compliance.",
    "A signature forced out at gunpoint would fall under this."
   ],
-  "difficulty": "challenging"
+  "difficulty": "stretch"
  },
  {
   "word": "durian",
@@ -19043,7 +19043,7 @@
    "A Saturday chore often involves waving a cloth around the living room.",
    "It lifts settled particles off shelves and picture frames."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "dusty",
@@ -19384,7 +19384,7 @@
    "Belongs to the language of authority.",
    "The speaker expects obedience rather than discussion."
   ],
-  "difficulty": "challenging"
+  "difficulty": "stretch"
  },
  {
   "word": "edify",
@@ -19429,7 +19429,7 @@
    "Describes an atmosphere.",
    "Nothing is visibly wrong, yet the silence feels unnatural."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "effect",
@@ -19492,7 +19492,7 @@
    "A graceful white bird that stands in water.",
    "A type of heron."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "ˈiːɡɹɪt",
   "partOfSpeech": "noun",
   "origin": "Old Occitan aigreta, from Medieval Latin hairo",
@@ -19589,7 +19589,7 @@
    "A win might do this to a team.",
    "To lift someone's spirits high."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "ɪˈleɪt",
   "origin": "Latin ēlātus",
   "partOfSpeech": "verb"
@@ -19659,7 +19659,7 @@
    "A poem for the dead.",
    "A mournful poem recited at a funeral."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "ˈɛlɪdʒi",
   "partOfSpeech": "noun",
   "origin": "Middle French elegie, from Ancient Greek ἐλεγείᾱ; in English since the early 16th century",
@@ -19761,7 +19761,7 @@
    "Lovers do it without telling their parents.",
    "A secret dash to a wedding chapel."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ɪˈləʊp",
   "partOfSpeech": "verb",
   "origin": "Anglo-Norman aloper",
@@ -19803,7 +19803,7 @@
    "Passengers do this at the dock before the ship sails.",
    "Takes 'on' when it means to begin a big project."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ɪmˈbɑːk",
   "partOfSpeech": "verb",
   "origin": "Middle French embarquer",
@@ -19818,7 +19818,7 @@
    "A journalist travels with troops as one.",
    "To set a stone firmly in cement."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ɪmˈbɛd",
   "partOfSpeech": "verb"
  },
@@ -19834,7 +19834,7 @@
    "Often appears after a more dramatic event.",
    "Something apparently finished may still hold a little heat."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "emblem",
@@ -19845,7 +19845,7 @@
    "A badge on a team jersey.",
    "A maple leaf is Canada's."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈɛmbləm",
   "partOfSpeech": "noun",
   "origin": "Old French embleme, from Ancient Greek ἔμβλημα",
@@ -19874,7 +19874,7 @@
    "Forms soon after an egg is fertilised.",
    "A tiny chick inside an egg begins as one."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈɛmbɹiəʊ",
   "partOfSpeech": "noun",
   "origin": "Medieval Latin embryō, from Ancient Greek ἔμβρυον"
@@ -20026,7 +20026,7 @@
    "Decays under the attack of sugar and acid.",
    "An old camping mug has a white one chipped at the rim."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ɪˈnæməl",
   "partOfSpeech": "noun",
   "origin": "Anglo-Norman enamailler, from Early Medieval Latin smaltum"
@@ -20040,7 +20040,7 @@
    "A spy's secret message needed a cipher before it could be sent.",
    "Digital files are turned into a standard format before storage."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "encore",
@@ -20120,7 +20120,7 @@
    "A medical procedure that sends fluid in.",
    "A Greek word for injection gave its name."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "ˈɛnəmə",
   "partOfSpeech": "noun",
   "origin": "Late Latin enema, from Ancient Greek ἔνεμα"
@@ -20232,7 +20232,7 @@
    "Done at a recruiting office.",
    "Used for getting a friend to help you move house."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ɛnˈlɪst",
   "partOfSpeech": "verb",
   "example": "The army wants potential soldiers to enlist."
@@ -20257,7 +20257,7 @@
    "A French word for listless boredom.",
    "A sense of dull, tired boredom."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "ɒnˈwiː",
   "partOfSpeech": "noun",
   "origin": "French ennui, from Old French enui"
@@ -20286,7 +20286,7 @@
    "Cereal fortified with vitamins is described this way.",
    "A good teacher can do it to your life."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ɪnˈɹɪtʃ",
   "partOfSpeech": "verb",
   "origin": "Anglo-Norman enrichir, from Old French enrichier",
@@ -20485,7 +20485,7 @@
    "Used when discussing a broad sweep of history.",
    "The interval is distinguished by a defining change or character."
   ],
-  "difficulty": "challenging"
+  "difficulty": "stretch"
  },
  {
   "word": "eponym",
@@ -20507,7 +20507,7 @@
    "Comes in two tubes that you mix together.",
    "A powerful glue for repairing ceramics."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ɪˈpɒksi",
   "partOfSpeech": "noun"
  },
@@ -20604,7 +20604,7 @@
    "To put up a tent.",
    "Standing with straight posture."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ɪˈɹɛkt",
   "partOfSpeech": "adjective",
   "origin": "Latin ērectus",
@@ -20630,7 +20630,7 @@
    "What waves do to a cliff over time.",
    "To gradually weaken, as trust might."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ɪˈɹəʊd",
   "partOfSpeech": "verb",
   "origin": "French éroder, from Latin ērōdō",
@@ -20867,7 +20867,7 @@
    "A company's guiding values.",
    "The characteristic spirit of a culture."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "ˈiːθɒs",
   "partOfSpeech": "noun",
   "origin": "Ancient Greek ἦθος",
@@ -20908,7 +20908,7 @@
    "Archimedes supposedly yelled it in a bath.",
    "The moment of a sudden flash of insight."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "jəˈɹiːkə",
   "origin": "Ancient Greek εὕρηκα",
   "partOfSpeech": "noun"
@@ -20926,7 +20926,7 @@
    "Often used when accountability is at stake.",
    "A question may receive many words and still go unanswered."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "evenly",
@@ -21048,7 +21048,7 @@
    "What worshippers do to their god.",
    "To lift someone to a higher position."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "ɪɡˈzɒlt",
   "partOfSpeech": "verb",
   "origin": "Old French exalter, from Latin exaltō",
@@ -21078,7 +21078,7 @@
    "To be better than the rest.",
    "What a top student does in class."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ɪkˈsɛl",
   "partOfSpeech": "verb",
   "origin": "Old French exceller, from Latin excellere",
@@ -21221,7 +21221,7 @@
    "What happens to a banished ruler.",
    "Napoleon spent his last years in it."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈɛɡˌzaɪl",
   "partOfSpeech": "noun",
   "origin": "Old French essil, from Latin exsilium"
@@ -21323,7 +21323,7 @@
    "A school can do it to a student who misbehaves.",
    "To drive away or throw out, as a diplomat."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ɪkˈspɛl",
   "partOfSpeech": "verb",
   "origin": "Latin expellere",
@@ -22024,7 +22024,7 @@
    "Humphrey Bogart wore one in noir films.",
    "Indiana Jones wears one."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "fɪˈdɔːɹə",
   "partOfSpeech": "noun",
   "origin": "Russian Федо́ра, from Ancient Greek Θεόδωρος",
@@ -22072,7 +22072,7 @@
    "A verb concerning appearances.",
    "The emotion on display may not be felt at all."
   ],
-  "difficulty": "challenging"
+  "difficulty": "stretch"
  },
  {
   "word": "feint",
@@ -22097,7 +22097,7 @@
    "Said of a small dog that takes on big ones.",
    "A small woman with a big temper."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈfaɪsti",
   "partOfSpeech": "adjective",
   "origin": "feist"
@@ -22125,7 +22125,7 @@
    "A chatty name for a man.",
    "A pal might be called a good one."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "fɛlə",
   "partOfSpeech": "noun",
   "example": "There's a fellow at the door."
@@ -22240,7 +22240,7 @@
    "The American name for the bodywork over a car wheel.",
    "Hung over the side of a boat to protect it at the dock."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈfɛndə(ɹ)",
   "partOfSpeech": "noun"
  },
@@ -22293,7 +22293,7 @@
    "A word for a campaigner who speaks about the cause at every dinner.",
    "Revivalist preachers and devoted football fans both earn this description."
   ],
-  "difficulty": "stretch"
+  "difficulty": "challenging"
  },
  {
   "word": "fervor",
@@ -22485,7 +22485,7 @@
    "Describes a friend who drops you for a better offer.",
    "Often applied to the weather, or to a crowd's favour."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈfɪkəl",
   "origin": "Old English ficol",
   "partOfSpeech": "adjective"
@@ -22499,7 +22499,7 @@
    "A potted rubber plant.",
    "In the same genus as the fig."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "ˈfaɪkəs",
   "partOfSpeech": "noun"
  },
@@ -22541,7 +22541,7 @@
    "A demon in a horror story.",
    "A wicked person; also an obsessive addict, as in 'sweet-toothed ___'."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈfiːnd",
   "partOfSpeech": "noun",
   "origin": "Old English fēond"
@@ -22749,7 +22749,7 @@
    "What a garbage heap is covered in.",
    "Dirt of the most revolting kind."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "fɪlθ",
   "partOfSpeech": "noun",
   "origin": "Old English fȳlþu"
@@ -22804,7 +22804,7 @@
    "Darwin made them famous in the Galapagos.",
    "A small, colourful songbird."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "fɪntʃ",
   "partOfSpeech": "noun",
   "origin": "Old English finċ"
@@ -23014,7 +23014,7 @@
    "A banknote of small value.",
    "British slang for a note with a monarch on it."
   ],
-  "difficulty": "familiar",
+  "difficulty": "stretch",
   "pronunciation": "ˈfaɪvɚ",
   "partOfSpeech": "noun",
   "origin": "five + -er",
@@ -23030,7 +23030,7 @@
    "A person who arranges things quietly.",
    "Also a darkroom chemical that sets a photo."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈfɪksɚ",
   "partOfSpeech": "noun"
  },
@@ -23171,7 +23171,7 @@
    "Often brief and conspicuous.",
    "A quiet surface can suddenly release a burst of light."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "flash",
@@ -23210,7 +23210,7 @@
    "A scientist heats one over a flame.",
    "A small metal bottle for a hot drink."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈflɑːsk",
   "partOfSpeech": "noun",
   "origin": "Old English flasce, from Medieval Latin flascō"
@@ -23293,7 +23293,7 @@
    "A ripe fig or a plump peach has this quality when you bite in.",
    "Its interior is thick and pulpy rather than watery."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "flick",
@@ -23537,7 +23537,7 @@
    "A driver may do this to a speed limit.",
    "To show contempt for a law."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "flaʊt",
   "partOfSpeech": "verb"
  },
@@ -23638,7 +23638,7 @@
    "Usually resists reliable repetition.",
    "A success may tell us very little about the method."
   ],
-  "difficulty": "challenging"
+  "difficulty": "stretch"
  },
  {
   "word": "flume",
@@ -23663,7 +23663,7 @@
    "What a student does with a bad grade.",
    "The opposite of pass."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "flʌŋk",
   "partOfSpeech": "verb",
   "origin": "blend of flinch + funk",
@@ -23678,7 +23678,7 @@
    "Light snow that is gone by lunch.",
    "A burst of activity just before a deadline."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈflʌɹi",
   "partOfSpeech": "noun",
   "example": "He had to close the window against the flurries."
@@ -23928,7 +23928,7 @@
    "Posts pictures of every dish.",
    "Queues for a new restaurant opening."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈfuːdi",
   "partOfSpeech": "noun",
   "origin": "food + -ie",
@@ -24166,7 +24166,7 @@
    "A place for open discussion online.",
    "The central square of ancient Rome."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈfɔːɹəm",
   "partOfSpeech": "noun",
   "origin": "Latin forum"
@@ -24520,7 +24520,7 @@
    "A Greek temple wall carries a continuous procession of carved horsemen beneath the roof.",
    "Look just below the cornice of a grand old building for a painted strip of ornament."
   ],
-  "difficulty": "challenging"
+  "difficulty": "stretch"
  },
  {
   "word": "fright",
@@ -24545,7 +24545,7 @@
    "A pleated edge on a dress.",
    "An unnecessary extra."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "fɹɪl",
   "partOfSpeech": "noun"
  },
@@ -24572,7 +24572,7 @@
    "What a security guard may do to you.",
    "To skip about playfully, as a puppy does."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "fɹɪsk",
   "partOfSpeech": "verb",
   "origin": "Middle French frisque, from Old High German frisc",
@@ -24587,7 +24587,7 @@
    "What a machine does when it is going wrong.",
    "Found in an idiom about broken machines."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "fɹɪts",
   "partOfSpeech": "noun"
  },
@@ -24916,7 +24916,7 @@
    "The public outcry over a scandal.",
    "A burst of uproar."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "ˈfjʊəɹɔː",
   "partOfSpeech": "noun",
   "origin": "Middle French fureur, from Latin furor",
@@ -25115,7 +25115,7 @@
    "Trail gear for a snowy January hike.",
    "A sealed band at the ankle keeps snow out of the boot."
   ],
-  "difficulty": "stretch"
+  "difficulty": "challenging"
  },
  {
   "word": "galaxy",
@@ -25275,7 +25275,7 @@
    "'To run the ___' is to experience everything from one end to the other.",
    "The full range of notes in a scale."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "ˈɡæmət",
   "partOfSpeech": "noun",
   "origin": "Medieval Latin gamma ut",
@@ -25407,7 +25407,7 @@
    "A can of soda that's been shaken.",
    "Bloated after beans."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈɡæsi",
   "partOfSpeech": "adjective",
   "origin": "gas + -y"
@@ -25462,7 +25462,7 @@
    "A very bright, over-decorated outfit.",
    "Too flashy for good taste."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈɡɔːdi",
   "partOfSpeech": "adjective",
   "origin": "Old French gaudie, from Old French gaude",
@@ -25477,7 +25477,7 @@
    "A fuel one shows how much is left.",
    "To estimate how people feel."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈɡeɪdʒ",
   "partOfSpeech": "noun",
   "origin": "Middle English gauge"
@@ -25506,7 +25506,7 @@
    "A bandage wrapped over a cut.",
    "A very light, open-weave cotton."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ɡɔːz",
   "partOfSpeech": "noun",
   "origin": "French gaze, from Arabic قَزّ"
@@ -25548,7 +25548,7 @@
    "Merrier in mood.",
    "Brighter and more festive than before."
   ],
-  "difficulty": "familiar",
+  "difficulty": "stretch",
   "pronunciation": "ɡeɪə(ɹ)"
  },
  {
@@ -25571,7 +25571,7 @@
    "Might be found staring at the sky.",
    "The 'star' kind looks upward at night."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "partOfSpeech": "noun"
  },
  {
@@ -25583,7 +25583,7 @@
    "A small lizard found in warm places.",
    "Known for walking up walls and glass."
   ],
-  "difficulty": "familiar",
+  "difficulty": "stretch",
   "pronunciation": "ˈɡɛkəʊ",
   "partOfSpeech": "noun",
   "origin": "Dutch gekko, from Acehnese gèh-gòh",
@@ -25693,7 +25693,7 @@
    "Sequenced in a famous project.",
    "DNA's whole instruction book."
   ],
-  "difficulty": "familiar",
+  "difficulty": "stretch",
   "pronunciation": "ˈdʒiːnəʊm",
   "partOfSpeech": "noun",
   "origin": "German Genom",
@@ -25830,7 +25830,7 @@
    "A historic walled area in Venice.",
    "Area where a group is confined or concentrated."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈɡɛtəʊ",
   "partOfSpeech": "noun"
  },
@@ -25906,7 +25906,7 @@
    "How a fast spin on a roundabout can leave you.",
    "Feeling silly with delight."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈɡɪdi",
   "partOfSpeech": "adjective",
   "origin": "Old English gidiġ"
@@ -25973,7 +25973,7 @@
    "A word for things like pink and glitter.",
    "A description of a sort of style."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈɡɜːli"
  },
  {
@@ -26045,7 +26045,7 @@
    "An interruption within a landscape.",
    "Sunlight reaches a space surrounded by trees."
   ],
-  "difficulty": "challenging"
+  "difficulty": "stretch"
  },
  {
   "word": "gladly",
@@ -26085,7 +26085,7 @@
    "The thyroid is one in your neck.",
    "It secretes something the body needs."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ɡlænd",
   "partOfSpeech": "noun",
   "origin": "French glande, from Latin glandulae",
@@ -26203,7 +26203,7 @@
    "The flash from a blade or coin.",
    "A sparkle in someone's eye."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ɡlɪnt",
   "partOfSpeech": "noun",
   "origin": "Scots glint, from Middle English glenten"
@@ -26567,7 +26567,7 @@
    "An exclamation your grandfather might use.",
    "A softened oath, close to 'gosh'."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈɡɒli",
   "partOfSpeech": "interjection",
   "example": "Golly! That was a long trip to California."
@@ -26581,7 +26581,7 @@
    "A biology word for an ovary or testis.",
    "Produces eggs or sperm."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "ˈɡəʊnæd",
   "partOfSpeech": "noun",
   "origin": "New Latin gonadēs, from Ancient Greek γονή",
@@ -26597,7 +26597,7 @@
    "Said of a plant that will not recover.",
    "You are this if the cliff crumbles."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈɡɒnə(ɹ)",
   "partOfSpeech": "noun",
   "origin": "gone + -er",
@@ -26638,7 +26638,7 @@
    "Found in a party bag.",
    "A cry a child may make at a treat."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈɡʊdi",
   "partOfSpeech": "noun"
  },
@@ -26691,7 +26691,7 @@
    "Lawns in the American Midwest often show its mounds of loose soil.",
    "Its underground tunnels can wreck a vegetable garden in a single season."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "gorge",
@@ -26836,7 +26836,7 @@
    "Decorative in autumn displays.",
    "Hollowed and dried for use as a container."
   ],
-  "difficulty": "familiar",
+  "difficulty": "stretch",
   "pronunciation": "ɡʊəd",
   "partOfSpeech": "noun",
   "origin": "Anglo-Norman gurde, from Latin cucurbita"
@@ -26878,7 +26878,7 @@
    "A big road machine with a long blade.",
    "An American child in a specific school year."
   ],
-  "difficulty": "familiar",
+  "difficulty": "stretch",
   "pronunciation": "ˈɡɹeɪdə",
   "partOfSpeech": "noun",
   "origin": "grade + -er",
@@ -26941,7 +26941,7 @@
    "It can run straight, curl, or catch the light.",
    "A craftsperson usually follows it rather than fighting it."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "grand",
@@ -27300,7 +27300,7 @@
    "What the bereaved do after a death.",
    "Sorrow felt at a funeral."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ɡɹiːv",
   "partOfSpeech": "verb",
   "origin": "Old French grever, from Latin gravō",
@@ -27342,7 +27342,7 @@
    "What builds up on an unwashed window.",
    "A mechanic's hands might be coated in it."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ɡɹaɪm",
   "partOfSpeech": "noun",
   "origin": "Old English grīma",
@@ -27400,7 +27400,7 @@
    "Wheat for the miller.",
    "Part of the phrase for useful material."
   ],
-  "difficulty": "stretch",
+  "difficulty": "challenging",
   "pronunciation": "ɡɹɪst",
   "partOfSpeech": "noun",
   "origin": "Old English grist"
@@ -27441,7 +27441,7 @@
    "A muscle strain might occur here.",
    "Part of the body near the hip."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "partOfSpeech": "noun",
   "origin": "Old English grynde"
  },
@@ -27853,7 +27853,7 @@
    "Concerns how someone or something is presented.",
    "A harmless appearance can conceal a different purpose."
   ],
-  "difficulty": "challenging"
+  "difficulty": "stretch"
  },
  {
   "word": "guitar",
@@ -28199,7 +28199,7 @@
    "What bad stage acting is called.",
    "Describes theatrical overdoing."
   ],
-  "difficulty": "familiar",
+  "difficulty": "stretch",
   "partOfSpeech": "adjective"
  },
  {
@@ -28397,7 +28397,7 @@
    "Describes plants that survive winter frost.",
    "A word for a sturdy mountain pony."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈhɑːdi",
   "partOfSpeech": "adjective",
   "origin": "Old French hardi",
@@ -28484,7 +28484,7 @@
    "As in a Terminator farewell.",
    "Spanish preposition for until."
   ],
-  "difficulty": "familiar",
+  "difficulty": "stretch",
   "pronunciation": "ˈhæstə",
   "origin": "Spanish hasta"
  },
@@ -28515,7 +28515,7 @@
    "Concerns how an action was taken.",
    "There may have been too little time for consideration."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "hatch",
@@ -28581,7 +28581,7 @@
    "A sheltered bay for ships.",
    "Somewhere you feel safe and protected."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈheɪvən",
   "partOfSpeech": "noun",
   "origin": "Old English hæfen, from Old Norse hǫfn"
@@ -28595,7 +28595,7 @@
    "A storm can wreak it.",
    "What a toddler loose in a kitchen causes."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈhævək",
   "partOfSpeech": "noun",
   "origin": "Old French havok, from Old French crier"
@@ -28667,7 +28667,7 @@
    "A shaman is described this way.",
    "Time is called one in a common saying."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈhiːlə(ɹ)",
   "partOfSpeech": "noun",
   "origin": "Middle English helere",
@@ -28739,7 +28739,7 @@
    "A thick stew on a cold night is this.",
    "A big laugh or a firm handshake."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈhɑːti",
   "partOfSpeech": "adjective",
   "origin": "heart + -y"
@@ -28770,7 +28770,7 @@
    "Describes a kind of open land.",
    "Low shrubs thrive where a forest does not dominate."
   ],
-  "difficulty": "challenging"
+  "difficulty": "stretch"
  },
  {
   "word": "heave",
@@ -28868,7 +28868,7 @@
    "Can describe an uneasy commitment.",
    "A promise qualified by several conditions might do this."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "hefty",
@@ -28879,7 +28879,7 @@
    "Describes a large, weighty parcel.",
    "A burly man with a mighty swing."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈhɛfti",
   "partOfSpeech": "adjective",
   "origin": "heft"
@@ -29019,7 +29019,7 @@
    "A red-brown plant dye for hands.",
    "Painted on a bride's hands."
   ],
-  "difficulty": "familiar",
+  "difficulty": "stretch",
   "pronunciation": "hɛnə",
   "partOfSpeech": "noun",
   "origin": "Arabic حِنَّاء"
@@ -29286,7 +29286,7 @@
    "What pirates did to ships, but with planes.",
    "A conversation, a march or a flight can be taken over this way."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈhaɪdʒæk",
   "partOfSpeech": "verb",
   "example": "They hijacked the judicial process."
@@ -29386,7 +29386,7 @@
    "A snag in the plans.",
    "To thumb a ride, informally."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "hɪtʃ",
   "partOfSpeech": "noun"
  },
@@ -29399,7 +29399,7 @@
    "A figure in crime films, often in a dark suit and sunglasses.",
    "Mob bosses hire one to settle a score quietly."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈhɪtmæːn",
   "partOfSpeech": "noun",
   "example": "Layla had a dangerous liaison with a hitman.",
@@ -29431,7 +29431,7 @@
    "May be motivated by uncertainty.",
    "The owner accumulates things but is reluctant to use them."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "hoary",
@@ -29511,7 +29511,7 @@
    "A flag may be pulled up this way.",
    "A crane does it with a heavy load."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "hɔɪst",
   "partOfSpeech": "verb",
   "origin": "Middle Dutch hisen"
@@ -29711,7 +29711,7 @@
    "A caravan park offers one for electricity.",
    "A campervan owner plugs into a utility one."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈhʊkʌp",
   "partOfSpeech": "noun",
   "example": "The plumber came to fix the sewer hookup."
@@ -29790,7 +29790,7 @@
    "Bitter flavour in a pale ale.",
    "IPA drinkers like their beer this way."
   ],
-  "difficulty": "familiar",
+  "difficulty": "stretch",
   "pronunciation": "ˈhɒpi",
   "partOfSpeech": "adjective"
  },
@@ -29803,7 +29803,7 @@
    "A swarm of tourists.",
    "Zombies come in these."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "hɔːd",
   "partOfSpeech": "noun",
   "origin": "Middle French horde, from Russian орда́"
@@ -29833,7 +29833,7 @@
    "A childish word for a nasty person or thing.",
    "Roald Dahl's Aunts Sponge and Spiker were this."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈhɒɹɪd",
   "origin": "Latin horridus",
   "partOfSpeech": "adjective"
@@ -30454,7 +30454,7 @@
    "It can hang from a roof after a thaw.",
    "It is a frozen drip with a sharp point."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "icily",
@@ -30582,7 +30582,7 @@
    "A spark plug does this to the fuel in an engine.",
    "A single match can do this to a heap of dry leaves."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ɪɡˈnaɪt",
   "partOfSpeech": "verb",
   "origin": "Latin ignītus, from Latin ignis"
@@ -31244,7 +31244,7 @@
    "Slang question tag at the end of a sentence.",
    "Short for a very common British question."
   ],
-  "difficulty": "familiar",
+  "difficulty": "stretch",
   "pronunciation": "ˈɪnɪt"
  },
  {
@@ -31314,7 +31314,7 @@
    "A small map inside a bigger map.",
    "A small panel set into a larger surface."
   ],
-  "difficulty": "familiar",
+  "difficulty": "stretch",
   "pronunciation": "ˈɪnsɛt",
   "origin": "Old English insettan"
  },
@@ -31962,7 +31962,7 @@
    "Said by one mate to another who won't dive off the rocks.",
    "A British put-down for a nervous chap."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "partOfSpeech": "noun"
  },
  {
@@ -32109,7 +32109,7 @@
    "It is a meeting point rather than a separate object.",
    "A dovetail is a celebrated kind of this."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "joist",
@@ -32246,7 +32246,7 @@
    "A countertop gadget you might find next to the blender.",
    "Unlike a blender, it leaves the fibrous leftovers behind."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "juicy",
@@ -32340,7 +32340,7 @@
    "Slang that jokingly follows 'adrenaline' or 'sugar'.",
    "Originally street slang for a heroin addict."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈdʒʌŋki",
   "partOfSpeech": "noun"
  },
@@ -32509,7 +32509,7 @@
    "Felt most strongly after a loss.",
    "Awaiting results with eager interest."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈkiːnli",
   "partOfSpeech": "adverb",
   "origin": "Old English cēnlīċe",
@@ -32621,7 +32621,7 @@
    "A common colour for army trousers.",
    "A word that literally means dusty."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈkɑːki",
   "partOfSpeech": "noun",
   "origin": "Classical Persian خَاکِی"
@@ -32850,7 +32850,7 @@
    "An action whose effects build through repetition.",
    "Hands work a mixture until its texture changes."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "kneel",
@@ -33057,7 +33057,7 @@
    "You might hear it from a grumpy relative over a holiday dinner.",
    "Used with a jokey, affectionate tone in some circles."
   ],
-  "difficulty": "challenging"
+  "difficulty": "stretch"
  },
  {
   "word": "label",
@@ -33109,7 +33109,7 @@
    "Old novels often show one waiting by a rich man's door.",
    "Such a person never disagrees with whoever is in charge."
   ],
-  "difficulty": "challenging"
+  "difficulty": "stretch"
  },
  {
   "word": "lacuna",
@@ -33175,7 +33175,7 @@
    "Usually encountered in a glass.",
    "Patience at cool temperatures matters in its production."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "lagoon",
@@ -33202,7 +33202,7 @@
    "A Scottish lord of the manor.",
    "Owner of a Highland estate."
   ],
-  "difficulty": "stretch",
+  "difficulty": "challenging",
   "pronunciation": "lɛːd",
   "partOfSpeech": "noun",
   "origin": "Scots laird, from Middle English lard"
@@ -33274,7 +33274,7 @@
    "A pennant flutters from the tip of a long pole.",
    "Battle paintings from the Napoleonic era show these riders in formation."
   ],
-  "difficulty": "stretch"
+  "difficulty": "challenging"
  },
  {
   "word": "lancet",
@@ -33285,7 +33285,7 @@
    "A surgeon's small, sharp blade.",
    "The medical journal named after it is among the oldest."
   ],
-  "difficulty": "stretch",
+  "difficulty": "challenging",
   "pronunciation": "ˈlɑːnsɪt",
   "partOfSpeech": "noun",
   "origin": "Old French lancete"
@@ -33340,7 +33340,7 @@
    "Blue stone in ancient Egyptian jewellery.",
    "Ground to make a precious ultramarine paint."
   ],
-  "difficulty": "stretch",
+  "difficulty": "challenging",
   "pronunciation": "ˈlæpɪs",
   "partOfSpeech": "noun"
  },
@@ -33667,7 +33667,7 @@
    "A banquet with gold plates and endless wine.",
    "A spoiled guest receiving it is showered with gifts."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈlævɪʃ",
   "origin": "Old French lavasse, from Middle English laven",
   "partOfSpeech": "adjective",
@@ -34315,7 +34315,7 @@
    "Tarzan swings from one.",
    "A rope-like vine in the jungle."
   ],
-  "difficulty": "stretch",
+  "difficulty": "challenging",
   "pronunciation": "liːˈɑːnə",
   "partOfSpeech": "noun",
   "origin": "French liane"
@@ -34472,7 +34472,7 @@
    "Waiting with no decision made.",
    "Also a dance with a low bar."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈlɪmbəʊ",
   "partOfSpeech": "noun",
   "origin": "Latin limbō; in English since the mid 17th century"
@@ -34776,7 +34776,7 @@
    "What music might do to a quiet party.",
    "Often followed by up."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈlaɪvən",
   "partOfSpeech": "verb",
   "origin": "life + -en",
@@ -34979,7 +34979,7 @@
    "A temporary stand-in for a regular doctor.",
    "From a Latin phrase meaning place-holder."
   ],
-  "difficulty": "stretch",
+  "difficulty": "challenging",
   "pronunciation": "ˈləʊkəm",
   "partOfSpeech": "noun"
  },
@@ -35020,7 +35020,7 @@
    "A mountain peak or an ambition.",
    "Aims that are grand and ambitious."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈlɒfti",
   "partOfSpeech": "adjective",
   "origin": "Middle English lofty",
@@ -35316,7 +35316,7 @@
    "Shutters on a farmhouse barn have angled wooden strips that let breezes through.",
    "Attics in old houses often vent through angled panels set high in the gable."
   ],
-  "difficulty": "challenging"
+  "difficulty": "stretch"
  },
  {
   "word": "lovely",
@@ -35354,7 +35354,7 @@
    "A pet name, or a toddler's blanket.",
    "Term of endearment from a shopkeeper."
   ],
-  "difficulty": "familiar",
+  "difficulty": "stretch",
   "pronunciation": "ˈlʌvi",
   "partOfSpeech": "noun",
   "origin": "love + -y"
@@ -35438,7 +35438,7 @@
    "It often appears in moralising sermons and old novels about greed.",
    "Moralists sneer at anyone who chases it too eagerly."
   ],
-  "difficulty": "stretch"
+  "difficulty": "challenging"
  },
  {
   "word": "lumbar",
@@ -35518,7 +35518,7 @@
    "Describes an association.",
    "A calendar can follow this cycle instead of the Sun's."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "lunch",
@@ -35685,7 +35685,7 @@
    "Discussed in relation to circulation and immunity.",
    "Swelling can prompt a doctor to consider how this fluid is draining."
   ],
-  "difficulty": "challenging"
+  "difficulty": "stretch"
  },
  {
   "word": "lynch",
@@ -35696,7 +35696,7 @@
    "A killing by an unlawful crowd.",
    "An unlawful execution by a mob."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "lɪntʃ",
   "partOfSpeech": "verb"
  },
@@ -35737,7 +35737,7 @@
    "A loud, colourful tropical bird.",
    "A big parrot with a long tail and a hooked beak."
   ],
-  "difficulty": "familiar",
+  "difficulty": "stretch",
   "pronunciation": "məˈkɔː",
   "partOfSpeech": "noun",
   "origin": "Portuguese macau",
@@ -35753,7 +35753,7 @@
    "Describes a man keen to prove his toughness.",
    "Spanish for male, now a word for swagger."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈmætʃəʊ",
   "origin": "Spanish macho, from Latin masculus",
   "partOfSpeech": "adjective"
@@ -36047,7 +36047,7 @@
    "A fast African snake whose bite is deadly.",
    "Black and green kinds are both feared."
   ],
-  "difficulty": "familiar",
+  "difficulty": "stretch",
   "pronunciation": "ˈmæmbə",
   "partOfSpeech": "noun",
   "example": "The African Black mamba is a large and highly venomous snake.",
@@ -36527,7 +36527,7 @@
    "What donors give to cure leukaemia.",
    "A giant courgette, in British vegetable shows."
   ],
-  "difficulty": "familiar",
+  "difficulty": "stretch",
   "pronunciation": "ˈmæɹəʊ",
   "partOfSpeech": "noun",
   "origin": "Old English mearg"
@@ -36570,7 +36570,7 @@
    "Birdwatchers wade through reeds and cattails in such places.",
    "Boots sink into the soggy, grassy ground with every step."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "marten",
@@ -36581,7 +36581,7 @@
    "A forest creature glimpsed in a conifer wood at dusk.",
    "Its thick, glossy coat was once traded widely for warm clothing."
   ],
-  "difficulty": "stretch"
+  "difficulty": "challenging"
  },
  {
   "word": "martyr",
@@ -36592,7 +36592,7 @@
    "Someone who dies for a cause.",
    "An overworked person who complains about it."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈmɑːtə(ɹ)",
   "partOfSpeech": "noun",
   "origin": "Old English martyr, from Ancient Greek μάρτυρ"
@@ -37016,7 +37016,7 @@
    "Dessert named after an opera singer.",
    "Peach and ice cream together."
   ],
-  "difficulty": "stretch",
+  "difficulty": "challenging",
   "partOfSpeech": "noun",
   "example": "We are eating melba toast with pink sprinkles because it was a girl.",
   "exampleSource": "https://tatoeba.org/en/sentences/show/8979573"
@@ -37527,7 +37527,7 @@
    "A word for the centre of the action.",
    "Found in 'in the' phrase meaning in the middle of."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "mɪdst",
   "partOfSpeech": "noun",
   "origin": "Old English midde",
@@ -38003,7 +38003,7 @@
    "A grammar word for a kind of helper verb.",
    "Can, must and might are examples."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "ˈməʊdəl",
   "partOfSpeech": "adjective",
   "origin": "Middle French modal, from Latin modus"
@@ -38032,7 +38032,7 @@
    "A box with blinking lights near the router.",
    "Old ones screeched when they connected."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈməʊdəm",
   "partOfSpeech": "noun",
   "origin": "Clipping of modulator-demodulator"
@@ -38116,7 +38116,7 @@
    "Think of the shimmering sheen on an old silk ribbon.",
    "The ripples seem to move as you tilt the cloth in the light."
   ],
-  "difficulty": "stretch"
+  "difficulty": "challenging"
  },
  {
   "word": "moist",
@@ -38144,7 +38144,7 @@
    "An everyday part of the body with a specialised job.",
    "Its work becomes especially noticeable when chewing something tough."
   ],
-  "difficulty": "challenging"
+  "difficulty": "familiar"
  },
  {
   "word": "moldy",
@@ -38384,7 +38384,7 @@
    "An insult for a dim person.",
    "Used in 1900s psychology before becoming slang."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈmɔːɹɒn",
   "partOfSpeech": "noun",
   "origin": "Ancient Greek μωρόν"
@@ -38636,7 +38636,7 @@
    "Often written under a coat of arms.",
    "A school's Latin slogan."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈmɒtəʊ",
   "partOfSpeech": "noun",
   "origin": "Italian motto, from Latin muttum"
@@ -38710,7 +38710,7 @@
    "Can concern something that cannot return.",
    "The loss need not be a person's death."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "mouse",
@@ -38856,7 +38856,7 @@
    "Produced when you have a cold.",
    "A slimy bodily secretion."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈmjuːkəs",
   "partOfSpeech": "noun",
   "origin": "Latin mūcus, from Old English slīm",
@@ -38900,7 +38900,7 @@
    "What a soldier wears off-duty.",
    "A day when a school wears no uniform."
   ],
-  "difficulty": "stretch",
+  "difficulty": "challenging",
   "pronunciation": "ˈmʌfti",
   "partOfSpeech": "noun",
   "origin": "Ottoman Turkish مفتی, from Arabic مُفْتِي"
@@ -39211,7 +39211,7 @@
    "The crew of the Bounty rose up against Captain Bligh.",
    "Sailors seize the ship from the captain."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈmjutəni",
   "partOfSpeech": "noun",
   "origin": "Middle French mutiner"
@@ -39352,7 +39352,7 @@
    "Oysters build it up inside their shells over many years.",
    "Pearl buttons on old shirts were often cut from its layers."
   ],
-  "difficulty": "stretch"
+  "difficulty": "challenging"
  },
  {
   "word": "nadir",
@@ -39366,7 +39366,7 @@
    "Often used when describing changing fortunes.",
    "Think of the turning point before a recovery."
   ],
-  "difficulty": "challenging"
+  "difficulty": "stretch"
  },
  {
   "word": "naira",
@@ -39377,7 +39377,7 @@
    "Money spent in Lagos.",
    "Replaced the Nigerian pound."
   ],
-  "difficulty": "stretch",
+  "difficulty": "challenging",
   "partOfSpeech": "noun"
  },
  {
@@ -39434,7 +39434,7 @@
    "A grandmother's pet name.",
    "What a toddler might call a granny."
   ],
-  "difficulty": "familiar",
+  "difficulty": "stretch",
   "partOfSpeech": "noun"
  },
  {
@@ -39515,7 +39515,7 @@
    "A kind of voice or a kind of spray.",
    "Describes a voice that hums through the nose."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈneɪzəl",
   "origin": "Medieval Latin nāsālis",
   "partOfSpeech": "adjective"
@@ -39614,7 +39614,7 @@
    "What a rough crossing does to passengers.",
    "Its root is the Greek word for a ship."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈnɔːzɪə",
   "partOfSpeech": "noun",
   "origin": "Latin nausea, from Ancient Greek ναυσία",
@@ -39746,7 +39746,7 @@
    "Hummingbirds sip it from the base of a blossom.",
    "Bees carry it home to turn into honey."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈnɛktə",
   "partOfSpeech": "noun",
   "origin": "Latin nectar, from Ancient Greek νέκταρ; in English since the 17th century"
@@ -39833,7 +39833,7 @@
    "A foam toy brand gave this its name.",
    "The opposite was borrowed from polishing."
   ],
-  "difficulty": "challenging"
+  "difficulty": "stretch"
  },
  {
   "word": "nerve",
@@ -40279,7 +40279,7 @@
    "A herder who follows his animals.",
    "Lives out of a tent, travelling."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈnəʊmæd",
   "partOfSpeech": "noun",
   "origin": "Middle French nomade, from Ancient Greek νομάς"
@@ -40308,7 +40308,7 @@
    "A rope with a sliding knot.",
    "A hangman's loop."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "nuːs",
   "partOfSpeech": "noun",
   "origin": "Old French nos, from Old Occitan nous"
@@ -40644,7 +40644,7 @@
    "Clinical term for being very overweight.",
    "A health risk measured by BMI."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "əʊˈbiːs",
   "partOfSpeech": "adjective",
   "origin": "Latin obēsus"
@@ -40906,7 +40906,7 @@
    "Ancient building for music, and a cinema name.",
    "A cinema chain borrowed it."
   ],
-  "difficulty": "stretch",
+  "difficulty": "challenging",
   "pronunciation": "ˈəʊdɪən",
   "partOfSpeech": "noun",
   "origin": "Ancient Greek ᾠδεῖον"
@@ -41187,7 +41187,7 @@
    "A tea shop lists it between the green and black varieties.",
    "Its leaves are partly oxidized, midway along the tea spectrum."
   ],
-  "difficulty": "challenging"
+  "difficulty": "stretch"
  },
  {
   "word": "oomph",
@@ -41533,7 +41533,7 @@
    "Listen for a rich, flute-like whistle high in shade trees.",
    "Its bright colour stands out against spring leaves."
   ],
-  "difficulty": "challenging"
+  "difficulty": "stretch"
  },
  {
   "word": "orison",
@@ -41967,7 +41967,7 @@
    "A layer high up shields us from ultraviolet rays.",
    "Its hole over the poles worried the world."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈəʊzəʊn",
   "partOfSpeech": "noun",
   "origin": "German Ozon, from Ancient Greek ὄζον"
@@ -42086,7 +42086,7 @@
    "A word from early church history.",
    "Once meant someone from the countryside."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈpeɪɡən",
   "partOfSpeech": "noun",
   "origin": "Latin pāgānus, from Middle English payen",
@@ -42209,7 +42209,7 @@
    "An old name for paralysis.",
    "Bell's is a famous kind."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "ˈpælzi",
   "partOfSpeech": "noun",
   "origin": "Anglo-Norman paralisie, from Ancient Greek παράλυσις"
@@ -42453,7 +42453,7 @@
    "A Victorian family kept their best furniture in one.",
    "An ice cream shop calls itself an ice cream one."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈpɑːlə",
   "partOfSpeech": "noun",
   "origin": "Old French parleor, from Medieval Latin parlātōrium"
@@ -42595,7 +42595,7 @@
    "Out of style.",
    "Fashion words say it for old hat."
   ],
-  "difficulty": "familiar",
+  "difficulty": "stretch",
   "partOfSpeech": "adjective"
  },
  {
@@ -42889,7 +42889,7 @@
    "Who hands over the money.",
    "On a cheque or invoice, the debtor takes this role."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈpeɪɚ",
   "partOfSpeech": "noun",
   "example": "The company is the largest tax payer in the region."
@@ -43001,7 +43001,7 @@
    "A seashell's inner lining has this sheen.",
    "Freshwater mussels show a soft, milky glow like this."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "pebble",
@@ -43079,7 +43079,7 @@
    "Fed to hamsters or fired from an air gun.",
    "What an owl coughs up."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈpɛlɪt",
   "partOfSpeech": "noun",
   "origin": "Old French pelote, from Latin pila"
@@ -43107,7 +43107,7 @@
    "Elvis swivelled this part of his body.",
    "The bones your hips are attached to."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈpɛlvɪs",
   "partOfSpeech": "noun",
   "origin": "Latin pēlvis, from Old Latin pēluis"
@@ -43176,7 +43176,7 @@
    "Big, ruffled blooms in late spring.",
    "Peachy blossoms with a sweet scent."
   ],
-  "difficulty": "familiar",
+  "difficulty": "stretch",
   "pronunciation": "ˈpiːəni",
   "partOfSpeech": "noun",
   "origin": "Old English peonie, from Old French peone",
@@ -43351,7 +43351,7 @@
    "A solicitor might spend an afternoon on a contract, reading every clause.",
    "A diner might do this to a menu before choosing."
   ],
-  "difficulty": "challenging"
+  "difficulty": "stretch"
  },
  {
   "word": "pesky",
@@ -43567,7 +43567,7 @@
    "A word for a fraud.",
    "Describes a smile that is not genuine."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈfoʊni"
  },
  {
@@ -43653,7 +43653,7 @@
    "A line of striking workers at a factory gate.",
    "White fence made of pointed wooden stakes."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈpɪkɪt",
   "partOfSpeech": "noun",
   "origin": "French piquet"
@@ -43851,7 +43851,7 @@
    "Can describe a difficulty without literal contact.",
    "An unexpected bill can put someone in one."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "pinky",
@@ -44046,7 +44046,7 @@
    "Can be physical or strategic.",
    "A fixed point remains while the direction changes."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "pixel",
@@ -44149,7 +44149,7 @@
    "A pattern on a lumberjack shirt.",
    "Tartan is a close cousin."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "plæd",
   "origin": "Scots plaid",
   "partOfSpeech": "noun"
@@ -44220,7 +44220,7 @@
    "It removes less than a saw but more than sandpaper.",
    "Its job is to make a board even and smooth."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "planer",
@@ -44341,7 +44341,7 @@
    "Where people meet in a city centre.",
    "A Spanish word for a town square."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈplæzə",
   "partOfSpeech": "noun",
   "origin": "Spanish plaza, from Ancient Greek πλατεῖα",
@@ -44529,7 +44529,7 @@
    "A builder checks a wall is this.",
    "Weight hanging from a string."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "plʌm",
   "origin": "Latin plumba",
   "partOfSpeech": "adjective",
@@ -44941,7 +44941,7 @@
    "A tiny animal that builds a reef.",
    "A word for a growth with many feet, in Greek."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "ˈpɒlɪp",
   "partOfSpeech": "noun",
   "origin": "Latin polypus, from Ancient Greek πολύπους"
@@ -45006,7 +45006,7 @@
    "Lines French country roads.",
    "Its leaves flutter in the slightest breeze."
   ],
-  "difficulty": "familiar",
+  "difficulty": "stretch",
   "pronunciation": "ˈpɒplə(ɹ)",
   "partOfSpeech": "noun",
   "origin": "Anglo-Norman popler, from Old French poplier"
@@ -45681,7 +45681,7 @@
    "Used to make a rainbow of light.",
    "A shape with triangular ends."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈpɹɪz(ə)m",
   "partOfSpeech": "noun",
   "origin": "Late Latin prisma, from Ancient Greek πρίσμᾰ"
@@ -45766,7 +45766,7 @@
    "A best man's speech that wanders through three decades of anecdotes.",
    "Some legal contracts are written in this style, full of needless clauses."
   ],
-  "difficulty": "stretch"
+  "difficulty": "challenging"
  },
  {
   "word": "promo",
@@ -45877,7 +45877,7 @@
    "They are handled during a performance.",
    "A convincing room on stage may be full of these."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "prose",
@@ -45903,7 +45903,7 @@
    "Critics say a long novel can drag through its middle chapters like this.",
    "Think of a lecturer who reads from notes with no spark and no rhythm."
   ],
-  "difficulty": "stretch"
+  "difficulty": "challenging"
  },
  {
   "word": "proton",
@@ -46366,7 +46366,7 @@
    "A smooth blend of cooked vegetables.",
    "What a blender makes of soup."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈpjʊəɹeɪ",
   "partOfSpeech": "noun",
   "example": "Tomato sauce is generally a puree."
@@ -46411,7 +46411,7 @@
    "What a filter does to water.",
    "Rituals do it to the soul."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈpjʊəɹɪfaɪ",
   "partOfSpeech": "verb",
   "origin": "Old French purifier, from Latin pūrificō"
@@ -46425,7 +46425,7 @@
    "What a jeweller measures in karats.",
    "A quality claimed by spring water and by saints."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈpjʊəɹɪti",
   "partOfSpeech": "noun",
   "origin": "Old French purete, from Latin puritas",
@@ -46537,7 +46537,7 @@
    "Tall steel frame in a field.",
    "Holds up the power lines across hills."
   ],
-  "difficulty": "familiar",
+  "difficulty": "stretch",
   "pronunciation": "ˈpaɪlən",
   "partOfSpeech": "noun",
   "origin": "Ancient Greek πυλών"
@@ -46646,7 +46646,7 @@
    "A reaction can share its name with an event.",
    "Fear may be visible in a person's unsteady body."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "qualm",
@@ -46660,7 +46660,7 @@
    "Often interrupts a decision.",
    "A small moral hesitation can survive a confident argument."
   ],
-  "difficulty": "challenging"
+  "difficulty": "stretch"
  },
  {
   "word": "quant",
@@ -46797,7 +46797,7 @@
    "Old word for peculiar, now also an identity.",
    "Strange, in older use."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "kwɪə",
   "partOfSpeech": "adjective"
  },
@@ -46924,7 +46924,7 @@
    "A small oddity of someone's character.",
    "A habit that makes a person unique."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "kwɜːk",
   "partOfSpeech": "noun",
   "origin": "Old Norse kverk"
@@ -47025,7 +47025,7 @@
    "Leads a synagogue.",
    "A title meaning 'my master' in Hebrew."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈɹæbaɪ",
   "partOfSpeech": "noun",
   "origin": "Ecclesiastical Latin rabbi, from Hebrew רַבִּי"
@@ -47079,7 +47079,7 @@
    "Pasteur is famous for the vaccine against it.",
    "Foaming at the mouth is a classic symptom in a dog."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈɹeɪbiːz",
   "partOfSpeech": "noun",
   "origin": "Latin rabiēs",
@@ -47606,7 +47606,7 @@
    "Arithmetic lent this one to the timeline.",
    "A comparison of two numbers, used as a verdict."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "ration",
@@ -48197,7 +48197,7 @@
    "What an editor may do to a film.",
    "Trimming something a second time."
   ],
-  "difficulty": "challenging",
+  "difficulty": "familiar",
   "partOfSpeech": "verb"
  },
  {
@@ -48280,7 +48280,7 @@
    "Objects associated with winding.",
    "A projectionist once had to change these during a film."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "reeve",
@@ -48334,7 +48334,7 @@
    "Crude oil goes through a plant to get this treatment.",
    "Sugar is processed this way to turn white."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ɹɪˈfaɪn",
   "partOfSpeech": "verb"
  },
@@ -48577,7 +48577,7 @@
    "Can describe an era as well as a person's actions.",
    "A successor brings this period to an end."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "reiki",
@@ -48717,7 +48717,7 @@
    "What old photographs and anniversaries invite you to do.",
    "Veterans and sports fans both talk about doing this with big moments."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ɹiːˈlɪv",
   "partOfSpeech": "verb",
   "example": "I relive that horrible accident every night and wake screaming."
@@ -49038,7 +49038,7 @@
    "What a spray does to mosquitoes.",
    "Like poles do it to each other."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ɹɪˈpɛl",
   "partOfSpeech": "verb",
   "origin": "Latin repellere; in English since the 15th century"
@@ -49163,7 +49163,7 @@
    "A sibling might do this about a brother's favoured treatment.",
    "Bitter feelings about an unfair promotion."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ɹiˈzɛnt",
   "partOfSpeech": "verb",
   "origin": "Middle French ressentir, from Old French resentir",
@@ -49431,7 +49431,7 @@
    "A shop might do this to its look before a grand reopening.",
    "A tired website gets an overhaul."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ɹiːˈvæmp",
   "partOfSpeech": "verb",
   "origin": "re-; in English since the early 19th century",
@@ -49692,7 +49692,7 @@
    "Tacks on to 'bug' or 'debt' to mean overrun with it.",
    "What a horse has been after a day on the trail."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈɹɪdn̩",
   "partOfSpeech": "adjective",
   "origin": "ride + -en"
@@ -49816,7 +49816,7 @@
    "Sounds the church bells on Sunday.",
    "A fake who takes the place of a champion."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈɹɪŋə(ɹ)",
   "partOfSpeech": "noun",
   "origin": "Middle English ringere"
@@ -49956,7 +49956,7 @@
    "Split in two by a quarrel or a lightning bolt.",
    "Describes a party divided by dissent."
   ],
-  "difficulty": "stretch",
+  "difficulty": "challenging",
   "pronunciation": "ˈɹɪvən",
   "partOfSpeech": "adjective",
   "origin": "Middle English riven"
@@ -50481,7 +50481,7 @@
    "A vehicle that explores Mars.",
    "A wanderer who never settles."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈɹəʊvə",
   "partOfSpeech": "noun",
   "origin": "Old Norse ráfa"
@@ -50582,7 +50582,7 @@
    "Money spent in Moscow.",
    "Russian currency, in 100 kopeks."
   ],
-  "difficulty": "familiar",
+  "difficulty": "stretch",
   "pronunciation": "ˈɹuːbəl",
   "partOfSpeech": "noun"
  },
@@ -50623,7 +50623,7 @@
    "A breeze can do this to a flag, and a rude comment to a calm colleague.",
    "Birds do this to their plumage when they fluff up."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "rugby",
@@ -50827,7 +50827,7 @@
    "Peasant farmers in old European villages slipped their feet into these.",
    "Its heavy base clatters loudly on cobblestones."
   ],
-  "difficulty": "stretch"
+  "difficulty": "challenging"
  },
  {
   "word": "sabre",
@@ -51038,7 +51038,7 @@
    "Makes your mouth water at the smell of food.",
    "Pavlov's dogs produced it when a bell rang."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "səˈlaɪvə",
   "partOfSpeech": "noun",
   "origin": "Latin salīva, from Middle English salive",
@@ -51165,7 +51165,7 @@
    "A volley of cannon fire.",
    "An opening attack in a dispute."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "ˈsælvəʊ",
   "partOfSpeech": "noun",
   "origin": "Latin salvo"
@@ -51273,7 +51273,7 @@
    "A poison gas banned by international treaty.",
    "Its name is built from the initials of its inventors."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "ˈsɑːɹɪn",
   "partOfSpeech": "noun"
  },
@@ -51494,7 +51494,7 @@
    "What boiling water does to skin.",
    "A burn from steam."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "skɔːld",
   "origin": "Old Northern French escalder, from Late Latin excaldāre",
   "partOfSpeech": "verb",
@@ -51922,7 +51922,7 @@
    "A curl of the lip showing contempt.",
    "What you may feel for a bad idea."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "skɔːn",
   "partOfSpeech": "noun",
   "origin": "Old French escharnir, from Old French escarn"
@@ -52051,7 +52051,7 @@
    "Stones sliding on a mountain.",
    "Loose rock that slips under a climber."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "skɹiː",
   "partOfSpeech": "noun"
  },
@@ -52173,7 +52173,7 @@
    "Packed forwards pushing in rugby.",
    "A crush of reporters around a politician."
   ],
-  "difficulty": "familiar",
+  "difficulty": "stretch",
   "pronunciation": "skɹʌm",
   "partOfSpeech": "noun",
   "example": "A scrum developed around the bar when free beer was announced."
@@ -52960,7 +52960,7 @@
    "Rings the bell and tends the churchyard.",
    "Hamlet has a gravedigger who could be this."
   ],
-  "difficulty": "stretch",
+  "difficulty": "challenging",
   "pronunciation": "ˈsɛkstən",
   "partOfSpeech": "noun",
   "origin": "Old French segrestien, from Latin sacer"
@@ -53058,7 +53058,7 @@
    "The long body of an arrow.",
    "A narrow vertical passage in a mine."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈʃɑːft",
   "partOfSpeech": "noun",
   "origin": "Old English sċeaft"
@@ -53314,7 +53314,7 @@
    "A bathroom gadget that buzzes near the sink each morning.",
    "Unlike a manual blade, it needs no rinsing under the tap."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "shawl",
@@ -54636,7 +54636,7 @@
    "A small rowing boat.",
    "A little boat for one or two."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "skɪf",
   "partOfSpeech": "noun",
   "origin": "Middle French esquif, from Lombardic skif"
@@ -54678,7 +54678,7 @@
    "A meal that leaves you hungry might have been served this way.",
    "Swimwear designers are often accused of making it."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "skinny",
@@ -54870,7 +54870,7 @@
    "A tradesman who fixes roof tiles of grey stone.",
    "A little grey creature found under garden stones."
   ],
-  "difficulty": "stretch",
+  "difficulty": "challenging",
   "pronunciation": "ˈsleɪtə",
   "partOfSpeech": "noun",
   "origin": "Middle English sclater"
@@ -54940,7 +54940,7 @@
    "Dogs pull one across snow.",
    "Santa's ride, in British English."
   ],
-  "difficulty": "familiar",
+  "difficulty": "stretch",
   "pronunciation": "slɛdʒ",
   "partOfSpeech": "noun",
   "origin": "Dutch sleedse, from Middle Dutch sleedse",
@@ -55026,7 +55026,7 @@
    "It travels best when roads are covered white.",
    "It slides rather than rolls."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "slice",
@@ -55183,7 +55183,7 @@
    "A one-masted sailboat.",
    "A small ship in the age of sail."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "sluːp",
   "partOfSpeech": "noun",
   "origin": "Dutch sloep"
@@ -55254,7 +55254,7 @@
    "What a snake does with its old skin.",
    "In Pilgrim's Progress, Christian struggles through a muddy bog of Despond that shares the word."
   ],
-  "difficulty": "stretch",
+  "difficulty": "challenging",
   "pronunciation": "slʌf",
   "partOfSpeech": "verb",
   "origin": "Middle English slogh",
@@ -55308,7 +55308,7 @@
    "Collects at the bottom of a sewage tank.",
    "Old engine oil turns into this black gunk."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "slʌdʒ",
   "origin": "Middle English slugge",
   "partOfSpeech": "noun"
@@ -55324,7 +55324,7 @@
    "Can apply to performance or posture.",
    "A difficult season can leave figures well below their earlier level."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "slunk",
@@ -55656,7 +55656,7 @@
    "Two players picked cartoon names to stay anonymous.",
    "Strength disguised as inexperience."
   ],
-  "difficulty": "challenging"
+  "difficulty": "stretch"
  },
  {
   "word": "snack",
@@ -55736,7 +55736,7 @@
    "Sharp and sarcastic commentary online.",
    "Lewis Carroll's poem hunts one."
   ],
-  "difficulty": "familiar",
+  "difficulty": "stretch",
   "pronunciation": "snɑː(ɹ)k",
   "partOfSpeech": "noun",
   "origin": "snore + -k"
@@ -56246,7 +56246,7 @@
    "A submarine's ping.",
    "How a ship finds the seabed."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈsəʊnɑː",
   "partOfSpeech": "noun",
   "example": "They were able to detect the sunken wreck using sonar."
@@ -56316,7 +56316,7 @@
    "Aloe on sunburn does it, and so does a lullaby for a crying baby.",
    "What a warm bath does to tired muscles."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "suːð",
   "partOfSpeech": "verb",
   "origin": "Old English sōþian"
@@ -56370,7 +56370,7 @@
    "A French green soup might be finished with its leaves.",
    "Meadows and field edges often hold this plant among the grasses."
   ],
-  "difficulty": "stretch"
+  "difficulty": "challenging"
  },
  {
   "word": "sorrow",
@@ -56477,7 +56477,7 @@
    "A farmer scattering grain.",
    "The farmer in a famous parable."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "ˈsəʊɚ",
   "partOfSpeech": "noun",
   "origin": "Old English sāwere"
@@ -56534,7 +56534,7 @@
    "Can describe a room, a style, or an amount.",
    "The absence of anything extra is the useful idea."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "spark",
@@ -56549,7 +56549,7 @@
    "Old English, and older than romance.",
    "A trace of fire standing in for feeling."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "sparse",
@@ -56729,7 +56729,7 @@
    "An old variety of wheat.",
    "The British past of a word about letters."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "ˈspɛlt",
   "partOfSpeech": "noun",
   "origin": "Old English spelt, from Late Latin spelta"
@@ -56760,7 +56760,7 @@
    "Describes a condition after use.",
    "There may be nothing left to draw on."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "sperm",
@@ -57443,7 +57443,7 @@
    "Describes a deliberate response to an offer.",
    "The refusal carries more contempt than a simple no."
   ],
-  "difficulty": "challenging"
+  "difficulty": "stretch"
  },
  {
   "word": "spurt",
@@ -57654,7 +57654,7 @@
    "It changes colour without necessarily hiding texture.",
    "A finish may use it before a protective coat."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "stair",
@@ -57697,7 +57697,7 @@
    "A reason to care about the outcome.",
    "What is put forward may be lost if the prediction fails."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "stale",
@@ -57815,7 +57815,7 @@
    "Bacteria that cause boils.",
    "A clump of germs that look like grapes."
   ],
-  "difficulty": "familiar",
+  "difficulty": "stretch",
   "pronunciation": "stæf",
   "partOfSpeech": "noun",
   "example": "Staph infections in hospitals pose a significant threat to the health of postoperative surgical patients.",
@@ -57932,7 +57932,7 @@
    "A hidden hoard of sweets.",
    "A secret store."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "stæʃ",
   "partOfSpeech": "noun",
   "example": "They had quite a stash of food saved up for emergencies."
@@ -58015,7 +58015,7 @@
    "A strip of wood in a barrel.",
    "To keep hunger or danger away for a while."
   ],
-  "difficulty": "stretch",
+  "difficulty": "challenging",
   "pronunciation": "steɪv",
   "partOfSpeech": "noun"
  },
@@ -58028,7 +58028,7 @@
    "A word in an old phrase about taking another's place.",
    "The tail end of the word for a farm and its buildings."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "stɛd",
   "partOfSpeech": "noun",
   "origin": "Old English stede",
@@ -58529,7 +58529,7 @@
    "A character in a comedy film who lounges on a sofa.",
    "A slang term for someone fond of getting high."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈstoʊnɚ",
   "partOfSpeech": "noun",
   "origin": "Middle English stoner"
@@ -58732,7 +58732,7 @@
    "One piece of hair or rope fibre.",
    "What happens to a traveller when the last bus has gone."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈstɹænd",
   "partOfSpeech": "noun"
  },
@@ -59181,7 +59181,7 @@
    "Pilgrims walk clockwise around a whitewashed dome in Sri Lanka or Nepal.",
    "Its solid mound often houses relics of a holy figure."
   ],
-  "difficulty": "stretch"
+  "difficulty": "challenging"
  },
  {
   "word": "stupid",
@@ -59337,7 +59337,7 @@
    "Hinting rather than saying outright.",
    "A shade of colour that changes so gently you barely see it."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈsʌtli",
   "partOfSpeech": "adverb",
   "origin": "Middle English sotilly",
@@ -59540,7 +59540,7 @@
    "Ruler in Istanbul's palace in the Ottoman era.",
    "Saladin held this title."
   ],
-  "difficulty": "familiar",
+  "difficulty": "stretch",
   "pronunciation": "ˈsʌltən",
   "partOfSpeech": "noun",
   "origin": "Middle French sultan, from Arabic سُلْطَان",
@@ -59625,7 +59625,7 @@
    "You might see this on a shopping receipt listing odds and ends.",
    "A common idiom pairs it with all to mean everyone."
   ],
-  "difficulty": "challenging"
+  "difficulty": "stretch"
  },
  {
   "word": "sunken",
@@ -59918,7 +59918,7 @@
    "Cypress trees standing in brown water suggest the place.",
    "Mosquitoes thrive in this soggy, slow-moving terrain."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "swank",
@@ -59969,7 +59969,7 @@
    "A wide strip of cut grass.",
    "A broad band of land."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "swɒθ",
   "partOfSpeech": "noun",
   "origin": "Old English swæþ",
@@ -60110,7 +60110,7 @@
    "An old word for hogs.",
    "A rude name for an awful person."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "swaɪn",
   "partOfSpeech": "noun",
   "origin": "Old English swīn",
@@ -60168,7 +60168,7 @@
    "The sound of a basketball through the net.",
    "A silk skirt's soft rustle."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "swɪʃ",
   "partOfSpeech": "noun"
  },
@@ -60295,7 +60295,7 @@
    "A keyboard that makes electronic sounds.",
    "What a band uses for beeps and swoops."
   ],
-  "difficulty": "familiar",
+  "difficulty": "stretch",
   "pronunciation": "sɪnθ",
   "partOfSpeech": "noun",
   "origin": "Clipping of synthesizer"
@@ -60966,7 +60966,7 @@
    "Speech with a particular intention.",
    "The speaker wants discomfort or an angry reaction."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "taupe",
@@ -61391,7 +61391,7 @@
    "A professor's job security.",
    "The length of time in a role."
   ],
-  "difficulty": "familiar",
+  "difficulty": "stretch",
   "pronunciation": "ˈtɛnjʊə",
   "partOfSpeech": "noun",
   "origin": "Old French tenure, from Latin tentus"
@@ -61531,7 +61531,7 @@
    "A title in Shakespeare's Scottish play.",
    "A lord of old Scotland."
   ],
-  "difficulty": "stretch",
+  "difficulty": "challenging",
   "pronunciation": "θeɪn",
   "partOfSpeech": "noun",
   "origin": "Old English þæġn"
@@ -61818,7 +61818,7 @@
    "A leather strip for tying.",
    "A beach sandal held on by a strap."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "θɒŋ",
   "partOfSpeech": "noun",
   "origin": "Old English þwong"
@@ -61882,7 +61882,7 @@
    "What a swimmer in trouble does with their arms.",
    "A sports score of ten-nil would be described this way."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "θɹæʃ",
   "partOfSpeech": "verb",
   "origin": "Old English þerscan"
@@ -62013,7 +62013,7 @@
    "What a headache does.",
    "A beat of pain, in time with the heart."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "θɹɒb",
   "partOfSpeech": "verb",
   "origin": "Middle English throbben"
@@ -62293,7 +62293,7 @@
    "Curry house favourite with marinated chunks.",
    "A menu word for a piece of grilled meat."
   ],
-  "difficulty": "familiar",
+  "difficulty": "stretch",
   "pronunciation": "tɪkə",
   "partOfSpeech": "noun",
   "origin": "Classical Persian تکه"
@@ -62391,7 +62391,7 @@
    "A campfire builder collects this with kindling.",
    "A spark falling on it is enough to start a flame."
   ],
-  "difficulty": "familiar",
+  "difficulty": "stretch",
   "pronunciation": "ˈtɪndəː",
   "partOfSpeech": "noun",
   "origin": "Old English tynder"
@@ -62505,7 +62505,7 @@
    "Associated with an established obligation.",
    "Traditionally, a portion of a harvest could fulfil it."
   ],
-  "difficulty": "challenging"
+  "difficulty": "stretch"
  },
  {
   "word": "title",
@@ -62626,7 +62626,7 @@
    "Its value often comes from what it represents.",
    "A small souvenir can become one."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "tomato",
@@ -62652,7 +62652,7 @@
    "About the pitch of music.",
    "How colours or sounds are balanced."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "ˈtəʊnəl",
   "partOfSpeech": "adjective",
   "origin": "tone + -al"
@@ -62709,7 +62709,7 @@
    "A thousand kilos.",
    "A unit used for freight and emissions."
   ],
-  "difficulty": "familiar",
+  "difficulty": "stretch",
   "pronunciation": "tʌn",
   "partOfSpeech": "noun",
   "origin": "French tonne",
@@ -62782,7 +62782,7 @@
    "Kitchens of old-school restaurants insist on a full white uniform.",
    "Its tall, pleated version crowns many a head at the stove."
   ],
-  "difficulty": "stretch"
+  "difficulty": "challenging"
  },
  {
   "word": "torch",
@@ -63330,7 +63330,7 @@
    "Turn up the bass and down this on a stereo.",
    "A boy soprano sings in this range."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈtɹɛbəl",
   "partOfSpeech": "noun",
   "origin": "Old French treble, from Latin triplus"
@@ -63344,7 +63344,7 @@
    "Seismologists measure these before a quake.",
    "A shaky voice or hand."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈtɹɛmə",
   "partOfSpeech": "noun",
   "origin": "Anglo-Norman tremour, from Latin tremor",
@@ -63614,7 +63614,7 @@
    "Folklore and fishing both claim this word.",
    "Dragging bait slowly and waiting."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "troop",
@@ -63681,7 +63681,7 @@
    "Pigs crowd around one at feeding time.",
    "Sailors dread the dip between two big waves."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "tɹɒf",
   "partOfSpeech": "noun",
   "origin": "Old English troh",
@@ -63848,7 +63848,7 @@
    "A faithful old horse in a Western.",
    "Used of a long-serving knife or car."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈtɹʌsti",
   "partOfSpeech": "adjective",
   "origin": "Middle English trusty",
@@ -63880,7 +63880,7 @@
    "Associated with secrecy and anticipation.",
    "Two people have arranged to meet away from other eyes."
   ],
-  "difficulty": "challenging"
+  "difficulty": "stretch"
  },
  {
   "word": "tsuris",
@@ -63902,7 +63902,7 @@
    "A medical word about a duct.",
    "Describes a passage like a tube in the body."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "ˈtjuːbəl",
   "partOfSpeech": "adjective"
  },
@@ -64002,7 +64002,7 @@
    "A medical growth that a scan can show.",
    "A lump a doctor may remove."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "tjuːmə",
   "partOfSpeech": "noun",
   "origin": "Old French tumour, from Latin tumor",
@@ -64018,7 +64018,7 @@
    "Permafrost lies beneath it.",
    "Reindeer wander it."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈtʌndɹə",
   "partOfSpeech": "noun",
   "example": "Are there many arctic foxes in the tundra?",
@@ -64099,7 +64099,7 @@
    "Grandma's dinner table had a heavy porcelain piece with a lid, saved for holidays.",
    "You'd carry it to the table steaming, with the ladle resting in its lid."
   ],
-  "difficulty": "stretch"
+  "difficulty": "challenging"
  },
  {
   "word": "turgid",
@@ -64250,7 +64250,7 @@
    "Often associated with country clothing.",
    "Its woollen surface can look flecked or subtly patterned."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "tweet",
@@ -64303,7 +64303,7 @@
    "A hip-hop dance move.",
    "A dance featuring rapid hip motion."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "twɜːk",
   "partOfSpeech": "verb",
   "origin": "Blend of twitch + jerk"
@@ -64447,7 +64447,7 @@
    "A king who silences all opposition.",
    "A despot, cruel and answerable to no one."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈtaɪɹənt",
   "partOfSpeech": "noun",
   "origin": "Old French tyrant"
@@ -64461,7 +64461,7 @@
    "Desmond Tutu often spoke of this idea of shared humanity.",
    "A free operating system took its name from it."
   ],
-  "difficulty": "stretch",
+  "difficulty": "challenging",
   "pronunciation": "ʊˈbʊntuː",
   "partOfSpeech": "noun",
   "origin": "Zulu ubuntu, from Xhosa ubuntu"
@@ -64517,7 +64517,7 @@
    "A heavy coat Sherlock Holmes might wear.",
    "A province split between the Republic and the UK."
   ],
-  "difficulty": "stretch",
+  "difficulty": "challenging",
   "pronunciation": "ˈʌlstə",
   "partOfSpeech": "noun"
  },
@@ -64530,7 +64530,7 @@
    "A prefix meaning beyond.",
    "A race longer than a marathon is named with it."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈʌltɹə",
   "partOfSpeech": "adjective",
   "origin": "Latin ultra"
@@ -64544,7 +64544,7 @@
    "The paint box on an art class table usually holds tubes of it.",
    "Old masters used it to deepen the shadows in their portraits."
   ],
-  "difficulty": "stretch"
+  "difficulty": "challenging"
  },
  {
   "word": "umbra",
@@ -64569,7 +64569,7 @@
    "Raises a finger in cricket to give a batter out.",
    "At Wimbledon, the one in the high chair calls the score."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈʌmpaɪə(ɹ)",
   "partOfSpeech": "noun",
   "origin": "Old French nonper, from Latin par"
@@ -64799,7 +64799,7 @@
    "What a leader does for a divided country.",
    "To bring parts into a whole."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈjuːnɪfaɪ",
   "partOfSpeech": "verb",
   "origin": "Middle French unifier, from Late Latin unificare"
@@ -64967,7 +64967,7 @@
    "A condition that has not been satisfied.",
    "A goal not reached."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "(ˌ)ʌnˈmɛt"
  },
  {
@@ -65129,7 +65129,7 @@
    "Riches beyond measure.",
    "A secret that nobody has ever shared."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ʌnˈtəʊld",
   "partOfSpeech": "adjective",
   "origin": "Old English unteald",
@@ -65387,7 +65387,7 @@
    "Parliament can fall into one over a heated debate.",
    "A crowd's response when a goal is disallowed."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈʌpɹɔː",
   "partOfSpeech": "noun",
   "origin": "German Aufruhr"
@@ -65513,7 +65513,7 @@
    "A sample a doctor may test.",
    "Waste water made by the kidneys."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈjʊəɹɪn",
   "partOfSpeech": "noun",
   "origin": "Latin ūrīna"
@@ -65527,7 +65527,7 @@
    "Think of a grizzly lumbering through a snowy forest in a nature documentary.",
    "Often used to describe a broad, shaggy build or a cuddly-looking bruiser."
   ],
-  "difficulty": "stretch"
+  "difficulty": "challenging"
  },
  {
   "word": "usable",
@@ -65609,7 +65609,7 @@
    "Shakespeare's Venice has a cold-hearted moneylender who demands a pound of flesh.",
    "Think of a payday lender whose contract hides crushing rates in the fine print."
   ],
-  "difficulty": "stretch"
+  "difficulty": "challenging"
  },
  {
   "word": "usurp",
@@ -65649,7 +65649,7 @@
    "Also called the womb.",
    "Medical word for where a foetus grows."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈjuːtəɹəs",
   "partOfSpeech": "noun",
   "example": "How do you expect me to have children when I don't have a uterus?",
@@ -65678,7 +65678,7 @@
    "'Of the importance' in a solemn warning.",
    "What your best effort is stretched to."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈʌtməʊst",
   "partOfSpeech": "noun",
   "origin": "Old English ūtmest",
@@ -65693,7 +65693,7 @@
    "More used it for the title of his book.",
    "Its opposite is dystopia."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "juːˈtəʊpiə",
   "partOfSpeech": "noun",
   "origin": "New Latin Ūtopia, from Ancient Greek οὐ"
@@ -65779,7 +65779,7 @@
    "Often appears in criticism of instructions.",
    "The reader is left asking exactly what was meant."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "vainly",
@@ -65844,7 +65844,7 @@
    "Bravery on the battlefield.",
    "What a medal may honour."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈvælɚ",
   "partOfSpeech": "noun",
   "example": "He received a medal for valor."
@@ -66097,7 +66097,7 @@
    "Has a figurative use in speech.",
    "The words can wound even though nothing physical is injected."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "venue",
@@ -66197,7 +66197,7 @@
    "A gardener's diary entry about the first crocuses poking through the thaw.",
    "Often paired with 'equinox' in astronomy pages about the season's turn."
   ],
-  "difficulty": "stretch"
+  "difficulty": "challenging"
  },
  {
   "word": "verse",
@@ -66427,7 +66427,7 @@
    "Often sustained for a reason.",
    "A bedside chair or a candle can accompany the long hours."
   ],
-  "difficulty": "challenging"
+  "difficulty": "stretch"
  },
  {
   "word": "vigor",
@@ -66440,7 +66440,7 @@
    "Describes the manner in which something is pursued.",
    "A person can return from rest with renewed reserves of it."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "viking",
@@ -66814,7 +66814,7 @@
    "Archers loose it on the order 'fire'.",
    "A tennis player strikes the ball with no bounce."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈvɒli",
   "partOfSpeech": "noun",
   "origin": "Middle French volée, from Late Latin volatus"
@@ -66858,7 +66858,7 @@
    "Haiti and New Orleans are linked with this religion.",
    "Films show pin-stuck dolls, a stereotype of the real practice."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈvuːduː",
   "partOfSpeech": "noun",
   "origin": "Louisiana Creole voudou, from Fon vòdún"
@@ -67009,7 +67009,7 @@
    "A thin crisp biscuit for ice cream.",
    "A thin disc of bread in church."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈweɪfəː",
   "partOfSpeech": "noun",
   "origin": "Anglo-Norman wafre"
@@ -67065,7 +67065,7 @@
    "A game fish related to the mackerel.",
    "Fast ocean predator."
   ],
-  "difficulty": "stretch",
+  "difficulty": "challenging",
   "pronunciation": "ˈwɑhu",
   "partOfSpeech": "noun"
  },
@@ -67194,7 +67194,7 @@
    "Carved shell beads on a belt displayed at a treaty.",
    "Colonial trade records list strings of these beads with furs."
   ],
-  "difficulty": "stretch"
+  "difficulty": "challenging"
  },
  {
   "word": "wander",
@@ -67310,7 +67310,7 @@
    "A toad's skin.",
    "Lumpy and rough."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "partOfSpeech": "adjective",
   "origin": "Middle English varty"
  },
@@ -67407,7 +67407,7 @@
    "What a voice does when nervous.",
    "To be torn between choices."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈweɪvə",
   "partOfSpeech": "verb",
   "origin": "Middle English waveren"
@@ -67421,7 +67421,7 @@
    "A pale, smooth face like a candle.",
    "Made of the stuff candles are formed from."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "ˈwæksən",
   "partOfSpeech": "adjective",
   "origin": "Old English weaxen",
@@ -67821,7 +67821,7 @@
    "Archaic, found in old questions about origin.",
    "Poets pair it with thence, meaning from there."
   ],
-  "difficulty": "challenging",
+  "difficulty": "stretch",
   "pronunciation": "ʍɛns",
   "origin": "Old English hwanon",
   "partOfSpeech": "adverb",
@@ -67863,7 +67863,7 @@
    "A hint of cooking in the air.",
    "A faint trace of perfume."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "wɪf",
   "partOfSpeech": "noun"
  },
@@ -67950,7 +67950,7 @@
    "The action and the implement share a name.",
    "Air can enter a mixture through rapid movement."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "whisky",
@@ -68820,7 +68820,7 @@
    "Seaweed thrown on a beach.",
    "A word in the pair 'and ruin'."
   ],
-  "difficulty": "stretch",
+  "difficulty": "challenging",
   "pronunciation": "ɹæk",
   "origin": "Old English wracu, from Old English wrǣċ"
  },
@@ -69103,7 +69103,7 @@
    "Herb gardens and old folk remedies often feature this flat-topped flower.",
    "Its feathery leaves were once applied to wounds, according to old herbals."
   ],
-  "difficulty": "stretch"
+  "difficulty": "challenging"
  },
  {
   "word": "yearly",
@@ -69145,7 +69145,7 @@
    "A small ingredient with a large effect over time.",
    "Warmth and patience can matter as much as the amount added."
   ],
-  "difficulty": "stretch"
+  "difficulty": "familiar"
  },
  {
   "word": "yellow",
@@ -69214,7 +69214,7 @@
    "The most dangerous delivery for a tail-ender.",
    "A ball that pitches at the batter's toes."
   ],
-  "difficulty": "stretch",
+  "difficulty": "challenging",
   "pronunciation": "ˈjɔː(ɹ)kə(ɹ)",
   "partOfSpeech": "noun",
   "example": "He bowled forty-seven toe crushing yorkers that resulted in the wickets of 6 batsmen."
@@ -69363,7 +69363,7 @@
    "Zero, in American slang.",
    "Absolutely nothing."
   ],
-  "difficulty": "familiar",
+  "difficulty": "stretch",
   "pronunciation": "zɪltʃ",
   "partOfSpeech": "noun"
  },
@@ -69438,7 +69438,7 @@
    "Astrologers use its twelve houses to read your birth chart.",
    "Gemini, Taurus and Capricorn are among the signs."
   ],
-  "difficulty": "stretch",
+  "difficulty": "familiar",
   "pronunciation": "ˈzəʊdɪˌæk",
   "partOfSpeech": "noun",
   "origin": "Old French zodiaque, from Ancient Greek ζῳδιακός [κύκλος]"

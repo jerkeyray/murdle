@@ -227,8 +227,8 @@ func (s *Server) handleCreateRun(w http.ResponseWriter, r *http.Request) {
 	if difficulty == "" {
 		difficulty = "mixed"
 	}
-	if difficulty != "mixed" && difficulty != "learning" {
-		writeError(w, http.StatusBadRequest, "invalid_difficulty", "choose mixed or learning vocabulary")
+	if !words.ValidDifficulty(difficulty) {
+		writeError(w, http.StatusBadRequest, "invalid_difficulty", "choose mixed, learning or hard vocabulary")
 		return
 	}
 	seen := make(map[string]struct{}, len(req.ExcludeWords))

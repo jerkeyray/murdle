@@ -267,3 +267,19 @@ test("configuration changes cannot publish an earlier opening response", async (
     expect(await page.evaluate(() => localStorage.getItem("wordle.active.classic.5.mixed"))).toBeNull();
   } finally { release(); }
 });
+
+test("the Hard vocabulary setting is saved and carried into the game", async ({ page }) => {
+  await setup(page);
+  await page.goto("/settings");
+  await page.getByRole("button", { name: "Hard", exact: true }).click();
+  await expect(page.getByRole("button", { name: "Hard", exact: true })).toHaveAttribute("aria-pressed", "true");
+  await expect(page.getByText(/words most adults could not define/)).toBeVisible();
+  const saved = await page.evaluate(() => JSON.parse(localStorage.getItem("wordle.mode") ?? "{}"));
+  expect(saved.difficulty).toBe("hard");
+  await page.goto("/");
+  await expect(page.locator("a.play")).toHaveAttribute("href", /difficulty=hard/);
+  const request = page.waitForRequest("**/api/runs?deal=1");
+  await page.goto("/play?length=5&difficulty=hard");
+  expect(JSON.parse((await request).postData() ?? "{}").difficulty).toBe("hard");
+  await expectWord(page);
+});

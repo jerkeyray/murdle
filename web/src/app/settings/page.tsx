@@ -6,7 +6,13 @@ import { BackButton } from "@/components/BackButton";
 import { Preferences } from "@/components/Preferences";
 import { clearToken } from "@/lib/token";
 import { signOut, useSession } from "@/lib/auth-client";
-import { savedGameConfig, type GameConfig, writeLocal } from "@/lib/session";
+import { savedGameConfig, type GameConfig, type GameDifficulty, writeLocal } from "@/lib/session";
+
+const VOCABULARY_NOTE: Record<GameDifficulty, string> = {
+  mixed: "A blend of everyday and uncommon words.",
+  learning: "Leaves out the most familiar answers.",
+  hard: "Mostly words most adults could not define. Expect to lose a few.",
+};
 
 /**
  * Settings, reached by the cog on the home screen.
@@ -62,11 +68,12 @@ export default function SettingsPage() {
           <div className="game-setting">
             <div>
               <h2>Answer vocabulary</h2>
-              <p>Learning leaves out the most familiar answers.</p>
+              <p>{VOCABULARY_NOTE[gameConfig.difficulty]}</p>
             </div>
             <div className="game-options" role="group" aria-label="Answer vocabulary">
               <button aria-pressed={gameConfig.difficulty === "mixed"} onClick={() => chooseGameConfig({ ...gameConfig, difficulty: "mixed" })}>Mixed</button>
               <button aria-pressed={gameConfig.difficulty === "learning"} onClick={() => chooseGameConfig({ ...gameConfig, difficulty: "learning" })}>Learning</button>
+              <button aria-pressed={gameConfig.difficulty === "hard"} onClick={() => chooseGameConfig({ ...gameConfig, difficulty: "hard" })}>Hard</button>
             </div>
           </div>
         </div>

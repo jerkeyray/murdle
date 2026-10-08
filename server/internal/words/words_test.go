@@ -122,7 +122,7 @@ func TestDuoCandidatesAreNeverEveryday(t *testing.T) {
 func TestEveryLengthAndDifficultyIsPlayable(t *testing.T) {
 	p := NewPool()
 	for _, length := range []int{5, 6} {
-		for _, difficulty := range []string{"mixed", "learning"} {
+		for _, difficulty := range []string{"mixed", "learning", "hard"} {
 			if _, _, ok := p.FreshWord(length, difficulty, nil); !ok {
 				t.Errorf("no %d-letter %s word", length, difficulty)
 			}
@@ -138,5 +138,31 @@ func TestEveryAnswerIsGuessable(t *testing.T) {
 		if !p.IsWord(w.Word) {
 			t.Errorf("answer %q cannot be guessed", w.Word)
 		}
+	}
+}
+
+// Hard deals no everyday word and leans towards the words most adults could not
+// define; an unknown setting is not a setting at all.
+func TestHardLeansTowardsChallengingWords(t *testing.T) {
+	p := NewPool()
+	const draws = 5000
+	challenging := 0
+	for range draws {
+		w, _, ok := p.FreshWord(5, "hard", nil)
+		if !ok {
+			t.Fatal("no hard word dealt")
+		}
+		if w.Difficulty == "familiar" {
+			t.Fatalf("hard dealt a familiar word %q", w.Word)
+		}
+		if w.Difficulty == "challenging" {
+			challenging++
+		}
+	}
+	if share := float64(challenging) / draws * 100; share < 65 || share > 75 {
+		t.Errorf("hard dealt challenging words %.1f%% of the time, want about 70%%", share)
+	}
+	if !ValidDifficulty("hard") || ValidDifficulty("brutal") {
+		t.Error("ValidDifficulty disagrees with the settings on offer")
 	}
 }

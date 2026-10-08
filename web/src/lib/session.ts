@@ -31,7 +31,10 @@ export function activeRun(): string | null {
   const id = readLocal(ACTIVE_KEY);
   return id && /^[a-z0-9]+$/.test(id) ? id : null;
 }
-export type GameDifficulty = "mixed" | "learning";
+export type GameDifficulty = "mixed" | "learning" | "hard";
+export function parseDifficulty(value: unknown): GameDifficulty {
+  return value === "learning" || value === "hard" ? value : "mixed";
+}
 export type GameConfig = { wordLength: 5 | 6; difficulty: GameDifficulty };
 // The "classic" segment is from when games had a mode. Keeping it means a game
 // already in progress still resumes.
@@ -106,7 +109,7 @@ export function savedGameConfig(): GameConfig {
   try {
     const saved = JSON.parse(readLocal("wordle.mode") ?? "null") as Partial<GameConfig> | null;
     if (saved && (saved.wordLength === 5 || saved.wordLength === 6)) {
-      return { wordLength: saved.wordLength, difficulty: saved.difficulty === "learning" ? "learning" : "mixed" };
+      return { wordLength: saved.wordLength, difficulty: parseDifficulty(saved.difficulty) };
     }
   } catch { /* Five letters is the default when storage is unavailable or stale. */ }
   return DEFAULT_GAME_CONFIG;

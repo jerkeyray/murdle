@@ -12,7 +12,7 @@ import { ProfileButton } from "@/components/ProfileButton";
 import { useGame } from "@/lib/useGame";
 import type { Round } from "@/lib/api";
 import { Loader } from "@/components/Loader";
-import type { GameConfig } from "@/lib/session";
+import { parseDifficulty, type GameConfig } from "@/lib/session";
 
 export default function PlayPage() {
   return <Suspense fallback={<main className="loading"><Loader label="Setting the type" /></main>}><ConfiguredPlayScreen /></Suspense>;
@@ -21,7 +21,7 @@ export default function PlayPage() {
 function ConfiguredPlayScreen() {
   const search = useSearchParams();
   const wordLength = search.get("length") === "6" ? 6 : 5;
-  const difficulty = search.get("difficulty") === "learning" ? "learning" : "mixed";
+  const difficulty = parseDifficulty(search.get("difficulty"));
   return <PlayScreen key={`${wordLength}:${difficulty}`} config={{wordLength, difficulty}} />;
 }
 

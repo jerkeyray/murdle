@@ -120,6 +120,14 @@ var difficultyMix = map[string][]struct {
 }{
 	"mixed":    {{"familiar", 40}, {"stretch", 40}, {"challenging", 20}},
 	"learning": {{"stretch", 60}, {"challenging", 40}},
+	// hard leans the other way: mostly words most adults could not define.
+	"hard": {{"challenging", 70}, {"stretch", 30}},
+}
+
+// ValidDifficulty reports whether d names a vocabulary setting.
+func ValidDifficulty(d string) bool {
+	_, ok := difficultyMix[d]
+	return ok
 }
 
 // pickByDifficulty draws a tier by weight, then a word within it. Tiers with
@@ -153,12 +161,17 @@ func pickByDifficulty(words []Answer, difficulty string) Answer {
 	return words[rand.IntN(len(words))]
 }
 
-// answersFor is every word a game of this shape may deal. Learning leaves
+// leavesOutFamiliar is true for the settings that never deal an everyday word.
+func leavesOutFamiliar(difficulty string) bool {
+	return difficulty == "learning" || difficulty == "hard"
+}
+
+// answersFor is every word a game of this shape may deal. Learning and hard leave
 // everyday answers out without narrowing what a player may guess.
 func (p *Pool) answersFor(length int, difficulty string) []Answer {
 	all := []Answer{}
 	for _, word := range p.bank {
-		if !word.Retired && len([]rune(word.Word)) == length && (difficulty != "learning" || word.Difficulty != "familiar") {
+		if !word.Retired && len([]rune(word.Word)) == length && (!leavesOutFamiliar(difficulty) || word.Difficulty != "familiar") {
 			all = append(all, word)
 		}
 	}
