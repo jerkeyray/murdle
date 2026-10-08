@@ -557,3 +557,36 @@
 @media (max-width: 380px) {
   .profile-recent li a { grid-template-columns: 5.5rem minmax(0, 1fr); }
 }
+
+/* ---------------------------------------------------------------------------
+   About the words — type on the page, one quiet card per question. The bars
+   show proportion only; the counts beside them carry the numbers, so nothing
+   depends on telling the colours apart.
+--------------------------------------------------------------------------- */
+.home-top-start { display: flex; align-items: center; gap: 10px; }
+
+.about { max-width: 34rem; }
+.about-hero { padding: 6px 0 22px; }
+.about-big { font: 600 clamp(3rem, 14vw, 4.4rem) / 1 var(--font-serif), Georgia, serif; letter-spacing: -0.02em; margin: 0 0 8px; }
+.about-quiet { color: var(--text-muted); font-size: .88rem; line-height: 1.5; margin: 4px 0; }
+.about-card { border: 1px solid var(--border); border-radius: var(--radius-card); background: var(--bg-raised); padding: 14px 16px; margin-bottom: 18px; }
+.about-length + .about-length { margin-top: 16px; }
+.about-length-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 7px; }
+.about-bar { display: flex; height: 10px; gap: 2px; border-radius: 5px; overflow: hidden; }
+.about-seg { min-width: 3px; }
+.about-seg--familiar { background: var(--mark-hit); }
+.about-seg--stretch { background: var(--mark-present); }
+.about-seg--challenging { background: var(--text); }
+.about-counts { display: flex; flex-wrap: wrap; gap: 4px 14px; list-style: none; margin: 8px 0 0; padding: 0; color: var(--text-muted); font-size: .8rem; }
+.about-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; }
+.about-legend, .about-sources { margin: 14px 0 0; }
+.about-legend div, .about-sources div { display: grid; grid-template-columns: minmax(0, 11rem) 1fr; gap: 4px 12px; padding: 7px 0; border-top: 1px solid var(--rule); }
+.about-legend dt, .about-sources dt { font-weight: 550; font-size: .86rem; }
+.about-legend dd, .about-sources dd { margin: 0; color: var(--text-muted); font-size: .86rem; }
+.about-credits { margin: 0; padding-left: 18px; color: var(--text-muted); font-size: .86rem; line-height: 1.55; }
+.about-credits li + li { margin-top: 6px; }
+.about-credits a { color: var(--text); text-underline-offset: 2px; }
+@media (max-width: 480px) {
+  .about-legend div, .about-sources div { grid-template-columns: 1fr; }
+}
+.about-sources div:first-child { border-top: 0; padding-top: 0; }

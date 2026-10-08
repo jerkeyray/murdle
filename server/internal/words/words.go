@@ -28,6 +28,7 @@ type Pool struct {
 
 	bank     []Answer
 	wordInfo map[string]Answer
+	stats    Stats
 }
 
 // NewPool builds the pool from the embedded lists. It is safe to call once at
@@ -60,7 +61,7 @@ func NewPool() *Pool {
 		dictionary[w.Word] = struct{}{}
 	}
 
-	return &Pool{dictionary: dictionary, bank: bank, wordInfo: wordInfo}
+	return &Pool{dictionary: dictionary, bank: bank, wordInfo: wordInfo, stats: computeStats(bank, len(dictionary))}
 }
 
 // IsWord reports whether guess is in the dictionary. Case-insensitive.

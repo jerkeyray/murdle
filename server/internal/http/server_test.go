@@ -366,3 +366,20 @@ func TestCollectionPageWireShapeIncludesEmptyCursor(t *testing.T) {
 		}
 	}
 }
+
+func TestWordStatsArePublicAndCacheable(t *testing.T) {
+	h := newTestServer(t)
+	rec, body := do(t, h, http.MethodGet, "/api/words/stats", nil)
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status %d", rec.Code)
+	}
+	if got := rec.Header().Get("Cache-Control"); !strings.Contains(got, "max-age") {
+		t.Errorf("Cache-Control = %q, want a max-age", got)
+	}
+	if body["answers"].(float64) < 4000 || len(body["lengths"].([]any)) != 2 {
+		t.Errorf("unexpected stats: %v", body)
+	}
+	if strings.Contains(rec.Body.String(), `"hints"`) || strings.Contains(rec.Body.String(), `"definition"`) {
+		t.Error("stats must not carry any entry text")
+	}
+}

@@ -70,6 +70,16 @@ export interface Profile {
   wordsLearned: number;
 }
 
+/** The figures behind the about page, worked out by the server from its word bank. */
+export interface WordStats {
+  answers: number;
+  retired: number;
+  dictionary: number;
+  lengths: { length: 5 | 6; total: number; familiar: number; stretch: number; challenging: number }[];
+  slang: number;
+  coverage: { pronunciation: number; partOfSpeech: number; origin: number; example: number; exampleFromTatoeba: number };
+}
+
 export interface HomeSummary {
   streak: { current: number; playedToday: boolean };
 }

@@ -1,6 +1,6 @@
-import type { CollectionPage, Duo, DuoMutation, FriendProfile, PlayInvitation, PlayInviteMutation, FriendRecord, HomeSummary, Mark, Profile, Round, Row, Run } from "./contracts";
+import type { CollectionPage, Duo, DuoMutation, FriendProfile, PlayInvitation, PlayInviteMutation, FriendRecord, HomeSummary, Mark, WordStats, Profile, Round, Row, Run } from "./contracts";
 import type { GameDifficulty } from "./session";
-export type { Mark, RoundState, Row, Entry, Run, Round, Profile, HomeSummary, SolveRecord, CollectionPage, FriendRecord, FriendProfile, PairStats, PlayInvitation, PlayInviteMutation, DuoDay, Duo, DuoMutation } from "./contracts";
+export type { Mark, RoundState, Row, Entry, Run, Round, Profile, HomeSummary, SolveRecord, CollectionPage, FriendRecord, FriendProfile, PairStats, PlayInvitation, PlayInviteMutation, DuoDay, Duo, DuoMutation, WordStats } from "./contracts";
 
 /**
  * Typed client for the Go game API.
@@ -228,6 +228,7 @@ export const mutateDuo = (id: string, action: "accept" | "decline" | "cancel" | 
 
 export const getProfile = (signal?:AbortSignal) => request<Profile>("/api/me",{signal});
 export const getHomeSummary = () => request<HomeSummary>("/api/me/home");
+export const getWordStats = () => request<WordStats>("/api/words/stats");
 
 export const setDisplayName = (name: string) =>
   request<{ displayName: string }>("/api/me/name", {

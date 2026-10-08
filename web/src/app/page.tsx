@@ -6,6 +6,7 @@ import { getHomeSummary, type HomeSummary } from "@/lib/api";
 import { ProfileButton } from "@/components/ProfileButton";
 import { activeRunFor, clearRetiredKeys, DEFAULT_GAME_CONFIG, savedGameConfig, subscribeSession, type GameConfig, writeLocal } from "@/lib/session";
 import { SettingsButton } from "@/components/SettingsButton";
+import { AboutButton } from "@/components/AboutButton";
 import { FriendsEntry } from "@/components/FriendsEntry";
 import { HomeRow } from "@/components/HomeRow";
 import { HomeMeta } from "@/components/HomeMeta";
@@ -56,7 +57,10 @@ export default function Home() {
   return (
     <main className="home">
       <header className="home-top">
-        <SettingsButton />
+        <div className="home-top-start">
+          <SettingsButton />
+          <AboutButton />
+        </div>
         <ProfileButton
           streakAtRisk={
             homeSummary && homeSummary.streak.current > 0 && !homeSummary.streak.playedToday

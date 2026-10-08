@@ -90,6 +90,7 @@ func NewServer(opts Options) http.Handler {
 
 	r.Get("/api/health", s.handleHealth)
 	r.Get("/api/ready", s.handleReady)
+	r.Get("/api/words/stats", s.handleWordStats)
 	r.Get("/api/capabilities", func(w http.ResponseWriter, r *http.Request) {
 		writeJSON(w, http.StatusOK, map[string]bool{"sharedGames": s.duos != nil && s.players != nil && s.verifier != nil})
 	})

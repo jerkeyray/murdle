@@ -119,7 +119,15 @@ cd web
 pnpm test:content
 pnpm hints:review                   # list weak clues; apply edits with --from
 pnpm entries:report                 # pronunciation / origin / example coverage
+pnpm bank:stats                     # the headline figures, printed
+pnpm readme:sync                    # rewrite the README's figures after the bank changes
 ```
+
+The figures are never typed by hand. The **?** on the home screen reads them
+from `GET /api/words/stats`, which the server works out from its embedded bank,
+so the page is always what the game is dealing. The README's figures are a
+generated block; `make test` fails (`pnpm readme:check`, and a Go test against
+the server's own stats) until `pnpm readme:sync` has been run.
 
 Read clues alongside the definition: a sentence can omit the answer and still
 give it away. Verify factual claims, and use usage notes instead of speculative
