@@ -24,7 +24,7 @@ test("friends count turns and invitations in a corner notification badge", async
       { viewerId: "me", status: "active", today: { state: "playing", currentPlayer: "me" } },
       { viewerId: "me", status: "pending", inviterId: "friend" },
     ];
-    const body = path === "/api/me/duos" ? duos : path === "/api/me/home" ? { streak: { current: 0, playedToday: false } } : {};
+    const body = path === "/api/capabilities" ? { sharedGames: true } : path === "/api/me/friends" ? [] : path === "/api/me/duos" ? duos : path === "/api/me/home" ? { streak: { current: 0, playedToday: false } } : {};
     return r.fulfill({ body: JSON.stringify(body), contentType: "application/json" });
   });
   await page.goto("/");

@@ -15,6 +15,7 @@ type Friend struct {
 	PlayerID     string
 	DisplayName  string
 	Status       string
+	PlayInvite   bool
 	// Incoming is true when they asked you, rather than you asking them. It is
 	// the only thing that decides whether the UI shows "pending" or "accept".
 	Incoming bool
@@ -33,7 +34,9 @@ func pairOrder(a, b string) (low, high string) {
 // RequestFriend links two players by invite code.
 //
 // If the other person has already invited you, this accepts rather than
-// creating a second request — typing each other's codes at the same time
+// creating a second request. Combined Add & play requests are answered by
+// the transactional invitation path, so friendship acceptance cannot skip
+// dealing the shared board. Typing each other's legacy codes at the same time
 // should produce a friendship, not a deadlock.
 func (s *Store) RequestFriend(ctx context.Context, playerID, inviteCode string) (Friend, error) {
 	code := strings.ToUpper(strings.TrimSpace(inviteCode))
@@ -63,12 +66,12 @@ func (s *Store) RequestFriend(ctx context.Context, playerID, inviteCode string) 
 			-- Their request plus yours means you both agreed.
 			status       = case
 			                 when friendships.status = 'pending'
-			                  and friendships.requester_id <> $3 then 'accepted'
+			                  and friendships.requester_id <> $3 and not friendships.play_invite then 'accepted'
 			                 else friendships.status
 			               end,
 			responded_at = case
 			                 when friendships.status = 'pending'
-			                  and friendships.requester_id <> $3 then now()
+			                  and friendships.requester_id <> $3 and not friendships.play_invite then now()
 			                 else friendships.responded_at
 			               end
 		returning id, status, requester_id`,
@@ -101,7 +104,7 @@ func (s *Store) RespondFriend(ctx context.Context, playerID, friendshipID string
 		update friendships
 		set status = $1, responded_at = now()
 		where id = $2
-		  and status = 'pending'
+		  and status = 'pending' and not play_invite
 		  and requester_id <> $3
 		  and $3 in (low_id, high_id)`,
 		status, friendshipID, playerID)
@@ -121,7 +124,7 @@ func (s *Store) Friends(ctx context.Context, playerID string) ([]Friend, error) 
 		       other.id,
 		       other.display_name,
 		       f.status,
-		       f.requester_id <> $1 as incoming
+		       f.requester_id <> $1 as incoming, f.play_invite
 		from friendships f
 		join players other
 		  on other.id = case when f.low_id = $1 then f.high_id else f.low_id end
@@ -137,7 +140,7 @@ func (s *Store) Friends(ctx context.Context, playerID string) ([]Friend, error) 
 	for rows.Next() {
 		var f Friend
 		if err := rows.Scan(&f.FriendshipID, &f.PlayerID, &f.DisplayName,
-			&f.Status, &f.Incoming); err != nil {
+			&f.Status, &f.Incoming, &f.PlayInvite); err != nil {
 			return nil, err
 		}
 		out = append(out, f)

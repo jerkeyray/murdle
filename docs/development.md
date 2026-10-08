@@ -248,3 +248,29 @@ persistent-event infrastructure are required. PostgreSQL-backed tests require
 `TEST_DATABASE_URL`; tests use isolated schemas and never modify its public
 schema. `PW_WEB_PORT`, `PW_API_PORT`, and `PW_NEXT_DIST_DIR` can isolate browser
 fixtures from other development servers and builds.
+
+
+### Friends hub and Add & play
+
+Migration `0010_play_invitations.sql` adds combined invitation intent/timezone
+and durable request receipts. Server startup applies it before serving requests;
+roll out the server/migration before the updated web app. Existing friendships,
+friend-only requests, and daily game APIs remain available.
+
+`POST /api/me/play-invites` takes `requestId`, `inviteCode`, and `timezone`.
+`POST /api/me/play-invites/:friendshipId/{accept|decline|cancel}` takes
+`requestId`. A pending combined request has no duo; acceptance commits the
+friendship, active duo, and first board together. Retries replay the original
+response, and crossed combined requests produce one game. Codes and shared
+links still require a submitted request and the other person's approval.
+
+`GET /api/me/friends/:friendshipId` is restricted to accepted friends and returns
+joined date, personal playing streak, distinct successful solo/shared words,
+shared streak/best streak, total won shared boards, and the latest duo with
+seven recent results across the friendship. Friend summaries add `sharedStreak`
+and `playInvite`; personal collections and solo result recording are unchanged.
+
+The Friends page lists invitations and games before accepted friends. Names
+open a friend profile; Open board opens the shared game. New styles are scoped
+to social pages. The home Friends badge includes incoming friendship requests
+without counting a combined invitation twice.

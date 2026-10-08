@@ -9,6 +9,7 @@ import (
 	"github.com/go-chi/chi/v5"
 
 	"github.com/jerkeyray/wordle/server/internal/auth"
+	"github.com/jerkeyray/wordle/server/internal/duos"
 	"github.com/jerkeyray/wordle/server/internal/players"
 )
 
@@ -120,12 +121,14 @@ func (s *Server) collectionPage(r *http.Request, playerID string, saved bool) ([
 }
 
 type friendView struct {
-	ID          string `json:"id"`
-	DisplayName string `json:"displayName"`
-	Status      string `json:"status"`
-	Incoming    bool   `json:"incoming"`
-	Online      bool   `json:"online"`
-	DayStreak   int    `json:"dayStreak"`
+	ID           string `json:"id"`
+	DisplayName  string `json:"displayName"`
+	Status       string `json:"status"`
+	Incoming     bool   `json:"incoming"`
+	Online       bool   `json:"online"`
+	DayStreak    int    `json:"dayStreak"`
+	SharedStreak int    `json:"sharedStreak"`
+	PlayInvite   bool   `json:"playInvite"`
 }
 
 // player resolves the caller to a profile, creating one on first sight.
@@ -393,6 +396,20 @@ func (s *Server) handleFriends(w http.ResponseWriter, r *http.Request) {
 		writeError(w, 500, "internal", "Could not read your friends")
 		return
 	}
+	pairIDs := []string{}
+	for _, f := range friends {
+		if f.Status == "accepted" {
+			pairIDs = append(pairIDs, f.FriendshipID)
+		}
+	}
+	pairs := map[string]duos.PairStats{}
+	if s.duos != nil {
+		pairs, err = s.duos.PairStats(r.Context(), pairIDs)
+		if err != nil {
+			writeError(w, 500, "internal", "Could not read your friends")
+			return
+		}
+	}
 	out := make([]friendView, 0, len(friends))
 	for _, f := range friends {
 		var online bool
@@ -404,12 +421,14 @@ func (s *Server) handleFriends(w http.ResponseWriter, r *http.Request) {
 			dayStreak = currentStreaks[f.PlayerID]
 		}
 		out = append(out, friendView{
-			ID:          f.FriendshipID,
-			DisplayName: f.DisplayName,
-			Status:      f.Status,
-			Incoming:    f.Incoming,
-			Online:      online,
-			DayStreak:   dayStreak,
+			ID:           f.FriendshipID,
+			DisplayName:  f.DisplayName,
+			Status:       f.Status,
+			Incoming:     f.Incoming,
+			Online:       online,
+			DayStreak:    dayStreak,
+			SharedStreak: pairs[f.FriendshipID].Current,
+			PlayInvite:   f.PlayInvite,
 		})
 	}
 

@@ -106,9 +106,12 @@ func NewServer(opts Options) http.Handler {
 			r.Put("/saved/{word}", s.handleSaveWord)
 			r.Delete("/saved/{word}", s.handleSaveWord)
 			r.Get("/friends", s.handleFriends)
+			r.Get("/friends/{id}", s.handleFriendProfile)
 			r.With(s.limit("friend", configuredLimit("FRIEND_RATE_LIMIT", 10))).Post("/friends", s.handleAddFriend)
 			r.With(s.limit("friend", configuredLimit("FRIEND_RATE_LIMIT", 10))).Post("/friends/{id}/respond", s.handleRespondFriend)
 			if s.duos != nil {
+				r.With(s.limit("friend", configuredLimit("FRIEND_RATE_LIMIT", 10))).Post("/play-invites", s.handlePlayInvite)
+				r.With(s.limit("friend", configuredLimit("FRIEND_RATE_LIMIT", 10))).Post("/play-invites/{id}/{action}", s.handlePlayInvite)
 				r.Get("/duos", s.handleDuos)
 				r.With(s.limit("invite", configuredLimit("INVITE_RATE_LIMIT", 10))).Post("/duos", s.handleInviteDuo)
 				r.Post("/presence", s.handlePresence)

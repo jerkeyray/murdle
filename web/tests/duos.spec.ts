@@ -29,18 +29,18 @@ test("friends invite, shared turns, retry, pass, persistence and daily reset", a
   await asPlayer(a, "adi"); await asPlayer(b, "ananya");
   const adi = await a.newPage(); const ananya = await b.newPage();
   await adi.goto("/friends"); await ananya.goto("/friends");
-  await adi.getByRole("button", { name: /Ananya/ }).click();
-  await expect(adi.getByRole("dialog")).toContainText("day streak");
+  await adi.getByRole("link", { name: /Ananya/ }).click();
+  await expect(adi.getByRole("heading", { name: "Ananya" })).toBeVisible();
   await adi.getByRole("button", { name: "Play together", exact: true }).click();
-  await expect(adi.getByRole("dialog")).toContainText("Invitation sent");
+  await expect(adi.getByText("Invitation sent", { exact: true })).toBeVisible();
   await ananya.reload();
-  await ananya.getByRole("button", { name: /Adi/ }).click();
+  await ananya.getByRole("link", { name: /Adi/ }).click();
   await ananya.getByRole("button", { name: "Accept daily game" }).click();
   await expect(ananya).toHaveURL(/\/duos\//);
   const id = ananya.url().split("/").at(-1)!;
   const answer = await adi.request.get(`${API}/test/answer?id=${id}`, { headers: { Authorization: "Bearer fixture-adi" } }).then(r => r.json()) as { answer: string };
   const wrongGuesses = ["adieu", "stone", "crane", "slate", "house", "light", "money"].filter(word => word !== answer.answer);
-  await adi.getByRole("button", { name: "Close Friend" }).click();
+
   await adi.goto(`/duos/${id}`);
   await yourTurn(adi);
   await expect(adi.getByRole("button", { name: "Reveal a shared hint" })).toHaveCount(0);
@@ -125,7 +125,8 @@ test("friends invite, shared turns, retry, pass, persistence and daily reset", a
   await expect(ananya.getByRole("button", { name: "Next word" })).toBeVisible();
   expect(await streakOf(ananya, "ananya", id)).toBe(1); // two wins in a day is still one day
   await adi.goto("/friends");
-  await expect(adi.getByRole("link", { name: /Ananya/ })).toContainText("Solved");
+  await expect(adi.getByRole("region", { name: "Finished today" })).toContainText("Solved");
+  await adi.getByRole("region", { name: "Your friends" }).getByRole("link", { name: /Ananya/ }).click();
   await adi.screenshot({ path: "test-results/friend-detail-mobile.png" });
   await ananya.screenshot({ path: "test-results/shared-board-desktop.png" });
   await ananya.request.get(API! + "/test/advance?seconds=86400");
@@ -134,11 +135,10 @@ test("friends invite, shared turns, retry, pass, persistence and daily reset", a
   await ananya.getByRole("button", { name: "Today’s word" }).click();
   await expect(ananya.locator(".row [data-mark]")).toHaveCount(0);
   expect(await streakOf(ananya, "ananya", id)).toBe(1);
-  // The friends list opens an active game straight to its board, so ending it
-  // goes through the API; the ended pair then shows its history in the dialog.
+  // An ended pair retains its shared history on the friend profile.
   const live = await adi.request.get(`${API}/api/duos/${id}`, { headers: { Authorization: "Bearer fixture-adi" } }).then(r => r.json()) as { version: number };
   expect((await adi.request.post(`${API}/api/duos/${id}/end`, { headers: { Authorization: "Bearer fixture-adi" }, data: { requestId: crypto.randomUUID(), version: live.version } })).status()).toBe(200);
-  await adi.goto("/friends"); await adi.getByRole("button", { name: /Ananya/ }).click();
+  await adi.goto("/friends"); await adi.getByRole("region", { name: "Your friends" }).getByRole("link", { name: /Ananya/ }).click();
   await expect(adi.getByRole("button", { name: "Play together", exact: true })).toBeVisible();
   await expect(adi.locator(".duo-recent")).toContainText(answer.answer);
   await expect(adi.locator(".duo-recent")).toContainText(second.answer);
@@ -151,18 +151,25 @@ test("friends invite, shared turns, retry, pass, persistence and daily reset", a
 
   // Separate partnerships and friend details must not leak another pair's board.
   const api = adi.request;
-  const request = await api.post(API! + "/api/me/friends", { headers: { Authorization: "Bearer fixture-adi" }, data: { inviteCode: "OUTCDE" } });
-  const friendship = await request.json() as { id: string };
-  await api.post(`${API}/api/me/friends/${friendship.id}/respond`, { headers: { Authorization: "Bearer fixture-outsider" }, data: { accept: true } });
-  const invitation = await api.post(API! + "/api/me/duos", { headers: { Authorization: "Bearer fixture-adi" }, data: { requestId: crypto.randomUUID(), version: 0, friendshipId: friendship.id, timezone: "Asia/Kolkata" } }).then(r => r.json()) as { id: string; version: number };
-  await api.post(`${API}/api/duos/${invitation.id}/accept`, { headers: { Authorization: "Bearer fixture-outsider" }, data: { requestId: crypto.randomUUID(), version: invitation.version } });
+  // A shared code requests approval; one acceptance creates friend + board.
+  await adi.goto("/friends?code=OUTCDE");
+  await adi.getByRole("dialog", { name: "Add & play", exact: true }).getByRole("button", { name: "Add & play", exact: true }).click();
+  await expect(adi.getByRole("region", { name: "Invitations" })).toContainText("Waiting for acceptance");
+  const c = await browser.newContext({ viewport: { width: 390, height: 844 }, reducedMotion: "reduce" });
+  await asPlayer(c, "outsider");
+  const outsider = await c.newPage();
+  await outsider.goto("/friends");
+  await outsider.getByRole("button", { name: "Accept & play", exact: true }).click();
+  await expect(outsider).toHaveURL(/\/duos\//);
+  const invitation = { id: outsider.url().split("/").at(-1)! };
+  await c.close();
   expect((await api.get(`${API}/api/duos/${invitation.id}`, { headers: { Authorization: "Bearer fixture-ananya" } })).status()).toBe(404);
   const mine = await api.get(API! + "/api/me/duos", { headers: { Authorization: "Bearer fixture-adi" } }).then(r => r.json()) as { id: string }[];
   expect(mine).toHaveLength(2);
   await adi.goto("/friends");
-  await expect(adi.getByRole("link", { name: /Outsider/ })).toBeVisible();
-  await expect(adi.getByRole("button", { name: /Ananya/ })).toBeVisible();
-  await expect(adi.getByRole("link", { name: /Outsider/ })).not.toContainText(answer.answer);
+  await expect(adi.getByRole("region", { name: "Your friends" }).getByRole("link", { name: /Outsider/ })).toBeVisible();
+  await expect(adi.getByRole("region", { name: "Your friends" }).getByRole("link", { name: /Ananya/ })).toBeVisible();
+  await expect(adi.getByRole("region", { name: "Your friends" }).getByRole("link", { name: /Outsider/ })).not.toContainText(answer.answer);
   await adi.screenshot({ path: "test-results/friends-lobby-mobile.png" });
   await adi.goto(`/duos/${invitation.id}`);
   for (const [width, height, theme, contrast] of [[320,640,"light",""], [390,844,"dark","cb"], [1280,900,"light","cb"]] as const) {

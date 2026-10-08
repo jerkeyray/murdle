@@ -105,6 +105,8 @@ export interface FriendRecord {
   incoming: boolean;
   online: boolean;
   dayStreak: number;
+  sharedStreak: number;
+  playInvite: boolean;
 }
 
 export interface DuoDay {
@@ -148,3 +150,17 @@ export interface DuoMutation {
   friendshipId?: string;
   timezone?: string;
 }
+
+export interface PairStats { current: number; longest: number; wordsSolved: number }
+export interface FriendProfile {
+  id: string;
+  displayName: string;
+  joinedAt: string;
+  online: boolean;
+  wordsSolved: number;
+  streak: { current: number; longest: number };
+  together: PairStats;
+  duo?: Duo;
+}
+export interface PlayInviteMutation { requestId: string; inviteCode?: string; timezone?: string }
+export interface PlayInvitation { friendshipId: string; status: string; duo?: Duo }

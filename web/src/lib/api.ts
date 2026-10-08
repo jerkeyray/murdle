@@ -1,5 +1,5 @@
-import type { CollectionPage, Duo, DuoMutation, FriendRecord, HomeSummary, Mark, Profile, Round, Row, Run } from "./contracts";
-export type { Mark, RoundState, Row, Entry, Pack, Run, Round, Profile, HomeSummary, SolveRecord, CollectionPage, FriendRecord, DuoDay, Duo, DuoMutation } from "./contracts";
+import type { CollectionPage, Duo, DuoMutation, FriendProfile, PlayInvitation, PlayInviteMutation, FriendRecord, HomeSummary, Mark, Profile, Round, Row, Run } from "./contracts";
+export type { Mark, RoundState, Row, Entry, Pack, Run, Round, Profile, HomeSummary, SolveRecord, CollectionPage, FriendRecord, FriendProfile, PairStats, PlayInvitation, PlayInviteMutation, DuoDay, Duo, DuoMutation } from "./contracts";
 
 /**
  * Typed client for the Go game API.
@@ -264,3 +264,7 @@ export async function respondToFriend(id: string, accept: boolean): Promise<void
     body: JSON.stringify({ accept }),
   });
 }
+
+export const getFriendProfile = (id: string, signal?: AbortSignal) => request<FriendProfile>(`/api/me/friends/${encodeURIComponent(id)}`, { signal });
+export const createPlayInvitation = (mutation: PlayInviteMutation) => request<PlayInvitation>("/api/me/play-invites", { method: "POST", body: JSON.stringify(mutation) });
+export const respondToPlayInvitation = (id: string, action: "accept" | "decline" | "cancel", mutation: PlayInviteMutation) => request<PlayInvitation>(`/api/me/play-invites/${encodeURIComponent(id)}/${action}`, { method: "POST", body: JSON.stringify(mutation) });

@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useCallback, useState } from "react";
-import { getDuos } from "@/lib/api";
+import { getDuos, getFriends, getCapabilities } from "@/lib/api";
 import { useVisiblePolling } from "@/lib/useVisiblePolling";
 
 /**
@@ -16,10 +16,12 @@ export function FriendsEntry() {
   const [turns, setTurns] = useState(0);
   const [invites, setInvites] = useState(0);
   const load = useCallback(async (signal:AbortSignal) => {
-    const duos = await getDuos(signal);
+    const capability = await getCapabilities(signal);
+    const [duos, friends] = await Promise.all([capability.sharedGames ? getDuos(signal) : Promise.resolve([]), getFriends(signal)]);
     if (signal.aborted) return;
     setTurns(duos.filter(d => d.today?.state === "playing" && d.today.currentPlayer === d.viewerId).length);
-    setInvites(duos.filter(d => d.status === "pending" && d.inviterId !== d.viewerId).length);
+    const incomingFriends = friends.filter(f => f.status === "pending" && f.incoming);
+    setInvites(incomingFriends.length + duos.filter(d => d.status === "pending" && d.inviterId !== d.viewerId && !incomingFriends.some(f => f.id === d.friendshipId)).length);
   }, []);
   useVisiblePolling(load, 30_000);
   const notificationCount = turns + invites;
