@@ -34,7 +34,7 @@ export function FriendGameActions({ friendshipId, duo, available, onChange, allo
   }
   return <div className="social-actions">
     {game?.status === "active" ? <>
-      <Link className="text-button" href={`/duos/${game.id}`}>Open board</Link>
+      <Link className="text-button friend-open" data-turn={game.today?.state === "playing" && game.today.currentPlayer === game.viewerId} href={`/duos/${game.id}`}>Open board</Link>
       {allowEnd && (ending ? <div className="social-end"><p>End this daily game? Your friendship and past results stay.</p><button className="text-button" disabled={busy} onClick={() => void act("end")}>End daily game</button><button className="text-button" onClick={() => setEnding(false)}>Keep playing</button></div> : <button className="text-button friend-secondary" onClick={() => setEnding(true)}>End daily game</button>)}
     </> : game?.status === "pending" ? game.inviterId === game.viewerId ? <>
       <span className="hint">Waiting for acceptance</span><button className="text-button" disabled={busy} onClick={() => void act("cancel")}>Cancel</button>

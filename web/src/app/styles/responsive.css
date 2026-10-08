@@ -582,14 +582,17 @@
   min-height: 56px;
   margin-inline: auto;
   padding: 0 20px;
-  border: 1px solid var(--border-strong);
+  gap: 10px;
+  border: 1.5px solid var(--mark-hit);
   border-radius: var(--radius-tile);
+  background: var(--bg-raised);
   color: var(--text);
   text-decoration: none;
-  transition: border-color 0.18s ease, color 0.18s ease;
+  transition: border-color 0.18s ease, background 0.18s ease;
 }
 
-.home-friends:hover { border-color: var(--text); }
+.home-friends:hover { background: color-mix(in srgb, var(--mark-hit) 7%, var(--bg-raised)); }
+.home-friends-icon { flex: none; color: var(--mark-hit); }
 
 .home-friends-word {
   font-family: var(--font-serif), Georgia, serif;
@@ -842,7 +845,7 @@ summary { cursor: pointer; color: var(--text-muted); padding-block: 8px; min-hei
 .friend-icon-button svg { width: 19px; height: 19px; }
 .friend-icon-button:hover { color: var(--text); border-color: var(--border-strong); }
 .friend-invite-caption { margin: 16px 0 20px; color: var(--text-muted); font-size: .85rem; line-height: 1.55; }
-.friends-page .code-form { display: block; margin: 0; padding-top: 18px; border-top: 1px solid var(--rule); }
+.friends-page .code-form { display: block; margin: 0; padding-top: 6px; }
 .friends-page .code-form label { display: block; margin-bottom: 10px; color: var(--text-muted); font-size: .8rem; }
 .friend-code-entry { display: flex; align-items: stretch; gap: 8px; min-width: 0; }
 .friends-page .code-form .input { width: 0; min-width: 0; height: 48px; background: var(--bg); letter-spacing: .1em; }
@@ -897,15 +900,11 @@ summary { cursor: pointer; color: var(--text-muted); padding-block: 8px; min-hei
 .duo-member[data-current="true"] { border-color: var(--border-strong); background: var(--bg-raised); color: var(--text); }
 .duo-members i { display: inline-grid; place-items: center; border-radius: 50%; width: 24px; height: 24px; font-family: var(--font-serif),Georgia,serif; font-style: normal; border: 1px solid var(--border-strong); }
 .duo-members > span[data-current="true"] i { border-color: var(--mark-hit); color: var(--mark-hit); }
-/* Pass sits where the solo board keeps its hint: left of the bottom row. */
-.duo-app .board-stage .duo-pass { position: absolute; bottom: max(calc(8.333% - 22px), 0px); left: -50px; width: 44px; height: 44px; padding: 0; border-color: var(--border); border-radius: 50%; color: var(--text-muted); font-size: .66rem; font-weight: 650; letter-spacing: .02em; }
+/* The clue sits where the solo board keeps it, left of the bottom row; Pass
+   mirrors it on the right, in the same quiet circle. */
+.duo-app .board-stage .duo-pass { position: absolute; bottom: max(calc(8.333% - 22px), 0px); right: -50px; width: 44px; height: 44px; padding: 0; border-color: var(--border); border-radius: 50%; color: var(--text-muted); }
 .duo-app .board-stage .duo-pass:hover { border-color: var(--border-strong); color: var(--text); }
 .duo-app .board-stage .duo-pass:disabled { opacity: .45; }
-.duo-app .board-stage .duo-hint { position: absolute; top: 8px; right: -50px; width: 44px; height: 44px; padding: 0; border-color: var(--border); border-radius: 50%; color: var(--text-muted); font-size: .66rem; font-weight: 650; letter-spacing: .02em; }
-.duo-app .board-stage .duo-hint:hover { border-color: var(--border-strong); color: var(--text); }
-.duo-app .board-stage .duo-hint:disabled { opacity: .45; }
-.duo-hint-reveal { flex: none; width: min(100%, 21rem); margin: 12px auto; padding: 12px 14px; border: 1px solid var(--border); border-radius: var(--radius-card); background: var(--bg-raised); }
-.duo-hint-reveal p { margin: 5px 0 0; color: var(--text); font-size: .9rem; line-height: 1.45; }
 .duo-app .row { position: relative; }
 .row-author { display: grid; place-items: center; position: absolute; right: calc(100% + 6px); top: 50%; transform: translateY(-50%); font-family: var(--font-serif),Georgia,serif; font-size: .75rem; color: var(--text-muted); }
 .row-author[data-seat="0"], .duo-members [data-seat="0"] i { color: var(--seat-0); }
@@ -1125,7 +1124,10 @@ summary { cursor: pointer; color: var(--text-muted); padding-block: 8px; min-hei
 
 /* Social pages only: compact rows, using the existing sheet and typography. */
 .social-hub .sheet-head { display: flex; align-items: center; gap: 12px; }
-.social-hub .social-add { margin-left: auto; white-space: nowrap; font-size: .8rem; }
+.social-hub .social-add { display: inline-flex; align-items: center; gap: 7px; margin-left: auto; min-height: 44px; padding: 0 16px 0 13px; border: 1px solid var(--mark-hit); border-radius: 999px; background: var(--bg-raised); color: var(--text); font: 600 .82rem var(--font-sans), system-ui, sans-serif; white-space: nowrap; cursor: pointer; transition: background .18s; }
+.social-hub .social-add svg { color: var(--mark-hit); }
+.social-hub .social-add:hover:not(:disabled) { background: color-mix(in srgb, var(--mark-hit) 8%, var(--bg-raised)); }
+.social-hub .social-add:disabled { opacity: .45; cursor: default; }
 .social-list { list-style: none; padding: 0; margin: 0 0 24px; }
 .social-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--rule); }
 .social-row > .friend-info, .social-identity { flex: 1; min-width: 0; }
@@ -1133,6 +1135,24 @@ summary { cursor: pointer; color: var(--text-muted); padding-block: 8px; min-hei
 .social-row a { color: var(--text); text-decoration: none; }
 .social-row a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .social-identity { display: flex; align-items: center; gap: 12px; }
+.social-row .friend-info > span[data-turn="true"] { color: var(--mark-hit); font-weight: 600; }
+/* The board you owe a turn on reads as the one thing to press. */
+.friend-open[data-turn="true"] { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 999px; background: var(--mark-hit); color: var(--mark-hit-text); font-weight: 600; text-decoration: none; }
+.friend-open[data-turn="true"]:hover { text-decoration: none; filter: brightness(1.05); }
+.friend-game { display: grid; gap: 12px; padding: 18px; border: 1px solid var(--border); border-radius: 18px; background: var(--bg-raised); }
+.friend-game > p { margin: 0; font: 550 1.15rem/1.35 var(--font-serif), Georgia, serif; }
+.friend-game .social-actions { justify-content: flex-start; gap: 6px 14px; }
+/* Opening the board is the point of this card, so it is always a real button. */
+.friend-game .friend-open { display: inline-flex; align-items: center; min-height: 44px; padding: 0 22px; border-radius: 999px; background: var(--text); color: var(--bg); font-size: .85rem; font-weight: 600; text-decoration: none; }
+.friend-game .friend-open[data-turn="true"] { background: var(--mark-hit); color: var(--mark-hit-text); }
+.friend-game .friend-secondary { margin-left: auto; font-size: .78rem; color: var(--text-faint); }
+.friend-together-head { margin: 26px 0 0; }
+.friend-together-head .label { font-size: .65rem; letter-spacing: .12em; }
+.friend-together { display: grid; grid-template-columns: repeat(3, 1fr); margin: 14px 0 6px; padding: 16px 0; border: 1px solid var(--border); border-radius: 18px; background: var(--bg-raised); }
+.friend-together div { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.friend-together div + div { border-left: 1px solid var(--rule); }
+.friend-together dd { order: 0; margin: 0; font: 550 1.8rem var(--font-serif), Georgia, serif; }
+.friend-together dt { order: 1; padding-inline: 4px; text-align: center;color: var(--text-muted); font-size: .72rem; }
 .social-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 12px; }
 .social-row > .social-actions { justify-content: flex-end; max-width: 48%; }
 .social-actions .text-button, .social-row > .text-button { min-height: 44px; font-size: .8rem; white-space: nowrap; }
@@ -1146,10 +1166,40 @@ summary { cursor: pointer; color: var(--text-muted); padding-block: 8px; min-hei
 .social-game-detail .friend-secondary { color: var(--text-muted); margin-left: auto; }
 .social-end { flex-basis: 100%; font-size: .85rem; color: var(--text-muted); }
 .social-end .text-button { margin-right: 16px; }
-.social-hub .friend-dialog .friend-invite { margin: 12px 0; padding: 0; border: 0; border-radius: 0; background: transparent; }
-.social-hub .friend-dialog .friend-invite-actions { flex-wrap: wrap; justify-content: flex-end; }
+.social-hub .friend-dialog .friend-invite { margin: 4px 0 0; padding: 0; border: 0; border-radius: 0; background: transparent; }
+.friend-invite-lede { margin: 0 0 18px; color: var(--text-muted); font-size: .9rem; line-height: 1.55; }
+.invite-card { display: grid; justify-items: center; gap: 4px; padding: 22px 18px 18px; border: 1px solid var(--border-strong); border-radius: 18px; background: var(--bg-raised); text-align: center; }
+.social-hub .invite-card strong { margin: 6px 0 16px; font: 600 2rem/1 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .28em; padding-left: .28em; color: var(--text); }
+.invite-card-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; }
+.invite-card-actions .button { width: 100%; min-height: 46px; margin: 0; font-size: .85rem; letter-spacing: 0; text-transform: none; }
+.invite-or { display: flex; align-items: center; gap: 12px; margin: 20px 0 4px; color: var(--text-faint); font-size: .75rem; }
+.invite-or::before, .invite-or::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
 @media (max-width: 380px) {
   .social-row { gap: 10px; }
   .social-row > .social-actions { gap: 2px 8px; }
   .social-identity { gap: 8px; }
+}
+
+/* Phone pass: thumb-sized targets, text that stays readable, and names that
+   cannot push a row out of shape. Kept last so it wins over the earlier rules. */
+.label { font-size: max(.7rem, 11px); }
+.friend-invite .label, .friend-together-head .label { font-size: max(.7rem, 11px); }
+.friend-info strong { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; line-height: 1.2; }
+.profile-rename { min-height: 44px; padding-inline: 2px; display: inline-flex; align-items: center; }
+.profile-section-head a { display: inline-flex; align-items: center; min-height: 44px; padding-inline: 6px; margin-right: -6px; }
+.library-filter button { min-width: 40px; min-height: 40px; }
+.hint-count { min-width: 16px; height: 16px; font-size: .65rem; line-height: 16px; }
+.profile-badge { min-width: 17px; height: 17px; font-size: .62rem; line-height: 13px; }
+@media (max-width: 380px) {
+  .friend-info strong { font-size: 1.1rem; }
+  .social-row { gap: 10px; }
+}
+/* The card already pads its edges; the extra 20px pushed Appearance in from
+   the rows above it and left the options cramped on a small phone. */
+.prefs-card .appearance-pref { padding: 16px 0; }
+.prefs-card .appearance-pref + .appearance-pref { border-top: 1px solid var(--rule); }
+.library-tools .input::placeholder { text-overflow: ellipsis; }
+@media (max-width: 380px) {
+  .library-tools { grid-template-columns: 1fr; }
+  .library-filter { justify-self: start; }
 }

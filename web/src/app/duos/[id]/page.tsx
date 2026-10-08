@@ -11,6 +11,7 @@ import { Board, MARK_LABEL } from "@/components/Board";
 import { Keyboard } from "@/components/Keyboard";
 import { BackButton } from "@/components/BackButton";
 import { Loader } from "@/components/Loader";
+import { Dialog } from "@/components/Dialog";
 import { WordExtras, WordMeta } from "@/components/WordFacts";
 import { dictionaryReady, isKnownWord, loadDictionary, serverDictionaryReady, subscribeDictionary } from "@/lib/dictionary";
 import { Presence } from "@/components/Presence";
@@ -35,6 +36,7 @@ function DuoBoard({id}: {id: string}) {
   const [hasPending, setHasPending] = useState(false);
   const [signedOut, setSignedOut] = useState(false);
   const [closedDate, setClosedDate] = useState<string | null>(null);
+  const [clueOpen, setClueOpen] = useState(false);
   const dayKey = useRef("");
   const current = useRef<{ date: string; seq: number } | null>(null);
   const pending = useRef<Pending | null>(null);
@@ -208,12 +210,30 @@ function DuoBoard({id}: {id: string}) {
         return <span className="duo-member" key={m.id} data-seat={seat} data-current={active} aria-current={active ? "step" : undefined}><i aria-hidden>{m.name.slice(0, 1).toUpperCase()}</i><span>{m.id === duo.viewerId ? "You" : m.name}</span></span>;
       })}</div>
       <div className="rule" />
-      <div className="board-area"><div className="board-stage"><Board rows={day.rows} authors={day.rows.map(r => duo.members.find(m => m.id === r.playerId)?.name || "Friend")} authorSeats={day.rows.map(r => duo.members.findIndex(m => m.id === r.playerId))} draft={draft} wordLength={day.wordLength} maxRows={day.maxRows} revealingRow={null} shake={false} onDraftTileSelect={yourTurn ? selectDraftTile : undefined} draftCursor={draftCursor} />{yourTurn && !day.passed.includes(duo.viewerId) && !closedDate && <button className="icon-button duo-pass" disabled={busy || hasPending} onClick={() => void submit("pass")} aria-label="Pass this turn to your friend" title="Pass this turn to your friend. Once per board.">Pass</button>}{day.state === "playing" && day.rows.length >= 3 && !day.hint && !closedDate && <button className="icon-button duo-hint" disabled={busy || hasPending} onClick={() => void submit("hint")} aria-label="Reveal a shared hint" title="Reveal one shared hint. It does not use a turn.">Hint</button>}</div></div>
-      {day.hint && <aside className="duo-hint-reveal" aria-label="Shared hint"><span className="label">Shared hint</span><p>{day.hint.text}</p></aside>}
+      <div className="board-area"><div className="board-stage"><Board rows={day.rows} authors={day.rows.map(r => duo.members.find(m => m.id === r.playerId)?.name || "Friend")} authorSeats={day.rows.map(r => duo.members.findIndex(m => m.id === r.playerId))} draft={draft} wordLength={day.wordLength} maxRows={day.maxRows} revealingRow={null} shake={false} onDraftTileSelect={yourTurn ? selectDraftTile : undefined} draftCursor={draftCursor} />{day.state === "playing" && !closedDate && <button className="icon-button hint-button game-hint" disabled={busy && !clueOpen} onClick={() => setClueOpen(true)} aria-label={day.hint ? "Clue revealed" : "Clue"} title={day.hint ? "Clue revealed" : "Clue"}>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
+          <path d="M9 18h6M10 21h4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+          <path d="M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .9 1.6l.1.6h5.2l.1-.6c.1-.6.4-1.2.9-1.6A6 6 0 0 0 12 3Z" stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round" />
+        </svg>
+        {day.hint && <span className="hint-count" aria-hidden>1</span>}
+      </button>}{yourTurn && !day.passed.includes(duo.viewerId) && !closedDate && <button className="icon-button duo-pass" disabled={busy || hasPending} onClick={() => void submit("pass")} aria-label="Pass this turn to your friend" title="Pass this turn to your friend. Once per board.">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+          <path d="M4 12h12M12 7l5 5-5 5M20 6v12" />
+        </svg>
+      </button>}</div></div>
       <div className="sr-only" role="status" aria-live="polite">{day.rows.at(-1)?.guess.split("").map((letter, i) => `${letter}: ${MARK_LABEL[day.rows.at(-1)!.marks[i]]}`).join("; ")}</div>
       {day.state !== "playing" ? <div className="game-tools"><span role="status">{reconnecting ? "Reconnecting…" : status}</span></div> : null}
       {error && <div className="duo-error" role="alert">{error}</div>}
       {closedDate ? <section className="duo-result"><p>{closedDate} has finished.</p><button className="button" onClick={() => { setClosedDate(null); updateDraft([]); setDraftCursor(0); }}>Today’s word</button></section> : day.state === "playing" ? yourTurn ? <><div className="rule" /><Keyboard letterStates={letterStates(day.rows)} onKey={type} onBackspace={backspace} disabled={!enabled} /><div className="play-actions"><button className="button keyboard-submit" data-state={enterState} disabled={!enabled || enterState === "incomplete"} onClick={() => void submit()}>Submit</button></div></> : <section className="duo-waiting" role="status"><span className="label">Shared board</span><p>Waiting for {other?.name || "your friend"}</p><span>You’ll take the next turn.</span></section> : <section className="duo-result"><h2>{day.answer}</h2><WordMeta entry={day.entry} /><p>{day.entry?.definition}</p><WordExtras entry={day.entry} />{day.entry?.note && <details><summary>Read more</summary><p>{day.entry.note}</p></details>}{(day.state === "won" || day.state === "lost") && duo.status === "active" && !new URLSearchParams(window.location.search).has("date") && <button className="button" disabled={busy} onClick={() => void startNext()}>{busy ? "Starting…" : "Next word"}</button>}</section>}
+      {clueOpen && day.state === "playing" && <Dialog title="Clue" onClose={() => setClueOpen(false)} className="clue-dialog">
+        <section className="hint-panel">
+          {day.hint && <ol className="hint-list"><li><p>{day.hint.text}</p></li></ol>}
+          {!day.hint && <div className="hint-next">
+            <p>{day.rows.length >= 3 ? `A small nudge, without giving away a letter. ${other?.name || "Your friend"} sees it too, and it doesn’t use a turn.` : "Available after 3 guesses."}</p>
+            <button className="button" disabled={day.rows.length < 3 || busy || hasPending} onClick={() => void submit("hint")}>{busy || hasPending ? "Opening…" : "Reveal clue"}</button>
+          </div>}
+        </section>
+      </Dialog>}
     </>}
   </main>;
 }

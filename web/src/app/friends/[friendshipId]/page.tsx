@@ -9,7 +9,17 @@ import { FriendGameActions } from "@/components/FriendGameActions";
 import { Loader } from "@/components/Loader";
 import { Presence } from "@/components/Presence";
 import { useVisiblePolling } from "@/lib/useVisiblePolling";
-import { duoStatus } from "@/lib/duoStatus";
+
+// One sentence about today's game, in place of a status label.
+function gameLine(friend: FriendProfile): string {
+  const d = friend.duo;
+  if (d?.status === "pending") return d.inviterId === d.viewerId ? `Waiting for ${friend.displayName} to accept.` : `${friend.displayName} invited you to play.`;
+  const day = d?.status === "active" ? d.today : undefined;
+  if (!day) return "Share a board each day and take turns guessing.";
+  if (day.state === "won") return "You solved today’s word together.";
+  if (day.state !== "playing") return "Today’s word got away.";
+  return day.currentPlayer === d!.viewerId ? `Your turn · ${day.rows.length} of 6 guesses.` : `${friend.displayName}’s turn · ${day.rows.length} of 6 guesses.`;
+}
 
 export default function FriendPage({ params }: { params: Promise<{ friendshipId: string }> }) {
   const { friendshipId } = use(params);
@@ -45,14 +55,11 @@ export default function FriendPage({ params }: { params: Promise<{ friendshipId:
       {signedOut ? <Link className="button button--link" href={`/sign-in?returnTo=${encodeURIComponent(`/friends/${friendshipId}`)}`}>Sign in</Link> : <button className="text-button" onClick={() => void load().catch(() => {})}>Try again</button>}
       <Link className="text-button" href="/friends">Back to friends</Link>
     </div></div> : <>
-      <div className="friend-detail-identity"><span className="friend-avatar" aria-hidden="true">{friend.displayName.slice(0, 1).toUpperCase() || "?"}<i data-online={friend.online} /></span><div><h2>{friend.displayName}</h2><p>{friend.online ? "Online" : "Offline"} · Joined {new Date(friend.joinedAt).toLocaleDateString("en", { month: "long", year: "numeric", timeZone: "UTC" })}</p></div></div>
-      <dl className="social-stats" aria-label="Personal stats"><div><dt>Playing streak</dt><dd>{friend.streak.current} days</dd></div><div><dt>Best playing streak</dt><dd>{friend.streak.longest} days</dd></div><div><dt>Words solved</dt><dd>{friend.wordsSolved}</dd></div></dl>
-      <section aria-label="Together"><div className="friends-list-heading"><h2>Together</h2></div><dl className="social-stats"><div><dt>Shared streak</dt><dd>{friend.together.current} days</dd></div><div><dt>Best shared streak</dt><dd>{friend.together.longest} days</dd></div><div><dt>Words solved together</dt><dd>{friend.together.wordsSolved}</dd></div></dl>
-        <p className="hint">A shared streak counts consecutive days with a word solved together.</p>
-        <div className="social-game-detail"><p className="hint">{friend.duo?.status === "active" || friend.duo?.status === "pending" ? duoStatus(friend.duo) : "Share a board each day and take turns guessing."}</p><FriendGameActions friendshipId={friend.id} duo={friend.duo} available={available} onChange={load} allowEnd /></div>
-        {!available && <p className="hint">Shared games are unavailable on this server.</p>}
-      </section>
-      {!!friend.duo?.recent.length && <section aria-label="Recent shared results"><div className="friends-list-heading"><h2>Recent words</h2></div><ul className="duo-recent">{friend.duo.recent.map(day => <li key={`${day.duoId}:${day.board}`}><Link href={`/duos/${day.duoId}?date=${day.board}`}>{day.date}{day.seq > 0 ? ` · game ${day.seq + 1}` : ""}</Link><strong>{day.answer}</strong><span>{day.state === "won" ? `${day.rows.length}/6` : "Missed"}</span></li>)}</ul></section>}
+      <div className="friend-detail-identity"><span className="friend-avatar" aria-hidden="true">{friend.displayName.slice(0, 1).toUpperCase() || "?"}<i data-online={friend.online} /></span><div><h2>{friend.displayName}</h2><p>{friend.online ? "Online" : "Offline"}</p></div></div>
+      <section className="friend-game" aria-label="Today"><p>{gameLine(friend)}</p><FriendGameActions friendshipId={friend.id} duo={friend.duo} available={available} onChange={load} allowEnd /></section>
+      {!available && <p className="hint">Shared games are unavailable on this server.</p>}
+      <div className="friend-together-head"><span className="label">Together</span></div>
+      <dl className="friend-together" aria-label="Together"><div><dt>day streak</dt><dd>{friend.together.current}</dd></div><div><dt>best streak</dt><dd>{friend.together.longest}</dd></div><div><dt>solved together</dt><dd>{friend.together.wordsSolved}</dd></div></dl>
       {error && <p className="form-error" role="alert">{error}</p>}
     </>}
   </main>;

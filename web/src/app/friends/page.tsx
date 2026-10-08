@@ -7,7 +7,6 @@ import { ApiError, createPlayInvitation, getCapabilities, getDuos, getFriends, g
 import { BackButton } from "@/components/BackButton";
 import { Dialog } from "@/components/Dialog";
 import { useVisiblePolling } from "@/lib/useVisiblePolling";
-import { duoStatus } from "@/lib/duoStatus";
 import { Loader } from "@/components/Loader";
 import { Presence } from "@/components/Presence";
 import { FriendGameActions } from "@/components/FriendGameActions";
@@ -91,16 +90,21 @@ export default function FriendsPage() {
   }
   const accepted = friends.filter(f => f.status === "accepted").sort((a, b) => a.displayName.localeCompare(b.displayName));
   const requests = friends.filter(f => f.status === "pending").sort((a, b) => Number(b.incoming) - Number(a.incoming) || a.displayName.localeCompare(b.displayName));
-  const games = duos.filter(d => d.status === "active" && accepted.some(f => f.id === d.friendshipId));
   const gameInvites = duos.filter(d => d.status === "pending" && accepted.some(f => f.id === d.friendshipId));
-  const groups = [
-    { title: "Your turn", games: games.filter(d => d.today?.state === "playing" && d.today.currentPlayer === d.viewerId) },
-    { title: "Waiting for friend", games: games.filter(d => d.today?.state === "playing" && d.today.currentPlayer !== d.viewerId) },
-    { title: "Finished today", games: games.filter(d => d.today && d.today.state !== "playing") },
-  ];
+  // One row per friend, the ones waiting on you first, so a friend with a game
+  // is never listed twice.
+  const gameOf = (f: FriendRecord) => duos.find(d => d.friendshipId === f.id && (d.status === "active" || d.status === "pending"));
+  const rank = (d?: Duo) => d?.status !== "active" || !d.today ? 3 : d.today.state !== "playing" ? 2 : d.today.currentPlayer === d.viewerId ? 0 : 1;
+  const ordered = [...accepted].sort((a, b) => rank(gameOf(a)) - rank(gameOf(b)) || a.displayName.localeCompare(b.displayName));
+  const statusLine = (f: FriendRecord, d?: Duo) => {
+    const day = d?.status === "active" ? d.today : undefined;
+    const game = !day ? (f.online ? "Online" : "") : day.state === "won" ? "Solved today" : day.state !== "playing" ? "Missed today" : day.currentPlayer === d!.viewerId ? `Your turn · ${day.rows.length} of 6` : `${f.displayName}’s turn`;
+    const streak = f.sharedStreak ? `${f.sharedStreak}-day streak` : "";
+    return [game, streak].filter(Boolean).join(" · ");
+  };
   return <main className="sheet friends-page social-hub">
     <Presence enabled={available && !!profile} />
-    <header className="sheet-head"><BackButton href="/" /><h1 className="sheet-title">Friends</h1>{profile && <button className="text-button social-add" disabled={!available} onClick={() => { setAdding(true); setError(""); }}>Add & play</button>}</header>
+    <header className="sheet-head"><BackButton href="/" /><h1 className="sheet-title">Friends</h1>{profile && <button className="social-add" disabled={!available} onClick={() => { setAdding(true); setError(""); }}><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden><path d="M12 5v14M5 12h14" /></svg>Add & play</button>}</header>
     {!ready ? <Loader /> : !profile ? <div className="gate-middle friends-gate"><div className="gate-card">
       {error ? <><h2 className="gate-title">Can’t reach friends</h2><p className="gate-line">Check your connection and try again.</p><button className="button" onClick={() => { setError(""); setReady(false); void load().catch(() => {}); }}>Try again</button></> : <><h2 className="gate-title">Play with friends.</h2><p className="gate-line">Share a daily board with a friend and take turns guessing.</p><Link className="button button--link" href={`/sign-in?returnTo=${encodeURIComponent(`/friends${code ? `?code=${code}` : ""}`)}`}>Sign in</Link></>}
     </div>{!error && <Link href="/" className="gate-foot">Play without an account</Link>}</div> : <>
@@ -113,19 +117,19 @@ export default function FriendsPage() {
         </div></li>)}
         {gameInvites.map(d => <li className="social-row" key={d.id}><div className="friend-info"><strong>{accepted.find(f => f.id === d.friendshipId)?.displayName}</strong><span>{d.inviterId === d.viewerId ? "Daily game invitation sent" : "Invited you to a daily game"}</span></div><FriendGameActions friendshipId={d.friendshipId} duo={d} available={available} onChange={load} /></li>)}
       </ul></section>}
-      {groups.filter(g => g.games.length).map(g => <section aria-label={g.title} key={g.title}><div className="friends-list-heading"><h2>{g.title}</h2></div><ul className="social-list">{g.games.sort((a, b) => (accepted.find(f => f.id === a.friendshipId)?.displayName ?? "").localeCompare(accepted.find(f => f.id === b.friendshipId)?.displayName ?? "")).map(d => {
-        const f = accepted.find(f => f.id === d.friendshipId)!;
-        return <li className="social-row" key={d.id}><div className="friend-info"><Link href={`/friends/${f.id}`}><strong>{f.displayName}</strong></Link><span>{duoStatus(d)} · {d.today?.rows.length ?? 0}/6 guesses · {f.sharedStreak ?? d.today?.streak ?? 0} days together</span></div><Link className="text-button" href={`/duos/${d.id}`}>Open board</Link></li>;
-      })}</ul></section>)}
-      {accepted.length > 0 && <section aria-label="Your friends"><div className="friends-list-heading"><h2>Your friends</h2><span>{accepted.length}</span></div><ul className="social-list">{accepted.map(f => {
-        const d = duos.find(d => d.friendshipId === f.id);
-        return <li className="social-row" key={f.id}><Link className="social-identity" href={`/friends/${f.id}`}><span className="friend-avatar" aria-hidden="true">{f.displayName.slice(0, 1).toUpperCase() || "?"}<i data-online={f.online} /></span><span className="friend-info"><strong>{f.displayName}</strong><span>{f.online ? "Online" : "Offline"} · {f.sharedStreak ?? 0} days together</span></span></Link>{d?.status === "pending" ? <Link className="text-button" href={`/friends/${f.id}`}>View invite</Link> : <FriendGameActions friendshipId={f.id} duo={d} available={available} onChange={load} />}</li>;
+      {accepted.length > 0 && <section aria-label="Your friends"><div className="friends-list-heading"><h2>Your friends</h2><span>{accepted.length}</span></div><ul className="social-list">{ordered.map(f => {
+        const d = gameOf(f);
+        const turn = d?.status === "active" && d.today?.state === "playing" && d.today.currentPlayer === d.viewerId;
+        return <li className="social-row" key={f.id}><Link className="social-identity" href={`/friends/${f.id}`}><span className="friend-avatar" aria-hidden="true">{f.displayName.slice(0, 1).toUpperCase() || "?"}<i data-online={f.online} /></span><span className="friend-info"><strong>{f.displayName}</strong>{statusLine(f, d) && <span data-turn={turn}>{statusLine(f, d)}</span>}</span></Link>{d?.status === "pending" ? <Link className="text-button" href={`/friends/${f.id}`}>View invite</Link> : <FriendGameActions friendshipId={f.id} duo={d} available={available} onChange={load} />}</li>;
       })}</ul></section>}
       {friends.length === 0 && <section className="friends-empty"><h2>A word, shared.</h2><p>Six guesses. Two minds.<br />Invite your first friend to get started.</p><button className="button button--quiet" disabled={!available} onClick={() => setAdding(true)}>Add & play</button></section>}
       {adding && <Dialog title="Add & play" className="friend-dialog" onClose={() => setAdding(false)}><section className="friend-invite">
-        <div className="friend-invite-top"><div><span className="label">Your invite code</span><strong>{profile.inviteCode}</strong></div><div className="friend-invite-actions"><button className="text-button" disabled={!available} onClick={() => void share(true)}>Copy link</button><button className="text-button" disabled={!available} onClick={() => void share()}>Share</button></div></div>
-        <p className="friend-invite-caption">Share your link or code. Accept their invitation to become friends and start a daily game.</p>
-        <form className="code-form" onSubmit={connect}><label htmlFor="friend-code">Have a friend’s code?</label><div className="friend-code-entry"><input id="friend-code" className="input" value={code} onChange={e => setCode(e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, ""))} maxLength={6} autoCapitalize="characters" autoComplete="off" autoCorrect="off" spellCheck={false} placeholder="Enter code" /><button className="button button--inline" disabled={busy || !available || code.length !== 6}>{busy ? "Sending…" : "Add & play"}</button></div></form>
+        <p className="friend-invite-lede">Share your code. When they accept, you’re friends and a daily board is ready.</p>
+        <div className="invite-card"><span className="label">Your invite code</span><strong aria-label={`Your invite code, ${profile.inviteCode.split("").join(" ")}`}>{profile.inviteCode}</strong>
+          <div className="invite-card-actions"><button className="button button--quiet" disabled={!available} onClick={() => void share(true)}>Copy link</button><button className="button" disabled={!available} onClick={() => void share()}>Share</button></div>
+        </div>
+        <div className="invite-or" aria-hidden="true"><span>or</span></div>
+        <form className="code-form" onSubmit={connect}><label htmlFor="friend-code">Got a friend’s code?</label><div className="friend-code-entry"><input id="friend-code" className="input" value={code} onChange={e => setCode(e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, ""))} maxLength={6} autoCapitalize="characters" autoComplete="off" autoCorrect="off" spellCheck={false} placeholder="Enter code" /><button className="button button--inline" disabled={busy || !available || code.length !== 6}>{busy ? "Sending…" : "Add & play"}</button></div></form>
       </section>{error && <p className="form-error" role="alert">{error}</p>}{notice && <p className="hint" role="status">{notice}</p>}</Dialog>}
     </>}
   </main>;

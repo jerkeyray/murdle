@@ -75,7 +75,7 @@ export default function WordsPage() {
       </div>
       <div className="library-tools">
         <label className="sr-only" htmlFor="library-search">Search your library</label>
-        <input id="library-search" className="input" type="search" placeholder="Search words or meanings" value={query} onChange={(event) => changeQuery(event.target.value)} />
+        <input id="library-search" className="input" type="search" placeholder="Search words" value={query} onChange={(event) => changeQuery(event.target.value)} />
         <div className="library-filter" role="group" aria-label="Word length">
           <button aria-pressed={length === "all"} onClick={() => chooseLength("all")}>All</button>
           <button aria-pressed={length === "5"} onClick={() => chooseLength("5")}>5</button>

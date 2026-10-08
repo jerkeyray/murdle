@@ -25,10 +25,14 @@ test("compact hub groups games and separates profile links from board actions", 
   await setup(page);
   await page.goto("/friends");
   await expect(page.getByRole("region", { name: "Your friends" })).toBeVisible();
-  expect(await page.getByRole("heading", { level: 2 }).allTextContents()).toEqual(["Invitations", "Your turn", "Waiting for friend", "Finished today", "Your friends"]);
+  expect(await page.getByRole("heading", { level: 2 }).allTextContents()).toEqual(["Invitations", "Your friends"]);
   const list = page.getByRole("region", { name: "Your friends" });
-  await expect(list.getByRole("link", { name: /Anna/ })).toContainText("3 days together");
-  await expect(page.getByRole("region", { name: "Your turn" }).getByRole("link", { name: "Open board" })).toHaveAttribute("href", "/duos/g1");
+  // One row per friend, the turn waiting on you first.
+  expect(await list.locator(".social-identity strong").allTextContents()).toEqual(["Anna", "Ben", "Cara"]);
+  await expect(list.getByRole("link", { name: /Anna/ })).toContainText("Your turn · 0 of 6 · 3-day streak");
+  await expect(list.getByRole("link", { name: /Ben/ })).toContainText("Ben’s turn");
+  await expect(list.getByRole("link", { name: /Cara/ })).toContainText("Solved today");
+  await expect(list.getByRole("link", { name: "Open board" }).first()).toHaveAttribute("href", "/duos/g1");
   for (const width of [320, 390, 1280]) {
     await page.setViewportSize({ width, height: 900 });
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
@@ -36,10 +40,12 @@ test("compact hub groups games and separates profile links from board actions", 
   }
   await list.getByRole("link", { name: /Anna/ }).click();
   await expect(page).toHaveURL(/\/friends\/anna$/);
-  await expect(page.getByText("Online · Joined January 2026")).toBeVisible();
-  await expect(page.getByRole("definition").filter({ hasText: "27" })).toHaveCount(1);
+  await expect(page.getByText("Online", { exact: true })).toBeVisible();
+  await expect(page.getByText("Your turn · 0 of 6 guesses.")).toBeVisible();
+  await expect(page.getByRole("definition").filter({ hasText: "11" })).toHaveCount(1);
+  await expect(page.getByText("27")).toHaveCount(0);
   await expect(page.getByRole("link", { name: "Open board" })).toHaveAttribute("href", "/duos/g1");
-  await expect(page.getByRole("region", { name: "Recent shared results" })).toContainText("apple");
+  await expect(page.getByText("apple")).toHaveCount(0);
   for (const width of [320, 390, 1280]) {
     await page.setViewportSize({ width, height: 900 });
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);

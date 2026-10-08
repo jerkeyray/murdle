@@ -32,7 +32,7 @@ test("friends invite, shared turns, retry, pass, persistence and daily reset", a
   await adi.getByRole("link", { name: /Ananya/ }).click();
   await expect(adi.getByRole("heading", { name: "Ananya" })).toBeVisible();
   await adi.getByRole("button", { name: "Play together", exact: true }).click();
-  await expect(adi.getByText("Invitation sent", { exact: true })).toBeVisible();
+  await expect(adi.getByText("Waiting for Ananya to accept.", { exact: true })).toBeVisible();
   await ananya.reload();
   await ananya.getByRole("link", { name: /Adi/ }).click();
   await ananya.getByRole("button", { name: "Accept daily game" }).click();
@@ -43,7 +43,10 @@ test("friends invite, shared turns, retry, pass, persistence and daily reset", a
 
   await adi.goto(`/duos/${id}`);
   await yourTurn(adi);
-  await expect(adi.getByRole("button", { name: "Reveal a shared hint" })).toHaveCount(0);
+  // The clue opens the way it does on a solo board, locked until three guesses.
+  await adi.getByRole("button", { name: "Clue", exact: true }).click();
+  await expect(adi.getByRole("button", { name: "Reveal clue" })).toBeDisabled();
+  await adi.getByRole("button", { name: "Close Clue" }).click();
   await expect(ananya.getByText("Waiting for Adi")).toBeVisible();
   // Lose the response after the server commits, then retry the identical request.
   await adi.route("**/api/duos/*/days/*/guesses", async route => {
@@ -87,15 +90,19 @@ test("friends invite, shared turns, retry, pass, persistence and daily reset", a
   expect(retryIDs[1]).toBe(retryIDs[0]);
   await yourTurn(ananya);
   await guess(ananya, wrongGuesses[2]);
-  await expect(ananya.getByRole("button", { name: "Reveal a shared hint" })).toBeVisible();
+  await ananya.getByRole("button", { name: "Clue", exact: true }).click();
+  await expect(ananya.getByRole("button", { name: "Reveal clue" })).toBeEnabled();
   const turnBeforeHint = await ananya.request.get(`${API}/api/duos/${id}`, { headers: { Authorization: "Bearer fixture-ananya" } }).then(r => r.json()) as { today: { currentPlayer: string; version: number } };
   await ananya.route("**/api/duos/*/days/*/hint", async route => {
     await route.fetch({ url: route.request().url().replace(CLIENT_API, API!) });
     await route.abort("failed");
   }, { times: 1 });
-  await ananya.getByRole("button", { name: "Reveal a shared hint" }).click();
-  await expect(ananya.getByLabel("Shared hint", { exact: true })).toBeVisible();
-  await expect(adi.getByLabel("Shared hint", { exact: true })).toBeVisible({timeout: 8_000});
+  await ananya.getByRole("button", { name: "Reveal clue" }).click();
+  await expect(ananya.getByRole("dialog", { name: "Clue" }).locator(".hint-list")).toBeVisible();
+  await ananya.getByRole("button", { name: "Close Clue" }).click();
+  // The other seat sees that a clue is out, not the clue itself, until it asks.
+  await expect(adi.getByRole("button", { name: "Clue revealed" })).toBeVisible({timeout: 8_000});
+  await expect(adi.locator(".hint-list")).toHaveCount(0);
   const turnAfterHint = await adi.request.get(`${API}/api/duos/${id}`, { headers: { Authorization: "Bearer fixture-adi" } }).then(r => r.json()) as { today: { currentPlayer: string; version: number } };
   expect(turnAfterHint.today.currentPlayer).toBe(turnBeforeHint.today.currentPlayer);
   expect(turnAfterHint.today.version).toBe(turnBeforeHint.today.version + 1);
@@ -125,7 +132,7 @@ test("friends invite, shared turns, retry, pass, persistence and daily reset", a
   await expect(ananya.getByRole("button", { name: "Next word" })).toBeVisible();
   expect(await streakOf(ananya, "ananya", id)).toBe(1); // two wins in a day is still one day
   await adi.goto("/friends");
-  await expect(adi.getByRole("region", { name: "Finished today" })).toContainText("Solved");
+  await expect(adi.getByRole("region", { name: "Your friends" }).getByRole("link", { name: /Ananya/ })).toContainText("Solved today");
   await adi.getByRole("region", { name: "Your friends" }).getByRole("link", { name: /Ananya/ }).click();
   await adi.screenshot({ path: "test-results/friend-detail-mobile.png" });
   await ananya.screenshot({ path: "test-results/shared-board-desktop.png" });
@@ -140,12 +147,11 @@ test("friends invite, shared turns, retry, pass, persistence and daily reset", a
   expect((await adi.request.post(`${API}/api/duos/${id}/end`, { headers: { Authorization: "Bearer fixture-adi" }, data: { requestId: crypto.randomUUID(), version: live.version } })).status()).toBe(200);
   await adi.goto("/friends"); await adi.getByRole("region", { name: "Your friends" }).getByRole("link", { name: /Ananya/ }).click();
   await expect(adi.getByRole("button", { name: "Play together", exact: true })).toBeVisible();
-  await expect(adi.locator(".duo-recent")).toContainText(answer.answer);
-  await expect(adi.locator(".duo-recent")).toContainText(second.answer);
-  // Both of the first day's boards are listed, each with its own link.
-  await expect(adi.locator(".duo-recent a", { hasText: "game 2" })).toHaveCount(1);
-  // History remains readable after ending the partnership.
-  await adi.locator(".duo-recent a").last().click();
+  // The profile no longer lists past words, but the pair's history is still
+  // kept and each board stays readable by its link.
+  const history = await adi.request.get(`${API}/api/duos/${id}`, { headers: { Authorization: "Bearer fixture-adi" } }).then(r => r.json()) as { recent: { board: string; answer: string }[] };
+  expect(history.recent.map(day => day.answer)).toEqual(expect.arrayContaining([answer.answer, second.answer]));
+  await adi.goto(`/duos/${id}?date=${history.recent.at(-1)!.board}`);
   await expect(adi.getByText("Solved together", { exact: true })).toBeVisible();
   await expect(adi.locator('.row').nth(3).locator('[data-mark="hit"]')).toHaveCount(5);
 
