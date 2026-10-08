@@ -499,6 +499,17 @@
   "partOfSpeech": "adjective"
  },
  {
+  "word": "acumen",
+  "register": "standard",
+  "definition": "Sharp, quick insight or judgement, especially in business or practical matters.",
+  "note": "From Latin acumen, 'sharpness', from acuere, 'to sharpen'. It is usually praised as 'business acumen' or 'political acumen'.",
+  "hints": [
+   "Think of a shrewd negotiator who always spots the angle.",
+   "It is the quality a sharp investor brings to a deal."
+  ],
+  "difficulty": "challenging"
+ },
+ {
   "word": "acute",
   "register": "standard",
   "definition": "Severe and sudden; or sharp.",
@@ -945,6 +956,17 @@
   "example": "Forests set ablaze (or afire) by lightning."
  },
  {
+  "word": "aflame",
+  "register": "standard",
+  "definition": "Burning or on fire, or glowing brightly.",
+  "note": "Often used figuratively, as in 'aflame with passion'. It is common in literary writing.",
+  "hints": [
+   "Think of a dry forest after lightning strikes at night.",
+   "Smoke rises as every treetop is coloured orange and red."
+  ],
+  "difficulty": "stretch"
+ },
+ {
   "word": "afloat",
   "register": "standard",
   "definition": "Floating on water; or staying financially solvent.",
@@ -997,6 +1019,17 @@
   "pronunciation": "əˈfɹeɪd",
   "partOfSpeech": "adjective",
   "origin": "Anglo-Norman afrayer, from Old French effreer"
+ },
+ {
+  "word": "afresh",
+  "register": "standard",
+  "definition": "Once more, starting again from the beginning.",
+  "note": "Often used in phrases like 'start afresh' or 'look at the problem afresh'. It sounds more literary than simply 'again'.",
+  "hints": [
+   "Think of a clean notebook page turned over for a new try.",
+   "It describes a second attempt made with no history carried over."
+  ],
+  "difficulty": "stretch"
  },
  {
   "word": "after",
@@ -1490,6 +1523,17 @@
   "pronunciation": "əˈlaɪv",
   "partOfSpeech": "adjective",
   "origin": "Old English on līfe"
+ },
+ {
+  "word": "alkali",
+  "register": "standard",
+  "definition": "A water-soluble base that neutralises acids, such as lye.",
+  "note": "From Arabic al-qali, 'ashes of the saltwort plant', from which the substance was first obtained. Soaps and some cleaning products rely on alkalis.",
+  "hints": [
+   "Desert soils and swimming-pool chemistry both involve it.",
+   "Its opposite on the pH scale is a sour, corrosive acid."
+  ],
+  "difficulty": "stretch"
  },
  {
   "word": "allay",
@@ -2588,6 +2632,17 @@
   "exampleSource": "https://tatoeba.org/en/sentences/show/841309"
  },
  {
+  "word": "apiary",
+  "register": "standard",
+  "definition": "A place where bees are kept, usually a group of hives in one spot.",
+  "note": "From Latin apis, 'bee', via apiarium. The practice of keeping bees is called apiculture.",
+  "hints": [
+   "Picture rows of white wooden boxes humming in a summer meadow.",
+   "Honey is harvested here, though a keeper must tend the colonies."
+  ],
+  "difficulty": "challenging"
+ },
+ {
   "word": "apiece",
   "register": "standard",
   "definition": "For each one; each.",
@@ -2704,6 +2759,17 @@
   "partOfSpeech": "adverb",
   "example": "It is aptly said that necessity is the mother of invention.",
   "exampleSource": "https://tatoeba.org/en/sentences/show/318276"
+ },
+ {
+  "word": "arable",
+  "register": "standard",
+  "definition": "Land that is suitable for, or used for, growing crops.",
+  "note": "From Latin arabilis, 'that can be ploughed', from arare, 'to plough'. Contrast it with pasture, land used for grazing animals.",
+  "hints": [
+   "Think of farmers' fields stretching to the horizon in autumn.",
+   "Sowing and harvesting only make sense on land of this kind."
+  ],
+  "difficulty": "challenging"
  },
  {
   "word": "arbor",
@@ -3357,6 +3423,17 @@
   "origin": "Latin astēr, from Ancient Greek ἀστήρ"
  },
  {
+  "word": "astern",
+  "register": "standard",
+  "definition": "At or toward the back of a ship or aircraft.",
+  "note": "A nautical term; a vessel that goes astern is moving backward. The opposite direction is 'ahead' or 'forward'.",
+  "hints": [
+   "You might hear it shouted on a boat during a tight mooring.",
+   "The wake of a boat trails out in this direction."
+  ],
+  "difficulty": "challenging"
+ },
+ {
   "word": "asthma",
   "register": "standard",
   "definition": "A condition that causes difficulty breathing.",
@@ -3676,6 +3753,17 @@
   "pronunciation": "ˈɔːɡə",
   "partOfSpeech": "verb",
   "origin": "Latin augur"
+ },
+ {
+  "word": "augury",
+  "register": "standard",
+  "definition": "A sign or omen that predicts what is to come.",
+  "note": "From Latin augurium, the practice of divination, which Roman augurs carried out by reading signs such as the flight of birds. The related word 'inauspicious' means 'unlucky'.",
+  "hints": [
+   "Think of a tea leaf, a flock of birds, or a sudden storm read as a warning.",
+   "It is the sort of sign a fortune-teller claims to read in a crystal ball."
+  ],
+  "difficulty": "challenging"
  },
  {
   "word": "august",
@@ -4034,6 +4122,17 @@
   "partOfSpeech": "adverb",
   "origin": "Old English āne",
   "example": "Sit down and stay awhile."
+ },
+ {
+  "word": "awning",
+  "register": "standard",
+  "definition": "A sheet of canvas or fabric fixed above a door, window or deck to give shade.",
+  "note": "Shopfronts and café terraces often have one that can be rolled away. On a boat or caravan it is usually a canopy over an open area.",
+  "hints": [
+   "Café tables outside often sit under one on sunny days.",
+   "Canvas stretched on a frame keeps the sun off a window."
+  ],
+  "difficulty": "stretch"
  },
  {
   "word": "axial",
@@ -5172,6 +5271,17 @@
   "example": "She became a doctor when she was 25."
  },
  {
+  "word": "bedlam",
+  "register": "standard",
+  "definition": "A scene of noisy, chaotic confusion.",
+  "note": "It comes from Bethlem Hospital in London, a madhouse whose name was corrupted into 'Bedlam'. The word now describes any uproar, such as a crowded kitchen at dinnertime.",
+  "hints": [
+   "Picture a school hall at lunchtime with a hundred kids shrieking.",
+   "A room where shouting, slamming doors and crashing pans collide."
+  ],
+  "difficulty": "stretch"
+ },
+ {
   "word": "beech",
   "register": "standard",
   "definition": "A tree with smooth grey bark.",
@@ -5212,6 +5322,17 @@
   "pronunciation": "ˈbiːtəl",
   "partOfSpeech": "noun",
   "origin": "Old English bitula"
+ },
+ {
+  "word": "befall",
+  "register": "standard",
+  "definition": "To happen to someone, often something bad or unexpected.",
+  "note": "Mostly found in literary or formal writing, as in 'whatever may befall us'. It is a more dramatic synonym of 'happen'.",
+  "hints": [
+   "You might find this in an old adventure story about a traveller's fate.",
+   "It is often paired with misfortune or some grim destiny."
+  ],
+  "difficulty": "stretch"
  },
  {
   "word": "befit",
@@ -5343,6 +5464,17 @@
   "origin": "Old English behabban"
  },
  {
+  "word": "behest",
+  "register": "standard",
+  "definition": "An order or request from someone in authority.",
+  "note": "It is almost always used in the phrase 'at someone's behest', meaning on their instruction or urging. It sounds formal and is rarely used in ordinary speech.",
+  "hints": [
+   "Picture a royal servant hurrying to carry out a king's wish.",
+   "It is usually paired with 'at' and someone's name in a phrase."
+  ],
+  "difficulty": "challenging"
+ },
+ {
   "word": "behind",
   "register": "standard",
   "definition": "At the back of, or late.",
@@ -5412,6 +5544,17 @@
   "pronunciation": "ˈbɛltʃ",
   "partOfSpeech": "verb",
   "origin": "Old English bielċan"
+ },
+ {
+  "word": "belfry",
+  "register": "standard",
+  "definition": "The part of a tower that houses the bells.",
+  "note": "In the Middle Ages a belfry also meant a movable wooden siege tower. The phrase 'bats in the belfry' means someone is eccentric or a little crazy.",
+  "hints": [
+   "Picture the top of a medieval church, with ropes hanging down.",
+   "Bell-ringers climb up to its chamber, high above the nave."
+  ],
+  "difficulty": "stretch"
  },
  {
   "word": "belie",
@@ -8737,6 +8880,17 @@
   "partOfSpeech": "adjective"
  },
  {
+  "word": "burlap",
+  "register": "standard",
+  "definition": "A coarse woven fabric made from jute or hemp, used for sacks.",
+  "note": "British English usually calls it 'hessian'. It is also used for garden wraps and rough sacking.",
+  "hints": [
+   "Think of potato sacks stacked in a farm shed.",
+   "Gardeners wrap rootballs in it, and coffee beans travel in it."
+  ],
+  "difficulty": "stretch"
+ },
+ {
   "word": "burly",
   "register": "standard",
   "definition": "Large, strong and heavily built.",
@@ -8823,6 +8977,17 @@
   "pronunciation": "bɜːst",
   "partOfSpeech": "verb",
   "origin": "Old English berstan"
+ },
+ {
+  "word": "bushel",
+  "register": "standard",
+  "definition": "A unit of dry measure for grain or fruit, equal to about 35 litres.",
+  "note": "The idiom 'hide your light under a bushel' comes from the Bible and means to be too modest about your talents. The volume varies slightly between countries.",
+  "hints": [
+   "Orchard pickers once filled these measures with apples.",
+   "Grain merchants once measured out their trade with a wooden one."
+  ],
+  "difficulty": "challenging"
  },
  {
   "word": "bushy",
@@ -9186,6 +9351,17 @@
   "pronunciation": "kɛən",
   "partOfSpeech": "noun",
   "origin": "Scots cairn, from Old Irish carn"
+ },
+ {
+  "word": "caliph",
+  "register": "standard",
+  "definition": "A title given to the leader of an Islamic state, regarded as a successor of the Prophet Muhammad.",
+  "note": "From Arabic 'khalifa', meaning successor or deputy. The Ottoman caliphate's title was abolished in 1924.",
+  "hints": [
+   "Tales of Harun al-Rashid's court might name one.",
+   "The title belonged to rulers in Baghdad and Istanbul."
+  ],
+  "difficulty": "stretch"
  },
  {
   "word": "caller",
@@ -10539,6 +10715,17 @@
   "exampleSource": "https://tatoeba.org/en/sentences/show/2789128"
  },
  {
+  "word": "chaste",
+  "register": "standard",
+  "definition": "Abstaining from sexual relations, or plain and unadorned in style.",
+  "note": "Used of design and writing as well as conduct: a 'chaste' interior is spare and free of ornament. The stylistic sense is still common in criticism.",
+  "hints": [
+   "Medieval knights swore vows that included this quality.",
+   "Plain white walls in a monastery suggest this quality."
+  ],
+  "difficulty": "stretch"
+ },
+ {
   "word": "chats",
   "register": "standard",
   "definition": "Light exchanges that go nowhere in particular.",
@@ -11288,6 +11475,17 @@
   "origin": "Occitan cencha, from Latin cingulum"
  },
  {
+  "word": "cinder",
+  "register": "standard",
+  "definition": "A small piece of partly burned material left after a fire.",
+  "note": "Often found in the phrase 'burned to a cinder'. Cinders can also be the ash used to surface running tracks.",
+  "hints": [
+   "It drifts up from the grate when someone stokes a fireplace.",
+   "Charred scraps lying in the ash of a bonfire fit this."
+  ],
+  "difficulty": "stretch"
+ },
+ {
   "word": "cinema",
   "register": "standard",
   "definition": "A place where films are shown, or films as an art.",
@@ -11613,6 +11811,17 @@
   "origin": "Old English ġeclyft"
  },
  {
+  "word": "clench",
+  "register": "standard",
+  "definition": "To close the hand or jaw tightly, often under stress.",
+  "note": "Used mainly for fists, teeth and jaws. Unlike 'clutch', which means grabbing something, 'clench' describes a tightening of the muscles.",
+  "hints": [
+   "Boxers and nervous passengers both tense their hands this way.",
+   "A jaw does this when someone is furious and trying not to speak."
+  ],
+  "difficulty": "stretch"
+ },
+ {
   "word": "clergy",
   "register": "standard",
   "definition": "Priests and ministers as a group.",
@@ -11920,6 +12129,17 @@
    "It can cover a dining surface before anything is served."
   ],
   "difficulty": "familiar"
+ },
+ {
+  "word": "clothe",
+  "register": "standard",
+  "definition": "To provide someone with clothes, or to cover something as clothing does.",
+  "note": "Mostly found in formal or literary writing, typically in 'clothed in' ('clothed in mist'). Everyday speech prefers 'dress'.",
+  "hints": [
+   "Old sermons on charity often pair feeding the hungry with this.",
+   "A poet might say morning fog does this to a valley."
+  ],
+  "difficulty": "stretch"
  },
  {
   "word": "cloud",
@@ -12430,6 +12650,17 @@
   "example": "A Midsummer Night's Dream is among Shakespeare's most famous comedies."
  },
  {
+  "word": "comely",
+  "register": "standard",
+  "definition": "Pleasant to look at, attractive in a wholesome way.",
+  "note": "Still found in older or literary English, often for a young woman. It is close to 'handsome' but feels old-fashioned.",
+  "hints": [
+   "You might meet it in an old novel describing a country lass.",
+   "Its tone is gentle and old-fashioned rather than glamorous."
+  ],
+  "difficulty": "challenging"
+ },
+ {
   "word": "comet",
   "register": "standard",
   "definition": "Ice on a very long loop.",
@@ -12602,6 +12833,17 @@
   "partOfSpeech": "noun",
   "example": "They therefore don't concern themselves about using condoms.",
   "exampleSource": "https://tatoeba.org/en/sentences/show/3899122"
+ },
+ {
+  "word": "condor",
+  "register": "standard",
+  "definition": "A very large American vulture with a bare head and a huge wingspan.",
+  "note": "From Spanish cóndor, from Quechua kuntur. The Andean condor has a wingspan of around three metres.",
+  "hints": [
+   "Picture a great bird soaring over mountain ridges for hours.",
+   "It feeds on carrion, and its wings can span about three metres."
+  ],
+  "difficulty": "stretch"
  },
  {
   "word": "confer",
@@ -12882,6 +13124,17 @@
   ],
   "difficulty": "stretch",
   "partOfSpeech": "adjective"
+ },
+ {
+  "word": "cornea",
+  "register": "standard",
+  "definition": "The transparent outer layer at the front of the eye.",
+  "note": "From Latin 'cornea', horny, from 'cornu', horn, after its tough, translucent texture. Damage here can cloud vision, and transplants are a common treatment.",
+  "hints": [
+   "Eye doctors peer through this clear dome when examining a patient.",
+   "A clouded one can be swapped out in a transplant operation."
+  ],
+  "difficulty": "stretch"
  },
  {
   "word": "corner",
@@ -13484,6 +13737,17 @@
   "partOfSpeech": "adjective",
   "origin": "crank + -y",
   "example": "He got home from a long day at work tired and cranky."
+ },
+ {
+  "word": "cranny",
+  "register": "standard",
+  "definition": "A small crack, gap, or hidden recess.",
+  "note": "It is usually seen in 'every nook and cranny', meaning every hidden or out-of-the-way place. The two words are often used together.",
+  "hints": [
+   "Think of a mouse slipping into a crack in the skirting board.",
+   "It often appears in phrases about searching every hidden corner of a house."
+  ],
+  "difficulty": "stretch"
  },
  {
   "word": "crappy",
@@ -14882,6 +15146,28 @@
   "pronunciation": "ˈdæmɪt"
  },
  {
+  "word": "damper",
+  "register": "standard",
+  "definition": "A device or plate that reduces airflow, vibration or sound, or something that lessens enthusiasm.",
+  "note": "The idiom 'put a damper on' something means to make it less lively. Pianos have felt dampers that stop the strings ringing.",
+  "hints": [
+   "Pianists rely on a felt pad of this type to stop strings ringing.",
+   "Turning a knob on a wood stove sets one in the flue."
+  ],
+  "difficulty": "stretch"
+ },
+ {
+  "word": "damsel",
+  "register": "standard",
+  "definition": "A young unmarried woman, a term now found mostly in old stories and set phrases.",
+  "note": "From Old French damoisele, a diminutive of dame. Today it survives mainly in the phrase 'damsel in distress'.",
+  "hints": [
+   "Knights ride out to rescue one trapped in a tower.",
+   "Fairy tales often feature one who needs a hero."
+  ],
+  "difficulty": "stretch"
+ },
+ {
   "word": "dance",
   "register": "standard",
   "definition": "To move your body to music.",
@@ -14940,6 +15226,17 @@
   "example": "You are in no danger."
  },
  {
+  "word": "dapper",
+  "register": "standard",
+  "definition": "Neat, smartly dressed, and stylish in a lively way.",
+  "note": "From Middle Dutch dapper, 'brave, strong'; the sense shifted to 'neat and spruce'. It is usually applied to men.",
+  "hints": [
+   "Imagine a gentleman in a crisp pinstripe suit and polished shoes.",
+   "Think of a man whose waistcoat, cufflinks and hat all match."
+  ],
+  "difficulty": "stretch"
+ },
+ {
   "word": "datum",
   "register": "standard",
   "definition": "A single piece of information.",
@@ -14967,6 +15264,17 @@
   "origin": "Old French danter, from Latin domō",
   "example": "The challenges are daunting, but we can overcome them.",
   "exampleSource": "https://tatoeba.org/en/sentences/show/1113990"
+ },
+ {
+  "word": "dawdle",
+  "register": "standard",
+  "definition": "To move or act slowly, wasting time on the way.",
+  "note": "Often followed by 'over' or 'on', as in 'dawdle over breakfast'. It suggests idle delay rather than a deliberate pause.",
+  "hints": [
+   "Parents often shout at children who do this on the walk to school.",
+   "Think of a stroll that keeps stopping for distractions."
+  ],
+  "difficulty": "stretch"
  },
  {
   "word": "deacon",
@@ -15023,6 +15331,17 @@
   "pronunciation": "ˈdɪəli",
   "partOfSpeech": "adverb",
   "origin": "Old English dēorlīċe"
+ },
+ {
+  "word": "dearth",
+  "register": "standard",
+  "definition": "A scarcity or shortage of something needed.",
+  "note": "Usually paired with 'of', as in 'a dearth of good ideas'. It is a more formal word than 'lack'.",
+  "hints": [
+   "Droughts can leave farms and grocery shelves with little.",
+   "Empty pantries and bare cupboards are what you would find."
+  ],
+  "difficulty": "stretch"
  },
  {
   "word": "death",
@@ -15296,6 +15615,17 @@
   "origin": "Middle French decrier, from Old French descrier",
   "example": "The opposition has decried the law as unconstitutional.",
   "exampleSource": "https://tatoeba.org/en/sentences/show/13336875"
+ },
+ {
+  "word": "deduce",
+  "register": "standard",
+  "definition": "To reach a conclusion by reasoning step by step from known facts.",
+  "note": "Compared with 'infer', 'deduce' suggests a more rigorous, logical chain. Its opposite in method is 'induce', which moves from specific cases toward a general rule.",
+  "hints": [
+   "Detectives at the end of mysteries often gather everyone to do this.",
+   "It moves from premises to a conclusion that must follow, like a proof."
+  ],
+  "difficulty": "stretch"
  },
  {
   "word": "deduct",
@@ -15573,6 +15903,17 @@
   "example": "I demand an immediate explanation."
  },
  {
+  "word": "demean",
+  "register": "standard",
+  "definition": "To lower someone's dignity or status, usually by humiliating them.",
+  "note": "Do not confuse it with 'demeanour', a person's manner or bearing. 'Demean oneself' means to behave in a way that loses respect.",
+  "hints": [
+   "Think of a boss who belittles staff in front of clients.",
+   "Think of an insult that leaves its target feeling smaller."
+  ],
+  "difficulty": "challenging"
+ },
+ {
   "word": "demise",
   "register": "standard",
   "definition": "The end of something, or a person's death.",
@@ -15829,6 +16170,17 @@
   "exampleSource": "https://tatoeba.org/en/sentences/show/11752440"
  },
  {
+  "word": "deride",
+  "register": "standard",
+  "definition": "To mock or ridicule someone or something with scorn.",
+  "note": "From Latin deridere, 'to laugh at', from de- and ridere, 'to laugh'. The noun is 'derision'.",
+  "hints": [
+   "Think of a crowd jeering at a failed comedian on stage.",
+   "A critic who dismisses a new idea with a sneer does this."
+  ],
+  "difficulty": "stretch"
+ },
+ {
   "word": "derive",
   "register": "standard",
   "definition": "To obtain something from a source, or to work out by reasoning.",
@@ -15899,6 +16251,17 @@
   "partOfSpeech": "verb",
   "origin": "Middle French desister, from Latin dēsistō",
   "example": "Please desist from telephoning me at this number."
+ },
+ {
+  "word": "despot",
+  "register": "standard",
+  "definition": "A ruler who holds absolute power and governs cruelly.",
+  "note": "From Greek despotes, 'master' or 'lord'. The word is used of rulers who abuse their power, not of ordinary bosses.",
+  "hints": [
+   "Think of a dictator who jails rivals and censors the press.",
+   "Such a ruler ignores laws and answers to nobody."
+  ],
+  "difficulty": "stretch"
  },
  {
   "word": "detail",
@@ -16505,6 +16868,17 @@
   "origin": "Old French esmaier"
  },
  {
+  "word": "disown",
+  "register": "standard",
+  "definition": "To refuse to acknowledge someone as your family or as your responsibility.",
+  "note": "Differs from disinherit, which concerns money: you can disinherit someone without formally disowning them, and the reverse is also true.",
+  "hints": [
+   "A bitter family feud can end with a formal rejection like this.",
+   "Unlike disinheritance, it cuts ties in name as well as in the will."
+  ],
+  "difficulty": "stretch"
+ },
+ {
   "word": "dispel",
   "register": "standard",
   "definition": "To drive away something, such as doubt or fog.",
@@ -16672,6 +17046,17 @@
   "pronunciation": "ˈduːəbəl",
   "origin": "Middle English doable",
   "partOfSpeech": "adjective"
+ },
+ {
+  "word": "docket",
+  "register": "standard",
+  "definition": "A court's list of cases to be heard, or any schedule of business.",
+  "note": "Americans say a case is 'on the docket' when it is scheduled to be heard. The word is also used loosely for any agenda.",
+  "hints": [
+   "Picture a clerk's ledger full of hearings for the coming week.",
+   "Lawyers check it to see which hearings come next."
+  ],
+  "difficulty": "challenging"
  },
  {
   "word": "doctor",
@@ -17529,6 +17914,17 @@
   "example": "Drive a car or bus."
  },
  {
+  "word": "drivel",
+  "register": "standard",
+  "definition": "Nonsense, or silly talk and writing.",
+  "note": "It is used dismissively, as in 'stop talking drivel'. It is a stronger word than 'waffle' and suggests the speaker is foolish.",
+  "hints": [
+   "Think of a bore who rambles on at a dinner party.",
+   "A columnist padding every paragraph with empty, silly remarks."
+  ],
+  "difficulty": "stretch"
+ },
+ {
   "word": "driven",
   "register": "standard",
   "definition": "Motivated and ambitious, or moved by a vehicle.",
@@ -17873,6 +18269,17 @@
   "origin": "Latin duplex"
  },
  {
+  "word": "duress",
+  "register": "standard",
+  "definition": "Pressure or threats used to force someone to act against their will.",
+  "note": "It is usually seen as 'under duress'. In law, an agreement signed under duress can be declared invalid.",
+  "hints": [
+   "Think of a kidnapper's ransom note demanding compliance.",
+   "A signature forced out at gunpoint would fall under this."
+  ],
+  "difficulty": "challenging"
+ },
+ {
   "word": "during",
   "register": "standard",
   "definition": "Throughout a period of time.",
@@ -17900,6 +18307,17 @@
   "pronunciation": "ˈdʌski",
   "partOfSpeech": "adjective",
   "example": "Gold earrings gleamed against her dusky cheeks."
+ },
+ {
+  "word": "duster",
+  "register": "standard",
+  "definition": "A cloth or brush used for removing dust from furniture and shelves.",
+  "note": "A duster can also be a long, loose coat, a sense from the era of early motoring. Feather dusters are the classic household version.",
+  "hints": [
+   "A Saturday chore often involves waving a cloth around the living room.",
+   "It lifts settled particles off shelves and picture frames."
+  ],
+  "difficulty": "stretch"
  },
  {
   "word": "dusty",
@@ -18020,6 +18438,17 @@
   "origin": "Anglo-Norman egle, from Latin aquila"
  },
  {
+  "word": "earful",
+  "register": "slang",
+  "definition": "A long, angry scolding or lecture.",
+  "note": "Usually found in the phrases 'get an earful' or 'give someone an earful'. It implies you were talked at for a long time.",
+  "hints": [
+   "A teen who arrives home late may get one from an angry parent.",
+   "A torrent of words aimed at you after a mistake, often at length."
+  ],
+  "difficulty": "stretch"
+ },
+ {
   "word": "early",
   "register": "standard",
   "definition": "Before the usual or expected time.",
@@ -18047,6 +18476,17 @@
    "Roots push down into this as they grow."
   ],
   "difficulty": "familiar"
+ },
+ {
+  "word": "earthy",
+  "register": "standard",
+  "definition": "Plain and natural, sometimes crude or bawdy in humour.",
+  "note": "Used both for a natural, down-to-earth quality ('earthy charm') and for coarse jokes. In wine tasting it describes a soil-like flavour.",
+  "hints": [
+   "Wine tasters use this word for a soil-like flavour in a red.",
+   "A rough-and-ready comedian might be praised for this quality."
+  ],
+  "difficulty": "stretch"
  },
  {
   "word": "easel",
@@ -18119,6 +18559,17 @@
   "partOfSpeech": "noun",
   "origin": "Old English etere",
   "example": "These apples are good eaters."
+ },
+ {
+  "word": "eatery",
+  "register": "standard",
+  "definition": "An informal restaurant or cafe.",
+  "note": "A casual word, usually for a modest place rather than a fine-dining room. It sounds less formal than 'restaurant' or 'bistro'.",
+  "hints": [
+   "A corner spot with laminated menus and a short lunchtime queue.",
+   "Cheap and casual, it is where you grab a quick bite."
+  ],
+  "difficulty": "stretch"
  },
  {
   "word": "eaves",
@@ -18283,6 +18734,17 @@
   "partOfSpeech": "noun",
   "origin": "Middle French effort, from Latin ex",
   "example": "He got an A for effort."
+ },
+ {
+  "word": "egoism",
+  "register": "standard",
+  "definition": "A philosophy holding that self-interest is the basis of all human motivation or ethics.",
+  "note": "Not the same as egotism, which is vanity or excessive self-regard. Egoism is a theory about what people should or do aim for.",
+  "hints": [
+   "Philosophers debate whether anyone ever acts purely out of kindness.",
+   "It stands opposed to altruism in ethical arguments."
+  ],
+  "difficulty": "challenging"
  },
  {
   "word": "egret",
@@ -18811,6 +19273,17 @@
   "origin": "Anglo-Norman enamailler, from Early Medieval Latin smaltum"
  },
  {
+  "word": "encode",
+  "register": "standard",
+  "definition": "To convert information into a coded form, such as digital data or a secret message.",
+  "note": "The opposite of 'decode'. Computers encode text into bytes using standards such as UTF-8.",
+  "hints": [
+   "A spy's secret message needed a cipher before it could be sent.",
+   "Digital files are turned into a standard format before storage."
+  ],
+  "difficulty": "stretch"
+ },
+ {
   "word": "encore",
   "register": "standard",
   "definition": "A repeat or extra performance given after the show ends.",
@@ -18824,6 +19297,17 @@
   "partOfSpeech": "noun",
   "origin": "French encore",
   "example": "Can I get an encore? We want more!"
+ },
+ {
+  "word": "endear",
+  "register": "standard",
+  "definition": "To make someone become loved or liked.",
+  "note": "It is usually 'endear oneself to' someone, meaning to win their affection. The adjective 'endearing' describes a quality that charms.",
+  "hints": [
+   "Think of a puppy that wins over every visitor to the house.",
+   "Charm and a bit of kindness can do this quickly."
+  ],
+  "difficulty": "stretch"
  },
  {
   "word": "ender",
@@ -19375,6 +19859,17 @@
   "pronunciation": "ˈɛɹənd",
   "partOfSpeech": "noun",
   "origin": "Old English ǣrende"
+ },
+ {
+  "word": "errant",
+  "register": "standard",
+  "definition": "Behaving badly, or wandering away from the proper course.",
+  "note": "Knights errant wandered in search of adventure, which is why the word can mean 'wandering'. It is also used for a child who misbehaves.",
+  "hints": [
+   "Picture a medieval rider setting out alone on a long road.",
+   "Often paired with 'knight' in tales of quests and chivalry."
+  ],
+  "difficulty": "challenging"
  },
  {
   "word": "error",
@@ -20217,6 +20712,17 @@
   "origin": "Medieval Latin faciālis"
  },
  {
+  "word": "facile",
+  "register": "standard",
+  "definition": "Achieved too easily and therefore superficial, or glib and lacking depth.",
+  "note": "Usually a criticism: a 'facile argument' sounds plausible but ignores the difficult parts. It comes from Latin 'facilis', easy.",
+  "hints": [
+   "Newspaper columns on tough policy questions sometimes use this label.",
+   "Critics may call a slick argument this if it skips the hard parts."
+  ],
+  "difficulty": "challenging"
+ },
+ {
   "word": "factor",
   "register": "standard",
   "definition": "One thing that contributes to a result, or a number that divides another.",
@@ -20344,6 +20850,17 @@
   "example": "Fallen leaves covered the forest floor."
  },
  {
+  "word": "fallow",
+  "register": "standard",
+  "definition": "Land left unplanted for a period to recover its fertility, or inactive in general.",
+  "note": "The idiom 'lie fallow' means a project or talent is temporarily unused. In this sense it is almost always found in that phrase.",
+  "hints": [
+   "Farmers in the English countryside once rotated crops around these.",
+   "A stalled project might be described as resting in this condition."
+  ],
+  "difficulty": "stretch"
+ },
+ {
   "word": "false",
   "register": "standard",
   "definition": "Not true or not real.",
@@ -20356,6 +20873,17 @@
   "pronunciation": "fɔːls",
   "partOfSpeech": "noun",
   "origin": "Old English fals, from Latin falsus"
+ },
+ {
+  "word": "falter",
+  "register": "standard",
+  "definition": "To lose strength or confidence and begin to hesitate or weaken.",
+  "note": "Used of voices, steps and determination: 'her voice faltered' is the classic usage. It is a more vivid choice than 'hesitate'.",
+  "hints": [
+   "A speaker might pause mid-sentence and lose the thread.",
+   "A nervous runner's stride on the final hill might do this."
+  ],
+  "difficulty": "stretch"
  },
  {
   "word": "family",
@@ -20859,6 +21387,17 @@
   "partOfSpeech": "noun"
  },
  {
+  "word": "fennel",
+  "register": "standard",
+  "definition": "A Mediterranean plant whose bulb and seeds taste of aniseed.",
+  "note": "Fennel seeds flavour Italian sausage, and the bulb is eaten as a vegetable. The feathery green fronds can be used as a herb.",
+  "hints": [
+   "A Tuscan sausage recipe might call for a pinch of its seeds.",
+   "Greengrocers sell its pale bulb with feathery green fronds attached."
+  ],
+  "difficulty": "stretch"
+ },
+ {
   "word": "feral",
   "register": "standard",
   "definition": "Gone wild after a stretch of confinement.",
@@ -21262,6 +21801,17 @@
   "difficulty": "stretch",
   "pronunciation": "ˈfɪlɪt",
   "partOfSpeech": "noun"
+ },
+ {
+  "word": "filial",
+  "register": "standard",
+  "definition": "Relating to or befitting a son or daughter.",
+  "note": "From Latin 'filius', son. It usually appears in 'filial duty' or 'filial piety', the respect children owe their parents.",
+  "hints": [
+   "Confucian teaching places great weight on the respect owed to parents.",
+   "A dutiful son or daughter shows this kind of loyalty to a parent."
+  ],
+  "difficulty": "challenging"
  },
  {
   "word": "filler",
@@ -21853,6 +22403,17 @@
   "pronunciation": "flɛʃ",
   "partOfSpeech": "noun",
   "origin": "Old English flǣsċ"
+ },
+ {
+  "word": "fleshy",
+  "register": "standard",
+  "definition": "Plump, soft and thick in texture, like the pulp of certain fruits.",
+  "note": "Used of fruit with thick pulp, such as figs, and sometimes of a soft, padded body. It is an everyday descriptive word rather than a clinical term.",
+  "hints": [
+   "A ripe fig or a plump peach has this quality when you bite in.",
+   "Its interior is thick and pulpy rather than watery."
+  ],
+  "difficulty": "stretch"
  },
  {
   "word": "flick",
@@ -23596,6 +24157,17 @@
   "exampleSource": "https://tatoeba.org/en/sentences/show/4563342"
  },
  {
+  "word": "gaiety",
+  "register": "standard",
+  "definition": "Lively cheerfulness, often shown at festive or social occasions.",
+  "note": "Tends to describe a festive mood rather than a settled temperament. 'Joie de vivre' is a near-synonym borrowed from French.",
+  "hints": [
+   "Bunting and brass bands bring this atmosphere to a town square.",
+   "Party-goers laughing and dancing around a bright festival express it."
+  ],
+  "difficulty": "stretch"
+ },
+ {
   "word": "gaily",
   "register": "standard",
   "definition": "In a cheerful, lively way.",
@@ -23795,6 +24367,17 @@
   "origin": "Anglo-Norman gardin"
  },
  {
+  "word": "garish",
+  "register": "standard",
+  "definition": "Crudely bright and showy, in a way that offends good taste.",
+  "note": "It is usually used of colours, lights, or decor, as in 'garish neon signs'. It is close to 'gaudy' but stresses clashing brightness.",
+  "hints": [
+   "Imagine a casino lit with flashing neon in every colour.",
+   "Picture a shop sign in clashing pinks and oranges that shouts for attention."
+  ],
+  "difficulty": "stretch"
+ },
+ {
   "word": "garlic",
   "register": "standard",
   "definition": "A strong-smelling bulb used in cooking.",
@@ -23835,6 +24418,17 @@
   "pronunciation": "ˈɡɑː(ɹ)nət",
   "partOfSpeech": "noun",
   "origin": "Old French grenate"
+ },
+ {
+  "word": "garret",
+  "register": "standard",
+  "definition": "A small, cramped room at the top of a house, just under the roof.",
+  "note": "Garrets were long associated with poor artists and writers, who lived cheaply in them. Puccini's opera La bohème opens in one.",
+  "hints": [
+   "Bohemian artists in old novels are often found up in one.",
+   "Lodgers in these rooms climb many stairs to reach them."
+  ],
+  "difficulty": "challenging"
  },
  {
   "word": "gassy",
@@ -24302,6 +24896,17 @@
   "pronunciation": "ˈdʒɪndʒə",
   "partOfSpeech": "noun",
   "origin": "Old English gingifer"
+ },
+ {
+  "word": "girdle",
+  "register": "standard",
+  "definition": "A belt or cord worn around the waist, or a close-fitting elastic undergarment.",
+  "note": "As a verb it means to encircle, as in 'girdled by mountains', and this figurative use is more common in writing than the garment sense.",
+  "hints": [
+   "Medieval knights often wore a cord of this kind at their waist.",
+   "Mountains might be said to wear one in a travel writer's description."
+  ],
+  "difficulty": "stretch"
  },
  {
   "word": "girly",
@@ -27055,6 +27660,17 @@
   "origin": "Old English hefiġ"
  },
  {
+  "word": "heckle",
+  "register": "standard",
+  "definition": "To interrupt a speaker with rude or mocking remarks.",
+  "note": "Common at comedy shows and political rallies. The person doing it is called a heckler.",
+  "hints": [
+   "A barbed shout from the audience during a speech might do it.",
+   "Comedians sometimes have to deal with this from people in the crowd."
+  ],
+  "difficulty": "stretch"
+ },
+ {
   "word": "hectic",
   "register": "standard",
   "definition": "Very busy and chaotic.",
@@ -27339,6 +27955,17 @@
   "pronunciation": "ˈhɜːmɪt",
   "partOfSpeech": "noun",
   "origin": "Old French eremite, from Ancient Greek ἐρημίτης"
+ },
+ {
+  "word": "hernia",
+  "register": "standard",
+  "definition": "A condition in which an organ or tissue pushes through a weak point in the surrounding muscle wall.",
+  "note": "Abdominal hernias often show up as a bulge in the groin or near the navel. The Latin word means 'rupture'.",
+  "hints": [
+   "A doctor may describe it as a bulge that appears when you cough or strain.",
+   "Surgeons often repair it with a mesh patch."
+  ],
+  "difficulty": "stretch"
  },
  {
   "word": "heroic",
@@ -28190,6 +28817,17 @@
   "pronunciation": "ˈhaʊdi",
   "partOfSpeech": "interjection",
   "origin": "Clipping of howdy-do"
+ },
+ {
+  "word": "hubbub",
+  "register": "standard",
+  "definition": "A loud, confused noise made by many people talking at once.",
+  "note": "Common in phrases like 'a hubbub of voices'. Its origin is uncertain, so treat any story about it with caution.",
+  "hints": [
+   "Imagine a busy market square at lunchtime on a Saturday.",
+   "Many conversations overlap until no single voice stands out."
+  ],
+  "difficulty": "stretch"
  },
  {
   "word": "hubby",
@@ -30106,6 +30744,17 @@
   "origin": "jock + -ey"
  },
  {
+  "word": "joiner",
+  "register": "standard",
+  "definition": "A craftsperson who makes fitted woodwork such as doors, window frames and staircases.",
+  "note": "In Britain a joiner makes fitted wooden items, while a carpenter usually handles rougher structural work.",
+  "hints": [
+   "You might find one sawing timber in a workshop beside a lathe.",
+   "Their fitted wood pieces slot into a house rather than hold it up."
+  ],
+  "difficulty": "stretch"
+ },
+ {
   "word": "joint",
   "register": "standard",
   "definition": "A place where two pieces are joined together.",
@@ -30177,6 +30826,17 @@
   "origin": "Old French jouster, from Latin iūxta"
  },
  {
+  "word": "jovial",
+  "register": "standard",
+  "definition": "Cheerful, friendly and good-humoured.",
+  "note": "From Latin Iovialis, 'of Jupiter'. Medieval astrology held that people born under Jupiter were cheerful, and the link stuck.",
+  "hints": [
+   "A pub landlord with a booming laugh might be described this way.",
+   "The opposite of a glum, sour-faced guest at a dinner party."
+  ],
+  "difficulty": "stretch"
+ },
+ {
   "word": "joyful",
   "register": "standard",
   "definition": "Full of joy.",
@@ -30234,6 +30894,17 @@
   "partOfSpeech": "noun",
   "origin": "Old French jus, from Latin jūs",
   "example": "Squeeze the orange and some juice will come out."
+ },
+ {
+  "word": "juicer",
+  "register": "standard",
+  "definition": "A kitchen appliance that extracts the liquid from fruit or vegetables.",
+  "note": "A juicer separates pulp from liquid, while a citrus squeezer handles only oranges and lemons. Both are common kitchen tools.",
+  "hints": [
+   "A countertop gadget you might find next to the blender.",
+   "Unlike a blender, it leaves the fibrous leftovers behind."
+  ],
+  "difficulty": "stretch"
  },
  {
   "word": "juicy",
@@ -30981,6 +31652,17 @@
   "origin": "Ancient Greek κῦδος"
  },
  {
+  "word": "kvetch",
+  "register": "slang",
+  "definition": "To complain constantly, or a person who complains in this way.",
+  "note": "A Yiddish word, used informally in English for habitual grumbling. It implies endless complaint rather than a single reasoned protest.",
+  "hints": [
+   "You might hear it from a grumpy relative over a holiday dinner.",
+   "Used with a jokey, affectionate tone in some circles."
+  ],
+  "difficulty": "challenging"
+ },
+ {
   "word": "label",
   "register": "standard",
   "definition": "A tag showing what something is or costs.",
@@ -31020,6 +31702,17 @@
   "pronunciation": "ˈleɪbə",
   "partOfSpeech": "noun",
   "origin": "Old French labor, from Latin labor"
+ },
+ {
+  "word": "lackey",
+  "register": "standard",
+  "definition": "A servile follower who does menial jobs for a powerful person.",
+  "note": "From French laquais, 'footman'. The word implies fawning service rather than honest help.",
+  "hints": [
+   "Old novels often show one waiting by a rich man's door.",
+   "Such a person never disagrees with whoever is in charge."
+  ],
+  "difficulty": "challenging"
  },
  {
   "word": "ladder",
@@ -31832,6 +32525,17 @@
   "partOfSpeech": "adjective",
   "origin": "leer",
   "example": "Since he was bitten by a dog when he was young, he has always been leery of animals."
+ },
+ {
+  "word": "leeway",
+  "register": "standard",
+  "definition": "Freedom or room to manoeuvre within set limits, such as time or money.",
+  "note": "Originally nautical, meaning a ship's sideways drift off course. The sense of spare margin came later.",
+  "hints": [
+   "Schedules often include this when managers expect delays.",
+   "A bit of room before a rule is strictly enforced."
+  ],
+  "difficulty": "stretch"
  },
  {
   "word": "lefty",
@@ -33274,6 +33978,17 @@
   "example": "I don't know which was worse, the lumpy soup or the lumpy bed."
  },
  {
+  "word": "lunacy",
+  "register": "standard",
+  "definition": "Extreme foolishness or recklessness, or in older usage, madness.",
+  "note": "From Latin luna, 'moon', reflecting an old belief that the moon could affect the mind. Today it is mostly used figuratively.",
+  "hints": [
+   "Friends might call a midnight plan to swim the lake this.",
+   "Its roots stretch back to an old belief about the moon."
+  ],
+  "difficulty": "stretch"
+ },
+ {
   "word": "lunar",
   "register": "standard",
   "definition": "Of the moon.",
@@ -34016,6 +34731,17 @@
   "partOfSpeech": "noun"
  },
  {
+  "word": "mantel",
+  "register": "standard",
+  "definition": "The shelf above a fireplace, or the frame around it.",
+  "note": "Often confused with mantle, a cloak or covering. The fuller term mantelpiece means the same thing.",
+  "hints": [
+   "Christmas cards and carriage clocks often stand along it.",
+   "It is where a fire's heat meets a row of ornaments."
+  ],
+  "difficulty": "stretch"
+ },
+ {
   "word": "mantis",
   "register": "standard",
   "definition": "A long-bodied insect that holds its front legs folded as if praying.",
@@ -34272,6 +34998,17 @@
   "partOfSpeech": "noun",
   "origin": "Old English mersċ",
   "example": "Many animals live in the marsh."
+ },
+ {
+  "word": "marshy",
+  "register": "standard",
+  "definition": "Wet, soft and low-lying, with ground that is often covered in water.",
+  "note": "Marsh is grassy wetland, while a swamp is usually wooded. Marshy land is often protected as a nature reserve habitat.",
+  "hints": [
+   "Birdwatchers wade through reeds and cattails in such places.",
+   "Boots sink into the soggy, grassy ground with every step."
+  ],
+  "difficulty": "stretch"
  },
  {
   "word": "martyr",
@@ -35314,6 +36051,17 @@
   "origin": "Late Latin molīnārius"
  },
  {
+  "word": "millet",
+  "register": "standard",
+  "definition": "A small-seeded cereal grass grown in dry regions, used for food and birdseed.",
+  "note": "Millet is one of the oldest cultivated grains and a staple in parts of Africa and Asia. In Britain it is most often seen in birdseed mixes.",
+  "hints": [
+   "Budgerigars in pet shops often get a seed mix containing it.",
+   "Porridge and flatbreads in parts of India and Africa are made from its grain."
+  ],
+  "difficulty": "stretch"
+ },
+ {
   "word": "mimic",
   "register": "standard",
   "definition": "To copy someone's voice or behaviour, or an animal that copies another's appearance.",
@@ -35783,6 +36531,17 @@
   "pronunciation": "ˈmoʊldi",
   "partOfSpeech": "adjective",
   "example": "A moldy (or musty) odor."
+ },
+ {
+  "word": "moloch",
+  "register": "standard",
+  "definition": "Something that demands huge sacrifices from those who serve it, such as an institution that consumes its own people.",
+  "note": "In the Hebrew Bible, Moloch is a god to whom children were supposedly sacrificed. Writers now use the name for any system that devours its own.",
+  "hints": [
+   "It turns up in old Bible commentaries and debates about war.",
+   "The thing it names is greedy and takes whatever it is offered."
+  ],
+  "difficulty": "challenging"
  },
  {
   "word": "molten",
@@ -36428,6 +37187,17 @@
   "partOfSpeech": "adjective"
  },
  {
+  "word": "mucous",
+  "register": "standard",
+  "definition": "Relating to, or covered in, the slimy substance mucus.",
+  "note": "Mostly used in medical contexts, as in 'mucous membrane'. The noun is 'mucus'; 'mucous' is the adjective.",
+  "hints": [
+   "It describes the wet lining inside your nose or throat.",
+   "A medical term you might spot on a cold-and-flu leaflet."
+  ],
+  "difficulty": "stretch"
+ },
+ {
   "word": "mucus",
   "register": "standard",
   "definition": "The slippery fluid made by the lining of the nose and throat.",
@@ -36728,6 +37498,17 @@
   "origin": "Latin mūtāns"
  },
  {
+  "word": "mutate",
+  "register": "standard",
+  "definition": "To change in form or genetic makeup, or to cause such a change.",
+  "note": "From Latin mutare, 'to change'. In biology it describes changes in DNA; in everyday speech it is used loosely for any sudden transformation.",
+  "hints": [
+   "A biology lesson on copying errors in DNA comes to mind.",
+   "Viruses are often described as doing this as they spread between hosts."
+  ],
+  "difficulty": "stretch"
+ },
+ {
   "word": "mutiny",
   "register": "standard",
   "definition": "A revolt by sailors or soldiers against their officers.",
@@ -36768,6 +37549,17 @@
   "pronunciation": "ˈmʌzəl",
   "partOfSpeech": "noun",
   "origin": "Old French musel"
+ },
+ {
+  "word": "myopia",
+  "register": "standard",
+  "definition": "Short-sightedness, the inability to see distant objects clearly.",
+  "note": "From Greek myein, 'to shut', and ops, 'eye'. In everyday speech people more often say 'short-sighted'.",
+  "hints": [
+   "A school eye test where you squint at letters on the far wall.",
+   "Things across the room blur while the book in your hands stays sharp."
+  ],
+  "difficulty": "stretch"
  },
  {
   "word": "myriad",
@@ -37380,6 +38172,17 @@
   "origin": "Ancient Greek νεῦρον",
   "example": "In the brain there are around one hundred billion neurons.",
   "exampleSource": "https://tatoeba.org/en/sentences/show/5685160"
+ },
+ {
+  "word": "neuter",
+  "register": "standard",
+  "definition": "To remove an animal's ability to reproduce, usually by surgery.",
+  "note": "From Latin neuter, 'neither', because in grammar it is neither masculine nor feminine. The word is also used for the neuter gender in many languages.",
+  "hints": [
+   "A vet might recommend this for a pet cat or dog.",
+   "Its roots mean 'neither', which hints at a grammatical class."
+  ],
+  "difficulty": "stretch"
  },
  {
   "word": "never",
@@ -38282,6 +39085,17 @@
   "example": "An octet of waiters sang her \"Happy Birthday\"."
  },
  {
+  "word": "ocular",
+  "register": "standard",
+  "definition": "Relating to the eyes or to sight.",
+  "note": "From Latin oculus, 'eye'. The phrase 'ocular proof' means evidence you can see for yourself.",
+  "hints": [
+   "An eye doctor's chart of letters tests this.",
+   "Evidence you can confirm with your own sight, not on hearsay."
+  ],
+  "difficulty": "stretch"
+ },
+ {
   "word": "oculus",
   "register": "standard",
   "definition": "A round opening at the top of a dome; also a circular window.",
@@ -38583,6 +39397,17 @@
   "example": "There was an onward rush as the gates opened."
  },
  {
+  "word": "oolong",
+  "register": "standard",
+  "definition": "A Chinese tea that is partly oxidized, sitting between green and black tea.",
+  "note": "From Chinese wulong, 'black dragon'. Its flavour ranges from floral to roasted depending on how it is processed.",
+  "hints": [
+   "A tea shop lists it between the green and black varieties.",
+   "Its leaves are partly oxidized, midway along the tea spectrum."
+  ],
+  "difficulty": "challenging"
+ },
+ {
   "word": "oomph",
   "register": "slang",
   "definition": "Energy, power or appeal.",
@@ -38809,6 +39634,17 @@
   "pronunciation": "ˈɔːkɪd",
   "partOfSpeech": "noun",
   "origin": "New Latin Orchideae, from Ancient Greek ὄρχις"
+ },
+ {
+  "word": "ordain",
+  "register": "standard",
+  "definition": "To formally make someone a priest, or to decree something with authority.",
+  "note": "From Latin ordinare, 'to arrange'. Churches use the word for the formal ceremony that makes someone a member of the clergy.",
+  "hints": [
+   "A church ceremony marks the start of a clergy career.",
+   "Used in formal decrees and churches, rarely in casual talk."
+  ],
+  "difficulty": "stretch"
  },
  {
   "word": "ordeal",
@@ -40243,6 +41079,17 @@
   "origin": "Old French perle, from Latin perula"
  },
  {
+  "word": "pearly",
+  "register": "standard",
+  "definition": "Resembling a pearl in colour or lustre.",
+  "note": "The 'pearly gates' of heaven come from the twelve pearl gates described in the Book of Revelation. It is common in both literal and poetic use.",
+  "hints": [
+   "A seashell's inner lining has this sheen.",
+   "Freshwater mussels show a soft, milky glow like this."
+  ],
+  "difficulty": "stretch"
+ },
+ {
   "word": "pebble",
   "register": "standard",
   "definition": "A small stone made smooth by water.",
@@ -40560,6 +41407,17 @@
   "origin": "Anglo-Norman parsone; in English since the 13th century"
  },
  {
+  "word": "peruse",
+  "register": "standard",
+  "definition": "To read something carefully, or to examine it closely.",
+  "note": "In careful usage it means reading thoroughly, but in everyday speech it is often used loosely to mean glancing over, which some style guides object to.",
+  "hints": [
+   "A solicitor might spend an afternoon on a contract, reading every clause.",
+   "A diner might do this to a menu before choosing."
+  ],
+  "difficulty": "challenging"
+ },
+ {
   "word": "pesky",
   "register": "slang",
   "definition": "Annoying; causing trouble.",
@@ -40572,6 +41430,17 @@
   "pronunciation": "ˈpɛski",
   "partOfSpeech": "adjective",
   "example": "Stay out of my yard, you pesky kids!"
+ },
+ {
+  "word": "pestle",
+  "register": "standard",
+  "definition": "A heavy club-shaped tool used with a mortar to crush substances into powder.",
+  "note": "The pestle and mortar come as a pair: the bowl is the mortar and the club is the pestle. Many spice blends are still ground this way.",
+  "hints": [
+   "Cooks in old kitchens reached for this next to a stone bowl.",
+   "Garlic and peppercorns get crushed beneath its heavy end."
+  ],
+  "difficulty": "stretch"
  },
  {
   "word": "pesto",
@@ -40700,6 +41569,17 @@
   "difficulty": "familiar",
   "pronunciation": "feɪz",
   "partOfSpeech": "noun"
+ },
+ {
+  "word": "phlegm",
+  "register": "standard",
+  "definition": "Thick mucus from the throat and chest, especially during a cold, or calm composure.",
+  "note": "In medieval medicine phlegm was one of the four humours. The adjective phlegmatic still describes someone calm and hard to rattle.",
+  "hints": [
+   "A cough remedy aisle has plenty of products aimed at this.",
+   "Someone unflustered in a crisis might be said to have plenty of it."
+  ],
+  "difficulty": "stretch"
  },
  {
   "word": "phobia",
@@ -42021,6 +42901,17 @@
   "origin": "Latin polypus, from Ancient Greek πολύπους"
  },
  {
+  "word": "pomelo",
+  "register": "standard",
+  "definition": "A very large citrus fruit with a thick rind and mild, sweet flesh.",
+  "note": "The pomelo is an ancestor of the grapefruit, which arose from a cross between a pomelo and a sweet orange.",
+  "hints": [
+   "Its thick peel can be a chore to get through at breakfast.",
+   "Its flavour is milder than the grapefruit it gave rise to."
+  ],
+  "difficulty": "challenging"
+ },
+ {
   "word": "ponder",
   "register": "standard",
   "definition": "To think about something carefully.",
@@ -43252,6 +44143,17 @@
   "difficulty": "familiar"
  },
  {
+  "word": "pumice",
+  "register": "standard",
+  "definition": "A light, porous volcanic rock used to smooth rough skin or surfaces.",
+  "note": "It is one of the few rocks that floats on water, because its gas bubbles trap air. It is widely used to scrub hard skin from heels.",
+  "hints": [
+   "A bathroom shelf may hold one for heels and elbows.",
+   "Hot, gas-rich lava hardens into this lightweight stone."
+  ],
+  "difficulty": "stretch"
+ },
+ {
   "word": "punch",
   "register": "standard",
   "definition": "A blow with the fist; also a fruity drink.",
@@ -44159,6 +45061,17 @@
   "difficulty": "familiar",
   "pronunciation": "ˈɹeɪdiˌəʊ",
   "partOfSpeech": "noun"
+ },
+ {
+  "word": "radium",
+  "register": "standard",
+  "definition": "A highly radioactive metallic element that was once used to make watch dials glow.",
+  "note": "Marie and Pierre Curie discovered it in 1898. Early workers who handled it without protection suffered serious harm.",
+  "hints": [
+   "Chemistry lessons mention a famous husband-and-wife team who found it.",
+   "Early researchers paid a heavy price for handling it unprotected."
+  ],
+  "difficulty": "stretch"
  },
  {
   "word": "radius",
@@ -47469,6 +48382,17 @@
   "partOfSpeech": "adjective"
  },
  {
+  "word": "ruffle",
+  "register": "standard",
+  "definition": "To disturb the smoothness of something, or to upset someone's composure.",
+  "note": "The phrase 'don't ruffle feathers' means avoid annoying people. Birds ruffle their feathers when they fluff up or feel threatened.",
+  "hints": [
+   "A breeze can do this to a flag, and a rude comment to a calm colleague.",
+   "Birds do this to their plumage when they fluff up."
+  ],
+  "difficulty": "stretch"
+ },
+ {
   "word": "rugby",
   "register": "standard",
   "definition": "A team sport played with an oval ball.",
@@ -48359,6 +49283,17 @@
   "difficulty": "challenging"
  },
  {
+  "word": "scanty",
+  "register": "standard",
+  "definition": "Small in amount, barely enough.",
+  "note": "Often used of clothing or food, as in 'a scanty dinner'. It is closely related to 'scant', with the same core meaning.",
+  "hints": [
+   "Think of a meal that leaves everyone still hungry.",
+   "A cupboard holding very little after a long winter fits this word."
+  ],
+  "difficulty": "stretch"
+ },
+ {
   "word": "scape",
   "register": "standard",
   "definition": "A leafless flower stalk growing straight from the root.",
@@ -48896,6 +49831,17 @@
   "partOfSpeech": "verb",
   "origin": "Middle Dutch schrobben",
   "example": "She scrubbed his back."
+ },
+ {
+  "word": "scruff",
+  "register": "standard",
+  "definition": "The back of the neck, especially the loose skin there.",
+  "note": "By the scruff of the neck means grabbed firmly, as a mother cat carries her kittens. The word is standard English for the nape.",
+  "hints": [
+   "A mother cat carries her kittens by this part of their body.",
+   "Grabbing someone here is a firm, rough way to take control."
+  ],
+  "difficulty": "stretch"
  },
  {
   "word": "scrum",
@@ -49982,6 +50928,17 @@
   "pronunciation": "ˈʃeɪv",
   "partOfSpeech": "verb",
   "origin": "Old English sċafan"
+ },
+ {
+  "word": "shaver",
+  "register": "standard",
+  "definition": "A device for removing hair by cutting it close to the skin, especially an electric razor.",
+  "note": "'A young shaver' is an informal phrase for a small boy. The device sense is the everyday one.",
+  "hints": [
+   "A bathroom gadget that buzzes near the sink each morning.",
+   "Unlike a manual blade, it needs no rinsing under the tap."
+  ],
+  "difficulty": "stretch"
  },
  {
   "word": "shawl",
@@ -51293,6 +52250,17 @@
   "difficulty": "challenging"
  },
  {
+  "word": "skimpy",
+  "register": "standard",
+  "definition": "Too small or too little in amount, especially of clothing or portions.",
+  "note": "Often applied to clothing that covers very little, or to portions that feel too small. It is usually a criticism, unlike slim, which can be a compliment.",
+  "hints": [
+   "A meal that leaves you hungry might have been served this way.",
+   "Swimwear designers are often accused of making it."
+  ],
+  "difficulty": "stretch"
+ },
+ {
   "word": "skinny",
   "register": "standard",
   "definition": "Very thin; or gossip as in the skinny.",
@@ -52499,6 +53467,17 @@
   "example": "If I had not snooped on her, I wouldn't have found out that she lied about her degree."
  },
  {
+  "word": "snooty",
+  "register": "slang",
+  "definition": "Snobbish, and looking down on other people.",
+  "note": "An informal word for acting superior, often about taste, class or manners. It is more common in speech and fiction than in formal writing.",
+  "hints": [
+   "A posh restaurant's head waiter might be accused of this.",
+   "A sneer and a raised eyebrow are its usual signs."
+  ],
+  "difficulty": "stretch"
+ },
+ {
   "word": "snore",
   "register": "standard",
   "definition": "The reason you are awake.",
@@ -53591,6 +54570,17 @@
   "pronunciation": "spliːn",
   "partOfSpeech": "noun",
   "origin": "Anglo-Norman espleen, from Ancient Greek σπλήν"
+ },
+ {
+  "word": "splice",
+  "register": "standard",
+  "definition": "To join two ends or pieces together by interweaving or overlapping them.",
+  "note": "Splicing a rope means weaving its strands together rather than tying a knot. In film editing, splicing joins separate lengths of footage.",
+  "hints": [
+   "Sailors and film editors both depend on this technique.",
+   "Cutting and rejoining reels is part of the process."
+  ],
+  "difficulty": "stretch"
  },
  {
   "word": "split",
@@ -56031,6 +57021,17 @@
   "origin": "Anglo-Norman somoundre, from Latin summonēre"
  },
  {
+  "word": "sundry",
+  "register": "standard",
+  "definition": "Various, and of several different kinds not individually named.",
+  "note": "Often seen in the idiom all and sundry, meaning everyone, and in lists of sundry items on invoices.",
+  "hints": [
+   "You might see this on a shopping receipt listing odds and ends.",
+   "A common idiom pairs it with all to mean everyone."
+  ],
+  "difficulty": "challenging"
+ },
+ {
   "word": "sunken",
   "register": "standard",
   "definition": "Having sunk or lying below the surrounding level.",
@@ -56289,6 +57290,17 @@
   "pronunciation": "ˈswɒmp",
   "partOfSpeech": "noun",
   "origin": "Old English swamm, from Middle Low German sump"
+ },
+ {
+  "word": "swampy",
+  "register": "standard",
+  "definition": "Waterlogged and muddy, like a swamp.",
+  "note": "Swamps are usually wooded wetlands, while marshes are grassy. Swampy ground can be difficult to walk across.",
+  "hints": [
+   "Cypress trees standing in brown water suggest the place.",
+   "Mosquitoes thrive in this soggy, slow-moving terrain."
+  ],
+  "difficulty": "stretch"
  },
  {
   "word": "swank",
@@ -56972,6 +57984,17 @@
   "pronunciation": "ˈteɪmɚ",
   "partOfSpeech": "noun",
   "origin": "tame"
+ },
+ {
+  "word": "tamper",
+  "register": "standard",
+  "definition": "To interfere with something so that it is damaged or altered, often illegally.",
+  "note": "Usually followed by with, as in tampering with evidence, which is a crime. It can also mean meddling with a lock or a product.",
+  "hints": [
+   "Packaging with a broken seal suggests someone did this.",
+   "A crime drama plot often hinges on someone doing this to evidence."
+  ],
+  "difficulty": "stretch"
  },
  {
   "word": "tandem",
@@ -58324,6 +59347,17 @@
   "example": "He could hear the thrum of a banjo."
  },
  {
+  "word": "thrush",
+  "register": "standard",
+  "definition": "A small brown songbird with a speckled breast.",
+  "note": "The song thrush and mistle thrush are familiar garden birds in Britain. The same word also names a yeast infection, which is a different sense.",
+  "hints": [
+   "Listen for one singing from the top of a hedge at dawn.",
+   "It often bashes snails against stones to crack the shells."
+  ],
+  "difficulty": "stretch"
+ },
+ {
   "word": "thrust",
   "register": "standard",
   "definition": "To push suddenly, or the force that moves a rocket.",
@@ -59107,6 +60141,17 @@
   "partOfSpeech": "adjective",
   "origin": "Old English tōh",
   "example": "The tent, made of tough canvas, held up to many abuses."
+ },
+ {
+  "word": "toupee",
+  "register": "standard",
+  "definition": "A small artificial hairpiece worn to cover a bald patch.",
+  "note": "From French 'toupet', a tuft of hair. Comedians have long used it as a joke, so it is often treated with a touch of mockery.",
+  "hints": [
+   "Comedians have long joked about one on a balding head.",
+   "Adhesive tape can fix one to the scalp without anyone noticing."
+  ],
+  "difficulty": "stretch"
  },
  {
   "word": "toward",
@@ -60780,6 +61825,17 @@
   "partOfSpeech": "adjective"
  },
  {
+  "word": "unduly",
+  "register": "standard",
+  "definition": "To a greater extent than is reasonable or necessary.",
+  "note": "Usually found with words like 'worried' or 'influenced', as in 'not unduly concerned'. It is a measured, formal word, not a synonym for 'very'.",
+  "hints": [
+   "A cautious official might describe a delay in these terms.",
+   "It softens a claim by saying the matter is not excessive."
+  ],
+  "difficulty": "stretch"
+ },
+ {
   "word": "uneasy",
   "register": "standard",
   "definition": "Anxious or uncomfortable.",
@@ -61811,6 +62867,17 @@
   "difficulty": "stretch"
  },
  {
+  "word": "vainly",
+  "register": "standard",
+  "definition": "Without success, or with excessive pride in one's appearance.",
+  "note": "It has two senses: futilely ('he vainly tried to reach the rope') and conceitedly ('she vainly checked her reflection'). The futile sense is the more common one.",
+  "hints": [
+   "Old romances describe a hopeless struggle in this manner.",
+   "Think of someone pleading for a reply that never comes."
+  ],
+  "difficulty": "challenging"
+ },
+ {
   "word": "valet",
   "register": "standard",
   "definition": "A person who parks cars or attends to a man's clothes.",
@@ -62163,6 +63230,28 @@
   "origin": "Old French verifier, from Latin vērus"
  },
  {
+  "word": "verily",
+  "register": "standard",
+  "definition": "Truly, in fact, used to add solemn emphasis to a statement.",
+  "note": "It is best known from the King James Bible, as in 'Verily I say unto you'. Outside scripture and imitations of it, it sounds deliberately old-fashioned.",
+  "hints": [
+   "Listen for it in a King James reading at a church service.",
+   "Pulpit sermons and medieval romances lean on it for solemn weight."
+  ],
+  "difficulty": "challenging"
+ },
+ {
+  "word": "vermin",
+  "register": "standard",
+  "definition": "Small animals such as rats, mice or insects that spread disease or damage property.",
+  "note": "From Old French, ultimately from Latin 'vermis', worm. It is a collective noun with no plural form and is usually used with disapproval.",
+  "hints": [
+   "Pest controllers are called in to clear these from kitchens.",
+   "Rats and mice often get lumped together under this heading."
+  ],
+  "difficulty": "stretch"
+ },
+ {
   "word": "verse",
   "register": "standard",
   "definition": "The bit before the chorus.",
@@ -62385,6 +63474,17 @@
   "partOfSpeech": "noun",
   "example": "Viking helmets with horns aren't in style in Scandinavia anymore.",
   "exampleSource": "https://tatoeba.org/en/sentences/show/5695971"
+ },
+ {
+  "word": "vilify",
+  "register": "standard",
+  "definition": "To speak or write about someone in an abusive, damaging way.",
+  "note": "From Latin vilificare, from vilis, 'cheap or base', and facere, 'to make'. It is common in political and media writing.",
+  "hints": [
+   "A newspaper campaign against a politician might be described this way.",
+   "Smear campaigns in a bitter election fit this description."
+  ],
+  "difficulty": "challenging"
  },
  {
   "word": "villa",
@@ -63109,6 +64209,17 @@
   "pronunciation": "ˈwɑnə"
  },
  {
+  "word": "wanton",
+  "register": "standard",
+  "definition": "Done recklessly and without any justification, especially cruelly.",
+  "note": "The phrase you will meet most is 'wanton destruction'. It is stronger than 'thoughtless', implying the harm served no purpose.",
+  "hints": [
+   "It turns up in news reports about vandals smashing shop windows.",
+   "Picture damage inflicted just because the vandal felt like it."
+  ],
+  "difficulty": "stretch"
+ },
+ {
   "word": "warden",
   "register": "standard",
   "definition": "A person responsible for guarding or supervising a place or people.",
@@ -63579,6 +64690,17 @@
   "pronunciation": "wɛntʃ",
   "partOfSpeech": "noun",
   "origin": "Old English wenċel"
+ },
+ {
+  "word": "wether",
+  "register": "standard",
+  "definition": "A castrated male sheep.",
+  "note": "Often confused with 'whether', which sounds the same. Wethers are kept on farms for their wool and meat.",
+  "hints": [
+   "You might see these grazing among a flock on a hillside farm.",
+   "It is the flock's calmer male, next to a ram."
+  ],
+  "difficulty": "challenging"
  },
  {
   "word": "whack",

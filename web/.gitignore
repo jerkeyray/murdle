@@ -47,4 +47,6 @@ next-env.d.ts
 scripts/data/wiktionary.jsonl
 scripts/data/enrich-review.json
 scripts/data/hint-review.json
+scripts/data/candidates.json
 scripts/data/tatoeba.tsv
+scripts/data/batches/
