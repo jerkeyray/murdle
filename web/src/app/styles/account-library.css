@@ -79,6 +79,12 @@
   padding: 16px 0;
 }
 
+/* On a phone the choices go under the label at full width. Beside it, three
+   vocabulary buttons got too narrow to show "Learning" whole. */
+@media (max-width: 520px) {
+  .game-setting { grid-template-columns: 1fr; gap: 12px; }
+}
+
 .game-setting + .game-setting {
   border-top: 1px solid var(--rule);
 }
@@ -97,7 +103,10 @@
 
 .game-options {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  /* One row, however many choices: three vocabulary settings sit side by side
+     like the two lengths, rather than the third wrapping onto a row alone. */
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
   gap: 4px;
   padding: 4px;
   border: 1px solid var(--border);

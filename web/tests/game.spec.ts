@@ -274,6 +274,18 @@ test("the Hard vocabulary setting is saved and carried into the game", async ({ 
   await page.getByRole("button", { name: "Hard", exact: true }).click();
   await expect(page.getByRole("button", { name: "Hard", exact: true })).toHaveAttribute("aria-pressed", "true");
   await expect(page.getByText(/words most adults could not define/)).toBeVisible();
+  // All three vocabulary choices share one row, like the two word lengths.
+  const tops = await page.getByRole("group", { name: "Answer vocabulary" }).getByRole("button").evaluateAll(
+    (buttons) => buttons.map((b) => Math.round(b.getBoundingClientRect().top)));
+  expect(new Set(tops).size).toBe(1);
+  // And none of them is cut off on a phone.
+  const clipped = await page.getByRole("group", { name: "Answer vocabulary" }).getByRole("button").evaluateAll(
+    (buttons) => buttons.filter((b) => b.scrollWidth > b.clientWidth).map((b) => b.textContent));
+  expect(clipped).toEqual([]);
+  await page.screenshot({ path: "test-results/settings-mobile.png" });
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.screenshot({ path: "test-results/settings-desktop.png" });
+  await page.setViewportSize({ width: 390, height: 844 });
   const saved = await page.evaluate(() => JSON.parse(localStorage.getItem("wordle.mode") ?? "{}"));
   expect(saved.difficulty).toBe("hard");
   await page.goto("/");
