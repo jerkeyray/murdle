@@ -48,6 +48,7 @@
   --seat-1: #ab9ae8;
 
   --grain-opacity: 0.038;
+  --floral-opacity: 0.035;
   --glow: rgb(255 255 255 / 0.025);
 
   --radius-tile: 7px;
@@ -88,6 +89,7 @@
   --seat-1: #6b5ac0;
 
   --grain-opacity: 0.045;
+  --floral-opacity: 0.06;
   --glow: rgb(220 90 150 / 0.07);
 
   color-scheme: light;
@@ -110,10 +112,31 @@ body {
   padding: 0;
 }
 
+/* The page colour sits on the root so the floral layer below can paint over it
+   and still sit under everything in the body. */
+html {
+  background: var(--bg);
+}
+
+/* A printed flourish behind every page, as faint as a watermark. It is a mask
+   filled with the ink colour rather than an image, so it follows the theme and
+   the colour-blind palette instead of laying grey over pink. */
+html::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: var(--floral-opacity);
+  background-color: var(--text);
+  -webkit-mask: url("/floral.svg") center top / min(880px, 170vw) repeat;
+  mask: url("/floral.svg") center top / min(880px, 170vw) repeat;
+}
+
 body {
   position: relative;
   min-height: 100dvh;
-  background: var(--bg);
+  background: transparent;
   color: var(--text);
   font-family: var(--font-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;

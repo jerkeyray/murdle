@@ -46,7 +46,8 @@
   place-items: center;
   border: 1px solid var(--border);
   border-radius: var(--radius-tile);
-  background: transparent;
+  /* Solid, so the floral background never shows through an empty square. */
+  background: var(--bg);
   font-family: var(--font-serif), Georgia, serif;
   font-size: clamp(1.45rem, 7.4vw, 2rem);
   font-weight: 600;
