@@ -216,8 +216,9 @@ func TestReadmeFiguresMatchTheServersStats(t *testing.T) {
 		return out
 	}
 	want := []string{
-		fmt.Sprintf("**%s answers** (%s five-letter, %s six-letter)", comma(s.Answers), comma(s.Lengths[0].Total), comma(s.Lengths[1].Total)),
+		fmt.Sprintf("**%s answers**", comma(s.Answers)),
 		fmt.Sprintf("**%s words**", comma(s.Dictionary)),
+		fmt.Sprintf("| **Total** | **%s** | **%s** |", comma(s.Lengths[0].Total), comma(s.Lengths[1].Total)),
 		fmt.Sprintf("| Challenging | %s | %s |", comma(s.Lengths[0].Challenging), comma(s.Lengths[1].Challenging)),
 	}
 	for _, line := range want {

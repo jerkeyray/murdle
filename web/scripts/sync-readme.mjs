@@ -20,13 +20,14 @@ const f = await bankFigures();
 const [five, six] = f.lengths;
 const row = (name, key) => `| ${name} | ${n(five[key])} | ${n(six[key])} |`;
 const block = `${START}
-**${n(f.answers)} answers** (${n(five.total)} five-letter, ${n(six.total)} six-letter) and **${n(f.dictionary)} words** you can guess.
+**${n(f.answers)} answers** to play, and **${n(f.dictionary)} words** accepted as guesses.
 
-| | 5 letters | 6 letters |
+| Difficulty | 5 letters | 6 letters |
 | --- | ---: | ---: |
 ${row("Familiar", "familiar")}
 ${row("Stretch", "stretch")}
 ${row("Challenging", "challenging")}
+| **Total** | **${n(five.total)}** | **${n(six.total)}** |
 ${END}`;
 
 const text = await readFile(README, "utf8");
